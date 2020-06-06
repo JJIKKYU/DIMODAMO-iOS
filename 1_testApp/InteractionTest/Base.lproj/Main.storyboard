@@ -14,11 +14,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5dd-Pe-jbb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
+                        <color key="barTintColor" red="0.31372549020000001" green="0.35294117650000001" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -257,17 +255,17 @@
                                 <rect key="frame" x="-37" y="-2" width="487" height="898"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="zGC-2m-Hss">
+                                <rect key="frame" x="31" y="182" width="350" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="messageBox" translatesAutoresizingMaskIntoConstraints="NO" id="JeS-0S-FtA">
                                 <rect key="frame" x="82" y="443" width="255" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="icon_beer" translatesAutoresizingMaskIntoConstraints="NO" id="Q22-kQ-XL0">
-                                <rect key="frame" x="161" y="326" width="96" height="97"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="beer_message" translatesAutoresizingMaskIntoConstraints="NO" id="yIj-oR-aLw">
-                                <rect key="frame" x="77" y="251" width="260" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="77" y="244" width="260" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="공감하신다면 디바이스를 흔들어주세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6j-Jh-yfB">
                                 <rect key="frame" x="100" y="457" width="218" height="17"/>
@@ -276,15 +274,32 @@
                                 <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsI-uE-jJ0">
+                                <rect key="frame" x="143" y="291" width="127" height="182"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon_beer"/>
+                                <connections>
+                                    <action selector="pressedShakeIcon:" destination="9My-W6-t5Z" eventType="touchUpInside" id="aOZ-32-pHT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3gE-Y8-RZZ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="인체 드로잉 수업 모여라" id="J3x-ux-gvg"/>
+                    <navigationItem key="navigationItem" title="인체 드로잉 수업 모여라" id="J3x-ux-gvg">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="sbX-6p-s0L">
+                            <connections>
+                                <action selector="pressedNextButton:" destination="9My-W6-t5Z" id="KOi-hn-Gjd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bg" destination="IpM-DV-jyw" id="XVk-ws-TAd"/>
-                        <outlet property="shakeIcon" destination="Q22-kQ-XL0" id="k1w-Me-826"/>
+                        <outlet property="message" destination="yIj-oR-aLw" id="nsT-Mq-AsA"/>
+                        <outlet property="particle" destination="zGC-2m-Hss" id="isX-B6-OgL"/>
+                        <outlet property="shakeIcon" destination="OsI-uE-jJ0" id="Qaf-St-tZc"/>
                         <outlet property="shakeText" destination="r6j-Jh-yfB" id="U24-cO-vaE"/>
+                        <outlet property="shakeTextBox" destination="JeS-0S-FtA" id="I4U-bc-fKy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4S-Lm-c0F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
