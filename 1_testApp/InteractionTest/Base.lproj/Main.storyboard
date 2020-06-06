@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r07-Go-wSC">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="SmO-5R-Bb2">
+            <objects>
+                <navigationController id="r07-Go-wSC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5dd-Pe-jbb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="CM9-2R-cgv" kind="relationship" relationship="rootViewController" id="l84-am-KlJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hkm-dU-fGG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1393" y="848"/>
+        </scene>
+        <!--캐릭터 커스터마이징-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InteractionTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-Ok-y1q">
+                                <rect key="frame" x="20" y="489" width="119" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="BG_01" translatesAutoresizingMaskIntoConstraints="NO" id="QUQ-K9-xSk" userLabel="BG">
+                                <rect key="frame" x="59" y="129" width="297" height="591"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Character_10" translatesAutoresizingMaskIntoConstraints="NO" id="Ycf-ws-7gp">
+                                <rect key="frame" x="73" y="274" width="232" height="658"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3g6-6l-bvg" appends="YES" id="XUP-C8-Xxz"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="캐릭터 커스터마이징" id="ff9-kk-xZ1">
+                        <barButtonItem key="backBarButtonItem" title="홈으로" id="hcG-DD-Who"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="background" destination="QUQ-K9-xSk" id="EvH-zX-mld"/>
+                        <outlet property="character" destination="Ycf-ws-7gp" id="f8F-eK-eQz"/>
+                        <outlet property="circleImage" destination="hIB-Ok-y1q" id="kHB-Qo-cUi"/>
+                        <outlet property="swipe" destination="3g6-6l-bvg" id="nWW-qG-dZp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="3g6-6l-bvg">
+                    <connections>
+                        <action selector="swiping:" destination="BYZ-38-t0r" id="GBa-MN-6do"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="122" y="185"/>
+        </scene>
+        <!--비밀 메세지 보기-->
+        <scene sceneID="YvK-PA-DV7">
+            <objects>
+                <viewController id="Alm-Mj-qee" customClass="SecondViewController" customModule="InteractionTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gg9-hY-VCO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sb-Fi-GV3" userLabel="LightButton">
+                                <rect key="frame" x="176" y="88" width="63" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Light_purple"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="조명을 가려주세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRP-I2-Z96">
+                                <rect key="frame" x="132" y="164" width="150" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="성적 A+ 두 개 받았어요~!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stm-dY-4CN">
+                                <rect key="frame" x="118" y="426" width="178" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <color key="textColor" red="0.98390585180000001" green="0.98825234169999998" blue="0.98815459009999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Lock_empty" translatesAutoresizingMaskIntoConstraints="NO" id="6hv-z1-4q7">
+                                <rect key="frame" x="96" y="406" width="223" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Lock_purple" translatesAutoresizingMaskIntoConstraints="NO" id="mny-XL-YTm">
+                                <rect key="frame" x="96" y="406" width="223" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비밀메세지가 도착했어요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCC-GY-lS3">
+                                <rect key="frame" x="101" y="486" width="212" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="88v-Ve-nYu"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="비밀 메세지 보기" id="DR9-oj-3RJ"/>
+                    <connections>
+                        <outlet property="LightButton" destination="8sb-Fi-GV3" id="4Ma-vo-zFM"/>
+                        <outlet property="lightText" destination="dRP-I2-Z96" id="7Q9-Rx-O7b"/>
+                        <outlet property="lockEmpty" destination="6hv-z1-4q7" id="DJb-uU-stB"/>
+                        <outlet property="lockPurple" destination="mny-XL-YTm" id="S2s-os-s0s"/>
+                        <outlet property="lockText" destination="LCC-GY-lS3" id="91q-HQ-EwB"/>
+                        <outlet property="nav" destination="DR9-oj-3RJ" id="Kgf-kQ-MFz"/>
+                        <outlet property="view" destination="gg9-hY-VCO" id="kQ4-Vg-e4V"/>
+                        <outlet property="viewCon" destination="gg9-hY-VCO" id="PJ2-8S-SBN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4aV-gi-bae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="122" y="848"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="44m-ff-Wyg">
+            <objects>
+                <viewController id="CM9-2R-cgv" customClass="MainViewController" customModule="InteractionTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dM3-mR-YO0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="디모다모 메인 인터랙션" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu1-fo-juf">
+                                <rect key="frame" x="20" y="126" width="221" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="인터랙션 목록" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yns-4l-0yr">
+                                <rect key="frame" x="17" y="291" width="131" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="테스트 어플리케이션" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nX-dK-Dgd">
+                                <rect key="frame" x="20" y="157" width="194" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="24"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7L-wu-Ffl">
+                                <rect key="frame" x="20" y="363" width="112" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <color key="tintColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="비밀 메세지 보기"/>
+                                <connections>
+                                    <action selector="lightPressed:" destination="CM9-2R-cgv" eventType="touchUpInside" id="BDY-WV-erQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXj-RN-ZRd">
+                                <rect key="frame" x="20" y="329" width="137" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <color key="tintColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="캐릭터 커스터마이징"/>
+                                <connections>
+                                    <action selector="sensorPressed:" destination="CM9-2R-cgv" eventType="touchUpInside" id="tqG-JY-jpr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cva-QS-vfH">
+                                <rect key="frame" x="20" y="396" width="93" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <color key="tintColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="마이홈 프로필"/>
+                                <connections>
+                                    <action selector="pngPressed:" destination="CM9-2R-cgv" eventType="touchUpInside" id="Ksz-4a-ipH"/>
+                                    <segue destination="QfI-wc-4YA" kind="showDetail" identifier="png" id="sTT-j2-MPC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjV-z7-MAa">
+                                <rect key="frame" x="20" y="429" width="123" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <state key="normal" title="인체드로잉 모여라">
+                                    <color key="titleColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="bangPressed:" destination="CM9-2R-cgv" eventType="touchUpInside" id="Gcc-aX-JSG"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Character_11" translatesAutoresizingMaskIntoConstraints="NO" id="S68-Rq-FHE">
+                                <rect key="frame" x="211" y="347" width="183" height="515"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pkI-ca-rtJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="s5Y-kI-cqE">
+                        <barButtonItem key="backBarButtonItem" title="홈" id="cfp-dr-tgq"/>
+                        <barButtonItem key="rightBarButtonItem" image="title" id="ACP-eL-RSV">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-14"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="sensor" id="7n8-eI-run"/>
+                        <segue destination="Alm-Mj-qee" kind="show" identifier="light" id="rjB-yf-hwV"/>
+                        <segue destination="9My-W6-t5Z" kind="show" identifier="bang" id="AFl-D3-pnW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5NE-NW-H5t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pYP-ql-7Gc">
+                    <rect key="frame" x="0.0" y="0.0" width="93" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="17"/>
+                    <color key="tintColor" red="0.30588235289999999" green="0.45882352939999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="마이홈 프로필"/>
+                    <connections>
+                        <action selector="pngPressed:" destination="CM9-2R-cgv" eventType="touchUpInside" id="YLd-94-h5n"/>
+                    </connections>
+                </button>
+            </objects>
+            <point key="canvasLocation" x="-659.4202898550725" y="847.76785714285711"/>
+        </scene>
+        <!--인체 드로잉 수업 모여라-->
+        <scene sceneID="imb-kL-Bgr">
+            <objects>
+                <viewController id="9My-W6-t5Z" customClass="ShakeViewController" customModule="InteractionTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OAB-yV-UoI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="beer_screen" translatesAutoresizingMaskIntoConstraints="NO" id="IpM-DV-jyw">
+                                <rect key="frame" x="-37" y="-2" width="487" height="898"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="messageBox" translatesAutoresizingMaskIntoConstraints="NO" id="JeS-0S-FtA">
+                                <rect key="frame" x="82" y="443" width="255" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="icon_beer" translatesAutoresizingMaskIntoConstraints="NO" id="Q22-kQ-XL0">
+                                <rect key="frame" x="161" y="326" width="96" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="beer_message" translatesAutoresizingMaskIntoConstraints="NO" id="yIj-oR-aLw">
+                                <rect key="frame" x="77" y="251" width="260" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="공감하신다면 디바이스를 흔들어주세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6j-Jh-yfB">
+                                <rect key="frame" x="100" y="457" width="218" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="14"/>
+                                <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3gE-Y8-RZZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="인체 드로잉 수업 모여라" id="J3x-ux-gvg"/>
+                    <connections>
+                        <outlet property="bg" destination="IpM-DV-jyw" id="XVk-ws-TAd"/>
+                        <outlet property="shakeIcon" destination="Q22-kQ-XL0" id="k1w-Me-826"/>
+                        <outlet property="shakeText" destination="r6j-Jh-yfB" id="U24-cO-vaE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j4S-Lm-c0F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="2266.0714285714284"/>
+        </scene>
+        <!--마이홈 프로필-->
+        <scene sceneID="H4g-O5-vjq">
+            <objects>
+                <viewController id="QfI-wc-4YA" customClass="testViewController" customModule="InteractionTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lad-TD-zAR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="BG_0" translatesAutoresizingMaskIntoConstraints="NO" id="EX3-8g-Z6D">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Character_11" translatesAutoresizingMaskIntoConstraints="NO" id="T9C-hL-2rW">
+                                <rect key="frame" x="99" y="240" width="182" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="LF3-lI-7F8"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="마이홈 프로필" id="9VR-6R-naC"/>
+                    <connections>
+                        <outlet property="bg" destination="EX3-8g-Z6D" id="3Zg-wG-klb"/>
+                        <outlet property="character" destination="T9C-hL-2rW" id="Iip-Vf-86J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n27-Nf-4Ai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="122" y="1574"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="0" width="200" height="200"/>
+        <image name="BG_0" width="1125" height="2436"/>
+        <image name="BG_01" width="608" height="1210"/>
+        <image name="Character_10" width="529" height="1127"/>
+        <image name="Character_11" width="1095" height="3080"/>
+        <image name="Light_purple" width="124" height="118"/>
+        <image name="Lock_empty" width="446" height="121"/>
+        <image name="Lock_purple" width="446" height="121"/>
+        <image name="beer_message" width="255" height="66"/>
+        <image name="beer_screen" width="375" height="812"/>
+        <image name="icon_beer" width="59" height="81"/>
+        <image name="messageBox" width="280" height="40"/>
+        <image name="title" width="765" height="101"/>
+    </resources>
+</document>
