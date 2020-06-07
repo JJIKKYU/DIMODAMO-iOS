@@ -255,17 +255,9 @@
                                 <rect key="frame" x="-37" y="-2" width="487" height="898"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="zGC-2m-Hss">
-                                <rect key="frame" x="31" y="182" width="350" height="400"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="messageBox" translatesAutoresizingMaskIntoConstraints="NO" id="JeS-0S-FtA">
                                 <rect key="frame" x="82" y="443" width="255" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="beer_message" translatesAutoresizingMaskIntoConstraints="NO" id="yIj-oR-aLw">
-                                <rect key="frame" x="77" y="244" width="260" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="공감하신다면 디바이스를 흔들어주세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6j-Jh-yfB">
                                 <rect key="frame" x="100" y="457" width="218" height="17"/>
@@ -274,14 +266,26 @@
                                 <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="paper_message" translatesAutoresizingMaskIntoConstraints="NO" id="yIj-oR-aLw">
+                                <rect key="frame" x="82" y="245" width="255" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" fixedFrame="YES" image="cheer_icon" translatesAutoresizingMaskIntoConstraints="NO" id="gHA-xW-uFq">
+                                <rect key="frame" x="184" y="337" width="14" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsI-uE-jJ0">
-                                <rect key="frame" x="143" y="291" width="127" height="182"/>
+                                <rect key="frame" x="195" y="337" width="25" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icon_beer"/>
+                                <state key="normal" image="soju_icon"/>
                                 <connections>
                                     <action selector="pressedShakeIcon:" destination="9My-W6-t5Z" eventType="touchUpInside" id="aOZ-32-pHT"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="zGC-2m-Hss">
+                                <rect key="frame" x="31" y="182" width="350" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3gE-Y8-RZZ"/>
@@ -295,6 +299,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bg" destination="IpM-DV-jyw" id="XVk-ws-TAd"/>
+                        <outlet property="cheerIcon" destination="gHA-xW-uFq" id="K1U-bh-SOv"/>
                         <outlet property="message" destination="yIj-oR-aLw" id="nsT-Mq-AsA"/>
                         <outlet property="particle" destination="zGC-2m-Hss" id="isX-B6-OgL"/>
                         <outlet property="shakeIcon" destination="OsI-uE-jJ0" id="Qaf-St-tZc"/>
@@ -346,10 +351,11 @@
         <image name="Light_purple" width="124" height="118"/>
         <image name="Lock_empty" width="446" height="121"/>
         <image name="Lock_purple" width="446" height="121"/>
-        <image name="beer_message" width="255" height="66"/>
         <image name="beer_screen" width="375" height="812"/>
-        <image name="icon_beer" width="59" height="81"/>
+        <image name="cheer_icon" width="14" height="91"/>
         <image name="messageBox" width="280" height="40"/>
+        <image name="paper_message" width="255" height="66"/>
+        <image name="soju_icon" width="26" height="91"/>
         <image name="title" width="765" height="101"/>
     </resources>
 </document>
