@@ -123,7 +123,7 @@ class ShakeViewController: UIViewController {
             timerStart()
             
             particle.animationImages = beerImagesListArray as? [UIImage]
-            particle.animationDuration = 1
+            particle.animationDuration = 0.5
             particle.animationRepeatCount = 1
         case .paper:
             bg.image = UIImage(named: "paper_screen")
@@ -144,7 +144,6 @@ class ShakeViewController: UIViewController {
             shakeCount = 0
             time = 10
             stopTimer = false
-            timerStart()
             
             particle.animationImages = magicImagesListArray as? [UIImage]
             particle.animationDuration = 1
@@ -214,6 +213,7 @@ class ShakeViewController: UIViewController {
             
             
             if isPaperStart == false {
+                timerStart()
                 UIView.animate(withDuration: 0.5) {
                     self.shakeText.alpha = 0
                     self.shakeTextBox.alpha = 0
@@ -221,7 +221,6 @@ class ShakeViewController: UIViewController {
                     self.shakeIcon.frame = CGRect(x: 123, y: 311, width: 166, height: 142)
                     self.shakeIcon.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                     self.isPaperStart = true
-                    self.timerStart()
                 }
             } else {
                 UIView.animate(withDuration: 1, animations: {
@@ -310,9 +309,13 @@ class ShakeViewController: UIViewController {
         if motion == .motionShake {
             shakeCount += 1
             AudioServicesPlaySystemSound(1519)
+            
+            if screen == .cheer {
+                self.particle.startAnimating()
+            }
         }
     }
-    
+
     func timerStart() {
         if screen == .soju {
             if stopTimer == false {

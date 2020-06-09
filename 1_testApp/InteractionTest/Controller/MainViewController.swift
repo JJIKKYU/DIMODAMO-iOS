@@ -31,7 +31,13 @@ class MainViewController: UIViewController {
         performSegue(withIdentifier: "bang", sender: self)
     }
     
+    @IBAction func chatPressed(_ sender: Any) {
+        performSegue(withIdentifier: "register", sender: self)
+    }
     
+    @IBAction func chatStartPressed(_ sender: Any) {
+        performSegue(withIdentifier: "loginPage", sender: self)
+    }
     
     /*
     // MARK: - Navigation
