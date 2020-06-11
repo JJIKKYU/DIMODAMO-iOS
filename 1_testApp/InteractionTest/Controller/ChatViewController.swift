@@ -16,6 +16,9 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var messageTextfield: UITextField!
     
     let db = Firestore.firestore()
+    let ProgressLine = UIProgressView(frame: CGRect(x: 0, y: 0, width: 350, height: 8))
+    let ProgressLikeIcon = UIImageView(image: UIImage(named: "icon_like"))
+    let ProgressLikeCircle = UIView()
     
     var messages: [Message] = []
     
@@ -100,21 +103,102 @@ class ChatViewController: UIViewController {
         likeBar.leadingAnchor.constraint(equalTo: likeBarParent.leadingAnchor, constant: 10).isActive = true
         likeBar.topAnchor.constraint(equalTo: likeBarParent.topAnchor, constant: 100).isActive = true
 
+        // 좌측 기준점
+        let leftPoint = UILabel()
+        leftPoint.frame = CGRect(x: 0, y: 0, width: 8, height: 8)
+        leftPoint.layer.backgroundColor = UIColor(red: 0.353, green: 0.392, blue: 0.824, alpha: 1).cgColor
+        leftPoint.layer.cornerRadius = leftPoint.frame.width / 2
+        leftPoint.layer.zPosition = 1
+
+
+        let leftPointParent = self.view!
+        leftPointParent.addSubview(leftPoint)
+        leftPoint.translatesAutoresizingMaskIntoConstraints = false
+        leftPoint.widthAnchor.constraint(equalToConstant: 8).isActive = true
+        leftPoint.heightAnchor.constraint(equalToConstant: 8).isActive = true
+        leftPoint.leadingAnchor.constraint(equalTo: leftPointParent.leadingAnchor, constant: 32.05).isActive = true
+        leftPoint.topAnchor.constraint(equalTo: leftPointParent.topAnchor, constant: 116).isActive = true
         
-        let view = UILabel()
+        //우측 기준점
+        let rightPoint = UILabel()
 
-        view.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        view.layer.cornerRadius = view.frame.width / 2
-        view.layer.backgroundColor = UIColor(red: 0.843, green: 0.882, blue: 1, alpha: 1).cgColor
+        rightPoint.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        rightPoint.layer.cornerRadius = rightPoint.frame.width / 2
+        rightPoint.layer.backgroundColor = UIColor(red: 0.843, green: 0.882, blue: 1, alpha: 1).cgColor
+        rightPoint.layer.zPosition = 1
+
+        let rightPointLikeIcon = UIImageView(image: UIImage(named: "icon_like"))
+        rightPointLikeIcon.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+        rightPointLikeIcon.layer.position = CGPoint(x: 381, y: 119)
+        rightPointLikeIcon.layer.zPosition = 2
+        
+
+        let rightPointParent = self.view!
+        rightPointParent.addSubview(rightPoint)
+        rightPointParent.addSubview(rightPointLikeIcon)
+        rightPoint.translatesAutoresizingMaskIntoConstraints = false
+        rightPoint.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        rightPoint.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        rightPoint.leadingAnchor.constraint(equalTo: rightPointParent.leadingAnchor, constant: 365).isActive = true
+        rightPoint.topAnchor.constraint(equalTo: rightPointParent.topAnchor, constant: 104).isActive = true
+        
+        
+        // ProgressBar
+        // let ProgressLine = UIProgressView(frame: CGRect(x: 0, y: 0, width: 350, height: 8))
+        ProgressLine.progress = 0.4
+        ProgressLine.trackTintColor = UIColor.white
+        ProgressLine.progressTintColor = UIColor(red: 0.843, green: 0.882, blue: 1, alpha: 1)
+        
+        let ProgressLineParent = self.view!
+        ProgressLineParent.addSubview(ProgressLine)
+        ProgressLine.translatesAutoresizingMaskIntoConstraints = false
+        ProgressLine.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        ProgressLine.heightAnchor.constraint(equalToConstant: 8).isActive = true
+        ProgressLine.leadingAnchor.constraint(equalTo: ProgressLineParent.leadingAnchor, constant: 32.05).isActive = true
+        ProgressLine.topAnchor.constraint(equalTo: ProgressLineParent.topAnchor, constant: 116).isActive = true
 
 
-        let parent = self.view!
-        parent.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.widthAnchor.constraint(equalToConstant: 32.09).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        view.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 365).isActive = true
-        view.topAnchor.constraint(equalTo: parent.topAnchor, constant: 104).isActive = true
+        // Progress Circle (배경)
+        
+        ProgressLikeCircle.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        ProgressLikeCircle.layer.backgroundColor = UIColor(red: 0.353, green: 0.392, blue: 0.824, alpha: 1).cgColor
+        ProgressLikeCircle.layer.cornerRadius = ProgressLikeCircle.frame.width / 2
+        
+        
+        
+        ProgressLikeIcon.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+        ProgressLikeIcon.layer.position = CGPoint(x: CGFloat((350 / Float(ProgressLine.progress * 10) ) + 68), y: 119)
+
+
+        let ProgressLikeCircleParent = self.view!
+        ProgressLikeCircleParent.addSubview(ProgressLikeCircle)
+        ProgressLikeCircleParent.addSubview(ProgressLikeIcon)
+        ProgressLikeCircle.translatesAutoresizingMaskIntoConstraints = false
+        ProgressLikeCircle.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        ProgressLikeCircle.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        ProgressLikeCircle.leadingAnchor.constraint(equalTo: self.view!.leadingAnchor, constant: CGFloat((350 / Float(ProgressLine.progress * 10) ) + 52)).isActive = true
+        ProgressLikeCircle.topAnchor.constraint(equalTo: ProgressLikeCircleParent.topAnchor, constant: 104).isActive = true
+        
+
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(sender:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        view.addGestureRecognizer(doubleTapGesture)
+        
+    }
+    
+    @objc func handleDoubleTap(sender: UITapGestureRecognizer) {
+        let touchPoint = sender.location(in: tableView)
+        if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+            print(indexPath)
+            ProgressLine.progress += 0.1
+            ProgressLikeIcon.layer.position = CGPoint(x: CGFloat((350 / Float(ProgressLine.progress * 10) ) + 68), y: 119)
+            ProgressLikeCircle.leadingAnchor.constraint(equalTo: self.view!.leadingAnchor, constant: CGFloat((350 / Float(ProgressLine.progress * 10) ) + 52)).isActive = true
+            print("progressLine.progress = \(ProgressLine.progress)")
+        }
+    }
+    
+    @objc func didDoubleTap() {
+        print("dobule")
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {

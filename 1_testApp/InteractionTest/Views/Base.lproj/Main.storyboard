@@ -467,7 +467,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DTL-KA-lDe">
-                                <rect key="frame" x="0.0" y="148" width="414" height="654"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="714"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -532,7 +532,7 @@
                             <constraint firstItem="DTL-KA-lDe" firstAttribute="leading" secondItem="8gl-i3-Dl2" secondAttribute="leading" id="RE2-m1-jpr"/>
                             <constraint firstItem="8gl-i3-Dl2" firstAttribute="bottom" secondItem="iWj-Mi-kv2" secondAttribute="bottom" id="Z5U-9I-BYn"/>
                             <constraint firstItem="iWj-Mi-kv2" firstAttribute="leading" secondItem="8gl-i3-Dl2" secondAttribute="leading" id="kN3-BW-85s"/>
-                            <constraint firstItem="DTL-KA-lDe" firstAttribute="top" secondItem="8gl-i3-Dl2" secondAttribute="top" constant="60" id="pH7-kI-nCg"/>
+                            <constraint firstItem="DTL-KA-lDe" firstAttribute="top" secondItem="8gl-i3-Dl2" secondAttribute="top" id="pH7-kI-nCg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8gl-i3-Dl2"/>
                     </view>
