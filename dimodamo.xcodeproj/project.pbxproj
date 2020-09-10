@@ -14,6 +14,8 @@
 		986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */; };
 		986EDA142509C42800AD3CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA132509C42800AD3CEE /* Assets.xcassets */; };
 		986EDA172509C42800AD3CEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */; };
+		986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */; };
+		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		986EDA132509C42800AD3CEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		986EDA162509C42800AD3CEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		986EDA182509C42800AD3CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
+		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 		986EDA062509C42600AD3CEE /* dimodamo */ = {
 			isa = PBXGroup;
 			children = (
+				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
+				986EDA1E2509CBFF00AD3CEE /* classRoom */,
 				986EDA072509C42600AD3CEE /* AppDelegate.swift */,
 				986EDA092509C42600AD3CEE /* SceneDelegate.swift */,
 				986EDA0B2509C42600AD3CEE /* ViewController.swift */,
@@ -68,6 +74,14 @@
 				986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */,
 			);
 			path = dimodamo;
+			sourceTree = "<group>";
+		};
+		986EDA1E2509CBFF00AD3CEE /* classRoom */ = {
+			isa = PBXGroup;
+			children = (
+				986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */,
+			);
+			path = classRoom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,8 +156,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
+				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
 				986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */,
+				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
