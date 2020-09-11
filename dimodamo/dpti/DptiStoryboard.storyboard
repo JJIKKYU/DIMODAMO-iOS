@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DYk-cy-KC7">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ClassRoom-->
+        <scene sceneID="ipb-99-94J">
+            <objects>
+                <viewController id="DYk-cy-KC7" customClass="DptiResultViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GFl-Bn-a9L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsm-k9-Rv7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OAb-uI-fUq">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1620"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOc-Ih-CcM">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" name="SYSTEM"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gy-Ij-4NW">
+                                                <rect key="frame" x="0.0" y="20" width="414" height="800"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="800" id="rPN-rB-mQ6"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQZ-z1-sON">
+                                                <rect key="frame" x="0.0" y="820" width="414" height="800"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="800" id="FVP-cR-fOH"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="OAb-uI-fUq" firstAttribute="bottom" secondItem="Pmj-ga-353" secondAttribute="bottom" id="46U-qR-VlO"/>
+                                    <constraint firstItem="OAb-uI-fUq" firstAttribute="top" secondItem="Pmj-ga-353" secondAttribute="top" id="Nog-Eu-azz"/>
+                                    <constraint firstItem="OAb-uI-fUq" firstAttribute="trailing" secondItem="Pmj-ga-353" secondAttribute="trailing" id="Y51-FX-QqV"/>
+                                    <constraint firstItem="OAb-uI-fUq" firstAttribute="leading" secondItem="Pmj-ga-353" secondAttribute="leading" id="fbI-8q-1SY"/>
+                                    <constraint firstItem="OAb-uI-fUq" firstAttribute="width" secondItem="N6u-AC-F5j" secondAttribute="width" id="hd1-Q4-HV2"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Pmj-ga-353"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="N6u-AC-F5j"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zsm-k9-Rv7" firstAttribute="trailing" secondItem="4cY-ZF-8Cl" secondAttribute="trailing" id="87T-cV-cYh"/>
+                            <constraint firstItem="zsm-k9-Rv7" firstAttribute="leading" secondItem="4cY-ZF-8Cl" secondAttribute="leading" id="9oG-Wp-Qbx"/>
+                            <constraint firstItem="zsm-k9-Rv7" firstAttribute="top" secondItem="4cY-ZF-8Cl" secondAttribute="top" id="HwH-2u-4If"/>
+                            <constraint firstItem="zsm-k9-Rv7" firstAttribute="bottom" secondItem="4cY-ZF-8Cl" secondAttribute="bottom" id="fWq-Qx-Klj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4cY-ZF-8Cl"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="ClassRoom" id="Lev-ag-Ox4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="luS-on-nf8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892.753623188406" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="SYSTEM">
+            <color red="1" green="0.50980392156862742" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
