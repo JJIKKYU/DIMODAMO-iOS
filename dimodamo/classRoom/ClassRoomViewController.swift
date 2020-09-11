@@ -15,21 +15,12 @@ class ClassRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.setTextField(color: UIColor.init(red: 1, green: 1, blue: 1, alpha: 1))
-    
+//        searchBar.setTextField(color: UIColor.init(red: 1, green: 1, blue: 1, alpha: 1))
+//        searchBar.getTextField()?.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16.0, opacity: 0.12)
+//        searchBar.getTextField()?.borderStyle = .none
+//        searchBar.setSearchFieldBackgroundImage(UIImage(named: "searchBarBackgroundWhite"), for: .normal)
         
-//        searchBar.getTextField()?.layer.shadowOffset = .zero
-//        searchBar.getTextField()?.layer.masksToBounds = true
-//        searchBar.getTextField()?.layer.shadowRadius = 5
-//        searchBar.getTextField()?.layer.shadowColor = UIColor.black.cgColor
         
-        searchBar.getTextField()?.layer.masksToBounds = false
-        searchBar.getTextField()?.layer.shadowRadius = 5.0
-        searchBar.getTextField()?.layer.shadowColor = UIColor.black.cgColor
-        searchBar.getTextField()?.layer.shadowOffset = CGSize(width: 1, height: 1.3)
-        searchBar.getTextField()?.layer.shadowOpacity = 0.12
-        
-
     }
     
     
@@ -43,6 +34,23 @@ class ClassRoomViewController: UIViewController {
     }
     */
 
+}
+
+extension UIView {
+
+    func addShadow(offset: CGSize, color: UIColor, radius: CGFloat, opacity: Float) {
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
+
+        let backgroundCGColor = backgroundColor?.cgColor
+        backgroundColor = nil
+        layer.backgroundColor =  backgroundCGColor
+    }
 }
 
 extension UISearchBar {
