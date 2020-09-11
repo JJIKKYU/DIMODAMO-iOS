@@ -16,6 +16,9 @@
 		986EDA172509C42800AD3CEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */; };
 		986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */; };
 		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
+		987F5A97250B141000E1B856 /* DptiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A96250B141000E1B856 /* DptiViewController.swift */; };
+		987F5A99250B147200E1B856 /* DptiStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987F5A98250B147200E1B856 /* DptiStoryboard.storyboard */; };
+		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,13 @@
 		986EDA182509C42800AD3CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
+		987F5A96250B141000E1B856 /* DptiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiViewController.swift; sourceTree = "<group>"; };
+		987F5A98250B147200E1B856 /* DptiStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DptiStoryboard.storyboard; sourceTree = "<group>"; };
+		987F5A9A250B152000E1B856 /* DptiResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewController.swift; sourceTree = "<group>"; };
+		987F5A9E250B1D3B00E1B856 /* NanumSquareRoundOTFEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundOTFEB.otf; path = "../../../../무제 폴더/NanumSquareRoundOTFEB.otf"; sourceTree = "<group>"; };
+		987F5A9F250B1D3B00E1B856 /* NanumSquareRoundOTFR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundOTFR.otf; path = "../../../../무제 폴더/NanumSquareRoundOTFR.otf"; sourceTree = "<group>"; };
+		987F5AA0250B1D3B00E1B856 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundOTFB.otf; path = "../../../../무제 폴더/NanumSquareRoundOTFB.otf"; sourceTree = "<group>"; };
+		987F5AA1250B1D3B00E1B856 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundOTFL.otf; path = "../../../../무제 폴더/NanumSquareRoundOTFL.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
+				987F5A95250B13F300E1B856 /* dpti */,
 				986EDA1E2509CBFF00AD3CEE /* classRoom */,
 				986EDA072509C42600AD3CEE /* AppDelegate.swift */,
 				986EDA092509C42600AD3CEE /* SceneDelegate.swift */,
@@ -72,6 +83,7 @@
 				986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */,
 				986EDA182509C42800AD3CEE /* Info.plist */,
 				986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */,
+				987F5A9D250B1CB500E1B856 /* fonts */,
 			);
 			path = dimodamo;
 			sourceTree = "<group>";
@@ -82,6 +94,27 @@
 				986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */,
 			);
 			path = classRoom;
+			sourceTree = "<group>";
+		};
+		987F5A95250B13F300E1B856 /* dpti */ = {
+			isa = PBXGroup;
+			children = (
+				987F5A98250B147200E1B856 /* DptiStoryboard.storyboard */,
+				987F5A96250B141000E1B856 /* DptiViewController.swift */,
+				987F5A9A250B152000E1B856 /* DptiResultViewController.swift */,
+			);
+			path = dpti;
+			sourceTree = "<group>";
+		};
+		987F5A9D250B1CB500E1B856 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				987F5AA0250B1D3B00E1B856 /* NanumSquareRoundOTFB.otf */,
+				987F5A9E250B1D3B00E1B856 /* NanumSquareRoundOTFEB.otf */,
+				987F5AA1250B1D3B00E1B856 /* NanumSquareRoundOTFL.otf */,
+				987F5A9F250B1D3B00E1B856 /* NanumSquareRoundOTFR.otf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +177,7 @@
 			files = (
 				986EDA172509C42800AD3CEE /* LaunchScreen.storyboard in Resources */,
 				986EDA142509C42800AD3CEE /* Assets.xcassets in Resources */,
+				987F5A99250B147200E1B856 /* DptiStoryboard.storyboard in Resources */,
 				986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,9 +189,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
+				987F5A97250B141000E1B856 /* DptiViewController.swift in Sources */,
 				986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
