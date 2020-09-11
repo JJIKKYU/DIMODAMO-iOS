@@ -10,10 +10,16 @@ import UIKit
 
 class DptiResultViewController: UIViewController {
 
+    @IBOutlet weak var resultCardView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        resultCardViewInit()
         
+    }
+
+    func resultCardViewInit() {
+        resultCardView.layer.cornerRadius = 24
     }
     
 
