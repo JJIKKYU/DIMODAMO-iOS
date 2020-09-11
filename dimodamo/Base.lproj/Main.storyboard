@@ -8,8 +8,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="NanumSquareRoundOTFB.otf">
-            <string>NanumSquareRoundOTFB</string>
+        <array key="NanumSquareRoundOTFEB.otf">
+            <string>NanumSquareRoundOTFEB</string>
         </array>
     </customFonts>
     <scenes>
@@ -43,8 +43,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GY4-mv-kOc">
                                 <rect key="frame" x="0.0" y="44" width="414" height="1156"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6TE-eh-u3j" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6TE-eh-u3j" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="-4" width="414" height="1200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자님의 결과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lai-0z-6q9">
                                                 <rect key="frame" x="156.5" y="9" width="101.5" height="20"/>
@@ -60,28 +60,70 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOh-87-frv">
                                                 <rect key="frame" x="16" y="40" width="382" height="348"/>
                                                 <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BC_BG_P_Star" translatesAutoresizingMaskIntoConstraints="NO" id="DMi-hc-ilc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="348"/>
+                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어찌저찌 이러저러 그저그냥 디자이너" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1L-X1-l0b">
-                                                        <rect key="frame" x="32" y="40" width="59" height="79.5"/>
-                                                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFB" family="NanumSquareRoundOTF" pointSize="17"/>
+                                                        <rect key="frame" x="32" y="40" width="87.5" height="106.5"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="24"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BC_Char_Yellow_M2_0" translatesAutoresizingMaskIntoConstraints="NO" id="apy-zm-qEX">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="348"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BC_Type_Star" translatesAutoresizingMaskIntoConstraints="NO" id="YuR-Si-7JD">
+                                                        <rect key="frame" x="32" y="267" width="41" height="65"/>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" name="YELLOW - DARK"/>
                                                 <constraints>
+                                                    <constraint firstItem="DMi-hc-ilc" firstAttribute="leading" secondItem="bOh-87-frv" secondAttribute="leading" id="0Me-qt-gnH"/>
+                                                    <constraint firstItem="DMi-hc-ilc" firstAttribute="height" secondItem="bOh-87-frv" secondAttribute="height" id="3ch-iA-YLj"/>
+                                                    <constraint firstAttribute="bottom" secondItem="DMi-hc-ilc" secondAttribute="bottom" id="3wv-5I-OMq"/>
+                                                    <constraint firstItem="apy-zm-qEX" firstAttribute="width" secondItem="bOh-87-frv" secondAttribute="width" id="6a4-6d-ALf"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YuR-Si-7JD" secondAttribute="bottom" constant="16" id="6bq-jh-O3D"/>
                                                     <constraint firstAttribute="height" constant="348" id="BID-wB-Zd3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="apy-zm-qEX" secondAttribute="trailing" id="NKk-hU-QRw"/>
                                                     <constraint firstItem="y1L-X1-l0b" firstAttribute="top" secondItem="bOh-87-frv" secondAttribute="top" constant="40" id="SqN-k9-sG0"/>
+                                                    <constraint firstItem="DMi-hc-ilc" firstAttribute="top" secondItem="bOh-87-frv" secondAttribute="top" id="acy-tN-EWb"/>
+                                                    <constraint firstItem="apy-zm-qEX" firstAttribute="height" secondItem="bOh-87-frv" secondAttribute="height" id="cYN-KI-TrW"/>
+                                                    <constraint firstAttribute="bottom" secondItem="apy-zm-qEX" secondAttribute="bottom" id="eXO-3i-UHe"/>
+                                                    <constraint firstItem="DMi-hc-ilc" firstAttribute="width" secondItem="bOh-87-frv" secondAttribute="width" id="mcO-ai-1jT"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y1L-X1-l0b" secondAttribute="trailing" constant="20" symbolic="YES" id="oXb-eW-8iH"/>
                                                     <constraint firstItem="y1L-X1-l0b" firstAttribute="leading" secondItem="bOh-87-frv" secondAttribute="leading" constant="32" id="sCE-Sw-VlG"/>
+                                                    <constraint firstItem="YuR-Si-7JD" firstAttribute="leading" secondItem="bOh-87-frv" secondAttribute="leading" constant="32" id="tJ0-4b-E2M"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DMi-hc-ilc" secondAttribute="trailing" id="x0z-fF-NXg"/>
                                                 </constraints>
                                             </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5a-Wg-Qhe">
+                                                <rect key="frame" x="16" y="397" width="382" height="190"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="190" id="EtJ-jh-jFL"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">무슨 생각 중이야? 라는 말 많이 들어보셨죠? 당신은 객관적인 판단과 당위성을 중요시하는 이 시대의 논리 대장 디자이너! 전통과 규율에 얽매이는 딱딱함이 아니라, 이론과 논리를 중요시하고 작업을 진행하면서 최대한 감정을 배제하는 이성의 결정체로, 주변 사람들에게 간혹 차갑다는 말을 들을 때도 있어요. 하지만 이성과 논리를 장착한 당신의 디자인은 모두에게 든든함을 안겨줄 거에요! 당신은 좀처럼 자신을 속이지 않으니까요!</string>
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="9" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1200" id="133-bk-bsY"/>
                                             <constraint firstItem="bOh-87-frv" firstAttribute="top" secondItem="Lai-0z-6q9" secondAttribute="bottom" constant="11" id="3ni-vO-VMn"/>
+                                            <constraint firstItem="j5a-Wg-Qhe" firstAttribute="leading" secondItem="6TE-eh-u3j" secondAttribute="leading" constant="16" id="5dc-FS-vgX"/>
+                                            <constraint firstAttribute="trailing" secondItem="j5a-Wg-Qhe" secondAttribute="trailing" constant="16" id="G1Y-ds-Xg2"/>
                                             <constraint firstItem="bOh-87-frv" firstAttribute="leading" secondItem="6TE-eh-u3j" secondAttribute="leading" constant="16" id="LqI-sd-CSE"/>
                                             <constraint firstItem="Lai-0z-6q9" firstAttribute="centerX" secondItem="6TE-eh-u3j" secondAttribute="centerX" id="TZG-Pg-SKr"/>
                                             <constraint firstItem="1UQ-Gx-7Cx" firstAttribute="top" secondItem="6TE-eh-u3j" secondAttribute="top" constant="9" id="UpM-hM-Zrg"/>
+                                            <constraint firstItem="j5a-Wg-Qhe" firstAttribute="top" secondItem="bOh-87-frv" secondAttribute="bottom" constant="9" id="VCn-i8-EZX"/>
                                             <constraint firstAttribute="trailing" secondItem="bOh-87-frv" secondAttribute="trailing" constant="16" id="Ysb-N5-Wzl"/>
                                             <constraint firstAttribute="trailing" secondItem="1UQ-Gx-7Cx" secondAttribute="trailing" constant="16" id="diD-Ct-Ci8"/>
                                             <constraint firstItem="Lai-0z-6q9" firstAttribute="top" secondItem="6TE-eh-u3j" secondAttribute="top" constant="9" id="uyv-Mm-I9k"/>
@@ -174,6 +216,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BC_BG_P_Star" width="382" height="348"/>
+        <image name="BC_Char_Yellow_M2_0" width="382" height="348"/>
+        <image name="BC_Type_Star" width="41" height="65"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="SYSTEM">
             <color red="1" green="0.50999999046325684" blue="0.059000000357627869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -20,6 +20,7 @@ class DptiResultViewController: UIViewController {
 
     func resultCardViewInit() {
         resultCardView.layer.cornerRadius = 24
+        resultCardView.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
     }
     
 
@@ -34,3 +35,4 @@ class DptiResultViewController: UIViewController {
     */
 
 }
+
