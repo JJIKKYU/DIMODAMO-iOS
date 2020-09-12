@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class DptiResultViewController: UIViewController {
 
@@ -14,18 +15,26 @@ class DptiResultViewController: UIViewController {
     @IBOutlet weak var typeTitle: UILabel!
     @IBOutlet weak var circleNumber: UILabel!
     
+    @IBOutlet var circleNumbers : Array<UILabel>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         resultCardViewInit()
-        
-        circleNumber.layer.cornerRadius = 16
-        circleNumber.layer.masksToBounds = true
+        circleNumberSetting()
+    
         
     }
 
     func resultCardViewInit() {
         resultCardView.layer.cornerRadius = 24
         resultCardView.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
+    }
+    
+    func circleNumberSetting() {
+        for circleNumber in circleNumbers! {
+            circleNumber.layer.cornerRadius = 16
+            circleNumber.layer.masksToBounds = true
+        }
     }
     
 
