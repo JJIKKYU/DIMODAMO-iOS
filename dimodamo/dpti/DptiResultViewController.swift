@@ -11,10 +11,15 @@ import UIKit
 class DptiResultViewController: UIViewController {
 
     @IBOutlet weak var resultCardView: UIView!
+    @IBOutlet weak var typeTitle: UILabel!
+    @IBOutlet weak var circleNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         resultCardViewInit()
+        
+        circleNumber.layer.cornerRadius = 16
+        circleNumber.layer.masksToBounds = true
         
     }
 
