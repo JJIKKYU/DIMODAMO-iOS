@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,13 +19,19 @@
 		987F5A97250B141000E1B856 /* DptiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A96250B141000E1B856 /* DptiViewController.swift */; };
 		987F5A99250B147200E1B856 /* DptiStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987F5A98250B147200E1B856 /* DptiStoryboard.storyboard */; };
 		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
-		987F5AA2250B1DF900E1B856 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 987F5AA0250B1D3B00E1B856 /* NanumSquareRoundOTFB.otf */; };
-		987F5AA3250B1DF900E1B856 /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 987F5A9E250B1D3B00E1B856 /* NanumSquareRoundOTFEB.otf */; };
-		987F5AA4250B1DF900E1B856 /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 987F5AA1250B1D3B00E1B856 /* NanumSquareRoundOTFL.otf */; };
-		987F5AA5250B1DF900E1B856 /* NanumSquareRoundOTFR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 987F5A9F250B1D3B00E1B856 /* NanumSquareRoundOTFR.otf */; };
+		98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */; };
+		98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */; };
+		98C48B12250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */; };
+		98C48B13250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */; };
+		98C48B18250CD1AF004E24E5 /* BG1.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B17250CD1AF004E24E5 /* BG1.json */; };
+		98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */; };
+		98C48B1D250CF97E004E24E5 /* Survey.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B1C250CF97E004E24E5 /* Survey.json */; };
+		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dimodamo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		964E5003C706C9319E5FB896 /* Pods-dimodamo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.debug.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.debug.xcconfig"; sourceTree = "<group>"; };
 		986EDA042509C42600AD3CEE /* dimodamo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dimodamo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986EDA072509C42600AD3CEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		986EDA092509C42600AD3CEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,10 +46,14 @@
 		987F5A96250B141000E1B856 /* DptiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiViewController.swift; sourceTree = "<group>"; };
 		987F5A98250B147200E1B856 /* DptiStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DptiStoryboard.storyboard; sourceTree = "<group>"; };
 		987F5A9A250B152000E1B856 /* DptiResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewController.swift; sourceTree = "<group>"; };
-		987F5A9E250B1D3B00E1B856 /* NanumSquareRoundOTFEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundOTFEB.otf; path = "../../../../무제 폴더/NanumSquareRoundOTFEB.otf"; sourceTree = "<group>"; };
-		987F5A9F250B1D3B00E1B856 /* NanumSquareRoundOTFR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundOTFR.otf; path = "../../../../무제 폴더/NanumSquareRoundOTFR.otf"; sourceTree = "<group>"; };
-		987F5AA0250B1D3B00E1B856 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundOTFB.otf; path = "../../../../무제 폴더/NanumSquareRoundOTFB.otf"; sourceTree = "<group>"; };
-		987F5AA1250B1D3B00E1B856 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundOTFL.otf; path = "../../../../무제 폴더/NanumSquareRoundOTFL.otf"; sourceTree = "<group>"; };
+		98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
+		98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFEB.otf; sourceTree = "<group>"; };
+		98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
+		98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFR.otf; sourceTree = "<group>"; };
+		98C48B17250CD1AF004E24E5 /* BG1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BG1.json; sourceTree = "<group>"; };
+		98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewController.swift; sourceTree = "<group>"; };
+		98C48B1C250CF97E004E24E5 /* Survey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Survey.json; sourceTree = "<group>"; };
+		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +61,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17E0DD323DE5FD42144D81A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				964E5003C706C9319E5FB896 /* Pods-dimodamo.debug.xcconfig */,
+				BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		88031610DDA2E054B264F4D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		986ED9FB2509C42600AD3CEE = {
 			isa = PBXGroup;
 			children = (
 				986EDA062509C42600AD3CEE /* dimodamo */,
 				986EDA052509C42600AD3CEE /* Products */,
+				17E0DD323DE5FD42144D81A3 /* Pods */,
+				88031610DDA2E054B264F4D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +106,8 @@
 		986EDA062509C42600AD3CEE /* dimodamo */ = {
 			isa = PBXGroup;
 			children = (
+				98C48B1B250CF959004E24E5 /* json */,
+				98C48B14250CD163004E24E5 /* lottie */,
 				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
 				987F5A95250B13F300E1B856 /* dpti */,
 				986EDA1E2509CBFF00AD3CEE /* classRoom */,
@@ -106,6 +138,7 @@
 				987F5A98250B147200E1B856 /* DptiStoryboard.storyboard */,
 				987F5A96250B141000E1B856 /* DptiViewController.swift */,
 				987F5A9A250B152000E1B856 /* DptiResultViewController.swift */,
+				98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */,
 			);
 			path = dpti;
 			sourceTree = "<group>";
@@ -113,12 +146,28 @@
 		987F5A9D250B1CB500E1B856 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				987F5AA0250B1D3B00E1B856 /* NanumSquareRoundOTFB.otf */,
-				987F5A9E250B1D3B00E1B856 /* NanumSquareRoundOTFEB.otf */,
-				987F5AA1250B1D3B00E1B856 /* NanumSquareRoundOTFL.otf */,
-				987F5A9F250B1D3B00E1B856 /* NanumSquareRoundOTFR.otf */,
+				98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */,
+				98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */,
+				98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */,
+				98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		98C48B14250CD163004E24E5 /* lottie */ = {
+			isa = PBXGroup;
+			children = (
+				98C48B17250CD1AF004E24E5 /* BG1.json */,
+			);
+			path = lottie;
+			sourceTree = "<group>";
+		};
+		98C48B1B250CF959004E24E5 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				98C48B1C250CF97E004E24E5 /* Survey.json */,
+			);
+			path = json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +177,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 986EDA1B2509C42800AD3CEE /* Build configuration list for PBXNativeTarget "dimodamo" */;
 			buildPhases = (
+				08B6D3268F438EA9F13221A7 /* [CP] Check Pods Manifest.lock */,
 				986EDA002509C42600AD3CEE /* Sources */,
 				986EDA012509C42600AD3CEE /* Frameworks */,
 				986EDA022509C42600AD3CEE /* Resources */,
+				B780BF2972B7BBB09E8C1331 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -179,18 +230,62 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				987F5AA3250B1DF900E1B856 /* NanumSquareRoundOTFEB.otf in Resources */,
+				98C48B18250CD1AF004E24E5 /* BG1.json in Resources */,
+				98C48B1D250CF97E004E24E5 /* Survey.json in Resources */,
+				98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */,
+				98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */,
 				986EDA172509C42800AD3CEE /* LaunchScreen.storyboard in Resources */,
-				987F5AA5250B1DF900E1B856 /* NanumSquareRoundOTFR.otf in Resources */,
-				987F5AA2250B1DF900E1B856 /* NanumSquareRoundOTFB.otf in Resources */,
+				98C48B12250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf in Resources */,
 				986EDA142509C42800AD3CEE /* Assets.xcassets in Resources */,
-				987F5AA4250B1DF900E1B856 /* NanumSquareRoundOTFL.otf in Resources */,
+				98C48B13250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf in Resources */,
 				987F5A99250B147200E1B856 /* DptiStoryboard.storyboard in Resources */,
 				986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08B6D3268F438EA9F13221A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dimodamo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B780BF2972B7BBB09E8C1331 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dimodamo/Pods-dimodamo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dimodamo/Pods-dimodamo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dimodamo/Pods-dimodamo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		986EDA002509C42600AD3CEE /* Sources */ = {
@@ -200,6 +295,7 @@
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
+				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
 				987F5A97250B141000E1B856 /* DptiViewController.swift in Sources */,
 				986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */,
@@ -346,6 +442,7 @@
 		};
 		986EDA1C2509C42800AD3CEE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 964E5003C706C9319E5FB896 /* Pods-dimodamo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -364,6 +461,7 @@
 		};
 		986EDA1D2509C42800AD3CEE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
