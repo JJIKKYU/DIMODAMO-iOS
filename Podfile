@@ -7,6 +7,9 @@ target 'dimodamo' do
 
   # Pods for dimodamo
   pod 'lottie-ios'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxViewController'
 
 
 end
