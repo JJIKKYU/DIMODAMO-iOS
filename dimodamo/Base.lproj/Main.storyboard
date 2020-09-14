@@ -455,6 +455,7 @@
                     <connections>
                         <outlet property="circleNumber" destination="oRy-Lf-z9b" id="ejD-HB-hnc"/>
                         <outlet property="resultCardView" destination="bOh-87-frv" id="LWA-VK-SH0"/>
+                        <outlet property="typeDesc" destination="j5a-Wg-Qhe" id="F20-fl-dTH"/>
                         <outlet property="typeTitle" destination="y1L-X1-l0b" id="uHn-Dw-Cc8"/>
                         <outletCollection property="circleNumbers" destination="oRy-Lf-z9b" collectionClass="NSMutableArray" id="UMe-Lw-eQp"/>
                         <outletCollection property="circleNumbers" destination="c2u-9l-j0J" collectionClass="NSMutableArray" id="VPK-X0-qbz"/>
@@ -717,8 +718,14 @@
         <namedColor name="SYSTEM">
             <color red="1" green="0.50999999046325684" blue="0.059000000357627869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="SYSTEM">
+            <color red="1" green="0.50999999046325684" blue="0.059000000357627869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="TEXT - BIG">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TEXT - SMALL">
+            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT - SMALL">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -9,19 +9,19 @@
 import Foundation
 
 struct DptiResult : Decodable {
-    var type : String
-    var color : String
-    var colorHex : String
-    var shape : String
-    var desc : String
-    var position : String
-    var design : [String]
-    var designDesc : [String]
-    var toolImg : String
-    var toolName : String
-    var toolDesc : String
-    var todo : String
-    var title : String
+    var type : String = ""
+    var color : String = ""
+    var colorHex : String = ""
+    var shape : String = ""
+    var desc : String = ""
+    var position : String = ""
+    var design : [String] = []
+    var designDesc : [String] = []
+    var toolImg : String = ""
+    var toolName : String = ""
+    var toolDesc : String = ""
+    var todo : String =  ""
+    var title : String = ""
 }
 
 extension DptiResult {

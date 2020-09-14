@@ -14,6 +14,7 @@ class DptiResultViewController: UIViewController {
 
     @IBOutlet weak var resultCardView: UIView!
     @IBOutlet weak var typeTitle: UILabel!
+    @IBOutlet weak var typeDesc: UITextView!
     @IBOutlet weak var circleNumber: UILabel!
     
     @IBOutlet var circleNumbers : Array<UILabel>?
@@ -29,6 +30,12 @@ class DptiResultViewController: UIViewController {
             .map { "\($0)"}
             .asDriver(onErrorJustReturn: "")
             .drive(typeTitle.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.typeDesc
+            .map { "\($0)"}
+            .asDriver(onErrorJustReturn: "")
+            .drive(typeDesc.rx.text)
             .disposed(by: disposeBag)
         
         resultCardViewInit()

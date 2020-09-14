@@ -13,9 +13,14 @@ import RxRelay
 class DptiResultViewModel {
     var resultTypes : [[String : Any]] = []
     
-    lazy var resultObservable = BehaviorRelay<DptiResult>(value: DptiResult(type: "", color: "", colorHex: "", shape: "", desc: "", position: "", design: [], designDesc: [], toolImg: "", toolName: "", toolDesc: "", todo: "", title: ""))
+    // Survey 이후 최종 User Type
+    var type : String = "TI"
+    
+    lazy var resultObservable = BehaviorRelay<DptiResult>(value: DptiResult())
     
     lazy var typeTitle = resultObservable.map { $0.title }
+
+    lazy var typeDesc = resultObservable.map { $0.desc }
     
     init() {
         _ = APIService.fetchAllResultsRx()
@@ -30,25 +35,29 @@ class DptiResultViewModel {
                 return self.resultTypes
             }
         .map { resultArray -> DptiResult in
-            var dptiResults : DptiResult = DptiResult(type: "", color: "", colorHex: "", shape: "", desc: "", position: "", design: [], designDesc: [], toolImg: "", toolName: "", toolDesc: "", todo: "", title: "")
+            var dptiResult : DptiResult = DptiResult()
             
             resultArray.forEach { (array: [String : Any]) in
-                dptiResults.type = array["type"] as! String
-                dptiResults.color = array["color"] as! String
-                dptiResults.colorHex = array["colorHex"] as! String
-                dptiResults.shape = array["shape"] as! String
-                dptiResults.desc = array["desc"] as! String
-                dptiResults.position = array["position"] as! String
-                dptiResults.design = array["design"] as! [String]
-                dptiResults.designDesc = array["designDesc"] as! [String]
-                dptiResults.toolImg = array["toolImg"] as! String
-                dptiResults.toolName = array["toolName"] as! String
-                dptiResults.todo = array["todo"] as! String
-                dptiResults.title = array["title"] as! String
+                if array["type"] as! String == self.type {
+                    dptiResult.type = array["type"] as! String
+                    dptiResult.color = array["color"] as! String
+                    dptiResult.colorHex = array["colorHex"] as! String
+                    dptiResult.shape = array["shape"] as! String
+                    dptiResult.desc = array["desc"] as! String
+                    dptiResult.position = array["position"] as! String
+                    dptiResult.design = array["design"] as! [String]
+                    dptiResult.designDesc = array["designDesc"] as! [String]
+                    dptiResult.toolImg = array["toolImg"] as! String
+                    dptiResult.toolName = array["toolName"] as! String
+                    dptiResult.todo = array["todo"] as! String
+                    dptiResult.title = array["title"] as! String
+                } else {
+                    
+                }
                 
-                print(dptiResults)
+//                print(dptiResults)
             }
-            return dptiResults
+            return dptiResult
         }
         .take(1)
         .bind(to: resultObservable)
