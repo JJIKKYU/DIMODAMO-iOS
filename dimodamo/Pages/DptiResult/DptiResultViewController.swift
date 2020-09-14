@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class DptiResultViewController: UIViewController {
 
@@ -17,10 +19,17 @@ class DptiResultViewController: UIViewController {
     @IBOutlet var circleNumbers : Array<UILabel>?
     
     let viewModel = DptiResultViewModel()
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        // Title Binding
+        viewModel.typeTitle
+            .map { "\($0)"}
+            .asDriver(onErrorJustReturn: "")
+            .drive(typeTitle.rx.text)
+            .disposed(by: disposeBag)
         
         resultCardViewInit()
         circleNumberSetting()
