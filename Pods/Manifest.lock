@@ -1,16 +1,36 @@
 PODS:
   - lottie-ios (3.1.8)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - RxViewController (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
 
 DEPENDENCIES:
   - lottie-ios
+  - RxCocoa
+  - RxSwift
+  - RxViewController
 
 SPEC REPOS:
   trunk:
     - lottie-ios
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - RxViewController
 
 SPEC CHECKSUMS:
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
 
-PODFILE CHECKSUM: ffe8ddca22a3ace6a1e57affbdf9d12207113916
+PODFILE CHECKSUM: c9899b1b12f85bf1f3d2125d2bb4d5915b3e40f2
 
 COCOAPODS: 1.9.3
