@@ -25,39 +25,26 @@ class DptiResultViewModel {
     init() {
         _ = APIService.fetchAllResultsRx()
             .map { data -> [[String : Any]] in
-                struct Response : Decodable {
-                    let results : [DptiResult]
-                }
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : [[String : Any]]]
                 let jsonResult = json!["Result"]!
                 self.resultTypes = jsonResult
                 
                 return self.resultTypes
             }
-        .map { resultArray -> DptiResult in
-            var dptiResult : DptiResult = DptiResult()
+        .map { resultArray -> [DptiResult] in
+            var dptiResults : [DptiResult] = []
             
             resultArray.forEach { (array: [String : Any]) in
-                if array["type"] as! String == self.type {
-                    dptiResult.type = array["type"] as! String
-                    dptiResult.color = array["color"] as! String
-                    dptiResult.colorHex = array["colorHex"] as! String
-                    dptiResult.shape = array["shape"] as! String
-                    dptiResult.desc = array["desc"] as! String
-                    dptiResult.position = array["position"] as! String
-                    dptiResult.design = array["design"] as! [String]
-                    dptiResult.designDesc = array["designDesc"] as! [String]
-                    dptiResult.toolImg = array["toolImg"] as! String
-                    dptiResult.toolName = array["toolName"] as! String
-                    dptiResult.todo = array["todo"] as! String
-                    dptiResult.title = array["title"] as! String
-                } else {
-                    
-                }
-                
-//                print(dptiResults)
+                let dptiResultObj = DptiResult.initVariables(item: array)
+                dptiResults.append(dptiResultObj)
             }
-            return dptiResult
+            return dptiResults
+        }
+        .map { dptiResultsArray -> DptiResult in
+            let finalUserType = dptiResultsArray.filter{
+                $0.type == self.type
+            }
+            return finalUserType[0]
         }
         .take(1)
         .bind(to: resultObservable)
