@@ -22,11 +22,15 @@ class DptiResultViewModel {
 
     lazy var typeDesc = resultObservable.map { $0.desc }
     
+    lazy var positionIcon = resultObservable.map { "Icon_\($0.type)"}
+    
     lazy var positonDesc = resultObservable.map { $0.position }
     
     lazy var designs = resultObservable.map { $0.design }
     
     lazy var designsDesc = resultObservable.map { $0.designDesc }
+    
+    lazy var toolImg = resultObservable.map { $0.toolImg }
     
     lazy var toolName = resultObservable.map { $0.toolName }
     

@@ -49,6 +49,11 @@ class DptiResultViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Position Binding
+        viewModel.positionIcon
+            .map { UIImage(named: "\($0)")}
+            .bind(to: positionIcon.rx.image)
+            .disposed(by: disposeBag)
+        
         viewModel.positonDesc
             .map { "\($0)"}
             .asDriver(onErrorJustReturn: "")
@@ -82,6 +87,11 @@ class DptiResultViewController: UIViewController {
     
         
         // Tool Binding
+        
+        viewModel.toolImg
+            .map{ UIImage(named: "\($0)") }
+            .bind(to: toolImg.rx.image)
+            .disposed(by: disposeBag)
         
         viewModel.toolName
             .map{ "\($0)" }
