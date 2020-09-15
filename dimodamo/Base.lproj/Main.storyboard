@@ -44,10 +44,17 @@
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BC_BG_P_Star" translatesAutoresizingMaskIntoConstraints="NO" id="DMi-hc-ilc">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="348"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어찌저찌 이러저러 그저그냥 디자이너" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1L-X1-l0b">
-                                                        <rect key="frame" x="32" y="40" width="87.5" height="106.5"/>
-                                                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="24"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1L-X1-l0b">
+                                                        <rect key="frame" x="32" y="40" width="87.5" height="112.5"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="어찌저찌 이러저러 그저그냥 디자이너">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="24" name="NanumSquareRoundOTFEB"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="2" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BC_Char_Yellow_M2_0" translatesAutoresizingMaskIntoConstraints="NO" id="apy-zm-qEX">

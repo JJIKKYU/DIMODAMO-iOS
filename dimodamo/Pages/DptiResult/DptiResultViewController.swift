@@ -115,7 +115,20 @@ class DptiResultViewController: UIViewController {
         
         resultCardViewInit()
         circleNumberSetting()
+        
+        let attrString = NSAttributedString(
+            string: typeTitle.text!,
+            attributes: [
+                NSAttributedString.Key.strokeColor: UIColor.white,
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.strokeWidth: -2.0,
+            ]
+        )
+        typeTitle.attributedText = attrString
     }
+    
+    
+    
 
     
     func resultCardViewInit() {
