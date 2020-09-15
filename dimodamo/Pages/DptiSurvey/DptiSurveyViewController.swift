@@ -23,7 +23,6 @@ class DptiSurveyViewController: UIViewController {
     
     let viewModel = DptiSurveyViewModel()
     var disposeBag = DisposeBag()
-    var progressValue : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,41 +45,19 @@ class DptiSurveyViewController: UIViewController {
             .asDriver(onErrorJustReturn: "")
             .drive(progrssTitle.rx.text)
             .disposed(by: disposeBag)
-//
-//        viewModel.progressBarValue
-//            .map { Float($0) / 20 }
-//            .bind(to: progress.rx.progress)
-//            .disposed(by: disposeBag)
-        
-        
     }
     
-    func cardViewDesign() {
-        // answer Color & Border & Border Color Init
-        for answer in answers {
-            answer.layer.cornerRadius = 16
-            answer.layer.borderWidth = 2
-            answer.layer.borderColor = UIColor(named: "GRAY - 190")?.cgColor
-            answer.addTarget(self, action: #selector(startHighlight), for: .touchDown)
-        }
-        
-        card.layer.cornerRadius = 24
-        card.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
-    }
+    
     
     @objc func startHighlight(sender : UIButton) {
         // next question card
-//        viewModel.currentNumber.accept(viewModel.currentNumber.value + 1)
         viewModel.nextCard()
+        
+        // ProgressBar Animation
         UIView.animate(withDuration: 0.5, animations: {
             self.progress.setProgress(self.viewModel.progressBarValue, animated: true)
         })
-        
-        
-        print(viewModel.currentNumber.value)
-        print(viewModel.question)
-//        cardTitle.text = questions[cardNumber - 1]
-        
+ 
         // all answer border color & text color init
         for answer in answers {
             answer.layer.borderColor = UIColor(named: "GRAY - 190")?.cgColor
@@ -104,4 +81,21 @@ class DptiSurveyViewController: UIViewController {
     */
 
 
+}
+
+// MARK: - View Design Extension
+
+extension DptiSurveyViewController {
+    func cardViewDesign() {
+        // answer Color & Border & Border Color Init
+        for answer in answers {
+            answer.layer.cornerRadius = 16
+            answer.layer.borderWidth = 2
+            answer.layer.borderColor = UIColor(named: "GRAY - 190")?.cgColor
+            answer.addTarget(self, action: #selector(startHighlight), for: .touchDown)
+        }
+        
+        card.layer.cornerRadius = 24
+        card.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
+    }
 }

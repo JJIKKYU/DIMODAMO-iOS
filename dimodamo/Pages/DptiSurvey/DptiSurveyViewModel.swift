@@ -18,9 +18,7 @@ class DptiSurveyViewModel {
     lazy var currentSurveyObservable = BehaviorRelay<DptiSurvey>(value: surveys[self.currentNumber.value])
     
     lazy var currentNumber = BehaviorRelay<Int>(value: 1)
-    
-//    lazy var number = currentSurveyObservable.map { "Q\(min(self.currentNumber.value, 20))" }
-    
+        
     lazy var question = BehaviorRelay<String>(value: self.surveys[self.currentNumber.value - 1].question)
     
     lazy var progressBarValue = Float(currentNumber.value) / 20
