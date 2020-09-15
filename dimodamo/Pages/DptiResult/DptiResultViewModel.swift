@@ -45,7 +45,7 @@ class DptiResultViewModel {
     lazy var colorHex = resultObservable.map { UIColor(hexString: $0.colorHex) }
     
     init() {
-        _ = APIService.fetchAllResultsRx()
+        _ = APIService.fetchLocalJsonRx(fileName: "Results")
             .map { data -> [[String : Any]] in
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : [[String : Any]]]
                 let jsonResult = json!["Result"]!
@@ -93,7 +93,6 @@ class DptiResultViewModel {
             alpha: CGFloat(1.0)
         )
     }
-    
 }
 
 

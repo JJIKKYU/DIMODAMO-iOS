@@ -10,10 +10,11 @@ import Foundation
 import RxSwift
 
 class APIService {
-    
-    // Dpti Results Json Parsing
-    static func fetchAllResults(onComplete : @escaping (Result<Data, Error>) -> Void) {
-        if let path = Bundle.main.path(forResource: "Results", ofType: "json") {
+
+    // MARK: - Local Json Parsing
+
+    static func fetchLocalJson(fileName : String ,onComplete : @escaping (Result<Data, Error>) -> Void) {
+        if let path = Bundle.main.path(forResource: "\(fileName)", ofType: "json") {
             do {
                 let fileUrl = URL(fileURLWithPath: path)
                 let data = try Data(contentsOf: fileUrl, options: [])
@@ -25,9 +26,9 @@ class APIService {
         }
     }
     
-    static func fetchAllResultsRx() -> Observable<Data> {
+    static func fetchLocalJsonRx(fileName : String) -> Observable<Data> {
         return Observable.create() { emitter in
-            fetchAllResults { result in
+            fetchLocalJson(fileName : fileName) { result in
                 switch result {
                 case let .success(data):
                     print("넘겼습니다")
