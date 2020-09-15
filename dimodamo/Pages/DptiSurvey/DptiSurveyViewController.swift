@@ -8,35 +8,51 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+import RxAnimated
+
 class DptiSurveyViewController: UIViewController {
 
     @IBOutlet weak var card: UIView!
+    @IBOutlet weak var questionNumber: UILabel!
     @IBOutlet var answers : Array<UIButton>!
     @IBOutlet weak var progress: UIProgressView!
+    @IBOutlet weak var progrssTitle: UILabel!
     @IBOutlet weak var cardTitle: UILabel!
     
-    var cardNumber : Int = 1
-    var questions : [String] = []
+    let viewModel = DptiSurveyViewModel()
+    var disposeBag = DisposeBag()
+    var progressValue : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cardViewDesign()
-        questionTitleParsing()
-        // Do any additional setup after loading the view.
+
+        viewModel.question
+            .map { "\($0)"}
+            .asDriver(onErrorJustReturn: "")
+            .drive(cardTitle.rx.text)
+            .disposed(by: disposeBag)
         
-    }
-    
-    
-    
-    func questionTitleParsing() {
-        var surveyJson : [String : Any] = [:]
-                
-        let path = Bundle.main.path(forResource: "Survey", ofType: "json")
-        if let data = try? String(contentsOfFile: path!).data(using: .utf8) {
-            let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String : Any]
-            surveyJson = json
-            questions = surveyJson["Question"] as! [String]
-        }
+        viewModel.currentNumber
+            .map {"Q\($0)" }
+            .asDriver(onErrorJustReturn: "")
+            .drive(questionNumber.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.currentNumber
+            .map { "\($0) / 20"}
+            .asDriver(onErrorJustReturn: "")
+            .drive(progrssTitle.rx.text)
+            .disposed(by: disposeBag)
+//
+//        viewModel.progressBarValue
+//            .map { Float($0) / 20 }
+//            .bind(to: progress.rx.progress)
+//            .disposed(by: disposeBag)
+        
+        
     }
     
     func cardViewDesign() {
@@ -54,8 +70,16 @@ class DptiSurveyViewController: UIViewController {
     
     @objc func startHighlight(sender : UIButton) {
         // next question card
-        cardNumber += 1
-        cardTitle.text = questions[cardNumber - 1]
+//        viewModel.currentNumber.accept(viewModel.currentNumber.value + 1)
+        viewModel.nextCard()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.progress.setProgress(self.viewModel.progressBarValue, animated: true)
+        })
+        
+        
+        print(viewModel.currentNumber.value)
+        print(viewModel.question)
+//        cardTitle.text = questions[cardNumber - 1]
         
         // all answer border color & text color init
         for answer in answers {

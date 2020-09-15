@@ -10,6 +10,7 @@ target 'dimodamo' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxViewController'
+  pod "RxAnimated"
 
 
 end
