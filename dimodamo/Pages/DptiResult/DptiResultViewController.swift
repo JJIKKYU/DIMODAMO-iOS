@@ -14,7 +14,9 @@ class DptiResultViewController: UIViewController {
 
     @IBOutlet weak var resultCardView: UIView!
     @IBOutlet weak var typeTitle: UILabel!
+    @IBOutlet weak var typeIcon: UIImageView!
     @IBOutlet weak var typeDesc: UITextView!
+    @IBOutlet weak var patternBG: UIImageView!
     @IBOutlet weak var positionIcon: UIImageView!
     @IBOutlet weak var positionDesc: UILabel!
     @IBOutlet weak var circleNumber: UILabel!
@@ -24,6 +26,7 @@ class DptiResultViewController: UIViewController {
     @IBOutlet weak var toolName: UILabel!
     @IBOutlet weak var toolDesc: UITextView!
     @IBOutlet weak var todo: UITextView!
+    
     
     
     @IBOutlet var circleNumbers : Array<UILabel>?
@@ -48,9 +51,24 @@ class DptiResultViewController: UIViewController {
             .drive(typeDesc.rx.text)
             .disposed(by: disposeBag)
         
+        // TypeIcon Binding
+        viewModel.typeIcon
+            .map { UIImage(named: "\($0)")}
+            .observeOn(MainScheduler.instance)
+            .bind(to: typeIcon.rx.image)
+            .disposed(by: disposeBag)
+    
+        // PaternBG Bindidng
+        viewModel.patternBG
+            .map { UIImage(named: "\($0)")}
+            .observeOn(MainScheduler.instance)
+            .bind(to: patternBG.rx.image)
+            .disposed(by: disposeBag)
+        
         // Position Binding
         viewModel.positionIcon
             .map { UIImage(named: "\($0)")}
+            .observeOn(MainScheduler.instance)
             .bind(to: positionIcon.rx.image)
             .disposed(by: disposeBag)
         
@@ -90,6 +108,7 @@ class DptiResultViewController: UIViewController {
         
         viewModel.toolImg
             .map{ UIImage(named: "\($0)") }
+            .observeOn(MainScheduler.instance)
             .bind(to: toolImg.rx.image)
             .disposed(by: disposeBag)
         
@@ -132,8 +151,19 @@ class DptiResultViewController: UIViewController {
 
     
     func resultCardViewInit() {
+        
+        // resultCard Background Change
+        viewModel.colorHex
+            .map { $0 }
+            .asDriver(onErrorJustReturn: UIColor.black)
+            .drive(resultCardView.rx.backgroundColor)
+            .disposed(by: disposeBag)
+
+        
         resultCardView.layer.cornerRadius = 24
         resultCardView.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
+        
+        typeIcon.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
     }
     
     func circleNumberSetting() {
