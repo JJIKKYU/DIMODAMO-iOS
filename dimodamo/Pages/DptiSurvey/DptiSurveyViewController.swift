@@ -20,6 +20,7 @@ class DptiSurveyViewController: UIViewController {
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var progrssTitle: UILabel!
     @IBOutlet weak var cardTitle: UILabel!
+    @IBOutlet weak var cardHorizontalScrollView: UIScrollView!
     
     let viewModel = DptiSurveyViewModel()
     var disposeBag = DisposeBag()
@@ -28,23 +29,23 @@ class DptiSurveyViewController: UIViewController {
         super.viewDidLoad()
         cardViewDesign()
 
-        viewModel.question
-            .map { "\($0)"}
-            .asDriver(onErrorJustReturn: "")
-            .drive(cardTitle.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel.currentNumber
-            .map {"Q\($0)" }
-            .asDriver(onErrorJustReturn: "")
-            .drive(questionNumber.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel.currentNumber
-            .map { "\($0) / 20"}
-            .asDriver(onErrorJustReturn: "")
-            .drive(progrssTitle.rx.text)
-            .disposed(by: disposeBag)
+//        viewModel.question
+//            .map { "\($0)"}
+//            .asDriver(onErrorJustReturn: "")
+//            .drive(cardTitle.rx.text)
+//            .disposed(by: disposeBag)
+//
+//        viewModel.currentNumber
+//            .map {"Q\($0)" }
+//            .asDriver(onErrorJustReturn: "")
+//            .drive(questionNumber.rx.text)
+//            .disposed(by: disposeBag)
+//
+//        viewModel.currentNumber
+//            .map { "\($0) / 20"}
+//            .asDriver(onErrorJustReturn: "")
+//            .drive(progrssTitle.rx.text)
+//            .disposed(by: disposeBag)
     }
     
     
@@ -54,9 +55,13 @@ class DptiSurveyViewController: UIViewController {
         viewModel.nextCard()
         
         // ProgressBar Animation
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.75, animations: {
             self.progress.setProgress(self.viewModel.progressBarValue, animated: true)
+            self.cardHorizontalScrollView.setContentOffset(CGPoint(x: self.card.frame.width + 20, y: 0), animated: false)
         })
+        
+        
+        
  
         // all answer border color & text color init
         for answer in answers {
