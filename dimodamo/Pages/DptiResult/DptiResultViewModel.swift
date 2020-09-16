@@ -14,23 +14,13 @@ class DptiResultViewModel {
     var resultTypes : [[String : Any]] = []
     
     // Survey 이후 최종 User Type
-    var type : String = "JE"
+    var type : String = "TI"
     
     lazy var resultObservable = BehaviorRelay<DptiResult>(value: DptiResult())
-    
-    lazy var typeTitle = resultObservable.map { $0.title }
 
     lazy var typeDesc = resultObservable.map { $0.desc }
     
-    lazy var positonDesc = resultObservable.map { $0.position }
-    
-    lazy var designs = resultObservable.map { $0.design }
-    
     lazy var designsDesc = resultObservable.map { $0.designDesc }
-    
-    lazy var toolImg = resultObservable.map { $0.toolImg }
-    
-    lazy var toolName = resultObservable.map { $0.toolName }
     
     lazy var toolDesc = resultObservable.map { $0.toolDesc }
     

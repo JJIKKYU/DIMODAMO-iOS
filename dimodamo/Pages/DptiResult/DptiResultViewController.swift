@@ -7,8 +7,10 @@
 //
 
 import UIKit
+
 import RxCocoa
 import RxSwift
+import Lottie
 
 class DptiResultViewController: UIViewController {
 
@@ -16,6 +18,7 @@ class DptiResultViewController: UIViewController {
     @IBOutlet weak var typeTitle: UILabel!
     @IBOutlet weak var typeIcon: UIImageView!
     @IBOutlet weak var typeDesc: UITextView!
+    @IBOutlet weak var typeChar: UIImageView!
     @IBOutlet weak var patternBG: UIImageView!
     @IBOutlet weak var positionIcon: UIImageView!
     @IBOutlet weak var positionDesc: UILabel!
@@ -111,6 +114,7 @@ class DptiResultViewController: UIViewController {
         
         resultCardViewInit()
         circleNumberSetting()
+        lottieChar()
         
         let attrString = NSAttributedString(
             string: typeTitle.text!,
@@ -150,6 +154,16 @@ class DptiResultViewController: UIViewController {
         }
     }
     
+    func lottieChar() {
+        let animationView = Lottie.AnimationView.init(name: "TE_M")
+        animationView.contentMode = .scaleAspectFill
+
+        typeChar.addSubview(animationView)
+        typeChar.image = nil
+        typeChar.layer.cornerRadius = 24
+        animationView.play()
+        animationView.loopMode = .loop
+    }
 
     /*
     // MARK: - Navigation

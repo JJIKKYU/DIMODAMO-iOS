@@ -31,11 +31,12 @@
 		9884700E2511406700943861 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470062511406700943861 /* Nunito-ExtraBold.ttf */; };
 		9884700F2511406700943861 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470072511406700943861 /* Nunito-Light.ttf */; };
 		988470102511406700943861 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470082511406700943861 /* Nunito-Regular.ttf */; };
+		98847013251264B300943861 /* TE_G.json in Resources */ = {isa = PBXBuildFile; fileRef = 98847011251264B300943861 /* TE_G.json */; };
+		98847014251264B300943861 /* TE_M.json in Resources */ = {isa = PBXBuildFile; fileRef = 98847012251264B300943861 /* TE_M.json */; };
 		98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */; };
 		98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */; };
 		98C48B12250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */; };
 		98C48B13250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */; };
-		98C48B18250CD1AF004E24E5 /* BG1.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B17250CD1AF004E24E5 /* BG1.json */; };
 		98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */; };
 		98C48B1D250CF97E004E24E5 /* Survey.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B1C250CF97E004E24E5 /* Survey.json */; };
 		98E2416B250F9F47003BE1A3 /* Results.json in Resources */ = {isa = PBXBuildFile; fileRef = 98E2416A250F9F47003BE1A3 /* Results.json */; };
@@ -71,11 +72,12 @@
 		988470062511406700943861 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
 		988470072511406700943861 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		988470082511406700943861 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		98847011251264B300943861 /* TE_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TE_G.json; path = dimodamo/lottie/TE_G.json; sourceTree = SOURCE_ROOT; };
+		98847012251264B300943861 /* TE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TE_M.json; path = dimodamo/lottie/TE_M.json; sourceTree = SOURCE_ROOT; };
 		98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFEB.otf; sourceTree = "<group>"; };
 		98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
 		98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFR.otf; sourceTree = "<group>"; };
-		98C48B17250CD1AF004E24E5 /* BG1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BG1.json; sourceTree = "<group>"; };
 		98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewController.swift; sourceTree = "<group>"; };
 		98C48B1C250CF97E004E24E5 /* Survey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Survey.json; sourceTree = "<group>"; };
 		98E2416A250F9F47003BE1A3 /* Results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Results.json; sourceTree = "<group>"; };
@@ -235,7 +237,8 @@
 		98C48B14250CD163004E24E5 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				98C48B17250CD1AF004E24E5 /* BG1.json */,
+				98847011251264B300943861 /* TE_G.json */,
+				98847012251264B300943861 /* TE_M.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -311,9 +314,9 @@
 			files = (
 				98E2416B250F9F47003BE1A3 /* Results.json in Resources */,
 				9884700C2511406700943861 /* Nunito-ExtraLight.ttf in Resources */,
-				98C48B18250CD1AF004E24E5 /* BG1.json in Resources */,
 				98C48B1D250CF97E004E24E5 /* Survey.json in Resources */,
 				98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */,
+				98847014251264B300943861 /* TE_M.json in Resources */,
 				988470102511406700943861 /* Nunito-Regular.ttf in Resources */,
 				98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */,
 				986EDA172509C42800AD3CEE /* LaunchScreen.storyboard in Resources */,
@@ -323,6 +326,7 @@
 				9884700B2511406700943861 /* Nunito-Black.ttf in Resources */,
 				98C48B13250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf in Resources */,
 				9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */,
+				98847013251264B300943861 /* TE_G.json in Resources */,
 				986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */,
 				9884700F2511406700943861 /* Nunito-Light.ttf in Resources */,
 				9884700E2511406700943861 /* Nunito-ExtraBold.ttf in Resources */,
