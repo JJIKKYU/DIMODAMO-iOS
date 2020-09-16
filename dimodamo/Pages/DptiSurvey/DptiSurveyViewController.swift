@@ -15,6 +15,7 @@ import RxAnimated
 class DptiSurveyViewController: UIViewController {
 
     @IBOutlet weak var card: UIView!
+    @IBOutlet var cards : Array<UIView>!
     @IBOutlet weak var questionNumber: UILabel!
     @IBOutlet var answers : Array<UIButton>!
     @IBOutlet weak var progress: UIProgressView!
@@ -100,7 +101,12 @@ extension DptiSurveyViewController {
             answer.addTarget(self, action: #selector(startHighlight), for: .touchDown)
         }
         
-        card.layer.cornerRadius = 24
-        card.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
+        cards.enumerated().forEach { index, card in
+            cards[index].layer.cornerRadius = 24
+            cards[index].addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
+        }
+        
+        
+        
     }
 }
