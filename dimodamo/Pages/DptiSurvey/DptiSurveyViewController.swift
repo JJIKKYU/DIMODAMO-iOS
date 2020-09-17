@@ -39,44 +39,46 @@ class DptiSurveyViewController: UIViewController {
                 self?.cardMove(isNextCard: false)
             }
             .disposed(by: disposeBag)
+        
+        viewModel.currentNumber
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext : { [weak self] _ in
+                let value = Float(self!.viewModel.currentNumber.value) / 20
+                self?.progrssTitle.text = "\(self!.viewModel.currentNumber.value) / 20"
+                UIView.animate(withDuration: self!.animationSpeed) {
+                    self?.progress.setProgress(value, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+//        viewModel.currentNumber.map {
+//            Float($0) / 20
+//        }
+//        .bind { [weak self] _ in
+//            self?.progress.rx.progress
+//        }
+//        .disposed(by: disposeBag)
             
 //        viewModel.question
 //            .map { "\($0)"}
 //            .asDriver(onErrorJustReturn: "")
 //            .drive(cardTitle.rx.text)
 //            .disposed(by: disposeBag)
-//
-//        viewModel.currentNumber
-//            .map {"Q\($0)" }
-//            .asDriver(onErrorJustReturn: "")
-//            .drive(questionNumber.rx.text)
-//            .disposed(by: disposeBag)
-//
-//        viewModel.currentNumber
-//            .map { "\($0) / 20"}
-//            .asDriver(onErrorJustReturn: "")
-//            .drive(progrssTitle.rx.text)
-//            .disposed(by: disposeBag)
+
     }
     
 
     // MARK: - UI
     
-
+    // Default Animation Speed Variable
+    let animationSpeed = 0.75
     
     
     @objc func startHighlight(sender : UIButton) {
         // next question card
-        viewModel.nextCard()
         
         // ProgressBar Animation
-        UIView.animate(withDuration: 0.75, animations: {
-            self.progress.setProgress(self.viewModel.progressBarValue, animated: true)
-            self.cardMove(isNextCard: true)
-        })
-        
-        
-        
+        cardMove(isNextCard: true)
  
         // all answer border color & text color init
         for answer in answers {
@@ -84,50 +86,46 @@ class DptiSurveyViewController: UIViewController {
             answer.setTitleColor(UIColor(named: "GRAY - 170"), for: .normal)
         }
         
-        // select answer color change
         sender.layer.borderColor = UIColor(named: "YELLOW")?.cgColor
         sender.setTitleColor(UIColor(named: "YELLOW"), for: .normal)
+        // select answer color change
+        
     }
+    
     
     // true일 경우 다음 카드, false일 경우 이전 카드
     func cardMove(isNextCard : Bool) {
         
         let direction = isNextCard == true ? 1 : -1
+        viewModel.nextCard(isNextCard: isNextCard)
         
         let currentPositionX : Int = Int(cardHorizontalScrollView.contentOffset.x)
         let margin = 20
         let movingStep = (Int(card.frame.width) + margin) * direction
         let destinationPositionX : Int = currentPositionX + movingStep
 
-        UIView.animate(withDuration: 0.75) {
+        UIView.animate(withDuration: animationSpeed) {
+//            self.progress.setProgress(self.viewModel.progressBarValue, animated: true)
             self.cardHorizontalScrollView.setContentOffset(CGPoint(x: destinationPositionX, y: 0), animated: false)
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-
 }
 
 // MARK: - View Design Extension
 
 extension DptiSurveyViewController {
     func cardViewDesign() {
+        let cardValue : Int = 2
+        
         // answer Color & Border & Border Color Init
-        for answer in answers {
+        
+        answers.enumerated().forEach { (index, answer) in
             answer.layer.cornerRadius = 16
             answer.layer.borderWidth = 2
             answer.layer.borderColor = UIColor(named: "GRAY - 190")?.cgColor
+            answer.tag = cardValue - index
             answer.addTarget(self, action: #selector(startHighlight), for: .touchDown)
+            print(answer.tag)
         }
         
         cards.enumerated().forEach { index, card in

@@ -46,10 +46,13 @@ class DptiSurveyViewModel {
         .bind(to: surveyObservable)
     }
     
-    func nextCard() {
+    func nextCard(isNextCard : Bool) {
         if (currentNumber.value >= 20) { return }
+        
+        let flag : Int = isNextCard == true ? 1 : -1
+        
         progressBarValue = Float(currentNumber.value) / 20
-        currentNumber.accept(currentNumber.value + 1)
+        currentNumber.accept(currentNumber.value + flag)
         question.accept(surveys[currentNumber.value - 1].question)
     }
 }
