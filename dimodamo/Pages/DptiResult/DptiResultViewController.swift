@@ -57,24 +57,6 @@ class DptiResultViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
-        // UIImage Binding
-        viewModel.resultObservable.flatMap { [weak self] in
-            Observable.from([
-                ("BC_Type_\($0.shape)", self?.typeIcon),
-                ("BC_BG_P_\($0.shape)", self?.patternBG),
-                ("Icon_\($0.type)", self?.positionIcon),
-                ($0.toolImg, self?.toolImg)
-            ])
-        }
-        .asDriver(onErrorJustReturn: ("", nil))
-        .drive(onNext: { imageName, uiImage in
-            uiImage?.image = UIImage(named : imageName)
-        })
-        .disposed(by: disposeBag)
-        
-        
-            
-        
         // TypeDesc Binding
         viewModel.typeDesc
             .map { "\($0)"}
@@ -97,21 +79,39 @@ class DptiResultViewController: UIViewController {
             .disposed(by: disposeBag)
     
         
-        // Tool Binding
-        viewModel.toolDesc
-            .map{ "\($0)"}
-            .asDriver(onErrorJustReturn: "")
-            .drive(toolDesc.rx.text)
-            .disposed(by: disposeBag)
+        // UITextView Binding
+        viewModel.resultObservable.flatMap { [weak self] in
+            Observable.from([
+                ($0.toolDesc, self?.toolDesc),
+                ($0.todo, self?.todo)
+            ])
+        }
+        .asDriver(onErrorJustReturn: ("", nil))
+        .drive(onNext: { text, textView in
+            textView?.text = text
+        })
+        .disposed(by: disposeBag)
         
-        // Todo Binding
+        // UIImage Binding
+        viewModel.resultObservable.flatMap { [weak self] in
+            Observable.from([
+                ("BC_Type_\($0.shape)", self?.typeIcon),
+                ("BC_BG_P_\($0.shape)", self?.patternBG),
+                ("Icon_\($0.type)", self?.positionIcon),
+                ($0.toolImg, self?.toolImg)
+            ])
+        }
+        .asDriver(onErrorJustReturn: ("", nil))
+        .drive(onNext: { imageName, uiImage in
+            uiImage?.image = UIImage(named : imageName)
+        })
+        .disposed(by: disposeBag)
         
-        viewModel.todoDesc
-            .map { "\($0)" }
-            .asDriver(onErrorJustReturn: "")
-            .drive(todo.rx.text)
-            .disposed(by: disposeBag)
+            
         
+        
+        
+                
         resultCardViewInit()
         circleNumberSetting()
         lottieChar()

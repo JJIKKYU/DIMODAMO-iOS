@@ -14,6 +14,9 @@ import RxAnimated
 
 class DptiSurveyViewController: UIViewController {
 
+    let viewModel = DptiSurveyViewModel()
+    var disposeBag = DisposeBag()
+    
     @IBOutlet weak var card: UIView!
     @IBOutlet var cards : Array<UIView>!
     @IBOutlet weak var questionNumber: UILabel!
@@ -22,14 +25,21 @@ class DptiSurveyViewController: UIViewController {
     @IBOutlet weak var progrssTitle: UILabel!
     @IBOutlet weak var cardTitle: UILabel!
     @IBOutlet weak var cardHorizontalScrollView: UIScrollView!
+    @IBOutlet weak var prevBtn: UIButton!
     
-    let viewModel = DptiSurveyViewModel()
-    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cardViewDesign()
-
+        
+        prevBtn.rx.tap
+            .debounce(RxTimeInterval.seconds(Int(0.3)), scheduler: MainScheduler.instance)
+            .bind { [weak self] _ in
+                print("PrevBtn Pressed")
+                self?.cardMove(isNextCard: false)
+            }
+            .disposed(by: disposeBag)
+            
 //        viewModel.question
 //            .map { "\($0)"}
 //            .asDriver(onErrorJustReturn: "")
@@ -49,6 +59,10 @@ class DptiSurveyViewController: UIViewController {
 //            .disposed(by: disposeBag)
     }
     
+
+    // MARK: - UI
+    
+
     
     
     @objc func startHighlight(sender : UIButton) {
@@ -58,7 +72,7 @@ class DptiSurveyViewController: UIViewController {
         // ProgressBar Animation
         UIView.animate(withDuration: 0.75, animations: {
             self.progress.setProgress(self.viewModel.progressBarValue, animated: true)
-            self.cardHorizontalScrollView.setContentOffset(CGPoint(x: self.card.frame.width + 20, y: 0), animated: false)
+            self.cardMove(isNextCard: true)
         })
         
         
@@ -73,6 +87,21 @@ class DptiSurveyViewController: UIViewController {
         // select answer color change
         sender.layer.borderColor = UIColor(named: "YELLOW")?.cgColor
         sender.setTitleColor(UIColor(named: "YELLOW"), for: .normal)
+    }
+    
+    // true일 경우 다음 카드, false일 경우 이전 카드
+    func cardMove(isNextCard : Bool) {
+        
+        let direction = isNextCard == true ? 1 : -1
+        
+        let currentPositionX : Int = Int(cardHorizontalScrollView.contentOffset.x)
+        let margin = 20
+        let movingStep = (Int(card.frame.width) + margin) * direction
+        let destinationPositionX : Int = currentPositionX + movingStep
+
+        UIView.animate(withDuration: 0.75) {
+            self.cardHorizontalScrollView.setContentOffset(CGPoint(x: destinationPositionX, y: 0), animated: false)
+        }
     }
     
 
