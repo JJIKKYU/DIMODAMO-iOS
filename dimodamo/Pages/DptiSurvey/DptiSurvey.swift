@@ -12,3 +12,9 @@ struct DptiSurvey {
     var number : Int = 1
     var question : String = ""
 }
+
+struct UserSurveyAnswer {
+    var answers : [String : Int] = [
+        "1" : 0,
+    ]
+}

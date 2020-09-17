@@ -22,6 +22,7 @@
 		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
 		987F5A97250B141000E1B856 /* DptiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A96250B141000E1B856 /* DptiViewController.swift */; };
 		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
+		987FEC2A25138F29006F6855 /* CalculatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987FEC2925138F29006F6855 /* CalculatingViewController.swift */; };
 		98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFD251113B600943861 /* DptiSurveyViewModel.swift */; };
 		988470002511148400943861 /* DptiSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFF2511148400943861 /* DptiSurvey.swift */; };
 		9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470022511406700943861 /* Nunito-Bold.ttf */; };
@@ -63,6 +64,7 @@
 		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
 		987F5A96250B141000E1B856 /* DptiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiViewController.swift; sourceTree = "<group>"; };
 		987F5A9A250B152000E1B856 /* DptiResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewController.swift; sourceTree = "<group>"; };
+		987FEC2925138F29006F6855 /* CalculatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatingViewController.swift; sourceTree = "<group>"; };
 		98846FFD251113B600943861 /* DptiSurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewModel.swift; sourceTree = "<group>"; };
 		98846FFF2511148400943861 /* DptiSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurvey.swift; sourceTree = "<group>"; };
 		988470022511406700943861 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -211,8 +213,9 @@
 		987F5A95250B13F300E1B856 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				98067130250F1D7700C3EB72 /* DptiResult */,
 				9806712F250F14F500C3EB72 /* DptiSurvey */,
+				987FEC2825138F00006F6855 /* Calculating */,
+				98067130250F1D7700C3EB72 /* DptiResult */,
 				987F5A96250B141000E1B856 /* DptiViewController.swift */,
 			);
 			path = Pages;
@@ -234,6 +237,14 @@
 				98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		987FEC2825138F00006F6855 /* Calculating */ = {
+			isa = PBXGroup;
+			children = (
+				987FEC2925138F29006F6855 /* CalculatingViewController.swift */,
+			);
+			path = Calculating;
 			sourceTree = "<group>";
 		};
 		98C48B14250CD163004E24E5 /* Lottie */ = {
@@ -384,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				987FEC2A25138F29006F6855 /* CalculatingViewController.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
