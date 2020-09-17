@@ -7,8 +7,10 @@
 //
 
 import UIKit
+
 import RxCocoa
 import RxSwift
+import Lottie
 
 class DptiResultViewController: UIViewController {
 
@@ -16,6 +18,7 @@ class DptiResultViewController: UIViewController {
     @IBOutlet weak var typeTitle: UILabel!
     @IBOutlet weak var typeIcon: UIImageView!
     @IBOutlet weak var typeDesc: UITextView!
+    @IBOutlet weak var typeChar: UIImageView!
     @IBOutlet weak var patternBG: UIImageView!
     @IBOutlet weak var positionIcon: UIImageView!
     @IBOutlet weak var positionDesc: UILabel!
@@ -37,12 +40,22 @@ class DptiResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Title Binding
-        viewModel.typeTitle
-            .map { "\($0)"}
-            .asDriver(onErrorJustReturn: "")
-            .drive(typeTitle.rx.text)
-            .disposed(by: disposeBag)
+        
+        // UILabel Binding
+        viewModel.resultObservable.flatMap { [weak self] in
+            Observable.from([
+                ($0.title, self?.typeTitle),
+                ($0.design[0], self?.designs[0]),
+                ($0.design[1], self?.designs[1]),
+                ($0.toolName, self?.toolName),
+                ($0.position, self?.positionDesc),
+            ])
+        }
+        .asDriver(onErrorJustReturn: ("", nil))
+        .drive(onNext: { text, label in
+            label?.text = text
+        })
+        .disposed(by: disposeBag)
         
         // TypeDesc Binding
         viewModel.typeDesc
@@ -50,52 +63,14 @@ class DptiResultViewController: UIViewController {
             .asDriver(onErrorJustReturn: "")
             .drive(typeDesc.rx.text)
             .disposed(by: disposeBag)
-        
-        // TypeIcon Binding
-        viewModel.typeIcon
-            .map { UIImage(named: "\($0)")}
-            .observeOn(MainScheduler.instance)
-            .bind(to: typeIcon.rx.image)
-            .disposed(by: disposeBag)
     
-        // PaternBG Bindidng
-        viewModel.patternBG
-            .map { UIImage(named: "\($0)")}
-            .observeOn(MainScheduler.instance)
-            .bind(to: patternBG.rx.image)
-            .disposed(by: disposeBag)
-        
-        // Position Binding
-        viewModel.positionIcon
-            .map { UIImage(named: "\($0)")}
-            .observeOn(MainScheduler.instance)
-            .bind(to: positionIcon.rx.image)
-            .disposed(by: disposeBag)
-        
-        viewModel.positonDesc
-            .map { "\($0)"}
-            .asDriver(onErrorJustReturn: "")
-            .drive(positionDesc.rx.text)
-            .disposed(by: disposeBag)
-        
-        // Design Binding
-        viewModel.designs
-            .map{ "\($0[0])" }
-            .asDriver(onErrorJustReturn: "")
-            .drive(designs[0].rx.text)
-            .disposed(by: disposeBag)
         
         viewModel.designsDesc
             .map{ "\($0[0])"}
             .asDriver(onErrorJustReturn: "")
             .drive(designsDesc[0].rx.text)
             .disposed(by: disposeBag)
-    
-        viewModel.designs
-            .map{ "\($0[1])" }
-            .asDriver(onErrorJustReturn: "")
-            .drive(designs[1].rx.text)
-            .disposed(by: disposeBag)
+
         
         viewModel.designsDesc
             .map{ "\($0[1])"}
@@ -104,36 +79,42 @@ class DptiResultViewController: UIViewController {
             .disposed(by: disposeBag)
     
         
-        // Tool Binding
+        // UITextView Binding
+        viewModel.resultObservable.flatMap { [weak self] in
+            Observable.from([
+                ($0.toolDesc, self?.toolDesc),
+                ($0.todo, self?.todo)
+            ])
+        }
+        .asDriver(onErrorJustReturn: ("", nil))
+        .drive(onNext: { text, textView in
+            textView?.text = text
+        })
+        .disposed(by: disposeBag)
         
-        viewModel.toolImg
-            .map{ UIImage(named: "\($0)") }
-            .observeOn(MainScheduler.instance)
-            .bind(to: toolImg.rx.image)
-            .disposed(by: disposeBag)
+        // UIImage Binding
+        viewModel.resultObservable.flatMap { [weak self] in
+            Observable.from([
+                ("BC_Type_\($0.shape)", self?.typeIcon),
+                ("BC_BG_P_\($0.shape)", self?.patternBG),
+                ("Icon_\($0.type)", self?.positionIcon),
+                ($0.toolImg, self?.toolImg)
+            ])
+        }
+        .asDriver(onErrorJustReturn: ("", nil))
+        .drive(onNext: { imageName, uiImage in
+            uiImage?.image = UIImage(named : imageName)
+        })
+        .disposed(by: disposeBag)
         
-        viewModel.toolName
-            .map{ "\($0)" }
-            .asDriver(onErrorJustReturn: "")
-            .drive(toolName.rx.text)
-            .disposed(by: disposeBag)
+            
         
-        viewModel.toolDesc
-            .map{ "\($0)"}
-            .asDriver(onErrorJustReturn: "")
-            .drive(toolDesc.rx.text)
-            .disposed(by: disposeBag)
         
-        // Todo Binding
         
-        viewModel.todoDesc
-            .map { "\($0)" }
-            .asDriver(onErrorJustReturn: "")
-            .drive(todo.rx.text)
-            .disposed(by: disposeBag)
-        
+                
         resultCardViewInit()
         circleNumberSetting()
+        lottieChar()
         
         let attrString = NSAttributedString(
             string: typeTitle.text!,
@@ -173,6 +154,16 @@ class DptiResultViewController: UIViewController {
         }
     }
     
+    func lottieChar() {
+        let animationView = Lottie.AnimationView.init(name: "TE_M")
+        animationView.contentMode = .scaleAspectFill
+
+        typeChar.addSubview(animationView)
+        typeChar.image = nil
+        typeChar.layer.cornerRadius = 24
+        animationView.play()
+        animationView.loopMode = .loop
+    }
 
     /*
     // MARK: - Navigation

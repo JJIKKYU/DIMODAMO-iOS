@@ -11,6 +11,7 @@ import RxSwift
 import RxRelay
 
 class DptiSurveyViewModel {
+    
     lazy var surveyObservable = BehaviorRelay<[DptiSurvey]>(value: [])
     
     lazy var surveys : [DptiSurvey] = []
@@ -18,12 +19,14 @@ class DptiSurveyViewModel {
     lazy var currentSurveyObservable = BehaviorRelay<DptiSurvey>(value: surveys[self.currentNumber.value])
     
     lazy var currentNumber = BehaviorRelay<Int>(value: 1)
-    
-//    lazy var number = currentSurveyObservable.map { "Q\(min(self.currentNumber.value, 20))" }
-    
+        
     lazy var question = BehaviorRelay<String>(value: self.surveys[self.currentNumber.value - 1].question)
     
+    lazy var questions = BehaviorRelay<[String]>(value: [])
+    
     lazy var progressBarValue = Float(currentNumber.value) / 20
+    
+    var userSurveyAnswer : UserSurveyAnswer = UserSurveyAnswer()
     
     init() {
         _ = APIService.fetchLocalJsonRx(fileName: "Survey")
@@ -35,6 +38,7 @@ class DptiSurveyViewModel {
             }
         .map { questions in
             var dptiSurveys : [DptiSurvey] = []
+            self.questions.accept(questions)
             
             questions.enumerated().forEach { (index, question) in
                 let dptiSurvey = DptiSurvey(number: index + 1, question: question)
@@ -48,10 +52,18 @@ class DptiSurveyViewModel {
         .bind(to: surveyObservable)
     }
     
-    func nextCard() {
-        if (currentNumber.value >= 20) { return }
+    func nextCard(isNextCard : Bool) {
+        if (currentNumber.value >= 20 || currentNumber.value == 0) { return }
+        
+        let flag : Int = isNextCard == true ? 1 : -1
+        
         progressBarValue = Float(currentNumber.value) / 20
-        currentNumber.accept(currentNumber.value + 1)
+        currentNumber.accept(currentNumber.value + flag)
         question.accept(surveys[currentNumber.value - 1].question)
+    }
+    
+    func answerCheck(answerTag : Int) {
+        userSurveyAnswer.answers[String(currentNumber.value)] = answerTag
+        print(userSurveyAnswer)
     }
 }
