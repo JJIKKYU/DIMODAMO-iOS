@@ -34,6 +34,7 @@
 		988470102511406700943861 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470082511406700943861 /* Nunito-Regular.ttf */; };
 		98847013251264B300943861 /* TE_G.json in Resources */ = {isa = PBXBuildFile; fileRef = 98847011251264B300943861 /* TE_G.json */; };
 		98847014251264B300943861 /* TE_M.json in Resources */ = {isa = PBXBuildFile; fileRef = 98847012251264B300943861 /* TE_M.json */; };
+		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
 		98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */; };
 		98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */; };
 		98C48B12250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */; };
@@ -77,6 +78,7 @@
 		98847011251264B300943861 /* TE_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TE_G.json; path = dimodamo/lottie/TE_G.json; sourceTree = SOURCE_ROOT; };
 		98847012251264B300943861 /* TE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TE_M.json; path = dimodamo/lottie/TE_M.json; sourceTree = SOURCE_ROOT; };
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStyleGuide.swift; sourceTree = "<group>"; };
 		98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFEB.otf; sourceTree = "<group>"; };
 		98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
@@ -183,9 +185,10 @@
 		986EDA062509C42600AD3CEE /* dimodamo */ = {
 			isa = PBXGroup;
 			children = (
+				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
+				98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */,
 				98C48B1B250CF959004E24E5 /* Json */,
 				98C48B14250CD163004E24E5 /* Lottie */,
-				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
 				98067133250F1F8200C3EB72 /* Domain */,
 				987F5A95250B13F300E1B856 /* Pages */,
 				986EDA1E2509CBFF00AD3CEE /* classRoom */,
@@ -401,6 +404,7 @@
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
+				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
 				9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */,

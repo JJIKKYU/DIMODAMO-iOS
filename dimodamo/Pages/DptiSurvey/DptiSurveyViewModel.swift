@@ -19,9 +19,7 @@ class DptiSurveyViewModel {
     lazy var currentSurveyObservable = BehaviorRelay<DptiSurvey>(value: surveys[self.currentNumber.value])
     
     lazy var currentNumber = BehaviorRelay<Int>(value: 1)
-        
-    lazy var question = BehaviorRelay<String>(value: self.surveys[self.currentNumber.value - 1].question)
-    
+            
     lazy var questions = BehaviorRelay<[String]>(value: [])
     
     lazy var progressBarValue = Float(currentNumber.value) / 20
@@ -59,11 +57,18 @@ class DptiSurveyViewModel {
         
         progressBarValue = Float(currentNumber.value) / 20
         currentNumber.accept(currentNumber.value + flag)
-        question.accept(surveys[currentNumber.value - 1].question)
     }
     
     func answerCheck(answerTag : Int) {
         userSurveyAnswer.answers[String(currentNumber.value)] = answerTag
         print(userSurveyAnswer)
     }
+    
+    
+    // userSurveyAnswer를 기반으로 checkType실행
+    func checkType() {
+        
+    }
+    
+    
 }
