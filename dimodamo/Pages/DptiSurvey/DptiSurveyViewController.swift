@@ -55,10 +55,10 @@ class DptiSurveyViewController: UIViewController {
                 let currentNumber : Int = Int(self!.viewModel.currentNumber.value)
                 
                 // 가장 첫 번째 문제는 이전으로 버튼이 보이지 않도록
-                self?.prevBtn.isHidden = currentNumber == 1 ? true : false
+                self?.prevBtn.isHidden = currentNumber == 1 || currentNumber == 21 ? true : false
                 
                 let value = Float(currentNumber) / 20
-                self?.progrssTitle.text = "\(currentNumber) / 20"
+                self?.progrssTitle.text = "\(min(currentNumber, 20)) / 20"
                 UIView.animate(withDuration: self!.animationSpeed) {
                     self?.progress.setProgress(value, animated: true)
                 }
@@ -120,8 +120,8 @@ class DptiSurveyViewController: UIViewController {
 
     // true일 경우 다음 카드, false일 경우 이전 카드
     func cardMove(isNextCard : Bool) {
-        if (viewModel.currentNumber.value >= 20) {
-            finishSurvey()
+        if (viewModel.currentNumber.value >= 21) {
+//            finishSurvey()
             return
         }
         viewModel.nextCard(isNextCard: isNextCard)
@@ -170,7 +170,17 @@ extension DptiSurveyViewController {
             answer.layer.borderWidth = 2
             answer.layer.borderColor = UIColor(named: "GRAY - 190")?.cgColor
             
-            answer.tag = (cardValue - (index % 5))
+            let questionNumber = (index / 5) + 1
+            var reverse: Int = 1
+            
+            // 아래의 문제의 경우에는 tag의 값을 반대로 책정
+            if questionNumber == 3 || questionNumber == 5 || questionNumber == 6 || questionNumber == 8 ||
+               questionNumber == 10 || questionNumber == 12 || questionNumber == 15 || questionNumber == 17 ||
+               questionNumber == 19 || questionNumber == 20 {
+                reverse = -1
+            } else { reverse = 1 }
+            
+            answer.tag = (cardValue - (index % 5)) * reverse
             answer.addTarget(self, action: #selector(selectBtn), for: .touchDown)
         }
         

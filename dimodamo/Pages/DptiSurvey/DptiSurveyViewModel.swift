@@ -51,7 +51,7 @@ class DptiSurveyViewModel {
     }
     
     func nextCard(isNextCard : Bool) {
-        if (currentNumber.value >= 20 || currentNumber.value == 0) { return }
+        if (currentNumber.value >= 21 || currentNumber.value == 0) { return }
         
         let flag : Int = isNextCard == true ? 1 : -1
         
