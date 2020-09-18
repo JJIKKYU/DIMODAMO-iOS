@@ -41,6 +41,8 @@ class DptiSurveyViewController: UIViewController {
         colorSetting()
         
         
+        
+        
         prevBtn.rx.tap
             .debounce(RxTimeInterval.seconds(Int(0.3)), scheduler: MainScheduler.instance)
             .bind { [weak self] _ in
@@ -120,9 +122,8 @@ class DptiSurveyViewController: UIViewController {
 
     // true일 경우 다음 카드, false일 경우 이전 카드
     func cardMove(isNextCard : Bool) {
-        if (viewModel.currentNumber.value >= 21) {
-//            finishSurvey()
-            return
+        if (viewModel.currentNumber.value >= 20) {
+            finishSurvey()
         }
         viewModel.nextCard(isNextCard: isNextCard)
         
@@ -151,8 +152,12 @@ class DptiSurveyViewController: UIViewController {
     
     
     func finishSurvey() {
+        viewModel.checkType()
         print("설문 클리어!")
-        performSegue(withIdentifier: "DptiCalc", sender: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+            self.performSegue(withIdentifier: "DptiResult", sender: nil)
+        })
+        
     }
 }
 
