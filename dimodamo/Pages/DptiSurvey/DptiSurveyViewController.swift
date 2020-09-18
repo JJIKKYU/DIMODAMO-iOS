@@ -25,6 +25,7 @@ class DptiSurveyViewController: UIViewController {
     @IBOutlet var questionTitle: Array<UILabel>!
     @IBOutlet weak var cardHorizontalScrollView: UIScrollView!
     @IBOutlet weak var prevBtn: UIButton!
+    @IBOutlet var feedbackCard: Array<UIView>!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,6 +37,7 @@ class DptiSurveyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cardViewDesign()
+        colorSetting()
         
         
         prevBtn.rx.tap
@@ -52,11 +54,7 @@ class DptiSurveyViewController: UIViewController {
                 let currentNumber : Int = Int(self!.viewModel.currentNumber.value)
                 
                 // 가장 첫 번째 문제는 이전으로 버튼이 보이지 않도록
-                if (currentNumber == 1) {
-                    self?.prevBtn.isHidden = true
-                } else {
-                    self?.prevBtn.isHidden = false
-                }
+                self?.prevBtn.isHidden = currentNumber == 1 ? true : false
                 
                 let value = Float(currentNumber) / 20
                 self?.progrssTitle.text = "\(currentNumber) / 20"
@@ -64,26 +62,10 @@ class DptiSurveyViewController: UIViewController {
                     self?.progress.setProgress(value, animated: true)
                 }
                 
-                switch currentNumber {
-                case 5:
-                    self?.themeColor = "YELLOW"
-                    self?.progress.tintColor = UIColor(named: "\(self!.themeColor)")
-                    break
-                case 6:
-                    self?.themeColor = "PURPLE"
-                    self?.progress.tintColor = UIColor(named: "\(self!.themeColor)")
-                    break
-                case 11:
-                    self?.themeColor = "BLUE"
-                    self?.progress.tintColor = UIColor(named: "\(self!.themeColor)")
-                    break
-                case 16:
-                    self?.themeColor = "PINK"
-                    self?.progress.tintColor = UIColor(named: "\(self!.themeColor)")
-                    break
-                default:
-                    break
+                if currentNumber == 6 || currentNumber == 11 || currentNumber == 16 || currentNumber == 21 {
+                    self?.feedbackCardShowing(currentNumber: currentNumber)
                 }
+                
             })
             .disposed(by: disposeBag)
         
@@ -97,20 +79,13 @@ class DptiSurveyViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-//        viewModel.currentNumber.map {
-//            Float($0) / 20
-//        }
-//        .bind { [weak self] _ in
-//            self?.progress.rx.progress
-//        }
-//        .disposed(by: disposeBag)
-            
-//        viewModel.question
-//            .map { "\($0)"}
-//            .asDriver(onErrorJustReturn: "")
-//            .drive(cardTitle.rx.text)
-//            .disposed(by: disposeBag)
-
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DptiCalc" {
+            let vc = segue.destination as! CalculatingViewController
+            vc.a = 10
+        }
     }
     
 
@@ -118,20 +93,21 @@ class DptiSurveyViewController: UIViewController {
     
     // Default Animation Speed Variable
     let animationSpeed: Double = 0.75
-    var themeColor: String = "YELLOW"
+    var themeColor: UIColor = UIColor.appColor(.yellow)
     
     
     @objc func selectBtn(sender : UIButton) {
  
         // all answer border color & text color init
         for answer in answers {
-            answer.layer.borderColor = UIColor(named: "GRAY - 190")?.cgColor
-            answer.setTitleColor(UIColor(named: "GRAY - 170"), for: .normal)
+            answer.layer.borderColor = UIColor.appColor(.gray170).cgColor
+            answer.setTitleColor(UIColor.appColor(.gray170), for: .normal)
         }
         
-        sender.layer.borderColor = UIColor(named: "\(self.themeColor)")?.cgColor
-        sender.setTitleColor(UIColor(named: "\(self.themeColor)"), for: .normal)
         // select answer color change
+        sender.layer.borderColor = themeColor.cgColor
+        sender.setTitleColor(themeColor, for: .normal)
+
         
         // 체크한 값을 배열에 입력
         viewModel.answerCheck(answerTag: sender.tag)
@@ -140,7 +116,7 @@ class DptiSurveyViewController: UIViewController {
         cardMove(isNextCard: true)
     }
     
-    
+
     // true일 경우 다음 카드, false일 경우 이전 카드
     func cardMove(isNextCard : Bool) {
         if (viewModel.currentNumber.value >= 20) {
@@ -155,36 +131,39 @@ class DptiSurveyViewController: UIViewController {
         let margin = 20
         let movingStep = (Int(card.frame.width) + margin) * direction
         let destinationPositionX : Int = currentPositionX + movingStep
-
-        UIView.animate(withDuration: animationSpeed) {
-//            self.progress.setProgress(self.viewModel.progressBarValue, animated: true)
-            self.cardHorizontalScrollView.setContentOffset(CGPoint(x: destinationPositionX, y: 0), animated: false)
+        
+        // 피드백 카드가 나타나는 특정 넘버에서는 딜레이 존재
+        if (self.viewModel.currentNumber.value == 6 || self.viewModel.currentNumber.value == 11 ||
+            self.viewModel.currentNumber.value == 16 || self.viewModel.currentNumber.value == 21) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                UIView.animate(withDuration: self.animationSpeed) {
+                    self.cardHorizontalScrollView.setContentOffset(CGPoint(x: destinationPositionX, y: 0), animated: false)
+                }
+            })
+        // 특정 카드가 아닐 경우에는 딜레이 없이 바로바로 넘김
+        } else {
+            UIView.animate(withDuration: animationSpeed) {
+                self.cardHorizontalScrollView.setContentOffset(CGPoint(x: destinationPositionX, y: 0), animated: false)
+            }
         }
     }
+    
     
     func finishSurvey() {
         print("설문 클리어!")
         performSegue(withIdentifier: "DptiCalc", sender: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DptiCalc" {
-            let vc = segue.destination as! CalculatingViewController
-            vc.a = 10
-        }
-    }
 }
+
 
 // MARK: - View Design Extension
 
 extension DptiSurveyViewController {
     func cardViewDesign() {
         
-        
         let cardValue : Int = 2
         
         // answer Color & Border & Border Color Init
-        
         answers.enumerated().forEach { (index, answer) in
             answer.layer.cornerRadius = 16
             answer.layer.borderWidth = 2
@@ -192,7 +171,6 @@ extension DptiSurveyViewController {
             
             answer.tag = (cardValue - (index % 5))
             answer.addTarget(self, action: #selector(selectBtn), for: .touchDown)
-            print(answer.tag)
         }
         
         let margin: CGFloat = 40 // left margin + Right margin
@@ -204,7 +182,52 @@ extension DptiSurveyViewController {
             cards[index].addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
         }
         
+        // feedbackCardSetting
+        feedbackCard.forEach { card in
+            card.alpha = 0
+        }
+    }
+    
+    func feedbackCardShowing(currentNumber: Int) {
+        print("호출")
         
+        switch currentNumber {
+        case 5:
+            self.themeColor = UIColor.appColor(.yellow)
+            self.progress.progressTintColor = self.themeColor
+            break
+        case 6:
+            animateFeeedbackCard(index: 0, changeAppColor: UIColor.appColor(.purple))
+            break
+        case 11:
+            animateFeeedbackCard(index: 1, changeAppColor: UIColor.appColor(.blue))
+            break
+        case 16:
+            animateFeeedbackCard(index: 2, changeAppColor: UIColor.appColor(.pink))
+            break
+        case 21:
+            break
+        default:
+            break
+        }
+    }
+    
+    func animateFeeedbackCard(index: Int, changeAppColor: UIColor) {
+        UIView.animate(withDuration: self.animationSpeed) { [weak self] in
+            self?.feedbackCard[index].alpha = 1
+        }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            UIView.animate(withDuration: self.animationSpeed) { [weak self] in
+                self?.themeColor = changeAppColor
+                self?.progress.progressTintColor = self?.themeColor
+                self?.feedbackCard[index].alpha = 0
+            }
+        })
+    }
+    
+    func colorSetting() {
+        prevBtn.tintColor = UIColor.appColor(.system)
+        progrssTitle.tintColor = UIColor.appColor(.system)
     }
 }
