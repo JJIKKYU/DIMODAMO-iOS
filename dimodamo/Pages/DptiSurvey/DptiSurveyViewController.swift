@@ -26,6 +26,7 @@ class DptiSurveyViewController: UIViewController {
     @IBOutlet weak var cardHorizontalScrollView: UIScrollView!
     @IBOutlet weak var prevBtn: UIButton!
     @IBOutlet var feedbackCard: Array<UIView>!
+    @IBOutlet var feedbackCardTitles: Array<UILabel>!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -197,23 +198,26 @@ extension DptiSurveyViewController {
             self.progress.progressTintColor = self.themeColor
             break
         case 6:
-            animateFeeedbackCard(index: 0, changeAppColor: UIColor.appColor(.purple))
+            animateFeeedbackCard(index: 0, prevColor: UIColor.appColor(.yellow), changeAppColor: UIColor.appColor(.purple))
             break
         case 11:
-            animateFeeedbackCard(index: 1, changeAppColor: UIColor.appColor(.blue))
+            animateFeeedbackCard(index: 1, prevColor: UIColor.appColor(.purple), changeAppColor: UIColor.appColor(.blue))
             break
         case 16:
-            animateFeeedbackCard(index: 2, changeAppColor: UIColor.appColor(.pink))
+            animateFeeedbackCard(index: 2, prevColor: UIColor.appColor(.blue), changeAppColor: UIColor.appColor(.pink))
             break
         case 21:
+            animateFeeedbackCard(index: 3, prevColor: UIColor.appColor(.pink), changeAppColor: UIColor.appColor(.pink))
             break
         default:
             break
         }
     }
     
-    func animateFeeedbackCard(index: Int, changeAppColor: UIColor) {
-        UIView.animate(withDuration: self.animationSpeed) { [weak self] in
+    func animateFeeedbackCard(index: Int, prevColor: UIColor, changeAppColor: UIColor) {
+        feedbackCardTitles[index].text = FeedbackCardTitle().title[index]
+        feedbackCardTitles[index].textColor = prevColor
+        UIView.animate(withDuration: self.animationSpeed - 0.35) { [weak self] in
             self?.feedbackCard[index].alpha = 1
         }
         
