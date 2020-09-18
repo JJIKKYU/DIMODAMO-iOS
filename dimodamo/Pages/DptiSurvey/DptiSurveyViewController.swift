@@ -201,6 +201,7 @@ extension DptiSurveyViewController {
         // feedbackCardSetting
         feedbackCard.forEach { card in
             card.alpha = 0
+            card.layer.cornerRadius = 24
         }
     }
     
