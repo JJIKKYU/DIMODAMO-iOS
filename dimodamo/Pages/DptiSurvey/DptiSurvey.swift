@@ -18,3 +18,12 @@ struct UserSurveyAnswer {
         "1" : 0,
     ]
 }
+
+struct FeedbackCardTitle {
+    var title : [String] = [
+        "좋아! 아주 멋져~",
+        "매우 잘하고 있어!",
+        "좋아 최고야~",
+        "잠시만 기다려줘!"
+    ]
+}

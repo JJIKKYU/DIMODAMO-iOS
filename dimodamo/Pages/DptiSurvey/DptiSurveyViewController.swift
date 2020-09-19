@@ -21,26 +21,27 @@ class DptiSurveyViewController: UIViewController {
     @IBOutlet var cards : Array<UIView>!
     @IBOutlet var answers : Array<UIButton>!
     @IBOutlet weak var progress: UIProgressView!
-    @IBOutlet weak var progrssTitle: UILabel!
+    @IBOutlet weak var progressTitleNav: UINavigationItem!
     @IBOutlet var questionTitle: Array<UILabel>!
     @IBOutlet weak var cardHorizontalScrollView: UIScrollView!
-    @IBOutlet weak var prevBtn: UIButton!
+    @IBOutlet weak var prevBtnNav: UIBarButtonItem!
     @IBOutlet var feedbackCard: Array<UIView>!
+    @IBOutlet var feedbackCardTitles: Array<UILabel>!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cardViewDesign()
-        colorSetting()
+        navigationBarDesign()
         
-        
-        prevBtn.rx.tap
+    
+        prevBtnNav.rx.tap
             .debounce(RxTimeInterval.seconds(Int(0.3)), scheduler: MainScheduler.instance)
             .bind { [weak self] _ in
                 print("PrevBtn Pressed")
@@ -54,10 +55,11 @@ class DptiSurveyViewController: UIViewController {
                 let currentNumber : Int = Int(self!.viewModel.currentNumber.value)
                 
                 // 가장 첫 번째 문제는 이전으로 버튼이 보이지 않도록
-                self?.prevBtn.isHidden = currentNumber == 1 ? true : false
+                self?.prevBtnNav.isEnabled = currentNumber == 1 || currentNumber == 21 ? false : true
+                self?.prevBtnNav.tintColor = currentNumber == 1 || currentNumber == 21 ? UIColor.clear : UIColor.appColor(.system)
                 
                 let value = Float(currentNumber) / 20
-                self?.progrssTitle.text = "\(currentNumber) / 20"
+                self?.progressTitleNav.title = "\(min(currentNumber, 20)) / 20"
                 UIView.animate(withDuration: self!.animationSpeed) {
                     self?.progress.setProgress(value, animated: true)
                 }
@@ -68,6 +70,7 @@ class DptiSurveyViewController: UIViewController {
                 
             })
             .disposed(by: disposeBag)
+ 
         
         viewModel.questions
             .observeOn(MainScheduler.instance)
@@ -121,7 +124,6 @@ class DptiSurveyViewController: UIViewController {
     func cardMove(isNextCard : Bool) {
         if (viewModel.currentNumber.value >= 20) {
             finishSurvey()
-            return
         }
         viewModel.nextCard(isNextCard: isNextCard)
         
@@ -150,8 +152,12 @@ class DptiSurveyViewController: UIViewController {
     
     
     func finishSurvey() {
+        viewModel.checkType()
         print("설문 클리어!")
-        performSegue(withIdentifier: "DptiCalc", sender: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+            self.performSegue(withIdentifier: "DptiResult", sender: nil)
+        })
+        
     }
 }
 
@@ -169,7 +175,17 @@ extension DptiSurveyViewController {
             answer.layer.borderWidth = 2
             answer.layer.borderColor = UIColor(named: "GRAY - 190")?.cgColor
             
-            answer.tag = (cardValue - (index % 5))
+            let questionNumber = (index / 5) + 1
+            var reverse: Int = 1
+            
+            // 아래의 문제의 경우에는 tag의 값을 반대로 책정
+            if questionNumber == 3 || questionNumber == 5 || questionNumber == 6 || questionNumber == 8 ||
+               questionNumber == 10 || questionNumber == 12 || questionNumber == 15 || questionNumber == 17 ||
+               questionNumber == 19 || questionNumber == 20 {
+                reverse = -1
+            } else { reverse = 1 }
+            
+            answer.tag = (cardValue - (index % 5)) * reverse
             answer.addTarget(self, action: #selector(selectBtn), for: .touchDown)
         }
         
@@ -185,6 +201,7 @@ extension DptiSurveyViewController {
         // feedbackCardSetting
         feedbackCard.forEach { card in
             card.alpha = 0
+            card.layer.cornerRadius = 24
         }
     }
     
@@ -197,23 +214,26 @@ extension DptiSurveyViewController {
             self.progress.progressTintColor = self.themeColor
             break
         case 6:
-            animateFeeedbackCard(index: 0, changeAppColor: UIColor.appColor(.purple))
+            animateFeeedbackCard(index: 0, prevColor: UIColor.appColor(.yellow), changeAppColor: UIColor.appColor(.purple))
             break
         case 11:
-            animateFeeedbackCard(index: 1, changeAppColor: UIColor.appColor(.blue))
+            animateFeeedbackCard(index: 1, prevColor: UIColor.appColor(.purple), changeAppColor: UIColor.appColor(.blue))
             break
         case 16:
-            animateFeeedbackCard(index: 2, changeAppColor: UIColor.appColor(.pink))
+            animateFeeedbackCard(index: 2, prevColor: UIColor.appColor(.blue), changeAppColor: UIColor.appColor(.pink))
             break
         case 21:
+            animateFeeedbackCard(index: 3, prevColor: UIColor.appColor(.pink), changeAppColor: UIColor.appColor(.pink))
             break
         default:
             break
         }
     }
     
-    func animateFeeedbackCard(index: Int, changeAppColor: UIColor) {
-        UIView.animate(withDuration: self.animationSpeed) { [weak self] in
+    func animateFeeedbackCard(index: Int, prevColor: UIColor, changeAppColor: UIColor) {
+        feedbackCardTitles[index].text = FeedbackCardTitle().title[index]
+        feedbackCardTitles[index].textColor = prevColor
+        UIView.animate(withDuration: self.animationSpeed - 0.35) { [weak self] in
             self?.feedbackCard[index].alpha = 1
         }
         
@@ -226,8 +246,12 @@ extension DptiSurveyViewController {
         })
     }
     
-    func colorSetting() {
-        prevBtn.tintColor = UIColor.appColor(.system)
-        progrssTitle.tintColor = UIColor.appColor(.system)
+    func navigationBarDesign() {
+        let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.appColor(.system)]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 }

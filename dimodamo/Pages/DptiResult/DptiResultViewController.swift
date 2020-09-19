@@ -37,6 +37,12 @@ class DptiResultViewController: UIViewController {
     let viewModel = DptiResultViewModel()
     var disposeBag = DisposeBag()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -143,8 +149,15 @@ class DptiResultViewController: UIViewController {
         
         resultCardView.layer.cornerRadius = 24
         resultCardView.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
-        
+    
         typeIcon.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
+        
+        // ColorSetting
+        positionDesc.textColor = UIColor.appColor(.system)
+        circleNumber.backgroundColor = UIColor.appColor(.system)
+        designsDesc[0].textColor = UIColor.appColor(.system)
+        designsDesc[1].textColor = UIColor.appColor(.system)
+        toolName.textColor = UIColor.appColor(.system)
     }
     
     func circleNumberSetting() {

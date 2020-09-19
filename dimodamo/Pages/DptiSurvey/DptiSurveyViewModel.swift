@@ -51,7 +51,7 @@ class DptiSurveyViewModel {
     }
     
     func nextCard(isNextCard : Bool) {
-        if (currentNumber.value >= 20 || currentNumber.value == 0) { return }
+        if (currentNumber.value == 0) { return }
         
         let flag : Int = isNextCard == true ? 1 : -1
         
@@ -67,7 +67,68 @@ class DptiSurveyViewModel {
     
     // userSurveyAnswer를 기반으로 checkType실행
     func checkType() {
+        var typeEI: Int = 0;
+        var typeSN: Int = 0;
+        var typeTF: Int = 0;
+        var typeJP: Int = 0;
         
+        userSurveyAnswer.answers.enumerated().forEach { (index, answer) in
+            let key: Int = Int(answer.key)!
+            
+            if key <= 5 {
+                typeEI += answer.value
+            } else if key <= 10 {
+                typeSN += answer.value
+            } else if key <= 15 {
+                typeTF += answer.value
+            } else if key <= 20 {
+                typeJP += answer.value
+            }
+        }
+        
+        print("typeEI : \(typeEI), typeSN : \(typeSN), typeTF : \(typeTF), typeJP : \(typeJP)")
+        
+        var isTypeEI: Bool = false
+        var isTypeSN: Bool = false
+        var isTypeTF: Bool = false
+        var isTypeJP: Bool = false
+        
+        if abs(typeEI) <= abs(typeSN) {
+            isTypeSN = true
+        } else {
+            isTypeEI = true
+        }
+        
+        if abs(typeTF) <= abs(typeJP) {
+            isTypeJP = true
+        } else {
+            isTypeTF = true
+        }
+        
+        print("isTypeEI : \(isTypeEI), isTypeSN : \(isTypeSN), isTypeTF : \(isTypeTF), isTypeJP: \(isTypeJP)")
+        
+        var figureType: String = ""
+        var colorType: String = ""
+        
+        if isTypeEI {
+            if typeEI < 0 { figureType = "E" }
+            else { figureType = "I" }
+        } else if isTypeSN {
+            if typeSN < 0 { figureType = "S" }
+            else { figureType = "N" }
+        }
+        
+        if isTypeTF {
+            if typeTF < 0 { colorType = "T" }
+            else { colorType = "F" }
+        } else if isTypeJP {
+            if typeJP < 0 { colorType = "J" }
+            else { colorType = "P" }
+        }
+        
+        let finalType: String = "\(colorType)\(figureType)"
+        
+        print("finalType : \(finalType)")
     }
     
     
