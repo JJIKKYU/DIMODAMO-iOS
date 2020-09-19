@@ -29,6 +29,12 @@ class DptiResultViewModel {
     lazy var colorHex = resultObservable.map { UIColor(hexString: $0.colorHex) }
     
     init() {
+        print("Init : \(type)")
+    }
+    
+    func setType(type: String) {
+        self.type = type
+        
         _ = APIService.fetchLocalJsonRx(fileName: "Results")
             .map { data -> [[String : Any]] in
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : [[String : Any]]]
@@ -50,6 +56,7 @@ class DptiResultViewModel {
             let finalUserType = dptiResultsArray.filter{
                 $0.type == self.type
             }
+            print("$0.type = \(self.type)")
             return finalUserType[0]
         }
         .take(1)

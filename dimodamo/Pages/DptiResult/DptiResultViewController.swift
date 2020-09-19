@@ -14,6 +14,7 @@ import Lottie
 
 class DptiResultViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var resultCardView: UIView!
     @IBOutlet weak var typeTitle: UILabel!
     @IBOutlet weak var typeIcon: UIImageView!
@@ -29,9 +30,6 @@ class DptiResultViewController: UIViewController {
     @IBOutlet weak var toolName: UILabel!
     @IBOutlet weak var toolDesc: UITextView!
     @IBOutlet weak var todo: UITextView!
-    
-    
-    
     @IBOutlet var circleNumbers : Array<UILabel>?
     
     let viewModel = DptiResultViewModel()
@@ -45,7 +43,7 @@ class DptiResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         
         // UILabel Binding
         viewModel.resultObservable.flatMap { [weak self] in
@@ -154,15 +152,15 @@ class DptiResultViewController: UIViewController {
         
         // ColorSetting
         positionDesc.textColor = UIColor.appColor(.system)
-        circleNumber.backgroundColor = UIColor.appColor(.system)
-        designsDesc[0].textColor = UIColor.appColor(.system)
-        designsDesc[1].textColor = UIColor.appColor(.system)
         toolName.textColor = UIColor.appColor(.system)
+        designs[0].textColor = UIColor.appColor(.system)
+        designs[1].textColor = UIColor.appColor(.system)
     }
     
     func circleNumberSetting() {
         for circleNumber in circleNumbers! {
             circleNumber.layer.cornerRadius = 16
+            circleNumber.backgroundColor = UIColor.appColor(.system)
             circleNumber.layer.masksToBounds = true
         }
     }
@@ -187,6 +185,7 @@ class DptiResultViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
 
 }
 

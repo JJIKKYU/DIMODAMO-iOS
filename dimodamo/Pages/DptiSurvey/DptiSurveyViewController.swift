@@ -25,6 +25,7 @@ class DptiSurveyViewController: UIViewController {
     @IBOutlet var questionTitle: Array<UILabel>!
     @IBOutlet weak var cardHorizontalScrollView: UIScrollView!
     @IBOutlet weak var prevBtnNav: UIBarButtonItem!
+    @IBOutlet weak var closeBtnNav: UIBarButtonItem!
     @IBOutlet var feedbackCard: Array<UIView>!
     @IBOutlet var feedbackCardTitles: Array<UILabel>!
     
@@ -34,13 +35,16 @@ class DptiSurveyViewController: UIViewController {
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.setNeedsStatusBarAppearanceUpdate()
+        
         cardViewDesign()
         navigationBarDesign()
         
-    
+        
+        
         prevBtnNav.rx.tap
             .debounce(RxTimeInterval.seconds(Int(0.3)), scheduler: MainScheduler.instance)
             .bind { [weak self] _ in
@@ -85,9 +89,9 @@ class DptiSurveyViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DptiCalc" {
-            let vc = segue.destination as! CalculatingViewController
-            vc.a = 10
+        if segue.identifier == "DptiResult" {
+            let vc = segue.destination as! DptiResultViewController
+            vc.viewModel.setType(type: viewModel.checkType())
         }
     }
     
@@ -95,7 +99,7 @@ class DptiSurveyViewController: UIViewController {
     // MARK: - UI
     
     // Default Animation Speed Variable
-    let animationSpeed: Double = 0.75
+    let animationSpeed: Double = 0.5
     var themeColor: UIColor = UIColor.appColor(.yellow)
     
     
@@ -150,9 +154,12 @@ class DptiSurveyViewController: UIViewController {
         }
     }
     
+    @IBAction func closeBtn(_ sender: Any) {
+        finishSurvey()
+    }
     
     func finishSurvey() {
-        viewModel.checkType()
+        _ = viewModel.checkType()
         print("설문 클리어!")
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
             self.performSegue(withIdentifier: "DptiResult", sender: nil)
@@ -249,9 +256,26 @@ extension DptiSurveyViewController {
     func navigationBarDesign() {
         let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.appColor(.system)]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+//
+        let navBar = self.navigationController?.navigationBar
+        navBar?.backgroundColor = UIColor.appColor(.white255)
+        navBar?.setBackgroundImage(UIImage(), for: .default)
+        navBar?.shadowImage = UIImage()
+////        self.navigationController?.view.backgroundColor = UIColor.white
+        self.navigationController?.hidesBarsOnSwipe = true
+//
+//
+//        // StatusBar White
+        if #available(iOS 13.0, *) {
+            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            // Reference - https://stackoverflow.com/a/57899013/7316675
+            let statusBar = UIView(frame: window?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero)
+            statusBar.backgroundColor = UIColor.appColor(.white255)
+            window?.addSubview(statusBar)
+        } else {
+            UIApplication.shared.statusBarUIView?.backgroundColor = UIColor.appColor(.white255)
+            UIApplication.shared.statusBarStyle = .lightContent
+        }
+
     }
 }
