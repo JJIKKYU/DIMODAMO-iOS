@@ -37,6 +37,12 @@ class DptiResultViewController: UIViewController {
     let viewModel = DptiResultViewModel()
     var disposeBag = DisposeBag()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
