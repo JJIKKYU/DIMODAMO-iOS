@@ -476,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Cy-iA-g4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4402.898550724638" y="154.6875"/>
+            <point key="canvasLocation" x="5313.04347826087" y="154.6875"/>
         </scene>
         <!--DptiSurvey-->
         <scene sceneID="4oC-8q-8Cf">
@@ -3502,7 +3502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVM-j3-LFH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3628.985507246377" y="154.6875"/>
+            <point key="canvasLocation" x="4539.130434782609" y="154.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AUf-4X-a4R">
@@ -3518,7 +3518,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="U1X-jK-vjF" kind="relationship" relationship="rootViewController" id="w7J-7j-xkk"/>
+                        <segue destination="J5H-rv-9TU" kind="relationship" relationship="rootViewController" id="w7J-7j-xkk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hv2-oY-c6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3542,10 +3542,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtw-Ro-FVt">
                                 <rect key="frame" x="20" y="232" width="70" height="30"/>
                                 <state key="normal" title="DPTI Main"/>
+                                <connections>
+                                    <action selector="pressDptiMain:" destination="U1X-jK-vjF" eventType="touchUpInside" id="jVG-W0-eNX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iq-jn-ths">
                                 <rect key="frame" x="20" y="294" width="116" height="30"/>
                                 <state key="normal" title="Community Main"/>
+                                <connections>
+                                    <action selector="pressCommunityMain:" destination="U1X-jK-vjF" eventType="touchUpInside" id="mTL-7i-x1k"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQJ-c0-3Rl"/>
@@ -3562,6 +3568,7 @@
                             <constraint firstItem="3iq-jn-ths" firstAttribute="leading" secondItem="Xtw-Ro-FVt" secondAttribute="leading" id="vgW-aB-BxH"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="homeSelected" id="Z4P-1r-R3T"/>
                     <navigationItem key="navigationItem" id="swl-YL-3kO"/>
                     <connections>
                         <segue destination="1Wb-L4-GbC" kind="show" identifier="DptiMain" id="asX-fU-AaB"/>
@@ -3569,7 +3576,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1m-jQ-IcS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2232" y="155"/>
+            <point key="canvasLocation" x="3142.0289855072465" y="154.6875"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="udh-i4-UUe">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="J5H-rv-9TU" customClass="TabBarViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="eMS-o8-xd9"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="glq-5Q-BKZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="TEXT - BIG"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" name="BLUE - DARK"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Jaw-YX-Y0Z" kind="relationship" relationship="viewControllers" id="3Pe-Fx-9Hq"/>
+                        <segue destination="U1X-jK-vjF" kind="relationship" relationship="viewControllers" id="abQ-H6-mIm"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zjb-j3-P11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2231.8840579710145" y="154.6875"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RMv-3W-UIe">
+            <objects>
+                <viewController id="Jaw-YX-Y0Z" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wB2-MT-RER">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqP-8p-VYG">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <connections>
+                                    <segue destination="VH5-hU-nEs" kind="embed" id="Yc9-4D-UMt"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E9F-lj-vH4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="E9F-lj-vH4" firstAttribute="trailing" secondItem="YqP-8p-VYG" secondAttribute="trailing" id="03p-bD-GV0"/>
+                            <constraint firstItem="E9F-lj-vH4" firstAttribute="bottom" secondItem="YqP-8p-VYG" secondAttribute="bottom" id="4NY-cQ-bDo"/>
+                            <constraint firstItem="YqP-8p-VYG" firstAttribute="leading" secondItem="E9F-lj-vH4" secondAttribute="leading" id="NIv-Lf-RTi"/>
+                            <constraint firstItem="YqP-8p-VYG" firstAttribute="top" secondItem="E9F-lj-vH4" secondAttribute="top" id="del-qN-6NH"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="community" selectedImage="communitySelected" id="B3a-FJ-JbP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zwd-KU-rvJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3142" y="883"/>
+        </scene>
+        <!--CommunityMain-->
+        <scene sceneID="CpL-KO-qCo">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CommunityMain" storyboardName="Community" referencedIdentifier="CommunityMain" id="VH5-hU-nEs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VdX-Cf-Sxx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3143" y="1317"/>
         </scene>
     </scenes>
     <resources>
@@ -3580,6 +3650,8 @@
         <image name="Tool_Name_Indesign" width="64" height="64"/>
         <image name="cardHole" width="36" height="36"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="community" width="20" height="20"/>
+        <image name="communitySelected" width="20" height="20"/>
         <image name="feedbackCardBGBlue" width="355" height="263"/>
         <image name="feedbackCardBGPink" width="355" height="263"/>
         <image name="feedbackCardBGPurple" width="355" height="263"/>
@@ -3588,7 +3660,12 @@
         <image name="feedbackCardCharPink" width="374" height="387"/>
         <image name="feedbackCardCharPurple" width="374" height="387"/>
         <image name="feedbackCardCharYellow" width="374" height="387"/>
+        <image name="home" width="20" height="20"/>
+        <image name="homeSelected" width="20" height="20"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="BLUE - DARK">
+            <color red="0.19599999487400055" green="0.74500000476837158" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

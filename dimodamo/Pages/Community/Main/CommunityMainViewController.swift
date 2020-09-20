@@ -9,25 +9,23 @@
 import UIKit
 import WebKit
 
-class CommunityMainViewController: UIViewController, WKUIDelegate {
+class CommunityMainViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
-    var webView: WKWebView!
-
+    @IBOutlet var webView: WKWebView!
+    
+    func goWeb(postfix: String) -> () {
+        let url = URL(string: "http://dimodamo.com")
+        let request = URLRequest(url: url!)
+        webView.load(request)
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let myURL = URL(string: "http://dimodamo.com")
-        let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
         // Do any additional setup after loading the view.
+        goWeb(postfix: "scale")
+        
     }
     
-    override func loadView() {
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
-        view = webView
-    }
     
 
     /*
