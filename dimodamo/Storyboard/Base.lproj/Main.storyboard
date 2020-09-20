@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jfm-21-JgW">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--사용자님의 결과-->
+        <!--DptiResult-->
         <scene sceneID="S6t-2m-Gi8">
             <objects>
-                <viewController id="1zn-A2-leu" customClass="DptiResultViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1zn-A2-leu" userLabel="DptiResult" customClass="DptiResultViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ShH-SV-POF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -475,12 +476,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Cy-iA-g4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3492.753623188406" y="154.6875"/>
+            <point key="canvasLocation" x="4402.898550724638" y="154.6875"/>
         </scene>
-        <!--1 / 20-->
+        <!--DptiSurvey-->
         <scene sceneID="4oC-8q-8Cf">
             <objects>
-                <viewController id="1Wb-L4-GbC" customClass="DptiSurveyViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1Wb-L4-GbC" userLabel="DptiSurvey" customClass="DptiSurveyViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bhw-7V-W9T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3501,7 +3502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVM-j3-LFH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2720" y="155"/>
+            <point key="canvasLocation" x="3628.985507246377" y="154.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AUf-4X-a4R">
@@ -3517,12 +3518,58 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="1Wb-L4-GbC" kind="relationship" relationship="rootViewController" id="5wM-vL-y4L"/>
+                        <segue destination="U1X-jK-vjF" kind="relationship" relationship="rootViewController" id="w7J-7j-xkk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hv2-oY-c6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1873.913043478261" y="154.6875"/>
+            <point key="canvasLocation" x="968" y="155"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="P5B-WX-e6y">
+            <objects>
+                <viewController id="U1X-jK-vjF" customClass="TestViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aQM-5j-dSU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test ViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yC-4B-6UX">
+                                <rect key="frame" x="20" y="115" width="301" height="41"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="34"/>
+                                <color key="textColor" name="TEXT - BIG"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtw-Ro-FVt">
+                                <rect key="frame" x="20" y="232" width="70" height="30"/>
+                                <state key="normal" title="DPTI Main"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iq-jn-ths">
+                                <rect key="frame" x="20" y="294" width="116" height="30"/>
+                                <state key="normal" title="Community Main"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gQJ-c0-3Rl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xtw-Ro-FVt" firstAttribute="leading" secondItem="4yC-4B-6UX" secondAttribute="leading" id="GoH-og-Lbv"/>
+                            <constraint firstItem="Xtw-Ro-FVt" firstAttribute="top" secondItem="4yC-4B-6UX" secondAttribute="bottom" constant="76" id="MI6-hK-eci"/>
+                            <constraint firstItem="gQJ-c0-3Rl" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3iq-jn-ths" secondAttribute="trailing" symbolic="YES" id="ObW-IW-cgZ"/>
+                            <constraint firstItem="4yC-4B-6UX" firstAttribute="top" secondItem="gQJ-c0-3Rl" secondAttribute="top" constant="27" id="Q6c-6P-2db"/>
+                            <constraint firstItem="3iq-jn-ths" firstAttribute="top" secondItem="Xtw-Ro-FVt" secondAttribute="bottom" constant="32" id="b1a-Lb-20O"/>
+                            <constraint firstItem="4yC-4B-6UX" firstAttribute="leading" secondItem="gQJ-c0-3Rl" secondAttribute="leading" constant="20" id="fLj-cN-nIO"/>
+                            <constraint firstItem="gQJ-c0-3Rl" firstAttribute="trailing" secondItem="4yC-4B-6UX" secondAttribute="trailing" constant="93" id="lkR-hs-1Yy"/>
+                            <constraint firstItem="gQJ-c0-3Rl" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xtw-Ro-FVt" secondAttribute="trailing" symbolic="YES" id="m8y-4o-BsR"/>
+                            <constraint firstItem="3iq-jn-ths" firstAttribute="leading" secondItem="Xtw-Ro-FVt" secondAttribute="leading" id="vgW-aB-BxH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="swl-YL-3kO"/>
+                    <connections>
+                        <segue destination="1Wb-L4-GbC" kind="show" identifier="DptiMain" id="asX-fU-AaB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q1m-jQ-IcS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2232" y="155"/>
         </scene>
     </scenes>
     <resources>
@@ -3569,5 +3616,8 @@
         <namedColor name="YELLOW - DARK">
             <color red="1" green="0.70599997043609619" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
