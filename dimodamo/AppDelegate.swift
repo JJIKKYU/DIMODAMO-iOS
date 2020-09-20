@@ -18,7 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // 노치배경
+        // 탭바 배경
+//        UITabBar.appearance().backgroundColor = UIColor.appColor(.white255)
+//        UITabBar.appearance().barTintColor = UIColor.appColor(.white255)
+//        UITabBar.appearance().shadowImage = UIImage()
+//        UITabBar.appearance().layer.cornerRadius = 26
+//        UITabBar.appearance().layer.masksToBounds = true
         
         return true
     }

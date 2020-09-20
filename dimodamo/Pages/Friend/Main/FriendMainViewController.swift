@@ -1,31 +1,20 @@
 //
-//  CommunityMainViewController.swift
+//  FriendMainViewController.swift
 //  dimodamo
 //
-//  Created by JJIKKYU on 2020/09/20.
+//  Created by JJIKKYU on 2020/09/21.
 //  Copyright © 2020 JJIKKYU. All rights reserved.
 //
 
 import UIKit
-import WebKit
 
-class CommunityMainViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
-    
-    @IBOutlet var webView: WKWebView!
-    
-    func goWeb(postfix: String) -> () {
-        let url = URL(string: "http://dimodamo.com")
-        let request = URLRequest(url: url!)
-        webView.load(request)
-    }
-        
+class FriendMainViewController: UITabBarController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-        goWeb(postfix: "scale")
-        
     }
-    
     
 
     /*
