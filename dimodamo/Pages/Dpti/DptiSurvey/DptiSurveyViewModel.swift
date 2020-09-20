@@ -13,11 +13,7 @@ import RxRelay
 class DptiSurveyViewModel {
     
     lazy var surveyObservable = BehaviorRelay<[DptiSurvey]>(value: [])
-    
-    lazy var surveys : [DptiSurvey] = []
-    
-    lazy var currentSurveyObservable = BehaviorRelay<DptiSurvey>(value: surveys[self.currentNumber.value])
-    
+        
     lazy var currentNumber = BehaviorRelay<Int>(value: 1)
             
     lazy var questions = BehaviorRelay<[String]>(value: [])
@@ -35,15 +31,9 @@ class DptiSurveyViewModel {
                 return jsonQuestions
             }
         .map { questions in
-            var dptiSurveys : [DptiSurvey] = []
+            let dptiSurveys : [DptiSurvey] = []
             self.questions.accept(questions)
             
-            questions.enumerated().forEach { (index, question) in
-                let dptiSurvey = DptiSurvey(number: index + 1, question: question)
-                dptiSurveys.append(dptiSurvey)
-                self.surveys.append(dptiSurvey)
-                print(dptiSurvey)
-            }
             return dptiSurveys
         }
         .take(1)
@@ -66,7 +56,7 @@ class DptiSurveyViewModel {
     
     
     // userSurveyAnswer를 기반으로 checkType실행
-    func checkType() {
+    func checkType() -> String {
         var typeEI: Int = 0;
         var typeSN: Int = 0;
         var typeTF: Int = 0;
@@ -129,6 +119,8 @@ class DptiSurveyViewModel {
         let finalType: String = "\(colorType)\(figureType)"
         
         print("finalType : \(finalType)")
+        
+        return finalType
     }
     
     

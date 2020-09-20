@@ -11,6 +11,9 @@
 		98067139250F206300C3EB72 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98067138250F206300C3EB72 /* APIService.swift */; };
 		9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713A250F20BE00C3EB72 /* DptiResult.swift */; };
 		9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713C250F214300C3EB72 /* DptiResultViewModel.swift */; };
+		9863223725178546003B0784 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9863223625178546003B0784 /* Community.storyboard */; };
+		9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863223E251785AE003B0784 /* CommunityMainViewController.swift */; };
+		9863224525178773003B0784 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863224425178773003B0784 /* TestViewController.swift */; };
 		986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA072509C42600AD3CEE /* AppDelegate.swift */; };
 		986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA092509C42600AD3CEE /* SceneDelegate.swift */; };
 		986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA0B2509C42600AD3CEE /* ViewController.swift */; };
@@ -20,9 +23,7 @@
 		986EDA172509C42800AD3CEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */; };
 		986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */; };
 		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
-		987F5A97250B141000E1B856 /* DptiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A96250B141000E1B856 /* DptiViewController.swift */; };
 		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
-		987FEC2A25138F29006F6855 /* CalculatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987FEC2925138F29006F6855 /* CalculatingViewController.swift */; };
 		98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFD251113B600943861 /* DptiSurveyViewModel.swift */; };
 		988470002511148400943861 /* DptiSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFF2511148400943861 /* DptiSurvey.swift */; };
 		9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470022511406700943861 /* Nunito-Bold.ttf */; };
@@ -52,6 +53,9 @@
 		98067138250F206300C3EB72 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9806713A250F20BE00C3EB72 /* DptiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResult.swift; sourceTree = "<group>"; };
 		9806713C250F214300C3EB72 /* DptiResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewModel.swift; sourceTree = "<group>"; };
+		9863223625178546003B0784 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
+		9863223E251785AE003B0784 /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
+		9863224425178773003B0784 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		986EDA042509C42600AD3CEE /* dimodamo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dimodamo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986EDA072509C42600AD3CEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		986EDA092509C42600AD3CEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,9 +67,7 @@
 		986EDA182509C42800AD3CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
-		987F5A96250B141000E1B856 /* DptiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiViewController.swift; sourceTree = "<group>"; };
 		987F5A9A250B152000E1B856 /* DptiResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewController.swift; sourceTree = "<group>"; };
-		987FEC2925138F29006F6855 /* CalculatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatingViewController.swift; sourceTree = "<group>"; };
 		98846FFD251113B600943861 /* DptiSurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewModel.swift; sourceTree = "<group>"; };
 		98846FFF2511148400943861 /* DptiSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurvey.swift; sourceTree = "<group>"; };
 		988470022511406700943861 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -133,8 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				987F5A9A250B152000E1B856 /* DptiResultViewController.swift */,
-				9806713A250F20BE00C3EB72 /* DptiResult.swift */,
 				9806713C250F214300C3EB72 /* DptiResultViewModel.swift */,
+				9806713A250F20BE00C3EB72 /* DptiResult.swift */,
 			);
 			path = DptiResult;
 			sourceTree = "<group>";
@@ -162,6 +164,49 @@
 				98067138250F206300C3EB72 /* APIService.swift */,
 			);
 			path = APIService;
+			sourceTree = "<group>";
+		};
+		986322352517852F003B0784 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				986EDA0D2509C42600AD3CEE /* Main.storyboard */,
+				986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */,
+				9863223625178546003B0784 /* Community.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		986322392517855B003B0784 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				9863223D2517858E003B0784 /* Main */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		9863223A25178570003B0784 /* Dpti */ = {
+			isa = PBXGroup;
+			children = (
+				9806712F250F14F500C3EB72 /* DptiSurvey */,
+				98067130250F1D7700C3EB72 /* DptiResult */,
+			);
+			path = Dpti;
+			sourceTree = "<group>";
+		};
+		9863223D2517858E003B0784 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9863223E251785AE003B0784 /* CommunityMainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9863224325178767003B0784 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				9863224425178773003B0784 /* TestViewController.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		986ED9FB2509C42600AD3CEE = {
@@ -192,12 +237,11 @@
 				98067133250F1F8200C3EB72 /* Domain */,
 				987F5A95250B13F300E1B856 /* Pages */,
 				986EDA1E2509CBFF00AD3CEE /* classRoom */,
+				986322352517852F003B0784 /* Storyboard */,
 				986EDA072509C42600AD3CEE /* AppDelegate.swift */,
 				986EDA092509C42600AD3CEE /* SceneDelegate.swift */,
 				986EDA0B2509C42600AD3CEE /* ViewController.swift */,
-				986EDA0D2509C42600AD3CEE /* Main.storyboard */,
 				986EDA132509C42800AD3CEE /* Assets.xcassets */,
-				986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */,
 				986EDA182509C42800AD3CEE /* Info.plist */,
 				986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */,
 				987F5A9D250B1CB500E1B856 /* fonts */,
@@ -216,10 +260,9 @@
 		987F5A95250B13F300E1B856 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				9806712F250F14F500C3EB72 /* DptiSurvey */,
-				987FEC2825138F00006F6855 /* Calculating */,
-				98067130250F1D7700C3EB72 /* DptiResult */,
-				987F5A96250B141000E1B856 /* DptiViewController.swift */,
+				9863224325178767003B0784 /* Test */,
+				9863223A25178570003B0784 /* Dpti */,
+				986322392517855B003B0784 /* Community */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -240,14 +283,6 @@
 				98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */,
 			);
 			path = fonts;
-			sourceTree = "<group>";
-		};
-		987FEC2825138F00006F6855 /* Calculating */ = {
-			isa = PBXGroup;
-			children = (
-				987FEC2925138F29006F6855 /* CalculatingViewController.swift */,
-			);
-			path = Calculating;
 			sourceTree = "<group>";
 		};
 		98C48B14250CD163004E24E5 /* Lottie */ = {
@@ -332,6 +367,7 @@
 				9884700C2511406700943861 /* Nunito-ExtraLight.ttf in Resources */,
 				98C48B1D250CF97E004E24E5 /* Survey.json in Resources */,
 				98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */,
+				9863223725178546003B0784 /* Community.storyboard in Resources */,
 				98847014251264B300943861 /* TE_M.json in Resources */,
 				988470102511406700943861 /* Nunito-Regular.ttf in Resources */,
 				98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */,
@@ -398,9 +434,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				987FEC2A25138F29006F6855 /* CalculatingViewController.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
+				9863224525178773003B0784 /* TestViewController.swift in Sources */,
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
@@ -408,13 +444,13 @@
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
 				9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */,
-				987F5A97250B141000E1B856 /* DptiViewController.swift in Sources */,
 				9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */,
 				986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */,
 				98067137250F1FD000C3EB72 /* DomainModel.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
+				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
