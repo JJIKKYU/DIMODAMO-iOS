@@ -11,6 +11,7 @@ import UIKit
 class TestViewController: UIViewController {
     
     let communityStoryboard: UIStoryboard = UIStoryboard(name: "Community", bundle: .main)
+    let registerStoryboard: UIStoryboard = UIStoryboard(name: "Register", bundle: .main)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class TestViewController: UIViewController {
     
     @IBAction func pressCommunityMain(_ sender: Any) {
         print(communityStoryboard)
-        let communityVC: UIViewController = communityStoryboard.instantiateViewController(identifier: "communityMain")
+        let communityVC: UIViewController = communityStoryboard.instantiateViewController(identifier: "CommunityMain")
         print(communityVC)
         
 //        let transition = CATransition()
@@ -39,6 +40,15 @@ class TestViewController: UIViewController {
 //        self.present(communityVC, animated: true, completion: nil)
     }
 
+    @IBAction func pressRegister(_ sender: Any) {
+        let registerVC: UIViewController = registerStoryboard.instantiateViewController(withIdentifier: "RegisterMain")
+        print("\(registerStoryboard), \(registerVC)")
+        
+        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
+
+        navBarOnModal.modalPresentationStyle = .fullScreen
+        present(navBarOnModal, animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation

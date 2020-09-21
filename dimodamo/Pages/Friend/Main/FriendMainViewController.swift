@@ -8,12 +8,13 @@
 
 import UIKit
 
-class FriendMainViewController: UITabBarController {
+class FriendMainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("마니또 연결이 되었니?")
     }
     
 
