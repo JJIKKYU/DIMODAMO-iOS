@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -3507,7 +3506,7 @@
         <!--Navigation Controller-->
         <scene sceneID="AUf-4X-a4R">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenVerticallyCompact="YES" id="jfm-21-JgW" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jfm-21-JgW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cbH-im-yh3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -3523,7 +3522,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hv2-oY-c6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="155"/>
+            <point key="canvasLocation" x="678" y="155"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="P5B-WX-e6y">
@@ -3553,18 +3552,28 @@
                                     <action selector="pressCommunityMain:" destination="U1X-jK-vjF" eventType="touchUpInside" id="mTL-7i-x1k"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1v-3J-90e">
+                                <rect key="frame" x="20" y="352" width="57" height="30"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="pressRegister:" destination="U1X-jK-vjF" eventType="touchUpInside" id="u56-cR-ZWA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQJ-c0-3Rl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="Xtw-Ro-FVt" firstAttribute="leading" secondItem="4yC-4B-6UX" secondAttribute="leading" id="GoH-og-Lbv"/>
                             <constraint firstItem="Xtw-Ro-FVt" firstAttribute="top" secondItem="4yC-4B-6UX" secondAttribute="bottom" constant="76" id="MI6-hK-eci"/>
+                            <constraint firstItem="gQJ-c0-3Rl" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y1v-3J-90e" secondAttribute="trailing" symbolic="YES" id="MQw-DQ-pLc"/>
                             <constraint firstItem="gQJ-c0-3Rl" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3iq-jn-ths" secondAttribute="trailing" symbolic="YES" id="ObW-IW-cgZ"/>
                             <constraint firstItem="4yC-4B-6UX" firstAttribute="top" secondItem="gQJ-c0-3Rl" secondAttribute="top" constant="27" id="Q6c-6P-2db"/>
                             <constraint firstItem="3iq-jn-ths" firstAttribute="top" secondItem="Xtw-Ro-FVt" secondAttribute="bottom" constant="32" id="b1a-Lb-20O"/>
+                            <constraint firstItem="y1v-3J-90e" firstAttribute="leading" secondItem="3iq-jn-ths" secondAttribute="leading" id="bBn-zK-6G2"/>
                             <constraint firstItem="4yC-4B-6UX" firstAttribute="leading" secondItem="gQJ-c0-3Rl" secondAttribute="leading" constant="20" id="fLj-cN-nIO"/>
                             <constraint firstItem="gQJ-c0-3Rl" firstAttribute="trailing" secondItem="4yC-4B-6UX" secondAttribute="trailing" constant="93" id="lkR-hs-1Yy"/>
                             <constraint firstItem="gQJ-c0-3Rl" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xtw-Ro-FVt" secondAttribute="trailing" symbolic="YES" id="m8y-4o-BsR"/>
+                            <constraint firstItem="y1v-3J-90e" firstAttribute="top" secondItem="3iq-jn-ths" secondAttribute="bottom" constant="28" id="mva-W5-PvW"/>
                             <constraint firstItem="3iq-jn-ths" firstAttribute="leading" secondItem="Xtw-Ro-FVt" secondAttribute="leading" id="vgW-aB-BxH"/>
                         </constraints>
                     </view>
@@ -3598,8 +3607,8 @@
                     <connections>
                         <segue destination="Jaw-YX-Y0Z" kind="relationship" relationship="viewControllers" id="3Pe-Fx-9Hq"/>
                         <segue destination="U1X-jK-vjF" kind="relationship" relationship="viewControllers" id="abQ-H6-mIm"/>
-                        <segue destination="fgO-Qy-81z" kind="relationship" relationship="viewControllers" id="dak-kf-mk4"/>
                         <segue destination="qLm-Nf-Sq2" kind="relationship" relationship="viewControllers" id="Rnh-3x-kM2"/>
+                        <segue destination="JdQ-p9-eVX" kind="relationship" relationship="viewControllers" id="Pqh-hr-bic"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjb-j3-P11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3622,10 +3631,10 @@
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="E9F-lj-vH4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="E9F-lj-vH4" firstAttribute="trailing" secondItem="YqP-8p-VYG" secondAttribute="trailing" id="03p-bD-GV0"/>
-                            <constraint firstItem="E9F-lj-vH4" firstAttribute="bottom" secondItem="YqP-8p-VYG" secondAttribute="bottom" id="4NY-cQ-bDo"/>
+                            <constraint firstItem="YqP-8p-VYG" firstAttribute="bottom" secondItem="E9F-lj-vH4" secondAttribute="bottom" id="BQm-Qq-ual"/>
                             <constraint firstItem="YqP-8p-VYG" firstAttribute="leading" secondItem="E9F-lj-vH4" secondAttribute="leading" id="NIv-Lf-RTi"/>
                             <constraint firstItem="YqP-8p-VYG" firstAttribute="top" secondItem="E9F-lj-vH4" secondAttribute="top" id="del-qN-6NH"/>
                         </constraints>
@@ -3634,7 +3643,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zwd-KU-rvJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="883"/>
+            <point key="canvasLocation" x="3140.579710144928" y="882.58928571428567"/>
         </scene>
         <!--CommunityMain-->
         <scene sceneID="CpL-KO-qCo">
@@ -3647,7 +3656,7 @@
         <!--View Controller-->
         <scene sceneID="7qK-Al-ndZ">
             <objects>
-                <viewController storyboardIdentifier="classRoomMain" id="qLm-Nf-Sq2" sceneMemberID="viewController">
+                <viewController id="qLm-Nf-Sq2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zJC-4D-F6m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3660,7 +3669,7 @@
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bdd-iD-bEX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="bdd-iD-bEX" firstAttribute="trailing" secondItem="CzO-Wh-Kqa" secondAttribute="trailing" id="1OJ-1g-Fgm"/>
                             <constraint firstItem="bdd-iD-bEX" firstAttribute="bottom" secondItem="CzO-Wh-Kqa" secondAttribute="bottom" id="3mo-gj-frQ"/>
@@ -3683,42 +3692,42 @@
             <point key="canvasLocation" x="3701" y="2054"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="O9l-mA-qB7">
+        <scene sceneID="43V-lL-NmY">
             <objects>
-                <viewController id="fgO-Qy-81z" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mjl-S1-pwH">
+                <viewController id="JdQ-p9-eVX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lt0-51-UyK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaN-hy-2AV">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Zx-di-OqX">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <connections>
-                                    <segue destination="syC-UL-FjJ" kind="embed" id="lRk-ef-kCc"/>
+                                    <segue destination="XqL-PQ-a9k" kind="embed" id="q9N-hH-Vr2"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="dJS-RW-XbC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="lHH-3C-3dt"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
-                            <constraint firstItem="dJS-RW-XbC" firstAttribute="bottom" secondItem="LaN-hy-2AV" secondAttribute="bottom" id="4NS-c9-Lc1"/>
-                            <constraint firstItem="LaN-hy-2AV" firstAttribute="top" secondItem="dJS-RW-XbC" secondAttribute="top" id="Epq-1o-tke"/>
-                            <constraint firstItem="LaN-hy-2AV" firstAttribute="leading" secondItem="dJS-RW-XbC" secondAttribute="leading" id="FoI-Bu-VwN"/>
-                            <constraint firstItem="dJS-RW-XbC" firstAttribute="trailing" secondItem="LaN-hy-2AV" secondAttribute="trailing" id="V0x-NQ-gnU"/>
+                            <constraint firstItem="lHH-3C-3dt" firstAttribute="bottom" secondItem="3Zx-di-OqX" secondAttribute="bottom" id="U4x-F1-3BC"/>
+                            <constraint firstItem="lHH-3C-3dt" firstAttribute="trailing" secondItem="3Zx-di-OqX" secondAttribute="trailing" id="c5Y-iu-Ir9"/>
+                            <constraint firstItem="3Zx-di-OqX" firstAttribute="top" secondItem="lHH-3C-3dt" secondAttribute="top" id="qAX-2l-O3c"/>
+                            <constraint firstItem="3Zx-di-OqX" firstAttribute="leading" secondItem="lHH-3C-3dt" secondAttribute="leading" id="xnC-y5-VAj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="friend" selectedImage="friendSelected" id="3tE-kk-sPY"/>
+                    <tabBarItem key="tabBarItem" title="" image="friend" selectedImage="friendSelected" id="xTT-7B-bYF"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="29M-9j-KZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J70-zy-zI8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="1559"/>
+            <point key="canvasLocation" x="3142" y="1604"/>
         </scene>
-        <!--friendMain-->
-        <scene sceneID="Ltw-Fr-IIF">
+        <!--FriendsMain-->
+        <scene sceneID="gTA-L5-X7e">
             <objects>
-                <viewControllerPlaceholder storyboardName="Friend" referencedIdentifier="friendMain" id="syC-UL-FjJ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="olU-Bf-UYP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Friends" referencedIdentifier="FriendsMain" id="XqL-PQ-a9k" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZBY-GI-omp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3626" y="1547"/>
+            <point key="canvasLocation" x="3701" y="1604"/>
         </scene>
     </scenes>
     <resources>
@@ -3776,8 +3785,5 @@
         <namedColor name="YELLOW - DARK">
             <color red="1" green="0.70599997043609619" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
