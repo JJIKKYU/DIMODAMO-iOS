@@ -39,6 +39,9 @@
 		988470102511406700943861 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470082511406700943861 /* Nunito-Regular.ttf */; };
 		98847013251264B300943861 /* TE_G.json in Resources */ = {isa = PBXBuildFile; fileRef = 98847011251264B300943861 /* TE_G.json */; };
 		98847014251264B300943861 /* TE_M.json in Resources */ = {isa = PBXBuildFile; fileRef = 98847012251264B300943861 /* TE_M.json */; };
+		989384CD251866A900DE2C35 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989384CC251866A900DE2C35 /* RegisterViewController.swift */; };
+		989384D0251866B500DE2C35 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989384CF251866B500DE2C35 /* RegisterViewModel.swift */; };
+		989384D3251866C400DE2C35 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 989384D2251866C400DE2C35 /* Register.storyboard */; };
 		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
 		98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */; };
 		98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */; };
@@ -87,6 +90,9 @@
 		988470082511406700943861 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		98847011251264B300943861 /* TE_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TE_G.json; path = dimodamo/lottie/TE_G.json; sourceTree = SOURCE_ROOT; };
 		98847012251264B300943861 /* TE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TE_M.json; path = dimodamo/lottie/TE_M.json; sourceTree = SOURCE_ROOT; };
+		989384CC251866A900DE2C35 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		989384CF251866B500DE2C35 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		989384D2251866C400DE2C35 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStyleGuide.swift; sourceTree = "<group>"; };
 		98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 				9863223625178546003B0784 /* Community.storyboard */,
 				9863224C2517B9AB003B0784 /* ClassRoom.storyboard */,
 				9863224F2517BB4D003B0784 /* Friend.storyboard */,
+				989384D2251866C400DE2C35 /* Register.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -286,6 +293,7 @@
 		987F5A95250B13F300E1B856 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				989384CA2518668600DE2C35 /* Register */,
 				986322532517BB64003B0784 /* Friend */,
 				986EDA1E2509CBFF00AD3CEE /* ClassRoom */,
 				9863224325178767003B0784 /* Test */,
@@ -311,6 +319,23 @@
 				98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		989384CA2518668600DE2C35 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				989384CB2518668D00DE2C35 /* Main */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		989384CB2518668D00DE2C35 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				989384CC251866A900DE2C35 /* RegisterViewController.swift */,
+				989384CF251866B500DE2C35 /* RegisterViewModel.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		98C48B14250CD163004E24E5 /* Lottie */ = {
@@ -408,6 +433,7 @@
 				98C48B13250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf in Resources */,
 				9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */,
 				986322502517BB4D003B0784 /* Friend.storyboard in Resources */,
+				989384D3251866C400DE2C35 /* Register.storyboard in Resources */,
 				98847013251264B300943861 /* TE_G.json in Resources */,
 				986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */,
 				9884700F2511406700943861 /* Nunito-Light.ttf in Resources */,
@@ -475,10 +501,12 @@
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
+				989384CD251866A900DE2C35 /* RegisterViewController.swift in Sources */,
 				9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */,
 				9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */,
 				986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */,
 				98067137250F1FD000C3EB72 /* DomainModel.swift in Sources */,
+				989384D0251866B500DE2C35 /* RegisterViewModel.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
