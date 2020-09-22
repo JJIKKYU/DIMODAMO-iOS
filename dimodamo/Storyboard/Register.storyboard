@@ -598,10 +598,10 @@
             </objects>
             <point key="canvasLocation" x="232" y="420"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register Birth View Controller-->
         <scene sceneID="cmL-lb-fa6">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Oh-fc-QqB" customClass="RegisterViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Oh-fc-QqB" customClass="RegisterBirthViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pW2-nL-93u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -640,7 +640,7 @@
                                                     <color key="titleColor" name="WHITE"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="pressedBirthdayNextBtn:" destination="8Oh-fc-QqB" eventType="touchUpInside" id="ibH-DR-5IZ"/>
+                                                    <action selector="pressedNextBtn:" destination="8Oh-fc-QqB" eventType="touchUpInside" id="Qjk-Jc-DBf"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="텍스트를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJ4-R3-ncC">
@@ -698,8 +698,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="closeBtn" destination="TuK-kD-l5h" id="DTA-we-vKP"/>
-                        <outlet property="nextBtn" destination="O1q-Q7-Lzd" id="4Sj-6k-nyw"/>
+                        <outlet property="birthTextField" destination="gJ4-R3-ncC" id="gD8-UB-bhe"/>
+                        <outlet property="nextBtn" destination="O1q-Q7-Lzd" id="qfk-eh-8YS"/>
                         <segue destination="iLn-PB-Yre" kind="show" identifier="InputGender" id="axY-rf-O8s"/>
                     </connections>
                 </viewController>

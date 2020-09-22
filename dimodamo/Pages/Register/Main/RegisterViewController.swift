@@ -19,10 +19,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var closeBtn: UIBarButtonItem!
     
-    // MARK: - Name Screen IBOutlet
-    
-    
-    
     // MARK: - Gender Screen IBOutlet
     
     @IBOutlet weak var maleBtn: UIButton!
