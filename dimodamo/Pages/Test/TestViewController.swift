@@ -10,6 +10,7 @@ import UIKit
 
 class TestViewController: UIViewController {
     
+    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
     let communityStoryboard: UIStoryboard = UIStoryboard(name: "Community", bundle: .main)
     let registerStoryboard: UIStoryboard = UIStoryboard(name: "Register", bundle: .main)
 
@@ -20,6 +21,12 @@ class TestViewController: UIViewController {
     
     @IBAction func pressDptiMain(_ sender: Any) {
         performSegue(withIdentifier: "DptiMain", sender: sender)
+        
+//        let dptiSurveyVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "DptiSurvey")
+//        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: dptiSurveyVC)
+//
+//        navBarOnModal.modalPresentationStyle = .fullScreen
+//        present(navBarOnModal, animated: true, completion: nil)
     }
     
     @IBAction func pressCommunityMain(_ sender: Any) {

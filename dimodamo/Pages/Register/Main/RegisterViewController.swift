@@ -8,18 +8,20 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, UITextFieldDelegate {
+import RxSwift
+import RxCocoa
 
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
-        
+    
     // MARK: - All Screen IBOutlet
     // 넥스트 버튼 디자인용 참조
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var closeBtn: UIBarButtonItem!
     
     // MARK: - Name Screen IBOutlet
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var nextBtnName: UIButton!
+    
     
     // MARK: - Gender Screen IBOutlet
     
@@ -28,30 +30,40 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Interest Screen IBOutlet
     @IBOutlet var interestBtnList: Array<UIButton>!
+
+    // MARK: - School Screen IBOutlet
+    @IBOutlet weak var nextCertifySchoolBtn: UIButton!
     
     
     // MARK: - View
-
-    override func viewWillAppear(_ animated: Bool) {
-        self.nameTextField?.becomeFirstResponder()
-    }
+    
+    var disposeBag = DisposeBag() 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
-        // Do any additional setup after loading the view.
+        
+        closeBtn?.rx.tap
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext : { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        
                 
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    
+    
+    
+    // 키보드 업, 다운 관련
     @objc func moveUpTextView(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0, animations: {
                             self.nextBtn?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
-                
             })
-            
         }
     }
     
@@ -59,27 +71,24 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.nextBtn?.transform = .identity
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.nameTextField?.resignFirstResponder()
-    }
+    
+    
     
     
     
     // MARK: - IBAction
-    
 
-    @IBAction func PressedFirstNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputName", sender: sender)
-    }
-    @IBAction func pressedNameNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputBirthday", sender: sender)
-    }
     @IBAction func pressedBirthdayNextBtn(_ sender: Any) {
         performSegue(withIdentifier: "InputGender", sender: sender)
     }
     @IBAction func preesedGenderNextBtn(_ sender: Any) {
         performSegue(withIdentifier: "InputInterest", sender: sender)
-
+    }
+    @IBAction func pressedInterestNextBtn(_ sender: Any) {
+        performSegue(withIdentifier: "InputNickname", sender: sender)
+    }
+    @IBAction func pressedNicknameNextBtn(_ sender: Any) {
+        performSegue(withIdentifier: "InputSchool", sender: sender)
     }
     
 }
@@ -90,19 +99,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
 extension RegisterViewController {
     
     func viewDesign() {
-        designNavBar()
         designNextBtn()
         navigationBarDesign()
         designGenderBtn()
         designInterestBtn()
-    }
-    
-    func designNavBar() {
-        navigationController?.navigationBar.tintColor = UIColor.appColor(.system)
+        designSchoolBtn()
     }
     
     func designNextBtn() {
-        nextBtn?.backgroundColor = UIColor.appColor(.systemActive)
+        nextBtn?.backgroundColor = UIColor.appColor(.systemUnactive)
         nextBtn?.layer.cornerRadius = 16
     }
     
@@ -128,5 +133,9 @@ extension RegisterViewController {
             button.layer.borderWidth = 2
             button.layer.borderColor = UIColor.appColor(.white235).cgColor
         }
+    }
+    
+    func designSchoolBtn() {
+        nextCertifySchoolBtn?.layer.cornerRadius = 16
     }
 }
