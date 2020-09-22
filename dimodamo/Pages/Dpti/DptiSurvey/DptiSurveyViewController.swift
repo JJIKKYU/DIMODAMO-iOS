@@ -155,7 +155,8 @@ class DptiSurveyViewController: UIViewController {
     }
     
     @IBAction func closeBtn(_ sender: Any) {
-        finishSurvey()
+        self.dismiss(animated: true, completion: nil)
+//        finishSurvey()
     }
     
     func finishSurvey() {

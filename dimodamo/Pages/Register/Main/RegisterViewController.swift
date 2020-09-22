@@ -12,23 +12,16 @@ import RxSwift
 import RxCocoa
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
-
-    // MARK: - Clause Screen IBOutlet
-    @IBOutlet weak var allBtn: UIButton!
-    @IBOutlet weak var serviceBtn: UIButton!
-    @IBOutlet weak var serviceBtn2: UIButton!
-    @IBOutlet weak var marketingBtn: UIView!
-    @IBOutlet weak var nextBtnClause: UIButton!
     
     
     // MARK: - All Screen IBOutlet
     // 넥스트 버튼 디자인용 참조
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var closeBtn: UIBarButtonItem!
     
     // MARK: - Name Screen IBOutlet
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var nextBtnName: UIButton!
+    
     
     // MARK: - Gender Screen IBOutlet
     
@@ -44,30 +37,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - View
     
-    var disposeBag = DisposeBag()
-
-    override func viewWillAppear(_ animated: Bool) {
-        self.nameTextField?.becomeFirstResponder()
-    }
+    var disposeBag = DisposeBag() 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
         
-        // test
-        nextBtnClause.isEnabled = false
-        
-        allBtn.rx.tap
+        closeBtn?.rx.tap
             .observeOn(MainScheduler.instance)
             .subscribe(onNext : { [weak self] in
-                self?.allBtn.isSelected = self?.allBtn.isSelected == true ? false : true
-                
-                let allBtnIsSelected: Bool = self?.allBtn.isSelected == true ? true : false
-                self?.serviceBtn.isSelected = allBtnIsSelected
-                self?.serviceBtn2.isSelected = allBtnIsSelected
+                self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-        
         
                 
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -90,23 +71,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.nextBtn?.transform = .identity
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.nameTextField?.resignFirstResponder()
-    }
     
     
     
     
     
     // MARK: - IBAction
-    
 
-    @IBAction func PressedFirstNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputName", sender: sender)
-    }
-    @IBAction func pressedNameNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputBirthday", sender: sender)
-    }
     @IBAction func pressedBirthdayNextBtn(_ sender: Any) {
         performSegue(withIdentifier: "InputGender", sender: sender)
     }
@@ -128,16 +99,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
 extension RegisterViewController {
     
     func viewDesign() {
-        designNavBar()
         designNextBtn()
         navigationBarDesign()
         designGenderBtn()
         designInterestBtn()
         designSchoolBtn()
-    }
-    
-    func designNavBar() {
-        navigationController?.navigationBar.tintColor = UIColor.appColor(.system)
     }
     
     func designNextBtn() {

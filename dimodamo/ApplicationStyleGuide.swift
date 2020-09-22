@@ -145,3 +145,26 @@ var statusBarUIView: UIView? {
     return nil
   }
 }
+
+
+
+//MARK: - AppStyleGuide
+
+class AppStyleGuide {
+    static func systemBtnRadius16(btn : UIButton, isActive: Bool) {
+        let btnColor: UIColor = isActive == true ? UIColor.appColor(.systemActive) : UIColor.appColor(.systemUnactive)
+        
+        btn.backgroundColor = btnColor
+        btn.layer.cornerRadius = 16
+    }
+    
+    static func navigationBarWhite(navController: UINavigationController) {
+        let navBar = navController.navigationBar
+        navBar.setBackgroundImage(UIImage(), for: .default)
+        navBar.shadowImage = UIImage()
+    }
+    
+    static func navBarOrange(navigationController: UINavigationController) {
+        navigationController.navigationBar.tintColor = UIColor.appColor(.system)
+    }
+}
