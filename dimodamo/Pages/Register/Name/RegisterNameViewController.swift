@@ -20,7 +20,7 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var checkIcon: UIImageView!
-    
+     
     var viewModel : RegisterViewModel? = nil
     var disposeBag = DisposeBag()
     
