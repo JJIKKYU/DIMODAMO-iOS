@@ -269,7 +269,7 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xp-jr-686">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
-                                                <color key="backgroundColor" name="SYSTEM"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="c56-aG-l7t"/>
                                                 </constraints>
@@ -513,7 +513,7 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ux-Ko-iMW">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
-                                                <color key="backgroundColor" name="SYSTEM - UNACTIVE"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="NWj-Yh-TKc"/>
                                                 </constraints>
@@ -647,7 +647,7 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1q-Q7-Lzd">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
-                                                <color key="backgroundColor" name="SYSTEM"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="nzx-Wq-hi9"/>
                                                 </constraints>
@@ -668,6 +668,12 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7g-Ay-1Po">
+                                                <rect key="frame" x="113" y="163" width="6" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <color key="textColor" name="GRAY - 170"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="scN-KN-mEL" userLabel="Moth Text Field">
                                                 <rect key="frame" x="135" y="162" width="50" height="22"/>
                                                 <constraints>
@@ -677,6 +683,12 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0J-OK-ebQ">
+                                                <rect key="frame" x="187" y="163" width="6" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <color key="textColor" name="GRAY - 170"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Faw-x6-NcJ" userLabel="Day Text Field">
                                                 <rect key="frame" x="209" y="162" width="50" height="22"/>
                                                 <constraints>
@@ -700,12 +712,16 @@
                                         <constraints>
                                             <constraint firstItem="tvr-rw-izf" firstAttribute="leading" secondItem="vQr-I9-dNl" secondAttribute="leading" id="4AJ-HS-gsi"/>
                                             <constraint firstItem="scN-KN-mEL" firstAttribute="centerY" secondItem="gJ4-R3-ncC" secondAttribute="centerY" id="8e2-nX-yM8"/>
+                                            <constraint firstItem="W0J-OK-ebQ" firstAttribute="trailing" secondItem="scN-KN-mEL" secondAttribute="trailing" constant="8" id="AZ5-Cx-zM0"/>
                                             <constraint firstItem="tvr-rw-izf" firstAttribute="trailing" secondItem="vQr-I9-dNl" secondAttribute="trailing" id="EEn-CL-AEQ"/>
                                             <constraint firstItem="mU0-2n-wX1" firstAttribute="top" secondItem="gJ4-R3-ncC" secondAttribute="bottom" constant="12" id="FC1-Qb-OaC"/>
                                             <constraint firstAttribute="bottom" secondItem="O1q-Q7-Lzd" secondAttribute="bottom" id="FR5-8u-y9m"/>
+                                            <constraint firstItem="W0J-OK-ebQ" firstAttribute="centerY" secondItem="scN-KN-mEL" secondAttribute="centerY" id="HIR-ir-dzM"/>
                                             <constraint firstItem="gJ4-R3-ncC" firstAttribute="top" secondItem="tvr-rw-izf" secondAttribute="bottom" constant="80" id="IAW-Od-h43"/>
+                                            <constraint firstItem="E7g-Ay-1Po" firstAttribute="centerY" secondItem="gJ4-R3-ncC" secondAttribute="centerY" id="KTO-cO-gV1"/>
                                             <constraint firstAttribute="trailing" secondItem="Xdp-Eo-4A5" secondAttribute="trailing" id="NbD-8m-nA2"/>
                                             <constraint firstAttribute="height" constant="765" id="QXZ-7Z-3N1"/>
+                                            <constraint firstItem="E7g-Ay-1Po" firstAttribute="trailing" secondItem="gJ4-R3-ncC" secondAttribute="trailing" constant="12" id="Uyv-Yt-6N9"/>
                                             <constraint firstItem="gJ4-R3-ncC" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="10" id="Zfp-lk-CYC"/>
                                             <constraint firstItem="tvr-rw-izf" firstAttribute="top" secondItem="vQr-I9-dNl" secondAttribute="bottom" constant="25" id="bwb-T5-sLb"/>
                                             <constraint firstItem="bCg-8z-evh" firstAttribute="centerY" secondItem="mU0-2n-wX1" secondAttribute="centerY" id="dIS-GJ-WoW"/>
@@ -763,10 +779,10 @@
             </objects>
             <point key="canvasLocation" x="1050.7246376811595" y="419.86607142857139"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register Gender View Controller-->
         <scene sceneID="yeT-Br-f1x">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="iLn-PB-Yre" customClass="RegisterViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="iLn-PB-Yre" customClass="RegisterGenderViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9mH-Q6-AdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -792,8 +808,12 @@
                                                     <constraint firstAttribute="height" constant="56" id="bbS-mT-B9o"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="남자예요!">
                                                     <color key="titleColor" name="GRAY - 210"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" name="GRAY - 170"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozd-Wl-ZKH" userLabel="여자예요!">
@@ -802,13 +822,17 @@
                                                     <constraint firstAttribute="height" constant="56" id="b1T-vk-gMH"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="여자예요!">
                                                     <color key="titleColor" name="GRAY - 210"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" name="GRAY - 190"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWk-5H-YRk">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
-                                                <color key="backgroundColor" name="SYSTEM"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="X4b-zx-ZJ2"/>
                                                 </constraints>
@@ -816,9 +840,6 @@
                                                 <state key="normal" title="다음으로">
                                                     <color key="titleColor" name="WHITE"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="preesedGenderNextBtn:" destination="iLn-PB-Yre" eventType="touchUpInside" id="Y5p-Hh-SLi"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -871,10 +892,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="closeBtn" destination="pzc-Nw-wSa" id="uO4-7i-yZs"/>
                         <outlet property="femaleBtn" destination="ozd-Wl-ZKH" id="AGC-21-X1l"/>
                         <outlet property="maleBtn" destination="yCZ-xb-4Bg" id="cq3-9x-ETS"/>
-                        <outlet property="nextBtn" destination="BWk-5H-YRk" id="Wyd-wr-hG5"/>
+                        <outlet property="nextBtn" destination="BWk-5H-YRk" id="KyD-8u-qKI"/>
                         <segue destination="zbw-qQ-ZYg" kind="show" identifier="InputInterest" id="eYB-Kl-Wnh"/>
                     </connections>
                 </viewController>
@@ -912,7 +932,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATW-Jf-OIL">
-                                                <rect key="frame" x="296.5" y="50" width="69.5" height="56"/>
+                                                <rect key="frame" x="282.5" y="50" width="83.5" height="57.5"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Heavy" family="SF Pro Display" pointSize="48"/>
                                                 <color key="textColor" name="WHITE - 235"/>
                                                 <nil key="highlightedColor"/>
@@ -1099,7 +1119,7 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjw-0l-uXC">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
-                                                <color key="backgroundColor" name="SYSTEM"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="nex-Ew-BRc"/>
                                                 </constraints>
@@ -1226,7 +1246,7 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzF-9U-0nX">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
-                                                <color key="backgroundColor" name="SYSTEM"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="6qk-Pb-lk0"/>
                                                 </constraints>
@@ -1407,7 +1427,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="io9-Bb-WrD">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
-                                                <color key="backgroundColor" name="SYSTEM"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="guS-ba-Hgo"/>
                                                 </constraints>
@@ -1518,9 +1538,6 @@
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.50999999046325684" blue="0.059000000357627869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SYSTEM - UNACTIVE">
-            <color red="1" green="0.82400000095367432" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT - BIG">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

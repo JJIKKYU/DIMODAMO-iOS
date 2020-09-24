@@ -152,7 +152,7 @@ var statusBarUIView: UIView? {
 
 class AppStyleGuide {
     static func systemBtnRadius16(btn : UIButton, isActive: Bool) {
-        let btnColor: UIColor = isActive == true ? UIColor.appColor(.systemActive) : UIColor.appColor(.systemUnactive)
+        let btnColor: UIColor = isActive == true ? UIColor.appColor(.systemActive) : UIColor.appColor(.gray210)
         
         btn.backgroundColor = btnColor
         btn.layer.cornerRadius = 16

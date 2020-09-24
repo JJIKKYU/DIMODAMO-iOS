@@ -19,11 +19,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var closeBtn: UIBarButtonItem!
     
-    // MARK: - Gender Screen IBOutlet
-    
-    @IBOutlet weak var maleBtn: UIButton!
-    @IBOutlet weak var femaleBtn: UIButton!
-    
     // MARK: - Interest Screen IBOutlet
     @IBOutlet var interestBtnList: Array<UIButton>!
 
@@ -97,7 +92,7 @@ extension RegisterViewController {
     func viewDesign() {
         designNextBtn()
         navigationBarDesign()
-        designGenderBtn()
+
         designInterestBtn()
         designSchoolBtn()
     }
@@ -113,15 +108,7 @@ extension RegisterViewController {
         navBar?.shadowImage = UIImage()
     }
     
-    func designGenderBtn() {
-        femaleBtn?.layer.borderWidth = 2
-        femaleBtn?.layer.borderColor = UIColor.appColor(.white235).cgColor
-        femaleBtn?.layer.cornerRadius = 16
-        
-        maleBtn?.layer.borderWidth = 2
-        maleBtn?.layer.borderColor = UIColor.appColor(.white235).cgColor
-        maleBtn?.layer.cornerRadius = 16
-    }
+    
     
     func designInterestBtn() {
         interestBtnList?.forEach { button in

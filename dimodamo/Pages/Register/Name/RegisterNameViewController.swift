@@ -79,7 +79,7 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "InputBirth" {
+        if segue.identifier == "InputBirthday" {
             let destinationVC = segue.destination as? RegisterBirthViewController
             destinationVC?.viewModel = self.viewModel
         }

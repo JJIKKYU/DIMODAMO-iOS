@@ -52,7 +52,7 @@ class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 if (self?.monthTextField.text!.count)! >= 2 {
-                    self?.viewModel?.month.accept((self?.yearTextField.text!)!)
+                    self?.viewModel?.month.accept((self?.monthTextField.text!)!)
                     self?.dayTextField.becomeFirstResponder()
                 }
             })
@@ -62,25 +62,56 @@ class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 if (self?.dayTextField.text!.count)! >= 2 {
-                    self?.viewModel?.day.accept((self?.yearTextField.text!)!)
+                    self?.viewModel?.day.accept((self?.dayTextField.text!)!)
                     self?.dayTextField.resignFirstResponder()
                 }
             })
             .disposed(by: disposeBag)
         
+        Observable.combineLatest(
+            viewModel!.birth.map { $0.count >= 4 },
+            viewModel!.month.map { $0.count >= 2 },
+            viewModel!.day.map { $0.count >= 2 }
+            )
+        .observeOn(MainScheduler.instance)
+        .subscribe { [weak self] birth, month, day in
+            if birth && month && day {
+                UIView.animate(withDuration: 0.5) {
+                    self?.checkIcon.alpha = 1
+                    AppStyleGuide.systemBtnRadius16(btn: (self?.nextBtn)!, isActive: true)
+                    print(self?.viewModel?.birthMonthDay)
+                }
+            } else {
+                UIView.animate(withDuration: 0.5) {
+                    self?.checkIcon.alpha = 0
+                    AppStyleGuide.systemBtnRadius16(btn: (self?.nextBtn)!, isActive: false)
+                }
+            }
+        }
+        .disposed(by: disposeBag)
         
-//        Observable.combineLatest(
-//            viewModel?.birth.map { $0.count >= 4 },
-//            viewModel?.month.map { $0.count >= 4},
-//            viewModel?.day.map { $0.count >= 4}
-//            ) { $0 && $1 && $2}
-//        .subscribe{ a in
-//            print(a)
-//        }
-//        .disposed(by: disposeBag)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "InputGender" {
+            let destinationVC = segue.destination as? RegisterGenderViewController
+            destinationVC?.viewModel = self.viewModel
+        }
+    }
+    
+    @objc func moveUpTextView(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            UIView.animate(withDuration: 0, animations: {
+                            self.nextBtn?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+            })
+        }
+    }
+    
+    @objc func moveDownTextView() {
+        self.nextBtn?.transform = .identity
     }
 
     @IBAction func pressedNextBtn(_ sender: Any) {

@@ -27,13 +27,33 @@ class RegisterViewModel {
     
     // RegisterBirth
     // 생년월일
-    var birthMonthDay: String = ""
     var birth = BehaviorRelay(value: "")
     var month = BehaviorRelay(value: "")
     var day = BehaviorRelay(value: "")
-    var BirthIsValied: Bool { birth.value.count >= 4 && month.value.count >= 2 && day.value.count >= 2 }
+    lazy var birthMonthDay: String = "\(birth.value)_\(month.value)_\(day.value)"
     
     init() {
         
+    }
+    
+    func isValiedBirth() -> Bool {
+        var birthValied: Bool = false
+        if birth.value.count >= 4 && Int(birth.value)! < 2020 {
+            birthValied = true
+        } else { birthValied = false }
+        
+        var monthValied: Bool = false
+        if month.value.count >= 2 && Int(month.value)! <= 12 {
+            monthValied = true
+        } else { monthValied = false }
+        
+        var dayValied: Bool = false
+        if month.value.count >= 2 && Int(day.value)! <= 31 {
+            dayValied = true
+        } else { dayValied = false }
+        
+        if birthValied && monthValied && dayValied {
+            return true
+        } else { return false }
     }
 }

@@ -11,6 +11,7 @@
 		98067139250F206300C3EB72 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98067138250F206300C3EB72 /* APIService.swift */; };
 		9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713A250F20BE00C3EB72 /* DptiResult.swift */; };
 		9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713C250F214300C3EB72 /* DptiResultViewModel.swift */; };
+		983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983485D3251C585500C4074B /* RegisterGenderViewController.swift */; };
 		985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D381225198D1F00C53378 /* RegisterViewModel.swift */; };
 		9863223725178546003B0784 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9863223625178546003B0784 /* Community.storyboard */; };
 		9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863223E251785AE003B0784 /* CommunityMainViewController.swift */; };
@@ -64,6 +65,7 @@
 		98067138250F206300C3EB72 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9806713A250F20BE00C3EB72 /* DptiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResult.swift; sourceTree = "<group>"; };
 		9806713C250F214300C3EB72 /* DptiResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewModel.swift; sourceTree = "<group>"; };
+		983485D3251C585500C4074B /* RegisterGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderViewController.swift; sourceTree = "<group>"; };
 		985D381225198D1F00C53378 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		9863223625178546003B0784 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		9863223E251785AE003B0784 /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,14 @@
 				98067138250F206300C3EB72 /* APIService.swift */,
 			);
 			path = APIService;
+			sourceTree = "<group>";
+		};
+		983485D2251C584300C4074B /* Gender */ = {
+			isa = PBXGroup;
+			children = (
+				983485D3251C585500C4074B /* RegisterGenderViewController.swift */,
+			);
+			path = Gender;
 			sourceTree = "<group>";
 		};
 		985D380E25198CF500C53378 /* Clause */ = {
@@ -353,6 +363,7 @@
 				985D380E25198CF500C53378 /* Clause */,
 				98CB2DD12519C91C00CEE5FB /* Name */,
 				987D5B09251A1E7200244FD0 /* Birth */,
+				983485D2251C584300C4074B /* Gender */,
 				989384CB2518668D00DE2C35 /* Main */,
 			);
 			path = Register;
@@ -529,6 +540,7 @@
 			files = (
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
+				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
