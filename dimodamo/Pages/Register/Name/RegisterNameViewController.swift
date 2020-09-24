@@ -52,7 +52,7 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
                 print("newValue : \(newValue)")
                 
                 self?.viewModel?.userName = newValue
-                print(self?.viewModel?.userName)
+//                print(self?.viewModel?.userName)
                 
                 if self?.viewModel?.isVailed == true {
                     UIView.animate(withDuration: 0.5) {
@@ -78,6 +78,13 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "InputBirth" {
+            let destinationVC = segue.destination as? RegisterBirthViewController
+            destinationVC?.viewModel = self.viewModel
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.nameTextField.resignFirstResponder()
     }
@@ -97,15 +104,7 @@ class RegisterNameViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func pressedNextBtn(_ sender: Any) {
         performSegue(withIdentifier: "InputBirthday", sender: sender)

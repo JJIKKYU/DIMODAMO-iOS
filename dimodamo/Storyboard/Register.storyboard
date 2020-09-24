@@ -686,6 +686,14 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Xdp-Eo-4A5">
+                                                <rect key="frame" x="344" y="165" width="30" height="16.5"/>
+                                                <color key="tintColor" name="GRAY - 170"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="UKW-Nq-L66"/>
+                                                    <constraint firstAttribute="height" constant="20" id="hKz-lp-wed"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="SYSTEM"/>
@@ -696,6 +704,7 @@
                                             <constraint firstItem="mU0-2n-wX1" firstAttribute="top" secondItem="gJ4-R3-ncC" secondAttribute="bottom" constant="12" id="FC1-Qb-OaC"/>
                                             <constraint firstAttribute="bottom" secondItem="O1q-Q7-Lzd" secondAttribute="bottom" id="FR5-8u-y9m"/>
                                             <constraint firstItem="gJ4-R3-ncC" firstAttribute="top" secondItem="tvr-rw-izf" secondAttribute="bottom" constant="80" id="IAW-Od-h43"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xdp-Eo-4A5" secondAttribute="trailing" id="NbD-8m-nA2"/>
                                             <constraint firstAttribute="height" constant="765" id="QXZ-7Z-3N1"/>
                                             <constraint firstItem="gJ4-R3-ncC" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="10" id="Zfp-lk-CYC"/>
                                             <constraint firstItem="tvr-rw-izf" firstAttribute="top" secondItem="vQr-I9-dNl" secondAttribute="bottom" constant="25" id="bwb-T5-sLb"/>
@@ -705,6 +714,7 @@
                                             <constraint firstItem="O1q-Q7-Lzd" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" id="gsN-RI-PA7"/>
                                             <constraint firstItem="vQr-I9-dNl" firstAttribute="top" secondItem="eQ0-DA-zVc" secondAttribute="top" constant="24" id="h1P-dF-jOq"/>
                                             <constraint firstItem="Faw-x6-NcJ" firstAttribute="leading" secondItem="A2j-2v-DF0" secondAttribute="leading" constant="5" id="hgL-sv-Mdq"/>
+                                            <constraint firstItem="Xdp-Eo-4A5" firstAttribute="centerY" secondItem="Faw-x6-NcJ" secondAttribute="centerY" id="hst-cY-mvW"/>
                                             <constraint firstAttribute="trailing" secondItem="vQr-I9-dNl" secondAttribute="trailing" id="j7w-tu-JAV"/>
                                             <constraint firstItem="A2j-2v-DF0" firstAttribute="centerY" secondItem="bCg-8z-evh" secondAttribute="centerY" id="jBT-e7-c37"/>
                                             <constraint firstItem="Faw-x6-NcJ" firstAttribute="centerY" secondItem="scN-KN-mEL" secondAttribute="centerY" id="nZ7-zg-jPa"/>
@@ -741,6 +751,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="checkIcon" destination="Xdp-Eo-4A5" id="Wct-0a-0ny"/>
                         <outlet property="dayTextField" destination="Faw-x6-NcJ" id="lqU-Vz-axz"/>
                         <outlet property="monthTextField" destination="scN-KN-mEL" id="43M-BT-25w"/>
                         <outlet property="nextBtn" destination="O1q-Q7-Lzd" id="qfk-eh-8YS"/>
@@ -901,7 +912,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATW-Jf-OIL">
-                                                <rect key="frame" x="282.5" y="50" width="83.5" height="57.5"/>
+                                                <rect key="frame" x="296.5" y="50" width="69.5" height="56"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Heavy" family="SF Pro Display" pointSize="48"/>
                                                 <color key="textColor" name="WHITE - 235"/>
                                                 <nil key="highlightedColor"/>

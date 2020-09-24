@@ -25,6 +25,14 @@ class RegisterViewModel {
     var nameRelay = BehaviorRelay(value: "")
     var isVailed: Bool { nameRelay.value.count >= 2 }
     
+    // RegisterBirth
+    // 생년월일
+    var birthMonthDay: String = ""
+    var birth = BehaviorRelay(value: "")
+    var month = BehaviorRelay(value: "")
+    var day = BehaviorRelay(value: "")
+    var BirthIsValied: Bool { birth.value.count >= 4 && month.value.count >= 2 && day.value.count >= 2 }
+    
     init() {
         
     }

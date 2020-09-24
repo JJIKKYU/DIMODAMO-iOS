@@ -8,6 +8,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nextBtn: UIButton!
@@ -15,41 +18,70 @@ class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var monthTextField: UITextField!
     @IBOutlet weak var dayTextField: UITextField!
+    @IBOutlet weak var checkIcon: UIImageView!
+    
+    var viewModel : RegisterViewModel?
+    var disposeBag = DisposeBag()
     
     
     private var datePicker: UIDatePicker!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        // 화면이 로드될 경우에 키보드 올라오도록
+        yearTextField.becomeFirstResponder()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         registerBirthDesign()
+    
+        yearTextField.rx.controlEvent(.editingChanged)
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                if (self?.yearTextField.text!.count)! >= 4 {
+                    self?.viewModel?.birth.accept((self?.yearTextField.text!)!)
+                    self?.monthTextField.becomeFirstResponder()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        monthTextField.rx.controlEvent(.editingChanged)
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                if (self?.monthTextField.text!.count)! >= 2 {
+                    self?.viewModel?.month.accept((self?.yearTextField.text!)!)
+                    self?.dayTextField.becomeFirstResponder()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        dayTextField.rx.controlEvent(.editingChanged)
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                if (self?.dayTextField.text!.count)! >= 2 {
+                    self?.viewModel?.day.accept((self?.yearTextField.text!)!)
+                    self?.dayTextField.resignFirstResponder()
+                }
+            })
+            .disposed(by: disposeBag)
         
         
-        // 4글자가 넘어갈 경우 자동으로 다음 텍스트 필드로 넘어갈 수 있도록
-        yearTextField?.addTarget(self, action: #selector(RegisterBirthViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-        monthTextField?.addTarget(self, action: #selector(RegisterBirthViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-        dayTextField?.addTarget(self, action: #selector(RegisterBirthViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-
+//        Observable.combineLatest(
+//            viewModel?.birth.map { $0.count >= 4 },
+//            viewModel?.month.map { $0.count >= 4},
+//            viewModel?.day.map { $0.count >= 4}
+//            ) { $0 && $1 && $2}
+//        .subscribe{ a in
+//            print(a)
+//        }
+//        .disposed(by: disposeBag)
+        
+        
+        
     }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField == yearTextField {
-            if (textField.text?.count)! >= 4 {
-                monthTextField?.becomeFirstResponder()
-            }
-        }
-        else if textField == monthTextField {
-            if (textField.text?.count)! >= 2 {
-                dayTextField?.becomeFirstResponder()
-            }
-        }
-        else if textField == dayTextField {
-            if (textField.text?.count)! >= 2 {
-                dayTextField.resignFirstResponder()
-            }
-        }
-    }
-    
 
     @IBAction func pressedNextBtn(_ sender: Any) {
         performSegue(withIdentifier: "InputGender", sender: sender)
@@ -73,6 +105,7 @@ extension RegisterBirthViewController {
     func registerBirthDesign() {
         designTextfieldTextStyle()
         AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
+        checkIcon.alpha = 0
     }
     
     func designTextfieldTextStyle() {
