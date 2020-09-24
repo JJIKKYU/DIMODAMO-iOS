@@ -622,11 +622,27 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mU0-2n-wX1" userLabel="DivideLine">
-                                                <rect key="frame" x="4" y="196" width="370" height="2"/>
-                                                <color key="backgroundColor" name="WHITE - 245"/>
-                                                <color key="tintColor" name="WHITE - 245"/>
+                                                <rect key="frame" x="4" y="196" width="96" height="2"/>
+                                                <color key="backgroundColor" name="GRAY - 190"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="Qt1-OM-HZp"/>
+                                                    <constraint firstAttribute="width" constant="96" id="j4g-KU-2ar"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCg-8z-evh" userLabel="DivideLine">
+                                                <rect key="frame" x="130" y="196" width="44" height="2"/>
+                                                <color key="backgroundColor" name="GRAY - 190"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="Iyi-5p-A4D"/>
+                                                    <constraint firstAttribute="height" constant="2" id="feb-cr-t2A"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2j-2v-DF0" userLabel="DivideLine">
+                                                <rect key="frame" x="204" y="196" width="44" height="2"/>
+                                                <color key="backgroundColor" name="GRAY - 190"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="XMH-WT-3sk"/>
+                                                    <constraint firstAttribute="width" constant="44" id="z1M-DN-ASQ"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1q-Q7-Lzd">
@@ -643,32 +659,59 @@
                                                     <action selector="pressedNextBtn:" destination="8Oh-fc-QqB" eventType="touchUpInside" id="Qjk-Jc-DBf"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="텍스트를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJ4-R3-ncC">
-                                                <rect key="frame" x="4" y="162" width="370" height="22"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJ4-R3-ncC" userLabel="Year Text Field">
+                                                <rect key="frame" x="10" y="162" width="97" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="97" id="3dp-an-TdR"/>
+                                                </constraints>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="name"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="scN-KN-mEL" userLabel="Moth Text Field">
+                                                <rect key="frame" x="135" y="162" width="50" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="N0x-GX-uvD"/>
+                                                </constraints>
+                                                <color key="textColor" name="GRAY - 170"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Faw-x6-NcJ" userLabel="Day Text Field">
+                                                <rect key="frame" x="209" y="162" width="50" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="LhY-9m-GIb"/>
+                                                </constraints>
+                                                <color key="textColor" name="GRAY - 170"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="SYSTEM"/>
                                         <constraints>
                                             <constraint firstItem="tvr-rw-izf" firstAttribute="leading" secondItem="vQr-I9-dNl" secondAttribute="leading" id="4AJ-HS-gsi"/>
+                                            <constraint firstItem="scN-KN-mEL" firstAttribute="centerY" secondItem="gJ4-R3-ncC" secondAttribute="centerY" id="8e2-nX-yM8"/>
                                             <constraint firstItem="tvr-rw-izf" firstAttribute="trailing" secondItem="vQr-I9-dNl" secondAttribute="trailing" id="EEn-CL-AEQ"/>
                                             <constraint firstItem="mU0-2n-wX1" firstAttribute="top" secondItem="gJ4-R3-ncC" secondAttribute="bottom" constant="12" id="FC1-Qb-OaC"/>
                                             <constraint firstAttribute="bottom" secondItem="O1q-Q7-Lzd" secondAttribute="bottom" id="FR5-8u-y9m"/>
                                             <constraint firstItem="gJ4-R3-ncC" firstAttribute="top" secondItem="tvr-rw-izf" secondAttribute="bottom" constant="80" id="IAW-Od-h43"/>
                                             <constraint firstAttribute="height" constant="765" id="QXZ-7Z-3N1"/>
-                                            <constraint firstItem="gJ4-R3-ncC" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="4" id="Zfp-lk-CYC"/>
+                                            <constraint firstItem="gJ4-R3-ncC" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="10" id="Zfp-lk-CYC"/>
                                             <constraint firstItem="tvr-rw-izf" firstAttribute="top" secondItem="vQr-I9-dNl" secondAttribute="bottom" constant="25" id="bwb-T5-sLb"/>
+                                            <constraint firstItem="bCg-8z-evh" firstAttribute="centerY" secondItem="mU0-2n-wX1" secondAttribute="centerY" id="dIS-GJ-WoW"/>
+                                            <constraint firstItem="scN-KN-mEL" firstAttribute="leading" secondItem="bCg-8z-evh" secondAttribute="leading" constant="5" id="ej6-ir-3fn"/>
+                                            <constraint firstItem="bCg-8z-evh" firstAttribute="leading" secondItem="mU0-2n-wX1" secondAttribute="trailing" constant="30" id="eo8-eG-qrh"/>
                                             <constraint firstItem="O1q-Q7-Lzd" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" id="gsN-RI-PA7"/>
                                             <constraint firstItem="vQr-I9-dNl" firstAttribute="top" secondItem="eQ0-DA-zVc" secondAttribute="top" constant="24" id="h1P-dF-jOq"/>
-                                            <constraint firstAttribute="trailing" secondItem="gJ4-R3-ncC" secondAttribute="trailing" id="im0-di-nKw"/>
+                                            <constraint firstItem="Faw-x6-NcJ" firstAttribute="leading" secondItem="A2j-2v-DF0" secondAttribute="leading" constant="5" id="hgL-sv-Mdq"/>
                                             <constraint firstAttribute="trailing" secondItem="vQr-I9-dNl" secondAttribute="trailing" id="j7w-tu-JAV"/>
+                                            <constraint firstItem="A2j-2v-DF0" firstAttribute="centerY" secondItem="bCg-8z-evh" secondAttribute="centerY" id="jBT-e7-c37"/>
+                                            <constraint firstItem="Faw-x6-NcJ" firstAttribute="centerY" secondItem="scN-KN-mEL" secondAttribute="centerY" id="nZ7-zg-jPa"/>
                                             <constraint firstItem="vQr-I9-dNl" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" id="oGM-Ld-Li8"/>
                                             <constraint firstAttribute="trailing" secondItem="O1q-Q7-Lzd" secondAttribute="trailing" id="oHk-zn-kJm"/>
-                                            <constraint firstAttribute="trailing" secondItem="mU0-2n-wX1" secondAttribute="trailing" id="pPQ-os-5sh"/>
                                             <constraint firstItem="mU0-2n-wX1" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="4" id="r4m-SQ-XJX"/>
+                                            <constraint firstItem="A2j-2v-DF0" firstAttribute="leading" secondItem="bCg-8z-evh" secondAttribute="trailing" constant="30" id="uXM-c0-FxL"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -698,14 +741,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="birthTextField" destination="gJ4-R3-ncC" id="gD8-UB-bhe"/>
+                        <outlet property="dayTextField" destination="Faw-x6-NcJ" id="lqU-Vz-axz"/>
+                        <outlet property="monthTextField" destination="scN-KN-mEL" id="43M-BT-25w"/>
                         <outlet property="nextBtn" destination="O1q-Q7-Lzd" id="qfk-eh-8YS"/>
+                        <outlet property="yearTextField" destination="gJ4-R3-ncC" id="Qxy-p8-Qk4"/>
                         <segue destination="iLn-PB-Yre" kind="show" identifier="InputGender" id="axY-rf-O8s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5s-Lj-qG9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="420"/>
+            <point key="canvasLocation" x="1050.7246376811595" y="419.86607142857139"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="yeT-Br-f1x">
@@ -856,7 +901,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATW-Jf-OIL">
-                                                <rect key="frame" x="296.5" y="50" width="69.5" height="56"/>
+                                                <rect key="frame" x="282.5" y="50" width="83.5" height="57.5"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Heavy" family="SF Pro Display" pointSize="48"/>
                                                 <color key="textColor" name="WHITE - 235"/>
                                                 <nil key="highlightedColor"/>
@@ -1453,6 +1498,9 @@
         </namedColor>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GRAY - 190">
+            <color red="0.74500000476837158" green="0.74500000476837158" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
