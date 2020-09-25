@@ -34,6 +34,7 @@ class RegisterViewModel {
     
     // RegisterGender
     // 성별
+    var gender: Gender? = nil
     
     
     init() {

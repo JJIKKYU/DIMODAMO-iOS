@@ -19,6 +19,7 @@ class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var monthTextField: UITextField!
     @IBOutlet weak var dayTextField: UITextField!
     @IBOutlet weak var checkIcon: UIImageView!
+    @IBOutlet weak var progress: UIProgressView!
     
     var viewModel : RegisterViewModel?
     var disposeBag = DisposeBag()
@@ -78,12 +79,14 @@ class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
             if birth && month && day {
                 UIView.animate(withDuration: 0.5) {
                     self?.checkIcon.alpha = 1
+                    self?.progress.setProgress(0.42, animated: true)
                     AppStyleGuide.systemBtnRadius16(btn: (self?.nextBtn)!, isActive: true)
                     print(String((self?.viewModel!.birthMonthDay)!))
                 }
             } else {
                 UIView.animate(withDuration: 0.5) {
                     self?.checkIcon.alpha = 0
+                    self?.progress.setProgress(0.28, animated: true)
                     AppStyleGuide.systemBtnRadius16(btn: (self?.nextBtn)!, isActive: false)
                 }
             }

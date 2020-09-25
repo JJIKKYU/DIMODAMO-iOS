@@ -774,6 +774,7 @@
                         <outlet property="dayTextField" destination="Faw-x6-NcJ" id="lqU-Vz-axz"/>
                         <outlet property="monthTextField" destination="scN-KN-mEL" id="43M-BT-25w"/>
                         <outlet property="nextBtn" destination="O1q-Q7-Lzd" id="qfk-eh-8YS"/>
+                        <outlet property="progress" destination="vQr-I9-dNl" id="Th6-fl-xzP"/>
                         <outlet property="yearTextField" destination="gJ4-R3-ncC" id="Qxy-p8-Qk4"/>
                         <segue destination="iLn-PB-Yre" kind="show" identifier="InputGender" id="axY-rf-O8s"/>
                     </connections>
@@ -901,9 +902,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="closeBtn" destination="pzc-Nw-wSa" id="ayG-LR-Thg"/>
                         <outlet property="femaleBtn" destination="ozd-Wl-ZKH" id="AGC-21-X1l"/>
                         <outlet property="maleBtn" destination="yCZ-xb-4Bg" id="cq3-9x-ETS"/>
                         <outlet property="nextBtn" destination="BWk-5H-YRk" id="KyD-8u-qKI"/>
+                        <outlet property="progress" destination="v5l-OY-Vvx" id="sub-eo-a3S"/>
                         <segue destination="zbw-qQ-ZYg" kind="show" identifier="InputInterest" id="eYB-Kl-Wnh"/>
                     </connections>
                 </viewController>

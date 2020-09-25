@@ -16,6 +16,8 @@ class RegisterGenderViewController: UIViewController {
     @IBOutlet weak var maleBtn: UIButton!
     @IBOutlet weak var femaleBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var progress: UIProgressView!
+    @IBOutlet weak var closeBtn: UIBarButtonItem!
     
     var viewModel : RegisterViewModel?
     var disposeBag = DisposeBag()
@@ -27,20 +29,31 @@ class RegisterGenderViewController: UIViewController {
         maleBtn.rx.tap
             .observeOn(MainScheduler.instance)
             .subscribe(onNext:  { [weak self] in
+                self?.viewModel?.gender = .male
                 self?.selectedBtn(button: self!.maleBtn, isSelected: true)
                 self?.selectedBtn(button: self!.femaleBtn, isSelected: false)
+                
+                UIView.animate(withDuration: 0.5) {
+                    self?.progress.setProgress(0.56, animated: true)
+                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
+                }
             })
             .disposed(by: disposeBag)
         
         femaleBtn.rx.tap
             .observeOn(MainScheduler.instance)
             .subscribe(onNext:  { [weak self] in
+                self?.viewModel?.gender = .female
                 self?.selectedBtn(button: self!.femaleBtn, isSelected: true)
                 self?.selectedBtn(button: self!.maleBtn, isSelected: false)
+                
+                UIView.animate(withDuration: 0.5) {
+                    self?.progress.setProgress(0.56, animated: true)
+                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
+                }
             })
             .disposed(by: disposeBag)
 
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
