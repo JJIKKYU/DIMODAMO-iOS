@@ -58,7 +58,7 @@ class RegisterGenderViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "InputInterest" {
-            let destinationVC = segue.destination as? RegisterGenderViewController
+            let destinationVC = segue.destination as? RegisterInterestViewController
             destinationVC?.viewModel = self.viewModel
         }
     }

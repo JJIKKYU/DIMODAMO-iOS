@@ -48,6 +48,7 @@
 		98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA3FE725198E2D00788486 /* ClauseViewController.swift */; };
 		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
 		98C42313251D7CCE00B2B194 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C42312251D7CCE00B2B194 /* Register.swift */; };
+		98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C42317251DFFA600B2B194 /* RegisterInterestViewController.swift */; };
 		98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */; };
 		98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */; };
 		98C48B12250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */; };
@@ -106,6 +107,7 @@
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStyleGuide.swift; sourceTree = "<group>"; };
 		98C42312251D7CCE00B2B194 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		98C42317251DFFA600B2B194 /* RegisterInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInterestViewController.swift; sourceTree = "<group>"; };
 		98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFEB.otf; sourceTree = "<group>"; };
 		98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				98CB2DD12519C91C00CEE5FB /* Name */,
 				987D5B09251A1E7200244FD0 /* Birth */,
 				983485D2251C584300C4074B /* Gender */,
+				98C42316251DFF9400B2B194 /* Interest */,
 				989384CB2518668D00DE2C35 /* Main */,
 			);
 			path = Register;
@@ -378,6 +381,14 @@
 				989384CC251866A900DE2C35 /* RegisterViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		98C42316251DFF9400B2B194 /* Interest */ = {
+			isa = PBXGroup;
+			children = (
+				98C42317251DFFA600B2B194 /* RegisterInterestViewController.swift */,
+			);
+			path = Interest;
 			sourceTree = "<group>";
 		};
 		98C48B14250CD163004E24E5 /* Lottie */ = {
@@ -559,6 +570,7 @@
 				989384CD251866A900DE2C35 /* RegisterViewController.swift in Sources */,
 				9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */,
 				9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */,
+				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
 				986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */,
 				98067137250F1FD000C3EB72 /* DomainModel.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,

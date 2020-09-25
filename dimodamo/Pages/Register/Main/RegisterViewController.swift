@@ -18,9 +18,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     // 넥스트 버튼 디자인용 참조
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var closeBtn: UIBarButtonItem!
-    
-    // MARK: - Interest Screen IBOutlet
-    @IBOutlet var interestBtnList: Array<UIButton>!
 
     // MARK: - School Screen IBOutlet
     @IBOutlet weak var nextCertifySchoolBtn: UIButton!
@@ -61,23 +58,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @objc func moveDownTextView() {
         self.nextBtn?.transform = .identity
     }
-    
-    
-    
-    
-    
-    
-    // MARK: - IBAction
 
-    @IBAction func pressedBirthdayNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputGender", sender: sender)
-    }
-    @IBAction func preesedGenderNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputInterest", sender: sender)
-    }
-    @IBAction func pressedInterestNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputNickname", sender: sender)
-    }
+    
     @IBAction func pressedNicknameNextBtn(_ sender: Any) {
         performSegue(withIdentifier: "InputSchool", sender: sender)
     }
@@ -93,7 +75,6 @@ extension RegisterViewController {
         designNextBtn()
         navigationBarDesign()
 
-        designInterestBtn()
         designSchoolBtn()
     }
     
@@ -106,16 +87,6 @@ extension RegisterViewController {
         let navBar = self.navigationController?.navigationBar
         navBar?.setBackgroundImage(UIImage(), for: .default)
         navBar?.shadowImage = UIImage()
-    }
-    
-    
-    
-    func designInterestBtn() {
-        interestBtnList?.forEach { button in
-            button.layer.cornerRadius = 16
-            button.layer.borderWidth = 2
-            button.layer.borderColor = UIColor.appColor(.white235).cgColor
-        }
     }
     
     func designSchoolBtn() {

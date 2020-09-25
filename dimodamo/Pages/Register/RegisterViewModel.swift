@@ -36,6 +36,11 @@ class RegisterViewModel {
     // 성별
     var gender: Gender? = nil
     
+    // RegisterInterest
+    // 관심사
+    var interestList: BehaviorRelay<[Interest]> = BehaviorRelay(value: [])
+//    var interestSelectedCount: Int { interestList.value.init(repeating: <#T##Interest#>, count: <#T##Int#>) }
+    
     
     init() {
         

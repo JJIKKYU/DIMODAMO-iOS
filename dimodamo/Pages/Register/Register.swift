@@ -28,7 +28,7 @@ enum Gender {
 }
 
 // 관심사 3종 목록
-enum Interest {
+enum Interest: Int {
     case uxui           // UXUI
     case edit           // 편집디자인
     case architecture   // 건축디자인
