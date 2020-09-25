@@ -79,7 +79,7 @@ class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
                 UIView.animate(withDuration: 0.5) {
                     self?.checkIcon.alpha = 1
                     AppStyleGuide.systemBtnRadius16(btn: (self?.nextBtn)!, isActive: true)
-                    print(self?.viewModel?.birthMonthDay)
+                    print(String((self?.viewModel!.birthMonthDay)!))
                 }
             } else {
                 UIView.animate(withDuration: 0.5) {
@@ -116,6 +116,9 @@ class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func pressedNextBtn(_ sender: Any) {
         performSegue(withIdentifier: "InputGender", sender: sender)
+    }
+    @IBAction func pressedCloseBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

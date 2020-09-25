@@ -47,6 +47,7 @@
 		989384EC251900E900DE2C35 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 989384EB251900E600DE2C35 /* SF-Pro-Display-Heavy.otf */; };
 		98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA3FE725198E2D00788486 /* ClauseViewController.swift */; };
 		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
+		98C42313251D7CCE00B2B194 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C42312251D7CCE00B2B194 /* Register.swift */; };
 		98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */; };
 		98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */; };
 		98C48B12250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */; };
@@ -104,6 +105,7 @@
 		98BA3FE725198E2D00788486 /* ClauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauseViewController.swift; sourceTree = "<group>"; };
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStyleGuide.swift; sourceTree = "<group>"; };
+		98C42312251D7CCE00B2B194 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		98C48B0C250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		98C48B0D250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFEB.otf; sourceTree = "<group>"; };
 		98C48B0E250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				985D381225198D1F00C53378 /* RegisterViewModel.swift */,
+				98C42312251D7CCE00B2B194 /* Register.swift */,
 				985D380E25198CF500C53378 /* Clause */,
 				98CB2DD12519C91C00CEE5FB /* Name */,
 				987D5B09251A1E7200244FD0 /* Birth */,
@@ -542,6 +545,7 @@
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,
+				98C42313251D7CCE00B2B194 /* Register.swift in Sources */,
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,

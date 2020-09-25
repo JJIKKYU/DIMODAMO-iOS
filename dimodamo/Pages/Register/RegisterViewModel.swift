@@ -32,6 +32,10 @@ class RegisterViewModel {
     var day = BehaviorRelay(value: "")
     lazy var birthMonthDay: String = "\(birth.value)_\(month.value)_\(day.value)"
     
+    // RegisterGender
+    // 성별
+    
+    
     init() {
         
     }

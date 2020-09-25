@@ -42,6 +42,14 @@ class RegisterGenderViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "InputInterest" {
+            let destinationVC = segue.destination as? RegisterGenderViewController
+            destinationVC?.viewModel = self.viewModel
+        }
+    }
+    
 
     func selectedBtn(button: UIButton, isSelected: Bool) {
         button.layer.borderColor = isSelected == true ? UIColor.appColor(.gray190).cgColor : UIColor.appColor(.white235).cgColor
@@ -49,15 +57,12 @@ class RegisterGenderViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func pressedNextBtn(_ sender: Any) {
+        performSegue(withIdentifier: "InputInterest", sender: sender)
     }
-    */
+    @IBAction func pressedCloseBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
 }
 
