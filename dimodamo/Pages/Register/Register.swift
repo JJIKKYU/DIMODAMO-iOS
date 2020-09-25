@@ -37,7 +37,7 @@ enum Interest {
     case exhibit        // 전시무대
     case ad             // 광고
     case crafts         // 공예
-    case animation    schoolCertify  // 애니메이션
+    case animation      // 애니메이션
     case broadcasting   // 방송채널
     case artDirector    // 아트디렉터
     case motion         // 모션
