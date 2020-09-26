@@ -39,11 +39,14 @@ class RegisterSchoolViewController: UIViewController {
     
     // 다음에 할래요
     @IBAction func pressNextTryBtn(_ sender: Any) {
+        viewModel?.makeStructUserProfile()
+        print(viewModel?.userProfile.getDict())
     }
     
     // 다음으로
     @IBAction func pressFinishBtn(_ sender: Any) {
         viewModel?.uploadSchoolCard()
+        viewModel?.makeStructUserProfile()
         viewModel?.signUp()
     }
     

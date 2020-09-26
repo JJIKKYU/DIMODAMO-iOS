@@ -13,6 +13,7 @@ import RxRelay
 
 import FirebaseAuth
 import FirebaseStorage
+import Firebase
 
 class RegisterViewModel {
     
@@ -26,7 +27,7 @@ class RegisterViewModel {
     // 이름 작성
     var userEmail: String = ""
     var userEmailRelay = BehaviorRelay(value: "")
-//    var isVailed: Bool { userEmailRelay.value.count >= 2 } // 이메일 정규식 확인
+    //    var isVailed: Bool { userEmailRelay.value.count >= 2 } // 이메일 정규식 확인
     
     // RegisterBirth
     // 생년월일
@@ -47,7 +48,7 @@ class RegisterViewModel {
     // RegisterInterest
     // 관심사
     var interestList: BehaviorRelay<[Interest]> = BehaviorRelay(value: [])
-
+    
     // RegisterNickname
     // 닉네임 입력
     var nickName: String = ""
@@ -58,7 +59,11 @@ class RegisterViewModel {
     // 학교 인증
     var schoolCardImageData: Data?
     
+    
+    // 최종 유저 프로필
+    var userProfile: Register = Register()
     private let storage = Storage.storage().reference()
+    private var ref: DatabaseReference!
     
     
     init() {
@@ -100,12 +105,32 @@ class RegisterViewModel {
     
     // 회원가입
     func signUp() {
-        Auth.auth().createUser(withEmail: self.userEmail, password: self.userFirstPWRelay.value, completion: {  user, error in
-            if error != nil {
-            } else {
-                print("회원가입 성공")
-            }
-        })
+        Auth.auth().createUser(withEmail: self.userEmail,
+                               password: self.userFirstPWRelay.value,
+                               completion: {  (user, error) in
+                                
+                                guard error == nil else { return }
+                                guard let user = user else { return }
+                                
+                                print("회원가입 성공")
+                                print(user.user.uid)
+                                self.ref = Database.database().reference()
+                                
+                                print((self.userProfile.getDict()))
+                                let userDataArraay: [String : String] = self.userProfile.getDict()
+                                self.ref.child("users/\(user.user.uid)").setValue(userDataArraay)
+                                
+                               })
+    }
+    
+    // 모든 정보들을 구조체 내에 넣는 작업
+    func makeStructUserProfile() {
+        self.userProfile.marketing = markettingBtnRelay.value  // 마케팅 유무
+        self.userProfile.id = userEmailRelay.value        // 유저 아이디
+        self.userProfile.Gender = gender!
+        self.userProfile.Interest = interestList.value
+        self.userProfile.school = ""
+        self.userProfile.schoolCert = false
     }
     
     func uploadSchoolCard() {
@@ -113,21 +138,21 @@ class RegisterViewModel {
             .putData(schoolCardImageData!
                      , metadata: nil
                      , completion: { _, error in
-            guard error == nil else {
-                print("Failed to upload")
-                return
-            }
-            
-            self.storage.child("images/file.png").downloadURL(completion: { url, error in
-                guard let url = url, error == nil else {
-                    return
-                }
-                
-                let urlString = url.absoluteString
-                print("DownloadURL : \(urlString)")
-                UserDefaults.standard.set(urlString, forKey: "url")
-            })
-        })
+                        guard error == nil else {
+                            print("Failed to upload")
+                            return
+                        }
+                        
+                        self.storage.child("images/file.png").downloadURL(completion: { url, error in
+                            guard let url = url, error == nil else {
+                                return
+                            }
+                            
+                            let urlString = url.absoluteString
+                            print("DownloadURL : \(urlString)")
+                            UserDefaults.standard.set(urlString, forKey: "url")
+                        })
+                     })
     }
     
     // 패스워드

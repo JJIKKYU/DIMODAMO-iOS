@@ -11,14 +11,27 @@ import Foundation
 // 가입 프로세스에 포함되는 정보
 // 추가된다면 DPTI 추가 될듯
 struct Register {
-    var marketing: Bool
-    var nmae: String
-    var birth: String
-    var Gender: Gender
-    var Interest: [Interest]
-    var nickName: String
-    var school: String
-    var schoolCert: Bool
+    var marketing: Bool = false
+    var id: String = ""
+    var Gender: Gender = .male
+    var Interest: [Interest] = []
+    var nickName: String = ""
+    var school: String = ""
+    var schoolCert: Bool = false
+    
+    func getDict() -> [String:String] {
+        let dict: [String:String] = [
+            "marketing": self.marketing == true ? "true" : "false",
+            "id": self.id,
+            "gender": self.Gender == .male ? "Male" : "Female",
+            "interest": "test",
+            "nickName": self.nickName,
+            "school" : self.school,
+            "schoolCert" : self.schoolCert == true ? "true" : "false"
+        ]
+        
+        return dict
+    }
 }
 
 // 성별

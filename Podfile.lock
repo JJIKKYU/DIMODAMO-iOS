@@ -10,6 +10,9 @@ PODS:
     - FirebaseAnalytics (= 6.2.2)
   - Firebase/CoreOnly (6.16.0):
     - FirebaseCore (= 6.6.1)
+  - Firebase/Database (6.16.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (~> 6.1.4)
   - Firebase/Storage (6.16.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 3.5.0)
@@ -41,6 +44,10 @@ PODS:
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 0.3.901)
   - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseDatabase (6.1.4):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - leveldb-library (~> 1.22)
   - FirebaseInstallations (1.1.0):
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
@@ -104,6 +111,7 @@ PODS:
   - KakaoSDKUser (2.0.2):
     - KakaoSDKAuth (= 2.0.2)
     - KakaoSDKCommon (= 2.0.2)
+  - leveldb-library (1.22)
   - lottie-ios (3.1.8)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -171,6 +179,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
+  - Firebase/Database
   - Firebase/Storage
   - lottie-ios
   - RxAnimated
@@ -189,6 +198,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
+    - FirebaseDatabase
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseStorage
@@ -205,6 +215,7 @@ SPEC REPOS:
     - KakaoSDKTalk
     - KakaoSDKTemplate
     - KakaoSDKUser
+    - leveldb-library
     - lottie-ios
     - nanopb
     - PromisesObjC
@@ -231,6 +242,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 85064903ed6c28e47fec9c7bd149d94ba1b6b6e7
   FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseDatabase: 0144e0706a4761f1b0e8679572eba8095ddb59be
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
   FirebaseStorage: 6c5263796af3b1be82ed173598aade47535fe125
@@ -247,6 +259,7 @@ SPEC CHECKSUMS:
   KakaoSDKTalk: af761ee90ff9bc732cc2e5515ad5e0b3cbf81480
   KakaoSDKTemplate: c68a1c313211c7f925d297ff0aaae741b4b48c4f
   KakaoSDKUser: a4a82ba374e0b3478be3f66307943e85542149ee
+  leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
@@ -264,6 +277,6 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
 
-PODFILE CHECKSUM: 413fbb6dabd988de33b1259f25038bd7e434616e
+PODFILE CHECKSUM: 9dcfb3e446ef217c951e02973f1cf9ec258bc080
 
 COCOAPODS: 1.9.3
