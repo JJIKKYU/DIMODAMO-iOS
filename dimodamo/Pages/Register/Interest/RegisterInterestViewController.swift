@@ -89,16 +89,12 @@ class RegisterInterestViewController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "InputNickname" {
+            let destinationVC = segue.destination as? RegisterNicknameViewController
+            destinationVC?.viewModel = self.viewModel
+        }
     }
-    */
     
     @IBAction func pressedInterestNextBtn(_ sender: Any) {
         performSegue(withIdentifier: "InputNickname", sender: sender)

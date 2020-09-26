@@ -39,7 +39,12 @@ class RegisterViewModel {
     // RegisterInterest
     // 관심사
     var interestList: BehaviorRelay<[Interest]> = BehaviorRelay(value: [])
-//    var interestSelectedCount: Int { interestList.value.init(repeating: <#T##Interest#>, count: <#T##Int#>) }
+
+    // RegisterNickname
+    // 닉네임 입력
+    var nickName: String = ""
+    var nickNameRelay = BehaviorRelay(value: "")
+    var isVailedNickName: Bool { nickNameRelay.value.count >= 4 && nickNameRelay.value.count <= 8 }
     
     
     init() {

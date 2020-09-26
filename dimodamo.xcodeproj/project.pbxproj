@@ -32,6 +32,7 @@
 		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
 		98816093251EF23200556AEC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98816092251EF23200556AEC /* Login.storyboard */; };
 		98816097251EF5C300556AEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98816096251EF5C300556AEC /* LoginViewController.swift */; };
+		9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9881609B251EFA9700556AEC /* RegisterNicknameViewController.swift */; };
 		98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFD251113B600943861 /* DptiSurveyViewModel.swift */; };
 		988470002511148400943861 /* DptiSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFF2511148400943861 /* DptiSurvey.swift */; };
 		9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470022511406700943861 /* Nunito-Bold.ttf */; };
@@ -92,6 +93,7 @@
 		987F5A9A250B152000E1B856 /* DptiResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewController.swift; sourceTree = "<group>"; };
 		98816092251EF23200556AEC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		98816096251EF5C300556AEC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9881609B251EFA9700556AEC /* RegisterNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNicknameViewController.swift; sourceTree = "<group>"; };
 		98846FFD251113B600943861 /* DptiSurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewModel.swift; sourceTree = "<group>"; };
 		98846FFF2511148400943861 /* DptiSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurvey.swift; sourceTree = "<group>"; };
 		988470022511406700943861 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -374,6 +376,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		9881609A251EFA8100556AEC /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				9881609B251EFA9700556AEC /* RegisterNicknameViewController.swift */,
+			);
+			path = Nickname;
+			sourceTree = "<group>";
+		};
 		989384CA2518668600DE2C35 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +394,7 @@
 				987D5B09251A1E7200244FD0 /* Birth */,
 				983485D2251C584300C4074B /* Gender */,
 				98C42316251DFF9400B2B194 /* Interest */,
+				9881609A251EFA8100556AEC /* Nickname */,
 				989384CB2518668D00DE2C35 /* Main */,
 			);
 			path = Register;
@@ -569,6 +580,7 @@
 			files = (
 				98816097251EF5C300556AEC /* LoginViewController.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
+				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,
