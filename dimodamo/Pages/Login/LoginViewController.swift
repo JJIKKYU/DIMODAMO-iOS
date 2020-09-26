@@ -13,15 +13,47 @@ import RxCocoa
 
 import KakaoSDKAuth
 
+import FirebaseAuth
+
 class LoginViewController: UIViewController {
     
     var disposeBag = DisposeBag()
-
+    
+    @IBOutlet weak var loginCheckLabel: UILabel!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var pwTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let user = Auth.auth().currentUser {
+            loginCheckLabel.text = "이미 로그인 중입니다"
+        }
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func pressLogin(_ sender: Any) {
+        Auth.auth().signIn(withEmail: emailTextField.text!,
+                           password: pwTextField.text!,
+                           completion: {user, error in
+                            if user != nil {
+                                print("loginSucess")
+                                self.loginCheckLabel.text = "로그인 성공"
+                            } else {
+                                print("loginFail")
+                            }
+        })
+    }
+    @IBAction func pressLogout(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+          } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+          }
+        print("로그아웃이 완료되었습니다")
+        loginCheckLabel.text = "로그아웃 상태"
+    }
+    
     @IBAction func pressKakaoLogin(_ sender: Any) {
         
         AuthApi.shared.rx.loginWithKakaoAccount()

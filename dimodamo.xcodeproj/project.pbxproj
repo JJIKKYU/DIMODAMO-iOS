@@ -37,6 +37,7 @@
 		988160A5251F1E8E00556AEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 988160A4251F1E8E00556AEC /* GoogleService-Info.plist */; };
 		988160D3251F634C00556AEC /* RegisterIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988160D2251F634C00556AEC /* RegisterIDViewController.swift */; };
 		988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988160D7251F664E00556AEC /* RegisterPWViewController.swift */; };
+		9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9881612E251F8CA000556AEC /* LoginViewModel.swift */; };
 		98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFD251113B600943861 /* DptiSurveyViewModel.swift */; };
 		988470002511148400943861 /* DptiSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFF2511148400943861 /* DptiSurvey.swift */; };
 		9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470022511406700943861 /* Nunito-Bold.ttf */; };
@@ -102,6 +103,7 @@
 		988160A4251F1E8E00556AEC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		988160D2251F634C00556AEC /* RegisterIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterIDViewController.swift; sourceTree = "<group>"; };
 		988160D7251F664E00556AEC /* RegisterPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPWViewController.swift; sourceTree = "<group>"; };
+		9881612E251F8CA000556AEC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		98846FFD251113B600943861 /* DptiSurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewModel.swift; sourceTree = "<group>"; };
 		98846FFF2511148400943861 /* DptiSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurvey.swift; sourceTree = "<group>"; };
 		988470022511406700943861 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				98816096251EF5C300556AEC /* LoginViewController.swift */,
+				9881612E251F8CA000556AEC /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 			files = (
 				98816097251EF5C300556AEC /* LoginViewController.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
+				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
 				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,

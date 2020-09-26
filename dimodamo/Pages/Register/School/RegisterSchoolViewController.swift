@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 
 import FirebaseStorage
+import FirebaseAuth
 
 class RegisterSchoolViewController: UIViewController {
     
@@ -23,8 +24,6 @@ class RegisterSchoolViewController: UIViewController {
     var viewModel: RegisterViewModel?
     var disposeBag = DisposeBag()
     let imagePickerController = UIImagePickerController()
-    
-    private let storage = Storage.storage().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +43,8 @@ class RegisterSchoolViewController: UIViewController {
     
     // 다음으로
     @IBAction func pressFinishBtn(_ sender: Any) {
-        uploadSchoolCard()
+        viewModel?.uploadSchoolCard()
+        viewModel?.signUp()
     }
     
     /*
@@ -93,22 +93,5 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
         }
     }
     
-    func uploadSchoolCard() {
-        storage.child("certification/\(String(describing: viewModel!.userEmail)).png").putData(viewModel!.schoolCardImageData!, metadata: nil, completion: { _, error in
-            guard error == nil else {
-                print("Failed to upload")
-                return
-            }
-            
-            self.storage.child("images/file.png").downloadURL(completion: { url, error in
-                guard let url = url, error == nil else {
-                    return
-                }
-                
-                let urlString = url.absoluteString
-                print("DownloadURL : \(urlString)")
-                UserDefaults.standard.set(urlString, forKey: "url")
-            })
-        })
-    }
+    
 }

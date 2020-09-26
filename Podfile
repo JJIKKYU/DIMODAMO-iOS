@@ -17,6 +17,7 @@ target 'dimodamo' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
   
 
 

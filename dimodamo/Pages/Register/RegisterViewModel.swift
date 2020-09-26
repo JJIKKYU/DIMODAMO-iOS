@@ -11,6 +11,9 @@ import Foundation
 import RxSwift
 import RxRelay
 
+import FirebaseAuth
+import FirebaseStorage
+
 class RegisterViewModel {
     
     // RegisterClause
@@ -55,6 +58,8 @@ class RegisterViewModel {
     // 학교 인증
     var schoolCardImageData: Data?
     
+    private let storage = Storage.storage().reference()
+    
     
     init() {
         
@@ -86,6 +91,43 @@ class RegisterViewModel {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self.userEmail)
+    }
+    
+    // 리얼타임 데이터베이스에서 리스트 형식으로 가져와서 중복 체크 하는 방법으로 해야할듯?
+    func firebaseEmailCheck() {
+        
+    }
+    
+    // 회원가입
+    func signUp() {
+        Auth.auth().createUser(withEmail: self.userEmail, password: self.userFirstPWRelay.value, completion: {  user, error in
+            if error != nil {
+            } else {
+                print("회원가입 성공")
+            }
+        })
+    }
+    
+    func uploadSchoolCard() {
+        storage.child("certification/\(String(describing: userEmail)).png")
+            .putData(schoolCardImageData!
+                     , metadata: nil
+                     , completion: { _, error in
+            guard error == nil else {
+                print("Failed to upload")
+                return
+            }
+            
+            self.storage.child("images/file.png").downloadURL(completion: { url, error in
+                guard let url = url, error == nil else {
+                    return
+                }
+                
+                let urlString = url.absoluteString
+                print("DownloadURL : \(urlString)")
+                UserDefaults.standard.set(urlString, forKey: "url")
+            })
+        })
     }
     
     // 패스워드
