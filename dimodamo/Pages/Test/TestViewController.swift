@@ -13,6 +13,7 @@ class TestViewController: UIViewController {
     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
     let communityStoryboard: UIStoryboard = UIStoryboard(name: "Community", bundle: .main)
     let registerStoryboard: UIStoryboard = UIStoryboard(name: "Register", bundle: .main)
+    let loginStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: .main)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,14 @@ class TestViewController: UIViewController {
         present(navBarOnModal, animated: true, completion: nil)
     }
     
+    @IBAction func pressLogin(_ sender: Any) {
+        let registerVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
+        
+        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
+
+        navBarOnModal.modalPresentationStyle = .fullScreen
+        present(navBarOnModal, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
