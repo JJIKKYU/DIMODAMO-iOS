@@ -1499,9 +1499,12 @@
                                                     <constraint firstAttribute="height" constant="56" id="guS-ba-Hgo"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
-                                                <state key="normal" title="다음으로">
+                                                <state key="normal" title="완료하기">
                                                     <color key="titleColor" name="WHITE"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="pressFinishBtn:" destination="RVb-Vv-BpH" eventType="touchUpInside" id="y75-Ks-tlv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1561,7 +1564,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="nextBtn" destination="io9-Bb-WrD" id="z8r-lw-8OV"/>
+                        <outlet property="finishBtn" destination="io9-Bb-WrD" id="jhR-wr-QlT"/>
                         <outlet property="nextTryBtn" destination="ugl-ao-Oe1" id="6zU-Cp-02I"/>
                         <outlet property="progress" destination="DzP-US-hCU" id="WJI-3N-big"/>
                         <outlet property="schoolCardBtn" destination="Nl7-xj-pmv" id="uDI-0e-mj1"/>

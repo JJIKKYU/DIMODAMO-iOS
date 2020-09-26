@@ -15,7 +15,7 @@ import FirebaseStorage
 
 class RegisterSchoolViewController: UIViewController {
     
-    @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var finishBtn: UIButton!
     @IBOutlet weak var nextTryBtn: UIButton!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var schoolCardBtn: UIButton!
@@ -28,6 +28,7 @@ class RegisterSchoolViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewDesisgn()
         imagePickerController.delegate = self
         
         // Do any additional setup after loading the view.
@@ -41,6 +42,11 @@ class RegisterSchoolViewController: UIViewController {
     @IBAction func pressNextTryBtn(_ sender: Any) {
     }
     
+    // 다음으로
+    @IBAction func pressFinishBtn(_ sender: Any) {
+        uploadSchoolCard()
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -52,6 +58,15 @@ class RegisterSchoolViewController: UIViewController {
      */
     
 }
+
+extension RegisterSchoolViewController {
+    func viewDesisgn() {
+        self.nextTryBtn.layer.cornerRadius = 16
+        AppStyleGuide.systemBtnRadius16(btn: finishBtn, isActive: false)
+    }
+}
+
+//MARK: - 학생증 인증
 
 extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBAction func pressSchoolCardBtn(_ sender: Any) {
@@ -68,10 +83,18 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
         guard let imageData = image.resize(withWidth: 400)?.jpeg(.lowest) else { return }
+        viewModel?.schoolCardImageData = imageData
         
-//        schoolCardBtn.setImage(image, for: .normal)
-        
-        storage.child("images/file.png").putData(imageData, metadata: nil, completion: { _, error in
+        // 이미지 저장이 끝났으면 스쿨 이미지 변경 및 버튼 변경
+        schoolCardBtn.setImage(UIImage(named: "schoolCardActive"), for: .normal)
+        UIView.animate(withDuration: 0.5) {
+            AppStyleGuide.systemBtnRadius16(btn: self.finishBtn, isActive: true)
+            self.progress.setProgress(1, animated: true)
+        }
+    }
+    
+    func uploadSchoolCard() {
+        storage.child("certification/\(String(describing: viewModel!.userEmail)).png").putData(viewModel!.schoolCardImageData!, metadata: nil, completion: { _, error in
             guard error == nil else {
                 print("Failed to upload")
                 return
@@ -87,9 +110,5 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
                 UserDefaults.standard.set(urlString, forKey: "url")
             })
         })
-        
-        
-        
-        
     }
 }

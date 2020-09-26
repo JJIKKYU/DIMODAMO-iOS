@@ -51,6 +51,10 @@ class RegisterViewModel {
     var nickNameRelay = BehaviorRelay(value: "")
     var isVailedNickName: Bool { nickNameRelay.value.count >= 4 && nickNameRelay.value.count <= 8 }
     
+    // RegisterSchool
+    // 학교 인증
+    var schoolCardImageData: Data?
+    
     
     init() {
         
