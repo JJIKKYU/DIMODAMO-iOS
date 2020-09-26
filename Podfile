@@ -13,6 +13,11 @@ target 'dimodamo' do
   pod "RxAnimated"
   
   pod 'RxKakaoSDK'
+  
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Storage'
+  
 
 
 end

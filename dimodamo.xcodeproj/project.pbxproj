@@ -33,6 +33,8 @@
 		98816093251EF23200556AEC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98816092251EF23200556AEC /* Login.storyboard */; };
 		98816097251EF5C300556AEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98816096251EF5C300556AEC /* LoginViewController.swift */; };
 		9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9881609B251EFA9700556AEC /* RegisterNicknameViewController.swift */; };
+		988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988160A0251F0D3C00556AEC /* RegisterSchoolViewController.swift */; };
+		988160A5251F1E8E00556AEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 988160A4251F1E8E00556AEC /* GoogleService-Info.plist */; };
 		98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFD251113B600943861 /* DptiSurveyViewModel.swift */; };
 		988470002511148400943861 /* DptiSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFF2511148400943861 /* DptiSurvey.swift */; };
 		9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470022511406700943861 /* Nunito-Bold.ttf */; };
@@ -94,6 +96,8 @@
 		98816092251EF23200556AEC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		98816096251EF5C300556AEC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9881609B251EFA9700556AEC /* RegisterNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNicknameViewController.swift; sourceTree = "<group>"; };
+		988160A0251F0D3C00556AEC /* RegisterSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSchoolViewController.swift; sourceTree = "<group>"; };
+		988160A4251F1E8E00556AEC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		98846FFD251113B600943861 /* DptiSurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewModel.swift; sourceTree = "<group>"; };
 		98846FFF2511148400943861 /* DptiSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurvey.swift; sourceTree = "<group>"; };
 		988470022511406700943861 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 				986EDA0B2509C42600AD3CEE /* ViewController.swift */,
 				986EDA132509C42800AD3CEE /* Assets.xcassets */,
 				986EDA182509C42800AD3CEE /* Info.plist */,
+				988160A4251F1E8E00556AEC /* GoogleService-Info.plist */,
 				986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */,
 				987F5A9D250B1CB500E1B856 /* fonts */,
 				986322492517B814003B0784 /* TabBarViewController.swift */,
@@ -384,6 +389,14 @@
 			path = Nickname;
 			sourceTree = "<group>";
 		};
+		9881609F251F0D2800556AEC /* School */ = {
+			isa = PBXGroup;
+			children = (
+				988160A0251F0D3C00556AEC /* RegisterSchoolViewController.swift */,
+			);
+			path = School;
+			sourceTree = "<group>";
+		};
 		989384CA2518668600DE2C35 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,6 +408,7 @@
 				983485D2251C584300C4074B /* Gender */,
 				98C42316251DFF9400B2B194 /* Interest */,
 				9881609A251EFA8100556AEC /* Nickname */,
+				9881609F251F0D2800556AEC /* School */,
 				989384CB2518668D00DE2C35 /* Main */,
 			);
 			path = Register;
@@ -504,6 +518,7 @@
 			files = (
 				98E2416B250F9F47003BE1A3 /* Results.json in Resources */,
 				9884700C2511406700943861 /* Nunito-ExtraLight.ttf in Resources */,
+				988160A5251F1E8E00556AEC /* GoogleService-Info.plist in Resources */,
 				9863224D2517B9AB003B0784 /* ClassRoom.storyboard in Resources */,
 				98C48B1D250CF97E004E24E5 /* Survey.json in Resources */,
 				98C48B11250B9ED5004E24E5 /* NanumSquareRoundOTFEB.otf in Resources */,
@@ -601,6 +616,7 @@
 				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
 				986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */,
 				98067137250F1FD000C3EB72 /* DomainModel.swift in Sources */,
+				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				987D5B0B251A1E8700244FD0 /* RegisterBirthViewController.swift in Sources */,

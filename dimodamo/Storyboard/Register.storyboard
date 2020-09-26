@@ -1413,10 +1413,10 @@
             </objects>
             <point key="canvasLocation" x="3443" y="420"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register School View Controller-->
         <scene sceneID="TGh-Ie-D9t">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="RVb-Vv-BpH" customClass="RegisterViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="RVb-Vv-BpH" customClass="RegisterSchoolViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mc2-oP-Pga">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1436,12 +1436,16 @@
                                                 <color key="textColor" name="TEXT - BIG"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schoolCard" translatesAutoresizingMaskIntoConstraints="NO" id="qEl-p9-4lb">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nl7-xj-pmv">
                                                 <rect key="frame" x="0.0" y="162" width="374" height="230"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="230" id="CqX-RR-U9e"/>
+                                                    <constraint firstAttribute="height" constant="230" id="G5k-LX-ApP"/>
                                                 </constraints>
-                                            </imageView>
+                                                <state key="normal" image="schoolCard"/>
+                                                <connections>
+                                                    <action selector="pressSchoolCardBtn:" destination="RVb-Vv-BpH" eventType="touchUpInside" id="gKT-1M-Zcy"/>
+                                                </connections>
+                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDC-IB-OzZ" userLabel="DivideLine">
                                                 <rect key="frame" x="4" y="416" width="370" height="2"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
@@ -1513,6 +1517,9 @@
                                                 <state key="normal" title="다음에 할래요">
                                                     <color key="titleColor" name="WHITE"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="pressNextTryBtn:" destination="RVb-Vv-BpH" eventType="touchUpInside" id="20U-fl-mxH"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="io9-Bb-WrD">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
@@ -1529,13 +1536,11 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="SYSTEM"/>
                                         <constraints>
-                                            <constraint firstItem="SDC-IB-OzZ" firstAttribute="top" secondItem="qEl-p9-4lb" secondAttribute="bottom" constant="24" id="0LI-zg-mZg"/>
-                                            <constraint firstItem="qEl-p9-4lb" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="1l6-Fa-Qdn"/>
                                             <constraint firstItem="io9-Bb-WrD" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="3OZ-Ye-hHJ"/>
                                             <constraint firstAttribute="trailing" secondItem="DzP-US-hCU" secondAttribute="trailing" id="5HK-Xw-xE9"/>
-                                            <constraint firstItem="qEl-p9-4lb" firstAttribute="top" secondItem="y2j-hd-Es8" secondAttribute="bottom" constant="80" id="5wx-Xk-ohZ"/>
                                             <constraint firstAttribute="trailing" secondItem="io9-Bb-WrD" secondAttribute="trailing" id="AjT-Wj-vHn"/>
-                                            <constraint firstAttribute="trailing" secondItem="qEl-p9-4lb" secondAttribute="trailing" id="BJA-CL-DGO"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nl7-xj-pmv" secondAttribute="trailing" id="CIe-Xb-uRa"/>
+                                            <constraint firstItem="Nl7-xj-pmv" firstAttribute="top" secondItem="y2j-hd-Es8" secondAttribute="bottom" constant="80" id="EOP-Od-YL0"/>
                                             <constraint firstItem="y2j-hd-Es8" firstAttribute="trailing" secondItem="DzP-US-hCU" secondAttribute="trailing" id="J1r-CQ-V7e"/>
                                             <constraint firstItem="MeM-bJ-gb6" firstAttribute="top" secondItem="SDC-IB-OzZ" secondAttribute="bottom" constant="24" id="JQe-9X-Bgj"/>
                                             <constraint firstItem="ugl-ao-Oe1" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="L31-An-eUa"/>
@@ -1546,7 +1551,9 @@
                                             <constraint firstAttribute="bottom" secondItem="io9-Bb-WrD" secondAttribute="bottom" id="UI7-zU-hxt"/>
                                             <constraint firstItem="MeM-bJ-gb6" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="Xcv-d5-8dt"/>
                                             <constraint firstItem="y2j-hd-Es8" firstAttribute="leading" secondItem="DzP-US-hCU" secondAttribute="leading" id="Zbd-hh-a04"/>
+                                            <constraint firstItem="Nl7-xj-pmv" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="g2B-ck-qFz"/>
                                             <constraint firstAttribute="trailing" secondItem="MeM-bJ-gb6" secondAttribute="trailing" id="gQM-KZ-04b"/>
+                                            <constraint firstItem="SDC-IB-OzZ" firstAttribute="top" secondItem="Nl7-xj-pmv" secondAttribute="bottom" constant="24" id="mzE-6X-hT6"/>
                                             <constraint firstItem="DzP-US-hCU" firstAttribute="top" secondItem="XkK-vm-O1y" secondAttribute="top" constant="24" id="r8W-A3-sDh"/>
                                             <constraint firstAttribute="trailing" secondItem="SDC-IB-OzZ" secondAttribute="trailing" id="tBw-dt-3Ec"/>
                                             <constraint firstItem="y2j-hd-Es8" firstAttribute="top" secondItem="DzP-US-hCU" secondAttribute="bottom" constant="25" id="tZR-nu-sEc"/>
@@ -1577,12 +1584,16 @@
                         <barButtonItem key="backBarButtonItem" title="이전" id="SVl-UX-QrN"/>
                         <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="BPf-zP-m2K">
                             <color key="tintColor" name="SYSTEM"/>
+                            <connections>
+                                <action selector="pressCloseBtn:" destination="RVb-Vv-BpH" id="nBx-9E-aZx"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="closeBtn" destination="BPf-zP-m2K" id="Orx-jn-TzX"/>
-                        <outlet property="nextBtn" destination="io9-Bb-WrD" id="h2K-XD-Bb6"/>
-                        <outlet property="nextCertifySchoolBtn" destination="ugl-ao-Oe1" id="ILr-Jw-owV"/>
+                        <outlet property="nextBtn" destination="io9-Bb-WrD" id="z8r-lw-8OV"/>
+                        <outlet property="nextTryBtn" destination="ugl-ao-Oe1" id="6zU-Cp-02I"/>
+                        <outlet property="progress" destination="DzP-US-hCU" id="WJI-3N-big"/>
+                        <outlet property="schoolCardBtn" destination="Nl7-xj-pmv" id="uDI-0e-mj1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqI-n9-EC5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
