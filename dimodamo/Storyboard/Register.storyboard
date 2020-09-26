@@ -474,10 +474,10 @@
             </objects>
             <point key="canvasLocation" x="-3012" y="-161"/>
         </scene>
-        <!--Register Name View Controller-->
+        <!--RegisterID View Controller-->
         <scene sceneID="Ex0-8Q-vI8">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="74q-dC-tIa" customClass="RegisterNameViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="74q-dC-tIa" customClass="RegisterIDViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zv8-e1-O0O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -491,7 +491,7 @@
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.14000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="EGp-iG-qOL">
                                                 <rect key="frame" x="0.0" y="24" width="374" height="4"/>
                                             </progressView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름을 알려주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsp-mG-22E">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일을 알려주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsp-mG-22E">
                                                 <rect key="frame" x="0.0" y="53" width="374" height="29"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
                                                 <color key="textColor" name="TEXT - BIG"/>
@@ -501,7 +501,7 @@
                                                 <rect key="frame" x="4" y="162" width="370" height="22"/>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="name"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="email"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlT-tB-gw2" userLabel="DivideLine">
                                                 <rect key="frame" x="4" y="196" width="370" height="2"/>
@@ -588,9 +588,9 @@
                     <connections>
                         <outlet property="checkIcon" destination="Ee5-Cp-g0o" id="5ux-UD-LgO"/>
                         <outlet property="closeBtn" destination="nd5-Vf-jYe" id="gIx-tD-O2r"/>
-                        <outlet property="nameTextField" destination="gSL-pX-OMQ" id="1Qi-PW-5f1"/>
                         <outlet property="nextBtn" destination="8Ux-Ko-iMW" id="Iqb-ZX-yT0"/>
                         <outlet property="progress" destination="EGp-iG-qOL" id="A5A-BL-3d9"/>
+                        <outlet property="textField" destination="gSL-pX-OMQ" id="biv-hs-738"/>
                         <segue destination="8Oh-fc-QqB" kind="show" identifier="InputBirthday" id="T7N-7f-ihE"/>
                     </connections>
                 </viewController>

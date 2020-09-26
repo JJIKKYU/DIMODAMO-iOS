@@ -11,8 +11,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RegisterSchoolViewController: UIViewController {
+import FirebaseStorage
 
+class RegisterSchoolViewController: UIViewController {
+    
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var nextTryBtn: UIButton!
     @IBOutlet weak var progress: UIProgressView!
@@ -22,13 +24,15 @@ class RegisterSchoolViewController: UIViewController {
     var disposeBag = DisposeBag()
     let imagePickerController = UIImagePickerController()
     
+    private let storage = Storage.storage().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func pressCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -38,15 +42,15 @@ class RegisterSchoolViewController: UIViewController {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -55,11 +59,37 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
         self.present(self.imagePickerController, animated: true, completion: nil)
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            schoolCardBtn.setImage(image, for: .normal)
-        }
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
-        dismiss(animated: true, completion: nil)
+        guard let imageData = image.resize(withWidth: 400)?.jpeg(.lowest) else { return }
+        
+//        schoolCardBtn.setImage(image, for: .normal)
+        
+        storage.child("images/file.png").putData(imageData, metadata: nil, completion: { _, error in
+            guard error == nil else {
+                print("Failed to upload")
+                return
+            }
+            
+            self.storage.child("images/file.png").downloadURL(completion: { url, error in
+                guard let url = url, error == nil else {
+                    return
+                }
+                
+                let urlString = url.absoluteString
+                print("DownloadURL : \(urlString)")
+                UserDefaults.standard.set(urlString, forKey: "url")
+            })
+        })
+        
+        
+        
+        
     }
 }

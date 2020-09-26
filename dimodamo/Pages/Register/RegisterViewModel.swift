@@ -21,9 +21,9 @@ class RegisterViewModel {
     
     // RegisterName
     // 이름 작성
-    var userName: String = ""
-    var nameRelay = BehaviorRelay(value: "")
-    var isVailed: Bool { nameRelay.value.count >= 2 }
+    var userEmail: String = ""
+    var userEmailRelay = BehaviorRelay(value: "")
+    var isVailed: Bool { userEmailRelay.value.count >= 2 } // 이메일 정규식 확인
     
     // RegisterBirth
     // 생년월일
