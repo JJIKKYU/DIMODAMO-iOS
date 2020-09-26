@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RegisterIDViewController: UIViewController {
+class RegisterIDViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var closeBtn: UIBarButtonItem!
     @IBOutlet weak var progress: UIProgressView!
@@ -47,7 +47,7 @@ class RegisterIDViewController: UIViewController {
                 self?.viewModel?.userEmail = newValue
 //                print(self?.viewModel?.userName)
                 
-                if self?.viewModel?.isVailed == true {
+                if self?.viewModel?.isValidEmail() == true {
                     UIView.animate(withDuration: 0.5) {
                         self?.checkIcon.alpha = 1
                         self?.progress.setProgress(0.28, animated: true)
@@ -66,11 +66,11 @@ class RegisterIDViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+    } 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "InputBirthday" {
-            let destinationVC = segue.destination as? RegisterBirthViewController
+        if segue.identifier == "InputPW" {
+            let destinationVC = segue.destination as? RegisterPWViewController
             destinationVC?.viewModel = self.viewModel
         }
     }
@@ -102,7 +102,7 @@ class RegisterIDViewController: UIViewController {
     // MARK: - Navigation
     
     @IBAction func pressedNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputBirthday", sender: sender)
+        performSegue(withIdentifier: "InputPW", sender: sender)
     }
     
     @IBAction func pressedCloseBtn(_ sender: Any) {

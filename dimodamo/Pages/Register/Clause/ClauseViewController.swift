@@ -107,7 +107,7 @@ class ClauseViewController: UIViewController {
     
     
     @IBAction func pressedNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputName", sender: sender)
+        performSegue(withIdentifier: "InputID", sender: sender)
     }
     @IBAction func pressedCloseBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -121,8 +121,8 @@ class ClauseViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "InputName" {
-            let destinationVC = segue.destination as? RegisterNameViewController
+        if segue.identifier == "InputID" {
+            let destinationVC = segue.destination as? RegisterIDViewController
             destinationVC?.viewModel = self.viewModel
         }
     }

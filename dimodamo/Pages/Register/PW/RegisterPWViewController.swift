@@ -1,101 +1,95 @@
 //
-//  RegisterBirthViewController.swift
+//  RegisterPWViewController.swift
 //  dimodamo
 //
-//  Created by JJIKKYU on 2020/09/22.
+//  Created by JJIKKYU on 2020/09/26.
 //  Copyright © 2020 JJIKKYU. All rights reserved.
 //
 
 import UIKit
 
-import RxSwift
 import RxCocoa
+import RxSwift
 
-class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var nextBtn: UIButton!
+class RegisterPWViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var yearTextField: UITextField!
-    @IBOutlet weak var monthTextField: UITextField!
-    @IBOutlet weak var dayTextField: UITextField!
+    @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var firstPWTextField: UITextField!
+    @IBOutlet weak var secondPWTextField: UITextField!
     @IBOutlet weak var checkIcon: UIImageView!
+    @IBOutlet weak var checkIcon2: UIImageView!
     @IBOutlet weak var progress: UIProgressView!
     
     var viewModel : RegisterViewModel?
     var disposeBag = DisposeBag()
     
-    
-    private var datePicker: UIDatePicker!
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(true)
         
         // 화면이 로드될 경우에 키보드 올라오도록
-        yearTextField.becomeFirstResponder()
+        firstPWTextField.becomeFirstResponder()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        registerBirthDesign()
-    
-        yearTextField.rx.controlEvent(.editingChanged)
+        viewDesign()
+
+        firstPWTextField.rx.controlEvent(.editingChanged)
             .asObservable()
             .subscribe(onNext: { [weak self] in
-                if (self?.yearTextField.text!.count)! >= 4 {
-                    self?.viewModel?.birth.accept((self?.yearTextField.text!)!)
-                    self?.monthTextField.becomeFirstResponder()
-                }
+
+                self?.viewModel?.userFirstPWRelay.accept(self!.firstPWTextField.text!)
+
             })
             .disposed(by: disposeBag)
         
-        monthTextField.rx.controlEvent(.editingChanged)
+        secondPWTextField.rx.controlEvent(.editingChanged)
             .asObservable()
             .subscribe(onNext: { [weak self] in
-                if (self?.monthTextField.text!.count)! >= 2 {
-                    self?.viewModel?.month.accept((self?.monthTextField.text!)!)
-                    self?.dayTextField.becomeFirstResponder()
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        dayTextField.rx.controlEvent(.editingChanged)
-            .asObservable()
-            .subscribe(onNext: { [weak self] in
-                if (self?.dayTextField.text!.count)! >= 2 {
-                    self?.viewModel?.day.accept((self?.dayTextField.text!)!)
-                    self?.dayTextField.resignFirstResponder()
-                }
+                self?.viewModel?.userSecondPWRelay.accept(self!.secondPWTextField.text!)
             })
             .disposed(by: disposeBag)
         
         Observable.combineLatest(
-            viewModel!.birth.map { $0.count >= 4 },
-            viewModel!.month.map { $0.count >= 2 },
-            viewModel!.day.map { $0.count >= 2 }
+            viewModel!.userFirstPWRelay.map { $0},
+            viewModel!.userSecondPWRelay.map { $0}
             )
         .observeOn(MainScheduler.instance)
-        .subscribe { [weak self] birth, month, day in
-            if birth && month && day {
+        .subscribe { [weak self] firstPW, secondPW in
+//            guard self?.viewModel?.isValidPassword() == true else { return }
+            if self?.viewModel?.isValidPassword(pw: String(firstPW)) == true {
+                self?.checkIcon.alpha = 1
+            } else {
+                self?.checkIcon.alpha = 0
+            }
+            
+            if self?.viewModel?.isValidPassword(pw: String(secondPW)) == true {
+                self?.checkIcon2.alpha = 1
+            } else {
+                self?.checkIcon2.alpha = 0
+            }
+            
+            if firstPW.count != 0 && firstPW == secondPW {
+                print("사용가능한 패스워드입니다")
+                
                 UIView.animate(withDuration: 0.5) {
-                    self?.checkIcon.alpha = 1
+                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
                     self?.progress.setProgress(0.42, animated: true)
-                    AppStyleGuide.systemBtnRadius16(btn: (self?.nextBtn)!, isActive: true)
-                    print(String((self?.viewModel!.birthMonthDay)!))
                 }
             } else {
+                print("패스워드가 일치하지 않습니다.")
+                
                 UIView.animate(withDuration: 0.5) {
-                    self?.checkIcon.alpha = 0
+                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
                     self?.progress.setProgress(0.28, animated: true)
-                    AppStyleGuide.systemBtnRadius16(btn: (self?.nextBtn)!, isActive: false)
                 }
             }
         }
         .disposed(by: disposeBag)
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,7 +117,7 @@ class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
     @IBAction func pressedCloseBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     /*
     // MARK: - Navigation
 
@@ -136,11 +130,11 @@ class RegisterBirthViewController: UIViewController, UITextFieldDelegate {
 
 }
 
-
-extension RegisterBirthViewController {
+extension RegisterPWViewController {
     
-    func registerBirthDesign() {
+    func viewDesign() {
         AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
         checkIcon.alpha = 0
+        checkIcon2.alpha = 0
     }
 }

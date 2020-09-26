@@ -23,7 +23,7 @@ class RegisterViewModel {
     // 이름 작성
     var userEmail: String = ""
     var userEmailRelay = BehaviorRelay(value: "")
-    var isVailed: Bool { userEmailRelay.value.count >= 2 } // 이메일 정규식 확인
+//    var isVailed: Bool { userEmailRelay.value.count >= 2 } // 이메일 정규식 확인
     
     // RegisterBirth
     // 생년월일
@@ -31,6 +31,11 @@ class RegisterViewModel {
     var month = BehaviorRelay(value: "")
     var day = BehaviorRelay(value: "")
     lazy var birthMonthDay: String = "\(birth.value)_\(month.value)_\(day.value)"
+    
+    // RegisterPW
+    var userFirstPWRelay = BehaviorRelay(value: "")
+    var userSecondPWRelay = BehaviorRelay(value: "")
+    var userPW: String = ""
     
     // RegisterGender
     // 성별
@@ -71,4 +76,19 @@ class RegisterViewModel {
             return true
         } else { return false }
     }
+    
+    // 이메일 정규식
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: self.userEmail)
+    }
+    
+    // 패스워드
+    func isValidPassword(pw: String) -> Bool {
+        let passwordRegEx = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,20}$"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        return predicate.evaluate(with: pw)
+    }
 }
+
