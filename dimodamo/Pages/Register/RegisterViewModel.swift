@@ -133,7 +133,12 @@ class RegisterViewModel {
         self.userProfile.schoolCert = false
     }
     
-    func uploadSchoolCard() {
+    func uploadSchoolCard() -> Bool{
+        if schoolCardImageData == nil {
+            
+            return false
+        }
+        
         storage.child("certification/\(String(describing: userEmail)).png")
             .putData(schoolCardImageData!
                      , metadata: nil
@@ -153,6 +158,8 @@ class RegisterViewModel {
                             UserDefaults.standard.set(urlString, forKey: "url")
                         })
                      })
+        
+        return true
     }
     
     // 패스워드
