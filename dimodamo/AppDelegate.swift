@@ -9,6 +9,15 @@
 import UIKit
 import CoreData
 
+// KAKAO
+import RxKakaoSDKCommon
+import KakaoSDKAuth
+import RxKakaoSDKAuth
+
+import KakaoSDKUser
+import RxKakaoSDKUser
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,16 +25,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
-        // 탭바 배경
-//        UITabBar.appearance().backgroundColor = UIColor.appColor(.white255)
-//        UITabBar.appearance().barTintColor = UIColor.appColor(.white255)
-//        UITabBar.appearance().shadowImage = UIImage()
-//        UITabBar.appearance().layer.cornerRadius = 26
-//        UITabBar.appearance().layer.masksToBounds = true
+        RxKakaoSDKCommon.initSDK(appKey: "341ee584089327e9570b298fd3d21b5b")
         
         return true
+    }
+    
+    // MARK: KAKAO
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            return AuthController.handleOpenUrl(url: url)
+        }
+
+        return false
     }
 
 

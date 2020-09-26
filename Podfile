@@ -11,6 +11,8 @@ target 'dimodamo' do
   pod 'RxCocoa'
   pod 'RxViewController'
   pod "RxAnimated"
+  
+  pod 'RxKakaoSDK'
 
 
 end

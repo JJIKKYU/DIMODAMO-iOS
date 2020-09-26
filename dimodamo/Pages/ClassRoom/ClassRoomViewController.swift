@@ -8,6 +8,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class ClassRoomViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!

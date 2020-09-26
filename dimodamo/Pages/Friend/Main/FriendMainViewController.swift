@@ -8,13 +8,31 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
+import KakaoSDKAuth
+
 class FriendMainViewController: UIViewController {
+    
+    var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print("마니또 연결이 되었니?")
+        
+        AuthApi.shared.rx.loginWithKakaoAccount()
+            .subscribe(onNext:{ (oauthToken) in
+                print("loginWithKakaoAccount() success.")
+
+                //do something
+                _ = oauthToken
+            }, onError: {error in
+                print(error)
+            })
+            .disposed(by: disposeBag)
     }
     
 

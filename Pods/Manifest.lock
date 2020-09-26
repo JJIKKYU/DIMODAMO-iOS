@@ -1,5 +1,32 @@
 PODS:
+  - Alamofire (5.2.2)
+  - KakaoSDKAuth (2.0.2):
+    - KakaoSDKCommon (= 2.0.2)
+  - KakaoSDKCommon (2.0.2):
+    - Alamofire (~> 5.1)
+  - KakaoSDKLink (2.0.2):
+    - KakaoSDKCommon (= 2.0.2)
+    - KakaoSDKTemplate (= 2.0.2)
+  - KakaoSDKNavi (2.0.2):
+    - KakaoSDKCommon (= 2.0.2)
+  - KakaoSDKStory (2.0.2):
+    - KakaoSDKAuth (= 2.0.2)
+    - KakaoSDKCommon (= 2.0.2)
+  - KakaoSDKTalk (2.0.2):
+    - KakaoSDKAuth (= 2.0.2)
+    - KakaoSDKCommon (= 2.0.2)
+    - KakaoSDKTemplate (= 2.0.2)
+  - KakaoSDKTemplate (2.0.2):
+    - KakaoSDKCommon (= 2.0.2)
+  - KakaoSDKUser (2.0.2):
+    - KakaoSDKAuth (= 2.0.2)
+    - KakaoSDKCommon (= 2.0.2)
   - lottie-ios (3.1.8)
+  - RxAlamofire (5.6.1):
+    - RxAlamofire/Core (= 5.6.1)
+  - RxAlamofire/Core (5.6.1):
+    - Alamofire (~> 5.2)
+    - RxSwift (~> 5.1)
   - RxAnimated (0.7.0):
     - RxAnimated/Core (= 0.7.0)
     - RxCocoa (~> 5.1)
@@ -10,6 +37,40 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
+  - RxKakaoSDK (2.0.2):
+    - KakaoSDKNavi (= 2.0.2)
+    - KakaoSDKTemplate (= 2.0.2)
+    - RxKakaoSDKAuth (= 2.0.2)
+    - RxKakaoSDKCommon (= 2.0.2)
+    - RxKakaoSDKLink (= 2.0.2)
+    - RxKakaoSDKStory (= 2.0.2)
+    - RxKakaoSDKTalk (= 2.0.2)
+    - RxKakaoSDKUser (= 2.0.2)
+  - RxKakaoSDKAuth (2.0.2):
+    - KakaoSDKAuth (= 2.0.2)
+    - RxKakaoSDKCommon (= 2.0.2)
+  - RxKakaoSDKCommon (2.0.2):
+    - KakaoSDKCommon (= 2.0.2)
+    - RxAlamofire (~> 5.2)
+    - RxCocoa
+    - RxSwift
+  - RxKakaoSDKLink (2.0.2):
+    - KakaoSDKLink (= 2.0.2)
+    - KakaoSDKTemplate (= 2.0.2)
+    - RxKakaoSDKCommon (= 2.0.2)
+  - RxKakaoSDKStory (2.0.2):
+    - KakaoSDKStory (= 2.0.2)
+    - RxKakaoSDKAuth (= 2.0.2)
+    - RxKakaoSDKCommon (= 2.0.2)
+  - RxKakaoSDKTalk (2.0.2):
+    - KakaoSDKTalk (= 2.0.2)
+    - KakaoSDKTemplate (= 2.0.2)
+    - RxKakaoSDKAuth (= 2.0.2)
+    - RxKakaoSDKCommon (= 2.0.2)
+  - RxKakaoSDKUser (2.0.2):
+    - KakaoSDKUser (= 2.0.2)
+    - RxKakaoSDKAuth (= 2.0.2)
+    - RxKakaoSDKCommon (= 2.0.2)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
@@ -21,26 +82,61 @@ DEPENDENCIES:
   - lottie-ios
   - RxAnimated
   - RxCocoa
+  - RxKakaoSDK
   - RxSwift
   - RxViewController
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKLink
+    - KakaoSDKNavi
+    - KakaoSDKStory
+    - KakaoSDKTalk
+    - KakaoSDKTemplate
+    - KakaoSDKUser
     - lottie-ios
+    - RxAlamofire
     - RxAnimated
     - RxCocoa
+    - RxKakaoSDK
+    - RxKakaoSDKAuth
+    - RxKakaoSDKCommon
+    - RxKakaoSDKLink
+    - RxKakaoSDKStory
+    - RxKakaoSDKTalk
+    - RxKakaoSDKUser
     - RxRelay
     - RxSwift
     - RxViewController
 
 SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  KakaoSDKAuth: 69698a4a6726f2b43fb43246891a1a747343935e
+  KakaoSDKCommon: 2226e13fbbd4a875826c7a348cf4f535392a4b8f
+  KakaoSDKLink: aa202aee73d5234184043f4c8a01fb7d6d46ee87
+  KakaoSDKNavi: 5ca916988d7d12ba5286dd7b8dc6b89156eb5900
+  KakaoSDKStory: a98a90cdcbb44211b8bb228afcdb9b4d0b789ba7
+  KakaoSDKTalk: af761ee90ff9bc732cc2e5515ad5e0b3cbf81480
+  KakaoSDKTemplate: c68a1c313211c7f925d297ff0aaae741b4b48c4f
+  KakaoSDKUser: a4a82ba374e0b3478be3f66307943e85542149ee
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  RxAlamofire: 0531dddf378c84270e97e897333678f1cfaec3ba
   RxAnimated: 8540892468e906e7404595bc51ed4b36b3737ab5
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxKakaoSDK: 8041d57a4aa0403d5046b923ed189c4fd4ba3dce
+  RxKakaoSDKAuth: 3f8fd8f71419151cbe3d141bb69e2b1486473946
+  RxKakaoSDKCommon: 6879ff837d427975b5972a185bba182d458d5001
+  RxKakaoSDKLink: e96c3d0074d7c7d242cda925de929f3ca3b24027
+  RxKakaoSDKStory: e4dc55431c20f2e925f86495d153e4f131a81bfd
+  RxKakaoSDKTalk: 7a9800265820cb9ae5173a112b4599030c908461
+  RxKakaoSDKUser: 869403bfab9d9d895c1e3027721f11a379e9f558
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
 
-PODFILE CHECKSUM: a4216f51c2af94c3f5a52da19fb5760c69aaf898
+PODFILE CHECKSUM: 37afca04fc45d7e0b5e261188769f5d185ce85dd
 
 COCOAPODS: 1.9.3
