@@ -39,7 +39,18 @@ class RegisterSchoolViewController: UIViewController {
     
     // 다음에 할래요
     @IBAction func pressNextTryBtn(_ sender: Any) {
-        viewModel?.makeStructUserProfile()
+        
+        let alert = UIAlertController(title: "주의사항", message: "학교 미인증 상태에서는 서비스 이용이 제한적입니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
+            self?.viewModel?.schoolCertificationState = .none
+            self?.viewModel?.makeStructUserProfile()
+            self?.viewModel?.signUp()
+        }))
+        present(alert, animated: true, completion: nil)
+        
+        
     }
     
     // 다음으로
@@ -94,6 +105,7 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
         
         // 이미지 저장이 끝났으면 스쿨 이미지 변경 및 버튼 변경
         schoolCardBtn.setImage(UIImage(named: "schoolCardActive"), for: .normal)
+        viewModel?.schoolCertificationState = .submit
         UIView.animate(withDuration: 0.5) {
             AppStyleGuide.systemBtnRadius16(btn: self.finishBtn, isActive: true)
             self.progress.setProgress(1, animated: true)

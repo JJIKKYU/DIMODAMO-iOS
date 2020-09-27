@@ -17,17 +17,21 @@ struct Register {
     var Interest: [Interest] = []
     var nickName: String = ""
     var school: String = ""
-    var schoolCert: Bool = false
+    var schoolCertState: CertificationState = .none
     
-    func getDict() -> [String:String] {
-        let dict: [String:String] = [
+    func getDict() -> [String:Any] {
+        let dict: [String:Any] = [
             "marketing": self.marketing == true ? "true" : "false",
             "id": self.id,
-            "gender": self.Gender == .male ? "Male" : "Female",
-            "interest": "test",
+            "gender": self.Gender.description,
+            "interest": [
+                self.Interest[0].description,
+                self.Interest[1].description,
+                self.Interest[2].description,
+            ],
             "nickName": self.nickName,
             "school" : self.school,
-            "schoolCert" : self.schoolCert == true ? "true" : "false"
+            "schoolCert" : self.schoolCertState.description
         ]
         
         return dict
@@ -38,6 +42,36 @@ struct Register {
 enum Gender {
     case female
     case male
+    
+    var description: String {
+        switch self {
+        case .female:
+            return "female"
+        case .male:
+            return "male"
+        }
+    }
+}
+
+// 학교 인증 진행 정도
+enum CertificationState {
+    case none       // 제출하지 않음
+    case submit     // 제출
+    case rejection  // 거절
+    case approval   // 승인
+    
+    var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .submit:
+            return "submit"
+        case .rejection:
+            return "rejection"
+        case .approval:
+            return "approval"
+        }
+    }
 }
 
 // 관심사 3종 목록
@@ -57,4 +91,39 @@ enum Interest: Int {
     case industrial     // 산업
     case mediaArt       // 미디어아트
     case interior       // 인테리어
+    
+    var description: String {
+        switch self {
+        case .ad:
+            return "ad"
+        case .uxui:
+            return "uxui"
+        case .edit:
+            return "edit"
+        case .architecture:
+            return "architecture"
+        case .branding:
+            return "branding"
+        case .font:
+            return "font"
+        case .exhibit:
+            return "exhibit"
+        case .crafts:
+            return "crafts"
+        case .animation:
+            return "animation"
+        case .broadcasting:
+            return "broadcasting"
+        case .artDirector:
+            return "artDirector"
+        case .motion:
+            return "motion"
+        case .industrial:
+            return "industrial"
+        case .mediaArt:
+            return "mediaArt"
+        case .interior:
+            return "interior"
+        }
+    }
 }

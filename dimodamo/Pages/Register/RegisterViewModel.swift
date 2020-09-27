@@ -58,6 +58,7 @@ class RegisterViewModel {
     // RegisterSchool
     // 학교 인증
     var schoolCardImageData: Data?
+    var schoolCertificationState: CertificationState = .none
     
     
     // 최종 유저 프로필
@@ -117,7 +118,7 @@ class RegisterViewModel {
                                 self.ref = Database.database().reference()
                                 
                                 print((self.userProfile.getDict()))
-                                let userDataArraay: [String : String] = self.userProfile.getDict()
+                                let userDataArraay: [String : Any] = self.userProfile.getDict()
                                 self.ref.child("users/\(user.user.uid)").setValue(userDataArraay)
                                 
                                })
@@ -129,8 +130,9 @@ class RegisterViewModel {
         self.userProfile.id = userEmailRelay.value        // 유저 아이디
         self.userProfile.Gender = gender!
         self.userProfile.Interest = interestList.value
-        self.userProfile.school = ""
-        self.userProfile.schoolCert = false
+        self.userProfile.nickName = nickNameRelay.value
+        self.userProfile.school = "홍익대학교"
+        self.userProfile.schoolCertState = self.schoolCertificationState
     }
     
     func uploadSchoolCard() -> Bool{
