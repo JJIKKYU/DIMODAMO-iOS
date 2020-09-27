@@ -119,7 +119,15 @@ class RegisterViewModel {
                                 
                                 print((self.userProfile.getDict()))
                                 let userDataArraay: [String : Any] = self.userProfile.getDict()
-                                self.ref.child("users/\(user.user.uid)").setValue(userDataArraay)
+//                                self.ref.child("users/\(user.user.uid)").setValue(userDataArraay)
+                                
+                                APIService.fireStore.collection("users").document("\(user.user.uid)").setData(userDataArraay) { err in
+                                    if let err = err {
+                                        print("Error adding document: \(err)")
+                                    } else {
+                                        print("Document added")
+                                    }
+                                }
                                 
                                })
     }

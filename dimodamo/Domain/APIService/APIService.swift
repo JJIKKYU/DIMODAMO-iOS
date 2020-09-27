@@ -9,7 +9,12 @@
 import Foundation
 import RxSwift
 
+import FirebaseFirestore
+
 class APIService {
+    
+    // Firestore
+    static var fireStore = Firestore.firestore()
 
     // MARK: - Local Json Parsing
 
