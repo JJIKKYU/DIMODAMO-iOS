@@ -104,9 +104,7 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
     // 키보드 업, 다운 관련
     @objc func moveUpTextView(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            UIView.animate(withDuration: 0, animations: {
-                self.nextBtn?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
-            })
+            self.nextBtn?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
         }
     }
     

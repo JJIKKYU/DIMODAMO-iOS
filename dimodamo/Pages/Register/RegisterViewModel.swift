@@ -202,7 +202,7 @@ class RegisterViewModel {
         // 데이터를 보낼 서버 url
         guard let url = URL(string: "http://dimodamo.com") else {
             return
-        }
+        }	
                         
         // http 메서드는 'POST'
         var request = URLRequest(url: url)

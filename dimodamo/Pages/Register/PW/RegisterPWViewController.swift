@@ -84,62 +84,7 @@ class RegisterPWViewController: UIViewController, UITextFieldDelegate {
 
             })
             .disposed(by: disposeBag)
-        
-        Observable.combineLatest(
-            viewModel!.userFirstPWRelay.map { $0},
-            viewModel!.userSecondPWRelay.map { $0}
-            )
-        .observeOn(MainScheduler.instance)
-        .subscribe { [weak self] firstPW, secondPW in
-            
-            
-            
-//            guard self?.viewModel?.isValidPassword() == true else { return }
-            
-            
-//            if self?.viewModel?.isValidPassword(pw: String(secondPW)) == true &&
-//                self?.viewModel?.userFirstPWRelay.value == self?.viewModel?.userSecondPWRelay.value {
-//                self?.checkIcon2.alpha = 1
-//                self?.secondPWTextFieldSubTitle.alpha = 0
-//                self?.secondDivide.backgroundColor = UIColor.appColor(.green3)
-//
-//                UIView.animate(withDuration: 0.5) {
-//                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
-//                    self?.progress.setProgress(0.42, animated: true)
-//                }
-//
-//
-//            } else if self?.viewModel?.isValidPassword(pw: String(secondPW)) == true {
-//                self?.checkIcon2.alpha = 0
-//                self?.secondPWTextFieldSubTitle.alpha = 1
-//                self?.secondDivide.backgroundColor = UIColor.appColor(.white235)
-//
-//                UIView.animate(withDuration: 0.5) {
-//                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
-//                    self?.progress.setProgress(0.28, animated: true)
-//                }
-//            } else {
-//                print("아무것도 아닙니다")
-//            }
-            
-//            if firstPW.count != 0 && firstPW == secondPW {
-//                print("사용가능한 패스워드입니다")
-//
-//                UIView.animate(withDuration: 0.5) {
-//                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
-//                    self?.progress.setProgress(0.42, animated: true)
-//                }
-//            } else {
-//                print("패스워드가 일치하지 않습니다.")
-//
-//                UIView.animate(withDuration: 0.5) {
-//                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
-//                    self?.progress.setProgress(0.28, animated: true)
-//                }
-//            }
-        }
-        .disposed(by: disposeBag)
-        
+    
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -154,9 +99,7 @@ class RegisterPWViewController: UIViewController, UITextFieldDelegate {
     
     @objc func moveUpTextView(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            UIView.animate(withDuration: 0, animations: {
-                            self.nextBtn?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
-            })
+            self.nextBtn?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
         }
     }
     

@@ -90,6 +90,7 @@ extension RegisterSchoolViewController {
 extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBAction func pressSchoolCardBtn(_ sender: Any) {
         self.imagePickerController.sourceType = .camera
+        
         self.present(self.imagePickerController, animated: true, completion: nil)
     }
     
@@ -113,5 +114,12 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
         }
     }
     
+    func cropImage(imageToCrop:UIImage, toRect rect:CGRect) -> UIImage{
+        
+        let imageRef:CGImage = imageToCrop.cgImage!.cropping(to: rect)!
+        let cropped:UIImage = UIImage(cgImage:imageRef)
+        return cropped
+    }
+
     
 }

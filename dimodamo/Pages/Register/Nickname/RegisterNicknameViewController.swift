@@ -15,8 +15,10 @@ class RegisterNicknameViewController: UIViewController {
 
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var nickNameTextField: UITextField!
+    @IBOutlet weak var nickNameTextFieldSub: UILabel!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var checkIcon: UIImageView!
+    @IBOutlet weak var divide: UIView!
     
     var viewModel: RegisterViewModel?
     var disposeBag = DisposeBag()
@@ -31,6 +33,7 @@ class RegisterNicknameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
+        
 
         nickNameTextField.rx.text.orEmpty
             .map { $0 as String }
@@ -48,17 +51,23 @@ class RegisterNicknameViewController: UIViewController {
                 if self?.viewModel?.isVailedNickName == true {
                     UIView.animate(withDuration: 0.5) {
                         self?.checkIcon.alpha = 1
+                        self?.nickNameTextFieldSub.alpha = 0
                         self?.progress.setProgress(0.84, animated: true)
+                        self?.divide.backgroundColor = UIColor.appColor(.green3)
                         AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
                     }
-                }else {
+                } else if self?.viewModel?.isVailedNickName == false ||
+                            (self?.viewModel?.nickNameRelay.value.count)! < 4 ||
+                            (self?.viewModel?.nickNameRelay.value.count)! > 8 {
                     UIView.animate(withDuration: 0.5) {
+                        self?.nickNameTextFieldSub.alpha = 1
                         self?.checkIcon.alpha = 0
                         self?.progress.setProgress(0.70, animated: true)
+                        self?.divide.backgroundColor = UIColor.appColor(.red)
                         AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
                     }
                 }
-        })
+        })	
         .disposed(by: disposeBag)
         
         
@@ -68,9 +77,7 @@ class RegisterNicknameViewController: UIViewController {
     
     @objc func moveUpTextView(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            UIView.animate(withDuration: 0, animations: {
-                            self.nextBtn?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
-            })
+            self.nextBtn?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
         }
     }
     
@@ -103,6 +110,7 @@ extension RegisterNicknameViewController {
         designNextBtn()
         AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
         checkIcon.alpha = 0
+        nickNameTextFieldSub.alpha = 0
     }
     
     func designNextBtn() {
