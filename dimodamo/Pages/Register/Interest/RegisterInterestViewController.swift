@@ -123,7 +123,7 @@ extension RegisterInterestViewController {
     }
     
     func selectedBtn(button: UIButton, isSelected: Bool) {
-        button.layer.borderColor = isSelected == true ? UIColor.appColor(.gray190).cgColor : UIColor.appColor(.white235).cgColor
+        button.layer.borderColor = isSelected == true ? UIColor.appColor(.system).cgColor : UIColor.appColor(.white235).cgColor
         button.isSelected = isSelected
     }
 }

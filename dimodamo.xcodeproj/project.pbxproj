@@ -19,6 +19,7 @@
 		9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986322492517B814003B0784 /* TabBarViewController.swift */; };
 		9863224D2517B9AB003B0784 /* ClassRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9863224C2517B9AB003B0784 /* ClassRoom.storyboard */; };
 		986322562517BB81003B0784 /* FriendMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986322552517BB81003B0784 /* FriendMainViewController.swift */; };
+		986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986908F72521AE8E00C844F1 /* AlertViewController.swift */; };
 		986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA072509C42600AD3CEE /* AppDelegate.swift */; };
 		986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA092509C42600AD3CEE /* SceneDelegate.swift */; };
 		986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA0B2509C42600AD3CEE /* ViewController.swift */; };
@@ -83,6 +84,7 @@
 		986322492517B814003B0784 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9863224C2517B9AB003B0784 /* ClassRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClassRoom.storyboard; sourceTree = "<group>"; };
 		986322552517BB81003B0784 /* FriendMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMainViewController.swift; sourceTree = "<group>"; };
+		986908F72521AE8E00C844F1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		986EDA042509C42600AD3CEE /* dimodamo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dimodamo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986EDA072509C42600AD3CEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		986EDA092509C42600AD3CEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -289,6 +291,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		986908F62521AE7E00C844F1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				986908F72521AE8E00C844F1 /* AlertViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		986ED9FB2509C42600AD3CEE = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +320,7 @@
 		986EDA062509C42600AD3CEE /* dimodamo */ = {
 			isa = PBXGroup;
 			children = (
+				986908F62521AE7E00C844F1 /* Extension */,
 				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
 				98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */,
 				98C48B1B250CF959004E24E5 /* Json */,
@@ -643,6 +654,7 @@
 				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
 				986EDA0A2509C42600AD3CEE /* SceneDelegate.swift in Sources */,
 				98067137250F1FD000C3EB72 /* DomainModel.swift in Sources */,
+				986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,

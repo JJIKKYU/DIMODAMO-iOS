@@ -498,7 +498,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해당 메일로 인증번호 전송" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zw-Xi-FhQ">
-                                                <rect key="frame" x="2" y="90" width="152" height="18"/>
+                                                <rect key="frame" x="2" y="90" width="272" height="18"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <color key="textColor" name="GRAY - 210"/>
                                                 <nil key="highlightedColor"/>
@@ -517,6 +517,50 @@
                                                     <constraint firstAttribute="height" constant="2" id="uyD-E9-x57"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-UD-F0E">
+                                                <rect key="frame" x="288" y="156" width="86" height="32"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="46T-gc-Qfn"/>
+                                                    <constraint firstAttribute="width" constant="86" id="ubT-sD-YvM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                <state key="normal" title="전송 요청">
+                                                    <color key="titleColor" name="WHITE"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressCertBtn1:" destination="74q-dC-tIa" eventType="touchUpInside" id="H1l-7n-edL"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="텍스트를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oKb-vf-sS3">
+                                                <rect key="frame" x="4" y="241.5" width="152" height="22"/>
+                                                <color key="textColor" name="GRAY - 170"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lKN-DU-A22" userLabel="DivideLine">
+                                                <rect key="frame" x="4" y="275.5" width="370" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <color key="tintColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="PSU-cX-Xjx"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0t7-mM-rZJ">
+                                                <rect key="frame" x="288" y="235.5" width="86" height="32"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="86" id="bJP-ob-siU"/>
+                                                    <constraint firstAttribute="height" constant="32" id="h4g-Z8-5EA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                <state key="normal" title="인증 요청">
+                                                    <color key="titleColor" name="WHITE"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressCertBtn2:" destination="74q-dC-tIa" eventType="touchUpInside" id="RHM-50-6v4"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ux-Ko-iMW">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
                                                 <color key="backgroundColor" name="GRAY - 210"/>
@@ -531,38 +575,37 @@
                                                     <action selector="pressedNextBtn:" destination="74q-dC-tIa" eventType="touchUpInside" id="xWc-ny-n60"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-UD-F0E">
-                                                <rect key="frame" x="288" y="156" width="86" height="32"/>
-                                                <color key="backgroundColor" name="SYSTEM"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
-                                                <state key="normal" title="전송 요청">
-                                                    <color key="titleColor" name="WHITE"/>
-                                                </state>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="SYSTEM"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="UaH-UD-F0E" secondAttribute="trailing" id="4tH-qv-KAq"/>
+                                            <constraint firstItem="oKb-vf-sS3" firstAttribute="leading" secondItem="4eA-ke-2MW" secondAttribute="leading" constant="4" id="2zi-eW-Iam"/>
                                             <constraint firstAttribute="trailing" secondItem="8Ux-Ko-iMW" secondAttribute="trailing" id="64w-cH-GoP"/>
                                             <constraint firstItem="fsp-mG-22E" firstAttribute="top" secondItem="EGp-iG-qOL" secondAttribute="bottom" constant="25" id="65K-Qt-j7M"/>
                                             <constraint firstItem="gSL-pX-OMQ" firstAttribute="top" secondItem="fsp-mG-22E" secondAttribute="bottom" constant="80" id="B3d-g5-JD0"/>
+                                            <constraint firstItem="lKN-DU-A22" firstAttribute="top" secondItem="oKb-vf-sS3" secondAttribute="bottom" constant="12" id="CQy-ny-HdT"/>
+                                            <constraint firstAttribute="trailing" secondItem="UaH-UD-F0E" secondAttribute="trailing" id="D4I-tZ-yMS"/>
+                                            <constraint firstItem="xlT-tB-gw2" firstAttribute="top" secondItem="UaH-UD-F0E" secondAttribute="bottom" constant="8" symbolic="YES" id="DbM-7k-v7I"/>
                                             <constraint firstItem="fsp-mG-22E" firstAttribute="leading" secondItem="EGp-iG-qOL" secondAttribute="leading" id="GKG-h5-6xv"/>
                                             <constraint firstAttribute="trailing" secondItem="xlT-tB-gw2" secondAttribute="trailing" id="Gc2-Uo-5YZ"/>
                                             <constraint firstItem="8Ux-Ko-iMW" firstAttribute="leading" secondItem="4eA-ke-2MW" secondAttribute="leading" id="KxF-7D-mTp"/>
                                             <constraint firstAttribute="bottom" secondItem="8Ux-Ko-iMW" secondAttribute="bottom" id="Loh-UN-sVy"/>
+                                            <constraint firstItem="oKb-vf-sS3" firstAttribute="top" secondItem="gSL-pX-OMQ" secondAttribute="bottom" constant="57.5" id="N26-Mr-dGq"/>
                                             <constraint firstAttribute="trailing" secondItem="EGp-iG-qOL" secondAttribute="trailing" id="NgJ-Of-Hrm"/>
                                             <constraint firstItem="fsp-mG-22E" firstAttribute="trailing" secondItem="EGp-iG-qOL" secondAttribute="trailing" id="PbE-sn-Q6F"/>
                                             <constraint firstItem="gSL-pX-OMQ" firstAttribute="leading" secondItem="4eA-ke-2MW" secondAttribute="leading" constant="4" id="Pry-fF-c4i"/>
-                                            <constraint firstAttribute="trailing" secondItem="4zw-Xi-FhQ" secondAttribute="trailing" constant="220" id="RWx-QX-Ees"/>
+                                            <constraint firstAttribute="trailing" secondItem="4zw-Xi-FhQ" secondAttribute="trailing" constant="100" id="RWx-QX-Ees"/>
                                             <constraint firstAttribute="trailing" secondItem="gSL-pX-OMQ" secondAttribute="trailing" constant="110" id="SSu-P5-zrV"/>
+                                            <constraint firstItem="lKN-DU-A22" firstAttribute="leading" secondItem="xlT-tB-gw2" secondAttribute="leading" id="WDF-Uc-jNE"/>
                                             <constraint firstAttribute="height" constant="765" id="YJt-kE-NTL"/>
                                             <constraint firstItem="EGp-iG-qOL" firstAttribute="leading" secondItem="4eA-ke-2MW" secondAttribute="leading" id="aSW-Oa-Dhj"/>
+                                            <constraint firstItem="lKN-DU-A22" firstAttribute="trailing" secondItem="xlT-tB-gw2" secondAttribute="trailing" id="b6A-DN-KnO"/>
+                                            <constraint firstAttribute="trailing" secondItem="0t7-mM-rZJ" secondAttribute="trailing" id="cgE-Q3-M3D"/>
+                                            <constraint firstItem="lKN-DU-A22" firstAttribute="top" secondItem="0t7-mM-rZJ" secondAttribute="bottom" constant="8" symbolic="YES" id="jPZ-hw-gZ3"/>
                                             <constraint firstItem="xlT-tB-gw2" firstAttribute="leading" secondItem="4eA-ke-2MW" secondAttribute="leading" constant="4" id="mLx-zZ-snr"/>
                                             <constraint firstItem="4zw-Xi-FhQ" firstAttribute="leading" secondItem="4eA-ke-2MW" secondAttribute="leading" constant="2" id="nkb-Xg-KiX"/>
                                             <constraint firstItem="xlT-tB-gw2" firstAttribute="top" secondItem="gSL-pX-OMQ" secondAttribute="bottom" constant="12" id="nrS-af-jyO"/>
                                             <constraint firstItem="4zw-Xi-FhQ" firstAttribute="top" secondItem="fsp-mG-22E" secondAttribute="bottom" constant="8" id="ojR-ql-oAE"/>
-                                            <constraint firstItem="xlT-tB-gw2" firstAttribute="top" secondItem="UaH-UD-F0E" secondAttribute="bottom" constant="8" id="qke-fW-smT"/>
                                             <constraint firstItem="EGp-iG-qOL" firstAttribute="top" secondItem="4eA-ke-2MW" secondAttribute="top" constant="24" id="tbP-4O-OKn"/>
                                         </constraints>
                                     </view>
@@ -597,9 +640,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="closeBtn" destination="nd5-Vf-jYe" id="gIx-tD-O2r"/>
+                        <outlet property="codeTextfield" destination="oKb-vf-sS3" id="CqW-HR-2Fi"/>
+                        <outlet property="divideLine2" destination="lKN-DU-A22" id="1Jv-2w-hxt"/>
+                        <outlet property="emailCertBtn1" destination="UaH-UD-F0E" id="RNK-Rh-vdm"/>
+                        <outlet property="emailCertBtn2" destination="0t7-mM-rZJ" id="4So-XI-Y5P"/>
                         <outlet property="nextBtn" destination="8Ux-Ko-iMW" id="Iqb-ZX-yT0"/>
                         <outlet property="progress" destination="EGp-iG-qOL" id="A5A-BL-3d9"/>
                         <outlet property="textField" destination="gSL-pX-OMQ" id="biv-hs-738"/>
+                        <outlet property="viewSubTitle" destination="4zw-Xi-FhQ" id="sh7-kV-LdE"/>
+                        <outlet property="viewTitle" destination="fsp-mG-22E" id="fjB-gD-hVL"/>
                         <segue destination="8Oh-fc-QqB" kind="show" identifier="InputPW" id="T7N-7f-ihE"/>
                     </connections>
                 </viewController>
@@ -624,10 +673,16 @@
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.28000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="vQr-I9-dNl">
                                                 <rect key="frame" x="0.0" y="24" width="374" height="4"/>
                                             </progressView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="패스워드를 적어주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvr-rw-izf">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호를 입력해 주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvr-rw-izf">
                                                 <rect key="frame" x="0.0" y="53" width="374" height="29"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
                                                 <color key="textColor" name="TEXT - BIG"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대문자, 소문자, 숫자 조합으로 최소 8글자 이상 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1b6-dt-c1R">
+                                                <rect key="frame" x="2" y="90" width="304" height="18"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                <color key="textColor" name="GRAY - 210"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mU0-2n-wX1" userLabel="DivideLine">
@@ -638,14 +693,26 @@
                                                     <constraint firstAttribute="height" constant="2" id="Qt1-OM-HZp"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호가 양식에 맞지 않습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tm-bG-I6a">
+                                                <rect key="frame" x="4" y="206.5" width="168" height="16"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
+                                                <color key="textColor" name="RED"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDb-JK-Jr9" userLabel="DivideLine">
-                                                <rect key="frame" x="4" y="265" width="370" height="2"/>
+                                                <rect key="frame" x="4" y="287" width="370" height="2"/>
                                                 <color key="backgroundColor" name="WHITE - 235"/>
                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="O2V-Yy-T9F"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위의 비밀번호와 같지 않습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jT-1W-C7O">
+                                                <rect key="frame" x="4" y="297" width="157" height="16"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
+                                                <color key="textColor" name="RED"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1q-Q7-Lzd">
                                                 <rect key="frame" x="0.0" y="709" width="374" height="56"/>
                                                 <color key="backgroundColor" name="GRAY - 210"/>
@@ -668,22 +735,22 @@
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Xdp-Eo-4A5">
                                                 <rect key="frame" x="344" y="164.5" width="30" height="16.5"/>
-                                                <color key="tintColor" name="GRAY - 170"/>
+                                                <color key="tintColor" name="GREEN3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="UKW-Nq-L66"/>
                                                     <constraint firstAttribute="height" constant="20" id="hKz-lp-wed"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="obh-iN-4oo">
-                                                <rect key="frame" x="344" y="234.5" width="30" height="16.5"/>
-                                                <color key="tintColor" name="GRAY - 170"/>
+                                                <rect key="frame" x="344" y="256.5" width="30" height="16.5"/>
+                                                <color key="tintColor" name="GREEN3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="ZIR-GC-J4g"/>
                                                     <constraint firstAttribute="height" constant="20" id="zf9-08-ipS"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="패스워드를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fx4-qj-S08" userLabel="secondPWTextField">
-                                                <rect key="frame" x="4" y="232" width="370" height="21"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="한 번 더 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fx4-qj-S08" userLabel="secondPWTextField">
+                                                <rect key="frame" x="4" y="254" width="370" height="21"/>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
@@ -697,13 +764,15 @@
                                             <constraint firstItem="obh-iN-4oo" firstAttribute="centerY" secondItem="fx4-qj-S08" secondAttribute="centerY" id="5hL-MF-XpK"/>
                                             <constraint firstItem="fx4-qj-S08" firstAttribute="trailing" secondItem="gJ4-R3-ncC" secondAttribute="trailing" id="7oB-rZ-t9r"/>
                                             <constraint firstItem="tvr-rw-izf" firstAttribute="trailing" secondItem="vQr-I9-dNl" secondAttribute="trailing" id="EEn-CL-AEQ"/>
+                                            <constraint firstItem="0jT-1W-C7O" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="4" id="Eh7-c2-YOr"/>
                                             <constraint firstItem="Xdp-Eo-4A5" firstAttribute="centerY" secondItem="gJ4-R3-ncC" secondAttribute="centerY" id="F37-yI-MrL"/>
                                             <constraint firstItem="mU0-2n-wX1" firstAttribute="top" secondItem="gJ4-R3-ncC" secondAttribute="bottom" constant="12" id="FC1-Qb-OaC"/>
                                             <constraint firstAttribute="bottom" secondItem="O1q-Q7-Lzd" secondAttribute="bottom" id="FR5-8u-y9m"/>
                                             <constraint firstItem="gJ4-R3-ncC" firstAttribute="top" secondItem="tvr-rw-izf" secondAttribute="bottom" constant="80" id="IAW-Od-h43"/>
+                                            <constraint firstItem="0jT-1W-C7O" firstAttribute="top" secondItem="JDb-JK-Jr9" secondAttribute="bottom" constant="8" id="KBr-kz-iFM"/>
                                             <constraint firstAttribute="trailing" secondItem="Xdp-Eo-4A5" secondAttribute="trailing" id="NbD-8m-nA2"/>
                                             <constraint firstAttribute="height" constant="765" id="QXZ-7Z-3N1"/>
-                                            <constraint firstItem="fx4-qj-S08" firstAttribute="top" secondItem="mU0-2n-wX1" secondAttribute="bottom" constant="35" id="Vpv-3S-HeH"/>
+                                            <constraint firstItem="fx4-qj-S08" firstAttribute="top" secondItem="mU0-2n-wX1" secondAttribute="bottom" constant="57" id="Vpv-3S-HeH"/>
                                             <constraint firstItem="JDb-JK-Jr9" firstAttribute="leading" secondItem="mU0-2n-wX1" secondAttribute="leading" id="XbM-6V-xyk"/>
                                             <constraint firstItem="gJ4-R3-ncC" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="4" id="Zfp-lk-CYC"/>
                                             <constraint firstItem="obh-iN-4oo" firstAttribute="trailing" secondItem="Xdp-Eo-4A5" secondAttribute="trailing" id="bAD-Ad-mLI"/>
@@ -714,10 +783,14 @@
                                             <constraint firstItem="vQr-I9-dNl" firstAttribute="top" secondItem="eQ0-DA-zVc" secondAttribute="top" constant="24" id="h1P-dF-jOq"/>
                                             <constraint firstAttribute="trailing" secondItem="gJ4-R3-ncC" secondAttribute="trailing" id="ipx-D2-rju"/>
                                             <constraint firstAttribute="trailing" secondItem="vQr-I9-dNl" secondAttribute="trailing" id="j7w-tu-JAV"/>
+                                            <constraint firstItem="1b6-dt-c1R" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="2" id="kvq-42-PIx"/>
                                             <constraint firstItem="JDb-JK-Jr9" firstAttribute="top" secondItem="fx4-qj-S08" secondAttribute="bottom" constant="12" id="mcI-V9-8lv"/>
+                                            <constraint firstItem="7Tm-bG-I6a" firstAttribute="top" secondItem="mU0-2n-wX1" secondAttribute="bottom" constant="9.5" id="mvX-d6-iof"/>
+                                            <constraint firstItem="1b6-dt-c1R" firstAttribute="top" secondItem="tvr-rw-izf" secondAttribute="bottom" constant="8" id="nEW-1K-lnr"/>
                                             <constraint firstItem="vQr-I9-dNl" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" id="oGM-Ld-Li8"/>
                                             <constraint firstAttribute="trailing" secondItem="O1q-Q7-Lzd" secondAttribute="trailing" id="oHk-zn-kJm"/>
                                             <constraint firstItem="mU0-2n-wX1" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="4" id="r4m-SQ-XJX"/>
+                                            <constraint firstItem="7Tm-bG-I6a" firstAttribute="leading" secondItem="eQ0-DA-zVc" secondAttribute="leading" constant="4" id="vJe-av-PAe"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -752,10 +825,14 @@
                     <connections>
                         <outlet property="checkIcon" destination="Xdp-Eo-4A5" id="Wct-0a-0ny"/>
                         <outlet property="checkIcon2" destination="obh-iN-4oo" id="0JQ-Hi-cyY"/>
+                        <outlet property="firstDivide" destination="mU0-2n-wX1" id="2Qh-aG-Gcb"/>
                         <outlet property="firstPWTextField" destination="gJ4-R3-ncC" id="Epf-eC-fjC"/>
+                        <outlet property="firstPWTextFieldSubTitle" destination="7Tm-bG-I6a" id="KXO-Dh-ZDr"/>
                         <outlet property="nextBtn" destination="O1q-Q7-Lzd" id="qfk-eh-8YS"/>
                         <outlet property="progress" destination="vQr-I9-dNl" id="Th6-fl-xzP"/>
+                        <outlet property="secondDivide" destination="JDb-JK-Jr9" id="3Yv-ap-owW"/>
                         <outlet property="secondPWTextField" destination="fx4-qj-S08" id="KPL-l9-38g"/>
+                        <outlet property="secondPWTextFieldSubTitle" destination="0jT-1W-C7O" id="sR5-cw-0qr"/>
                         <segue destination="iLn-PB-Yre" kind="show" identifier="InputGender" id="axY-rf-O8s"/>
                     </connections>
                 </viewController>
@@ -797,7 +874,7 @@
                                                     <color key="titleColor" name="GRAY - 210"/>
                                                 </state>
                                                 <state key="selected">
-                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                    <color key="titleColor" name="SYSTEM"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozd-Wl-ZKH" userLabel="여자예요!">
@@ -811,7 +888,7 @@
                                                     <color key="titleColor" name="GRAY - 210"/>
                                                 </state>
                                                 <state key="selected">
-                                                    <color key="titleColor" name="GRAY - 190"/>
+                                                    <color key="titleColor" name="SYSTEM"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWk-5H-YRk">
@@ -917,14 +994,14 @@
                                                 <color key="textColor" name="TEXT - BIG"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 3가지를 선택해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmY-Ll-ntb">
-                                                <rect key="frame" x="2" y="90" width="146" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 3가지를 선택" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmY-Ll-ntb">
+                                                <rect key="frame" x="2" y="90" width="94" height="18"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <color key="textColor" name="GRAY - 210"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATW-Jf-OIL">
-                                                <rect key="frame" x="282.5" y="50" width="83.5" height="57.5"/>
+                                                <rect key="frame" x="296.5" y="50" width="69.5" height="56"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Heavy" family="SF Pro Display" pointSize="48"/>
                                                 <color key="textColor" name="WHITE - 235"/>
                                                 <nil key="highlightedColor"/>
@@ -946,7 +1023,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4p-VI-n0H">
@@ -960,7 +1037,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fov-zC-k73">
@@ -974,7 +1051,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                         </subviews>
@@ -993,7 +1070,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4w-hI-x3F">
@@ -1007,7 +1084,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAj-dl-Cv5">
@@ -1021,7 +1098,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                         </subviews>
@@ -1040,7 +1117,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1a-qn-vJ2">
@@ -1054,7 +1131,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5T-cn-XNU">
@@ -1068,7 +1145,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                         </subviews>
@@ -1087,7 +1164,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AzE-kb-Awk">
@@ -1101,7 +1178,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3l-qu-pwd">
@@ -1115,7 +1192,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                         </subviews>
@@ -1134,7 +1211,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28J-OJ-MBB">
@@ -1148,7 +1225,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utd-80-81X">
@@ -1162,7 +1239,7 @@
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
-                                                                    <color key="titleColor" name="GRAY - 170"/>
+                                                                    <color key="titleColor" name="SYSTEM"/>
                                                                 </state>
                                                             </button>
                                                         </subviews>
@@ -1284,8 +1361,8 @@
                                                 <color key="textColor" name="TEXT - BIG"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한글 4~8글자 사이로 작성해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uS6-AZ-EW2">
-                                                <rect key="frame" x="2" y="90" width="208" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4~8글자 사이로 입력 (한글, 영문, 숫자만 가능)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uS6-AZ-EW2">
+                                                <rect key="frame" x="2" y="90" width="276" height="18"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <color key="textColor" name="GRAY - 210"/>
                                                 <nil key="highlightedColor"/>
@@ -1799,11 +1876,14 @@
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="GRAY - 190">
-            <color red="0.74500000476837158" green="0.74500000476837158" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GREEN3">
+            <color red="0.43500000238418579" green="0.81199997663497925" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RED">
+            <color red="0.92199999094009399" green="0.34099999070167542" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.54900002479553223" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

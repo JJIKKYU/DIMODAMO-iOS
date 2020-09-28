@@ -14,11 +14,19 @@ import RxSwift
 class RegisterPWViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nextBtn: UIButton!
-    @IBOutlet weak var firstPWTextField: UITextField!
-    @IBOutlet weak var secondPWTextField: UITextField!
     @IBOutlet weak var checkIcon: UIImageView!
     @IBOutlet weak var checkIcon2: UIImageView!
     @IBOutlet weak var progress: UIProgressView!
+    
+    @IBOutlet weak var firstPWTextField: UITextField!
+    @IBOutlet weak var secondPWTextField: UITextField!
+    
+    @IBOutlet weak var firstPWTextFieldSubTitle: UILabel!
+    @IBOutlet weak var secondPWTextFieldSubTitle: UILabel!
+    
+    @IBOutlet weak var firstDivide: UIView!
+    @IBOutlet weak var secondDivide: UIView!
+    
     
     var viewModel : RegisterViewModel?
     var disposeBag = DisposeBag()
@@ -38,7 +46,17 @@ class RegisterPWViewController: UIViewController, UITextFieldDelegate {
             .asObservable()
             .subscribe(onNext: { [weak self] in
 
-                self?.viewModel?.userFirstPWRelay.accept(self!.firstPWTextField.text!)
+                let newValue = self!.firstPWTextField.text!
+                self?.viewModel?.userFirstPWRelay.accept(newValue)
+                
+                let isValied: Bool = (self?.viewModel!.isValidPassword(pw: newValue))!
+                print(isValied)
+                
+                UIView.animate(withDuration: 0.5) {
+                    self?.checkIcon.alpha = isValied == true ? 1 : 0
+                    self?.firstDivide.backgroundColor = isValied == true ? UIColor.appColor(.green3) : UIColor.appColor(.white235)
+                    self?.firstPWTextFieldSubTitle.alpha = isValied == true ? 0 : 1
+                }
 
             })
             .disposed(by: disposeBag)
@@ -46,7 +64,24 @@ class RegisterPWViewController: UIViewController, UITextFieldDelegate {
         secondPWTextField.rx.controlEvent(.editingChanged)
             .asObservable()
             .subscribe(onNext: { [weak self] in
-                self?.viewModel?.userSecondPWRelay.accept(self!.secondPWTextField.text!)
+
+                let firstTextFieldValue = self!.firstPWTextField.text!
+                let newValue = self!.secondPWTextField.text!
+                self?.viewModel?.userSecondPWRelay.accept(newValue)
+                
+                let isValied: Bool = newValue.count != 0 && firstTextFieldValue == newValue
+                
+                print(isValied)
+                
+                UIView.animate(withDuration: 0.5) {
+                    self?.checkIcon2.alpha = isValied == true ? 1 : 0
+                    self?.secondDivide.backgroundColor = isValied == true ? UIColor.appColor(.green3) : UIColor.appColor(.white235)
+                    self?.secondPWTextFieldSubTitle.alpha = isValied == true ? 0 : 1
+                    
+                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: isValied)
+                    self?.progress.setProgress(isValied == true ? 0.42 : 0.28, animated: true)
+                }
+
             })
             .disposed(by: disposeBag)
         
@@ -56,34 +91,52 @@ class RegisterPWViewController: UIViewController, UITextFieldDelegate {
             )
         .observeOn(MainScheduler.instance)
         .subscribe { [weak self] firstPW, secondPW in
+            
+            
+            
 //            guard self?.viewModel?.isValidPassword() == true else { return }
-            if self?.viewModel?.isValidPassword(pw: String(firstPW)) == true {
-                self?.checkIcon.alpha = 1
-            } else {
-                self?.checkIcon.alpha = 0
-            }
             
-            if self?.viewModel?.isValidPassword(pw: String(secondPW)) == true {
-                self?.checkIcon2.alpha = 1
-            } else {
-                self?.checkIcon2.alpha = 0
-            }
             
-            if firstPW.count != 0 && firstPW == secondPW {
-                print("사용가능한 패스워드입니다")
-                
-                UIView.animate(withDuration: 0.5) {
-                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
-                    self?.progress.setProgress(0.42, animated: true)
-                }
-            } else {
-                print("패스워드가 일치하지 않습니다.")
-                
-                UIView.animate(withDuration: 0.5) {
-                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
-                    self?.progress.setProgress(0.28, animated: true)
-                }
-            }
+//            if self?.viewModel?.isValidPassword(pw: String(secondPW)) == true &&
+//                self?.viewModel?.userFirstPWRelay.value == self?.viewModel?.userSecondPWRelay.value {
+//                self?.checkIcon2.alpha = 1
+//                self?.secondPWTextFieldSubTitle.alpha = 0
+//                self?.secondDivide.backgroundColor = UIColor.appColor(.green3)
+//
+//                UIView.animate(withDuration: 0.5) {
+//                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
+//                    self?.progress.setProgress(0.42, animated: true)
+//                }
+//
+//
+//            } else if self?.viewModel?.isValidPassword(pw: String(secondPW)) == true {
+//                self?.checkIcon2.alpha = 0
+//                self?.secondPWTextFieldSubTitle.alpha = 1
+//                self?.secondDivide.backgroundColor = UIColor.appColor(.white235)
+//
+//                UIView.animate(withDuration: 0.5) {
+//                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
+//                    self?.progress.setProgress(0.28, animated: true)
+//                }
+//            } else {
+//                print("아무것도 아닙니다")
+//            }
+            
+//            if firstPW.count != 0 && firstPW == secondPW {
+//                print("사용가능한 패스워드입니다")
+//
+//                UIView.animate(withDuration: 0.5) {
+//                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
+//                    self?.progress.setProgress(0.42, animated: true)
+//                }
+//            } else {
+//                print("패스워드가 일치하지 않습니다.")
+//
+//                UIView.animate(withDuration: 0.5) {
+//                    AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
+//                    self?.progress.setProgress(0.28, animated: true)
+//                }
+//            }
         }
         .disposed(by: disposeBag)
         
@@ -136,5 +189,9 @@ extension RegisterPWViewController {
         AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
         checkIcon.alpha = 0
         checkIcon2.alpha = 0
+        firstPWTextFieldSubTitle.alpha = 0
+        secondPWTextFieldSubTitle.alpha = 0
+        firstDivide.backgroundColor = UIColor.appColor(.white235)
+        secondDivide.backgroundColor = UIColor.appColor(.white235)
     }
 }

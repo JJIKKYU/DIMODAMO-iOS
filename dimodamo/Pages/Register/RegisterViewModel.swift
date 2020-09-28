@@ -23,10 +23,14 @@ class RegisterViewModel {
     var serviceBtn2Relay = BehaviorRelay(value: false) // true일 경우 동의
     var markettingBtnRelay = BehaviorRelay(value: false) // true일 경우 동의
     
-    // RegisterName
-    // 이름 작성
+    // RegisterID
+    // 이메일 작성
     var userEmail: String = ""
     var userEmailRelay = BehaviorRelay(value: "")
+    var userEmailVerifyCodeRelay = BehaviorRelay(value: "")
+    var userEmailVerifyCode: String = "_____"
+    var emailVerifyCode: String = "_____"
+    var verifyCodeIsValied: Bool = false
     //    var isVailed: Bool { userEmailRelay.value.count >= 2 } // 이메일 정규식 확인
     
     // RegisterBirth
@@ -184,6 +188,46 @@ class RegisterViewModel {
         let passwordRegEx = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,20}$"
         let predicate = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return predicate.evaluate(with: pw)
+    }
+    
+    func sendVerifyEmail() {
+        emailVerifyCode = self.generateRandomString(8)
+
+        // 서버로 보낼 데이터
+        let dic: Dictionary = [
+            "userMail": self.userEmailRelay.value,
+            "code": self.emailVerifyCode
+        ]
+
+        // 데이터를 보낼 서버 url
+        guard let url = URL(string: "http://dimodamo.com") else {
+            return
+        }
+                        
+        // http 메서드는 'POST'
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+             
+        // request body에 전송할 데이터 넣기
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+        } catch {
+            print(error.localizedDescription)
+        }
+                
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept-Type")
+        
+        let session = URLSession.shared
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
+            print("전송완료")
+        }).resume()
+    }
+    
+    // 난수 생성기
+    func generateRandomString(_ n: Int) -> String {
+        let digits = "abcdefghijklmnopqrstuvwxyz1234567890"
+        return String(Array(0..<n).map { _ in digits.randomElement()! })
     }
 }
 
