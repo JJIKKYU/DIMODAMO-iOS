@@ -27,6 +27,7 @@ class ClauseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewDesign()
         
         Observable.combineLatest(
             viewModel.serviceBtnRelay.map { $0 == true },
@@ -36,12 +37,16 @@ class ClauseViewController: UIViewController {
         .subscribe { [weak self] service1, service2 in
             if (service1 == true && service2) {
                 self?.nextBtn.isEnabled = true
-                self?.nextBtn.backgroundColor = UIColor.appColor(.systemActive)
-                self?.animateProgress(value: 0.14)
+                UIView.animate(withDuration: 0.5) {
+                    self?.nextBtn.backgroundColor = UIColor.appColor(.systemActive)
+                    self?.animateProgress(value: 0.14)
+                }
             } else {
                 self?.nextBtn.isEnabled = false
-                self?.nextBtn.backgroundColor = UIColor.appColor(.systemUnactive)
-                self?.animateProgress(value: 0.01)
+                UIView.animate(withDuration: 0.5) {
+                    self?.nextBtn.backgroundColor = UIColor.appColor(.systemUnactive)
+                    self?.animateProgress(value: 0.01)
+                }
             }
         }
         .disposed(by: disposeBag)
@@ -50,8 +55,14 @@ class ClauseViewController: UIViewController {
             viewModel.serviceBtnRelay.map { $0 == true },
             viewModel.serviceBtn2Relay.map { $0 == true },
             viewModel.markettingBtnRelay.map { $0 == true }
-        ) { $0 && $1 && $2}
-        .bind(to: allBtn.rx.isSelected)
+        )
+        .subscribe(onNext: { [weak self] btn1, btn2, btn3 in
+            if btn1 && btn2 && btn3 {
+                self?.changeBtnColorAllBtn(btn: self!.allBtn, isSelected: true)
+            } else {
+                self?.changeBtnColorAllBtn(btn: self!.allBtn, isSelected: false)
+            }
+        })
         .disposed(by: disposeBag)
         
         serviceBtn.rx.tap
@@ -59,7 +70,7 @@ class ClauseViewController: UIViewController {
             .subscribe(onNext : { [weak self] in
                 let flag: Bool = !((self?.serviceBtn.isSelected)!)
                 self?.viewModel.serviceBtnRelay.accept(flag)
-                self?.serviceBtn.isSelected = flag
+                self?.changeBtnColor(btn: self!.serviceBtn, isSelected: flag)
             })
             .disposed(by: disposeBag)
         
@@ -68,7 +79,7 @@ class ClauseViewController: UIViewController {
             .subscribe(onNext : { [weak self] in
                 let flag: Bool = !((self?.serviceBtn2.isSelected)!)
                 self?.viewModel.serviceBtn2Relay.accept(flag)
-                self?.serviceBtn2.isSelected = flag
+                self?.changeBtnColor(btn: self!.serviceBtn2, isSelected: flag)
             })
             .disposed(by: disposeBag)
         
@@ -77,7 +88,7 @@ class ClauseViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 let flag: Bool = !((self?.markettingBtn.isSelected)!)
                 self?.viewModel.markettingBtnRelay.accept(flag)
-                self?.markettingBtn.isSelected = flag
+                self?.changeBtnColor(btn: self!.markettingBtn, isSelected: flag)
             })
             .disposed(by: disposeBag)
     
@@ -88,9 +99,9 @@ class ClauseViewController: UIViewController {
                 self?.allBtn.isSelected = self?.allBtn.isSelected == true ? false : true
                 let allBtnIsSelected: Bool = self?.allBtn.isSelected == true ? true : false
                 
-                self?.serviceBtn.isSelected = allBtnIsSelected
-                self?.serviceBtn2.isSelected = allBtnIsSelected
-                self?.markettingBtn.isSelected = allBtnIsSelected
+                self?.changeBtnColor(btn: self!.serviceBtn, isSelected: allBtnIsSelected)
+                self?.changeBtnColor(btn: self!.serviceBtn2, isSelected: allBtnIsSelected)
+                self?.changeBtnColor(btn: self!.markettingBtn, isSelected: allBtnIsSelected)
                 
                 self?.viewModel.serviceBtnRelay.accept(allBtnIsSelected)
                 self?.viewModel.serviceBtn2Relay.accept(allBtnIsSelected)
@@ -100,9 +111,7 @@ class ClauseViewController: UIViewController {
 
         
         
-        AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
-        AppStyleGuide.navigationBarWhite(navController: self.navigationController!)
-        AppStyleGuide.navBarOrange(navigationController: self.navigationController!)
+        
     }
     
     
@@ -127,4 +136,33 @@ class ClauseViewController: UIViewController {
         }
     }
 
+}
+
+
+extension ClauseViewController {
+    func viewDesign() {
+        AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
+        AppStyleGuide.navigationBarWhite(navController: self.navigationController!)
+        AppStyleGuide.navBarOrange(navigationController: self.navigationController!)
+    }
+    
+    func changeBtnColor(btn: UIButton, isSelected: Bool) {
+        btn.isSelected = isSelected
+        
+        if isSelected == true {
+            btn.tintColor = UIColor.appColor(.green3)
+        } else {
+            btn.tintColor = UIColor.appColor(.gray170)
+        }
+    }
+    
+    func changeBtnColorAllBtn(btn: UIButton, isSelected: Bool) {
+        btn.isSelected = isSelected
+        
+        if isSelected == true {
+            btn.tintColor = UIColor.appColor(.green1)
+        } else {
+            btn.tintColor = UIColor.appColor(.gray170)
+        }
+    }
 }

@@ -41,6 +41,12 @@ enum AssetsColor {
     case white235
     case white245
     case white255
+    
+    case green1
+    case green2
+    case green3
+    
+    case red
 }
 
 
@@ -108,6 +114,18 @@ extension UIColor {
         return #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
     case .white255:
         return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+    // Green
+    case .green1:
+        return #colorLiteral(red: 0.1294117647, green: 0.5882352941, blue: 0.3254901961, alpha: 1)
+    case .green2:
+        return #colorLiteral(red: 0.1529411765, green: 0.6823529412, blue: 0.3764705882, alpha: 1)
+    case .green3:
+        return #colorLiteral(red: 0.4352941176, green: 0.8117647059, blue: 0.5921568627, alpha: 1)
+        
+    // Red EB5757
+    case .red:
+        return #colorLiteral(red: 0.9215686275, green: 0.3411764706, blue: 0.3411764706, alpha: 1)
     }
   }
 }

@@ -65,6 +65,7 @@ class RegisterViewModel {
     var userProfile: Register = Register()
     private let storage = Storage.storage().reference()
     private var ref: DatabaseReference!
+
     
     
     init() {
@@ -106,6 +107,8 @@ class RegisterViewModel {
     
     // 회원가입
     func signUp() {
+        
+        var userUID: String = ""
         Auth.auth().createUser(withEmail: self.userEmail,
                                password: self.userFirstPWRelay.value,
                                completion: {  (user, error) in
@@ -114,22 +117,26 @@ class RegisterViewModel {
                                 guard let user = user else { return }
                                 
                                 print("회원가입 성공")
-                                print(user.user.uid)
+                                userUID = user.user.uid
                                 self.ref = Database.database().reference()
                                 
                                 print((self.userProfile.getDict()))
                                 let userDataArraay: [String : Any] = self.userProfile.getDict()
-//                                self.ref.child("users/\(user.user.uid)").setValue(userDataArraay)
+                                //                                self.ref.child("users/\(user.user.uid)").setValue(userDataArraay)
                                 
-                                APIService.fireStore.collection("users").document("\(user.user.uid)").setData(userDataArraay) { err in
+                                APIService.fireStore.collection("users").document("\(userUID)").setData(userDataArraay) { err in
                                     if let err = err {
                                         print("Error adding document: \(err)")
                                     } else {
                                         print("Document added")
+                                        if self.canUploadSchoolCard() == true {
+                                            self.uploadSchoolCard(userUID: userUID)
+                                        }
                                     }
                                 }
                                 
                                })
+
     }
     
     // 모든 정보들을 구조체 내에 넣는 작업
@@ -143,13 +150,15 @@ class RegisterViewModel {
         self.userProfile.schoolCertState = self.schoolCertificationState
     }
     
-    func uploadSchoolCard() -> Bool{
-        if schoolCardImageData == nil {
-            
+    func canUploadSchoolCard() -> Bool{
+        if schoolCardImageData == nil {    
             return false
         }
-        
-        storage.child("certification/\(String(describing: userEmail)).png")
+        return true
+    }
+    
+    func uploadSchoolCard(userUID: String) {
+        storage.child("certification/\(userUID).png")
             .putData(schoolCardImageData!
                      , metadata: nil
                      , completion: { _, error in
@@ -158,18 +167,16 @@ class RegisterViewModel {
                             return
                         }
                         
-                        self.storage.child("images/file.png").downloadURL(completion: { url, error in
+                        self.storage.child("certification/\(userUID).png").downloadURL(completion: { url, error in
                             guard let url = url, error == nil else {
                                 return
                             }
                             
                             let urlString = url.absoluteString
                             print("DownloadURL : \(urlString)")
-                            UserDefaults.standard.set(urlString, forKey: "url")
+                            //                            UserDefaults.standard.set(urlString, forKey: "url")
                         })
                      })
-        
-        return true
     }
     
     // 패스워드

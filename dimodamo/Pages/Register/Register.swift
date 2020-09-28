@@ -31,7 +31,8 @@ struct Register {
             ],
             "nickName": self.nickName,
             "school" : self.school,
-            "schoolCert" : self.schoolCertState.description
+            "schoolCert" : self.schoolCertState.description,
+            "rejectionReason" : ""
         ]
         
         return dict

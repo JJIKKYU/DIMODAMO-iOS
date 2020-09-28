@@ -55,13 +55,14 @@ class RegisterSchoolViewController: UIViewController {
     
     // 다음으로
     @IBAction func pressFinishBtn(_ sender: Any) {
-        if viewModel?.uploadSchoolCard() == false {
+        viewModel?.makeStructUserProfile()
+        viewModel?.signUp()
+        if viewModel?.canUploadSchoolCard() == false {
             let alert = UIAlertController(title: "사진을 촬영해주세요", message: "학교 인증 어쩌구", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
-        viewModel?.makeStructUserProfile()
-        viewModel?.signUp()
+        
         dismiss(animated: true, completion: nil)
     }
     

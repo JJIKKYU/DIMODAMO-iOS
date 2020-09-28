@@ -19,7 +19,6 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var nextBtn: UIButton!
-    @IBOutlet weak var checkIcon: UIImageView!
     
     var viewModel : RegisterViewModel? = nil
     var disposeBag = DisposeBag()
@@ -49,13 +48,13 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
                 
                 if self?.viewModel?.isValidEmail() == true {
                     UIView.animate(withDuration: 0.5) {
-                        self?.checkIcon.alpha = 1
+//                        self?.checkIcon.alpha = 1
                         self?.progress.setProgress(0.28, animated: true)
                         AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
                     }
                 }else {
                     UIView.animate(withDuration: 0.5) {
-                        self?.checkIcon.alpha = 0
+//                        self?.checkIcon.alpha = 0
                         self?.progress.setProgress(0.14, animated: true)
                         AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
                     }
