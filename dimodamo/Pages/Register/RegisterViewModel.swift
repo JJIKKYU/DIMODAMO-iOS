@@ -200,7 +200,7 @@ class RegisterViewModel {
         ]
 
         // 데이터를 보낼 서버 url
-        guard let url = URL(string: "http://dimodamo.com") else {
+        guard let url = URL(string: "http://dimodamo.com/cert") else {
             return
         }	
                         
