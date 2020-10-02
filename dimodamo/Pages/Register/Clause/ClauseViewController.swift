@@ -17,6 +17,8 @@ class ClauseViewController: UIViewController {
     
     @IBOutlet weak var allBtn: UIButton!
     @IBOutlet weak var serviceBtn: UIButton!
+    
+    
     @IBOutlet weak var serviceBtn2: UIButton!
     @IBOutlet weak var markettingBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
@@ -122,6 +124,9 @@ class ClauseViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func pressedService1DetailBtn(_ sender: Any) {
+        performSegue(withIdentifier: "ViewService1Clause", sender: sender)
+    }
     
     func animateProgress(value: Float) {
         UIView.animate(withDuration: 0.5) {
