@@ -43,10 +43,11 @@ class RegisterSchoolViewController: UIViewController {
         let alert = UIAlertController(title: "주의사항", message: "학교 미인증 상태에서는 서비스 이용이 제한적입니다.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
-            self?.viewModel?.schoolCertificationState = .none
-            self?.viewModel?.makeStructUserProfile()
-            self?.viewModel?.signUp()
+            self?.performSegue(withIdentifier: "RegisterFinish", sender: sender)
+//            self?.dismiss(animated: true, completion: nil)
+//            self?.viewModel?.schoolCertificationState = .none
+//            self?.viewModel?.makeStructUserProfile()
+//            self?.viewModel?.signUp()
         }))
         present(alert, animated: true, completion: nil)
         
@@ -63,7 +64,8 @@ class RegisterSchoolViewController: UIViewController {
             present(alert, animated: true, completion: nil)
         }
         
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "RegisterFinish", sender: sender)
+//        dismiss(animated: true, completion: nil)
     }
     
     /*

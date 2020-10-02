@@ -10,8 +10,13 @@ import UIKit
 
 class RegisterClearViewController: UIViewController {
 
+    @IBOutlet weak var startDptiBtn: UIButton!
+    @IBOutlet weak var nextTryBtn: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewDesign()
 
         // Do any additional setup after loading the view.
     }
@@ -27,4 +32,12 @@ class RegisterClearViewController: UIViewController {
     }
     */
 
+}
+
+
+extension RegisterClearViewController {
+    func viewDesign() {
+        startDptiBtn.layer.cornerRadius = 16
+        nextTryBtn.layer.cornerRadius = 16
+    }
 }
