@@ -1,4 +1,4 @@
-//
+
 //  LoginViewController.swift
 //  dimodamo
 //
@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-import KakaoSDKAuth
+//import KakaoSDKAuth
 
 import FirebaseAuth
 
@@ -54,20 +54,20 @@ class LoginViewController: UIViewController {
         loginCheckLabel.text = "로그아웃 상태"
     }
     
-    @IBAction func pressKakaoLogin(_ sender: Any) {
-        
-        AuthApi.shared.rx.loginWithKakaoAccount()
-            .subscribe(onNext:{ (oauthToken) in
-                print("loginWithKakaoAccount() success.")
-
-                //do something
-                _ = oauthToken
-            }, onError: {error in
-                print(error)
-            })
-            .disposed(by: disposeBag)
-        
-    }
+//    @IBAction func pressKakaoLogin(_ sender: Any) {
+//        
+//        AuthApi.shared.rx.loginWithKakaoAccount()
+//            .subscribe(onNext:{ (oauthToken) in
+//                print("loginWithKakaoAccount() success.")
+//
+//                //do something
+//                _ = oauthToken
+//            }, onError: {error in
+//                print(error)
+//            })
+//            .disposed(by: disposeBag)
+//        
+//    }
     
     @IBAction func pressCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
