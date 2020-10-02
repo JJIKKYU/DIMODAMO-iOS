@@ -14,6 +14,7 @@ class TestViewController: UIViewController {
     let communityStoryboard: UIStoryboard = UIStoryboard(name: "Community", bundle: .main)
     let registerStoryboard: UIStoryboard = UIStoryboard(name: "Register", bundle: .main)
     let loginStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: .main)
+    let DPTIStoryboard: UIStoryboard = UIStoryboard(name: "DPTI", bundle: .main)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,20 @@ class TestViewController: UIViewController {
     }
     
     @IBAction func pressDptiMain(_ sender: Any) {
-        performSegue(withIdentifier: "DptiMain", sender: sender)
+//        performSegue(withIdentifier: "DptiMain", sender: sender)
         
 //        let dptiSurveyVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "DptiSurvey")
 //        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: dptiSurveyVC)
 //
 //        navBarOnModal.modalPresentationStyle = .fullScreen
 //        present(navBarOnModal, animated: true, completion: nil)
+        
+        let dptiVC: UIViewController = DPTIStoryboard.instantiateViewController(withIdentifier: "DptiVC")
+        
+//        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: dptiVC)
+
+        dptiVC.modalPresentationStyle = .fullScreen
+        present(dptiVC, animated: true, completion: nil)
     }
     
     @IBAction func pressCommunityMain(_ sender: Any) {

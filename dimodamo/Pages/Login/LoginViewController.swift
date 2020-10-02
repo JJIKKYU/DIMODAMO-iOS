@@ -39,6 +39,8 @@ class LoginViewController: UIViewController {
                             if user != nil {
                                 print("loginSucess")
                                 self.loginCheckLabel.text = "로그인 성공"
+                                self.presentMainScreen()
+                                
                             } else {
                                 print("loginFail")
                             }
@@ -63,7 +65,19 @@ class LoginViewController: UIViewController {
 //        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
 //
         registerVC.modalPresentationStyle = .fullScreen
-        present(registerVC, animated: true, completion: nil)
+        present(registerVC, animated: false, completion: nil)
+    }
+    
+    func presentMainScreen() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+        
+//        let registerVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
+//
+//        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
+//
+        mainVC.modalPresentationStyle = .fullScreen
+        present(mainVC, animated: true, completion: nil)
     }
     
     //    @IBAction func pressKakaoLogin(_ sender: Any) {
