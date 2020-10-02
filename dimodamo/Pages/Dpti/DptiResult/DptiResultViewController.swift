@@ -118,7 +118,7 @@ class DptiResultViewController: UIViewController {
                 
         resultCardViewInit()
         circleNumberSetting()
-        lottieChar()
+        lottieChar(type: viewModel.type)
         
         let attrString = NSAttributedString(
             string: typeTitle.text!,
@@ -165,8 +165,8 @@ class DptiResultViewController: UIViewController {
         }
     }
     
-    func lottieChar() {
-        let animationView = Lottie.AnimationView.init(name: "TE_M")
+    func lottieChar(type: String) {
+        let animationView = Lottie.AnimationView.init(name: "\(type)_M")
         animationView.contentMode = .scaleAspectFill
 
         typeChar.addSubview(animationView)
