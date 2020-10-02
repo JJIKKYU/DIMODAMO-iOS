@@ -54,8 +54,20 @@ class LoginViewController: UIViewController {
         loginCheckLabel.text = "로그아웃 상태"
     }
     
-//    @IBAction func pressKakaoLogin(_ sender: Any) {
-//        
+    @IBAction func pressedRegisterBtn(_ sender: Any) {
+        let registerStoryboard = UIStoryboard(name: "Register", bundle: nil)
+        let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterVC")
+        
+//        let registerVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
+//
+//        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
+//
+        registerVC.modalPresentationStyle = .fullScreen
+        present(registerVC, animated: true, completion: nil)
+    }
+    
+    //    @IBAction func pressKakaoLogin(_ sender: Any) {
+//
 //        AuthApi.shared.rx.loginWithKakaoAccount()
 //            .subscribe(onNext:{ (oauthToken) in
 //                print("loginWithKakaoAccount() success.")
@@ -66,7 +78,7 @@ class LoginViewController: UIViewController {
 //                print(error)
 //            })
 //            .disposed(by: disposeBag)
-//        
+//
 //    }
     
     @IBAction func pressCloseBtn(_ sender: Any) {

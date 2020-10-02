@@ -86,6 +86,14 @@
                                                             <action selector="pressLogout:" destination="3wI-bz-Iuf" eventType="touchUpInside" id="P9J-II-i25"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBL-Xc-gdp">
+                                                        <rect key="frame" x="181" y="366" width="52" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" title="회원가입"/>
+                                                        <connections>
+                                                            <action selector="pressedRegisterBtn:" destination="3wI-bz-Iuf" eventType="touchUpInside" id="uEx-vU-3Ml"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <constraints>
