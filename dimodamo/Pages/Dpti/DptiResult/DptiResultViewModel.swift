@@ -10,11 +10,18 @@ import Foundation
 import RxSwift
 import RxRelay
 
+import FirebaseAuth
+import FirebaseFirestore
+
 class DptiResultViewModel {
     var resultTypes : [[String : Any]] = []
     
     // Survey 이후 최종 User Type
     var type : String = "TI"
+    
+    var gender: String = ""
+    
+    lazy var genderObservable = BehaviorRelay(value: "M")
     
     lazy var resultObservable = BehaviorRelay<DptiResult>(value: DptiResult())
 
@@ -28,13 +35,16 @@ class DptiResultViewModel {
     
     lazy var colorHex = resultObservable.map { UIColor(hexString: $0.colorHex) }
     
+    
     init() {
+        
+        print("\(self.gender)를 정상적으로 받았습니다")
         print("Init : \(type)")
     }
     
     func setType(type: String) {
         self.type = type
-        
+       
         _ = APIService.fetchLocalJsonRx(fileName: "Results")
             .map { data -> [[String : Any]] in
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : [[String : Any]]]
@@ -61,6 +71,14 @@ class DptiResultViewModel {
         }
         .take(1)
         .bind(to: resultObservable)
+        
+        
+    }
+    
+    func setGender(gender: String) {
+        self.gender = gender
+        self.genderObservable.accept(gender)
+        print(self.genderObservable.value)
     }
     
     func hexStringToUIColor (hex:String) -> UIColor {

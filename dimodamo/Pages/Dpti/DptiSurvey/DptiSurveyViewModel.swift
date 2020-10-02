@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 import RxRelay
 
+import Firebase
+
 class DptiSurveyViewModel {
     
     lazy var surveyObservable = BehaviorRelay<[DptiSurvey]>(value: [])
@@ -21,6 +23,8 @@ class DptiSurveyViewModel {
     lazy var progressBarValue = Float(currentNumber.value) / 20
     
     var userSurveyAnswer : UserSurveyAnswer = UserSurveyAnswer()
+    
+    var gender: String = ""
     
     init() {
         _ = APIService.fetchLocalJsonRx(fileName: "Survey")
@@ -38,6 +42,23 @@ class DptiSurveyViewModel {
         }
         .take(1)
         .bind(to: surveyObservable)
+        
+        
+        // 파이어베이스에서 성별체크
+        let user: String = Auth.auth().currentUser?.uid ?? ""
+        let docRef = Firestore.firestore().collection("users").document(user)
+        
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                print("documnet data : \(dataDescription)")
+                let gender: String = document.data()?["gender"] as! String
+                self.gender = gender == "female" ? "G" : "M"
+                print(self.gender)
+            } else {
+                print("documnet does not exist")
+            }
+        }
     }
     
     func nextCard(isNextCard : Bool) {

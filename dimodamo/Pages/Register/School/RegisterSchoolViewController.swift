@@ -44,10 +44,9 @@ class RegisterSchoolViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
             self?.performSegue(withIdentifier: "RegisterFinish", sender: sender)
-//            self?.dismiss(animated: true, completion: nil)
-//            self?.viewModel?.schoolCertificationState = .none
-//            self?.viewModel?.makeStructUserProfile()
-//            self?.viewModel?.signUp()
+            self?.viewModel?.schoolCertificationState = .none
+            self?.viewModel?.makeStructUserProfile()
+            self?.viewModel?.signUp()
         }))
         present(alert, animated: true, completion: nil)
         

@@ -112,13 +112,19 @@ class DptiResultViewController: UIViewController {
         .disposed(by: disposeBag)
         
             
-        
+       
+        viewModel.genderObservable
+            .observeOn(MainScheduler.instance)
+            .subscribe (onNext : { value in
+                print(value)
+                self.lottieChar(type: self.viewModel.type, gender: self.viewModel.genderObservable.value)
+            })
+            .disposed(by: disposeBag)
         
         
                 
         resultCardViewInit()
         circleNumberSetting()
-        lottieChar(type: viewModel.type)
         
         let attrString = NSAttributedString(
             string: typeTitle.text!,
@@ -165,8 +171,8 @@ class DptiResultViewController: UIViewController {
         }
     }
     
-    func lottieChar(type: String) {
-        let animationView = Lottie.AnimationView.init(name: "\(type)_M")
+    func lottieChar(type: String, gender: String) {
+        let animationView = Lottie.AnimationView.init(name: "\(type)_\(gender)")
         animationView.contentMode = .scaleAspectFill
 
         typeChar.addSubview(animationView)

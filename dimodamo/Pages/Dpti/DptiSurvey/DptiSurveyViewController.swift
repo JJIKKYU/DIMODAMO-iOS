@@ -92,6 +92,7 @@ class DptiSurveyViewController: UIViewController {
         if segue.identifier == "DptiResult" {
             let vc = segue.destination as! DptiResultViewController
             vc.viewModel.setType(type: viewModel.checkType())
+            vc.viewModel.setGender(gender: viewModel.gender)
         }
     }
     
