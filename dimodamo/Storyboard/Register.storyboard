@@ -1674,6 +1674,7 @@
                         <outlet property="nextTryBtn" destination="ugl-ao-Oe1" id="6zU-Cp-02I"/>
                         <outlet property="progress" destination="DzP-US-hCU" id="WJI-3N-big"/>
                         <outlet property="schoolCardBtn" destination="Nl7-xj-pmv" id="uDI-0e-mj1"/>
+                        <segue destination="YZI-bj-yhp" kind="show" id="PbT-PS-fAk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqI-n9-EC5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1884,6 +1885,150 @@
             </objects>
             <point key="canvasLocation" x="-629" y="1097"/>
         </scene>
+        <!--Register School View Controller-->
+        <scene sceneID="uPS-T3-Yku">
+            <objects>
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="YZI-bj-yhp" customClass="RegisterSchoolViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sss-U8-15C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD4-5C-Nad">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trT-gv-2pt" userLabel="ContentView">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="765"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmW-ce-6n8">
+                                                <rect key="frame" x="0.0" y="709" width="374" height="56"/>
+                                                <color key="backgroundColor" name="WHITE"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="oEP-pm-9Oa"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                <state key="normal" title="다음에 할래요">
+                                                    <color key="titleColor" name="SYSTEM"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressNextTryBtn:" destination="YZI-bj-yhp" eventType="touchUpInside" id="Q95-Ht-3ey"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvK-Lw-a9W">
+                                                <rect key="frame" x="0.0" y="641" width="374" height="56"/>
+                                                <color key="backgroundColor" name="WHITE"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="Wf1-q6-1nV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                <state key="normal" title="DPTI 실시하기">
+                                                    <color key="titleColor" name="SYSTEM"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressFinishBtn:" destination="YZI-bj-yhp" eventType="touchUpInside" id="5AZ-Zq-lIu"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWJ-v7-1CE">
+                                                <rect key="frame" x="12" y="0.0" width="362" height="59.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="디모다모의 일원이 되신걸 축하드립니다!">
+                                                        <attributes>
+                                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <font key="NSFont" size="24" name="NanumSquareRoundOTFEB"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="kerning">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="registerClear" translatesAutoresizingMaskIntoConstraints="NO" id="vQT-hW-5AJ">
+                                                <rect key="frame" x="7.5" y="119.5" width="359" height="322"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지금 바로 디자인 성향을 확인해보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMp-Aq-Rmc">
+                                                <rect key="frame" x="50" y="497.5" width="274" height="22"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                <color key="textColor" name="WHITE"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zY-z0-3Ym">
+                                                <rect key="frame" x="25" y="545" width="324" height="40"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">저희가 준비한 디자인 성향 검사(DPTI)를 통해
+사용자님의 디자이너 타입을 파악해보세요!</string>
+                                                        <attributes>
+                                                            <color key="NSColor" name="WHITE"/>
+                                                            <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" name="SYSTEM"/>
+                                        <color key="tintColor" name="SYSTEM"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="PWJ-v7-1CE" secondAttribute="trailing" id="1HU-PZ-X9x"/>
+                                            <constraint firstItem="PvK-Lw-a9W" firstAttribute="leading" secondItem="trT-gv-2pt" secondAttribute="leading" id="3lG-e4-aXJ"/>
+                                            <constraint firstItem="PWJ-v7-1CE" firstAttribute="leading" secondItem="trT-gv-2pt" secondAttribute="leading" constant="12" id="7Aw-cx-kkI"/>
+                                            <constraint firstAttribute="trailing" secondItem="bmW-ce-6n8" secondAttribute="trailing" id="8UI-Ei-usv"/>
+                                            <constraint firstItem="6zY-z0-3Ym" firstAttribute="centerX" secondItem="trT-gv-2pt" secondAttribute="centerX" id="HgH-dY-AvC"/>
+                                            <constraint firstItem="TMp-Aq-Rmc" firstAttribute="centerX" secondItem="trT-gv-2pt" secondAttribute="centerX" id="J1f-IG-Tgc"/>
+                                            <constraint firstItem="vQT-hW-5AJ" firstAttribute="centerX" secondItem="trT-gv-2pt" secondAttribute="centerX" id="Olf-ag-JHn"/>
+                                            <constraint firstItem="bmW-ce-6n8" firstAttribute="leading" secondItem="trT-gv-2pt" secondAttribute="leading" id="XF0-aV-6P1"/>
+                                            <constraint firstAttribute="bottom" secondItem="bmW-ce-6n8" secondAttribute="bottom" id="ch2-CG-CEL"/>
+                                            <constraint firstItem="TMp-Aq-Rmc" firstAttribute="top" secondItem="vQT-hW-5AJ" secondAttribute="bottom" constant="56" id="dFe-FL-dTE"/>
+                                            <constraint firstItem="6zY-z0-3Ym" firstAttribute="top" secondItem="TMp-Aq-Rmc" secondAttribute="bottom" constant="25.5" id="ibd-8Q-Zh1"/>
+                                            <constraint firstAttribute="trailing" secondItem="PvK-Lw-a9W" secondAttribute="trailing" id="kAH-nf-uZX"/>
+                                            <constraint firstItem="PWJ-v7-1CE" firstAttribute="top" secondItem="trT-gv-2pt" secondAttribute="top" id="n6c-EV-dju"/>
+                                            <constraint firstAttribute="height" constant="765" id="rVC-S9-zvQ"/>
+                                            <constraint firstItem="bmW-ce-6n8" firstAttribute="top" secondItem="PvK-Lw-a9W" secondAttribute="bottom" constant="12" id="v89-Om-v5R"/>
+                                            <constraint firstItem="vQT-hW-5AJ" firstAttribute="top" secondItem="PWJ-v7-1CE" secondAttribute="bottom" constant="60" id="yOV-0w-QWO"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="SYSTEM"/>
+                                <constraints>
+                                    <constraint firstItem="trT-gv-2pt" firstAttribute="top" secondItem="gD4-5C-Nad" secondAttribute="top" id="MxS-oB-GfM"/>
+                                    <constraint firstAttribute="bottom" secondItem="trT-gv-2pt" secondAttribute="bottom" id="Of3-6w-Q51"/>
+                                    <constraint firstAttribute="trailing" secondItem="trT-gv-2pt" secondAttribute="trailing" constant="20" id="Oxc-lZ-sbI"/>
+                                    <constraint firstItem="trT-gv-2pt" firstAttribute="leading" secondItem="gD4-5C-Nad" secondAttribute="leading" constant="20" id="UJv-eC-v9Z"/>
+                                    <constraint firstItem="trT-gv-2pt" firstAttribute="centerX" secondItem="gD4-5C-Nad" secondAttribute="centerX" id="oQg-Mr-uho"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rtq-5r-pfI"/>
+                        <color key="backgroundColor" name="SYSTEM"/>
+                        <constraints>
+                            <constraint firstItem="rtq-5r-pfI" firstAttribute="trailing" secondItem="gD4-5C-Nad" secondAttribute="trailing" id="41q-52-fHf"/>
+                            <constraint firstItem="gD4-5C-Nad" firstAttribute="leading" secondItem="rtq-5r-pfI" secondAttribute="leading" id="PAk-XV-9Kb"/>
+                            <constraint firstItem="rtq-5r-pfI" firstAttribute="top" secondItem="gD4-5C-Nad" secondAttribute="top" id="dZY-2A-nda"/>
+                            <constraint firstItem="gD4-5C-Nad" firstAttribute="bottom" secondItem="rtq-5r-pfI" secondAttribute="bottom" id="kCQ-mQ-5zc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Qh-3O-IVe">
+                        <barButtonItem key="backBarButtonItem" title="이전" id="By4-yn-9Bb"/>
+                        <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="IGo-3j-y6V">
+                            <color key="tintColor" name="SYSTEM"/>
+                            <connections>
+                                <action selector="pressCloseBtn:" destination="YZI-bj-yhp" id="Ris-of-T2q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="finishBtn" destination="PvK-Lw-a9W" id="Jid-S8-Iwb"/>
+                        <outlet property="nextTryBtn" destination="bmW-ce-6n8" id="2eW-DH-LuV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o6p-AA-XLe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5018.840579710145" y="419.86607142857139"/>
+        </scene>
     </scenes>
     <color key="tintColor" name="SYSTEM"/>
     <resources>
@@ -1891,6 +2036,7 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="registerClear" width="359" height="322"/>
         <image name="schoolCard" width="374" height="230"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="GRAY - 170">
@@ -1916,6 +2062,9 @@
         </namedColor>
         <namedColor name="TEXT - SMALL">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WHITE">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="WHITE">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
