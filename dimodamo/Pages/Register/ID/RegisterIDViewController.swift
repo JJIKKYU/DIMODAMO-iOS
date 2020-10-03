@@ -15,6 +15,9 @@ import MessageUI
 
 class RegisterIDViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var closeBtn: UIBarButtonItem!
     @IBOutlet weak var progress: UIProgressView!
     
@@ -159,6 +162,7 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
 
 extension RegisterIDViewController {
     func viewDesign() {
+        changeHeightContentView()
         AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
         emailCertBtn1.layer.cornerRadius = 4
         emailCertBtn2.layer.cornerRadius = 4
@@ -170,6 +174,18 @@ extension RegisterIDViewController {
         emailCertBtn2.isEnabled = false
         emailCertBtn2.alpha = 0
         
+    }
+    
+    func changeHeightContentView() {
+        print(UIScreen.main.bounds.height)
+        let window = UIApplication.shared.keyWindow
+        let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
+                (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        let bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
+        print(", \(bottomPadding), \(topBarHeight)")
+        let heightScreen: CGFloat = UIScreen.main.bounds.height - bottomPadding - topBarHeight
+        contentViewHeight.constant = heightScreen
+        contentViewHeight.isActive = true
     }
     
     func verifyTextfiled(enabled: Bool) {
