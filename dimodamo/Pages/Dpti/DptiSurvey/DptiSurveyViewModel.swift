@@ -10,7 +10,8 @@ import Foundation
 import RxSwift
 import RxRelay
 
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class DptiSurveyViewModel {
     

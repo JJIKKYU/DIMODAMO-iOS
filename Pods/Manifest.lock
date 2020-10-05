@@ -289,27 +289,6 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.3.1)
-  - KakaoSDKAuth (2.0.2):
-    - KakaoSDKCommon (= 2.0.2)
-  - KakaoSDKCommon (2.0.2):
-    - Alamofire (~> 5.1)
-  - KakaoSDKLink (2.0.2):
-    - KakaoSDKCommon (= 2.0.2)
-    - KakaoSDKTemplate (= 2.0.2)
-  - KakaoSDKNavi (2.0.2):
-    - KakaoSDKCommon (= 2.0.2)
-  - KakaoSDKStory (2.0.2):
-    - KakaoSDKAuth (= 2.0.2)
-    - KakaoSDKCommon (= 2.0.2)
-  - KakaoSDKTalk (2.0.2):
-    - KakaoSDKAuth (= 2.0.2)
-    - KakaoSDKCommon (= 2.0.2)
-    - KakaoSDKTemplate (= 2.0.2)
-  - KakaoSDKTemplate (2.0.2):
-    - KakaoSDKCommon (= 2.0.2)
-  - KakaoSDKUser (2.0.2):
-    - KakaoSDKAuth (= 2.0.2)
-    - KakaoSDKCommon (= 2.0.2)
   - leveldb-library (1.22)
   - lottie-ios (3.1.8)
   - nanopb (0.3.9011):
@@ -318,11 +297,6 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.9)
-  - RxAlamofire (5.6.1):
-    - RxAlamofire/Core (= 5.6.1)
-  - RxAlamofire/Core (5.6.1):
-    - Alamofire (~> 5.2)
-    - RxSwift (~> 5.1)
   - RxAnimated (0.7.0):
     - RxAnimated/Core (= 0.7.0)
     - RxCocoa (~> 5.1)
@@ -333,40 +307,6 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxKakaoSDK (2.0.2):
-    - KakaoSDKNavi (= 2.0.2)
-    - KakaoSDKTemplate (= 2.0.2)
-    - RxKakaoSDKAuth (= 2.0.2)
-    - RxKakaoSDKCommon (= 2.0.2)
-    - RxKakaoSDKLink (= 2.0.2)
-    - RxKakaoSDKStory (= 2.0.2)
-    - RxKakaoSDKTalk (= 2.0.2)
-    - RxKakaoSDKUser (= 2.0.2)
-  - RxKakaoSDKAuth (2.0.2):
-    - KakaoSDKAuth (= 2.0.2)
-    - RxKakaoSDKCommon (= 2.0.2)
-  - RxKakaoSDKCommon (2.0.2):
-    - KakaoSDKCommon (= 2.0.2)
-    - RxAlamofire (~> 5.2)
-    - RxCocoa
-    - RxSwift
-  - RxKakaoSDKLink (2.0.2):
-    - KakaoSDKLink (= 2.0.2)
-    - KakaoSDKTemplate (= 2.0.2)
-    - RxKakaoSDKCommon (= 2.0.2)
-  - RxKakaoSDKStory (2.0.2):
-    - KakaoSDKStory (= 2.0.2)
-    - RxKakaoSDKAuth (= 2.0.2)
-    - RxKakaoSDKCommon (= 2.0.2)
-  - RxKakaoSDKTalk (2.0.2):
-    - KakaoSDKTalk (= 2.0.2)
-    - KakaoSDKTemplate (= 2.0.2)
-    - RxKakaoSDKAuth (= 2.0.2)
-    - RxKakaoSDKCommon (= 2.0.2)
-  - RxKakaoSDKUser (2.0.2):
-    - KakaoSDKUser (= 2.0.2)
-    - RxKakaoSDKAuth (= 2.0.2)
-    - RxKakaoSDKCommon (= 2.0.2)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
@@ -375,6 +315,7 @@ PODS:
     - RxSwift (~> 5.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -385,7 +326,6 @@ DEPENDENCIES:
   - lottie-ios
   - RxAnimated
   - RxCocoa
-  - RxKakaoSDK
   - RxSwift
   - RxViewController
 
@@ -414,28 +354,12 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
-    - KakaoSDKAuth
-    - KakaoSDKCommon
-    - KakaoSDKLink
-    - KakaoSDKNavi
-    - KakaoSDKStory
-    - KakaoSDKTalk
-    - KakaoSDKTemplate
-    - KakaoSDKUser
     - leveldb-library
     - lottie-ios
     - nanopb
     - PromisesObjC
-    - RxAlamofire
     - RxAnimated
     - RxCocoa
-    - RxKakaoSDK
-    - RxKakaoSDKAuth
-    - RxKakaoSDKCommon
-    - RxKakaoSDKLink
-    - RxKakaoSDKStory
-    - RxKakaoSDKTalk
-    - RxKakaoSDKUser
     - RxRelay
     - RxSwift
     - RxViewController
@@ -464,32 +388,16 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
-  KakaoSDKAuth: 69698a4a6726f2b43fb43246891a1a747343935e
-  KakaoSDKCommon: 2226e13fbbd4a875826c7a348cf4f535392a4b8f
-  KakaoSDKLink: aa202aee73d5234184043f4c8a01fb7d6d46ee87
-  KakaoSDKNavi: 5ca916988d7d12ba5286dd7b8dc6b89156eb5900
-  KakaoSDKStory: a98a90cdcbb44211b8bb228afcdb9b4d0b789ba7
-  KakaoSDKTalk: af761ee90ff9bc732cc2e5515ad5e0b3cbf81480
-  KakaoSDKTemplate: c68a1c313211c7f925d297ff0aaae741b4b48c4f
-  KakaoSDKUser: a4a82ba374e0b3478be3f66307943e85542149ee
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
-  RxAlamofire: 0531dddf378c84270e97e897333678f1cfaec3ba
   RxAnimated: 8540892468e906e7404595bc51ed4b36b3737ab5
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
-  RxKakaoSDK: 8041d57a4aa0403d5046b923ed189c4fd4ba3dce
-  RxKakaoSDKAuth: 3f8fd8f71419151cbe3d141bb69e2b1486473946
-  RxKakaoSDKCommon: 6879ff837d427975b5972a185bba182d458d5001
-  RxKakaoSDKLink: e96c3d0074d7c7d242cda925de929f3ca3b24027
-  RxKakaoSDKStory: e4dc55431c20f2e925f86495d153e4f131a81bfd
-  RxKakaoSDKTalk: 7a9800265820cb9ae5173a112b4599030c908461
-  RxKakaoSDKUser: 869403bfab9d9d895c1e3027721f11a379e9f558
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
 
-PODFILE CHECKSUM: 9772216153e0abea512dc5149d7e672a0bb20d2d
+PODFILE CHECKSUM: 139b8e99d65f4fcc9303139a949c89f638435a7e
 
 COCOAPODS: 1.9.3
