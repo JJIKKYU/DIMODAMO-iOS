@@ -19,12 +19,20 @@ class LoginViewController: UIViewController {
     
     var disposeBag = DisposeBag()
     
+    @IBOutlet weak var loginTitle: UILabel!
     @IBOutlet weak var loginCheckLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var pwTextField: UITextField!
     
+    @IBOutlet weak var roundView: UIView!
+    
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var arrowBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewDesign()
         
         if let user = Auth.auth().currentUser {
             loginCheckLabel.text = "이미 로그인 중입니다"
@@ -32,6 +40,14 @@ class LoginViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+
+    // 터치했을때 키보드 내림
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    
+    
     @IBAction func pressLogin(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailTextField.text!,
                            password: pwTextField.text!,
@@ -65,7 +81,7 @@ class LoginViewController: UIViewController {
 //        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
 //
         registerVC.modalPresentationStyle = .fullScreen
-        present(registerVC, animated: false, completion: nil)
+        present(registerVC, animated: true, completion: nil)
     }
     
     func presentMainScreen() {
@@ -80,23 +96,16 @@ class LoginViewController: UIViewController {
         present(mainVC, animated: true, completion: nil)
     }
     
-    //    @IBAction func pressKakaoLogin(_ sender: Any) {
-//
-//        AuthApi.shared.rx.loginWithKakaoAccount()
-//            .subscribe(onNext:{ (oauthToken) in
-//                print("loginWithKakaoAccount() success.")
-//
-//                //do something
-//                _ = oauthToken
-//            }, onError: {error in
-//                print(error)
-//            })
-//            .disposed(by: disposeBag)
-//
-//    }
-    
     @IBAction func pressCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func pressedFindPWBtn(_ sender: Any) {
+        performSegue(withIdentifier: "FindPWVC", sender: sender)
+    }
+    
+    @IBAction func pressedFindEmailBtn(_ sender: Any) {
+        performSegue(withIdentifier: "FindEmailVC", sender: sender)
     }
     
     /*
@@ -109,4 +118,26 @@ class LoginViewController: UIViewController {
     }
     */
 
+}
+
+extension LoginViewController {
+    func viewDesign() {
+        roundView.roundCorners(corners: [.topLeft, .topRight], radius: 24)
+        loginBtn.layer.cornerRadius = 4
+        registerBtn.layer.cornerRadius = 4
+        arrowBtn.layer.cornerRadius = 24
+        
+        loginTitle.appShadow(.s8)
+        arrowBtn.appShadow(.s12)
+    }
+}
+
+// 탑 라운드 코너할 때 사용
+extension UIView {
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
 }

@@ -131,6 +131,60 @@ extension UIColor {
 }
 
 
+//MARK: - AddShadow.swift, 그림자 스타일가이드
+
+enum AssetsShadow {
+    case s4
+    case s8
+    case s12
+    case s16
+    case s20
+}
+
+extension UIView {
+    func appShadow(_ shadow: AssetsShadow) {
+        
+        let offset: CGSize = CGSize(width: 0, height: 4)
+        let color: UIColor = UIColor.black
+        let radius: CGFloat = 16
+        var opacity: Float?
+        
+        
+        switch shadow{
+        case .s4:
+            opacity = 0.04
+            break
+        case .s8:
+            opacity = 0.08
+            break
+        case .s12:
+            opacity = 0.12
+            break
+        case .s16:
+            opacity = 0.16
+            break
+        case .s20:
+            opacity = 0.20
+            break
+            
+        
+        }
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity!
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
+
+        let backgroundCGColor = backgroundColor?.cgColor
+        backgroundColor = nil
+        layer.backgroundColor =  backgroundCGColor
+    }
+}
+
+
+
 extension UIApplication {
 var statusBarUIView: UIView? {
 
