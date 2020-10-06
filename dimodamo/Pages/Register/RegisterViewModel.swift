@@ -26,6 +26,7 @@ class RegisterViewModel {
     // RegisterID
     // 이메일 작성
     var userEmailRelay = BehaviorRelay(value: "")
+    var isVailedUserEmail = BehaviorRelay<MailCheck>(value: .none)
     
     // RegisterBirth
     // 생년월일
@@ -179,10 +180,12 @@ class RegisterViewModel {
             if ((provider?.contains(EmailPasswordAuthSignInMethod)) != nil) {
                 exist = false
                 print("\(exist)")
+                self.isVailedUserEmail.accept(.impossible)
                 // 가입 가능
             } else {
                 exist = true
                 print("\(exist)")
+                self.isVailedUserEmail.accept(.possible)
                 
             }
         }

@@ -39,6 +39,12 @@ struct Register {
     }
 }
 
+enum MailCheck {
+    case none
+    case possible
+    case impossible
+}
+
 // 성별
 enum Gender {
     case female

@@ -67,6 +67,32 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
             })
             .disposed(by: disposeBag)
         
+        
+        viewModel?.isVailedUserEmail
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                
+                switch value {
+                case .possible:
+                    let alert = AlertController(title: "사용 가능한 메일입니다", message: "남은 가입 단계를 계속 진행해 주세요", preferredStyle: .alert)
+                    alert.setTitleImage(UIImage(named: "alertComplete"))
+                    let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self?.present(alert, animated: true, completion: nil)
+                    
+                case .impossible:
+                    let alert = AlertController(title: "이미 가입되어 있는 메일입니다", message: "로그인이나 비밀번호 찾기를 이용해 주세요", preferredStyle: .alert)
+                    alert.setTitleImage(UIImage(named: "alertError"))
+                    let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+                    alert.addAction(action)
+                    self?.present(alert, animated: true, completion: nil)
+                    
+                case .none:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     } 
@@ -111,28 +137,10 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
     
     // 중복 확인
     @IBAction func pressCertBtn1(_ sender: Any) {
-        let isExist = viewModel?.emailExistCheck()
+        viewModel?.emailExistCheck()
+    
         
-        print("########\(isExist)")
         
-        if isExist == true {
-            
-            let alert = AlertController(title: "사용 가능한 메일입니다", message: "남은 가입 단계를 계속 진행해 주세요", preferredStyle: .alert)
-            alert.setTitleImage(UIImage(named: "alertComplete"))
-            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            let alert = AlertController(title: "이미 가입되어 있는 메일입니다", message: "로그인이나 비밀번호 찾기를 이용해 주세요", preferredStyle: .alert)
-            alert.setTitleImage(UIImage(named: "alertError"))
-            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-            
-            
-            
-            
-        }
         
     }
     
