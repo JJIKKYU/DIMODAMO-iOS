@@ -81,6 +81,11 @@ class LoginViewController: UIViewController {
                                     
                                 case .userNotFound:
                                     print("userNotFound")
+                                    let alert = AlertController(title: "가입되어 있지 않은 메일입니다", message: "회원가입이나 이메일 찾기를 이용해 주세요", preferredStyle: .alert)
+                                    alert.setTitleImage(UIImage(named: "alertError"))
+                                    let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+                                    alert.addAction(action)
+                                    self.present(alert, animated: true, completion: nil)
                                     break
                                     
                                 default:
