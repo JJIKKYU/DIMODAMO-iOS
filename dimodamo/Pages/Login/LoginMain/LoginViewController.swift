@@ -37,10 +37,10 @@ class LoginViewController: UIViewController {
         if let user = Auth.auth().currentUser {
             loginCheckLabel.text = "이미 로그인 중입니다"
         }
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     // 터치했을때 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -52,22 +52,55 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: emailTextField.text!,
                            password: pwTextField.text!,
                            completion: {user, error in
-                            if user != nil {
+                            if let error = error as NSError? {
+                                switch AuthErrorCode(rawValue: error.code) {
+                                case .operationNotAllowed:
+                                    print("operationNotAllowed")
+                                    break
+                                    
+                                case .userDisabled:
+                                    print("userDisabled")
+                                    break
+                                    
+                                case .wrongPassword:
+                                    print("wrongPassword")
+                                    let alert = AlertController(title: "비밀번호가 일치하지 않습니다", message: "비밀번호 찾기를 이용해 주세요", preferredStyle: .alert)
+                                    alert.setTitleImage(UIImage(named: "alertError"))
+                                    let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+                                    alert.addAction(action)
+                                    self.present(alert, animated: true, completion: nil)
+                                    break
+                                    
+                                case .invalidEmail:
+                                    print("invalidEmail")
+                                    break
+                                    
+                                case .missingEmail:
+                                    print("mssingEmail")
+                                    break
+                                    
+                                case .userNotFound:
+                                    print("userNotFound")
+                                    break
+                                    
+                                default:
+                                    print("ErorCode : \(error)")
+                                    print("Error: \(error.localizedDescription)")
+                                    break
+                                }
+                            } else {
                                 print("loginSucess")
                                 self.loginCheckLabel.text = "로그인 성공"
                                 self.presentMainScreen()
-                                
-                            } else {
-                                print("loginFail")
                             }
-        })
+                           })
     }
     @IBAction func pressLogout(_ sender: Any) {
         do {
             try Auth.auth().signOut()
-          } catch let signOutError as NSError {
+        } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
-          }
+        }
         print("로그아웃이 완료되었습니다")
         loginCheckLabel.text = "로그아웃 상태"
     }
@@ -76,10 +109,10 @@ class LoginViewController: UIViewController {
         let registerStoryboard = UIStoryboard(name: "Register", bundle: nil)
         let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterVC")
         
-//        let registerVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
-//
-//        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
-//
+        //        let registerVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
+        //
+        //        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
+        //
         registerVC.modalPresentationStyle = .fullScreen
         present(registerVC, animated: true, completion: nil)
     }
@@ -88,10 +121,10 @@ class LoginViewController: UIViewController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
         
-//        let registerVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
-//
-//        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
-//
+        //        let registerVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
+        //
+        //        let navBarOnModal: UINavigationController = UINavigationController(rootViewController: registerVC)
+        //
         mainVC.modalPresentationStyle = .fullScreen
         present(mainVC, animated: true, completion: nil)
     }
@@ -101,23 +134,40 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func pressedFindPWBtn(_ sender: Any) {
-        performSegue(withIdentifier: "FindPWVC", sender: sender)
+        performSegue(withIdentifier: "FindEmailPWVC", sender: sender)
     }
     
     @IBAction func pressedFindEmailBtn(_ sender: Any) {
-        performSegue(withIdentifier: "FindEmailVC", sender: sender)
+        performSegue(withIdentifier: "FindEmailPWVC", sender: sender)
     }
     
-    /*
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "FindEmailPWVC" {
+            let button: UIButton = sender as! UIButton
+            let destinationVC = segue.destination as? FindEmailPWViewController
+            
+            switch button.tag {
+            // 이메일 찾기
+            case 0:
+                destinationVC?.viewModel.isActiveEmailView.accept(true)
+                break
+                
+            // 비밀번호 찾기
+            case 1:
+                destinationVC?.viewModel.isActiveEmailView.accept(false)
+                break
+            default:
+                break
+            }
+            
+        }
     }
-    */
-
+    
+    
 }
 
 extension LoginViewController {
@@ -134,7 +184,7 @@ extension LoginViewController {
 
 // 탑 라운드 코너할 때 사용
 extension UIView {
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath

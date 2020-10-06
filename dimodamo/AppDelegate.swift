@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        sleep(1)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         // 로그인 중일 때는 메인으로
