@@ -25,13 +25,7 @@ class RegisterViewModel {
     
     // RegisterID
     // 이메일 작성
-    var userEmail: String = ""
     var userEmailRelay = BehaviorRelay(value: "")
-    var userEmailVerifyCodeRelay = BehaviorRelay(value: "")
-    var userEmailVerifyCode: String = "_____"
-    var emailVerifyCode: String = "_____"
-    var verifyCodeIsValied: Bool = false
-    //    var isVailed: Bool { userEmailRelay.value.count >= 2 } // 이메일 정규식 확인
     
     // RegisterBirth
     // 생년월일
@@ -69,51 +63,26 @@ class RegisterViewModel {
     var userProfile: Register = Register()
     private let storage = Storage.storage().reference()
     private var ref: DatabaseReference!
-
+    
     
     
     init() {
         
     }
     
-    func isValiedBirth() -> Bool {
-        var birthValied: Bool = false
-        if birth.value.count >= 4 && Int(birth.value)! < 2020 {
-            birthValied = true
-        } else { birthValied = false }
-        
-        var monthValied: Bool = false
-        if month.value.count >= 2 && Int(month.value)! <= 12 {
-            monthValied = true
-        } else { monthValied = false }
-        
-        var dayValied: Bool = false
-        if month.value.count >= 2 && Int(day.value)! <= 31 {
-            dayValied = true
-        } else { dayValied = false }
-        
-        if birthValied && monthValied && dayValied {
-            return true
-        } else { return false }
-    }
     
     // 이메일 정규식
     func isValidEmail() -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: self.userEmail)
-    }
-    
-    // 리얼타임 데이터베이스에서 리스트 형식으로 가져와서 중복 체크 하는 방법으로 해야할듯?
-    func firebaseEmailCheck() {
-        
+        return emailTest.evaluate(with: self.userEmailRelay.value)
     }
     
     // 회원가입
     func signUp() {
         
         var userUID: String = ""
-        Auth.auth().createUser(withEmail: self.userEmail,
+        Auth.auth().createUser(withEmail: self.userEmailRelay.value,
                                password: self.userFirstPWRelay.value,
                                completion: {  (user, error) in
                                 
@@ -140,7 +109,7 @@ class RegisterViewModel {
                                 }
                                 
                                })
-
+        
     }
     
     // 모든 정보들을 구조체 내에 넣는 작업
@@ -190,44 +159,34 @@ class RegisterViewModel {
         return predicate.evaluate(with: pw)
     }
     
-    func sendVerifyEmail() {
-        emailVerifyCode = self.generateRandomString(8)
-
-        // 서버로 보낼 데이터
-        let dic: Dictionary = [
-            "userMail": self.userEmailRelay.value,
-            "code": self.emailVerifyCode
-        ]
-
-        // 데이터를 보낼 서버 url
-        guard let url = URL(string: "http://dimodamo.com/cert") else {
-            return
-        }	
-                        
-        // http 메서드는 'POST'
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-             
-        // request body에 전송할 데이터 넣기
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
-        } catch {
-            print(error.localizedDescription)
-        }
-                
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept-Type")
-        
-        let session = URLSession.shared
-        session.dataTask(with: request, completionHandler: { (data, response, error) in
-            print("전송완료")
-        }).resume()
-    }
-    
     // 난수 생성기
     func generateRandomString(_ n: Int) -> String {
         let digits = "abcdefghijklmnopqrstuvwxyz1234567890"
         return String(Array(0..<n).map { _ in digits.randomElement()! })
     }
+    
+    // false일 경우 가입 불가능, true일 경우 가입 가능
+    func emailExistCheck() -> Bool {
+        var exist: Bool = false
+        
+        Auth.auth().fetchSignInMethods(forEmail: "\(userEmailRelay.value)") { provider, error in
+            
+            if (error) != nil {
+                print(error?.localizedDescription)
+            }
+            
+            // 가입 불가능
+            if ((provider?.contains(EmailPasswordAuthSignInMethod)) != nil) {
+                exist = false
+                print("\(exist)")
+                // 가입 가능
+            } else {
+                exist = true
+                print("\(exist)")
+                
+            }
+        }
+        
+        return exist
+    }
 }
-

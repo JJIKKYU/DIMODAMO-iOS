@@ -106,6 +106,8 @@
 		98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */; };
 		98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */; };
 		98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */; };
+		98D69F9B252CA7A700F52E1F /* FindPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F9A252CA7A700F52E1F /* FindPWViewController.swift */; };
+		98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */; };
 		98E2416B250F9F47003BE1A3 /* Results.json in Resources */ = {isa = PBXBuildFile; fileRef = 98E2416A250F9F47003BE1A3 /* Results.json */; };
 		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
@@ -215,6 +217,8 @@
 		98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewController.swift; sourceTree = "<group>"; };
 		98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewModel.swift; sourceTree = "<group>"; };
+		98D69F9A252CA7A700F52E1F /* FindPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewController.swift; sourceTree = "<group>"; };
+		98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewModel.swift; sourceTree = "<group>"; };
 		98E2416A250F9F47003BE1A3 /* Results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Results.json; sourceTree = "<group>"; };
 		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -626,6 +630,8 @@
 			children = (
 				98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */,
 				98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */,
+				98D69F9A252CA7A700F52E1F /* FindPWViewController.swift */,
+				98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */,
 			);
 			path = FindEmailPW;
 			sourceTree = "<group>";
@@ -813,6 +819,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98D69F9B252CA7A700F52E1F /* FindPWViewController.swift in Sources */,
 				98816097251EF5C300556AEC /* LoginViewController.swift in Sources */,
 				98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
@@ -840,6 +847,7 @@
 				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
 				98067137250F1FD000C3EB72 /* DomainModel.swift in Sources */,
 				986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */,
+				98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,

@@ -22,6 +22,8 @@ class FindEmailPWViewController: UIViewController {
     @IBOutlet weak var emailUnderLine: UIView!
     @IBOutlet weak var pwUnderLine: UIView!
     
+    @IBOutlet var swipeRecognizer: UISwipeGestureRecognizer!
+    
     let viewModel = FindEmailPWViewModel()
     var disposeBag = DisposeBag()
     
@@ -45,6 +47,14 @@ class FindEmailPWViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    @IBAction func swipeAction(_ sender: Any) {
+        print(swipeRecognizer.direction)
+        if swipeRecognizer.direction == .right {
+            viewModel.isActiveEmailView.accept(false)
+        }
+    }
+    
     
     @IBAction func pressedEmailBtn(_ sender: Any) {
         viewModel.isActiveEmailView.accept(true)

@@ -25,13 +25,9 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var viewSubTitle: UILabel!
     
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var codeTextfield: UITextField!
     @IBOutlet weak var nextBtn: UIButton!
     
     @IBOutlet weak var emailCertBtn1: UIButton!
-    @IBOutlet weak var emailCertBtn2: UIButton!
-    
-    @IBOutlet weak var divideLine2: UIView!
     
     var viewModel : RegisterViewModel? = nil
     var disposeBag = DisposeBag()
@@ -50,18 +46,11 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
             .bind(to: self.viewModel!.userEmailRelay)
             .disposed(by: disposeBag)
         
-        codeTextfield.rx.text.orEmpty
-            .map { $0 as String }
-            .bind(to: self.viewModel!.userEmailVerifyCodeRelay)
-            .disposed(by: disposeBag)
-        
         viewModel?.userEmailRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext : { [weak self] newValue in
                 //                self?.viewModel!.nameRelay.accept(newValue)
                 print("newValue : \(newValue)")
-                
-                self?.viewModel?.userEmail = newValue
                 //                print(self?.viewModel?.userName)
                 
                 if self?.viewModel?.isValidEmail() == true {
@@ -77,21 +66,6 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
                 }
             })
             .disposed(by: disposeBag)
-        
-        viewModel?.userEmailVerifyCodeRelay
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] newValue in
-                self?.viewModel?.userEmailVerifyCode = newValue
-                print(self?.viewModel?.userEmailVerifyCode)
-                
-                if self?.viewModel?.emailVerifyCode == self?.viewModel?.userEmailVerifyCode {
-                    self?.viewModel?.verifyCodeIsValied = true
-                } else {
-                    self?.viewModel?.verifyCodeIsValied = false
-                }
-            })
-            .disposed(by: disposeBag)
-        
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -135,27 +109,31 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    // 전송 요청
+    // 중복 확인
     @IBAction func pressCertBtn1(_ sender: Any) {
-        viewModel?.sendVerifyEmail()
-        emailCertBtn1.setTitle("다시 요청", for: .normal)
-        verifyTextfiled(enabled: true)
-        print(viewModel?.emailVerifyCode)
+        let isExist = viewModel?.emailExistCheck()
         
-        viewTitle.text = "인증 코드를 입력해 주세요!"
-        viewSubTitle.text = "인증번호는 최대 5분간 유효"
+        print("########\(isExist)")
         
-        UIView.animate(withDuration: 0.5) {
-            self.emailCertBtn2.backgroundColor = UIColor.appColor(.system)
-            self.emailCertBtn2.isEnabled = true
+        if isExist == true {
+            
+            let alert = AlertController(title: "사용 가능한 메일입니다", message: "남은 가입 단계를 계속 진행해 주세요", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertComplete"))
+            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = AlertController(title: "이미 가입되어 있는 메일입니다", message: "로그인이나 비밀번호 찾기를 이용해 주세요", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            
+            
+            
         }
         
-        // 출결번호 보내기
-    }
-    
-    // 인증요청
-    @IBAction func pressCertBtn2(_ sender: Any) {
-        alertVerify(isComplete: viewModel!.verifyCodeIsValied)
     }
     
 }
@@ -165,14 +143,6 @@ extension RegisterIDViewController {
         changeHeightContentView()
         AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
         emailCertBtn1.layer.cornerRadius = 4
-        emailCertBtn2.layer.cornerRadius = 4
-        emailCertBtn2.isEnabled = false
-        
-        codeTextfield.alpha = 0
-        codeTextfield.isEnabled = false
-        divideLine2.alpha = 0
-        emailCertBtn2.isEnabled = false
-        emailCertBtn2.alpha = 0
         
     }
     
@@ -180,23 +150,12 @@ extension RegisterIDViewController {
         print(UIScreen.main.bounds.height)
         let window = UIApplication.shared.keyWindow
         let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
-                (self.navigationController?.navigationBar.frame.height ?? 0.0)
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
         let bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
         print(", \(bottomPadding), \(topBarHeight)")
         let heightScreen: CGFloat = UIScreen.main.bounds.height - bottomPadding - topBarHeight
         contentViewHeight.constant = heightScreen
         contentViewHeight.isActive = true
-    }
-    
-    func verifyTextfiled(enabled: Bool) {
-        UIView.animate(withDuration: 0.5) {
-            self.emailCertBtn2.alpha = enabled == true ? 1 : 0
-            self.codeTextfield.alpha = enabled == true ? 1 : 0
-            self.divideLine2.alpha = enabled == true ? 1 : 0
-        }
-        emailCertBtn2.isEnabled = enabled
-        codeTextfield.isEnabled = enabled
-        
     }
     
     func alertVerify(isComplete: Bool) {
@@ -210,9 +169,7 @@ extension RegisterIDViewController {
             let action = UIAlertAction(title: "확인", style: .default) { _ in
                 self.nextBtn.isEnabled = true
                 self.textField.isEnabled = false
-                self.codeTextfield.isEnabled = false
                 self.emailCertBtn1.isEnabled = false
-                self.emailCertBtn2.isEnabled = false
                 UIView.animate(withDuration: 0.5) {
                     AppStyleGuide.systemBtnRadius16(btn: self.nextBtn, isActive: true)
                     self.progress.setProgress(0.28, animated: true)

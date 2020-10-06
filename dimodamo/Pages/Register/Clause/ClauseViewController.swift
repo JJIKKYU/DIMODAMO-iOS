@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class ClauseViewController: UIViewController {
-
+    
     @IBOutlet weak var closeBtn: UIBarButtonItem!
     
     @IBOutlet weak var allBtn: UIButton!
@@ -27,6 +27,8 @@ class ClauseViewController: UIViewController {
     var disposeBag = DisposeBag()
     let viewModel = RegisterViewModel()
     
+    var nextBtnIsEnabled: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
@@ -38,13 +40,13 @@ class ClauseViewController: UIViewController {
         .observeOn(MainScheduler.instance)
         .subscribe { [weak self] service1, service2 in
             if (service1 == true && service2) {
-                self?.nextBtn.isEnabled = true
+                self?.nextBtnIsEnabled = true
                 UIView.animate(withDuration: 0.5) {
                     self?.nextBtn.backgroundColor = UIColor.appColor(.systemActive)
                     self?.animateProgress(value: 0.14)
                 }
             } else {
-                self?.nextBtn.isEnabled = false
+                self?.nextBtnIsEnabled = false
                 UIView.animate(withDuration: 0.5) {
                     self?.nextBtn.backgroundColor = UIColor.appColor(.gray210)
                     self?.animateProgress(value: 0.01)
@@ -93,7 +95,7 @@ class ClauseViewController: UIViewController {
                 self?.changeBtnColor(btn: self!.markettingBtn, isSelected: flag)
             })
             .disposed(by: disposeBag)
-    
+        
         
         allBtn.rx.tap
             .observeOn(MainScheduler.instance)
@@ -110,7 +112,7 @@ class ClauseViewController: UIViewController {
                 self?.viewModel.markettingBtnRelay.accept(allBtnIsSelected)
             })
             .disposed(by: disposeBag)
-
+        
         
         
         
@@ -118,7 +120,16 @@ class ClauseViewController: UIViewController {
     
     
     @IBAction func pressedNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputID", sender: sender)
+        if nextBtnIsEnabled {
+            performSegue(withIdentifier: "InputID", sender: sender)
+        } else {
+            let alert = AlertController(title: "필수 약관에 동의해 주세요", message: "동의 후 다음으로 넘어갈 수 있습니다", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
+        
     }
     @IBAction func pressedCloseBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -140,7 +151,7 @@ class ClauseViewController: UIViewController {
             destinationVC?.viewModel = self.viewModel
         }
     }
-
+    
 }
 
 
