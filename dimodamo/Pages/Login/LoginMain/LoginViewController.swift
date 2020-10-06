@@ -17,12 +17,18 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
-    var disposeBag = DisposeBag()
+    
     
     @IBOutlet weak var loginTitle: UILabel!
     @IBOutlet weak var loginCheckLabel: UILabel!
+    
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailLine: UIView!
+    @IBOutlet weak var emailSubTitle: UILabel!
+    
     @IBOutlet weak var pwTextField: UITextField!
+    @IBOutlet weak var pwLine: UIView!
+    @IBOutlet weak var pwSubTitle: UILabel!
     
     @IBOutlet weak var roundView: UIView!
     
@@ -30,9 +36,71 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var arrowBtn: UIButton!
     
+    
+    var viewModel = LoginViewModel()
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
+        
+        emailTextField.rx.text.orEmpty
+            .map { $0 as String }
+            .bind(to: self.viewModel.userEmailRelay)
+            .disposed(by: disposeBag)
+        
+        viewModel.userEmailRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] newValue in
+                
+                UIView.animate(withDuration: 0.5) {
+                    // 이메일 양식에 맞지 않다면
+                    if self?.viewModel.isValidEmail() == false && newValue.count > 3 {
+                        self?.emailSubTitle.alpha = 1
+                        self?.emailLine.backgroundColor = UIColor.appColor(.red)
+                        // 이메일 양식에 맞다면
+                    } else if self?.viewModel.isValidEmail() == true && newValue.count > 3 {
+                        self?.emailSubTitle.alpha = 0
+                        self?.emailLine.backgroundColor = UIColor.appColor(.system)
+                    }
+                    // 그 외
+                    else {
+                        self?.emailSubTitle.alpha = 0
+                        self?.emailLine.backgroundColor = UIColor.appColor(.gray210)
+                    }
+                }
+                
+            })
+            .disposed(by: disposeBag)
+        
+        pwTextField.rx.text.orEmpty
+            .map { $0 as String }
+            .bind(to: self.viewModel.userPwRelay)
+            .disposed(by: disposeBag)
+        
+        viewModel.userPwRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] newValue in
+                
+                UIView.animate(withDuration: 0.5) {
+                    // 패스워드 양식에 안맞다면
+                    if self?.viewModel.isValidPassword() == false && newValue.count > 3 {
+                        self?.pwSubTitle.alpha = 1
+                        self?.pwLine.backgroundColor = UIColor.appColor(.red)
+                    // 패스워드 양식에 맞다면
+                    } else if self?.viewModel.isValidPassword() == true && newValue.count > 3 {
+                        self?.pwSubTitle.alpha = 0
+                        self?.pwLine.backgroundColor = UIColor.appColor(.system)
+                    // 그외
+                    } else {
+                        self?.pwSubTitle.alpha = 0
+                        self?.pwLine.backgroundColor = UIColor.appColor(.gray210)
+                    }
+                }
+                
+            })
+            .disposed(by: disposeBag)
+        
         
         if let user = Auth.auth().currentUser {
             loginCheckLabel.text = "이미 로그인 중입니다"
@@ -178,12 +246,15 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     func viewDesign() {
         roundView.roundCorners(corners: [.topLeft, .topRight], radius: 24)
-        loginBtn.layer.cornerRadius = 4
-        registerBtn.layer.cornerRadius = 4
+        loginBtn.layer.cornerRadius = 16
+        registerBtn.layer.cornerRadius = 16
         arrowBtn.layer.cornerRadius = 24
         
         loginTitle.appShadow(.s8)
         arrowBtn.appShadow(.s12)
+        
+        emailSubTitle.alpha = 0
+        pwSubTitle.alpha = 0
     }
 }
 

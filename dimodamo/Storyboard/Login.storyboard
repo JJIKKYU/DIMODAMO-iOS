@@ -51,12 +51,24 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KkZ-js-czE">
                                 <rect key="frame" x="0.0" y="219" width="414" height="677"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7a9-lY-LO5">
+                                        <rect key="frame" x="32" y="89" width="32" height="15"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="12"/>
+                                        <color key="textColor" name="GRAY - 210"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCQ-r9-EGE">
                                         <rect key="frame" x="32" y="112" width="350" height="22"/>
                                         <color key="textColor" name="GRAY - 170"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일이 양식에 맞지 않습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qR9-pj-Y6C">
+                                        <rect key="frame" x="32" y="154" width="157" height="16"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
+                                        <color key="textColor" name="RED"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zmf-07-2z4" userLabel="Line">
                                         <rect key="frame" x="32" y="144" width="350" height="2"/>
                                         <color key="backgroundColor" name="GRAY - 210"/>
@@ -64,6 +76,12 @@
                                             <constraint firstAttribute="height" constant="2" id="prV-Yi-7F3"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afs-rt-QeV">
+                                        <rect key="frame" x="32" y="193" width="42" height="15"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="12"/>
+                                        <color key="textColor" name="GRAY - 210"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4t-CF-2kc">
                                         <rect key="frame" x="32" y="216" width="350" height="21"/>
                                         <color key="textColor" name="GRAY - 170"/>
@@ -77,6 +95,12 @@
                                             <constraint firstAttribute="height" constant="2" id="Qe1-oe-6Ev"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대소문자, 숫자 조합 8글자 이상 입력해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kht-cF-Ia9">
+                                        <rect key="frame" x="32" y="257" width="234" height="16"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
+                                        <color key="textColor" name="RED"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="체크용" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxS-kR-Uku">
                                         <rect key="frame" x="24" y="23" width="350" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -177,12 +201,16 @@
                                     <constraint firstItem="0SN-VB-K4V" firstAttribute="trailing" secondItem="S4t-CF-2kc" secondAttribute="trailing" id="DRg-C3-4xw"/>
                                     <constraint firstItem="S4t-CF-2kc" firstAttribute="leading" secondItem="sCQ-r9-EGE" secondAttribute="leading" id="FRx-9m-q84"/>
                                     <constraint firstItem="CJO-KX-IZq" firstAttribute="trailing" secondItem="mwn-Ap-U6b" secondAttribute="trailing" id="Fq1-hd-4cx"/>
+                                    <constraint firstItem="sCQ-r9-EGE" firstAttribute="top" secondItem="7a9-lY-LO5" secondAttribute="bottom" constant="8" id="Hvy-55-gmd"/>
                                     <constraint firstItem="Zmf-07-2z4" firstAttribute="top" secondItem="sCQ-r9-EGE" secondAttribute="bottom" constant="10" id="JDz-6y-gjE"/>
                                     <constraint firstAttribute="bottom" secondItem="eoA-hl-nNC" secondAttribute="bottom" constant="50" id="QYt-gr-C7c"/>
+                                    <constraint firstItem="qR9-pj-Y6C" firstAttribute="top" secondItem="Zmf-07-2z4" secondAttribute="bottom" constant="8" symbolic="YES" id="RPo-9e-Q0G"/>
                                     <constraint firstItem="eoA-hl-nNC" firstAttribute="centerX" secondItem="KkZ-js-czE" secondAttribute="centerX" id="S4h-HE-0Y0"/>
                                     <constraint firstAttribute="trailing" secondItem="FxS-kR-Uku" secondAttribute="trailing" constant="40" id="S5d-cC-C9d"/>
                                     <constraint firstAttribute="trailing" secondItem="sCQ-r9-EGE" secondAttribute="trailing" constant="32" id="VgE-vD-iKi"/>
+                                    <constraint firstItem="S4t-CF-2kc" firstAttribute="top" secondItem="afs-rt-QeV" secondAttribute="bottom" constant="8" id="WyA-9A-mO9"/>
                                     <constraint firstItem="eoA-hl-nNC" firstAttribute="top" secondItem="mwn-Ap-U6b" secondAttribute="bottom" constant="41" id="X56-nw-20a"/>
+                                    <constraint firstItem="7a9-lY-LO5" firstAttribute="leading" secondItem="sCQ-r9-EGE" secondAttribute="leading" id="ZZi-pt-xKL"/>
                                     <constraint firstItem="CJO-KX-IZq" firstAttribute="leading" secondItem="mwn-Ap-U6b" secondAttribute="leading" id="cCd-Vs-Dhn"/>
                                     <constraint firstItem="0SN-VB-K4V" firstAttribute="top" secondItem="S4t-CF-2kc" secondAttribute="bottom" constant="10" id="ddL-cE-FJl"/>
                                     <constraint firstItem="S4t-CF-2kc" firstAttribute="top" secondItem="Zmf-07-2z4" secondAttribute="bottom" constant="70" id="f9k-ZF-JJp"/>
@@ -191,6 +219,10 @@
                                     <constraint firstItem="Zmf-07-2z4" firstAttribute="leading" secondItem="sCQ-r9-EGE" secondAttribute="leading" id="sAu-fZ-Fub"/>
                                     <constraint firstItem="FxS-kR-Uku" firstAttribute="leading" secondItem="KkZ-js-czE" secondAttribute="leading" constant="24" id="sth-QB-06C"/>
                                     <constraint firstItem="sCQ-r9-EGE" firstAttribute="top" secondItem="KkZ-js-czE" secondAttribute="top" multiplier="0.1:1" constant="112" id="tHW-Zq-SZ7"/>
+                                    <constraint firstItem="qR9-pj-Y6C" firstAttribute="leading" secondItem="Zmf-07-2z4" secondAttribute="leading" id="vS6-Yw-WAM"/>
+                                    <constraint firstItem="afs-rt-QeV" firstAttribute="leading" secondItem="S4t-CF-2kc" secondAttribute="leading" id="vp8-hJ-J3Y"/>
+                                    <constraint firstItem="kht-cF-Ia9" firstAttribute="leading" secondItem="0SN-VB-K4V" secondAttribute="leading" id="xe6-mp-i5y"/>
+                                    <constraint firstItem="kht-cF-Ia9" firstAttribute="top" secondItem="0SN-VB-K4V" secondAttribute="bottom" constant="8" id="yeS-0Q-DkZ"/>
                                     <constraint firstItem="0SN-VB-K4V" firstAttribute="leading" secondItem="S4t-CF-2kc" secondAttribute="leading" id="ypg-TK-dA4"/>
                                 </constraints>
                             </view>
@@ -221,10 +253,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="arrowBtn" destination="cWz-lz-Cxu" id="FXP-Tr-k3C"/>
+                        <outlet property="emailLine" destination="Zmf-07-2z4" id="BW9-Qa-aHU"/>
+                        <outlet property="emailSubTitle" destination="qR9-pj-Y6C" id="fvX-ZR-ucY"/>
                         <outlet property="emailTextField" destination="sCQ-r9-EGE" id="ksg-wx-8Pn"/>
                         <outlet property="loginBtn" destination="CJO-KX-IZq" id="1zS-LD-nzk"/>
                         <outlet property="loginCheckLabel" destination="FxS-kR-Uku" id="gad-Ge-Mne"/>
                         <outlet property="loginTitle" destination="PWz-Bp-6Yy" id="jpa-SF-9Ve"/>
+                        <outlet property="pwLine" destination="0SN-VB-K4V" id="X50-Rb-Fas"/>
+                        <outlet property="pwSubTitle" destination="kht-cF-Ia9" id="GQK-sZ-hLT"/>
                         <outlet property="pwTextField" destination="S4t-CF-2kc" id="wfX-JC-Ewm"/>
                         <outlet property="registerBtn" destination="mwn-Ap-U6b" id="2GF-9X-TXh"/>
                         <outlet property="roundView" destination="KkZ-js-czE" id="SCh-bF-ZgN"/>
@@ -375,6 +411,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="gra-Yo-xkR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
@@ -419,6 +456,9 @@
         </namedColor>
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RED">
+            <color red="0.92199999094009399" green="0.34099999070167542" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.54900002479553223" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
