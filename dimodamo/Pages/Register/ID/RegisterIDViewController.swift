@@ -25,7 +25,11 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var viewSubTitle: UILabel!
     
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textFieldSubTitle: UILabel!
+    @IBOutlet weak var divideLine: UIView!
     @IBOutlet weak var nextBtn: UIButton!
+    
+    @IBOutlet weak var checkMark: UIImageView!
     
     @IBOutlet weak var emailCertBtn1: UIButton!
     
@@ -49,18 +53,27 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
         viewModel?.userEmailRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext : { [weak self] newValue in
-                //                self?.viewModel!.nameRelay.accept(newValue)
-                print("newValue : \(newValue)")
-                //                print(self?.viewModel?.userName)
+                // 글이 수정될 때마다 새로 인증을 받아야 하므로, 이메일 중복 확인 해제
+                if self?.viewModel?.prevUserEmail != newValue {
+                    self?.viewModel?.prevUserEmail = newValue
+                    self?.viewModel?.isVailedUserEmail.accept(.none)
+                }
                 
+                // 이메일 정규식에 맞다면
                 if self?.viewModel?.isValidEmail() == true {
+                    // 중복확인 버튼 활성화
                     self?.emailCertBtn1.isEnabled = true
+                    
                     UIView.animate(withDuration: 0.5) {
+                        self?.textFieldSubTitle.alpha = 0
                         self?.emailCertBtn1.backgroundColor = UIColor.appColor(.system)
                     }
-                }else {
+                // 이메일 정규식에 맞지 않다면
+                } else {
+                    // 중복확인 버튼 비활성화
                     self?.emailCertBtn1.isEnabled = false
                     UIView.animate(withDuration: 0.5) {
+                        if newValue.count > 3 { self?.textFieldSubTitle.alpha = 1 }
                         self?.emailCertBtn1.backgroundColor = UIColor.appColor(.gray210)
                     }
                 }
@@ -73,21 +86,38 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
             .subscribe(onNext: { [weak self] value in
                 
                 switch value {
+                // 사용가능한 메일
                 case .possible:
                     let alert = AlertController(title: "사용 가능한 메일입니다", message: "남은 가입 단계를 계속 진행해 주세요", preferredStyle: .alert)
                     alert.setTitleImage(UIImage(named: "alertComplete"))
-                    let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    let action = UIAlertAction(title: "확인", style: .default) { _ in
+                        UIView.animate(withDuration: 0.5) {
+                            self?.nextBtn.backgroundColor = UIColor.appColor(.system)
+                            self?.checkMark.alpha = 1
+                            self?.emailCertBtn1.alpha = 0
+                            self?.emailCertBtn1.isEnabled = false
+                            self?.divideLine.backgroundColor = UIColor.appColor(.green3)
+                        }
+                    }
                     alert.addAction(action)
                     self?.present(alert, animated: true, completion: nil)
                     
+                // 사용 불가능한 메일
                 case .impossible:
                     let alert = AlertController(title: "이미 가입되어 있는 메일입니다", message: "로그인이나 비밀번호 찾기를 이용해 주세요", preferredStyle: .alert)
                     alert.setTitleImage(UIImage(named: "alertError"))
                     let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
                     alert.addAction(action)
                     self?.present(alert, animated: true, completion: nil)
-                    
+                
+                // 인증 해제 및 인증 받지 않은 상태
                 case .none:
+                    UIView.animate(withDuration: 0.5) {
+                        self?.nextBtn.backgroundColor = UIColor.appColor(.gray210)
+                        self?.checkMark.alpha = 0
+                        self?.divideLine.backgroundColor = UIColor.appColor(.white235)
+                        self?.emailCertBtn1.alpha = 1
+                    }
                     break
                 }
             })
@@ -115,20 +145,21 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
         self.nextBtn?.transform = .identity
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     // MARK: - Navigation
     
     @IBAction func pressedNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "InputPW", sender: sender)
+        // 중복확인 결과 생성 가능한 이메일이 아닐 경우에 팝업
+        if viewModel?.isVailedUserEmail.value != .possible {
+            let alert = AlertController(title: "이메일을 입력해 주세요", message: "중복 확인 후 다음으로 넘어갈 수 있습니다", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        // 중복확인 결과 생성 가능한 이메일일 경우 다음으로
+        } else {
+            performSegue(withIdentifier: "InputPW", sender: sender)
+        }
+        
     }
     
     @IBAction func pressedCloseBtn(_ sender: Any) {
@@ -137,11 +168,8 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
     
     // 중복 확인
     @IBAction func pressCertBtn1(_ sender: Any) {
+        
         viewModel?.emailExistCheck()
-    
-        
-        
-        
     }
     
 }
@@ -151,7 +179,10 @@ extension RegisterIDViewController {
         changeHeightContentView()
         AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
         emailCertBtn1.layer.cornerRadius = 4
-        
+        textFieldSubTitle.alpha = 0
+        checkMark.alpha = 0
+        divideLine.backgroundColor = UIColor.appColor(.white235)
+        emailCertBtn1.isEnabled = false
     }
     
     func changeHeightContentView() {
@@ -165,41 +196,4 @@ extension RegisterIDViewController {
         contentViewHeight.constant = heightScreen
         contentViewHeight.isActive = true
     }
-    
-    func alertVerify(isComplete: Bool) {
-        
-        if isComplete == true {
-            
-            let alert = AlertController(title: "인증이 완료되었습니다", message: "남은 가입 단계를 계속 진행해 주세요", preferredStyle: .alert)
-            alert.setTitleImage(UIImage(named: "alertComplete"))
-            alert.view.tintColor = UIColor.appColor(.green2)
-            // Add actions
-            let action = UIAlertAction(title: "확인", style: .default) { _ in
-                self.nextBtn.isEnabled = true
-                self.textField.isEnabled = false
-                self.emailCertBtn1.isEnabled = false
-                UIView.animate(withDuration: 0.5) {
-                    AppStyleGuide.systemBtnRadius16(btn: self.nextBtn, isActive: true)
-                    self.progress.setProgress(0.28, animated: true)
-                }
-            }
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-            
-        } else {
-            
-            
-            let alert = AlertController(title: "번호가 옳지 않습니다", message: "인증번호 요청을 다시 진행해 주세요", preferredStyle: .alert)
-            alert.setTitleImage(UIImage(named: "alertError"))
-            // Add actions
-            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-        }
-        
-    }
-    
-    
-    
-    
 }

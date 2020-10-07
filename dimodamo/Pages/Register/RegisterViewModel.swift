@@ -25,6 +25,7 @@ class RegisterViewModel {
     
     // RegisterID
     // 이메일 작성
+    var prevUserEmail: String = "" // 이전에 작성했던 이메일과 대조하기 위해서
     var userEmailRelay = BehaviorRelay(value: "")
     var isVailedUserEmail = BehaviorRelay<MailCheck>(value: .none)
     
@@ -167,10 +168,9 @@ class RegisterViewModel {
     }
     
     // false일 경우 가입 불가능, true일 경우 가입 가능
-    func emailExistCheck() -> Bool {
-        var exist: Bool = false
-        
+    func emailExistCheck() {
         Auth.auth().fetchSignInMethods(forEmail: "\(userEmailRelay.value)") { provider, error in
+            guard self.userEmailRelay.value.count > 3 else { return }
             
             if (error) != nil {
                 print(error?.localizedDescription)
@@ -178,18 +178,11 @@ class RegisterViewModel {
             
             // 가입 불가능
             if ((provider?.contains(EmailPasswordAuthSignInMethod)) != nil) {
-                exist = false
-                print("\(exist)")
                 self.isVailedUserEmail.accept(.impossible)
                 // 가입 가능
             } else {
-                exist = true
-                print("\(exist)")
                 self.isVailedUserEmail.accept(.possible)
-                
             }
         }
-        
-        return exist
     }
 }
