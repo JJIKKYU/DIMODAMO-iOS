@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="278"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWz-Bp-6Yy">
-                                <rect key="frame" x="32" y="91" width="350" height="63"/>
+                                <rect key="frame" x="32" y="91" width="350" height="60.5"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">환영합니다
@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWz-lz-Cxu">
-                                <rect key="frame" x="333" y="98.5" width="48" height="48"/>
+                                <rect key="frame" x="333" y="97.5" width="48" height="48"/>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="EU2-Ga-HqB"/>
@@ -264,7 +264,7 @@
                         <outlet property="pwTextField" destination="S4t-CF-2kc" id="wfX-JC-Ewm"/>
                         <outlet property="registerBtn" destination="mwn-Ap-U6b" id="2GF-9X-TXh"/>
                         <outlet property="roundView" destination="KkZ-js-czE" id="SCh-bF-ZgN"/>
-                        <segue destination="biS-GJ-utr" kind="modal" identifier="FindEmailPWVC" modalPresentationStyle="fullScreen" id="SG9-gI-sHg"/>
+                        <segue destination="Ga9-0v-Gnd" kind="show" identifier="FindEmailPWVC" id="faT-hp-1tF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4d-iy-7kt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -404,7 +404,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3531.884057971015" y="-215.625"/>
+            <point key="canvasLocation" x="3442" y="-1111"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dQa-Hq-gUR">
@@ -428,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7P-4P-AGs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4330" y="-472"/>
+            <point key="canvasLocation" x="4178" y="-1183"/>
         </scene>
         <!--FindPW View Controller-->
         <scene sceneID="i0x-jk-yLy">
@@ -529,13 +529,158 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiM-Ka-ocm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4331" y="142"/>
+            <point key="canvasLocation" x="4177" y="-644"/>
+        </scene>
+        <!--Find Email Collection View Controller-->
+        <scene sceneID="76Z-vM-zjZ">
+            <objects>
+                <viewController id="Ga9-0v-Gnd" customClass="FindEmailCollectionViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d9d-8G-2rb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ip-LE-KF1">
+                                <rect key="frame" x="371.5" y="14" width="22.5" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" name="SYSTEM"/>
+                                <state key="normal" image="xmark" catalog="system">
+                                    <color key="titleColor" name="SYSTEM"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Srp-mz-Xj5" userLabel="toggleContainer">
+                                <rect key="frame" x="59.5" y="86" width="295" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0A-AY-joH">
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="41"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
+                                        <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="이메일 찾기">
+                                            <color key="titleColor" name="WHITE - 235"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" name="TEXT - BIG"/>
+                                        </state>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aiB-VK-xgN" userLabel="underLine">
+                                        <rect key="frame" x="0.0" y="41" width="111" height="4"/>
+                                        <color key="backgroundColor" name="SYSTEM"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="4" id="nNN-vw-P7S"/>
+                                            <constraint firstAttribute="width" constant="111" id="nRh-na-gv4"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yST-WB-XPt">
+                                        <rect key="frame" x="164" y="0.0" width="131" height="41"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
+                                        <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="비밀번호 찾기">
+                                            <color key="titleColor" name="WHITE - 235"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" name="TEXT - BIG"/>
+                                        </state>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="781-9B-IL5" userLabel="underLine">
+                                        <rect key="frame" x="164" y="41" width="131" height="4"/>
+                                        <color key="backgroundColor" name="SYSTEM"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="4" id="G9Y-oY-06I"/>
+                                            <constraint firstAttribute="width" constant="131" id="iP6-9O-NQI"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="R0A-AY-joH" firstAttribute="top" secondItem="Srp-mz-Xj5" secondAttribute="top" id="1d7-8S-Xw6"/>
+                                    <constraint firstItem="aiB-VK-xgN" firstAttribute="centerX" secondItem="R0A-AY-joH" secondAttribute="centerX" id="1wD-eA-OKk"/>
+                                    <constraint firstItem="781-9B-IL5" firstAttribute="top" secondItem="yST-WB-XPt" secondAttribute="bottom" id="Cgo-rl-boc"/>
+                                    <constraint firstItem="aiB-VK-xgN" firstAttribute="top" secondItem="R0A-AY-joH" secondAttribute="bottom" id="DQI-ZD-Sbw"/>
+                                    <constraint firstAttribute="trailing" secondItem="yST-WB-XPt" secondAttribute="trailing" id="P2T-fV-C9A"/>
+                                    <constraint firstAttribute="height" constant="40" id="QEN-N8-iSe"/>
+                                    <constraint firstItem="781-9B-IL5" firstAttribute="centerX" secondItem="yST-WB-XPt" secondAttribute="centerX" id="RKQ-b6-HU4"/>
+                                    <constraint firstItem="R0A-AY-joH" firstAttribute="leading" secondItem="Srp-mz-Xj5" secondAttribute="leading" id="Y4q-f6-Xxp"/>
+                                    <constraint firstAttribute="width" constant="295" id="axg-ec-qla"/>
+                                    <constraint firstItem="yST-WB-XPt" firstAttribute="top" secondItem="Srp-mz-Xj5" secondAttribute="top" id="rjP-vN-Has"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ks-zO-0Zp">
+                                <rect key="frame" x="0.0" y="134" width="414" height="674"/>
+                                <connections>
+                                    <segue destination="7nf-Xb-U9o" kind="embed" id="9BJ-cg-izA"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hdr-Fg-HL7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Hdr-Fg-HL7" firstAttribute="bottom" secondItem="8Ks-zO-0Zp" secondAttribute="bottom" id="9H4-Cw-0Vv"/>
+                            <constraint firstItem="Hdr-Fg-HL7" firstAttribute="trailing" secondItem="8Ks-zO-0Zp" secondAttribute="trailing" id="X3N-d4-32G"/>
+                            <constraint firstItem="Srp-mz-Xj5" firstAttribute="centerX" secondItem="Hdr-Fg-HL7" secondAttribute="centerX" id="iL7-NB-SK8"/>
+                            <constraint firstItem="8Ks-zO-0Zp" firstAttribute="leading" secondItem="Hdr-Fg-HL7" secondAttribute="leading" id="irr-uO-5X5"/>
+                            <constraint firstItem="2Ip-LE-KF1" firstAttribute="top" secondItem="Hdr-Fg-HL7" secondAttribute="top" constant="14" id="jaV-cw-sIQ"/>
+                            <constraint firstItem="8Ks-zO-0Zp" firstAttribute="top" secondItem="Hdr-Fg-HL7" secondAttribute="top" constant="134" id="nhC-02-aeP"/>
+                            <constraint firstItem="Hdr-Fg-HL7" firstAttribute="trailing" secondItem="2Ip-LE-KF1" secondAttribute="trailing" constant="20" id="pfE-Pj-70n"/>
+                            <constraint firstItem="Srp-mz-Xj5" firstAttribute="top" secondItem="Hdr-Fg-HL7" secondAttribute="top" constant="86" id="s5T-Eq-ieo"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kNA-dY-o0Z" appends="YES" id="2rA-wf-Web"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kmh-mR-SBw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0FF-bL-Lke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="kNA-dY-o0Z"/>
+            </objects>
+            <point key="canvasLocation" x="5694.202898550725" y="-186.16071428571428"/>
+        </scene>
+        <!--Find EmailPW Page View Controller-->
+        <scene sceneID="12H-1h-e2T">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="7nf-Xb-U9o" customClass="FindEmailPWPageViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2d0-Of-Z94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6376" y="-146"/>
+        </scene>
+        <!--Find Email View Controller-->
+        <scene sceneID="6zS-if-ajC">
+            <objects>
+                <viewController storyboardIdentifier="FindEmailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jyO-HU-xtv" customClass="FindEmailViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u57-oM-0wf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="27O-DY-9YO"/>
+                        <color key="backgroundColor" name="BLUE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RJM-I9-LpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7105" y="-61"/>
+        </scene>
+        <!--FindPW View Controller-->
+        <scene sceneID="Rc8-fa-5Ls">
+            <objects>
+                <viewController storyboardIdentifier="FindPWVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZD4-Bi-lWy" customClass="FindPWViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HvU-8o-bWM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NP1-of-2J5"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k61-LZ-wVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7787" y="-51"/>
         </scene>
     </scenes>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="loginPattern" width="414" height="278"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="BLUE">
+            <color red="0.21600000560283661" green="0.82400000095367432" blue="0.86299997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -565,6 +710,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -1,5 +1,5 @@
 //
-//  FindPWViewController.swift
+//  FindEmailViewController.swift
 //  dimodamo
 //
 //  Created by JJIKKYU on 2020/10/08.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FindPWViewController: UIViewController {
+class FindEmailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
