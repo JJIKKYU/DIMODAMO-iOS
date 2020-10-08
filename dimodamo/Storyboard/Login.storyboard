@@ -271,171 +271,12 @@
             </objects>
             <point key="canvasLocation" x="2764" y="-216"/>
         </scene>
-        <!--Find EmailPW View Controller-->
-        <scene sceneID="qOB-af-qfY">
-            <objects>
-                <viewController id="biS-GJ-utr" customClass="FindEmailPWViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HXN-sS-VE9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dd4-qu-0cA">
-                                <rect key="frame" x="371.5" y="58" width="22.5" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="tintColor" name="SYSTEM"/>
-                                <state key="normal" image="xmark" catalog="system">
-                                    <color key="titleColor" name="SYSTEM"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressedCloseBtn:" destination="biS-GJ-utr" eventType="touchUpInside" id="AA7-6c-pZe"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yj-3M-bcW" userLabel="toggleContainer">
-                                <rect key="frame" x="59.5" y="130" width="295" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pa-AR-bTa">
-                                        <rect key="frame" x="0.0" y="0.0" width="111" height="41"/>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
-                                        <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="이메일 찾기">
-                                            <color key="titleColor" name="WHITE - 235"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" name="TEXT - BIG"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="pressedEmailBtn:" destination="biS-GJ-utr" eventType="touchUpInside" id="bhC-H0-uah"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdD-N7-k3t" userLabel="underLine">
-                                        <rect key="frame" x="0.0" y="41" width="111" height="4"/>
-                                        <color key="backgroundColor" name="SYSTEM"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="111" id="9xg-Eo-phO"/>
-                                            <constraint firstAttribute="height" constant="4" id="HNM-Hv-19g"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ME-uQ-DdI">
-                                        <rect key="frame" x="164" y="0.0" width="131" height="41"/>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
-                                        <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="비밀번호 찾기">
-                                            <color key="titleColor" name="WHITE - 235"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" name="TEXT - BIG"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="pressedPWBtn:" destination="biS-GJ-utr" eventType="touchUpInside" id="JdJ-pi-DkJ"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEI-LW-o0Z" userLabel="underLine">
-                                        <rect key="frame" x="164" y="41" width="131" height="4"/>
-                                        <color key="backgroundColor" name="SYSTEM"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="131" id="6IF-0v-3hz"/>
-                                            <constraint firstAttribute="height" constant="4" id="GnG-PJ-kw9"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="1Pa-AR-bTa" firstAttribute="leading" secondItem="9yj-3M-bcW" secondAttribute="leading" id="9wh-o2-SFM"/>
-                                    <constraint firstAttribute="height" constant="40" id="IKX-VF-x4y"/>
-                                    <constraint firstItem="1Pa-AR-bTa" firstAttribute="top" secondItem="9yj-3M-bcW" secondAttribute="top" id="aBQ-oH-2gj"/>
-                                    <constraint firstAttribute="width" constant="295" id="bjb-Nq-LmD"/>
-                                    <constraint firstAttribute="trailing" secondItem="5ME-uQ-DdI" secondAttribute="trailing" id="fEb-e2-DJs"/>
-                                    <constraint firstItem="VEI-LW-o0Z" firstAttribute="centerX" secondItem="5ME-uQ-DdI" secondAttribute="centerX" id="hGv-SV-VtG"/>
-                                    <constraint firstItem="kdD-N7-k3t" firstAttribute="centerX" secondItem="1Pa-AR-bTa" secondAttribute="centerX" id="kbv-m4-iA4"/>
-                                    <constraint firstItem="5ME-uQ-DdI" firstAttribute="top" secondItem="9yj-3M-bcW" secondAttribute="top" id="tU4-ny-hdC"/>
-                                    <constraint firstItem="kdD-N7-k3t" firstAttribute="top" secondItem="1Pa-AR-bTa" secondAttribute="bottom" id="yXB-CB-r1X"/>
-                                    <constraint firstItem="VEI-LW-o0Z" firstAttribute="top" secondItem="5ME-uQ-DdI" secondAttribute="bottom" id="yfX-dv-c2Z"/>
-                                </constraints>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYh-bo-aU5" userLabel="PWView">
-                                <rect key="frame" x="0.0" y="178" width="414" height="684"/>
-                                <connections>
-                                    <segue destination="sdf-H6-B6c" kind="embed" id="ee8-dL-zL2"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOY-sv-lrh" userLabel="EmailView">
-                                <rect key="frame" x="0.0" y="178" width="414" height="684"/>
-                                <connections>
-                                    <segue destination="rzb-9b-qjZ" kind="embed" id="2dj-VV-9AS"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="P25-Ob-gUz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="IOY-sv-lrh" firstAttribute="leading" secondItem="P25-Ob-gUz" secondAttribute="leading" id="2T1-33-gun"/>
-                            <constraint firstItem="9yj-3M-bcW" firstAttribute="top" secondItem="P25-Ob-gUz" secondAttribute="top" constant="86" id="40B-Ic-MvE"/>
-                            <constraint firstItem="IOY-sv-lrh" firstAttribute="top" secondItem="P25-Ob-gUz" secondAttribute="top" constant="134" id="6eR-39-yE2"/>
-                            <constraint firstItem="eYh-bo-aU5" firstAttribute="leading" secondItem="P25-Ob-gUz" secondAttribute="leading" id="BAn-3U-d93"/>
-                            <constraint firstItem="dd4-qu-0cA" firstAttribute="top" secondItem="P25-Ob-gUz" secondAttribute="top" constant="14" id="BxE-e1-JGE"/>
-                            <constraint firstItem="P25-Ob-gUz" firstAttribute="bottom" secondItem="IOY-sv-lrh" secondAttribute="bottom" id="Uhp-LE-0jA"/>
-                            <constraint firstItem="P25-Ob-gUz" firstAttribute="trailing" secondItem="dd4-qu-0cA" secondAttribute="trailing" constant="20" id="ZYG-WT-ev9"/>
-                            <constraint firstItem="eYh-bo-aU5" firstAttribute="top" secondItem="P25-Ob-gUz" secondAttribute="top" constant="134" id="maH-XW-t8K"/>
-                            <constraint firstItem="P25-Ob-gUz" firstAttribute="bottom" secondItem="eYh-bo-aU5" secondAttribute="bottom" id="n0U-tc-JUF"/>
-                            <constraint firstItem="P25-Ob-gUz" firstAttribute="trailing" secondItem="eYh-bo-aU5" secondAttribute="trailing" id="s8W-U2-B4n"/>
-                            <constraint firstItem="9yj-3M-bcW" firstAttribute="centerX" secondItem="P25-Ob-gUz" secondAttribute="centerX" id="xB3-85-5KM"/>
-                            <constraint firstItem="P25-Ob-gUz" firstAttribute="trailing" secondItem="IOY-sv-lrh" secondAttribute="trailing" id="xFU-Mv-U91"/>
-                        </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Y4f-6S-OAL" appends="YES" id="suU-RI-gIx"/>
-                        </connections>
-                    </view>
-                    <connections>
-                        <outlet property="emailBtn" destination="1Pa-AR-bTa" id="llS-z1-NR9"/>
-                        <outlet property="emailUnderLine" destination="kdD-N7-k3t" id="Oz6-ow-yES"/>
-                        <outlet property="emailView" destination="IOY-sv-lrh" id="LJ0-k4-kt6"/>
-                        <outlet property="pwBtn" destination="5ME-uQ-DdI" id="C16-ii-V3C"/>
-                        <outlet property="pwUnderLine" destination="VEI-LW-o0Z" id="bQ5-I4-kq5"/>
-                        <outlet property="pwView" destination="eYh-bo-aU5" id="HTv-xt-Uh0"/>
-                        <outlet property="swipeRecognizer" destination="Y4f-6S-OAL" id="FbY-ho-rcJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BaA-eA-vYS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="Y4f-6S-OAL">
-                    <connections>
-                        <action selector="swipeAction:" destination="biS-GJ-utr" id="2v9-qj-bva"/>
-                    </connections>
-                </swipeGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="3442" y="-1111"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="dQa-Hq-gUR">
-            <objects>
-                <viewController id="sdf-H6-B6c" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pa5-Nj-Xhe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="684"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBR-Zh-cYN">
-                                <rect key="frame" x="143" y="435" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="gra-Yo-xkR"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i7P-4P-AGs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4178" y="-1183"/>
-        </scene>
         <!--FindPW View Controller-->
         <scene sceneID="i0x-jk-yLy">
             <objects>
-                <viewController id="rzb-9b-qjZ" customClass="FindPWViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FindEmailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rzb-9b-qjZ" customClass="FindPWViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2tT-Kc-yib">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="684"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="홍익대학교" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I3A-YE-ilB">
@@ -478,7 +319,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAo-Gy-9CX">
-                                <rect key="frame" x="20" y="628" width="374" height="56"/>
+                                <rect key="frame" x="20" y="806" width="374" height="56"/>
                                 <color key="backgroundColor" name="SYSTEM"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="JeI-ki-QWY"/>
@@ -529,12 +370,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiM-Ka-ocm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4177" y="-644"/>
+            <point key="canvasLocation" x="7703" y="-77"/>
         </scene>
-        <!--Find Email Collection View Controller-->
+        <!--Find EmailPW View Controller-->
         <scene sceneID="76Z-vM-zjZ">
             <objects>
-                <viewController id="Ga9-0v-Gnd" customClass="FindEmailCollectionViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ga9-0v-Gnd" customClass="FindEmailPWViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d9d-8G-2rb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -547,6 +388,9 @@
                                     <color key="titleColor" name="SYSTEM"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
                                 </state>
+                                <connections>
+                                    <action selector="pressedCloseBtn:" destination="Ga9-0v-Gnd" eventType="touchUpInside" id="PnI-Ml-aRc"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Srp-mz-Xj5" userLabel="toggleContainer">
                                 <rect key="frame" x="59.5" y="86" width="295" height="40"/>
@@ -561,6 +405,9 @@
                                         <state key="selected">
                                             <color key="titleColor" name="TEXT - BIG"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pressedEmailBtn:" destination="Ga9-0v-Gnd" eventType="touchUpInside" id="hVm-GK-SUG"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aiB-VK-xgN" userLabel="underLine">
                                         <rect key="frame" x="0.0" y="41" width="111" height="4"/>
@@ -580,6 +427,9 @@
                                         <state key="selected">
                                             <color key="titleColor" name="TEXT - BIG"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pressedPWBtn:" destination="Ga9-0v-Gnd" eventType="touchUpInside" id="oUs-eY-aqt"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="781-9B-IL5" userLabel="underLine">
                                         <rect key="frame" x="164" y="41" width="131" height="4"/>
@@ -629,6 +479,12 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Kmh-mR-SBw"/>
+                    <connections>
+                        <outlet property="emailBtn" destination="R0A-AY-joH" id="Ekn-ws-LP9"/>
+                        <outlet property="emailUnderLine" destination="aiB-VK-xgN" id="VlX-2R-qIt"/>
+                        <outlet property="pwBtn" destination="yST-WB-XPt" id="cT0-Pb-UuV"/>
+                        <outlet property="pwUnderLine" destination="781-9B-IL5" id="d6g-dw-q8A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FF-bL-Lke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="kNA-dY-o0Z"/>
@@ -643,44 +499,105 @@
             </objects>
             <point key="canvasLocation" x="6376" y="-146"/>
         </scene>
-        <!--Find Email View Controller-->
-        <scene sceneID="6zS-if-ajC">
-            <objects>
-                <viewController storyboardIdentifier="FindEmailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jyO-HU-xtv" customClass="FindEmailViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="u57-oM-0wf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="27O-DY-9YO"/>
-                        <color key="backgroundColor" name="BLUE"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RJM-I9-LpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7105" y="-61"/>
-        </scene>
-        <!--FindPW View Controller-->
+        <!--View Controller-->
         <scene sceneID="Rc8-fa-5Ls">
             <objects>
-                <viewController storyboardIdentifier="FindPWVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZD4-Bi-lWy" customClass="FindPWViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FindPWVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZD4-Bi-lWy" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HvU-8o-bWM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="홍익대학교" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e7z-uk-RQ8">
+                                <rect key="frame" x="20" y="92" width="374" height="22"/>
+                                <color key="textColor" name="GRAY - 170"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSx-Di-2dA" userLabel="Line">
+                                <rect key="frame" x="20" y="124" width="374" height="2"/>
+                                <color key="backgroundColor" name="GRAY - 210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="coH-VQ-W8L"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학번을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JUH-H9-i61">
+                                <rect key="frame" x="20" y="174" width="374" height="22"/>
+                                <color key="textColor" name="GRAY - 170"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe9-Hr-T9S" userLabel="Line">
+                                <rect key="frame" x="20" y="206" width="374" height="2"/>
+                                <color key="backgroundColor" name="GRAY - 210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="Gsm-up-jqP"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fgp-Rh-ytm">
+                                <rect key="frame" x="20" y="256" width="374" height="22"/>
+                                <color key="textColor" name="GRAY - 170"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTb-Kf-ptA" userLabel="Line">
+                                <rect key="frame" x="20" y="288" width="374" height="2"/>
+                                <color key="backgroundColor" name="GRAY - 210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="JWi-TC-viD"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmF-O9-aGh">
+                                <rect key="frame" x="20" y="806" width="374" height="56"/>
+                                <color key="backgroundColor" name="SYSTEM"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="1Bq-Do-OPU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                <state key="normal" title="이메일 찾기">
+                                    <color key="titleColor" name="WHITE"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressLogin:" destination="3wI-bz-Iuf" eventType="touchUpInside" id="iVH-nj-pei"/>
+                                    <action selector="pressedFindBtn:" destination="rzb-9b-qjZ" eventType="touchUpInside" id="m1V-pU-pgr"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="NP1-of-2J5"/>
-                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
+                        <constraints>
+                            <constraint firstItem="JUH-H9-i61" firstAttribute="trailing" secondItem="e7z-uk-RQ8" secondAttribute="trailing" id="0J2-Wd-kjb"/>
+                            <constraint firstItem="Fgp-Rh-ytm" firstAttribute="leading" secondItem="e7z-uk-RQ8" secondAttribute="leading" id="0NV-qO-m23"/>
+                            <constraint firstItem="e7z-uk-RQ8" firstAttribute="leading" secondItem="NP1-of-2J5" secondAttribute="leading" constant="20" id="0NW-sm-ckl"/>
+                            <constraint firstItem="Fgp-Rh-ytm" firstAttribute="trailing" secondItem="e7z-uk-RQ8" secondAttribute="trailing" id="2nr-jc-DPB"/>
+                            <constraint firstItem="xmF-O9-aGh" firstAttribute="leading" secondItem="NP1-of-2J5" secondAttribute="leading" constant="20" id="4Ip-C5-UUO"/>
+                            <constraint firstItem="e7z-uk-RQ8" firstAttribute="top" secondItem="NP1-of-2J5" secondAttribute="top" constant="48" id="7R0-tH-Du2"/>
+                            <constraint firstItem="dTb-Kf-ptA" firstAttribute="trailing" secondItem="Fgp-Rh-ytm" secondAttribute="trailing" id="C9C-JL-Zge"/>
+                            <constraint firstItem="RSx-Di-2dA" firstAttribute="leading" secondItem="e7z-uk-RQ8" secondAttribute="leading" id="DSD-HD-p7y"/>
+                            <constraint firstItem="NP1-of-2J5" firstAttribute="trailing" secondItem="e7z-uk-RQ8" secondAttribute="trailing" constant="20" id="FgE-Rs-UeH"/>
+                            <constraint firstItem="Fgp-Rh-ytm" firstAttribute="top" secondItem="Pe9-Hr-T9S" secondAttribute="bottom" constant="48" id="Ies-jN-gOj"/>
+                            <constraint firstItem="NP1-of-2J5" firstAttribute="trailing" secondItem="xmF-O9-aGh" secondAttribute="trailing" constant="20" id="LKq-Mf-qKn"/>
+                            <constraint firstItem="dTb-Kf-ptA" firstAttribute="leading" secondItem="Fgp-Rh-ytm" secondAttribute="leading" id="Lpk-uX-Vq8"/>
+                            <constraint firstItem="RSx-Di-2dA" firstAttribute="top" secondItem="e7z-uk-RQ8" secondAttribute="bottom" constant="10" id="Ojq-a9-9Rw"/>
+                            <constraint firstItem="JUH-H9-i61" firstAttribute="top" secondItem="RSx-Di-2dA" secondAttribute="bottom" constant="48" id="W8l-o0-700"/>
+                            <constraint firstItem="RSx-Di-2dA" firstAttribute="trailing" secondItem="e7z-uk-RQ8" secondAttribute="trailing" id="hK6-ou-X6S"/>
+                            <constraint firstItem="Pe9-Hr-T9S" firstAttribute="leading" secondItem="JUH-H9-i61" secondAttribute="leading" id="lXv-pL-Oko"/>
+                            <constraint firstItem="Pe9-Hr-T9S" firstAttribute="trailing" secondItem="JUH-H9-i61" secondAttribute="trailing" id="lzT-57-MwQ"/>
+                            <constraint firstItem="JUH-H9-i61" firstAttribute="leading" secondItem="e7z-uk-RQ8" secondAttribute="leading" id="mVA-pz-afR"/>
+                            <constraint firstItem="Pe9-Hr-T9S" firstAttribute="top" secondItem="JUH-H9-i61" secondAttribute="bottom" constant="10" id="tbf-sB-xt4"/>
+                            <constraint firstItem="NP1-of-2J5" firstAttribute="bottom" secondItem="xmF-O9-aGh" secondAttribute="bottom" id="vIC-K1-oY9"/>
+                            <constraint firstItem="dTb-Kf-ptA" firstAttribute="top" secondItem="Fgp-Rh-ytm" secondAttribute="bottom" constant="10" id="xJA-HQ-wpU"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k61-LZ-wVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7787" y="-51"/>
+            <point key="canvasLocation" x="7055" y="-77"/>
         </scene>
     </scenes>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="loginPattern" width="414" height="278"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <namedColor name="BLUE">
-            <color red="0.21600000560283661" green="0.82400000095367432" blue="0.86299997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -710,9 +627,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

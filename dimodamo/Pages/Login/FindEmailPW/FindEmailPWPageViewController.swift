@@ -10,6 +10,8 @@ import UIKit
 
 class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
+    var pageIndex: Int = 0
+    
     lazy var VCArray: [UIViewController] = {
         return [self.VCInstance(name: "FindEmailVC"),
                 self.VCInstance(name: "FindPWVC")]
@@ -25,7 +27,7 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         let previousIndex = viewControllerIndex - 1
         
         guard previousIndex >= 0 else {
-            return VCArray.last
+            return nil
         }
         
         guard VCArray.count > previousIndex else {
@@ -43,7 +45,7 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         let nextIndex = viewControllerIndex + 1
         
         guard nextIndex < VCArray.count else {
-            return VCArray.first
+            return nil
         }
         
         guard VCArray.count > nextIndex else {
@@ -70,6 +72,7 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         
         self.dataSource = self
         self.delegate = self
+        
         
         if let findEmailVC = VCArray.first {
             setViewControllers([findEmailVC], direction: .forward, animated: true, completion: nil)

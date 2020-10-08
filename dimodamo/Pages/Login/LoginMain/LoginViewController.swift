@@ -219,7 +219,7 @@ class LoginViewController: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*
+        
         if segue.identifier == "FindEmailPWVC" {
             let button: UIButton = sender as! UIButton
             let destinationVC = segue.destination as? FindEmailPWViewController
@@ -227,19 +227,19 @@ class LoginViewController: UIViewController {
             switch button.tag {
             // 이메일 찾기
             case 0:
-                destinationVC?.viewModel.isActiveEmailView.accept(true)
+//                destinationVC?.viewModel.isActiveEmailView.accept(true)
                 break
                 
             // 비밀번호 찾기
             case 1:
-                destinationVC?.viewModel.isActiveEmailView.accept(false)
+//                destinationVC?.viewModel.isActiveEmailView.accept(false)
                 break
             default:
                 break
             }
             
         }
- */
+ 
     }
     
     

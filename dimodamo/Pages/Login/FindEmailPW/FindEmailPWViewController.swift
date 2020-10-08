@@ -16,13 +16,8 @@ class FindEmailPWViewController: UIViewController {
     @IBOutlet weak var emailBtn: UIButton!
     @IBOutlet weak var pwBtn: UIButton!
     
-    @IBOutlet weak var emailView: UIView!
-    @IBOutlet weak var pwView: UIView!
-    
     @IBOutlet weak var emailUnderLine: UIView!
     @IBOutlet weak var pwUnderLine: UIView!
-    
-    @IBOutlet var swipeRecognizer: UISwipeGestureRecognizer!
     
     let viewModel = FindEmailPWViewModel()
     var disposeBag = DisposeBag()
@@ -36,9 +31,9 @@ class FindEmailPWViewController: UIViewController {
             .subscribe(onNext: { [weak self] value in
                 print(value)
                 
-                self?.emailView.isHidden = value
+//                self?.emailView.isHidden = value
                 self?.emailBtn.isSelected = value
-                self?.pwView.isHidden = !value
+//                self?.pwView.isHidden = !value
                 self?.pwBtn.isSelected = !value
                 
                 self?.emailUnderLine.alpha = value == true ? 1 : 0
@@ -46,13 +41,6 @@ class FindEmailPWViewController: UIViewController {
                 
             })
             .disposed(by: disposeBag)
-    }
-    
-    @IBAction func swipeAction(_ sender: Any) {
-        print(swipeRecognizer.direction)
-        if swipeRecognizer.direction == .right {
-            viewModel.isActiveEmailView.accept(false)
-        }
     }
     
     
@@ -71,6 +59,6 @@ class FindEmailPWViewController: UIViewController {
 
 extension FindEmailPWViewController {
     func viewDesign() {
-        self.pwView.isHidden = true
+//        self.pwView.isHidden = true
     }
 }
