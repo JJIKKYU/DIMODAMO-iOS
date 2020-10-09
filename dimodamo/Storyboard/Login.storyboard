@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="278"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWz-Bp-6Yy">
-                                <rect key="frame" x="32" y="91" width="350" height="60.5"/>
+                                <rect key="frame" x="32" y="91" width="350" height="63"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">환영합니다
@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWz-lz-Cxu">
-                                <rect key="frame" x="333" y="97.5" width="48" height="48"/>
+                                <rect key="frame" x="333" y="98.5" width="48" height="48"/>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="EU2-Ga-HqB"/>
@@ -269,57 +269,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4d-iy-7kt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2764" y="-216"/>
+            <point key="canvasLocation" x="4883" y="-186"/>
         </scene>
         <!--FindPW View Controller-->
         <scene sceneID="i0x-jk-yLy">
             <objects>
-                <viewController storyboardIdentifier="FindEmailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rzb-9b-qjZ" customClass="FindPWViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FindPWVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rzb-9b-qjZ" customClass="FindPWViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2tT-Kc-yib">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="홍익대학교" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I3A-YE-ilB">
-                                <rect key="frame" x="20" y="92" width="374" height="22"/>
+                                <rect key="frame" x="20" y="48" width="374" height="22"/>
                                 <color key="textColor" name="GRAY - 170"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ae9-zQ-thh" userLabel="Line">
-                                <rect key="frame" x="20" y="124" width="374" height="2"/>
+                                <rect key="frame" x="20" y="80" width="374" height="2"/>
                                 <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="91I-aB-myH"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학번을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ycI-Gh-B4w">
-                                <rect key="frame" x="20" y="174" width="374" height="22"/>
+                                <rect key="frame" x="20" y="130" width="374" height="22"/>
                                 <color key="textColor" name="GRAY - 170"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqU-ed-gxz" userLabel="Line">
-                                <rect key="frame" x="20" y="206" width="374" height="2"/>
+                                <rect key="frame" x="20" y="162" width="374" height="2"/>
                                 <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="vf1-Go-bBy"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d47-QO-IN6">
-                                <rect key="frame" x="20" y="256" width="374" height="22"/>
+                                <rect key="frame" x="20" y="212" width="374" height="22"/>
                                 <color key="textColor" name="GRAY - 170"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3S-hM-6cR" userLabel="Line">
-                                <rect key="frame" x="20" y="288" width="374" height="2"/>
+                                <rect key="frame" x="20" y="244" width="374" height="2"/>
                                 <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="oCf-zr-RZQ"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAo-Gy-9CX">
-                                <rect key="frame" x="20" y="806" width="374" height="56"/>
+                                <rect key="frame" x="20" y="564" width="374" height="56"/>
                                 <color key="backgroundColor" name="SYSTEM"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="JeI-ki-QWY"/>
@@ -360,6 +360,7 @@
                             <constraint firstItem="ycI-Gh-B4w" firstAttribute="top" secondItem="ae9-zQ-thh" secondAttribute="bottom" constant="48" id="ycr-UF-XD0"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ZL8-Ar-ISk"/>
                     <connections>
                         <outlet property="emailLine" destination="w3S-hM-6cR" id="nqz-q7-lQZ"/>
                         <outlet property="emailTextField" destination="d47-QO-IN6" id="rPg-jH-cmw"/>
@@ -370,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiM-Ka-ocm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7703" y="-77"/>
+            <point key="canvasLocation" x="7158" y="92"/>
         </scene>
         <!--Find EmailPW View Controller-->
         <scene sceneID="76Z-vM-zjZ">
@@ -457,7 +458,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ks-zO-0Zp">
                                 <rect key="frame" x="0.0" y="134" width="414" height="674"/>
                                 <connections>
-                                    <segue destination="7nf-Xb-U9o" kind="embed" id="9BJ-cg-izA"/>
+                                    <segue destination="7nf-Xb-U9o" kind="embed" identifier="embeddedVC" id="9BJ-cg-izA"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -494,7 +495,12 @@
         <!--Find EmailPW Page View Controller-->
         <scene sceneID="12H-1h-e2T">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="7nf-Xb-U9o" customClass="FindEmailPWPageViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="7nf-Xb-U9o" customClass="FindEmailPWPageViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="ZD4-Bi-lWy" kind="show" identifier="FindEmailVC" destinationCreationSelector="asd:" id="Yq4-fY-ug9"/>
+                        <segue destination="rzb-9b-qjZ" kind="show" identifier="FindPWVC" id="2ja-6P-zUK"/>
+                    </connections>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2d0-Of-Z94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6376" y="-146"/>
@@ -502,52 +508,52 @@
         <!--View Controller-->
         <scene sceneID="Rc8-fa-5Ls">
             <objects>
-                <viewController storyboardIdentifier="FindPWVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZD4-Bi-lWy" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FindEmailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZD4-Bi-lWy" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HvU-8o-bWM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="홍익대학교" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e7z-uk-RQ8">
-                                <rect key="frame" x="20" y="92" width="374" height="22"/>
+                                <rect key="frame" x="20" y="48" width="374" height="22"/>
                                 <color key="textColor" name="GRAY - 170"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSx-Di-2dA" userLabel="Line">
-                                <rect key="frame" x="20" y="124" width="374" height="2"/>
+                                <rect key="frame" x="20" y="80" width="374" height="2"/>
                                 <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="coH-VQ-W8L"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학번을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JUH-H9-i61">
-                                <rect key="frame" x="20" y="174" width="374" height="22"/>
+                                <rect key="frame" x="20" y="130" width="374" height="22"/>
                                 <color key="textColor" name="GRAY - 170"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe9-Hr-T9S" userLabel="Line">
-                                <rect key="frame" x="20" y="206" width="374" height="2"/>
+                                <rect key="frame" x="20" y="162" width="374" height="2"/>
                                 <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="Gsm-up-jqP"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fgp-Rh-ytm">
-                                <rect key="frame" x="20" y="256" width="374" height="22"/>
+                                <rect key="frame" x="20" y="212" width="374" height="22"/>
                                 <color key="textColor" name="GRAY - 170"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTb-Kf-ptA" userLabel="Line">
-                                <rect key="frame" x="20" y="288" width="374" height="2"/>
+                                <rect key="frame" x="20" y="244" width="374" height="2"/>
                                 <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="JWi-TC-viD"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmF-O9-aGh">
-                                <rect key="frame" x="20" y="806" width="374" height="56"/>
+                                <rect key="frame" x="20" y="564" width="374" height="56"/>
                                 <color key="backgroundColor" name="SYSTEM"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="1Bq-Do-OPU"/>
@@ -588,10 +594,11 @@
                             <constraint firstItem="dTb-Kf-ptA" firstAttribute="top" secondItem="Fgp-Rh-ytm" secondAttribute="bottom" constant="10" id="xJA-HQ-wpU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hHm-sp-Iun"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k61-LZ-wVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7055" y="-77"/>
+            <point key="canvasLocation" x="7159" y="-453"/>
         </scene>
     </scenes>
     <resources>

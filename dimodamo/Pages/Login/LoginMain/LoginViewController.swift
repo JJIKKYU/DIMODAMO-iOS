@@ -223,16 +223,19 @@ class LoginViewController: UIViewController {
         if segue.identifier == "FindEmailPWVC" {
             let button: UIButton = sender as! UIButton
             let destinationVC = segue.destination as? FindEmailPWViewController
+            destinationVC?.modalPresentationStyle = .fullScreen
             
             switch button.tag {
             // 이메일 찾기
             case 0:
-//                destinationVC?.viewModel.isActiveEmailView.accept(true)
+                destinationVC?.viewModel.isActiveEmailView.accept(true)
+//                destinationVC?.firstPage.accept(0)
                 break
                 
             // 비밀번호 찾기
             case 1:
-//                destinationVC?.viewModel.isActiveEmailView.accept(false)
+//                destinationVC?.firstPage.accept(1)
+                destinationVC?.viewModel.isActiveEmailView.accept(false)
                 break
             default:
                 break

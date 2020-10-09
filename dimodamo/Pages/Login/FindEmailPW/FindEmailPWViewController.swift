@@ -11,7 +11,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class FindEmailPWViewController: UIViewController {
+
+
+class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate, PageIndexDelegate {
+    func SelectMenuItem(pageIndex: Int) {
+        print("넘어옵니다")
+        viewModel.isActiveEmailView.accept(pageIndex == 0 ? true : false)
+    }
     
     @IBOutlet weak var emailBtn: UIButton!
     @IBOutlet weak var pwBtn: UIButton!
@@ -41,6 +47,7 @@ class FindEmailPWViewController: UIViewController {
                 
             })
             .disposed(by: disposeBag)
+        
     }
     
     
@@ -54,6 +61,14 @@ class FindEmailPWViewController: UIViewController {
     
     @IBAction func pressedCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "embeddedVC" {
+            print("앙")
+            let destinationVC: FindEmailPWPageViewController = segue.destination as! FindEmailPWPageViewController
+            destinationVC.pageDelegate = self
+        }
     }
 }
 

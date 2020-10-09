@@ -8,7 +8,21 @@
 
 import UIKit
 
+import RxSwift
+import RxRelay
+import RxCocoa
+
+protocol PageIndexDelegate {
+    func SelectMenuItem(pageIndex: Int)
+}
+
 class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    
+    var pageDelegate: PageIndexDelegate?
+    
+    var firstPage = BehaviorRelay<Int>(value: 0)
+    
+    var disposeBag = DisposeBag()
     
     var pageIndex: Int = 0
     
@@ -25,6 +39,7 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         guard let viewControllerIndex = VCArray.firstIndex(of: viewController) else { return nil }
         
         let previousIndex = viewControllerIndex - 1
+        self.pageDelegate?.SelectMenuItem(pageIndex: viewControllerIndex)
         
         guard previousIndex >= 0 else {
             return nil
@@ -33,6 +48,8 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         guard VCArray.count > previousIndex else {
             return nil
         }
+        
+        
         
         return VCArray[previousIndex]
     }
@@ -43,6 +60,8 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         }
         
         let nextIndex = viewControllerIndex + 1
+        self.pageDelegate?.SelectMenuItem(pageIndex: viewControllerIndex)
+        
         
         guard nextIndex < VCArray.count else {
             return nil
@@ -63,6 +82,7 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         guard let firstViewContoller = viewControllers?.first, let firstViewContollerIndex = VCArray.firstIndex(of: firstViewContoller) else {
             return 0
         }
+        print(firstViewContollerIndex)
         
         return firstViewContollerIndex
     }
@@ -73,12 +93,15 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         self.dataSource = self
         self.delegate = self
         
+//        if VCArray[self.firstPage] != nil {
+//            setViewControllers([VCArray[self.firstPage]], direction: .forward, animated: true, completion: nil)
+//        }
         
+//
         if let findEmailVC = VCArray.first {
             setViewControllers([findEmailVC], direction: .forward, animated: true, completion: nil)
         }
-
-        // Do any additional setup after loading the view.
+        
     }
     
 
