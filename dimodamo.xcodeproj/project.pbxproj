@@ -567,6 +567,23 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		98A662382530AB6C00698BA0 /* FindEmail */ = {
+			isa = PBXGroup;
+			children = (
+				98A661E6252F2C0000698BA0 /* FindEmailViewController.swift */,
+			);
+			path = FindEmail;
+			sourceTree = "<group>";
+		};
+		98A662392530AB7300698BA0 /* FindPW */ = {
+			isa = PBXGroup;
+			children = (
+				98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */,
+				98A661E9252F2C1000698BA0 /* FindPWViewController.swift */,
+			);
+			path = FindPW;
+			sourceTree = "<group>";
+		};
 		98C42316251DFF9400B2B194 /* Interest */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,11 +649,10 @@
 		98D69F01252C5DBD00F52E1F /* FindEmailPW */ = {
 			isa = PBXGroup;
 			children = (
+				98A662392530AB7300698BA0 /* FindPW */,
+				98A662382530AB6C00698BA0 /* FindEmail */,
 				98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */,
 				98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */,
-				98A661E6252F2C0000698BA0 /* FindEmailViewController.swift */,
-				98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */,
-				98A661E9252F2C1000698BA0 /* FindPWViewController.swift */,
 				98A661EC252F2F2B00698BA0 /* FindEmailPWPageViewController.swift */,
 			);
 			path = FindEmailPW;

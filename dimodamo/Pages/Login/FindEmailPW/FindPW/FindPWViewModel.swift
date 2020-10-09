@@ -18,6 +18,10 @@ class FindPWViewModel {
     var userSchoolIdRelay = BehaviorRelay(value: "")
     var userEmailRelay = BehaviorRelay(value: "")
     
+    // 학번과 이메일을 정확하게 잘 입력할 경우 true, 아니면 fale
+    var canSendEmail = BehaviorRelay<Bool>(value: false)
+    var isValiedUserEmail = BehaviorRelay<MailCheck>(value: .none)
+    
     init() {
         
     }
@@ -25,10 +29,15 @@ class FindPWViewModel {
     func sendPasswordResetMail() {
         Auth.auth().sendPasswordReset(withEmail: "\(userEmailRelay.value)") { error in
             if error != nil {
-                print(error?.localizedDescription)
+                self.isVailedUserEmail.accept(.impossible)
             } else {
                 print("이메일 전송")
+                self.isVailedUserEmail.accept(.possible)
             }
         }
+    }
+    
+    func canSendEmail() {
+        
     }
 }
