@@ -13,17 +13,16 @@ import RxCocoa
 
 
 
-class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate, PageIndexDelegate {
-    func SelectMenuItem(pageIndex: Int) {
-        print("넘어옵니다")
-        viewModel.isActiveEmailView.accept(pageIndex == 0 ? true : false)
-    }
+class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate {
+    
+    
     
     @IBOutlet weak var emailBtn: UIButton!
     @IBOutlet weak var pwBtn: UIButton!
     
-    @IBOutlet weak var emailUnderLine: UIView!
-    @IBOutlet weak var pwUnderLine: UIView!
+    @IBOutlet weak var underLine: UIView!
+    @IBOutlet weak var underLineWidth: NSLayoutConstraint!
+    @IBOutlet weak var underLineCenterX: NSLayoutConstraint!
     
     let viewModel = FindEmailPWViewModel()
     var disposeBag = DisposeBag()
@@ -35,15 +34,34 @@ class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate,
         viewModel.isActiveEmailView
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
-                print(value)
-                
-//                self?.emailView.isHidden = value
                 self?.emailBtn.isSelected = value
-//                self?.pwView.isHidden = !value
                 self?.pwBtn.isSelected = !value
                 
-                self?.emailUnderLine.alpha = value == true ? 1 : 0
-                self?.pwUnderLine.alpha = value == true ? 0 : 1
+                self?.underLine.translatesAutoresizingMaskIntoConstraints = false
+                
+                switch value {
+                case true:
+                    self?.underLineWidth.constant = 111
+                    self?.underLineCenterX.constant = 0
+                    
+                    
+                    print("true입니다")
+                    break
+                    
+                case false:
+                    self?.underLineWidth.constant = 131
+                    self?.underLineCenterX.constant = 175
+                    print("false입니다")
+                    break
+                    
+                default:
+                    break
+                }
+                self?.underLine.setNeedsUpdateConstraints()
+                
+                UIView.animate(withDuration: 0.5) {
+                    self?.view.layoutIfNeeded()
+                }
                 
             })
             .disposed(by: disposeBag)
@@ -65,7 +83,6 @@ class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "embeddedVC" {
-            print("앙")
             let destinationVC: FindEmailPWPageViewController = segue.destination as! FindEmailPWPageViewController
             destinationVC.pageDelegate = self
         }
@@ -74,6 +91,16 @@ class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate,
 
 extension FindEmailPWViewController {
     func viewDesign() {
-//        self.pwView.isHidden = true
+        
+        //        self.pwView.isHidden = true
+    }
+}
+
+// MARK: - PageViewController에서 페이지 인덱스를 전달받는 델리게이트
+
+extension FindEmailPWViewController : PageIndexDelegate {
+    func SelectMenuItem(pageIndex: Int) {
+        print("넘어옵니다")
+        viewModel.isActiveEmailView.accept(pageIndex == 0 ? true : false)
     }
 }

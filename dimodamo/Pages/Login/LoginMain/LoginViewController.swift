@@ -250,7 +250,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     func viewDesign() {
-        roundView.roundCorners(corners: [.topLeft, .topRight], radius: 24)
+//        roundView.roundCorners(corners: [.topLeft, .topRight], radius: 24)
         loginBtn.layer.cornerRadius = 16
         registerBtn.layer.cornerRadius = 16
         arrowBtn.layer.cornerRadius = 24

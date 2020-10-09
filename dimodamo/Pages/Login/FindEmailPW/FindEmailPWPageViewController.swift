@@ -37,9 +37,9 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = VCArray.firstIndex(of: viewController) else { return nil }
+        self.pageDelegate?.SelectMenuItem(pageIndex: viewControllerIndex)
         
         let previousIndex = viewControllerIndex - 1
-        self.pageDelegate?.SelectMenuItem(pageIndex: viewControllerIndex)
         
         guard previousIndex >= 0 else {
             return nil
@@ -49,8 +49,6 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
             return nil
         }
         
-        
-        
         return VCArray[previousIndex]
     }
     
@@ -58,10 +56,9 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         guard let viewControllerIndex = VCArray.firstIndex(of: viewController) else {
             return nil
         }
-        
-        let nextIndex = viewControllerIndex + 1
         self.pageDelegate?.SelectMenuItem(pageIndex: viewControllerIndex)
         
+        let nextIndex = viewControllerIndex + 1
         
         guard nextIndex < VCArray.count else {
             return nil
@@ -82,8 +79,6 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         guard let firstViewContoller = viewControllers?.first, let firstViewContollerIndex = VCArray.firstIndex(of: firstViewContoller) else {
             return 0
         }
-        print(firstViewContollerIndex)
-        
         return firstViewContollerIndex
     }
 
@@ -91,28 +86,11 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
         super.viewDidLoad()
         
         self.dataSource = self
-        self.delegate = self
-        
-//        if VCArray[self.firstPage] != nil {
-//            setViewControllers([VCArray[self.firstPage]], direction: .forward, animated: true, completion: nil)
-//        }
-        
-//
+
         if let findEmailVC = VCArray.first {
             setViewControllers([findEmailVC], direction: .forward, animated: true, completion: nil)
         }
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

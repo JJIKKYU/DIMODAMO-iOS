@@ -10,9 +10,11 @@ import UIKit
 
 class FindEmailViewController: UIViewController {
 
+    @IBOutlet weak var findBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewDesign()
         // Do any additional setup after loading the view.
     }
     
@@ -27,4 +29,12 @@ class FindEmailViewController: UIViewController {
     }
     */
 
+}
+
+
+extension FindEmailViewController {
+    func viewDesign() {
+        findBtn.layer.cornerRadius = 16
+    }
+    
 }

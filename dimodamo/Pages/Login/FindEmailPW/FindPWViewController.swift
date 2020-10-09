@@ -26,7 +26,7 @@ class FindPWViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        viewDesign()
+        viewDesign()
         
         schoolIdTextField.rx.text.orEmpty
             .map { $0 as String }
@@ -78,8 +78,8 @@ class FindPWViewController: UIViewController {
 }
 
 extension FindPWViewController {
-//    func viewDesign() {
-//        findBtn.layer.cornerRadius = 16
-//    }
+    func viewDesign() {
+        findBtn.layer.cornerRadius = 16
+    }
     
 }
