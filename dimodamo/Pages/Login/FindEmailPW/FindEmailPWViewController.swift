@@ -14,15 +14,14 @@ import RxCocoa
 
 
 class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate {
-    
-    
-    
     @IBOutlet weak var emailBtn: UIButton!
     @IBOutlet weak var pwBtn: UIButton!
     
     @IBOutlet weak var underLine: UIView!
     @IBOutlet weak var underLineWidth: NSLayoutConstraint!
     @IBOutlet weak var underLineCenterX: NSLayoutConstraint!
+    
+    var btnDelegate: BtnPageIndexDelegate?
     
     let viewModel = FindEmailPWViewModel()
     var disposeBag = DisposeBag()
@@ -71,10 +70,13 @@ class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate 
     
     @IBAction func pressedEmailBtn(_ sender: Any) {
         viewModel.isActiveEmailView.accept(true)
+        btnDelegate?.SelectMenuBtn(BtnIndex: 0)
+        
     }
     
     @IBAction func pressedPWBtn(_ sender: Any) {
         viewModel.isActiveEmailView.accept(false)
+        btnDelegate?.SelectMenuBtn(BtnIndex: 1)
     }
     
     @IBAction func pressedCloseBtn(_ sender: Any) {
@@ -85,6 +87,9 @@ class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate 
         if segue.identifier == "embeddedVC" {
             let destinationVC: FindEmailPWPageViewController = segue.destination as! FindEmailPWPageViewController
             destinationVC.pageDelegate = self
+            btnDelegate = destinationVC
+            let index = viewModel.isActiveEmailView.value == true ? 0 : 1
+            destinationVC.pageIndex.accept(index)
         }
     }
 }
@@ -104,3 +109,16 @@ extension FindEmailPWViewController : PageIndexDelegate {
         viewModel.isActiveEmailView.accept(pageIndex == 0 ? true : false)
     }
 }
+
+// MARK: - 이메일 찾기, 비밀번호 찾기를 눌렀을 경우 인덱스를 전달하는 델리게이트
+
+protocol BtnPageIndexDelegate {
+    func SelectMenuBtn(BtnIndex: Int)
+}
+
+extension FindEmailPWViewController : BtnPageIndexDelegate {
+    func SelectMenuBtn(BtnIndex: Int) {
+        print("btnIdx : \(BtnIndex)")
+    }
+}
+
