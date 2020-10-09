@@ -103,7 +103,7 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { index in
                 self.setViewControllers([self.VCArray[index]],
-                                        direction: index == 0 ? .forward : .reverse,
+                                        direction: index == 0 ? .reverse : .forward,
                                         animated: true,
                                         completion: nil)
                 
@@ -119,6 +119,5 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
 extension FindEmailPWPageViewController : BtnPageIndexDelegate {
     func SelectMenuBtn(BtnIndex: Int) {
         pageIndex.accept(BtnIndex)
-        print("버튼 인덱스 : \(BtnIndex)")
     }
 }

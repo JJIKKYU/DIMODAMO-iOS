@@ -96,29 +96,22 @@ class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate 
 
 extension FindEmailPWViewController {
     func viewDesign() {
-        
+        underLine.layer.cornerRadius = 2
         //        self.pwView.isHidden = true
     }
 }
 
-// MARK: - PageViewController에서 페이지 인덱스를 전달받는 델리게이트
+// MARK: - PageViewController에서 페이지 인덱스를 전달받는 델리게이트 (데이터를 받음)
 
 extension FindEmailPWViewController : PageIndexDelegate {
     func SelectMenuItem(pageIndex: Int) {
-        print("넘어옵니다")
         viewModel.isActiveEmailView.accept(pageIndex == 0 ? true : false)
     }
 }
 
-// MARK: - 이메일 찾기, 비밀번호 찾기를 눌렀을 경우 인덱스를 전달하는 델리게이트
+// MARK: - 이메일 찾기, 비밀번호 찾기를 눌렀을 경우 인덱스를 전달하는 델리게이트 (데이터를 보냄)
 
 protocol BtnPageIndexDelegate {
     func SelectMenuBtn(BtnIndex: Int)
-}
-
-extension FindEmailPWViewController : BtnPageIndexDelegate {
-    func SelectMenuBtn(BtnIndex: Int) {
-        print("btnIdx : \(BtnIndex)")
-    }
 }
 
