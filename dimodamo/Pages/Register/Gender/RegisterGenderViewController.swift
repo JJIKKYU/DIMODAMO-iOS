@@ -71,6 +71,18 @@ class RegisterGenderViewController: UIViewController {
     
 
     @IBAction func pressedNextBtn(_ sender: Any) {
+        // 성별을 선택하지 않았을 경우
+        if viewModel?.gender == nil {
+            let alert = AlertController(title: "성별을 선택해 주세요", message: "선택 후 다음으로 넘어갈 수 있습니다", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        // 성별을 선택했을 경우
         performSegue(withIdentifier: "InputInterest", sender: sender)
     }
     @IBAction func pressedCloseBtn(_ sender: Any) {
