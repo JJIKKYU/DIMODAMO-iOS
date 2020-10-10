@@ -97,6 +97,18 @@ class RegisterInterestViewController: UIViewController {
     }
     
     @IBAction func pressedInterestNextBtn(_ sender: Any) {
+        // 관심사를 3개 선택하지 않았을 경우
+        if viewModel?.isValidInterest == false {
+            let alert = AlertController(title: "관심사를 3개 선택해 주세요", message: "선택 후 다음으로 넘어갈 수 있습니다", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        // 관심사를 3개 선택했을 경우
         performSegue(withIdentifier: "InputNickname", sender: sender)
     }
 

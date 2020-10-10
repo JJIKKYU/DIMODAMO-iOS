@@ -14,6 +14,7 @@ import RxCocoa
 class RegisterNicknameViewController: UIViewController {
 
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var certBtn: UIButton!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var nickNameTextFieldSub: UILabel!
     @IBOutlet weak var progress: UIProgressView!
@@ -83,6 +84,9 @@ class RegisterNicknameViewController: UIViewController {
     
     @objc func moveDownTextView() {
         self.nextBtn?.transform = .identity
+    }
+    @IBAction func pressedCertBtn(_ sender: Any) {
+        
     }
     
     @IBAction func pressNextBtn(_ sender: Any) {

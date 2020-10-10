@@ -1389,6 +1389,23 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="name"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKb-Mn-gEu">
+                                                <rect key="frame" x="288" y="157" width="86" height="32"/>
+                                                <color key="backgroundColor" name="GRAY - 210"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="H2s-1s-tQp"/>
+                                                    <constraint firstAttribute="width" constant="86" id="Nd1-wM-mYR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                <state key="normal" title="중복 확인">
+                                                    <color key="titleColor" name="WHITE"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="certBtn:" destination="Pe3-9j-B74" eventType="touchUpInside" id="fen-Ua-hHX"/>
+                                                    <action selector="pressCertBtn1:" destination="74q-dC-tIa" eventType="touchUpInside" id="IBJ-rd-KGd"/>
+                                                    <action selector="pressedCertBtn:" destination="ZQ8-Sl-ZOf" eventType="touchUpInside" id="Dcx-T0-c0z"/>
+                                                </connections>
+                                            </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ani-xX-V4h">
                                                 <rect key="frame" x="344" y="165" width="30" height="16.5"/>
                                                 <color key="tintColor" name="GREEN3"/>
@@ -1407,6 +1424,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="SYSTEM"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="fKb-Mn-gEu" secondAttribute="trailing" id="0Ig-0Z-1wN"/>
                                             <constraint firstItem="uS6-AZ-EW2" firstAttribute="leading" secondItem="46P-HQ-hGg" secondAttribute="leading" constant="2" id="0fM-Sa-r7h"/>
                                             <constraint firstItem="i7Q-15-0Rs" firstAttribute="top" secondItem="ei5-w2-Qim" secondAttribute="bottom" constant="8.5" id="4kE-2f-kv6"/>
                                             <constraint firstItem="ani-xX-V4h" firstAttribute="centerY" secondItem="Q1v-st-MP4" secondAttribute="centerY" id="7Qx-al-JQX"/>
@@ -1428,6 +1446,7 @@
                                             <constraint firstItem="JPC-fa-gM7" firstAttribute="leading" secondItem="BOT-KK-Nwm" secondAttribute="leading" id="lgm-ss-M6i"/>
                                             <constraint firstItem="OzF-9U-0nX" firstAttribute="leading" secondItem="BOT-KK-Nwm" secondAttribute="leading" id="nP9-GG-zoO"/>
                                             <constraint firstAttribute="trailing" secondItem="Q1v-st-MP4" secondAttribute="trailing" id="neY-dF-gmg"/>
+                                            <constraint firstItem="fKb-Mn-gEu" firstAttribute="centerY" secondItem="Q1v-st-MP4" secondAttribute="centerY" id="oSf-rB-ZrN"/>
                                             <constraint firstItem="uS6-AZ-EW2" firstAttribute="top" secondItem="46P-HQ-hGg" secondAttribute="bottom" constant="8" id="uBq-Ku-5L4"/>
                                         </constraints>
                                     </view>
@@ -1461,6 +1480,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="certBtn" destination="fKb-Mn-gEu" id="aDe-VI-dVI"/>
                         <outlet property="checkIcon" destination="ani-xX-V4h" id="oTT-bb-XEA"/>
                         <outlet property="divide" destination="ei5-w2-Qim" id="kCF-6b-75s"/>
                         <outlet property="nextBtn" destination="OzF-9U-0nX" id="poA-xj-6A9"/>
@@ -1471,6 +1491,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Dn-TC-NCd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Pe3-9j-B74" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3443" y="420"/>
         </scene>

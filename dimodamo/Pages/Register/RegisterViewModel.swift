@@ -42,6 +42,7 @@ class RegisterViewModel {
     // RegisterInterest
     // 관심사
     var interestList: BehaviorRelay<[Interest]> = BehaviorRelay(value: [])
+    var isValidInterest: Bool { interestList.value.count == 3 }
     
     // RegisterNickname
     // 닉네임 입력

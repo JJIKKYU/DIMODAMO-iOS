@@ -24,6 +24,7 @@ class RegisterGenderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.gender = nil
         registerGenderDesign()
         
         maleBtn.rx.tap
