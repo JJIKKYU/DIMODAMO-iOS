@@ -39,7 +39,6 @@
 		986EDA172509C42800AD3CEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */; };
 		986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */; };
 		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
-		987D5B0B251A1E8700244FD0 /* RegisterBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D5B0A251A1E8700244FD0 /* RegisterBirthViewController.swift */; };
 		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
 		98816093251EF23200556AEC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98816092251EF23200556AEC /* Login.storyboard */; };
 		98816097251EF5C300556AEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98816096251EF5C300556AEC /* LoginViewController.swift */; };
@@ -151,7 +150,6 @@
 		986EDA182509C42800AD3CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
-		987D5B0A251A1E8700244FD0 /* RegisterBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBirthViewController.swift; sourceTree = "<group>"; };
 		987F5A9A250B152000E1B856 /* DptiResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewController.swift; sourceTree = "<group>"; };
 		98816092251EF23200556AEC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		98816096251EF5C300556AEC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -449,14 +447,6 @@
 			path = ClassRoom;
 			sourceTree = "<group>";
 		};
-		987D5B09251A1E7200244FD0 /* Birth */ = {
-			isa = PBXGroup;
-			children = (
-				987D5B0A251A1E8700244FD0 /* RegisterBirthViewController.swift */,
-			);
-			path = Birth;
-			sourceTree = "<group>";
-		};
 		987F5A95250B13F300E1B856 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,7 +537,6 @@
 				985D380E25198CF500C53378 /* Clause */,
 				988160D0251F62CA00556AEC /* ID */,
 				988160D6251F663D00556AEC /* PW */,
-				987D5B09251A1E7200244FD0 /* Birth */,
 				983485D2251C584300C4074B /* Gender */,
 				98C42316251DFF9400B2B194 /* Interest */,
 				9881609A251EFA8100556AEC /* Nickname */,
@@ -877,7 +866,6 @@
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */,
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
-				987D5B0B251A1E8700244FD0 /* RegisterBirthViewController.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
 				984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */,

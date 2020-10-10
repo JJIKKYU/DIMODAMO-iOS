@@ -49,7 +49,14 @@ class FindPWViewController: UIViewController {
         viewModel.userEmailRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] newValue in
-                print(self?.viewModel.userEmailRelay.value)
+                self?.viewModel.checkCanSendEmail()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.canSendEmail
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.findBtn.backgroundColor = value == true ? UIColor.appColor(.system) : UIColor.appColor(.gray210)
             })
             .disposed(by: disposeBag)
         

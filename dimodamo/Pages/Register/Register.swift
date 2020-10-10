@@ -45,6 +45,12 @@ enum MailCheck {
     case impossible
 }
 
+enum PWCheck {
+    case nothing                // 아무것도 입력하지 않았을 경우
+    case onlyFirstTextfield     // 첫 번째 텍스트 필드만 입력 한 경우
+    case possible               // 패스워드 사용이 가능한 경우
+}
+
 // 성별
 enum Gender {
     case female

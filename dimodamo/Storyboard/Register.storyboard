@@ -864,21 +864,21 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="남자예요!">
+                                                <state key="normal" title="여자예요!">
                                                     <color key="titleColor" name="GRAY - 210"/>
                                                 </state>
                                                 <state key="selected">
                                                     <color key="titleColor" name="SYSTEM"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozd-Wl-ZKH" userLabel="여자예요!">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozd-Wl-ZKH">
                                                 <rect key="frame" x="0.0" y="230" width="374" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="b1T-vk-gMH"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="여자예요!">
+                                                <state key="normal" title="남자예요!">
                                                     <color key="titleColor" name="GRAY - 210"/>
                                                 </state>
                                                 <state key="selected">
@@ -954,8 +954,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="closeBtn" destination="pzc-Nw-wSa" id="ayG-LR-Thg"/>
-                        <outlet property="femaleBtn" destination="ozd-Wl-ZKH" id="AGC-21-X1l"/>
-                        <outlet property="maleBtn" destination="yCZ-xb-4Bg" id="cq3-9x-ETS"/>
+                        <outlet property="femaleBtn" destination="yCZ-xb-4Bg" id="bS6-NQ-dgd"/>
+                        <outlet property="maleBtn" destination="ozd-Wl-ZKH" id="aOU-ev-dOO"/>
                         <outlet property="nextBtn" destination="BWk-5H-YRk" id="KyD-8u-qKI"/>
                         <outlet property="progress" destination="v5l-OY-Vvx" id="sub-eo-a3S"/>
                         <segue destination="zbw-qQ-ZYg" kind="show" identifier="InputInterest" id="eYB-Kl-Wnh"/>
@@ -995,7 +995,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATW-Jf-OIL">
-                                                <rect key="frame" x="296.5" y="50" width="69.5" height="56"/>
+                                                <rect key="frame" x="282.5" y="50" width="83.5" height="57.5"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Heavy" family="SF Pro Display" pointSize="48"/>
                                                 <color key="textColor" name="WHITE - 235"/>
                                                 <nil key="highlightedColor"/>
@@ -1909,7 +1909,7 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWJ-v7-1CE">
-                                                <rect key="frame" x="12" y="0.0" width="362" height="62"/>
+                                                <rect key="frame" x="12" y="0.0" width="362" height="59.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="디모다모의 일원이되신걸 축하드립니다!">
                                                         <attributes>
@@ -1927,16 +1927,16 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="registerClear" translatesAutoresizingMaskIntoConstraints="NO" id="vQT-hW-5AJ">
-                                                <rect key="frame" x="7.5" y="122" width="359" height="322"/>
+                                                <rect key="frame" x="7.5" y="119.5" width="359" height="322"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지금 바로 디자인 성향을 확인해보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMp-Aq-Rmc">
-                                                <rect key="frame" x="50" y="500" width="274" height="22"/>
+                                                <rect key="frame" x="50" y="497.5" width="274" height="22"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
                                                 <color key="textColor" name="WHITE"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zY-z0-3Ym">
-                                                <rect key="frame" x="62.5" y="547.5" width="249.5" height="38"/>
+                                                <rect key="frame" x="62.5" y="545" width="249.5" height="38"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">저희가 준비한 디자인 성향 검사(DPTI)를 통해

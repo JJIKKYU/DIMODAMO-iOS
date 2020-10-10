@@ -275,7 +275,7 @@
             <objects>
                 <viewController storyboardIdentifier="FindPWVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rzb-9b-qjZ" customClass="FindPWViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2tT-Kc-yib">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="홍익대학교" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I3A-YE-ilB">
@@ -318,7 +318,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAo-Gy-9CX">
-                                <rect key="frame" x="20" y="564" width="374" height="56"/>
+                                <rect key="frame" x="20" y="619" width="374" height="56"/>
                                 <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="JeI-ki-QWY"/>
@@ -333,33 +333,33 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="oWv-UQ-XhC"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
-                            <constraint firstItem="oWv-UQ-XhC" firstAttribute="trailing" secondItem="I3A-YE-ilB" secondAttribute="trailing" constant="20" id="00J-Ke-RcR"/>
+                            <constraint firstAttribute="trailing" secondItem="I3A-YE-ilB" secondAttribute="trailing" constant="20" id="00J-Ke-RcR"/>
                             <constraint firstItem="d47-QO-IN6" firstAttribute="top" secondItem="mqU-ed-gxz" secondAttribute="bottom" constant="48" id="4yp-Ef-YoT"/>
-                            <constraint firstItem="I3A-YE-ilB" firstAttribute="leading" secondItem="oWv-UQ-XhC" secondAttribute="leading" constant="20" id="52b-oo-dod"/>
+                            <constraint firstItem="I3A-YE-ilB" firstAttribute="leading" secondItem="2tT-Kc-yib" secondAttribute="leading" constant="20" id="52b-oo-dod"/>
                             <constraint firstItem="ycI-Gh-B4w" firstAttribute="trailing" secondItem="I3A-YE-ilB" secondAttribute="trailing" id="8RS-8t-jsf"/>
                             <constraint firstItem="d47-QO-IN6" firstAttribute="leading" secondItem="I3A-YE-ilB" secondAttribute="leading" id="EL3-qn-sZ9"/>
                             <constraint firstItem="ae9-zQ-thh" firstAttribute="trailing" secondItem="I3A-YE-ilB" secondAttribute="trailing" id="JU2-gO-I5M"/>
                             <constraint firstItem="ycI-Gh-B4w" firstAttribute="leading" secondItem="I3A-YE-ilB" secondAttribute="leading" id="NSw-cD-pIq"/>
                             <constraint firstItem="mqU-ed-gxz" firstAttribute="trailing" secondItem="ycI-Gh-B4w" secondAttribute="trailing" id="NVw-0I-NGv"/>
                             <constraint firstItem="w3S-hM-6cR" firstAttribute="top" secondItem="d47-QO-IN6" secondAttribute="bottom" constant="10" id="OUN-hk-V7r"/>
-                            <constraint firstItem="CAo-Gy-9CX" firstAttribute="leading" secondItem="oWv-UQ-XhC" secondAttribute="leading" constant="20" id="TaV-6C-Vmg"/>
+                            <constraint firstItem="CAo-Gy-9CX" firstAttribute="leading" secondItem="2tT-Kc-yib" secondAttribute="leading" constant="20" id="TaV-6C-Vmg"/>
                             <constraint firstItem="w3S-hM-6cR" firstAttribute="trailing" secondItem="d47-QO-IN6" secondAttribute="trailing" id="VBe-3k-Eqs"/>
                             <constraint firstItem="mqU-ed-gxz" firstAttribute="leading" secondItem="ycI-Gh-B4w" secondAttribute="leading" id="de7-XJ-kzw"/>
-                            <constraint firstItem="oWv-UQ-XhC" firstAttribute="bottom" secondItem="CAo-Gy-9CX" secondAttribute="bottom" id="hLT-UB-r0J"/>
-                            <constraint firstItem="oWv-UQ-XhC" firstAttribute="trailing" secondItem="CAo-Gy-9CX" secondAttribute="trailing" constant="20" id="lfP-8K-FxV"/>
+                            <constraint firstAttribute="bottom" secondItem="CAo-Gy-9CX" secondAttribute="bottom" id="hLT-UB-r0J"/>
+                            <constraint firstAttribute="trailing" secondItem="CAo-Gy-9CX" secondAttribute="trailing" constant="20" id="lfP-8K-FxV"/>
                             <constraint firstItem="w3S-hM-6cR" firstAttribute="leading" secondItem="d47-QO-IN6" secondAttribute="leading" id="mCQ-zc-V4e"/>
                             <constraint firstItem="ae9-zQ-thh" firstAttribute="top" secondItem="I3A-YE-ilB" secondAttribute="bottom" constant="10" id="p1M-FI-r5P"/>
                             <constraint firstItem="ae9-zQ-thh" firstAttribute="leading" secondItem="I3A-YE-ilB" secondAttribute="leading" id="pxf-H1-O7p"/>
-                            <constraint firstItem="I3A-YE-ilB" firstAttribute="top" secondItem="oWv-UQ-XhC" secondAttribute="top" constant="48" id="saH-QN-XJi"/>
+                            <constraint firstItem="I3A-YE-ilB" firstAttribute="top" secondItem="2tT-Kc-yib" secondAttribute="top" constant="48" id="saH-QN-XJi"/>
                             <constraint firstItem="d47-QO-IN6" firstAttribute="trailing" secondItem="I3A-YE-ilB" secondAttribute="trailing" id="xC4-hL-NMS"/>
                             <constraint firstItem="mqU-ed-gxz" firstAttribute="top" secondItem="ycI-Gh-B4w" secondAttribute="bottom" constant="10" id="yOh-sM-VPT"/>
                             <constraint firstItem="ycI-Gh-B4w" firstAttribute="top" secondItem="ae9-zQ-thh" secondAttribute="bottom" constant="48" id="ycr-UF-XD0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZL8-Ar-ISk"/>
+                    <size key="freeformSize" width="414" height="675"/>
                     <connections>
                         <outlet property="emailLine" destination="w3S-hM-6cR" id="nqz-q7-lQZ"/>
                         <outlet property="emailTextField" destination="d47-QO-IN6" id="rPg-jH-cmw"/>
@@ -370,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiM-Ka-ocm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7158" y="92"/>
+            <point key="canvasLocation" x="7051" y="118"/>
         </scene>
         <!--Find EmailPW View Controller-->
         <scene sceneID="76Z-vM-zjZ">
@@ -486,12 +486,7 @@
         <!--Find EmailPW Page View Controller-->
         <scene sceneID="12H-1h-e2T">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="7nf-Xb-U9o" customClass="FindEmailPWPageViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="ZD4-Bi-lWy" kind="show" identifier="FindEmailVC" destinationCreationSelector="asd:" id="Yq4-fY-ug9"/>
-                        <segue destination="rzb-9b-qjZ" kind="show" identifier="FindPWVC" id="2ja-6P-zUK"/>
-                    </connections>
-                </pageViewController>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="7nf-Xb-U9o" customClass="FindEmailPWPageViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2d0-Of-Z94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6376" y="-146"/>
@@ -501,7 +496,7 @@
             <objects>
                 <viewController storyboardIdentifier="FindEmailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZD4-Bi-lWy" customClass="FindEmailViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HvU-8o-bWM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="674"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="홍익대학교" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e7z-uk-RQ8">
@@ -544,7 +539,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmF-O9-aGh">
-                                <rect key="frame" x="20" y="564" width="374" height="56"/>
+                                <rect key="frame" x="20" y="618" width="374" height="56"/>
                                 <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="1Bq-Do-OPU"/>
@@ -559,20 +554,19 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="NP1-of-2J5"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="JUH-H9-i61" firstAttribute="trailing" secondItem="e7z-uk-RQ8" secondAttribute="trailing" id="0J2-Wd-kjb"/>
                             <constraint firstItem="Fgp-Rh-ytm" firstAttribute="leading" secondItem="e7z-uk-RQ8" secondAttribute="leading" id="0NV-qO-m23"/>
-                            <constraint firstItem="e7z-uk-RQ8" firstAttribute="leading" secondItem="NP1-of-2J5" secondAttribute="leading" constant="20" id="0NW-sm-ckl"/>
+                            <constraint firstItem="e7z-uk-RQ8" firstAttribute="leading" secondItem="HvU-8o-bWM" secondAttribute="leading" constant="20" id="0NW-sm-ckl"/>
                             <constraint firstItem="Fgp-Rh-ytm" firstAttribute="trailing" secondItem="e7z-uk-RQ8" secondAttribute="trailing" id="2nr-jc-DPB"/>
-                            <constraint firstItem="xmF-O9-aGh" firstAttribute="leading" secondItem="NP1-of-2J5" secondAttribute="leading" constant="20" id="4Ip-C5-UUO"/>
-                            <constraint firstItem="e7z-uk-RQ8" firstAttribute="top" secondItem="NP1-of-2J5" secondAttribute="top" constant="48" id="7R0-tH-Du2"/>
+                            <constraint firstItem="xmF-O9-aGh" firstAttribute="leading" secondItem="HvU-8o-bWM" secondAttribute="leading" constant="20" id="4Ip-C5-UUO"/>
+                            <constraint firstItem="e7z-uk-RQ8" firstAttribute="top" secondItem="HvU-8o-bWM" secondAttribute="top" constant="48" id="7R0-tH-Du2"/>
                             <constraint firstItem="dTb-Kf-ptA" firstAttribute="trailing" secondItem="Fgp-Rh-ytm" secondAttribute="trailing" id="C9C-JL-Zge"/>
                             <constraint firstItem="RSx-Di-2dA" firstAttribute="leading" secondItem="e7z-uk-RQ8" secondAttribute="leading" id="DSD-HD-p7y"/>
-                            <constraint firstItem="NP1-of-2J5" firstAttribute="trailing" secondItem="e7z-uk-RQ8" secondAttribute="trailing" constant="20" id="FgE-Rs-UeH"/>
+                            <constraint firstAttribute="trailing" secondItem="e7z-uk-RQ8" secondAttribute="trailing" constant="20" id="FgE-Rs-UeH"/>
                             <constraint firstItem="Fgp-Rh-ytm" firstAttribute="top" secondItem="Pe9-Hr-T9S" secondAttribute="bottom" constant="48" id="Ies-jN-gOj"/>
-                            <constraint firstItem="NP1-of-2J5" firstAttribute="trailing" secondItem="xmF-O9-aGh" secondAttribute="trailing" constant="20" id="LKq-Mf-qKn"/>
+                            <constraint firstAttribute="trailing" secondItem="xmF-O9-aGh" secondAttribute="trailing" constant="20" id="LKq-Mf-qKn"/>
                             <constraint firstItem="dTb-Kf-ptA" firstAttribute="leading" secondItem="Fgp-Rh-ytm" secondAttribute="leading" id="Lpk-uX-Vq8"/>
                             <constraint firstItem="RSx-Di-2dA" firstAttribute="top" secondItem="e7z-uk-RQ8" secondAttribute="bottom" constant="10" id="Ojq-a9-9Rw"/>
                             <constraint firstItem="JUH-H9-i61" firstAttribute="top" secondItem="RSx-Di-2dA" secondAttribute="bottom" constant="48" id="W8l-o0-700"/>
@@ -581,18 +575,19 @@
                             <constraint firstItem="Pe9-Hr-T9S" firstAttribute="trailing" secondItem="JUH-H9-i61" secondAttribute="trailing" id="lzT-57-MwQ"/>
                             <constraint firstItem="JUH-H9-i61" firstAttribute="leading" secondItem="e7z-uk-RQ8" secondAttribute="leading" id="mVA-pz-afR"/>
                             <constraint firstItem="Pe9-Hr-T9S" firstAttribute="top" secondItem="JUH-H9-i61" secondAttribute="bottom" constant="10" id="tbf-sB-xt4"/>
-                            <constraint firstItem="NP1-of-2J5" firstAttribute="bottom" secondItem="xmF-O9-aGh" secondAttribute="bottom" id="vIC-K1-oY9"/>
+                            <constraint firstAttribute="bottom" secondItem="xmF-O9-aGh" secondAttribute="bottom" id="vIC-K1-oY9"/>
                             <constraint firstItem="dTb-Kf-ptA" firstAttribute="top" secondItem="Fgp-Rh-ytm" secondAttribute="bottom" constant="10" id="xJA-HQ-wpU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hHm-sp-Iun"/>
+                    <size key="freeformSize" width="414" height="674"/>
                     <connections>
                         <outlet property="findBtn" destination="xmF-O9-aGh" id="NxF-aZ-E2a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k61-LZ-wVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7159" y="-453"/>
+            <point key="canvasLocation" x="7051" y="-384"/>
         </scene>
     </scenes>
     <resources>

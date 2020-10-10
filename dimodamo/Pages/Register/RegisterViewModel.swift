@@ -29,17 +29,11 @@ class RegisterViewModel {
     var userEmailRelay = BehaviorRelay(value: "")
     var isVailedUserEmail = BehaviorRelay<MailCheck>(value: .none)
     
-    // RegisterBirth
-    // 생년월일
-    var birth = BehaviorRelay(value: "")
-    var month = BehaviorRelay(value: "")
-    var day = BehaviorRelay(value: "")
-    lazy var birthMonthDay: String = "\(birth.value)_\(month.value)_\(day.value)"
-    
     // RegisterPW
     var userFirstPWRelay = BehaviorRelay(value: "")
     var userSecondPWRelay = BehaviorRelay(value: "")
     var userPW: String = ""
+    var isValidUserPW: PWCheck = .nothing // 비밀번호를 모두 정확하게 입력했는지 체크
     
     // RegisterGender
     // 성별
