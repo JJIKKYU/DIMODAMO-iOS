@@ -13,6 +13,7 @@ import RxRelay
 
 import FirebaseAuth
 import FirebaseStorage
+import FirebaseFirestore
 import Firebase
 
 class RegisterViewModel {
@@ -49,6 +50,7 @@ class RegisterViewModel {
     var nickName: String = ""
     var nickNameRelay = BehaviorRelay(value: "")
     var isVailedNickName: Bool { nickNameRelay.value.count >= 4 && nickNameRelay.value.count <= 8 }
+    var isVaildDuplicateNickName = BehaviorRelay<NicknameCheck>(value: .nothing)
     
     // RegisterSchool
     // 학교 인증
@@ -58,8 +60,11 @@ class RegisterViewModel {
     
     // 최종 유저 프로필
     var userProfile: Register = Register()
+    
+    
     private let storage = Storage.storage().reference()
     private var ref: DatabaseReference!
+    private let db = Firestore.firestore()
     
     
     
@@ -179,5 +184,25 @@ class RegisterViewModel {
                 self.isVailedUserEmail.accept(.possible)
             }
         }
+    }
+    
+    func duplicationCheckNickname() {
+        let usersRef = db.collection("users")
+        let query = usersRef.whereField("nickName", isEqualTo: "\(nickName)")
+
+        query.getDocuments { (snapshot, err) in
+                if let err = err {
+                    print("Error getting documents : \(err.localizedDescription)")
+                } else {
+                    // 이미 데이터베이스에서 1개 이상의 닉네임이 있으므로 사용 불가능
+                    if snapshot!.documents.count > 0 {
+                        self.isVaildDuplicateNickName.accept(.impossible)
+                    // 데이터 베이스에서 0개 이하의 닉네임이 있으므로 사용 가능
+                    } else {
+                        self.isVaildDuplicateNickName.accept(.possible)
+                    }
+                    print("count = \(snapshot!.documents.count)")
+                }
+            }
     }
 }

@@ -34,6 +34,7 @@ class RegisterNicknameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
+        viewModel?.isVaildDuplicateNickName.accept(.nothing)
         
 
         nickNameTextField.rx.text.orEmpty
@@ -46,30 +47,80 @@ class RegisterNicknameViewController: UIViewController {
             .subscribe(onNext : { [weak self] newValue in
                 print("newValue : \(newValue)")
                 
-                self?.viewModel?.nickName = newValue
-//                print(self?.viewModel?.userName)
-                
+                // 글이 수정될 때마다 새로 인증을 받아야 하므로, 이메일 중복 확인 해제
+                if self?.viewModel?.nickName != newValue {
+                    self?.viewModel?.nickName = newValue
+                    // 새로운 정보가 들어올 때마다 nothing으로 변경
+                    self?.viewModel?.isVaildDuplicateNickName.accept(.nothing)
+                }
+
+                // 이메일 정규식에 알맞는 경우에는 중복확인 버튼 활성화
                 if self?.viewModel?.isVailedNickName == true {
+                    self?.certBtn.isEnabled = true
                     UIView.animate(withDuration: 0.5) {
-                        self?.checkIcon.alpha = 1
+                        self?.certBtn.backgroundColor = UIColor.appColor(.system)
                         self?.nickNameTextFieldSub.alpha = 0
-                        self?.progress.setProgress(0.84, animated: true)
-                        self?.divide.backgroundColor = UIColor.appColor(.green3)
-                        AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
                     }
+                // 이메일 정규식에 맞지 않거나 그 외 조건에 맞지 않을 경우 중복확인 버튼 비활성화
                 } else if self?.viewModel?.isVailedNickName == false ||
                             (self?.viewModel?.nickNameRelay.value.count)! < 4 ||
                             (self?.viewModel?.nickNameRelay.value.count)! > 8 {
+                    self?.certBtn.isEnabled = false
                     UIView.animate(withDuration: 0.5) {
                         self?.nickNameTextFieldSub.alpha = 1
-                        self?.checkIcon.alpha = 0
-                        self?.progress.setProgress(0.70, animated: true)
-                        self?.divide.backgroundColor = UIColor.appColor(.red)
-                        AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
+                        self?.certBtn.backgroundColor = UIColor.appColor(.gray210)
                     }
                 }
         })	
         .disposed(by: disposeBag)
+        
+        viewModel?.isVaildDuplicateNickName
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                switch value {
+                
+                // 닉네임 사용이 가능할때
+                case .possible:
+                    let alert = AlertController(title: "사용 가능한 닉네임입니다", message: "남은 가입 단계를 계속 진행해 주세요", preferredStyle: .alert)
+                    alert.setTitleImage(UIImage(named: "alertComplete"))
+                    let action = UIAlertAction(title: "확인", style: .default) { _ in
+                        UIView.animate(withDuration: 0.5) {
+                            self?.nextBtn.backgroundColor = UIColor.appColor(.system)
+                            self?.checkIcon.alpha = 1
+                            self?.certBtn.isEnabled = false
+                            self?.certBtn.alpha = 0
+                            self?.divide.backgroundColor = UIColor.appColor(.green3)
+                        }
+                    }
+                    alert.addAction(action)
+                    self?.present(alert, animated: true, completion: nil)
+                    
+                    break
+                
+                // 닉네임 사용이 불가능할때
+                case .impossible:
+                    let alert = AlertController(title: "다른 유저가 이미 사용 중입니다", message: "다른 닉네임을 입력해 주세요", preferredStyle: .alert)
+                    alert.setTitleImage(UIImage(named: "alertError"))
+                    let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+                    alert.addAction(action)
+                    self?.present(alert, animated: true, completion: nil)
+                    
+                    self?.viewModel?.isVaildDuplicateNickName.accept(.nothing)
+                    
+                    break
+                    
+                case .nothing:
+                    UIView.animate(withDuration: 0.5) {
+                        self?.divide.backgroundColor = UIColor.appColor(.gray210)
+                        self?.certBtn.isEnabled = true
+                        self?.certBtn.alpha = 1
+                        self?.checkIcon.alpha = 0
+                        self?.nextBtn.backgroundColor = UIColor.appColor(.gray210)
+                    }
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -86,10 +137,22 @@ class RegisterNicknameViewController: UIViewController {
         self.nextBtn?.transform = .identity
     }
     @IBAction func pressedCertBtn(_ sender: Any) {
-        
+        viewModel?.duplicationCheckNickname()
     }
     
     @IBAction func pressNextBtn(_ sender: Any) {
+        if viewModel?.isVailedNickName == false ||
+            viewModel?.isVaildDuplicateNickName.value == NicknameCheck.nothing ||
+            viewModel?.isVaildDuplicateNickName.value == NicknameCheck.impossible {
+            
+            let alert = AlertController(title: "닉네임을 입력해 주세요", message: "중복 확인 후 다음으로 넘어갈 수 있습니다", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+        }
         performSegue(withIdentifier: "InputSchool", sender: sender)
     }
     
@@ -115,6 +178,8 @@ extension RegisterNicknameViewController {
         AppStyleGuide.systemBtnRadius16(btn: nextBtn, isActive: false)
         checkIcon.alpha = 0
         nickNameTextFieldSub.alpha = 0
+        certBtn.layer.cornerRadius = 4
+        certBtn.isEnabled = false
     }
     
     func designNextBtn() {

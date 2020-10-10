@@ -51,6 +51,12 @@ enum PWCheck {
     case possible               // 패스워드 사용이 가능한 경우
 }
 
+enum NicknameCheck {
+    case nothing
+    case possible
+    case impossible
+}
+
 // 성별
 enum Gender {
     case female
