@@ -138,8 +138,20 @@ class DptiResultViewController: UIViewController {
     }
     
     
+    var i: Int = 0
     
-
+    @IBAction func testBtn(_ sender: Any) {
+        let type = ["FE", "FI", "FN", "FS", "JE", "JI", "JN", "JS", "PE", "PI", "PN", "PS", "TI", "TN", "TS"]
+        
+        viewModel.type = type[i]
+        i += 1
+    }
+    
+    @IBAction func genderChange(_ sender: Any) {
+        let gender: String = viewModel.genderObservable.value == "M" ? "G" : "M"
+        viewModel.genderObservable.accept(gender)
+    }
+    
     
     func resultCardViewInit() {
         
@@ -171,15 +183,22 @@ class DptiResultViewController: UIViewController {
         }
     }
     
+    var animationView: AnimationView?
+    
     func lottieChar(type: String, gender: String) {
-        let animationView = Lottie.AnimationView.init(name: "\(type)_\(gender)")
-        animationView.contentMode = .scaleAspectFill
-
-        typeChar.addSubview(animationView)
+        animationView = Lottie.AnimationView.init(name: "\(type)_\(gender)")
+        animationView?.contentMode = .scaleAspectFill
+        animationView?.backgroundBehavior = .pauseAndRestore
+        
+        // Test
+        typeChar.subviews.forEach({ $0.removeFromSuperview() })
+        
+        typeChar.addSubview(animationView!)
+        
         typeChar.image = nil
         typeChar.layer.cornerRadius = 24
-        animationView.play()
-        animationView.loopMode = .loop
+        animationView?.play()
+        animationView?.loopMode = .loop
     }
 
     /*

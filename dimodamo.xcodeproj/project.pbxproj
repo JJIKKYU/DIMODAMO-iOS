@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9800A13C2533713E0090C058 /* intro_4_manito.json in Resources */ = {isa = PBXBuildFile; fileRef = 9800A1382533713D0090C058 /* intro_4_manito.json */; };
+		9800A13E2533713E0090C058 /* intro_2_room.json in Resources */ = {isa = PBXBuildFile; fileRef = 9800A13A2533713D0090C058 /* intro_2_room.json */; };
+		9800A13F2533713E0090C058 /* intro_3_community.json in Resources */ = {isa = PBXBuildFile; fileRef = 9800A13B2533713E0090C058 /* intro_3_community.json */; };
+		9800A1442533737E0090C058 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9800A1432533737E0090C058 /* IntroPageViewController.swift */; };
+		9800A1482533739A0090C058 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9800A1472533739A0090C058 /* IntroViewModel.swift */; };
+		9800A14F253377F20090C058 /* FirstIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9800A14E253377F20090C058 /* FirstIntroViewController.swift */; };
+		9800A152253378EF0090C058 /* SecondIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9800A151253378EF0090C058 /* SecondIntroViewController.swift */; };
+		9800A155253379240090C058 /* ThirdIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9800A154253379240090C058 /* ThirdIntroViewController.swift */; };
+		9800A1582533792C0090C058 /* FourthIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9800A1572533792C0090C058 /* FourthIntroViewController.swift */; };
+		9800A15D25337E9B0090C058 /* splash_1_type.json in Resources */ = {isa = PBXBuildFile; fileRef = 9800A15C25337E9B0090C058 /* splash_1_type.json */; };
 		980196DC252B620100F829F6 /* SF-Pro-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 980196D4252B61FF00F829F6 /* SF-Pro-Display-Ultralight.otf */; };
 		980196DD252B620100F829F6 /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 980196D5252B61FF00F829F6 /* SF-Pro-Display-Black.otf */; };
 		980196DE252B620100F829F6 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 980196D6252B620000F829F6 /* SF-Pro-Display-Bold.otf */; };
@@ -116,6 +126,16 @@
 /* Begin PBXFileReference section */
 		2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dimodamo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		964E5003C706C9319E5FB896 /* Pods-dimodamo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.debug.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.debug.xcconfig"; sourceTree = "<group>"; };
+		9800A1382533713D0090C058 /* intro_4_manito.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro_4_manito.json; sourceTree = "<group>"; };
+		9800A13A2533713D0090C058 /* intro_2_room.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro_2_room.json; sourceTree = "<group>"; };
+		9800A13B2533713E0090C058 /* intro_3_community.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro_3_community.json; sourceTree = "<group>"; };
+		9800A1432533737E0090C058 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
+		9800A1472533739A0090C058 /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
+		9800A14E253377F20090C058 /* FirstIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstIntroViewController.swift; sourceTree = "<group>"; };
+		9800A151253378EF0090C058 /* SecondIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondIntroViewController.swift; sourceTree = "<group>"; };
+		9800A154253379240090C058 /* ThirdIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdIntroViewController.swift; sourceTree = "<group>"; };
+		9800A1572533792C0090C058 /* FourthIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthIntroViewController.swift; sourceTree = "<group>"; };
+		9800A15C25337E9B0090C058 /* splash_1_type.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = splash_1_type.json; path = ../../../../../splash_1_type.json; sourceTree = "<group>"; };
 		980196D4252B61FF00F829F6 /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
 		980196D5252B61FF00F829F6 /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
 		980196D6252B620000F829F6 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
@@ -187,36 +207,36 @@
 		98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFR.otf; sourceTree = "<group>"; };
 		98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewController.swift; sourceTree = "<group>"; };
 		98C48B1C250CF97E004E24E5 /* Survey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Survey.json; sourceTree = "<group>"; };
-		98C4E3882524A8F0000E811E /* TI_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TI_M.json; path = dimodamo/lottie/TI_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E3892524A8F0000E811E /* TS_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TS_G.json; path = dimodamo/lottie/TS_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E38A2524A8F0000E811E /* TI_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TI_G.json; path = dimodamo/lottie/TI_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E38B2524A8F0000E811E /* TN_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TN_G.json; path = dimodamo/lottie/TN_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E38C2524A8F0000E811E /* JN_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JN_G.json; path = dimodamo/lottie/JN_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E38D2524A8F0000E811E /* FN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FN_M.json; path = dimodamo/lottie/FN_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E38E2524A8F0000E811E /* FN_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FN_G.json; path = dimodamo/lottie/FN_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E38F2524A8F0000E811E /* PS_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PS_G.json; path = dimodamo/lottie/PS_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E3902524A8F0000E811E /* JN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JN_M.json; path = dimodamo/lottie/JN_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E3912524A8F0000E811E /* FS_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FS_G.json; path = dimodamo/lottie/FS_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E3922524A8F0000E811E /* FS_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FS_M.json; path = dimodamo/lottie/FS_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E3932524A8F0000E811E /* PN_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PN_G.json; path = dimodamo/lottie/PN_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E3942524A8F0000E811E /* FI_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FI_M.json; path = dimodamo/lottie/FI_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E3952524A8F0000E811E /* PN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PN_M.json; path = dimodamo/lottie/PN_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E3962524A8F0000E811E /* PE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PE_M.json; path = dimodamo/lottie/PE_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E3972524A8F1000E811E /* JS_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JS_G.json; path = dimodamo/lottie/JS_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E3982524A8F1000E811E /* TN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TN_M.json; path = dimodamo/lottie/TN_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E3992524A8F1000E811E /* JS_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JS_M.json; path = dimodamo/lottie/JS_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E39A2524A8F1000E811E /* JI_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JI_M.json; path = dimodamo/lottie/JI_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E39B2524A8F1000E811E /* PS_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PS_M.json; path = dimodamo/lottie/PS_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E39C2524A8F1000E811E /* FE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FE_M.json; path = dimodamo/lottie/FE_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E39D2524A8F1000E811E /* FI_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FI_G.json; path = dimodamo/lottie/FI_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E39E2524A8F1000E811E /* TS_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TS_M.json; path = dimodamo/lottie/TS_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E39F2524A8F1000E811E /* JE_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JE_G.json; path = dimodamo/lottie/JE_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E3A02524A8F1000E811E /* FE_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FE_G.json; path = dimodamo/lottie/FE_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E3A12524A8F1000E811E /* PE_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PE_G.json; path = dimodamo/lottie/PE_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E3A22524A8F1000E811E /* PI_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PI_M.json; path = dimodamo/lottie/PI_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E3A32524A8F1000E811E /* JE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JE_M.json; path = dimodamo/lottie/JE_M.json; sourceTree = SOURCE_ROOT; };
-		98C4E3A42524A8F1000E811E /* PI_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PI_G.json; path = dimodamo/lottie/PI_G.json; sourceTree = SOURCE_ROOT; };
-		98C4E3A52524A8F1000E811E /* JI_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JI_G.json; path = dimodamo/lottie/JI_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E3882524A8F0000E811E /* TI_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TI_M.json; path = dimodamo/Lottie/Dpti/TI_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E3892524A8F0000E811E /* TS_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TS_G.json; path = dimodamo/Lottie/Dpti/TS_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E38A2524A8F0000E811E /* TI_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TI_G.json; path = dimodamo/Lottie/Dpti/TI_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E38B2524A8F0000E811E /* TN_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TN_G.json; path = dimodamo/Lottie/Dpti/TN_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E38C2524A8F0000E811E /* JN_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JN_G.json; path = dimodamo/Lottie/Dpti/JN_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E38D2524A8F0000E811E /* FN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FN_M.json; path = dimodamo/Lottie/Dpti/FN_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E38E2524A8F0000E811E /* FN_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FN_G.json; path = dimodamo/Lottie/Dpti/FN_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E38F2524A8F0000E811E /* PS_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PS_G.json; path = dimodamo/Lottie/Dpti/PS_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E3902524A8F0000E811E /* JN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JN_M.json; path = dimodamo/Lottie/Dpti/JN_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E3912524A8F0000E811E /* FS_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FS_G.json; path = dimodamo/Lottie/Dpti/FS_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E3922524A8F0000E811E /* FS_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FS_M.json; path = dimodamo/Lottie/Dpti/FS_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E3932524A8F0000E811E /* PN_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PN_G.json; path = dimodamo/Lottie/Dpti/PN_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E3942524A8F0000E811E /* FI_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FI_M.json; path = dimodamo/Lottie/Dpti/FI_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E3952524A8F0000E811E /* PN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PN_M.json; path = dimodamo/Lottie/Dpti/PN_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E3962524A8F0000E811E /* PE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PE_M.json; path = dimodamo/Lottie/Dpti/PE_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E3972524A8F1000E811E /* JS_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JS_G.json; path = dimodamo/Lottie/Dpti/JS_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E3982524A8F1000E811E /* TN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TN_M.json; path = dimodamo/Lottie/Dpti/TN_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E3992524A8F1000E811E /* JS_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JS_M.json; path = dimodamo/Lottie/Dpti/JS_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E39A2524A8F1000E811E /* JI_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JI_M.json; path = dimodamo/Lottie/Dpti/JI_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E39B2524A8F1000E811E /* PS_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PS_M.json; path = dimodamo/Lottie/Dpti/PS_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E39C2524A8F1000E811E /* FE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FE_M.json; path = dimodamo/Lottie/Dpti/FE_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E39D2524A8F1000E811E /* FI_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FI_G.json; path = dimodamo/Lottie/Dpti/FI_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E39E2524A8F1000E811E /* TS_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TS_M.json; path = dimodamo/Lottie/Dpti/TS_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E39F2524A8F1000E811E /* JE_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JE_G.json; path = dimodamo/Lottie/Dpti/JE_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E3A02524A8F1000E811E /* FE_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = FE_G.json; path = dimodamo/Lottie/Dpti/FE_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E3A12524A8F1000E811E /* PE_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PE_G.json; path = dimodamo/Lottie/Dpti/PE_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E3A22524A8F1000E811E /* PI_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PI_M.json; path = dimodamo/Lottie/Dpti/PI_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E3A32524A8F1000E811E /* JE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JE_M.json; path = dimodamo/Lottie/Dpti/JE_M.json; sourceTree = SOURCE_ROOT; };
+		98C4E3A42524A8F1000E811E /* PI_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PI_G.json; path = dimodamo/Lottie/Dpti/PI_G.json; sourceTree = SOURCE_ROOT; };
+		98C4E3A52524A8F1000E811E /* JI_G.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JI_G.json; path = dimodamo/Lottie/Dpti/JI_G.json; sourceTree = SOURCE_ROOT; };
 		98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewController.swift; sourceTree = "<group>"; };
 		98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewModel.swift; sourceTree = "<group>"; };
@@ -253,6 +273,91 @@
 				2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9800A136253371200090C058 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				9800A15C25337E9B0090C058 /* splash_1_type.json */,
+				9800A13A2533713D0090C058 /* intro_2_room.json */,
+				9800A13B2533713E0090C058 /* intro_3_community.json */,
+				9800A1382533713D0090C058 /* intro_4_manito.json */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		9800A137253371280090C058 /* Dpti */ = {
+			isa = PBXGroup;
+			children = (
+				98C4E3A02524A8F1000E811E /* FE_G.json */,
+				98C4E39C2524A8F1000E811E /* FE_M.json */,
+				98C4E39D2524A8F1000E811E /* FI_G.json */,
+				98C4E3942524A8F0000E811E /* FI_M.json */,
+				98C4E38E2524A8F0000E811E /* FN_G.json */,
+				98C4E38D2524A8F0000E811E /* FN_M.json */,
+				98C4E3912524A8F0000E811E /* FS_G.json */,
+				98C4E3922524A8F0000E811E /* FS_M.json */,
+				98C4E39F2524A8F1000E811E /* JE_G.json */,
+				98C4E3A32524A8F1000E811E /* JE_M.json */,
+				98C4E3A52524A8F1000E811E /* JI_G.json */,
+				98C4E39A2524A8F1000E811E /* JI_M.json */,
+				98C4E38C2524A8F0000E811E /* JN_G.json */,
+				98C4E3902524A8F0000E811E /* JN_M.json */,
+				98C4E3972524A8F1000E811E /* JS_G.json */,
+				98C4E3992524A8F1000E811E /* JS_M.json */,
+				98C4E3A12524A8F1000E811E /* PE_G.json */,
+				98C4E3962524A8F0000E811E /* PE_M.json */,
+				98C4E3A42524A8F1000E811E /* PI_G.json */,
+				98C4E3A22524A8F1000E811E /* PI_M.json */,
+				98C4E3932524A8F0000E811E /* PN_G.json */,
+				98C4E3952524A8F0000E811E /* PN_M.json */,
+				98C4E38F2524A8F0000E811E /* PS_G.json */,
+				98C4E39B2524A8F1000E811E /* PS_M.json */,
+				98C4E38A2524A8F0000E811E /* TI_G.json */,
+				98C4E3882524A8F0000E811E /* TI_M.json */,
+				98C4E38B2524A8F0000E811E /* TN_G.json */,
+				98C4E3982524A8F1000E811E /* TN_M.json */,
+				98C4E3892524A8F0000E811E /* TS_G.json */,
+				98C4E39E2524A8F1000E811E /* TS_M.json */,
+			);
+			path = Dpti;
+			sourceTree = "<group>";
+		};
+		9800A1412533729D0090C058 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				9800A14D253377D60090C058 /* IntroPage */,
+				9800A142253373550090C058 /* PageView */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		9800A142253373550090C058 /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				9800A1432533737E0090C058 /* IntroPageViewController.swift */,
+				9800A1472533739A0090C058 /* IntroViewModel.swift */,
+			);
+			path = PageView;
+			sourceTree = "<group>";
+		};
+		9800A14A253373CA0090C058 /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				98A661EC252F2F2B00698BA0 /* FindEmailPWPageViewController.swift */,
+			);
+			path = PageView;
+			sourceTree = "<group>";
+		};
+		9800A14D253377D60090C058 /* IntroPage */ = {
+			isa = PBXGroup;
+			children = (
+				9800A14E253377F20090C058 /* FirstIntroViewController.swift */,
+				9800A151253378EF0090C058 /* SecondIntroViewController.swift */,
+				9800A154253379240090C058 /* ThirdIntroViewController.swift */,
+				9800A1572533792C0090C058 /* FourthIntroViewController.swift */,
+			);
+			path = IntroPage;
 			sourceTree = "<group>";
 		};
 		9806712F250F14F500C3EB72 /* DptiSurvey */ = {
@@ -491,6 +596,7 @@
 		98816095251EF5B600556AEC /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9800A1412533729D0090C058 /* Intro */,
 				98D69F52252C9BB700F52E1F /* LoginMain */,
 				98D69F01252C5DBD00F52E1F /* FindEmailPW */,
 			);
@@ -584,36 +690,8 @@
 		98C48B14250CD163004E24E5 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				98C4E3A02524A8F1000E811E /* FE_G.json */,
-				98C4E39C2524A8F1000E811E /* FE_M.json */,
-				98C4E39D2524A8F1000E811E /* FI_G.json */,
-				98C4E3942524A8F0000E811E /* FI_M.json */,
-				98C4E38E2524A8F0000E811E /* FN_G.json */,
-				98C4E38D2524A8F0000E811E /* FN_M.json */,
-				98C4E3912524A8F0000E811E /* FS_G.json */,
-				98C4E3922524A8F0000E811E /* FS_M.json */,
-				98C4E39F2524A8F1000E811E /* JE_G.json */,
-				98C4E3A32524A8F1000E811E /* JE_M.json */,
-				98C4E3A52524A8F1000E811E /* JI_G.json */,
-				98C4E39A2524A8F1000E811E /* JI_M.json */,
-				98C4E38C2524A8F0000E811E /* JN_G.json */,
-				98C4E3902524A8F0000E811E /* JN_M.json */,
-				98C4E3972524A8F1000E811E /* JS_G.json */,
-				98C4E3992524A8F1000E811E /* JS_M.json */,
-				98C4E3A12524A8F1000E811E /* PE_G.json */,
-				98C4E3962524A8F0000E811E /* PE_M.json */,
-				98C4E3A42524A8F1000E811E /* PI_G.json */,
-				98C4E3A22524A8F1000E811E /* PI_M.json */,
-				98C4E3932524A8F0000E811E /* PN_G.json */,
-				98C4E3952524A8F0000E811E /* PN_M.json */,
-				98C4E38F2524A8F0000E811E /* PS_G.json */,
-				98C4E39B2524A8F1000E811E /* PS_M.json */,
-				98C4E38A2524A8F0000E811E /* TI_G.json */,
-				98C4E3882524A8F0000E811E /* TI_M.json */,
-				98C4E38B2524A8F0000E811E /* TN_G.json */,
-				98C4E3982524A8F1000E811E /* TN_M.json */,
-				98C4E3892524A8F0000E811E /* TS_G.json */,
-				98C4E39E2524A8F1000E811E /* TS_M.json */,
+				9800A137253371280090C058 /* Dpti */,
+				9800A136253371200090C058 /* Intro */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -638,11 +716,11 @@
 		98D69F01252C5DBD00F52E1F /* FindEmailPW */ = {
 			isa = PBXGroup;
 			children = (
+				9800A14A253373CA0090C058 /* PageView */,
 				98A662392530AB7300698BA0 /* FindPW */,
 				98A662382530AB6C00698BA0 /* FindEmail */,
 				98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */,
 				98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */,
-				98A661EC252F2F2B00698BA0 /* FindEmailPWPageViewController.swift */,
 			);
 			path = FindEmailPW;
 			sourceTree = "<group>";
@@ -740,7 +818,9 @@
 				980196E1252B620100F829F6 /* SF-Pro-Display-Thin.otf in Resources */,
 				98C4E3B32524A8F1000E811E /* PN_M.json in Resources */,
 				988470102511406700943861 /* Nunito-Regular.ttf in Resources */,
+				9800A13F2533713E0090C058 /* intro_3_community.json in Resources */,
 				98C4E3BD2524A8F1000E811E /* JE_G.json in Resources */,
+				9800A13E2533713E0090C058 /* intro_2_room.json in Resources */,
 				98C4E3BC2524A8F1000E811E /* TS_M.json in Resources */,
 				98C4E3B62524A8F1000E811E /* TN_M.json in Resources */,
 				98C4E3B92524A8F1000E811E /* PS_M.json in Resources */,
@@ -758,6 +838,7 @@
 				980196DD252B620100F829F6 /* SF-Pro-Display-Black.otf in Resources */,
 				98C48B13250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf in Resources */,
 				98C4E3AE2524A8F1000E811E /* JN_M.json in Resources */,
+				9800A13C2533713E0090C058 /* intro_4_manito.json in Resources */,
 				989384E62518D76700DE2C35 /* Friends.storyboard in Resources */,
 				98C4E3A82524A8F1000E811E /* TI_G.json in Resources */,
 				980196E3252B620100F829F6 /* SF-Pro-Display-Semibold.otf in Resources */,
@@ -769,6 +850,7 @@
 				98C4E3BB2524A8F1000E811E /* FI_G.json in Resources */,
 				989384E92518DB7900DE2C35 /* Register.storyboard in Resources */,
 				980196E0252B620100F829F6 /* SF-Pro-Display-Light.otf in Resources */,
+				9800A15D25337E9B0090C058 /* splash_1_type.json in Resources */,
 				98C4E3AB2524A8F1000E811E /* FN_M.json in Resources */,
 				98C4E3C22524A8F1000E811E /* PI_G.json in Resources */,
 				986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */,
@@ -831,9 +913,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				98816097251EF5C300556AEC /* LoginViewController.swift in Sources */,
+				9800A155253379240090C058 /* ThirdIntroViewController.swift in Sources */,
+				9800A1582533792C0090C058 /* FourthIntroViewController.swift in Sources */,
 				98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
+				9800A14F253377F20090C058 /* FirstIntroViewController.swift in Sources */,
+				9800A1482533739A0090C058 /* IntroViewModel.swift in Sources */,
 				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,
@@ -854,10 +940,12 @@
 				98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */,
 				989384CD251866A900DE2C35 /* RegisterViewController.swift in Sources */,
 				9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */,
+				9800A152253378EF0090C058 /* SecondIntroViewController.swift in Sources */,
 				98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */,
 				9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */,
 				98A661ED252F2F2B00698BA0 /* FindEmailPWPageViewController.swift in Sources */,
 				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
+				9800A1442533737E0090C058 /* IntroPageViewController.swift in Sources */,
 				98067137250F1FD000C3EB72 /* DomainModel.swift in Sources */,
 				986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */,
 				98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */,

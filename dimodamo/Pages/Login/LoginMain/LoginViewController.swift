@@ -34,7 +34,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
-    @IBOutlet weak var arrowBtn: UIButton!
     
     
     var viewModel = LoginViewModel()
@@ -214,6 +213,9 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: "FindEmailPWVC", sender: sender)
     }
     
+    @IBAction func pressedIntroBtn(_ sender: Any) {
+        performSegue(withIdentifier: "IntroVC", sender: sender)
+    }
     
     // MARK: - Navigation
     
@@ -242,6 +244,11 @@ class LoginViewController: UIViewController {
             }
             
         }
+        
+        if segue.identifier == "IntroVC" {
+            let destinationVC = segue.destination
+            destinationVC.modalPresentationStyle = .fullScreen
+        }
  
     }
     
@@ -254,10 +261,8 @@ extension LoginViewController {
         roundView.layer.cornerRadius = 24
         loginBtn.layer.cornerRadius = 16
         registerBtn.layer.cornerRadius = 16
-        arrowBtn.layer.cornerRadius = 24
         
         loginTitle.appShadow(.s8)
-        arrowBtn.appShadow(.s12)
         
         emailSubTitle.alpha = 0
         pwSubTitle.alpha = 0
