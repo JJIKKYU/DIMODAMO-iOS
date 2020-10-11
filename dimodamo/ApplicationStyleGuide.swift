@@ -55,41 +55,41 @@ extension UIColor {
     switch name {
     // Purple
     case .purple:
-        return #colorLiteral(red: 0.4117647059, green: 0.568627451, blue: 1, alpha: 1)
+        return #colorLiteral(red: 0.4705882353, green: 0.5882352941, blue: 1, alpha: 1)
     case .purpleDark:
-        return #colorLiteral(red: 0.2941176471, green: 0.4901960784, blue: 0.9019607843, alpha: 1)
+        return #colorLiteral(red: 0.3529411765, green: 0.4901960784, blue: 0.9607843137, alpha: 1)
     case .purpleLight:
         return #colorLiteral(red: 0.8235294118, green: 0.862745098, blue: 1, alpha: 1)
     
     // Blue
     case .blue:
-        return #colorLiteral(red: 0.2156862745, green: 0.8235294118, blue: 0.862745098, alpha: 1)
+        return #colorLiteral(red: 0.4705882353, green: 0.8431372549, blue: 0.8823529412, alpha: 1)
     case .blueDark:
-        return #colorLiteral(red: 0.2156862745, green: 0.7647058824, blue: 0.8235294118, alpha: 1)
+        return #colorLiteral(red: 0.1960784314, green: 0.7647058824, blue: 0.8431372549, alpha: 1)
     case .blueLight:
         return #colorLiteral(red: 0.7450980392, green: 0.9803921569, blue: 1, alpha: 1)
         
     // Pink
     case .pink:
-        return #colorLiteral(red: 1, green: 0.4509803922, blue: 0.5882352941, alpha: 1)
+        return #colorLiteral(red: 0.9803921569, green: 0.6274509804, blue: 0.7058823529, alpha: 1)
     case .pinkDark:
-        return #colorLiteral(red: 0.9607843137, green: 0.3333333333, blue: 0.5490196078, alpha: 1)
+        return #colorLiteral(red: 0.9803921569, green: 0.4901960784, blue: 0.6078431373, alpha: 1)
     case .pinkLight:
         return #colorLiteral(red: 1, green: 0.862745098, blue: 0.9019607843, alpha: 1)
         
     // Yellow
     case .yellow:
-        return #colorLiteral(red: 1, green: 0.8235294118, blue: 0.3921568627, alpha: 1)
+        return #colorLiteral(red: 0.9803921569, green: 0.8235294118, blue: 0.431372549, alpha: 1)
     case .yellowDark:
-        return #colorLiteral(red: 1, green: 0.7254901961, blue: 0.1764705882, alpha: 1)
+        return #colorLiteral(red: 0.9803921569, green: 0.7450980392, blue: 0.2549019608, alpha: 1)
     case .yellowLight:
         return #colorLiteral(red: 1, green: 0.9411764706, blue: 0.7843137255, alpha: 1)
         
     // system
     case .system:
-        return #colorLiteral(red: 1, green: 0.5490196078, blue: 0.2941176471, alpha: 1)
+        return #colorLiteral(red: 1, green: 0.568627451, blue: 0.3529411765, alpha: 1)
     case .systemActive:
-        return #colorLiteral(red: 1, green: 0.431372549, blue: 0.03921568627, alpha: 1)
+        return #colorLiteral(red: 1, green: 0.5294117647, blue: 0.2156862745, alpha: 1)
     case .systemUnactive:
         return #colorLiteral(red: 1, green: 0.8235294118, blue: 0.6666666667, alpha: 1)
         
