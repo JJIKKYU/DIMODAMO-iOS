@@ -106,6 +106,7 @@
 		98A8B7FE2534C95B00351FD5 /* TS_M.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B7DE2534C95A00351FD5 /* TS_M.json */; };
 		98A8B7FF2534C95B00351FD5 /* TN_M.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B7DF2534C95A00351FD5 /* TN_M.json */; };
 		98A8B8002534C95B00351FD5 /* JE_M.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B7E02534C95B00351FD5 /* JE_M.json */; };
+		98A8B8042534D10B00351FD5 /* IntroMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8B8032534D10B00351FD5 /* IntroMainViewController.swift */; };
 		98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA3FE725198E2D00788486 /* ClauseViewController.swift */; };
 		98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1663A252729C50080DD87 /* Service1DetailViewController.swift */; };
 		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
@@ -229,6 +230,7 @@
 		98A8B7DE2534C95A00351FD5 /* TS_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TS_M.json; path = dimodamo/lottie/Dpti/TS_M.json; sourceTree = SOURCE_ROOT; };
 		98A8B7DF2534C95A00351FD5 /* TN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TN_M.json; path = dimodamo/lottie/Dpti/TN_M.json; sourceTree = SOURCE_ROOT; };
 		98A8B7E02534C95B00351FD5 /* JE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JE_M.json; path = dimodamo/lottie/Dpti/JE_M.json; sourceTree = SOURCE_ROOT; };
+		98A8B8032534D10B00351FD5 /* IntroMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroMainViewController.swift; sourceTree = "<group>"; };
 		98BA3FE725198E2D00788486 /* ClauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauseViewController.swift; sourceTree = "<group>"; };
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C1663A252729C50080DD87 /* Service1DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service1DetailViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 		9800A1412533729D0090C058 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
+				98A8B8022534D0FB00351FD5 /* IntroMain */,
 				9800A14D253377D60090C058 /* IntroPage */,
 				9800A142253373550090C058 /* PageView */,
 			);
@@ -685,6 +688,14 @@
 			path = FindPW;
 			sourceTree = "<group>";
 		};
+		98A8B8022534D0FB00351FD5 /* IntroMain */ = {
+			isa = PBXGroup;
+			children = (
+				98A8B8032534D10B00351FD5 /* IntroMainViewController.swift */,
+			);
+			path = IntroMain;
+			sourceTree = "<group>";
+		};
 		98C42316251DFF9400B2B194 /* Interest */ = {
 			isa = PBXGroup;
 			children = (
@@ -928,6 +939,7 @@
 				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
 				9800A14F253377F20090C058 /* FirstIntroViewController.swift in Sources */,
 				9800A1482533739A0090C058 /* IntroViewModel.swift in Sources */,
+				98A8B8042534D10B00351FD5 /* IntroMainViewController.swift in Sources */,
 				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
 				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,

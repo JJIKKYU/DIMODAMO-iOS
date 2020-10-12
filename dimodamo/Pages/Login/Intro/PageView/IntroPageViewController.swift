@@ -13,6 +13,8 @@ import RxCocoa
 
 class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
+    var pageDelegate: passCurrentPage?
+    
     
     lazy var VCArray: [UIViewController] = {
         return [self.VCInstance(name: "FirstIntroVC"),
@@ -45,6 +47,7 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         let currentPage: Int = VCArray.firstIndex(of: pendingViewControllers[0])!
         print("currentPage : \(currentPage)")
+        pageDelegate?.passCurrentPage(page: currentPage)
         
     }
     
@@ -98,4 +101,10 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
      }
      */
     
+}
+
+
+// MARK: - 현재 페이지를 IntroMain한테 전송하는 프로토콜
+protocol passCurrentPage {
+    func passCurrentPage(page: Int)
 }

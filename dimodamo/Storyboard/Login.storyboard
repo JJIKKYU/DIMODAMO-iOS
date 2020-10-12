@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Intro Main View Controller-->
         <scene sceneID="5v1-zf-AQV">
             <objects>
-                <viewController storyboardIdentifier="IntroVC" id="wop-WE-jEO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IntroVC" id="wop-WE-jEO" customClass="IntroMainViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gHg-TK-Y22">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,13 +35,12 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zbv-UM-fHC">
                                 <rect key="frame" x="0.0" y="104.5" width="414" height="623.5"/>
                                 <connections>
-                                    <segue destination="aam-fi-bfW" kind="embed" id="VSF-Ct-zgl"/>
+                                    <segue destination="aam-fi-bfW" kind="embed" identifier="EmbedVC" id="VSF-Ct-zgl"/>
                                 </connections>
                             </containerView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="yFI-nr-5wQ">
-                                <rect key="frame" x="32" y="749" width="123" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="BLUE - DARK"/>
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="yFI-nr-5wQ">
+                                <rect key="frame" x="0.0" y="733" width="141" height="28"/>
+                                <color key="pageIndicatorTintColor" name="SYSTEM - UNACTIVE"/>
                                 <color key="currentPageIndicatorTintColor" name="SYSTEM"/>
                             </pageControl>
                         </subviews>
@@ -51,16 +50,21 @@
                             <constraint firstItem="f2z-lY-Hbi" firstAttribute="leading" secondItem="6o4-sk-Y2b" secondAttribute="leading" constant="32" id="2so-0m-syV"/>
                             <constraint firstItem="f2z-lY-Hbi" firstAttribute="top" secondItem="6o4-sk-Y2b" secondAttribute="top" constant="44" id="Ibh-km-RK7"/>
                             <constraint firstItem="Zbv-UM-fHC" firstAttribute="top" secondItem="f2z-lY-Hbi" secondAttribute="bottom" id="TLY-1O-qUu"/>
+                            <constraint firstItem="6o4-sk-Y2b" firstAttribute="bottom" secondItem="yFI-nr-5wQ" secondAttribute="bottom" constant="47" id="Tot-Pm-fna"/>
                             <constraint firstItem="Zbv-UM-fHC" firstAttribute="leading" secondItem="6o4-sk-Y2b" secondAttribute="leading" id="abV-hG-3Cr"/>
                             <constraint firstItem="6o4-sk-Y2b" firstAttribute="trailing" secondItem="Zbv-UM-fHC" secondAttribute="trailing" id="dzG-nV-275"/>
+                            <constraint firstItem="yFI-nr-5wQ" firstAttribute="leading" secondItem="6o4-sk-Y2b" secondAttribute="leading" id="m7p-GM-AB0"/>
                             <constraint firstItem="6o4-sk-Y2b" firstAttribute="bottom" secondItem="Zbv-UM-fHC" secondAttribute="bottom" constant="80" id="qVl-Ct-9VZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yg8-Xa-7b3"/>
+                    <connections>
+                        <outlet property="pageControl" destination="yFI-nr-5wQ" id="6vY-R8-PbX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1i-xW-08b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4883" y="942"/>
+            <point key="canvasLocation" x="4882.608695652174" y="941.51785714285711"/>
         </scene>
         <!--Intro Page View Controller-->
         <scene sceneID="p25-dN-NhN">
@@ -878,9 +882,6 @@
     <resources>
         <image name="loginPattern" width="414" height="278"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <namedColor name="BLUE - DARK">
-            <color red="0.19599999487400055" green="0.76499998569488525" blue="0.84299999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -898,6 +899,9 @@
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SYSTEM - UNACTIVE">
+            <color red="1" green="0.82400000095367432" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT - BIG">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
