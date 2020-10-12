@@ -22,11 +22,19 @@ class FourthIntroViewController: UIViewController {
     }
     
     func lottieChar() {
-        let animationView = Lottie.AnimationView.init(name: "intro_4_manito")
-        animationView.contentMode = .scaleAspectFill
+        let animationView = Lottie.AnimationView.init(name: "splash_4_manito")
+//        animationView.contentMode = .scaleAspectFill
         animationView.backgroundBehavior = .pauseAndRestore
 
         animationContainerView.addSubview(animationView)
+        
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        
+        animationView.topAnchor.constraint(equalTo: animationContainerView.topAnchor).isActive = true
+        animationView.bottomAnchor.constraint(equalTo: animationContainerView.bottomAnchor).isActive = true
+        animationView.leadingAnchor.constraint(equalTo: animationContainerView.leadingAnchor).isActive = true
+        animationView.trailingAnchor.constraint(equalTo: animationContainerView.trailingAnchor).isActive = true
+        
         animationView.play()
         animationView.loopMode = .loop
     }

@@ -14,8 +14,6 @@ class ThirdIntroViewController: UIViewController {
 
     @IBOutlet weak var animationContainerView: UIView!
     
-    var animationView: AnimationView?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         lottieChar()
@@ -23,20 +21,22 @@ class ThirdIntroViewController: UIViewController {
         print("Third")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        animationView?.play()
-        animationView?.loopMode = .loop
-    }
-    
     func lottieChar() {
-        animationView = Lottie.AnimationView.init(name: "intro_3_community")
-        animationView?.contentMode = .scaleAspectFill
-        animationView?.backgroundBehavior = .pauseAndRestore
+        let animationView = Lottie.AnimationView.init(name: "splash_3_community")
+//        animationView?.contentMode = .scaleAspectFill
+        animationView.backgroundBehavior = .pauseAndRestore
 
-        animationContainerView.addSubview(animationView!)
+        animationContainerView.addSubview(animationView)
         
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        
+        animationView.topAnchor.constraint(equalTo: animationContainerView.topAnchor).isActive = true
+        animationView.bottomAnchor.constraint(equalTo: animationContainerView.bottomAnchor).isActive = true
+        animationView.leadingAnchor.constraint(equalTo: animationContainerView.leadingAnchor).isActive = true
+        animationView.trailingAnchor.constraint(equalTo: animationContainerView.trailingAnchor).isActive = true
+        
+        animationView.play()
+        animationView.loopMode = .loop
     }
     
 
