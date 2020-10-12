@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2z-lY-Hbi">
-                                <rect key="frame" x="32" y="44" width="145.5" height="63"/>
+                                <rect key="frame" x="32" y="44" width="153" height="60.5"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">환영합니다
@@ -33,11 +33,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zbv-UM-fHC">
-                                <rect key="frame" x="0.0" y="107" width="414" height="621"/>
+                                <rect key="frame" x="0.0" y="104.5" width="414" height="623.5"/>
                                 <connections>
                                     <segue destination="aam-fi-bfW" kind="embed" id="VSF-Ct-zgl"/>
                                 </connections>
                             </containerView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="yFI-nr-5wQ">
+                                <rect key="frame" x="32" y="749" width="123" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="BLUE - DARK"/>
+                                <color key="currentPageIndicatorTintColor" name="SYSTEM"/>
+                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6o4-sk-Y2b"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -872,6 +878,9 @@
     <resources>
         <image name="loginPattern" width="414" height="278"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="BLUE - DARK">
+            <color red="0.19599999487400055" green="0.76499998569488525" blue="0.84299999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

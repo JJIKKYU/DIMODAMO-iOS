@@ -42,6 +42,12 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         return VCArray[previousIndex]
     }
     
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        let currentPage: Int = VCArray.firstIndex(of: pendingViewControllers[0])!
+        print("currentPage : \(currentPage)")
+        
+    }
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = VCArray.firstIndex(of: viewController) else {
             return nil

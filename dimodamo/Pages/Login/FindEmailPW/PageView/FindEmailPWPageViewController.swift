@@ -38,12 +38,20 @@ class FindEmailPWPageViewController: UIPageViewController, UIPageViewControllerD
     
     // 애니메이션이 끝날 경우에 델리게이트를 통해서 현재 페이지를 Int로 전달
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if completed {
-            if let currentVC = pageViewController.viewControllers?.first,
-               let index = VCArray.firstIndex(of: currentVC) {
-                self.pageDelegate?.SelectMenuItem(pageIndex: index)
-            }
-        }
+//        if completed {
+//            if let currentVC = pageViewController.viewControllers?.first,
+//               let index = VCArray.firstIndex(of: currentVC) {
+//                self.pageDelegate?.SelectMenuItem(pageIndex: index)
+//            }
+//        }
+    }
+    
+    // 변경될 예정인 페이지로 바로 전송
+    // 애니메이션 끝나고 전송하는 위의 함수보다 훨씬 속도가 빠름
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        let currentPage: Int = VCArray.firstIndex(of: pendingViewControllers[0])!
+        print("currentPage : \(currentPage)")
+        self.pageDelegate?.SelectMenuItem(pageIndex: currentPage)
     }
 
     
