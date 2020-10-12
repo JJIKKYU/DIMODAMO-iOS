@@ -22,7 +22,7 @@ class ThirdIntroViewController: UIViewController {
     }
     
     func lottieChar() {
-        let animationView = Lottie.AnimationView.init(name: "splash_3_community")
+        let animationView = Lottie.AnimationView.init(name: "Onboarding_3_community")
 //        animationView?.contentMode = .scaleAspectFill
         animationView.backgroundBehavior = .pauseAndRestore
 

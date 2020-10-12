@@ -22,7 +22,7 @@ class SecondIntroViewController: UIViewController {
     }
     
     func lottieChar() {
-        let animationView = Lottie.AnimationView.init(name: "splash_2_room")
+        let animationView = Lottie.AnimationView.init(name: "Onboarding_2_room")
 //        animationView.contentMode = .scaleAspectFill
         animationView.backgroundBehavior = .pauseAndRestore
 

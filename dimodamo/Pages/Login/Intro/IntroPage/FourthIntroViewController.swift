@@ -22,7 +22,7 @@ class FourthIntroViewController: UIViewController {
     }
     
     func lottieChar() {
-        let animationView = Lottie.AnimationView.init(name: "splash_4_manito")
+        let animationView = Lottie.AnimationView.init(name: "Onboarding_4_manito")
 //        animationView.contentMode = .scaleAspectFill
         animationView.backgroundBehavior = .pauseAndRestore
 
