@@ -78,11 +78,12 @@
                     <connections>
                         <outlet property="loginBtn" destination="bgS-d9-oRx" id="6f7-fY-kPd"/>
                         <outlet property="pageControl" destination="yFI-nr-5wQ" id="6vY-R8-PbX"/>
+                        <segue destination="3wI-bz-Iuf" kind="show" identifier="LoginVC" id="1jE-oP-2EV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1i-xW-08b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4882.608695652174" y="941.51785714285711"/>
+            <point key="canvasLocation" x="4883" y="872"/>
         </scene>
         <!--Intro Page View Controller-->
         <scene sceneID="p25-dN-NhN">
@@ -152,9 +153,9 @@
         <!--Login View Controller-->
         <scene sceneID="HJW-bQ-t2o">
             <objects>
-                <viewController storyboardIdentifier="LoginMain" id="3wI-bz-Iuf" customClass="LoginViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginMain" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3wI-bz-Iuf" customClass="LoginViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nSK-Xe-Vhb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="loginPattern" translatesAutoresizingMaskIntoConstraints="NO" id="n0I-G0-Kij">
@@ -176,7 +177,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KkZ-js-czE">
-                                <rect key="frame" x="0.0" y="219" width="414" height="677"/>
+                                <rect key="frame" x="0.0" y="219" width="414" height="623"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7a9-lY-LO5">
                                         <rect key="frame" x="32" y="89" width="32" height="15"/>
@@ -235,7 +236,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJO-KX-IZq">
-                                        <rect key="frame" x="32" y="458" width="350" height="48"/>
+                                        <rect key="frame" x="32" y="404" width="350" height="48"/>
                                         <color key="backgroundColor" name="SYSTEM"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="vae-8f-dyY"/>
@@ -249,7 +250,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwn-Ap-U6b">
-                                        <rect key="frame" x="32" y="522" width="350" height="48"/>
+                                        <rect key="frame" x="32" y="468" width="350" height="48"/>
                                         <color key="backgroundColor" name="SYSTEM"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="5vQ-Hj-Q41"/>
@@ -271,7 +272,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoA-hl-nNC" userLabel="findButtonsContainer">
-                                        <rect key="frame" x="101.5" y="611" width="211" height="16"/>
+                                        <rect key="frame" x="101.5" y="557" width="211" height="16"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4q9-5B-whA">
                                                 <rect key="frame" x="0.0" y="-6" width="60" height="28"/>
@@ -897,6 +898,9 @@
             <point key="canvasLocation" x="8332" y="942"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1jE-oP-2EV"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="loginPattern" width="414" height="278"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

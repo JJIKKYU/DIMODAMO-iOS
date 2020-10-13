@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("로그아웃 상태입니다")
             let loginStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: .main)
-            let loginVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
+            let loginVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "IntroVC")
             self.window?.rootViewController = loginVC
             self.window?.makeKeyAndVisible()
         }

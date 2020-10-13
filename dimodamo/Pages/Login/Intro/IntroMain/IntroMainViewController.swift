@@ -31,12 +31,14 @@ class IntroMainViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
                 self?.pageControl.currentPage = value
-                if value == self?.maxNumberOfPages {
-                    self?.loginBtn.isEnabled = true
-                    self?.loginBtn.alpha = 1
-                } else {
-                    self?.loginBtn.isEnabled = false
-                    self?.loginBtn.alpha = 0
+                UIView.animate(withDuration: 0.5) {
+                    if value == self?.maxNumberOfPages {
+                        self?.loginBtn.isEnabled = true
+                        self?.loginBtn.alpha = 1
+                    } else {
+                        self?.loginBtn.isEnabled = false
+                        self?.loginBtn.alpha = 0
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -45,6 +47,7 @@ class IntroMainViewController: UIViewController {
     
     @IBAction func pressedLoginBtn(_ sender: Any) {
         print("pressedLoginBtn")
+        performSegue(withIdentifier: "LoginVC", sender: sender)
     }
     
     
@@ -54,6 +57,10 @@ class IntroMainViewController: UIViewController {
         if segue.identifier == "EmbedVC" {
             let destinationVC = segue.destination as! IntroPageViewController
             destinationVC.pageDelegate = self
+        }
+        else if segue.identifier == "LoginVC" {
+            let destinationVC = segue.destination
+            destinationVC.modalPresentationStyle = .fullScreen
         }
     }
     
