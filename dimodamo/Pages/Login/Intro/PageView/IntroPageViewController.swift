@@ -27,6 +27,15 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         return UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: name)
     }
     
+    // 애니메이션이 끝날 경우에 델리게이트를 통해서 현재 페이지를 Int로 전달
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            if let currentVC = pageViewController.viewControllers?.first,
+               let currentPage = VCArray.firstIndex(of: currentVC) {
+                pageDelegate?.passCurrentPage(page: currentPage)
+            }
+        }
+    }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = VCArray.firstIndex(of: viewController) else { return nil }
@@ -42,13 +51,6 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         }
         
         return VCArray[previousIndex]
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        let currentPage: Int = VCArray.firstIndex(of: pendingViewControllers[0])!
-        print("currentPage : \(currentPage)")
-        pageDelegate?.passCurrentPage(page: currentPage)
-        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {

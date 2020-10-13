@@ -8,17 +8,45 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
+import RxRelay
+
 class IntroMainViewController: UIViewController {
 
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var loginBtn: UIButton!
+    
+    lazy var maxNumberOfPages: Int = pageControl.numberOfPages - 1
+    
+    var currentPage = BehaviorRelay<Int>(value: 0)
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
-        // Do any additional setup after loading the view.
+        
+        currentPage
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.pageControl.currentPage = value
+                if value == self?.maxNumberOfPages {
+                    self?.loginBtn.isEnabled = true
+                    self?.loginBtn.alpha = 1
+                } else {
+                    self?.loginBtn.isEnabled = false
+                    self?.loginBtn.alpha = 0
+                }
+            })
+            .disposed(by: disposeBag)
+        
     }
     
-
+    @IBAction func pressedLoginBtn(_ sender: Any) {
+        print("pressedLoginBtn")
+    }
+    
     
     // MARK: - Navigation
     
@@ -35,6 +63,8 @@ class IntroMainViewController: UIViewController {
 
 extension IntroMainViewController {
     func viewDesign() {
+        self.loginBtn.alpha = 0
+        self.loginBtn.isEnabled = false
 //        pageControl.transform = CGAffineTransform(scaleX: 3, y: 1)
     }
 }
@@ -43,7 +73,7 @@ extension IntroMainViewController {
 
 extension IntroMainViewController: passCurrentPage {
     func passCurrentPage(page: Int) {
-        pageControl.currentPage = page
+        currentPage.accept(page)
     }
     
     

@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-ExtraBold.ttf">
+            <string>Nunito-ExtraBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Intro Main View Controller-->
         <scene sceneID="5v1-zf-AQV">
@@ -43,22 +48,35 @@
                                 <color key="pageIndicatorTintColor" name="SYSTEM - UNACTIVE"/>
                                 <color key="currentPageIndicatorTintColor" name="SYSTEM"/>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgS-d9-oRx">
+                                <rect key="frame" x="326" y="733" width="56" height="37"/>
+                                <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="18"/>
+                                <state key="normal" title="LOGIN">
+                                    <color key="titleColor" name="SYSTEM"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedLoginBtn:" destination="wop-WE-jEO" eventType="touchUpInside" id="x1r-m8-dyO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6o4-sk-Y2b"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="f2z-lY-Hbi" firstAttribute="leading" secondItem="6o4-sk-Y2b" secondAttribute="leading" constant="32" id="2so-0m-syV"/>
                             <constraint firstItem="f2z-lY-Hbi" firstAttribute="top" secondItem="6o4-sk-Y2b" secondAttribute="top" constant="44" id="Ibh-km-RK7"/>
+                            <constraint firstItem="bgS-d9-oRx" firstAttribute="top" secondItem="Zbv-UM-fHC" secondAttribute="bottom" constant="5" id="OmI-gq-D1m"/>
                             <constraint firstItem="Zbv-UM-fHC" firstAttribute="top" secondItem="f2z-lY-Hbi" secondAttribute="bottom" id="TLY-1O-qUu"/>
                             <constraint firstItem="6o4-sk-Y2b" firstAttribute="bottom" secondItem="yFI-nr-5wQ" secondAttribute="bottom" constant="47" id="Tot-Pm-fna"/>
                             <constraint firstItem="Zbv-UM-fHC" firstAttribute="leading" secondItem="6o4-sk-Y2b" secondAttribute="leading" id="abV-hG-3Cr"/>
                             <constraint firstItem="6o4-sk-Y2b" firstAttribute="trailing" secondItem="Zbv-UM-fHC" secondAttribute="trailing" id="dzG-nV-275"/>
+                            <constraint firstItem="6o4-sk-Y2b" firstAttribute="trailing" secondItem="bgS-d9-oRx" secondAttribute="trailing" constant="32" id="e46-fl-rGp"/>
                             <constraint firstItem="yFI-nr-5wQ" firstAttribute="leading" secondItem="6o4-sk-Y2b" secondAttribute="leading" id="m7p-GM-AB0"/>
                             <constraint firstItem="6o4-sk-Y2b" firstAttribute="bottom" secondItem="Zbv-UM-fHC" secondAttribute="bottom" constant="80" id="qVl-Ct-9VZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yg8-Xa-7b3"/>
                     <connections>
+                        <outlet property="loginBtn" destination="bgS-d9-oRx" id="6f7-fY-kPd"/>
                         <outlet property="pageControl" destination="yFI-nr-5wQ" id="6vY-R8-PbX"/>
                     </connections>
                 </viewController>
