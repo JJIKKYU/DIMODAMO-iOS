@@ -111,6 +111,7 @@
 		98A8B81F2536083200351FD5 /* Splash_1.5C_bottom.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B81D2536083200351FD5 /* Splash_1.5C_bottom.json */; };
 		98A8B8202536083200351FD5 /* Splash_1.5C_top.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B81E2536083200351FD5 /* Splash_1.5C_top.json */; };
 		98A8B82625360AF100351FD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B82525360AF100351FD5 /* LaunchScreen.storyboard */; };
+		98A8B82F25377D9200351FD5 /* InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8B82E25377D9200351FD5 /* InformationTableViewCell.swift */; };
 		98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA3FE725198E2D00788486 /* ClauseViewController.swift */; };
 		98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1663A252729C50080DD87 /* Service1DetailViewController.swift */; };
 		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
@@ -239,6 +240,7 @@
 		98A8B81D2536083200351FD5 /* Splash_1.5C_bottom.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Splash_1.5C_bottom.json; path = dimodamo/lottie/Splash/Splash_1.5C_bottom.json; sourceTree = SOURCE_ROOT; };
 		98A8B81E2536083200351FD5 /* Splash_1.5C_top.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Splash_1.5C_top.json; path = dimodamo/lottie/Splash/Splash_1.5C_top.json; sourceTree = SOURCE_ROOT; };
 		98A8B82525360AF100351FD5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		98A8B82E25377D9200351FD5 /* InformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCell.swift; sourceTree = "<group>"; };
 		98BA3FE725198E2D00788486 /* ClauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauseViewController.swift; sourceTree = "<group>"; };
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C1663A252729C50080DD87 /* Service1DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service1DetailViewController.swift; sourceTree = "<group>"; };
@@ -466,6 +468,8 @@
 		986322392517855B003B0784 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				98A8B82B25377D3B00351FD5 /* Information */,
+				98A8B8292537745000351FD5 /* New Group */,
 				9863223D2517858E003B0784 /* Main */,
 			);
 			path = Community;
@@ -723,6 +727,29 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		98A8B8292537745000351FD5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		98A8B82B25377D3B00351FD5 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				98A8B82D25377D7500351FD5 /* Table Cell */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		98A8B82D25377D7500351FD5 /* Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				98A8B82E25377D9200351FD5 /* InformationTableViewCell.swift */,
+			);
+			path = "Table Cell";
+			sourceTree = "<group>";
+		};
 		98C42316251DFF9400B2B194 /* Interest */ = {
 			isa = PBXGroup;
 			children = (
@@ -964,6 +991,7 @@
 			files = (
 				98816097251EF5C300556AEC /* LoginViewController.swift in Sources */,
 				9800A155253379240090C058 /* ThirdIntroViewController.swift in Sources */,
+				98A8B82F25377D9200351FD5 /* InformationTableViewCell.swift in Sources */,
 				9800A1582533792C0090C058 /* FourthIntroViewController.swift in Sources */,
 				98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,

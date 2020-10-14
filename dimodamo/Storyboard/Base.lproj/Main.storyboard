@@ -8,27 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="AUf-4X-a4R">
-            <objects>
-                <navigationController storyboardIdentifier="MainVC" automaticallyAdjustsScrollViewInsets="NO" id="jfm-21-JgW" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cbH-im-yh3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F8k-yp-j0H">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="J5H-rv-9TU" kind="relationship" relationship="rootViewController" id="w7J-7j-xkk"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hv2-oY-c6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="678" y="155"/>
-        </scene>
         <!--Test View Controller-->
         <scene sceneID="P5B-WX-e6y">
             <objects>
@@ -38,34 +17,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test ViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yC-4B-6UX">
-                                <rect key="frame" x="20" y="115" width="301" height="41"/>
+                                <rect key="frame" x="20" y="71" width="301" height="41"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="34"/>
                                 <color key="textColor" name="TEXT - BIG"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtw-Ro-FVt">
-                                <rect key="frame" x="20" y="232" width="70" height="30"/>
+                                <rect key="frame" x="20" y="188" width="70" height="30"/>
                                 <state key="normal" title="DPTI Main"/>
                                 <connections>
                                     <action selector="pressDptiMain:" destination="U1X-jK-vjF" eventType="touchUpInside" id="jVG-W0-eNX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iq-jn-ths">
-                                <rect key="frame" x="20" y="294" width="116" height="30"/>
+                                <rect key="frame" x="20" y="250" width="116" height="30"/>
                                 <state key="normal" title="Community Main"/>
                                 <connections>
                                     <action selector="pressCommunityMain:" destination="U1X-jK-vjF" eventType="touchUpInside" id="mTL-7i-x1k"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1v-3J-90e">
-                                <rect key="frame" x="20" y="352" width="57" height="30"/>
+                                <rect key="frame" x="20" y="308" width="57" height="30"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
                                     <action selector="pressRegister:" destination="U1X-jK-vjF" eventType="touchUpInside" id="u56-cR-ZWA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tS1-SY-nUS">
-                                <rect key="frame" x="20" y="415" width="38" height="30"/>
+                                <rect key="frame" x="20" y="371" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="pressLogin:" destination="U1X-jK-vjF" eventType="touchUpInside" id="DDg-oI-8Lb"/>
@@ -101,7 +80,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="udh-i4-UUe">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="J5H-rv-9TU" customClass="TabBarViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainVC" automaticallyAdjustsScrollViewInsets="NO" id="J5H-rv-9TU" customClass="TabBarViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="eMS-o8-xd9"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="glq-5Q-BKZ">
@@ -135,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqP-8p-VYG">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <connections>
                                     <segue destination="VH5-hU-nEs" kind="embed" id="Yc9-4D-UMt"/>
                                 </connections>
@@ -173,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzO-Wh-Kqa">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <connections>
                                     <segue destination="wv7-iR-7cy" kind="embed" id="vOX-r6-Hsz"/>
                                 </connections>
@@ -211,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Zx-di-OqX">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <connections>
                                     <segue destination="XqL-PQ-a9k" kind="embed" id="q9N-hH-Vr2"/>
                                 </connections>
