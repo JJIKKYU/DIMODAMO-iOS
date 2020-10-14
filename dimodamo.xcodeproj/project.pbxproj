@@ -42,7 +42,6 @@
 		986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA0D2509C42600AD3CEE /* Main.storyboard */; };
 		986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */; };
 		986EDA142509C42800AD3CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA132509C42800AD3CEE /* Assets.xcassets */; };
-		986EDA172509C42800AD3CEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */; };
 		986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */; };
 		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
 		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
@@ -107,6 +106,11 @@
 		98A8B7FF2534C95B00351FD5 /* TN_M.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B7DF2534C95A00351FD5 /* TN_M.json */; };
 		98A8B8002534C95B00351FD5 /* JE_M.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B7E02534C95B00351FD5 /* JE_M.json */; };
 		98A8B8042534D10B00351FD5 /* IntroMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8B8032534D10B00351FD5 /* IntroMainViewController.swift */; };
+		98A8B810253605A400351FD5 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B80F253605A400351FD5 /* Splash.storyboard */; };
+		98A8B816253605CE00351FD5 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8B815253605CE00351FD5 /* SplashViewController.swift */; };
+		98A8B81F2536083200351FD5 /* Splash_1.5C_bottom.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B81D2536083200351FD5 /* Splash_1.5C_bottom.json */; };
+		98A8B8202536083200351FD5 /* Splash_1.5C_top.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B81E2536083200351FD5 /* Splash_1.5C_top.json */; };
+		98A8B82625360AF100351FD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B82525360AF100351FD5 /* LaunchScreen.storyboard */; };
 		98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA3FE725198E2D00788486 /* ClauseViewController.swift */; };
 		98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1663A252729C50080DD87 /* Service1DetailViewController.swift */; };
 		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
@@ -165,7 +169,6 @@
 		986EDA0E2509C42600AD3CEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		986EDA112509C42600AD3CEE /* dimodamo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dimodamo.xcdatamodel; sourceTree = "<group>"; };
 		986EDA132509C42800AD3CEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		986EDA162509C42800AD3CEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		986EDA182509C42800AD3CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +234,11 @@
 		98A8B7DF2534C95A00351FD5 /* TN_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TN_M.json; path = dimodamo/lottie/Dpti/TN_M.json; sourceTree = SOURCE_ROOT; };
 		98A8B7E02534C95B00351FD5 /* JE_M.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JE_M.json; path = dimodamo/lottie/Dpti/JE_M.json; sourceTree = SOURCE_ROOT; };
 		98A8B8032534D10B00351FD5 /* IntroMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroMainViewController.swift; sourceTree = "<group>"; };
+		98A8B80F253605A400351FD5 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		98A8B815253605CE00351FD5 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		98A8B81D2536083200351FD5 /* Splash_1.5C_bottom.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Splash_1.5C_bottom.json; path = dimodamo/lottie/Splash/Splash_1.5C_bottom.json; sourceTree = SOURCE_ROOT; };
+		98A8B81E2536083200351FD5 /* Splash_1.5C_top.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Splash_1.5C_top.json; path = dimodamo/lottie/Splash/Splash_1.5C_top.json; sourceTree = SOURCE_ROOT; };
+		98A8B82525360AF100351FD5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98BA3FE725198E2D00788486 /* ClauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauseViewController.swift; sourceTree = "<group>"; };
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C1663A252729C50080DD87 /* Service1DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service1DetailViewController.swift; sourceTree = "<group>"; };
@@ -443,13 +451,14 @@
 			isa = PBXGroup;
 			children = (
 				986EDA0D2509C42600AD3CEE /* Main.storyboard */,
-				986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */,
 				9863223625178546003B0784 /* Community.storyboard */,
 				9863224C2517B9AB003B0784 /* ClassRoom.storyboard */,
 				989384E52518D76700DE2C35 /* Friends.storyboard */,
 				989384E82518DB7900DE2C35 /* Register.storyboard */,
 				98816092251EF23200556AEC /* Login.storyboard */,
 				984C142E252736830085008C /* DPTI.storyboard */,
+				98A8B80F253605A400351FD5 /* Splash.storyboard */,
+				98A8B82525360AF100351FD5 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -564,6 +573,7 @@
 		987F5A95250B13F300E1B856 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				98A8B813253605BF00351FD5 /* Splash */,
 				98816095251EF5B600556AEC /* Login */,
 				989384CA2518668600DE2C35 /* Register */,
 				986322532517BB64003B0784 /* Friend */,
@@ -696,6 +706,23 @@
 			path = IntroMain;
 			sourceTree = "<group>";
 		};
+		98A8B8082536040B00351FD5 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				98A8B81D2536083200351FD5 /* Splash_1.5C_bottom.json */,
+				98A8B81E2536083200351FD5 /* Splash_1.5C_top.json */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		98A8B813253605BF00351FD5 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				98A8B815253605CE00351FD5 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		98C42316251DFF9400B2B194 /* Interest */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,6 +734,7 @@
 		98C48B14250CD163004E24E5 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				98A8B8082536040B00351FD5 /* Splash */,
 				9800A137253371280090C058 /* Dpti */,
 				9800A136253371200090C058 /* Intro */,
 			);
@@ -824,6 +852,7 @@
 				98A8B7EA2534C95B00351FD5 /* JE_G.json in Resources */,
 				9863224D2517B9AB003B0784 /* ClassRoom.storyboard in Resources */,
 				98A8B7E52534C95B00351FD5 /* PN_M.json in Resources */,
+				98A8B81F2536083200351FD5 /* Splash_1.5C_bottom.json in Resources */,
 				98C48B1D250CF97E004E24E5 /* Survey.json in Resources */,
 				98A8B7EC2534C95B00351FD5 /* TI_M.json in Resources */,
 				98A8B7E22534C95B00351FD5 /* FN_M.json in Resources */,
@@ -836,6 +865,8 @@
 				989384EC251900E900DE2C35 /* SF-Pro-Display-Heavy.otf in Resources */,
 				9863223725178546003B0784 /* Community.storyboard in Resources */,
 				98A8B7E42534C95B00351FD5 /* FS_M.json in Resources */,
+				98A8B8202536083200351FD5 /* Splash_1.5C_top.json in Resources */,
+				98A8B82625360AF100351FD5 /* LaunchScreen.storyboard in Resources */,
 				98A8B7BE25345BDC00351FD5 /* Onboarding_2_room.json in Resources */,
 				98A8B7F22534C95B00351FD5 /* TE_G.json in Resources */,
 				98816093251EF23200556AEC /* Login.storyboard in Resources */,
@@ -850,7 +881,6 @@
 				98A8B7F92534C95B00351FD5 /* FE_G.json in Resources */,
 				98A8B7F02534C95B00351FD5 /* FE_M.json in Resources */,
 				98C48B10250B9ED5004E24E5 /* NanumSquareRoundOTFB.otf in Resources */,
-				986EDA172509C42800AD3CEE /* LaunchScreen.storyboard in Resources */,
 				98A8B7F32534C95B00351FD5 /* PN_G.json in Resources */,
 				98C48B12250B9ED5004E24E5 /* NanumSquareRoundOTFL.otf in Resources */,
 				9884700D2511406700943861 /* Nunito-SemiBold.ttf in Resources */,
@@ -870,6 +900,7 @@
 				989384E92518DB7900DE2C35 /* Register.storyboard in Resources */,
 				98A8B7FD2534C95B00351FD5 /* FN_G.json in Resources */,
 				980196E0252B620100F829F6 /* SF-Pro-Display-Light.otf in Resources */,
+				98A8B810253605A400351FD5 /* Splash.storyboard in Resources */,
 				986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */,
 				98A8B7F72534C95B00351FD5 /* FS_G.json in Resources */,
 				98A8B7FF2534C95B00351FD5 /* TN_M.json in Resources */,
@@ -950,6 +981,7 @@
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
+				98A8B816253605CE00351FD5 /* SplashViewController.swift in Sources */,
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
@@ -991,14 +1023,6 @@
 				986EDA0E2509C42600AD3CEE /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		986EDA152509C42800AD3CEE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				986EDA162509C42800AD3CEE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

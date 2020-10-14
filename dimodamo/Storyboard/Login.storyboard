@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2z-lY-Hbi">
-                                <rect key="frame" x="32" y="44" width="145.5" height="63"/>
+                                <rect key="frame" x="32" y="44" width="153" height="60.5"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">환영합니다
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zbv-UM-fHC">
-                                <rect key="frame" x="0.0" y="107" width="414" height="621"/>
+                                <rect key="frame" x="0.0" y="104.5" width="414" height="623.5"/>
                                 <connections>
                                     <segue destination="aam-fi-bfW" kind="embed" identifier="EmbedVC" id="VSF-Ct-zgl"/>
                                 </connections>
@@ -49,7 +49,7 @@
                                 <color key="currentPageIndicatorTintColor" name="SYSTEM"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgS-d9-oRx">
-                                <rect key="frame" x="326" y="733" width="56" height="33"/>
+                                <rect key="frame" x="326" y="733" width="56" height="37"/>
                                 <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="18"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" name="SYSTEM"/>
@@ -162,7 +162,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="278"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWz-Bp-6Yy">
-                                <rect key="frame" x="32" y="91" width="350" height="63"/>
+                                <rect key="frame" x="32" y="91" width="350" height="60.5"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">환영합니다
@@ -185,7 +185,7 @@
                                         <color key="textColor" name="GRAY - 210"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCQ-r9-EGE">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test@dimodamo.com" placeholder="이메일을 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCQ-r9-EGE">
                                         <rect key="frame" x="32" y="112" width="350" height="22"/>
                                         <color key="textColor" name="GRAY - 170"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
@@ -210,7 +210,7 @@
                                         <color key="textColor" name="GRAY - 210"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4t-CF-2kc">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wlsrbs9^" placeholder="비밀번호를 입력해주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4t-CF-2kc">
                                         <rect key="frame" x="32" y="216" width="350" height="21"/>
                                         <color key="textColor" name="GRAY - 170"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
@@ -899,7 +899,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1jE-oP-2EV"/>
+        <segue reference="Q7b-2N-ykw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="loginPattern" width="414" height="278"/>

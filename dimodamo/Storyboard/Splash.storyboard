@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GUf-kg-bH2">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="aFX-oz-Mec">
+            <objects>
+                <viewController storyboardIdentifier="SplashVC" id="GUf-kg-bH2" customClass="SplashViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Nw-aO-hBi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-n4-kQv">
+                                <rect key="frame" x="0.0" y="244" width="414" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Y0s-2S-897"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RxA-Wn-sBn">
+                                <rect key="frame" x="0.0" y="682" width="414" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Tkz-0C-6Bo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4J5-0g-aOt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4J5-0g-aOt" firstAttribute="trailing" secondItem="NLg-n4-kQv" secondAttribute="trailing" id="Awe-ll-tqk"/>
+                            <constraint firstItem="NLg-n4-kQv" firstAttribute="top" secondItem="4J5-0g-aOt" secondAttribute="top" constant="200" id="O68-sR-LiV"/>
+                            <constraint firstItem="NLg-n4-kQv" firstAttribute="leading" secondItem="4J5-0g-aOt" secondAttribute="leading" id="Y3d-eT-pGd"/>
+                            <constraint firstItem="4J5-0g-aOt" firstAttribute="bottom" secondItem="RxA-Wn-sBn" secondAttribute="bottom" constant="80" id="YjU-1z-rPe"/>
+                            <constraint firstItem="RxA-Wn-sBn" firstAttribute="leading" secondItem="4J5-0g-aOt" secondAttribute="leading" id="t9K-1B-PTo"/>
+                            <constraint firstItem="4J5-0g-aOt" firstAttribute="trailing" secondItem="RxA-Wn-sBn" secondAttribute="trailing" id="xaJ-FW-jPz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomContainer" destination="RxA-Wn-sBn" id="yUp-wk-Rv4"/>
+                        <outlet property="topContainer" destination="NLg-n4-kQv" id="1pj-UX-CXR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ttb-db-irj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="210" y="211"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

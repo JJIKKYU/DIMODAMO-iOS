@@ -21,28 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        let user = Auth.auth().currentUser
-        print(user?.uid)
-        self.window = UIWindow(frame: UIScreen.main.bounds)        
         
-        // 로그인 중일 때는 메인으로
-        // 로그아웃 상태일 때는 로그인 화면으로
-        if user != nil {
-            print("현재 로그인중입니다")
-            print("현재 로그인 되어 있는 UID : \(Auth.auth().currentUser?.uid)")
-            
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
-            let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
-            self.window?.rootViewController = mainVC
-            self.window?.makeKeyAndVisible()
-        } else {
-            print("로그아웃 상태입니다")
-            let loginStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: .main)
-            let loginVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "IntroVC")
-            self.window?.rootViewController = loginVC
-            self.window?.makeKeyAndVisible()
-        }
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Splash", bundle: .main)
+        let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "SplashVC")
+        self.window?.rootViewController = mainVC
+        self.window?.makeKeyAndVisible()
         
         
 //        print(self.window?.rootViewController)
@@ -53,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            currentRoot.present(artificialRoot, animated: true, completion: nil)
 //        }
 //
-        Thread.sleep(forTimeInterval: 1.5)
+//        Thread.sleep(forTimeInterval: 1.5)
         return true
     }
     
