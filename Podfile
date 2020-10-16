@@ -30,6 +30,9 @@ target 'dimodamo' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   
+  # 커뮤니티 메인 컬렉션 뷰에서 사용
+  pod 'MSPeekCollectionViewDelegateImplementation'
+  
 
 
 end

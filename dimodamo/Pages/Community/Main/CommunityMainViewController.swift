@@ -12,23 +12,48 @@ import WebKit
 class CommunityMainViewController: UIViewController {
     
     private let imageView = UIImageView(image: UIImage(named: "searchIcon"))
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var articleTableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        // UI 및 delegate 세팅
         tableView.delegate = self
         tableView.dataSource = self
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        articleTableView.delegate = self
+        articleTableView.dataSource = self
         
         settingTableView()
         
         setupUI()
+        
+        
+        // 바인딩
+        
     }
     
+    
+    // 디모다모 교과서 타이틀을 눌렀을 경우
+    @IBAction func pressedArticleTitle(_ sender: Any) {
+        performSegue(withIdentifier: "\(CommunitySegueName.article)", sender: sender)
+    }
+    
+    // 디모다모 교과서 더보기를 눌렀을 경우
+    @IBAction func pressedArticleMoreBtn(_ sender: Any) {
+        performSegue(withIdentifier: "\(CommunitySegueName.article)", sender: sender)
+    }
+    
+    @IBAction func pressedInformationTitle(_ sender: Any) {
+        performSegue(withIdentifier: "\(CommunitySegueName.information)", sender: sender)
+    }
+    @IBAction func pressedInformationMoreBtn(_ sender: Any) {
+        performSegue(withIdentifier: "\(CommunitySegueName.information)", sender: sender)
+    }
     
     
     /*
@@ -64,31 +89,52 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        // 테이블뷰마다 분기
+        switch tableView.tag {
+        // 아티클일 경우
+        case 0:
+            return 2
+        // 유인물일 경우
+        case 1:
+            return 4
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath)
+        // 테이블뷰마다 분기
+        switch tableView.tag {
+        // 아티클일 경우
+        case 0:
+            return UITableViewCell()
+        // 유인물일 경우
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath)
+            return cell
+        default:
+            return UITableViewCell()
+        }
         
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath)
+//
+//        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // 테이블뷰마다 분기
+        switch tableView.tag {
+        // 아티클일 경우
+        case 0:
+            return CGFloat(CellHeight.articleHeight)
+        // 유인물일 경우
+        case 1:
+            return CGFloat(CellHeight.informationHeight)
+        default:
+            return 0
+        }
     }
 }
-
-extension CommunityMainViewController: UICollectionViewDelegate,UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "articleCell", for: indexPath)
-        
-        return cell
-    }
-    
-    
-}
-
 
 /// WARNING: Change these constants according to your project's design
 private struct Const {
