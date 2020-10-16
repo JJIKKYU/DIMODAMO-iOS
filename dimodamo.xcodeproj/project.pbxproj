@@ -112,6 +112,7 @@
 		98A8B8202536083200351FD5 /* Splash_1.5C_top.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B81E2536083200351FD5 /* Splash_1.5C_top.json */; };
 		98A8B82625360AF100351FD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B82525360AF100351FD5 /* LaunchScreen.storyboard */; };
 		98A8B82F25377D9200351FD5 /* InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8B82E25377D9200351FD5 /* InformationTableViewCell.swift */; };
+		98AFDA502539CD7900B0D88F /* CommunityMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AFDA4F2539CD7900B0D88F /* CommunityMainViewModel.swift */; };
 		98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA3FE725198E2D00788486 /* ClauseViewController.swift */; };
 		98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1663A252729C50080DD87 /* Service1DetailViewController.swift */; };
 		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
@@ -241,6 +242,7 @@
 		98A8B81E2536083200351FD5 /* Splash_1.5C_top.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Splash_1.5C_top.json; path = dimodamo/lottie/Splash/Splash_1.5C_top.json; sourceTree = SOURCE_ROOT; };
 		98A8B82525360AF100351FD5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98A8B82E25377D9200351FD5 /* InformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCell.swift; sourceTree = "<group>"; };
+		98AFDA4F2539CD7900B0D88F /* CommunityMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewModel.swift; sourceTree = "<group>"; };
 		98BA3FE725198E2D00788486 /* ClauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauseViewController.swift; sourceTree = "<group>"; };
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C1663A252729C50080DD87 /* Service1DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service1DetailViewController.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				9863223E251785AE003B0784 /* CommunityMainViewController.swift */,
+				98AFDA4F2539CD7900B0D88F /* CommunityMainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1036,6 +1039,7 @@
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
+				98AFDA502539CD7900B0D88F /* CommunityMainViewModel.swift in Sources */,
 				984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */,
 				985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */,
 				988160D3251F634C00556AEC /* RegisterIDViewController.swift in Sources */,

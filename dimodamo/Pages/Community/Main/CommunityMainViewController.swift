@@ -12,6 +12,7 @@ import WebKit
 class CommunityMainViewController: UIViewController {
     
     private let imageView = UIImageView(image: UIImage(named: "searchIcon"))
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -19,6 +20,10 @@ class CommunityMainViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
         settingTableView()
         
         setupUI()
@@ -64,6 +69,19 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath)
+        
+        return cell
+    }
+}
+
+extension CommunityMainViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "articleCell", for: indexPath)
         
         return cell
     }
