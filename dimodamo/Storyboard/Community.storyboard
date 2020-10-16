@@ -34,7 +34,7 @@
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UCe-Uz-ZKD" customClass="ArticleCollectionView" customModule="dimodamo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="58" width="414" height="500"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" name="WHITE"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="500" id="WLs-hM-qii"/>
                                                 </constraints>
@@ -59,7 +59,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCj-R8-Rrf">
-                                                                    <rect key="frame" x="20" y="240" width="74.5" height="19.5"/>
+                                                                    <rect key="frame" x="20" y="240" width="72" height="16.5"/>
                                                                     <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="14"/>
                                                                     <color key="textColor" name="SYSTEM"/>
                                                                     <nil key="highlightedColor"/>
@@ -84,22 +84,22 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pER-7q-vec">
-                                                                    <rect key="frame" x="317.5" y="399" width="12" height="12"/>
+                                                                    <rect key="frame" x="319.5" y="399" width="12" height="12"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQN-DM-pZr">
-                                                                    <rect key="frame" x="333.5" y="397" width="16.5" height="16"/>
+                                                                    <rect key="frame" x="335.5" y="397" width="14.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5f5-wr-7Tl">
-                                                                    <rect key="frame" x="289" y="397" width="16.5" height="16"/>
+                                                                    <rect key="frame" x="293" y="397" width="14.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-9s-8jA">
-                                                                    <rect key="frame" x="275" y="399" width="10" height="12"/>
+                                                                    <rect key="frame" x="279" y="399" width="10" height="12"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmV-8F-vS7">
                                                                     <rect key="frame" x="24" y="376" width="326" height="1"/>
@@ -302,22 +302,22 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nKI-r6-Q5b">
-                                                                    <rect key="frame" x="361.5" y="101.5" width="12" height="12"/>
+                                                                    <rect key="frame" x="363.5" y="101.5" width="12" height="12"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtU-hw-OX9">
-                                                                    <rect key="frame" x="377.5" y="99.5" width="16.5" height="16"/>
+                                                                    <rect key="frame" x="379.5" y="99.5" width="14.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIV-X6-rZJ">
-                                                                    <rect key="frame" x="333" y="99.5" width="16.5" height="16"/>
+                                                                    <rect key="frame" x="337" y="99.5" width="14.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7hy-3z-yIy">
-                                                                    <rect key="frame" x="319" y="101.5" width="10" height="12"/>
+                                                                    <rect key="frame" x="323" y="101.5" width="10" height="12"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E66-eX-cVr">
                                                                     <rect key="frame" x="0.0" y="144" width="394" height="1"/>
@@ -401,7 +401,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jx7-O3-iVc"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="3T3-oi-p96" firstAttribute="bottom" secondItem="jx7-O3-iVc" secondAttribute="bottom" id="MNo-yf-wIF"/>
                             <constraint firstItem="jx7-O3-iVc" firstAttribute="trailing" secondItem="3T3-oi-p96" secondAttribute="trailing" id="URb-XM-US8"/>
@@ -553,7 +553,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MJl-z7-k2d"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="hmK-ae-CEg" firstAttribute="bottom" secondItem="MJl-z7-k2d" secondAttribute="bottom" id="9jP-Qh-3XT"/>
                             <constraint firstItem="MJl-z7-k2d" firstAttribute="trailing" secondItem="hmK-ae-CEg" secondAttribute="trailing" id="BfV-cf-sMR"/>
