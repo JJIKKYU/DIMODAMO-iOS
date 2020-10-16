@@ -12,17 +12,12 @@ import WebKit
 
 class CommunityMainViewController: UIViewController {
     
-    private let imageView = UIImageView(image: UIImage(named: "searchIcon"))
     @IBOutlet weak var articleCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
-    
+    // Paging Variable (articleCollectionView)
     var currentIndex: CGFloat = 0
-    
     let lineSpacing: CGFloat = 20
-    
-    let cellRatio: CGFloat = 0.7
-    
     var isOneStepPaging = true
     
     override func viewDidLoad() {
@@ -65,19 +60,55 @@ class CommunityMainViewController: UIViewController {
     @IBAction func pressedInformationMoreBtn(_ sender: Any) {
         performSegue(withIdentifier: "\(CommunitySegueName.information)", sender: sender)
     }
+    
+    @objc func pressedSearchBtn(sender: UIButton) {
+        print("pressedSeearchBtn")
+    }
+    
+    @objc func pressedPlusBtn(sender: UIButton) {
+        print("pressedPlusBtn")
+    }
 
     private func setupUI() {
         
+        // 돋보기 버튼 이미지
+        let navigationSearchBtn: UIButton = UIButton(type: .custom)
+        if let image = UIImage(named: "searchIcon") {
+            navigationSearchBtn.setImage(image, for: .normal)
+        }
+        navigationSearchBtn.addTarget(self, action: #selector(self.pressedSearchBtn(sender:)), for: .touchUpInside)
+
+        
+        let navigationPlusBtn: UIButton = UIButton(type: .custom)
+        if let image = UIImage(named: "plusBtn") {
+            navigationPlusBtn.setImage(image, for: .normal)
+        }
+        navigationPlusBtn.addTarget(self, action: #selector(self.pressedPlusBtn(sender:)), for: .touchUpInside)
+
+        
         // Initial setup for image for Large NavBar state since the the screen always has Large NavBar once it gets opened
         guard let navigationBar = self.navigationController?.navigationBar else { return }
-        navigationBar.addSubview(imageView)
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // NavigationSearchBtn
+        navigationBar.addSubview(navigationSearchBtn)
+        navigationSearchBtn.clipsToBounds = true
+        navigationSearchBtn.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
-            imageView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
-            imageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
-            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
+            navigationSearchBtn.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -NavigationBarConst.ImageRightMargin - 30),
+            navigationSearchBtn.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -NavigationBarConst.ImageBottomMarginForLargeState),
+            navigationSearchBtn.heightAnchor.constraint(equalToConstant: NavigationBarConst.ImageSizeForLargeState),
+            navigationSearchBtn.widthAnchor.constraint(equalTo: navigationSearchBtn.heightAnchor)
+        ])
+        
+        // NavigationPlusBtn
+        navigationBar.addSubview(navigationPlusBtn)
+        navigationPlusBtn.clipsToBounds = true
+        navigationPlusBtn.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            navigationPlusBtn.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -NavigationBarConst.ImageRightMargin),
+            navigationPlusBtn.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -NavigationBarConst.ImageBottomMarginForLargeState),
+            navigationPlusBtn.heightAnchor.constraint(equalToConstant: NavigationBarConst.ImageSizeForLargeState),
+            navigationPlusBtn.widthAnchor.constraint(equalTo: navigationPlusBtn.heightAnchor)
         ])
     }
     
@@ -122,46 +153,7 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         //TODO: Configure cell
         return cell
     }
-    
-
-    // Delegate
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-//    }
-//
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        print(behavior.currentIndex)
-//    }
-    
-    
-    // FlowlayoutDelegate
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        print("사이즈 호출")
-//        let width: CGFloat = UIScreen.main.bounds.width - 40
-//        return CGSize(width: width, height: 400)
-//    }
-    
 }
-
-
-/// WARNING: Change these constants according to your project's design
-private struct Const {
-    /// Image height/width for Large NavBar state
-    static let ImageSizeForLargeState: CGFloat = 18
-    /// Margin from right anchor of safe area to right anchor of Image
-    static let ImageRightMargin: CGFloat = 16
-    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Large NavBar state
-    static let ImageBottomMarginForLargeState: CGFloat = 12
-    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Small NavBar state
-    static let ImageBottomMarginForSmallState: CGFloat = 6
-    /// Image height/width for Small NavBar state
-    static let ImageSizeForSmallState: CGFloat = 18
-    /// Height of NavBar for Small state. Usually it's just 44
-    static let NavBarHeightSmallState: CGFloat = 44
-    /// Height of NavBar for Large state. Usually it's just 96.5 but if you have a custom font for the title, please make sure to edit this value since it changes the height for Large state of NavBar
-    static let NavBarHeightLargeState: CGFloat = 96.5
-}
-
 
 // MARK: - Article Paging
 
@@ -180,7 +172,7 @@ extension CommunityMainViewController : UIScrollViewDelegate {
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.minimumLineSpacing = lineSpacing
         layout.scrollDirection = .horizontal
-        articleCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: 12)
+        articleCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX - 4, bottom: insetY, right: insetX - 4)
         
         
         // 스크롤 시 빠르게 감속 되도록 설정
