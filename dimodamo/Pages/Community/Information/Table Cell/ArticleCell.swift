@@ -35,17 +35,20 @@ extension ArticleCell {
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
         
         
-        articleCategoryDesign()
+        ArticleCategory.articleCategoryDesign()
     }
-    
+}
+
+
+extension UILabel {
     func articleCategoryDesign() {
-        ArticleCategory.layer.borderWidth = 2
-        ArticleCategory.layer.borderColor = UIColor.appColor(.system).cgColor
-        ArticleCategory.layer.frame = CGRect(x: 0, y: 0, width: 112, height: 28)
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor.appColor(.system).cgColor
+        self.layer.frame = CGRect(x: 0, y: 0, width: 112, height: 28)
         
-        ArticleCategory.translatesAutoresizingMaskIntoConstraints = false
-        ArticleCategory.widthAnchor.constraint(equalToConstant: 122).isActive = true
-        ArticleCategory.heightAnchor.constraint(equalToConstant: 28).isActive = true
-        ArticleCategory.layer.cornerRadius = 14
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.widthAnchor.constraint(equalToConstant: 112).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        self.layer.cornerRadius = 14
     }
 }

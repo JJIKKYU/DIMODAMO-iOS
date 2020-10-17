@@ -31,9 +31,6 @@ class CommunityMainViewController: UIViewController {
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
         
-
-
-        
         settingTableView()
         articleCollectionViewSetting()
         setupUI()
@@ -43,6 +40,7 @@ class CommunityMainViewController: UIViewController {
         
     }
     
+    // MARK: - IBaction
     
     // 디모다모 교과서 타이틀을 눌렀을 경우
     @IBAction func pressedArticleTitle(_ sender: Any) {
@@ -68,6 +66,8 @@ class CommunityMainViewController: UIViewController {
     @objc func pressedPlusBtn(sender: UIButton) {
         print("pressedPlusBtn")
     }
+    
+    // MARK: - UI
 
     private func setupUI() {
         
@@ -115,6 +115,8 @@ class CommunityMainViewController: UIViewController {
     
 }
 
+// MARK: - TableView (Information)(
+
 extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegate {
     func settingTableView() {
         tableView.rowHeight = 140
@@ -130,11 +132,17 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        print("호출")
 //        return CGFloat(CellHeight.informationHeight)
 //    }
 }
+
+// MARK: - CollectionView (Article)
 
 extension CommunityMainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -152,6 +160,12 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         
         //TODO: Configure cell
         return cell
+    }
+    
+    // 선택한 아이템
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "DetailArticleVC_Main", sender: nil)
+        print(indexPath.row)
     }
 }
 
