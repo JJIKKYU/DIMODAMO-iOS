@@ -27,6 +27,7 @@
 		9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713C250F214300C3EB72 /* DptiResultViewModel.swift */; };
 		983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983216A6252B8CDD003E6B64 /* AddShadow.swift */; };
 		983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983485D3251C585500C4074B /* RegisterGenderViewController.swift */; };
+		983C7E99253C3F390099B07F /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C7E98253C3F390099B07F /* ArticleModel.swift */; };
 		984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C142A252733AE0085008C /* RegisterClearViewController.swift */; };
 		984C142F252736830085008C /* DPTI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984C142E252736830085008C /* DPTI.storyboard */; };
 		985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D381225198D1F00C53378 /* RegisterViewModel.swift */; };
@@ -159,6 +160,7 @@
 		9806713C250F214300C3EB72 /* DptiResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewModel.swift; sourceTree = "<group>"; };
 		983216A6252B8CDD003E6B64 /* AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShadow.swift; sourceTree = "<group>"; };
 		983485D3251C585500C4074B /* RegisterGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderViewController.swift; sourceTree = "<group>"; };
+		983C7E98253C3F390099B07F /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		984C142A252733AE0085008C /* RegisterClearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClearViewController.swift; sourceTree = "<group>"; };
 		984C142E252736830085008C /* DPTI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DPTI.storyboard; sourceTree = "<group>"; };
 		985D381225198D1F00C53378 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -440,6 +442,14 @@
 				983485D3251C585500C4074B /* RegisterGenderViewController.swift */,
 			);
 			path = Gender;
+			sourceTree = "<group>";
+		};
+		983C7E97253C3F1A0099B07F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				98AFDAD5253AA5D700B0D88F /* ArticleViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		984C1429252733950085008C /* Clear */ = {
@@ -759,8 +769,9 @@
 		98AFDAD4253AA5C000B0D88F /* Article */ = {
 			isa = PBXGroup;
 			children = (
+				983C7E97253C3F1A0099B07F /* Main */,
 				98AFDAD8253AE55800B0D88F /* Detail */,
-				98AFDAD5253AA5D700B0D88F /* ArticleViewController.swift */,
+				983C7E98253C3F390099B07F /* ArticleModel.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -1040,6 +1051,7 @@
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
 				986322562517BB81003B0784 /* FriendMainViewController.swift in Sources */,
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
+				983C7E99253C3F390099B07F /* ArticleModel.swift in Sources */,
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
 				98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */,
