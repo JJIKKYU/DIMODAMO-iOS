@@ -20,6 +20,8 @@ class CommunityMainViewController: UIViewController {
     let lineSpacing: CGFloat = 20
     var isOneStepPaging = true
     
+    let viewModel = CommunityMainViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -128,7 +130,6 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath)
-        
         return cell
     }
     
@@ -152,12 +153,14 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
         
+        cell.image.image = UIImage(data: viewModel.articles[indexPath.row].image ?? Data())
+        cell.profile.image = UIImage(data: viewModel.articles[indexPath.row].profile ?? Data())
         //TODO: Configure cell
         return cell
     }

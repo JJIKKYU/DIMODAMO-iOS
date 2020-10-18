@@ -52,8 +52,8 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="437"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exImg" translatesAutoresizingMaskIntoConstraints="NO" id="asu-Ay-Ngx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="224"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="exImg" translatesAutoresizingMaskIntoConstraints="NO" id="asu-Ay-Ngx">
+                                                                    <rect key="frame" x="0.0" y="-1" width="374" height="224"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="224" id="qGM-97-k8p"/>
                                                                     </constraints>
@@ -163,7 +163,16 @@
                                                         <size key="customSize" width="374" height="437"/>
                                                         <connections>
                                                             <outlet property="ArticleCategory" destination="eCj-R8-Rrf" id="GQS-DQ-b9t"/>
+                                                            <outlet property="commentCnt" destination="hQN-DM-pZr" id="Nkf-eM-iKP"/>
                                                             <outlet property="container" destination="fOk-1r-uMl" id="ner-7g-bEi"/>
+                                                            <outlet property="image" destination="asu-Ay-Ngx" id="YV9-cG-HKr"/>
+                                                            <outlet property="nickname" destination="5ig-Ab-rfd" id="Nso-NI-vdS"/>
+                                                            <outlet property="profile" destination="su3-Qh-3R2" id="5IC-pQ-QeM"/>
+                                                            <outlet property="scrapCnt" destination="5f5-wr-7Tl" id="TU1-QN-r4g"/>
+                                                            <outlet property="title" destination="z2B-W7-FU5" id="f6p-nP-hN6"/>
+                                                            <outletCollection property="tags" destination="cWz-Rg-vte" collectionClass="NSMutableArray" id="VF1-An-RSE"/>
+                                                            <outletCollection property="tags" destination="LVa-Z7-PTR" collectionClass="NSMutableArray" id="KYz-Ak-AQM"/>
+                                                            <outletCollection property="tags" destination="PaB-eJ-wVl" collectionClass="NSMutableArray" id="cCB-Jf-Mgh"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -781,7 +790,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RQh-cD-CdY"/>
+        <segue reference="Ae2-2V-5qG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="commentIcon" width="12" height="12"/>

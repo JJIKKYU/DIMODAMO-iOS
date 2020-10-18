@@ -11,7 +11,14 @@ import UIKit
 class ArticleCell: UICollectionViewCell {
     
     @IBOutlet weak var container: UIView!
-    @IBOutlet weak var ArticleCategory: UILabel!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet var tags: [UILabel]!
+    @IBOutlet weak var profile: UIImageView!
+    @IBOutlet weak var nickname: UILabel!
+    @IBOutlet weak var scrapCnt: UILabel!
+    @IBOutlet weak var commentCnt: UILabel!
+    @IBOutlet weak var articleCategory: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +42,7 @@ extension ArticleCell {
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
         
         
-        ArticleCategory.articleCategoryDesign()
+        articleCategory.articleCategoryDesign()
     }
 }
 
