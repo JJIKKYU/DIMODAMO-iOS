@@ -21,8 +21,8 @@ class CommunityMainViewModel {
     var articles: [Article] = [
         Article(image: nil,
                 category: .magazine,
-                title: "VB에서 선미와 눈마주친 순간",
-                tags: ["VB스튜디오", "하계인턴", "엔터테인먼트"],
+                title: "VB에서 선미와 눈마주친 순간^_",
+                tags: ["VB사랑", "인턴스", "엔따"],
                 profile: nil,
                 nickname: "사는게쉽지않네",
                 scrapCnt: 0,
@@ -35,16 +35,18 @@ class CommunityMainViewModel {
     init() {
         
         // profile Download
-        storage.child("test/profile.pdf").downloadURL(completion: { url, error in
+        storage.child("test/profile.png").downloadURL(completion: { url, error in
             guard let url = url, error == nil else {
                 return
             }
             
-//            let urlString = url.absoluteString
-//            print("profileDownloadURL : \(urlString)")
+            let urlString = url.absoluteString
+            print("profileDownloadURL : \(urlString)")
             do {
                 let data = try Data(contentsOf: url)
                 self.articles[0].profile = data
+                print("loadingCompleted")
+                print("### articles[0] Profile = \(self.articles[0])")
                 self.profileLoading.accept(true)
             } catch let error {
                 print(error.localizedDescription)
@@ -53,7 +55,7 @@ class CommunityMainViewModel {
         })
         
         // image Download
-        storage.child("test/image.pdf").downloadURL(completion: { url, error in
+        storage.child("test/image.png").downloadURL(completion: { url, error in
             guard let url = url, error == nil else {
                 return
             }
@@ -65,6 +67,7 @@ class CommunityMainViewModel {
             do {
                 let data = try Data(contentsOf: url)
                 self.articles[0].image = data
+                print("### articles[0] Image = \(self.articles[0])")
                 self.imageLoading.accept(true)
             } catch let error {
                 print(error.localizedDescription)
@@ -73,6 +76,5 @@ class CommunityMainViewModel {
 //            print("imageDownloadURL : \(urlString)")
         })
         
-        print("### articles[0] = \(self.articles[0])")
     }
 }

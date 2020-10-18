@@ -9,6 +9,8 @@
 import UIKit
 import WebKit
 
+import RxSwift
+import RxCocoa
 
 class CommunityMainViewController: UIViewController {
     
@@ -21,6 +23,7 @@ class CommunityMainViewController: UIViewController {
     var isOneStepPaging = true
     
     let viewModel = CommunityMainViewModel()
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,20 @@ class CommunityMainViewController: UIViewController {
         articleCollectionViewSetting()
         setupUI()
         
+        
+        Observable.combineLatest(
+            viewModel.imageLoading,
+            viewModel.profileLoading
+        )
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] imageLoading, profileLoading  in
+                if imageLoading == true && profileLoading == true {
+                    self?.articleCollectionView.reloadData()
+                    self?.articleCollectionView.layoutIfNeeded()
+                    print("ㅇㅋㅇㅋ")
+                }
+            })
+            .disposed(by: disposeBag)
         
         // 바인딩
         
@@ -159,8 +176,27 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
         
-        cell.image.image = UIImage(data: viewModel.articles[indexPath.row].image ?? Data())
-        cell.profile.image = UIImage(data: viewModel.articles[indexPath.row].profile ?? Data())
+        let model = viewModel.articles[indexPath.row]
+        
+        if let loadedImage = viewModel.articles[indexPath.row].image {
+            cell.image.image = UIImage(data: loadedImage)
+        }
+        
+        if let loadedProfile = viewModel.articles[indexPath.row].profile {
+            cell.profile.image = UIImage(data: loadedProfile)
+
+        }
+        
+        cell.title.text = model.title
+        
+        cell.tags[0].text = "#\(model.tags![0])"
+        cell.tags[1].text = "#\(model.tags![1])"
+        cell.tags[2].text = "#\(model.tags![2])"
+        
+        cell.nickname.text = model.nickname
+        cell.scrapCnt.text = "\(model.scrapCnt!)"
+        cell.commentCnt.text = "\(model.commentCnt!)"
+        
         //TODO: Configure cell
         return cell
     }
