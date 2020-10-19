@@ -16,8 +16,21 @@ struct Article {
     var tags: [String]?
     var profile: Data?
     var nickname: String?
+    var author: String?
     var scrapCnt: Int?
     var commentCnt: Int?
+    
+//    init() {
+//        image = Data()
+//        category = .magazine
+//        title = "로딩중입니다"
+//        tags = []
+//        profile = Data()
+//        nickname = "킹모다모"
+//        author = ""
+//        scrapCnt = 0
+//        commentCnt = 0
+//    }
 }
 
 

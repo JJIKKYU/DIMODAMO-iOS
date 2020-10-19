@@ -25,6 +25,16 @@ class CommunityMainViewModel {
                 tags: ["VB사랑", "인턴스", "엔따"],
                 profile: nil,
                 nickname: "사는게쉽지않네",
+                author: "",
+                scrapCnt: 0,
+                commentCnt: 0),
+        Article(image: nil,
+                category: .magazine,
+                title: "VB에서 선미와 눈마주친 순간^_",
+                tags: ["VB사랑", "인턴스", "엔따"],
+                profile: nil,
+                nickname: "사는게쉽지않네",
+                author: "",
                 scrapCnt: 0,
                 commentCnt: 0)
     ]
@@ -33,7 +43,35 @@ class CommunityMainViewModel {
     var profileLoading = BehaviorRelay<Bool>(value: false)
     
     init() {
+        // Article Setting
+        // TODO : 정렬해서 가져와야함
+        profileDownload()
         
+        db.collection("articlePosts").getDocuments() { [self] (querySnapshot, err) in
+            if let err = err {
+                print("아티클 포스트를 가져오는데 오류가 생겼습니다. \(err)")
+            } else {
+                for (index, document) in querySnapshot!.documents.enumerated() {
+                    
+                    self.articles[index].title =  (document.data()["title"] as! String)
+                    self.articles[index].tags =  (document.data()["tags"] as! [String])
+                    self.articles[index].nickname = (document.data()["nickname"] as! String)
+                    self.articles[index].scrapCnt = (document.data()["scrapCnt"] as! Int)
+                    self.articles[index].commentCnt = (document.data()["commentCnt"] as! Int)
+                    self.imageDownlad(postUID: document.documentID, index: index)
+                    
+                    
+                    print("\(document.documentID) => \(document.data()["title"])")
+                }
+            }
+        }
+        
+        
+        
+
+    }
+    
+    func profileDownload() {
         // profile Download
         storage.child("test/profile.png").downloadURL(completion: { url, error in
             guard let url = url, error == nil else {
@@ -53,9 +91,11 @@ class CommunityMainViewModel {
             }
             
         })
-        
+    }
+    
+    func imageDownlad(postUID: String, index: Int) {
         // image Download
-        storage.child("test/image.png").downloadURL(completion: { url, error in
+        storage.child("test/\(postUID).png").downloadURL(completion: { url, error in
             guard let url = url, error == nil else {
                 return
             }
@@ -66,8 +106,9 @@ class CommunityMainViewModel {
             
             do {
                 let data = try Data(contentsOf: url)
-                self.articles[0].image = data
-                print("### articles[0] Image = \(self.articles[0])")
+//                self.articles[0].image = data
+//                print("### articles[0] Image = \(self.articles[0])")
+                self.articles[index].image = data
                 self.imageLoading.accept(true)
             } catch let error {
                 print(error.localizedDescription)

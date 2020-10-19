@@ -17,6 +17,8 @@ class CommunityMainViewController: UIViewController {
     @IBOutlet weak var articleCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     // Paging Variable (articleCollectionView)
     var currentIndex: CGFloat = 0
     let lineSpacing: CGFloat = 20
@@ -51,6 +53,9 @@ class CommunityMainViewController: UIViewController {
                     self?.articleCollectionView.reloadData()
                     self?.articleCollectionView.layoutIfNeeded()
                     print("ㅇㅋㅇㅋ")
+                    self?.spinner.stopAnimating()
+                } else {
+                    self?.spinner.startAnimating()
                 }
             })
             .disposed(by: disposeBag)
@@ -170,29 +175,30 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
+        print(indexPath)
         
         let model = viewModel.articles[indexPath.row]
-        
+
         if let loadedImage = viewModel.articles[indexPath.row].image {
             cell.image.image = UIImage(data: loadedImage)
         }
-        
+
         if let loadedProfile = viewModel.articles[indexPath.row].profile {
             cell.profile.image = UIImage(data: loadedProfile)
 
         }
-        
+
         cell.title.text = model.title
-        
+
         cell.tags[0].text = "#\(model.tags![0])"
         cell.tags[1].text = "#\(model.tags![1])"
         cell.tags[2].text = "#\(model.tags![2])"
-        
+
         cell.nickname.text = model.nickname
         cell.scrapCnt.text = "\(model.scrapCnt!)"
         cell.commentCnt.text = "\(model.commentCnt!)"
@@ -206,11 +212,6 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         performSegue(withIdentifier: "DetailArticleVC_Main", sender: nil)
         print(indexPath.row)
     }
-}
-
-// MARK: - Article Paging
-
-extension CommunityMainViewController : UIScrollViewDelegate {
     
     func articleCollectionViewSetting() {
         // width, height 설정
@@ -231,6 +232,14 @@ extension CommunityMainViewController : UIScrollViewDelegate {
         // 스크롤 시 빠르게 감속 되도록 설정
         articleCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
     }
+    
+}
+
+
+
+// MARK: - Article Paging
+
+extension CommunityMainViewController : UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
     {
