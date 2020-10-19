@@ -41,6 +41,7 @@ class CommunityMainViewController: UIViewController {
         settingTableView()
         articleCollectionViewSetting()
         setupUI()
+
         
         
         Observable.combineLatest(
@@ -89,6 +90,41 @@ class CommunityMainViewController: UIViewController {
     
     @objc func pressedPlusBtn(sender: UIButton) {
         print("pressedPlusBtn")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        self.hidesBottomBarWhenPushed = true
+        
+        
+        switch segue.identifier {
+        
+        // 메인에서 직접 아티클 카드를 선택했을 경우
+        // sender에서는 indexpath.row가 넘어옴
+        case "DetailArticleVC_Main":
+            let destination: ArticleDetailViewController
+                = segue.destination as! ArticleDetailViewController
+            let index: Int = sender as! Int
+            
+            if let imageData = viewModel.articles[index].image {
+                destination.article?.image = imageData
+            }
+            
+            if let title = viewModel.articles[index].title {
+                destination.titleRelay.accept("\(title)")
+            }
+            
+//            if let tags = viewModel.articles[index].tags {
+//                for (index, tag) in tags.enumerated() {
+//                    destination.tags[index].text = "\(tag)"
+//                }
+//            }
+            
+            
+            break
+        
+        default:
+            break
+        }
     }
     
     // MARK: - UI
@@ -143,7 +179,7 @@ class CommunityMainViewController: UIViewController {
 
 extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegate {
     func settingTableView() {
-        tableView.rowHeight = 140
+        tableView.rowHeight = 145
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -175,7 +211,7 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return viewModel.articles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -209,7 +245,8 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     
     // 선택한 아이템
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "DetailArticleVC_Main", sender: nil)
+        performSegue(withIdentifier: "DetailArticleVC_Main", sender: indexPath.row)
+        
         print(indexPath.row)
     }
     

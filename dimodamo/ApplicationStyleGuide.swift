@@ -305,3 +305,17 @@ extension UIImage {
         return newImage
     }
 }
+
+// MARK: - Hide/Show LargeTitle TextAttribute
+
+extension UINavigationController {
+    func invisible() {
+        navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
+    }
+    
+    func visible(color: UIColor) {
+        navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: color]
+    }
+}
+
+

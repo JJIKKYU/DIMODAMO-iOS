@@ -114,19 +114,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqP-8p-VYG">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <connections>
                                     <segue destination="VH5-hU-nEs" kind="embed" id="Yc9-4D-UMt"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="E9F-lj-vH4"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
-                            <constraint firstItem="E9F-lj-vH4" firstAttribute="trailing" secondItem="YqP-8p-VYG" secondAttribute="trailing" id="03p-bD-GV0"/>
-                            <constraint firstItem="YqP-8p-VYG" firstAttribute="bottom" secondItem="E9F-lj-vH4" secondAttribute="bottom" id="BQm-Qq-ual"/>
-                            <constraint firstItem="YqP-8p-VYG" firstAttribute="leading" secondItem="E9F-lj-vH4" secondAttribute="leading" id="NIv-Lf-RTi"/>
-                            <constraint firstItem="YqP-8p-VYG" firstAttribute="top" secondItem="E9F-lj-vH4" secondAttribute="top" id="del-qN-6NH"/>
+                            <constraint firstAttribute="trailing" secondItem="YqP-8p-VYG" secondAttribute="trailing" id="03p-bD-GV0"/>
+                            <constraint firstItem="YqP-8p-VYG" firstAttribute="bottom" secondItem="wB2-MT-RER" secondAttribute="bottom" id="BQm-Qq-ual"/>
+                            <constraint firstItem="YqP-8p-VYG" firstAttribute="leading" secondItem="wB2-MT-RER" secondAttribute="leading" id="NIv-Lf-RTi"/>
+                            <constraint firstItem="YqP-8p-VYG" firstAttribute="top" secondItem="wB2-MT-RER" secondAttribute="top" id="del-qN-6NH"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="community" selectedImage="communitySelected" id="B3a-FJ-JbP"/>

@@ -39,7 +39,6 @@
 		986322562517BB81003B0784 /* FriendMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986322552517BB81003B0784 /* FriendMainViewController.swift */; };
 		986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986908F72521AE8E00C844F1 /* AlertViewController.swift */; };
 		986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA072509C42600AD3CEE /* AppDelegate.swift */; };
-		986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA0B2509C42600AD3CEE /* ViewController.swift */; };
 		986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA0D2509C42600AD3CEE /* Main.storyboard */; };
 		986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */; };
 		986EDA142509C42800AD3CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA132509C42800AD3CEE /* Assets.xcassets */; };
@@ -173,7 +172,6 @@
 		986908F72521AE8E00C844F1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		986EDA042509C42600AD3CEE /* dimodamo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dimodamo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986EDA072509C42600AD3CEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		986EDA0B2509C42600AD3CEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		986EDA0E2509C42600AD3CEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		986EDA112509C42600AD3CEE /* dimodamo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dimodamo.xcdatamodel; sourceTree = "<group>"; };
 		986EDA132509C42800AD3CEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -577,7 +575,6 @@
 				987F5A95250B13F300E1B856 /* Pages */,
 				986322352517852F003B0784 /* Storyboard */,
 				986EDA072509C42600AD3CEE /* AppDelegate.swift */,
-				986EDA0B2509C42600AD3CEE /* ViewController.swift */,
 				986EDA132509C42800AD3CEE /* Assets.xcassets */,
 				986EDA182509C42800AD3CEE /* Info.plist */,
 				988160A4251F1E8E00556AEC /* GoogleService-Info.plist */,
@@ -1035,7 +1032,6 @@
 				9800A1482533739A0090C058 /* IntroViewModel.swift in Sources */,
 				98A8B8042534D10B00351FD5 /* IntroMainViewController.swift in Sources */,
 				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
-				986EDA0C2509C42600AD3CEE /* ViewController.swift in Sources */,
 				98AFDAD6253AA5D700B0D88F /* ArticleViewController.swift in Sources */,
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
@@ -1219,12 +1215,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.00;
 				PRODUCT_BUNDLE_IDENTIFIER = jjikkyu.dimodamo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Dimodamo Profile";
@@ -1240,12 +1238,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.00;
 				PRODUCT_BUNDLE_IDENTIFIER = jjikkyu.dimodamo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Dimodamo Profile";

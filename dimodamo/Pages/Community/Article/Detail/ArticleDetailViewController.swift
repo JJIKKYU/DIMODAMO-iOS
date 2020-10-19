@@ -8,33 +8,63 @@
 
 import UIKit
 
+import RxSwift
+import RxRelay
+import RxCocoa
+
 class ArticleDetailViewController: UIViewController {
     
     
-    @IBOutlet weak var articleCategory: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var titleImg: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var tags: [UILabel]!
+    @IBOutlet weak var articleCategory: UILabel!
+    
+    var article: Article?
+    
+    var titleRelay = BehaviorRelay<String>(value: "로딩중입니다")
+    
+    var disposeBag = DisposeBag()
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 이 페이지에서 나갈때 라지 타이틀을 비활성화 했으므로 다시 활성화 해주고 나감
+        navigationController?.visible(color: UIColor.appColor(.textBig))
+        
+        // 하단 탭바 다시 보이도록
+        (self.tabBarController as? TabBarViewController)?.visible()
+        
+        // < 이전 버튼 다시 원래 컬러로 변경
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray170)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
-//
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
+        
+        navigationController?.invisible()
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
+        
+        // 하단 탭바 숨기기
+        (self.tabBarController as? TabBarViewController)?.invisible()
+        
+        titleRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.navigationItem.title = "\(value)"
+                self?.titleLabel.text = "\(value)"
+            })
+            .disposed(by: disposeBag)
+
     }
-    
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        let insets = UIEdgeInsets(top: -self.topLayoutGuide.length, left: 0, bottom: 0, right: 0)
-//        scrollView.contentInset = insets
-//        scrollView.scrollIndicatorInsets = insets
-//    }
 }
 
 
 extension ArticleDetailViewController {
     func viewDesign() {
-//        articleCategory.articleCategoryDesign()
+        articleCategory.articleCategoryDesign()
     }
 }
