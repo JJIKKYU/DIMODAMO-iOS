@@ -33,6 +33,8 @@ target 'dimodamo' do
   # 커뮤니티 메인 컬렉션 뷰에서 사용
   pod 'MSPeekCollectionViewDelegateImplementation'
   
+  pod 'Kingfisher', '~> 5.0'
+  
 
 
 end

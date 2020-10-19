@@ -25,6 +25,8 @@
 		98067139250F206300C3EB72 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98067138250F206300C3EB72 /* APIService.swift */; };
 		9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713A250F20BE00C3EB72 /* DptiResult.swift */; };
 		9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713C250F214300C3EB72 /* DptiResultViewModel.swift */; };
+		980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */; };
+		980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F197A253E01B7007B33B8 /* UploadImageCell.swift */; };
 		983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983216A6252B8CDD003E6B64 /* AddShadow.swift */; };
 		983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983485D3251C585500C4074B /* RegisterGenderViewController.swift */; };
 		983C7E99253C3F390099B07F /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C7E98253C3F390099B07F /* ArticleModel.swift */; };
@@ -157,6 +159,8 @@
 		98067138250F206300C3EB72 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9806713A250F20BE00C3EB72 /* DptiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResult.swift; sourceTree = "<group>"; };
 		9806713C250F214300C3EB72 /* DptiResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewModel.swift; sourceTree = "<group>"; };
+		980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
+		980F197A253E01B7007B33B8 /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
 		983216A6252B8CDD003E6B64 /* AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShadow.swift; sourceTree = "<group>"; };
 		983485D3251C585500C4074B /* RegisterGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderViewController.swift; sourceTree = "<group>"; };
 		983C7E98253C3F390099B07F /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
@@ -432,6 +436,14 @@
 				98067138250F206300C3EB72 /* APIService.swift */,
 			);
 			path = APIService;
+			sourceTree = "<group>";
+		};
+		980F1979253E0198007B33B8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				980F197A253E01B7007B33B8 /* UploadImageCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		983485D2251C584300C4074B /* Gender */ = {
@@ -766,6 +778,7 @@
 		98AFDAD4253AA5C000B0D88F /* Article */ = {
 			isa = PBXGroup;
 			children = (
+				980F1979253E0198007B33B8 /* Cell */,
 				983C7E97253C3F1A0099B07F /* Main */,
 				98AFDAD8253AE55800B0D88F /* Detail */,
 				983C7E98253C3F390099B07F /* ArticleModel.swift */,
@@ -777,6 +790,7 @@
 			isa = PBXGroup;
 			children = (
 				98AFDAD9253AE58600B0D88F /* ArticleDetailViewController.swift */,
+				980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1038,6 +1052,7 @@
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,
 				98A661E7252F2C0000698BA0 /* FindEmailViewController.swift in Sources */,
 				98C42313251D7CCE00B2B194 /* Register.swift in Sources */,
+				980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */,
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
@@ -1048,6 +1063,7 @@
 				986322562517BB81003B0784 /* FriendMainViewController.swift in Sources */,
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
 				983C7E99253C3F390099B07F /* ArticleModel.swift in Sources */,
+				980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */,
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
 				98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */,

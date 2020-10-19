@@ -12,6 +12,8 @@ import WebKit
 import RxSwift
 import RxCocoa
 
+import Kingfisher
+
 class CommunityMainViewController: UIViewController {
     
     @IBOutlet weak var articleCollectionView: UICollectionView!
@@ -27,9 +29,21 @@ class CommunityMainViewController: UIViewController {
     let viewModel = CommunityMainViewModel()
     var disposeBag = DisposeBag()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewwillAppear")
+        
+        // 하단 탭바 다시 보이도록
+        (self.tabBarController as? TabBarViewController)?.visible()
+        
+        // < 이전 버튼 다시 원래 컬러로 변경
+//        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray170)
+        navigationController?.visible(color: UIColor.appColor(.textBig))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("viewdidload")
         
         // UI 및 delegate 세팅
         tableView.delegate = self
@@ -40,7 +54,7 @@ class CommunityMainViewController: UIViewController {
         
         settingTableView()
         articleCollectionViewSetting()
-        setupUI()
+//        setupUI()
 
         
         
@@ -105,12 +119,16 @@ class CommunityMainViewController: UIViewController {
                 = segue.destination as! ArticleDetailViewController
             let index: Int = sender as! Int
             
-            if let imageData = viewModel.articles[index].image {
-                destination.article?.image = imageData
+            if let imageURL = viewModel.articles[index].image {
+                destination.viewModel.imageRelay.accept(imageURL)
             }
             
             if let title = viewModel.articles[index].title {
-                destination.titleRelay.accept("\(title)")
+                destination.viewModel.titleRelay.accept("\(title)")
+            }
+            
+            if let tags = viewModel.articles[index].tags {
+                destination.viewModel.tagsRelay.accept(tags)
             }
             
 //            if let tags = viewModel.articles[index].tags {
@@ -173,6 +191,7 @@ class CommunityMainViewController: UIViewController {
     }
     
     
+    
 }
 
 // MARK: - TableView (Information)(
@@ -221,11 +240,11 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         let model = viewModel.articles[indexPath.row]
 
         if let loadedImage = viewModel.articles[indexPath.row].image {
-            cell.image.image = UIImage(data: loadedImage)
+            cell.image.kf.setImage(with: loadedImage)
         }
 
         if let loadedProfile = viewModel.articles[indexPath.row].profile {
-            cell.profile.image = UIImage(data: loadedProfile)
+            cell.profile.kf.setImage(with: loadedProfile)
 
         }
 

@@ -10,15 +10,16 @@ import Foundation
 
 // 아티클에 필요한 모델
 struct Article {
-    var image: Data?
+    var image: URL?
     var category: Category?
     var title: String?
     var tags: [String]?
-    var profile: Data?
+    var profile: URL?
     var nickname: String?
     var author: String?
     var scrapCnt: Int?
     var commentCnt: Int?
+    var uploadImages: String?
     
 //    init() {
 //        image = Data()
