@@ -30,34 +30,27 @@ class ArticleDetailViewController: UIViewController {
     
     
     @IBOutlet weak var imageStackView: UIStackView!
-    @IBOutlet weak var imageStackViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var videoStackView: UIStackView!
-    @IBOutlet weak var videoStackViewHeight: NSLayoutConstraint!
     
     var imageView1: UIImageView = UIImageView()
     
     var article: Article?
     var disposeBag = DisposeBag()
     let viewModel = ArticleDetailViewModel()
-    
-    //    override func viewDidDisappear(_ animated: Bool) {
-    //        super.viewDidDisappear(animated)
-    //
-    //        // 이 페이지에서 나갈때 라지 타이틀을 비활성화 했으므로 다시 활성화 해주고 나감
-    //        navigationController?.visible(color: UIColor.appColor(.textBig))
-    //
-    //        // 하단 탭바 다시 보이도록
-    //        (self.tabBarController as? TabBarViewController)?.visible()
-    //
-    //        // < 이전 버튼 다시 원래 컬러로 변경
-    //        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray170)
-    //    }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        navigationController?.invisible()
+        //        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
         
+        // 하단 탭바 숨기기
+//        (self.tabBarController as? TabBarViewController)?.invisible()
     }
     
     override func viewDidLoad() {
@@ -68,11 +61,7 @@ class ArticleDetailViewController: UIViewController {
         imageStackViewSetting()
         videoStackViewSetting()
         
-        navigationController?.invisible()
-        //        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
         
-        // 하단 탭바 숨기기
-        (self.tabBarController as? TabBarViewController)?.invisible()
         
         viewModel.titleRelay
             .observeOn(MainScheduler.instance)
@@ -107,14 +96,6 @@ class ArticleDetailViewController: UIViewController {
     let avURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/testVideos%2Ftestvideo.mp4?alt=media&token=bd3b8cc9-5c8a-41c5-8c79-71cb4c488fe8")
     var avPlayer = AVPlayer()
     var avController = AVPlayerViewController()
-    
-    @IBAction func pressedTestBtn(_ sender: Any) {
-        self.avPlayer = AVPlayer(url: avURL!)
-        avController.player = avPlayer
-        avController.view.frame = self.view.frame
-        self.present(avController, animated: true, completion: nil)
-        avPlayer.play()
-    }
 }
 
 // MARK:- UI
@@ -163,7 +144,6 @@ extension ArticleDetailViewController {
 
 extension ArticleDetailViewController {
     func imageStackViewSetting() {
-        imageStackViewHeight.isActive = false
         let imagesURL: [URL?] = [
             URL(string: "https://i.pinimg.com/originals/39/ce/87/39ce877f154321edbe61888926ae2554.jpg"),
             URL(string: "https://pbs.twimg.com/media/DkakGNKU8AAaGBN.jpg:large")
@@ -214,16 +194,33 @@ extension ArticleDetailViewController {
             URL(string: "https://drive.google.com/file/d/1Qd6Mzurp9MrRNIPw0fFtaV5gM5UHR19k/view?usp=sharing")
         ]
         let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         videoStackView.addArrangedSubview(imageView)
-        videoStackViewHeight.isActive = false
         
+        // width사이즈에 맞게 무조건 16:9 사이즈로 고정되도록
         let scaledHeight = (UIScreen.main.bounds.width - 40) / 16 * 9
+        
+        // Autolayout
         imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
         imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+        
+        // Design
         imageView.layer.cornerRadius = 12
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
+        
+        let playIconImageView: UIImageView = UIImageView.init(image: UIImage(named: "playIcon"))
+        imageView.addSubview(playIconImageView)
+        playIconImageView.translatesAutoresizingMaskIntoConstraints = false
+        playIconImageView.widthAnchor.constraint(equalToConstant: playIconImageView.image!.size.width).isActive = true
+        playIconImageView.heightAnchor.constraint(equalToConstant: playIconImageView.image!.size.height).isActive = true
+        playIconImageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        playIconImageView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+        
+        
+        
+        // 이미지를 클릭했을 경우에 영상이 뜨도록
         let singleTap = URLSenderTapGestureRecognizer(target: self, action: #selector(tapDetected(avUrl:)))
         singleTap.url = avURL
         imageView.isUserInteractionEnabled = true
@@ -244,7 +241,16 @@ extension ArticleDetailViewController {
     
     @objc func tapDetected(avUrl: URLSenderTapGestureRecognizer) {
         // Your action
-        print("\(avUrl.url)")
+        guard let url = avUrl.url else {
+            return
+        }
+        
+        // 이미지가 URL을 가지고 있다면 클릭했을 때 띄우도록
+        self.avPlayer = AVPlayer(url: url)
+        avController.player = avPlayer
+        avController.view.frame = self.view.frame
+        self.present(avController, animated: true, completion: nil)
+        avPlayer.play()
     }
     
     func imagePreview(from moviePath: URL, in seconds: Double) -> UIImage? {

@@ -23,11 +23,11 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vgi-od-Fnr" customClass="CommunityMainViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Lf-HX-XWQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T3-oi-p96">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kV6-pn-hOH" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
@@ -462,7 +462,7 @@
             <objects>
                 <viewController id="ryl-E5-d2S" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gLQ-Ia-bvM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="BKh-4e-9DF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -477,8 +477,10 @@
         <scene sceneID="kRb-Sh-4q8">
             <objects>
                 <navigationController storyboardIdentifier="CommunityMain" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CXi-CG-spx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="community" selectedImage="communitySelected" id="Exe-ZC-mW6"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="Qib-wI-6kE">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Qib-wI-6kE">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" name="WHITE"/>
@@ -505,11 +507,11 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="iXc-eR-qQb" customClass="ArticleViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z6y-uq-adB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmK-ae-CEg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1p-NB-cen" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
@@ -740,7 +742,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="Gbj-hO-1bX">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" id="uzi-lB-7YW" customClass="ArticleDetailViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="uzi-lB-7YW" customClass="ArticleDetailViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oa1-xd-Mzm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -755,10 +757,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exImg" translatesAutoresizingMaskIntoConstraints="NO" id="U9e-Tx-pxr">
-                                                        <rect key="frame" x="0.0" y="307" width="414" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="236" width="414" height="71"/>
                                                     </imageView>
                                                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEv-qk-RPB" userLabel="ImgOpacityView">
-                                                        <rect key="frame" x="0.0" y="307" width="414" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="236" width="414" height="71"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-h0-QOv">
@@ -835,22 +837,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="nxA-RJ-2LT">
                                                 <rect key="frame" x="20" y="577.5" width="374" height="128"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="NCR-sM-pFE"/>
+                                                    <constraint firstAttribute="height" constant="128" placeholder="YES" id="NCR-sM-pFE"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="u1Y-3E-qGv">
                                                 <rect key="frame" x="20" y="721.5" width="374" height="128"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-Rf-SBb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <connections>
-                                                            <action selector="pressedTestBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="CXK-Mw-G92"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="8Pc-F5-WG4"/>
+                                                    <constraint firstAttribute="height" constant="128" placeholder="YES" id="8Pc-F5-WG4"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -897,12 +890,10 @@
                         <outlet property="articleCategory" destination="bmu-h0-QOv" id="Hwc-lR-Hx9"/>
                         <outlet property="contentView" destination="pqZ-A9-PlE" id="wgS-6J-bQh"/>
                         <outlet property="imageStackView" destination="nxA-RJ-2LT" id="R08-GA-LzY"/>
-                        <outlet property="imageStackViewHeight" destination="NCR-sM-pFE" id="iJQ-vS-ZJ3"/>
                         <outlet property="textView" destination="GeV-Ak-Ec7" id="qPV-ap-u4J"/>
                         <outlet property="titleImg" destination="U9e-Tx-pxr" id="7pS-Rk-qwz"/>
                         <outlet property="titleLabel" destination="PqZ-ig-Jtz" id="7G8-A6-ouA"/>
                         <outlet property="videoStackView" destination="u1Y-3E-qGv" id="xjR-kK-sKn"/>
-                        <outlet property="videoStackViewHeight" destination="8Pc-F5-WG4" id="nFz-lc-lPS"/>
                         <outletCollection property="tags" destination="Ahe-uL-HoW" collectionClass="NSMutableArray" id="X6v-XB-YN7"/>
                         <outletCollection property="tags" destination="vjs-kQ-gPS" collectionClass="NSMutableArray" id="aNZ-Is-n9u"/>
                         <outletCollection property="tags" destination="rfO-QT-lw6" collectionClass="NSMutableArray" id="WON-Az-ezd"/>
@@ -958,10 +949,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RQh-cD-CdY"/>
+        <segue reference="Ae2-2V-5qG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="commentIcon" width="12" height="12"/>
+        <image name="community" width="20" height="20"/>
+        <image name="communitySelected" width="20" height="20"/>
         <image name="exImg" width="374" height="224"/>
         <image name="plusBtn" width="20" height="20"/>
         <image name="scrapIcon" width="10" height="12"/>

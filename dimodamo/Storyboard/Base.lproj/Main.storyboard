@@ -86,8 +86,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="glq-5Q-BKZ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="TEXT - BIG"/>
+                        <color key="barTintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" name="BLUE - DARK"/>
@@ -97,50 +97,13 @@
                     <connections>
                         <segue destination="U1X-jK-vjF" kind="relationship" relationship="viewControllers" id="abQ-H6-mIm"/>
                         <segue destination="qLm-Nf-Sq2" kind="relationship" relationship="viewControllers" id="Rnh-3x-kM2"/>
-                        <segue destination="Jaw-YX-Y0Z" kind="relationship" relationship="viewControllers" id="3Pe-Fx-9Hq"/>
+                        <segue destination="XIB-mF-kLE" kind="relationship" relationship="viewControllers" id="tcD-fx-gsr"/>
                         <segue destination="JdQ-p9-eVX" kind="relationship" relationship="viewControllers" id="Pqh-hr-bic"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjb-j3-P11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1870" y="161"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="RMv-3W-UIe">
-            <objects>
-                <viewController id="Jaw-YX-Y0Z" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wB2-MT-RER">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqP-8p-VYG">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <connections>
-                                    <segue destination="VH5-hU-nEs" kind="embed" id="Yc9-4D-UMt"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" name="WHITE"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="YqP-8p-VYG" secondAttribute="trailing" id="03p-bD-GV0"/>
-                            <constraint firstItem="YqP-8p-VYG" firstAttribute="bottom" secondItem="wB2-MT-RER" secondAttribute="bottom" id="BQm-Qq-ual"/>
-                            <constraint firstItem="YqP-8p-VYG" firstAttribute="leading" secondItem="wB2-MT-RER" secondAttribute="leading" id="NIv-Lf-RTi"/>
-                            <constraint firstItem="YqP-8p-VYG" firstAttribute="top" secondItem="wB2-MT-RER" secondAttribute="top" id="del-qN-6NH"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="community" selectedImage="communitySelected" id="B3a-FJ-JbP"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zwd-KU-rvJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3140.579710144928" y="882.58928571428567"/>
-        </scene>
-        <!--CommunityMain-->
-        <scene sceneID="CpL-KO-qCo">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CommunityMain" storyboardName="Community" referencedIdentifier="CommunityMain" id="VH5-hU-nEs" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VdX-Cf-Sxx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3704" y="883"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="7qK-Al-ndZ">
@@ -217,6 +180,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZBY-GI-omp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3701" y="1604"/>
+        </scene>
+        <!--CommunityMain-->
+        <scene sceneID="vJ9-C7-mZZ">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CommunityMain" storyboardName="Community" referencedIdentifier="CommunityMain" id="XIB-mF-kLE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="community" selectedImage="communitySelected" id="t3E-Bw-h3t"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DLY-i9-YeO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2366" y="522"/>
         </scene>
     </scenes>
     <resources>
