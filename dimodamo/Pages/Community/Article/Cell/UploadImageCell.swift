@@ -10,17 +10,32 @@ import UIKit
 
 class UploadImageCell: UITableViewCell {
 
+    @IBOutlet weak var cellContentView: UIView!
     @IBOutlet weak var uploadImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        viewDesign()
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        
         // Configure the view for the selected state
     }
 
+}
+
+// MARK: - Design
+
+extension UploadImageCell {
+    func viewDesign() {
+        
+        uploadImageView.layer.cornerRadius = 12
+        uploadImageView.layer.masksToBounds = true
+    }
 }

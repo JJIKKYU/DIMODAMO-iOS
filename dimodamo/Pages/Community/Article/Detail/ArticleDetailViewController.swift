@@ -14,6 +14,8 @@ import RxCocoa
 
 import Kingfisher
 
+import AVFoundation
+
 class ArticleDetailViewController: UIViewController {
     
     
@@ -25,8 +27,14 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var articleCategory: UILabel!
     @IBOutlet weak var textView: UITextView!
     
-    // 업로드 된 이미지 테이블 뷰
-    @IBOutlet weak var uploadImageTable: UITableView!
+    
+    @IBOutlet weak var imageStackView: UIStackView!
+    @IBOutlet weak var imageStackViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var videoStackView: UIStackView!
+    @IBOutlet weak var videoStackViewHeight: NSLayoutConstraint!
+    
+    var imageView1: UIImageView = UIImageView()
     
     var article: Article?
     var disposeBag = DisposeBag()
@@ -54,10 +62,10 @@ class ArticleDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        uploadImageTable.delegate = self
-        uploadImageTable.dataSource = self
-        
         viewDesign()
+        
+        imageStackViewSetting()
+        videoStackViewSetting()
         
         navigationController?.invisible()
 //        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
@@ -140,16 +148,67 @@ extension ArticleDetailViewController {
 
 // MARK: - UploadImage
 
-extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImageCell", for: indexPath) as! UploadImageCell
+extension ArticleDetailViewController {
+    func imageStackViewSetting() {
+        imageStackViewHeight.isActive = false
+        let imagesURL: [URL?] = [
+            URL(string: "https://i.pinimg.com/originals/39/ce/87/39ce877f154321edbe61888926ae2554.jpg"),
+            URL(string: "https://pbs.twimg.com/media/DkakGNKU8AAaGBN.jpg:large")
+        ]
         
-        return cell
+        for (index, imageURL) in imagesURL.enumerated() {
+            let imageView = UIImageView()
+            imageView.kf.indicatorType = .activity
+            imageView.kf.setImage(with: imageURL,
+                                  options: [ .transition(.fade(2))],
+                                  completionHandler:  { [self] result in
+                switch result {
+                case .success(let value):
+                    print(value.image)
+                    
+                    let image = value.image
+                    
+                    let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
+                    print("scaleHeight : \(scaledHeight)")
+                    imageStackView.addArrangedSubview(imageView)
+                    imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
+                    imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+                    imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+                    imageView.layer.cornerRadius = 12
+                    imageView.layer.masksToBounds = true
+                    
+                    print(value.cacheType)
+                    print(value.source)
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            })
+            print("index : => \(index)")
+            imageStackView.layoutIfNeeded()
+        }
+        
+        imageStackView.translatesAutoresizingMaskIntoConstraints = false
+        imageStackView.sizeToFit()
+    }
+}
+
+// MARK: - Video
+
+extension ArticleDetailViewController {
+    func videoStackViewSetting() {
+        
     }
     
-    
+    func imagePreview(from moviePath: URL, in seconds: Double) -> UIImage? {
+        let timestamp = CMTime(seconds: seconds, preferredTimescale: 60)
+        let asset = AVURLAsset(url: moviePath)
+        let generator = AVAssetImageGenerator(asset: asset)
+        generator.appliesPreferredTrackTransform = true
+
+        guard let imageRef = try? generator.copyCGImage(at: timestamp, actualTime: nil) else {
+            return nil
+        }
+        return UIImage(cgImage: imageRef)
+    }
 }

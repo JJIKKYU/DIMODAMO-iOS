@@ -86,15 +86,7 @@ class CommunityMainViewController: UIViewController {
         performSegue(withIdentifier: "\(CommunitySegueName.article)", sender: sender)
     }
     
-    // 디모다모 교과서 더보기를 눌렀을 경우
-    @IBAction func pressedArticleMoreBtn(_ sender: Any) {
-        performSegue(withIdentifier: "\(CommunitySegueName.article)", sender: sender)
-    }
-    
     @IBAction func pressedInformationTitle(_ sender: Any) {
-        performSegue(withIdentifier: "\(CommunitySegueName.information)", sender: sender)
-    }
-    @IBAction func pressedInformationMoreBtn(_ sender: Any) {
         performSegue(withIdentifier: "\(CommunitySegueName.information)", sender: sender)
     }
     
