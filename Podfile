@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '9.0'
 
 #post_install do |pi|
 #    pi.pods_project.targets.each do |t|
@@ -34,6 +34,9 @@ target 'dimodamo' do
   pod 'MSPeekCollectionViewDelegateImplementation'
   
   pod 'Kingfisher', '~> 5.0'
+  
+  # 링크 첨부할 때 가져오는 정보
+  pod 'SwiftLinkPreview', '~> 3.2.0'
   
 
 

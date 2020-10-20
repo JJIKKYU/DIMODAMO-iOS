@@ -21,6 +21,7 @@ class ArticleDetailViewController: UIViewController {
     
     
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var titleImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -55,6 +56,12 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        scrollView.layoutIfNeeded()
+//        scrollView.isScrollEnabled = true
+//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: scrollView.frame.size.height)
+        
+        scrollView.delegate = self
         
         viewDesign()
         
@@ -139,10 +146,18 @@ extension ArticleDetailViewController {
     }
 }
 
+extension ArticleDetailViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print(velocity.y)
+        self.navigationController?.navigationBar.prefersLargeTitles = (velocity.y < 0)
+    }
+}
+
 
 // MARK: - UploadImage
 
 extension ArticleDetailViewController {
+    
     func imageStackViewSetting() {
         let imagesURL: [URL?] = [
             URL(string: "https://i.pinimg.com/originals/39/ce/87/39ce877f154321edbe61888926ae2554.jpg"),
@@ -170,6 +185,19 @@ extension ArticleDetailViewController {
                                         imageView.layer.cornerRadius = 12
                                         imageView.layer.masksToBounds = true
                                         
+                                        // 첨부된 이미지 우하단에 있는 아이콘
+                                        let iconView = UIImageView()
+                                        iconView.image = UIImage(named: "uploadImageIcon") ?? UIImage()
+                                        imageView.addSubview(iconView)
+                                        iconView.widthAnchor.constraint(equalToConstant: 18).isActive = true
+                                        iconView.heightAnchor.constraint(equalToConstant: 18).isActive = true
+
+                                        iconView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -16).isActive = true
+                                        iconView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16).isActive = true
+                                        iconView.translatesAutoresizingMaskIntoConstraints = false
+                                        iconView.layer.zPosition = 2
+                                        
+                                        
                                         print(value.cacheType)
                                         print(value.source)
                                         
@@ -177,7 +205,6 @@ extension ArticleDetailViewController {
                                         print(error)
                                     }
                                   })
-            print("index : => \(index)")
             imageStackView.layoutIfNeeded()
         }
         
@@ -288,4 +315,10 @@ extension AVAsset {
             })
         }
     }
+}
+
+// MARK: - URL
+
+extension ArticleDetailViewController {
+    
 }
