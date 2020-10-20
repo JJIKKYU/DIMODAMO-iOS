@@ -26,6 +26,8 @@ class ArticleDetailViewModel {
     var titleRelay = BehaviorRelay<String>(value: "")
     var tagsRelay = BehaviorRelay<[String]>(value: [])
     
+    let linksDataRelay = BehaviorRelay<[PreviewResponse]>(value: [])
+    
     
     var testImageURL: [URL] = [
         URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/test%2F41KBHDxkF1LnHNJTZleV.png?alt=media&token=116d75da-a1a3-48e4-9af8-0526c2087948")!,

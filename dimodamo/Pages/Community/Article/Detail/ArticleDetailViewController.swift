@@ -17,6 +17,8 @@ import Kingfisher
 import AVFoundation
 import AVKit
 
+import SwiftLinkPreview
+
 class ArticleDetailViewController: UIViewController {
     
     
@@ -33,13 +35,19 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var imageStackView: UIStackView!
     
     @IBOutlet weak var videoStackView: UIStackView!
+    var avPlayer = AVPlayer()
+    var avController = AVPlayerViewController()
+    
+    @IBOutlet weak var urlStackView: UIStackView!
     
     var imageView1: UIImageView = UIImageView()
     
     var article: Article?
     var disposeBag = DisposeBag()
     let viewModel = ArticleDetailViewModel()
-
+    
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
@@ -51,22 +59,25 @@ class ArticleDetailViewController: UIViewController {
         //        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
         
         // 하단 탭바 숨기기
-//        (self.tabBarController as? TabBarViewController)?.invisible()
+        //        (self.tabBarController as? TabBarViewController)?.invisible()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        scrollView.layoutIfNeeded()
-//        scrollView.isScrollEnabled = true
-//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: scrollView.frame.size.height)
-        
-        scrollView.delegate = self
+        //        scrollView.layoutIfNeeded()
+        //        scrollView.isScrollEnabled = true
+        //        scrollView.contentSize = CGSize(width: self.view.frame.width, height: scrollView.frame.size.height)
+    
         
         viewDesign()
         
         imageStackViewSetting()
         videoStackViewSetting()
+        urlViewSetting()
+        linkViewSetting()
+        
+        
         
         
         
@@ -98,11 +109,15 @@ class ArticleDetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        
+        // URL Link
+        viewModel.linksDataRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] links in
+                print("update되었습니다 : \(links)")
+            })
+            .disposed(by: disposeBag)
     }
-    
-    let avURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/testVideos%2Ftestvideo.mp4?alt=media&token=bd3b8cc9-5c8a-41c5-8c79-71cb4c488fe8")
-    var avPlayer = AVPlayer()
-    var avController = AVPlayerViewController()
 }
 
 // MARK:- UI
@@ -146,22 +161,14 @@ extension ArticleDetailViewController {
     }
 }
 
-extension ArticleDetailViewController: UIScrollViewDelegate {
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        print(velocity.y)
-        self.navigationController?.navigationBar.prefersLargeTitles = (velocity.y < 0)
-    }
-}
-
-
 // MARK: - UploadImage
 
 extension ArticleDetailViewController {
     
     func imageStackViewSetting() {
         let imagesURL: [URL?] = [
-            URL(string: "https://i.pinimg.com/originals/39/ce/87/39ce877f154321edbe61888926ae2554.jpg"),
-            URL(string: "https://pbs.twimg.com/media/DkakGNKU8AAaGBN.jpg:large")
+            URL(string: "https://pbs.twimg.com/media/EWi_xrzVcAAElbM.jpg"),
+            URL(string: "https://kgasa.com/wp-content/uploads/2020/05/IU-eight-500x420.jpg")
         ]
         
         for (index, imageURL) in imagesURL.enumerated() {
@@ -191,7 +198,7 @@ extension ArticleDetailViewController {
                                         imageView.addSubview(iconView)
                                         iconView.widthAnchor.constraint(equalToConstant: 18).isActive = true
                                         iconView.heightAnchor.constraint(equalToConstant: 18).isActive = true
-
+                                        
                                         iconView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -16).isActive = true
                                         iconView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16).isActive = true
                                         iconView.translatesAutoresizingMaskIntoConstraints = false
@@ -218,7 +225,7 @@ extension ArticleDetailViewController {
 extension ArticleDetailViewController {
     func videoStackViewSetting() {
         let videosURL: [URL?] = [
-            URL(string: "https://drive.google.com/file/d/1Qd6Mzurp9MrRNIPw0fFtaV5gM5UHR19k/view?usp=sharing")
+            URL(string: "https://media.fmkorea.com/files/attach/new/20200121/486616/624031606/2625407645/37eed0627b2ef15be50ba8d451a33094.mp4")
         ]
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -249,12 +256,12 @@ extension ArticleDetailViewController {
         
         // 이미지를 클릭했을 경우에 영상이 뜨도록
         let singleTap = URLSenderTapGestureRecognizer(target: self, action: #selector(tapDetected(avUrl:)))
-        singleTap.url = avURL
+        singleTap.url = videosURL[0]
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(singleTap)
         
         print("VideoScaledHeight :  \(scaledHeight)")
-        AVAsset(url: avURL!).generateThumbnail(completion: { [weak self] image in
+        AVAsset(url: videosURL[0]!).generateThumbnail(completion: { [weak self] image in
             DispatchQueue.main.async {
                 guard let image = image else { return }
                 imageView.image = image
@@ -320,5 +327,112 @@ extension AVAsset {
 // MARK: - URL
 
 extension ArticleDetailViewController {
+    func urlViewSetting() {
+        let containerView: UIView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.layer.borderWidth = 1.5
+        containerView.layer.borderColor = UIColor.appColor(.white235).cgColor
+        containerView.layer.cornerRadius = 8
+        containerView.layer.masksToBounds = true
+        containerView.backgroundColor = .clear
+        
+        urlStackView.addArrangedSubview(containerView)
+        containerView.leadingAnchor.constraint(equalTo: urlStackView.leadingAnchor, constant: 0).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: urlStackView.trailingAnchor, constant: 0).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        
+        let imageView: UIImageView = UIImageView()
+        //        let stringImageURL = URL(string: viewModel.linksDataRelay.value[0].image)
+        imageView.kf.setImage(with: URL(string: "https://i.ytimg.com/vi/nK3dsuk-hIE/maxresdefault.jpg"))
+        containerView.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8).isActive = true
+        imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        imageView.layer.cornerRadius = 4
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.zPosition = 2
+        
+        
+        let title: UILabel = UILabel()
+        containerView.addSubview(title)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 24).isActive = true
+        title.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8).isActive = true
+        title.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16).isActive = true
+        title.numberOfLines = 2
+        title.layer.zPosition = 2
+        
+        let text: String = "191116 아이유(IU) - 미리 메리크리스마스 (Merry Christmas in Advance) 직캠 @ Love, Poem 부산 콘서트 앵앵콜 [4K 멀티캠]"
+        let titleAttributes: [NSAttributedString.Key: Any] = [
+            .font : UIFont(name: "Apple SD Gothic Neo Regular", size: 12) as Any,
+            .foregroundColor : UIColor.appColor(.textSmall),
+        ]
+        
+        let attributedString = NSAttributedString(string: text, attributes: titleAttributes)
+        title.attributedText = attributedString
+        
+        let urlString: UILabel = UILabel()
+        containerView.addSubview(urlString)
+        urlString.translatesAutoresizingMaskIntoConstraints = false
+        urlString.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 24).isActive = true
+        urlString.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8).isActive = true
+        urlString.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16).isActive = true
+        urlString.numberOfLines = 1
+        urlString.layer.zPosition = 2
+        let urlStringText: String = "https://www.youtube.com/watch?v=nK3dsuk-hIE&list=RDMMnK3dsuk-hIE&start_radio=1"
+        let urlStringeAttributes: [NSAttributedString.Key: Any] = [
+            .font : UIFont(name: "SFProDisplay-Regular", size: 12) as Any,
+            .foregroundColor : UIColor.appColor(.gray170),
+        ]
+        let urlAttributedString = NSAttributedString(string: urlStringText, attributes: urlStringeAttributes)
+        urlString.attributedText = urlAttributedString
+        
+        urlStackView.layoutIfNeeded()
+        urlStackView.translatesAutoresizingMaskIntoConstraints = false
+        urlStackView.sizeToFit()
+        
+    }
     
+    func linkViewSetting() {
+        let links: [String] = [
+            "https://www.youtube.com/watch?v=nK3dsuk-hIE&list=RDMMnK3dsuk-hIE&start_radio=1",
+            "https://www.youtube.com/watch?v=GywDFkY3z-c&list=RDGywDFkY3z-c&start_radio=1"
+        ]
+        
+        var linksData: [PreviewResponse] = []
+        
+        let slp = SwiftLinkPreview()
+        
+        for link in links {
+            slp.previewLink("\(link)",
+                            onSuccess: { [self] result in
+                                let resultArr = result
+                                let linkData: PreviewResponse = PreviewResponse(url: resultArr["url"] as! URL,
+                                                                                title: resultArr["title"] as! String,
+                                                                                image: resultArr["image"] as! String,
+                                                                                icon: resultArr["icon"] as! String)
+                                linksData.append(linkData)
+                                viewModel.linksDataRelay.accept(linksData)
+                            }, onError: { error in
+                                print("\(error)")
+                            })
+        }
+    }
+}
+
+struct PreviewResponse {
+    let url: URL // URL
+    let title: String // title
+    let image: String // main image
+    let icon: String // favicon
+    
+    init(url: URL, title: String, image: String, icon: String) {
+        self.url = url
+        self.title = title
+        self.image = image
+        self.icon = icon
+    }
 }

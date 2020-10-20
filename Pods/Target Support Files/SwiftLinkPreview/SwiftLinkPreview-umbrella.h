@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double MSPeekCollectionViewDelegateImplementationVersionNumber;
-FOUNDATION_EXPORT const unsigned char MSPeekCollectionViewDelegateImplementationVersionString[];
+FOUNDATION_EXPORT double SwiftLinkPreviewVersionNumber;
+FOUNDATION_EXPORT const unsigned char SwiftLinkPreviewVersionString[];
 

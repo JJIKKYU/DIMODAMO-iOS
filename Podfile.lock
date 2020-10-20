@@ -294,20 +294,12 @@ PODS:
   - Kingfisher/Core (5.15.6)
   - leveldb-library (1.22)
   - lottie-ios (3.1.8)
-  - MSPeekCollectionViewDelegateImplementation (3.1.1)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.9)
-  - RxAnimated (0.7.0):
-    - RxAnimated/Core (= 0.7.0)
-    - RxCocoa (~> 5.1)
-    - RxSwift (~> 5.1)
-  - RxAnimated/Core (0.7.0):
-    - RxCocoa (~> 5.1)
-    - RxSwift (~> 5.1)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -317,6 +309,7 @@ PODS:
   - RxViewController (1.0.0):
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
+  - SwiftLinkPreview (3.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
@@ -329,11 +322,10 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - Kingfisher (~> 5.0)
   - lottie-ios
-  - MSPeekCollectionViewDelegateImplementation
-  - RxAnimated
   - RxCocoa
   - RxSwift
   - RxViewController
+  - SwiftLinkPreview (~> 3.2.0)
 
 SPEC REPOS:
   trunk:
@@ -363,14 +355,13 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - lottie-ios
-    - MSPeekCollectionViewDelegateImplementation
     - nanopb
     - PromisesObjC
-    - RxAnimated
     - RxCocoa
     - RxRelay
     - RxSwift
     - RxViewController
+    - SwiftLinkPreview
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -399,15 +390,14 @@ SPEC CHECKSUMS:
   Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
-  MSPeekCollectionViewDelegateImplementation: f86fd6a6ce284723343e8697a013f5294c05e745
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
-  RxAnimated: 8540892468e906e7404595bc51ed4b36b3737ab5
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
+  SwiftLinkPreview: ad1283d2e67f0ffe41e0bd2428f8d9496afca172
 
-PODFILE CHECKSUM: f5e4186c7cd55db4e534218a70b038afe0d27dba
+PODFILE CHECKSUM: 06b1ae607fc3f5fd1a87c1f03e47738c6c450433
 
 COCOAPODS: 1.9.3

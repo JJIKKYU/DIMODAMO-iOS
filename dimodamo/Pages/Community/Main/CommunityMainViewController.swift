@@ -32,13 +32,6 @@ class CommunityMainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewwillAppear")
-        
-        // 하단 탭바 다시 보이도록
-//        (self.tabBarController as? TabBarViewController)?.visible()
-//        navigationController?.visible(color: <#T##UIColor#>)
-        
-        // < 이전 버튼 다시 원래 컬러로 변경
-//        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray170)
         navigationController?.visible(color: UIColor.appColor(.textBig))
     }
     

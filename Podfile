@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '9.0'
+# platform :ios, '9.0'
 
 #post_install do |pi|
 #    pi.pods_project.targets.each do |t|
@@ -20,7 +20,6 @@ target 'dimodamo' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxViewController'
-  pod "RxAnimated"
 
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
@@ -29,9 +28,6 @@ target 'dimodamo' do
   pod 'Firebase/Database'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
-  
-  # 커뮤니티 메인 컬렉션 뷰에서 사용
-  pod 'MSPeekCollectionViewDelegateImplementation'
   
   pod 'Kingfisher', '~> 5.0'
   
