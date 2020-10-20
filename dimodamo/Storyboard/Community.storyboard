@@ -840,6 +840,15 @@
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="u1Y-3E-qGv">
                                                 <rect key="frame" x="20" y="721.5" width="374" height="128"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-Rf-SBb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="pressedTestBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="CXK-Mw-G92"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="8Pc-F5-WG4"/>
                                                 </constraints>

@@ -15,6 +15,7 @@ import RxCocoa
 import Kingfisher
 
 import AVFoundation
+import AVKit
 
 class ArticleDetailViewController: UIViewController {
     
@@ -40,18 +41,18 @@ class ArticleDetailViewController: UIViewController {
     var disposeBag = DisposeBag()
     let viewModel = ArticleDetailViewModel()
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//
-//        // 이 페이지에서 나갈때 라지 타이틀을 비활성화 했으므로 다시 활성화 해주고 나감
-//        navigationController?.visible(color: UIColor.appColor(.textBig))
-//
-//        // 하단 탭바 다시 보이도록
-//        (self.tabBarController as? TabBarViewController)?.visible()
-//
-//        // < 이전 버튼 다시 원래 컬러로 변경
-//        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray170)
-//    }
+    //    override func viewDidDisappear(_ animated: Bool) {
+    //        super.viewDidDisappear(animated)
+    //
+    //        // 이 페이지에서 나갈때 라지 타이틀을 비활성화 했으므로 다시 활성화 해주고 나감
+    //        navigationController?.visible(color: UIColor.appColor(.textBig))
+    //
+    //        // 하단 탭바 다시 보이도록
+    //        (self.tabBarController as? TabBarViewController)?.visible()
+    //
+    //        // < 이전 버튼 다시 원래 컬러로 변경
+    //        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray170)
+    //    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -68,7 +69,7 @@ class ArticleDetailViewController: UIViewController {
         videoStackViewSetting()
         
         navigationController?.invisible()
-//        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
+        //        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
         
         // 하단 탭바 숨기기
         (self.tabBarController as? TabBarViewController)?.invisible()
@@ -85,8 +86,8 @@ class ArticleDetailViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] url in
                 
-//                self?.titleImg.image = UIImage(data: data)
-//                let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/test%2F0XgA8G0aM2FjkVaQ4aE4.png?alt=media&token=c6ddc035-77f5-4f30-9531-4734c167a7a6")
+                //                self?.titleImg.image = UIImage(data: data)
+                //                let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/test%2F0XgA8G0aM2FjkVaQ4aE4.png?alt=media&token=c6ddc035-77f5-4f30-9531-4734c167a7a6")
                 self?.titleImg.kf.setImage(with: url)
                 
             })
@@ -100,7 +101,19 @@ class ArticleDetailViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-
+        
+    }
+    
+    let avURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/testVideos%2Ftestvideo.mp4?alt=media&token=bd3b8cc9-5c8a-41c5-8c79-71cb4c488fe8")
+    var avPlayer = AVPlayer()
+    var avController = AVPlayerViewController()
+    
+    @IBAction func pressedTestBtn(_ sender: Any) {
+        self.avPlayer = AVPlayer(url: avURL!)
+        avController.player = avPlayer
+        avController.view.frame = self.view.frame
+        self.present(avController, animated: true, completion: nil)
+        avPlayer.play()
     }
 }
 
@@ -110,7 +123,7 @@ extension ArticleDetailViewController {
     func viewDesign() {
         articleCategory.articleCategoryDesign()
         adjustUITextViewHeight(arg: textView)
-//        drawImage()
+        //        drawImage()
     }
     
     // 내용 본문에 Height에 맞게 조절하기 위해
@@ -131,7 +144,7 @@ extension ArticleDetailViewController {
         }
         
         let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
-
+        
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 12
@@ -162,28 +175,28 @@ extension ArticleDetailViewController {
             imageView.kf.setImage(with: imageURL,
                                   options: [ .transition(.fade(2))],
                                   completionHandler:  { [self] result in
-                switch result {
-                case .success(let value):
-                    print(value.image)
-                    
-                    let image = value.image
-                    
-                    let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
-                    print("scaleHeight : \(scaledHeight)")
-                    imageStackView.addArrangedSubview(imageView)
-                    imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
-                    imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-                    imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
-                    imageView.layer.cornerRadius = 12
-                    imageView.layer.masksToBounds = true
-                    
-                    print(value.cacheType)
-                    print(value.source)
-                    
-                case .failure(let error):
-                    print(error)
-                }
-            })
+                                    switch result {
+                                    case .success(let value):
+                                        print(value.image)
+                                        
+                                        let image = value.image
+                                        
+                                        let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
+                                        print("scaleHeight : \(scaledHeight)")
+                                        imageStackView.addArrangedSubview(imageView)
+                                        imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
+                                        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+                                        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+                                        imageView.layer.cornerRadius = 12
+                                        imageView.layer.masksToBounds = true
+                                        
+                                        print(value.cacheType)
+                                        print(value.source)
+                                        
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                  })
             print("index : => \(index)")
             imageStackView.layoutIfNeeded()
         }
@@ -197,7 +210,41 @@ extension ArticleDetailViewController {
 
 extension ArticleDetailViewController {
     func videoStackViewSetting() {
+        let videosURL: [URL?] = [
+            URL(string: "https://drive.google.com/file/d/1Qd6Mzurp9MrRNIPw0fFtaV5gM5UHR19k/view?usp=sharing")
+        ]
+        let imageView = UIImageView()
+        videoStackView.addArrangedSubview(imageView)
+        videoStackViewHeight.isActive = false
         
+        let scaledHeight = (UIScreen.main.bounds.width - 40) / 16 * 9
+        imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+        imageView.layer.cornerRadius = 12
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        let singleTap = URLSenderTapGestureRecognizer(target: self, action: #selector(tapDetected(avUrl:)))
+        singleTap.url = avURL
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(singleTap)
+        
+        print("VideoScaledHeight :  \(scaledHeight)")
+        AVAsset(url: avURL!).generateThumbnail(completion: { [weak self] image in
+            DispatchQueue.main.async {
+                guard let image = image else { return }
+                imageView.image = image
+                //                self?.videoTestImageView.kf.setImage(with: image)
+            }
+        })
+        
+        
+    }
+    
+    
+    @objc func tapDetected(avUrl: URLSenderTapGestureRecognizer) {
+        // Your action
+        print("\(avUrl.url)")
     }
     
     func imagePreview(from moviePath: URL, in seconds: Double) -> UIImage? {
@@ -205,10 +252,34 @@ extension ArticleDetailViewController {
         let asset = AVURLAsset(url: moviePath)
         let generator = AVAssetImageGenerator(asset: asset)
         generator.appliesPreferredTrackTransform = true
-
+        
         guard let imageRef = try? generator.copyCGImage(at: timestamp, actualTime: nil) else {
             return nil
         }
         return UIImage(cgImage: imageRef)
+    }
+    
+    
+}
+
+class URLSenderTapGestureRecognizer: UITapGestureRecognizer {
+    var url: URL?
+}
+
+extension AVAsset {
+    
+    func generateThumbnail(completion: @escaping (UIImage?) -> Void) {
+        DispatchQueue.global().async {
+            let imageGenerator = AVAssetImageGenerator(asset: self)
+            let time = CMTime(seconds: 0.0, preferredTimescale: 600)
+            let times = [NSValue(time: time)]
+            imageGenerator.generateCGImagesAsynchronously(forTimes: times, completionHandler: { _, image, _, _, _ in
+                if let image = image {
+                    completion(UIImage(cgImage: image))
+                } else {
+                    completion(nil)
+                }
+            })
+        }
     }
 }
