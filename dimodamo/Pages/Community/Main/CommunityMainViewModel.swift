@@ -90,7 +90,7 @@ class CommunityMainViewModel {
     
     func imageDownlad(postUID: String, index: Int) {
         // image Download
-        storage.child("test/\(postUID).png").downloadURL(completion: { url, error in
+        storage.child("test/\(postUID).jpg").downloadURL(completion: { url, error in
             guard let url = url, error == nil else {
                 return
             }

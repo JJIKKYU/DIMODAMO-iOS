@@ -235,10 +235,11 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         }
 
         cell.title.text = model.title
-
-        cell.tags[0].text = "#\(model.tags![0])"
-        cell.tags[1].text = "#\(model.tags![1])"
-        cell.tags[2].text = "#\(model.tags![2])"
+        
+        model.tags?.enumerated().forEach{ index, tag in
+            print("===========> \(tag)")
+            cell.tags[index].text = "#\(tag)"
+        }
 
         cell.nickname.text = model.nickname
         cell.scrapCnt.text = "\(model.scrapCnt!)"

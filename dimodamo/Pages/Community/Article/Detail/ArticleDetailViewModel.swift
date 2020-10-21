@@ -13,6 +13,8 @@ import RxRelay
 
 import Firebase
 
+import SwiftLinkPreview
+
 class ArticleDetailViewModel {
     
     private let storage = Storage.storage().reference()
@@ -26,26 +28,60 @@ class ArticleDetailViewModel {
     var titleRelay = BehaviorRelay<String>(value: "")
     var tagsRelay = BehaviorRelay<[String]>(value: [])
     
-    let linksDataRelay = BehaviorRelay<[PreviewResponse]>(value: [])
-    
     
     var testImageURL: [URL] = [
         URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/test%2F41KBHDxkF1LnHNJTZleV.png?alt=media&token=116d75da-a1a3-48e4-9af8-0526c2087948")!,
         URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/articlePosts%2F0XgA8G0aM2FjkVaQ4aE4%2Fimage-1.png?alt=media&token=b29bfc85-42b6-4b46-8d44-bf2fce231961")!,
     ]
     
+    /*
+     URL link view
+     */
+    let linksDataRelay = BehaviorRelay<[PreviewResponse]>(value: [])
+    var urlLinks: [String] = [
+        "https://www.youtube.com/watch?v=nK3dsuk-hIE&list=RDMMnK3dsuk-hIE&start_radio=1",
+        "https://www.youtube.com/watch?v=GywDFkY3z-c&list=RDGywDFkY3z-c&start_radio=1"
+    ]
+    
+    func linkViewSetting() {
+        var linksData: [PreviewResponse] = []
+        
+        let slp = SwiftLinkPreview()
+        
+        for link in self.urlLinks {
+            slp.previewLink("\(link)",
+                            onSuccess: { [self] result in
+                                let resultArr = result
+                                let linkData: PreviewResponse = PreviewResponse(url: resultArr["url"] as! URL,
+                                                                                title: resultArr["title"] as! String,
+                                                                                image: resultArr["image"] as! String,
+                                                                                icon: resultArr["icon"] as! String)
+                                linksData.append(linkData)
+                                
+                                if urlLinks.count == linksData.count {
+                                    self.linksDataRelay.accept(linksData)
+                                    print("ulrLinks.count = \(urlLinks.count), linksData = \(linksData.count)")
+                                }
+                            }, onError: { error in
+                                print("\(error)")
+                            })
+        }
+    }
+    
     init() {
-//        storage.child("articlePosts/\(postUID)").downloadURL(completion: { url, error in
-//
-//            guard let url = url, error == nil else {
-//                return
-//            }
-//
-//            do {
-//                let data = try Data(contentsOf: url)
-//            }
-//
-//        })
+        self.linkViewSetting()
+        
+        //        storage.child("articlePosts/\(postUID)").downloadURL(completion: { url, error in
+        //
+        //            guard let url = url, error == nil else {
+        //                return
+        //            }
+        //
+        //            do {
+        //                let data = try Data(contentsOf: url)
+        //            }
+        //
+        //        })
     }
     
     
