@@ -236,8 +236,8 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
 
         cell.title.text = model.title
         
+        // tags에 있는 어레이의 개수만큼 세팅
         model.tags?.enumerated().forEach{ index, tag in
-            print("===========> \(tag)")
             cell.tags[index].text = "#\(tag)"
         }
 

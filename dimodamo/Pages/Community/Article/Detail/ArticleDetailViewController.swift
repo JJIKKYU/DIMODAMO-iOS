@@ -72,7 +72,6 @@ class ArticleDetailViewController: UIViewController {
         
         imageStackViewSetting()
         videoStackViewSetting()
-        urlViewSetting()
         
         
         
@@ -98,6 +97,14 @@ class ArticleDetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        // 본문 적용
+        viewModel.descriptionRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] desc in
+                self?.textView.text = "\(desc)"
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.tagsRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] tags in
@@ -109,6 +116,13 @@ class ArticleDetailViewController: UIViewController {
         
         
         // URL Link
+        viewModel.urlLinksRelay
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel.linkViewSetting()
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.linksDataRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] links in
