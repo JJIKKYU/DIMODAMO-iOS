@@ -38,6 +38,9 @@ class ArticleDetailViewController: UIViewController {
     
     @IBOutlet weak var urlStackView: UIStackView!
     
+    @IBOutlet weak var commentTableView: UITableView!
+    @IBOutlet weak var commentTableViewHeight: NSLayoutConstraint!
+    
     var imageView1: UIImageView = UIImageView()
     
     var article: Article?
@@ -60,6 +63,11 @@ class ArticleDetailViewController: UIViewController {
         //        (self.tabBarController as? TabBarViewController)?.invisible()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.updateViewConstraints()
+        self.commentTableViewHeight.constant = self.commentTableView.contentSize.height
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,12 +75,14 @@ class ArticleDetailViewController: UIViewController {
         //        scrollView.isScrollEnabled = true
         //        scrollView.contentSize = CGSize(width: self.view.frame.width, height: scrollView.frame.size.height)
     
+        commentTableView.delegate = self
+        commentTableView.dataSource = self
         
         viewDesign()
         
         imageStackViewSetting()
         videoStackViewSetting()
-        
+        tablewViewSetting()
         
         
         
@@ -431,4 +441,36 @@ struct PreviewResponse {
         self.image = image
         self.icon = icon
     }
+}
+
+
+// MARK: - Comment
+
+extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tablewViewSetting() {
+        // Row Height를 무시하고, 각 Row 안의 내용에 따라 Row 높이가 유동적으로 결정 되도록
+        commentTableView.rowHeight = UITableView.automaticDimension
+        commentTableView.estimatedRowHeight = 130
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
+    
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+////        let value: CGFloat = CGFloat(indexPath.row) * 10
+//
+//
+//        return 130
+//    }
 }

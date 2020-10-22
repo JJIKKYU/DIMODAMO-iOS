@@ -44,16 +44,19 @@ class ArticleDetailViewModel {
      */
     let linksDataRelay = BehaviorRelay<[PreviewResponse]>(value: []) // 링크에 있는 데이터를 해체해 가지고 있음
     let urlLinksRelay = BehaviorRelay<[String]>(value: []) // 링크만 가지고 있음
-    
-    
-    
+    static let slp = SwiftLinkPreview(cache: InMemoryCache())
+        
     func linkViewSetting() {
         var linksData: [PreviewResponse] = []
-        
-        let slp = SwiftLinkPreview()
-        
+
         for link in self.urlLinksRelay.value {
-            slp.previewLink("\(link)",
+            // 캐시 체크
+            if let cached = ArticleDetailViewModel.slp.cache.slp_getCachedResponse(url: "\(link)") {
+                print("->> cached : \(cached)")
+            }
+            
+            
+            ArticleDetailViewModel.slp.previewLink("\(link)",
                             onSuccess: { [self] result in
                                 let resultArr = result
                                 let linkData: PreviewResponse = PreviewResponse(url: resultArr["url"] as! URL,

@@ -27,6 +27,7 @@
 		9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713C250F214300C3EB72 /* DptiResultViewModel.swift */; };
 		980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */; };
 		980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F197A253E01B7007B33B8 /* UploadImageCell.swift */; };
+		980F19ED25407578007B33B8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F19EC25407577007B33B8 /* CommentCell.swift */; };
 		983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983216A6252B8CDD003E6B64 /* AddShadow.swift */; };
 		983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983485D3251C585500C4074B /* RegisterGenderViewController.swift */; };
 		983C7E99253C3F390099B07F /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C7E98253C3F390099B07F /* ArticleModel.swift */; };
@@ -161,6 +162,7 @@
 		9806713C250F214300C3EB72 /* DptiResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewModel.swift; sourceTree = "<group>"; };
 		980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		980F197A253E01B7007B33B8 /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
+		980F19EC25407577007B33B8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		983216A6252B8CDD003E6B64 /* AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShadow.swift; sourceTree = "<group>"; };
 		983485D3251C585500C4074B /* RegisterGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderViewController.swift; sourceTree = "<group>"; };
 		983C7E98253C3F390099B07F /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				980F197A253E01B7007B33B8 /* UploadImageCell.swift */,
+				980F19EC25407577007B33B8 /* CommentCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1057,6 +1060,7 @@
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
 				98A8B816253605CE00351FD5 /* SplashViewController.swift in Sources */,
+				980F19ED25407578007B33B8 /* CommentCell.swift in Sources */,
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
