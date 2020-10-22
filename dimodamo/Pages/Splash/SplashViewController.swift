@@ -32,6 +32,11 @@ class SplashViewController: UIViewController {
         _ = lottie("Splash_1.5C_top", container: topContainer)
         _ = lottie("Splash_1.5C_bottom", container: bottomContainer)
         
+        // 메인 페이지를 로딩하는 경우가 많으므로, 로그인할 때 메모리 손실을 감수 하더라도 Main을 먼저 로드해서,
+        // 로딩 시간에 최대한 로드를 미리 해놓을 수 있도록
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
+        let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
             
             // 로그인 중일 때는 메인으로
@@ -40,8 +45,6 @@ class SplashViewController: UIViewController {
                 print("현재 로그인중입니다")
                 print("현재 로그인 되어 있는 UID : \(Auth.auth().currentUser?.uid)")
 
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
-                let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
                 mainVC.modalPresentationStyle = .fullScreen
                 mainVC.modalTransitionStyle = .crossDissolve
                 self.present(mainVC, animated: true, completion: nil)

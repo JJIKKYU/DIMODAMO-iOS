@@ -78,32 +78,53 @@ class ArticleDetailViewController: UIViewController {
         commentTableView.delegate = self
         commentTableView.dataSource = self
         
-        viewDesign()
-        
-        imageStackViewSetting()
-        videoStackViewSetting()
-        tablewViewSetting()
         
         
+        viewModel.postUidRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext : { [weak self] uid in
+                if uid != "" {
+                    print("\(uid)")
+                    self?.viewDesign()
+
+                    self?.tablewViewSetting()
+                    self?.viewModel.dataSetting()
+                }
+            })
+            .disposed(by: disposeBag)
         
         
         
         viewModel.titleRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
-                self?.navigationItem.title = "\(value)"
-                self?.titleLabel.text = "\(value)"
+                if value != "" {
+                    self?.navigationItem.title = "\(value)"
+                    self?.titleLabel.text = "\(value)"
+                }
             })
             .disposed(by: disposeBag)
         
-        viewModel.imageRelay
+        viewModel.imagesRelay
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] url in
+            .subscribe(onNext: { [weak self] urls in
+                // 가장 첫 번째 이미지를 썸네일로
+                if self?.viewModel.imagesRelay.value.count ?? 0 > 0 {
+                    self?.titleImg.kf.setImage(with: urls[0])
+                    self?.imageStackViewSetting()
+                }
                 
-                //                self?.titleImg.image = UIImage(data: data)
-                //                let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/test%2F0XgA8G0aM2FjkVaQ4aE4.png?alt=media&token=c6ddc035-77f5-4f30-9531-4734c167a7a6")
-                self?.titleImg.kf.setImage(with: url)
-                
+
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.videosRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                if self?.viewModel.videosRelay.value.count ?? 0 > 0 {
+                    print("들어옵니다")
+                    self?.videoStackViewSetting()
+                }
             })
             .disposed(by: disposeBag)
         
@@ -111,13 +132,22 @@ class ArticleDetailViewController: UIViewController {
         viewModel.descriptionRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] desc in
-                self?.textView.text = "\(desc)"
+//                self?.textView.text = "\(desc)"
+                if self?.viewModel.descriptionRelay.value != "" {
+                    self?.textView.text = desc.replacingOccurrences(of: "\\n", with: "\n")
+                    self?.adjustUITextViewHeight(arg: self!.textView)
+                }
+                
             })
             .disposed(by: disposeBag)
         
         viewModel.tagsRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] tags in
+                if tags.count <= 0 {
+                    return
+                }
+                
                 for (index, tag) in tags.enumerated() {
                     self?.tags[index].text = "#\(tag)"
                 }
@@ -129,10 +159,13 @@ class ArticleDetailViewController: UIViewController {
         viewModel.urlLinksRelay
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .subscribe(onNext: { [weak self] value in
-                self?.viewModel.linkViewSetting()
+                if self?.viewModel.postUidRelay.value != "" {
+                    self?.viewModel.linkViewSetting()
+                }
+                
             })
             .disposed(by: disposeBag)
-        
+
         viewModel.linksDataRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] links in
@@ -147,7 +180,6 @@ class ArticleDetailViewController: UIViewController {
 extension ArticleDetailViewController {
     func viewDesign() {
         articleCategory.articleCategoryDesign()
-        adjustUITextViewHeight(arg: textView)
         //        drawImage()
     }
     
@@ -188,14 +220,7 @@ extension ArticleDetailViewController {
 extension ArticleDetailViewController {
     
     func imageStackViewSetting() {
-        let imagesURL: [URL?] = [
-            URL(string: "https://pgnqdrjultom1827145.cdn.ntruss.com/img/ae/f3/aef3ae5264766dc154b3f30b368a3a64096ce0993b093d162854686603395567_v1.jpg"),
-            URL(string: "https://pgnqdrjultom1827145.cdn.ntruss.com/img/0d/6a/0d6ac8d2982213ef8d6c6a4047b6177c43284cda2f45414d2471ad6624c4e82f_v1.jpg"),
-            URL(string: "https://pgnqdrjultom1827145.cdn.ntruss.com/img/3e/46/3e46b0c57e9cb76283711cb30dc8cc20867cd581c5b03501a740ad85187ed328_v1.jpg"),
-            
-        ]
-        
-        for (index, imageURL) in imagesURL.enumerated() {
+        for (index, imageURL) in viewModel.imagesRelay.value.enumerated() {
             let imageView = UIImageView()
             imageView.kf.indicatorType = .activity
             imageView.kf.setImage(with: imageURL,
@@ -208,8 +233,10 @@ extension ArticleDetailViewController {
                                         let image = value.image
                                         
                                         let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
-                                        print("scaleHeight : \(scaledHeight)")
-                                        imageStackView.addArrangedSubview(imageView)
+//                                        print("scaleHeight : \(scaledHeight)")
+                                        
+                                        imageStackView.insertArrangedSubview(imageView, at: index)
+                                        
                                         imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
                                         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
                                         imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
@@ -248,31 +275,29 @@ extension ArticleDetailViewController {
 
 extension ArticleDetailViewController {
     func videoStackViewSetting() {
-        let videosURL: [URL?] = [
-            URL(string: "http://hongikdmd.com/breathe/static/video/promotion.mp4"),
-            URL(string: "https://media.fmkorea.com/files/attach/new/20200121/486616/624031606/2625407645/37eed0627b2ef15be50ba8d451a33094.mp4?d"),
-            URL(string: "https://media.fmkorea.com/files/attach/new/20200305/3655109/524068279/2790265601/972b3182d8136d27e745a7db6d3e443f.mp4?d")
-            
-        ]
-        
-        for (index, videoURL) in videosURL.enumerated() {
+        for (index, videoURL) in viewModel.videosRelay.value.enumerated() {
+            guard let videoURL = videoURL else {
+                return
+            }
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            videoStackView.addArrangedSubview(imageView)
-            
+
+            // 인덱스 순서에 맞춰서 이미지가 들어가도록
+            videoStackView.insertArrangedSubview(imageView, at: index)
+
             // width사이즈에 맞게 무조건 16:9 사이즈로 고정되도록
             let scaledHeight = (UIScreen.main.bounds.width - 40) / 16 * 9
-            
+
             // Autolayout
             imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-            
+
             // Design
             imageView.layer.cornerRadius = 12
             imageView.layer.masksToBounds = true
             imageView.contentMode = .scaleAspectFill
-            
+
             let playIconImageView: UIImageView = UIImageView.init(image: UIImage(named: "playIcon"))
             imageView.addSubview(playIconImageView)
             playIconImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -280,17 +305,17 @@ extension ArticleDetailViewController {
             playIconImageView.heightAnchor.constraint(equalToConstant: playIconImageView.image!.size.height).isActive = true
             playIconImageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
             playIconImageView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
-            
-            
-            
+
+
+
             // 이미지를 클릭했을 경우에 영상이 뜨도록
             let singleTap = URLSenderTapGestureRecognizer(target: self, action: #selector(tapDetected(avUrl:)))
             singleTap.url = videoURL
             imageView.isUserInteractionEnabled = true
             imageView.addGestureRecognizer(singleTap)
-            
+
             print("VideoScaledHeight :  \(scaledHeight)")
-            AVAsset(url: videoURL!).generateThumbnail(completion: { [weak self] image in
+            AVAsset(url: videoURL).generateThumbnail(completion: { [weak self] image in
                 DispatchQueue.main.async {
                     guard let image = image else { return }
                     imageView.image = image

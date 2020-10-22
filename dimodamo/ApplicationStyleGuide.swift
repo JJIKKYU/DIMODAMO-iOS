@@ -319,3 +319,23 @@ extension UINavigationController {
 }
 
 
+//class MyStyles: NSObject {
+//  static func fontForStyle(style:String)->UIFont{
+//    switch style{
+//    case "p":
+//        return UIFont.systemFont(ofSize: 18);
+//    case "h1":
+//        return UIFont.boldSystemFont(ofSize: 36);
+//    case "h2":
+//        return UIFont.boldSystemFont(ofSize: 24);
+//    default:
+//        return MyStyles.fontForStyle(style: "p");
+//    }
+//  }
+//}
+//
+//@IBDesignable class MyLabel: UILabel {
+//  @IBInspectable var style:String="p"{
+//    didSet{self.font=MyStyles.fontForStyle(style: style)}
+//  }
+//}

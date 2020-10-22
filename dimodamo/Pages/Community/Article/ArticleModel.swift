@@ -10,7 +10,9 @@ import Foundation
 
 // 아티클에 필요한 모델
 struct Article {
-    var image: URL?
+    var uid: String?
+    var image: [URL?]
+    var videos: [URL?]
     var category: Category?
     var title: String?
     var tags: [String]?
@@ -19,7 +21,6 @@ struct Article {
     var author: String?
     var scrapCnt: Int?
     var commentCnt: Int?
-    var uploadImages: String?
     
 //    init() {
 //        image = Data()

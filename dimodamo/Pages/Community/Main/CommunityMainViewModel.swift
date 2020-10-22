@@ -18,50 +18,58 @@ class CommunityMainViewModel {
     private let storage = Storage.storage().reference()
     private let db = Firestore.firestore()
     
-    var articles: [Article] = [
-        Article(image: nil,
-                category: .magazine,
-                title: "VB에서 선미와 눈마주친 순간^_",
-                tags: ["VB사랑", "인턴스", "엔따"],
-                profile: nil,
-                nickname: "사는게쉽지않네",
-                author: "",
-                scrapCnt: 0,
-                commentCnt: 0),
-        Article(image: nil,
-                category: .magazine,
-                title: "VB에서 선미와 눈마주친 순간^_",
-                tags: ["VB사랑", "인턴스", "엔따"],
-                profile: nil,
-                nickname: "사는게쉽지않네",
-                author: "",
-                scrapCnt: 0,
-                commentCnt: 0)
-    ]
+    var articles: [Article] = []
     
-    var imageLoading = BehaviorRelay<Bool>(value: false)
-    var profileLoading = BehaviorRelay<Bool>(value: false)
+    var articleLoading = BehaviorRelay<Bool>(value: false)
     
     init() {
         // Article Setting
         // TODO : 정렬해서 가져와야함
-        profileDownload()
         
         db.collection("articlePosts").getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("아티클 포스트를 가져오는데 오류가 생겼습니다. \(err)")
             } else {
                 for (index, document) in querySnapshot!.documents.enumerated() {
+
+                    let uid = (document.data()["uid"] as! String)
+                    let title =  (document.data()["title"] as! String)
+                    let tags =  (document.data()["tags"] as! [String])
+                    let nickname = (document.data()["nickname"] as! String)
+                    let scrapCnt = (document.data()["scrapCnt"] as! Int)
+                    let commentCnt = (document.data()["commentCnt"] as! Int)
+                    let author = (document.data()["author"] as! String)
                     
-                    self.articles[index].title =  (document.data()["title"] as! String)
-                    self.articles[index].tags =  (document.data()["tags"] as! [String])
-                    self.articles[index].nickname = (document.data()["nickname"] as! String)
-                    self.articles[index].scrapCnt = (document.data()["scrapCnt"] as! Int)
-                    self.articles[index].commentCnt = (document.data()["commentCnt"] as! Int)
-                    self.imageDownlad(postUID: document.documentID, index: index)
+                    // [String] Image를 [URL?] Image로 변환
+                    let documentImageString: [String] = document.data()["image"] as! [String]
+                    let documnetImageURL: [URL?] = documentImageString.map { URL(string: $0) }
+                    let image = documnetImageURL
+                    
+                    let article: Article = Article(uid: uid,
+                                                   image: image,
+                                                   videos : [],
+                                                   category: .magazine,
+                                                   title: title,
+                                                   tags: tags,
+                                                   profile: nil,
+                                                   nickname: nickname,
+                                                   author: author,
+                                                   scrapCnt: scrapCnt,
+                                                   commentCnt: commentCnt)
+                    
+                    self.articles.append(article)
                     
                     
-                    print("\(document.documentID) => \(document.data()["title"])")
+                    // 로딩 유무 확인
+                    if querySnapshot?.documents.count == (index + 1) {
+                        articleLoading.accept(true)
+                    }
+                    
+                    
+//                    self.imageDownlad(postUID: document.documentID, index: index)
+                    
+                    
+//                    print("\(document.documentID) => \(document.data()["title"])")
                 }
             }
         }
@@ -71,34 +79,34 @@ class CommunityMainViewModel {
         
     }
     
-    func profileDownload() {
-        // profile Download
-        storage.child("test/profile.png").downloadURL(completion: { url, error in
-            guard let url = url, error == nil else {
-                return
-            }
-            
-//            let urlString = url.absoluteString
-//            print("profileDownloadURL : \(urlString)")
-            self.articles[0].profile = url
-            print("loadingCompleted")
-//            print("### articles[0] Profile = \(self.articles[0])")
-            self.profileLoading.accept(true)
-            
-        })
-    }
+//    func profileDownload() {
+//        // profile Download
+//        storage.child("test/profile.png").downloadURL(completion: { url, error in
+//            guard let url = url, error == nil else {
+//                return
+//            }
+//
+////            let urlString = url.absoluteString
+////            print("profileDownloadURL : \(urlString)")
+//            self.articles[0].profile = url
+//            print("loadingCompleted")
+////            print("### articles[0] Profile = \(self.articles[0])")
+//            self.profileLoading.accept(true)
+//
+//        })
+//    }
     
-    func imageDownlad(postUID: String, index: Int) {
-        // image Download
-        storage.child("test/\(postUID).jpg").downloadURL(completion: { url, error in
-            guard let url = url, error == nil else {
-                return
-            }
-            let urlString = url.absoluteString
-            print("imageDownloadURL : \(urlString)")
-            self.articles[index].image = url
-            self.imageLoading.accept(true)
-        })
-        
-    }
+//    func imageDownlad(postUID: String, index: Int) {
+//        // image Download
+//        storage.child("test/\(postUID).jpg").downloadURL(completion: { url, error in
+//            guard let url = url, error == nil else {
+//                return
+//            }
+//            let urlString = url.absoluteString
+//            print("imageDownloadURL : \(urlString)")
+//            self.articles[index].image = url
+//            self.imageLoading.accept(true)
+//        })
+//
+//    }
 }

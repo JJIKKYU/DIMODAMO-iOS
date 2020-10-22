@@ -50,26 +50,18 @@ class CommunityMainViewController: UIViewController {
         articleCollectionViewSetting()
 //        setupUI()
 
-        
-        
-        Observable.combineLatest(
-            viewModel.imageLoading,
-            viewModel.profileLoading
-        )
+        viewModel.articleLoading
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] imageLoading, profileLoading  in
-                if imageLoading == true && profileLoading == true {
+            .subscribe(onNext : {[weak self] loading in
+                if loading == true {
                     self?.articleCollectionView.reloadData()
                     self?.articleCollectionView.layoutIfNeeded()
-                    print("ㅇㅋㅇㅋ")
                     self?.spinner.stopAnimating()
                 } else {
                     self?.spinner.startAnimating()
                 }
             })
             .disposed(by: disposeBag)
-        
-        // 바인딩
         
     }
     
@@ -105,8 +97,8 @@ class CommunityMainViewController: UIViewController {
                 = segue.destination as! ArticleDetailViewController
             let index: Int = sender as! Int
             
-            if let imageURL = viewModel.articles[index].image {
-                destination.viewModel.imageRelay.accept(imageURL)
+            if let postUid = viewModel.articles[index].uid {
+                destination.viewModel.postUidRelay.accept(postUid)
             }
             
             if let title = viewModel.articles[index].title {
@@ -122,8 +114,6 @@ class CommunityMainViewController: UIViewController {
 //                    destination.tags[index].text = "\(tag)"
 //                }
 //            }
-            
-            
             break
         
         default:
@@ -216,16 +206,16 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // firestore에 있는 article의 카운트만큼 가져옴
         return viewModel.articles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
-        print(indexPath)
         
         let model = viewModel.articles[indexPath.row]
 
-        if let loadedImage = viewModel.articles[indexPath.row].image {
+        if let loadedImage = viewModel.articles[indexPath.row].image[0] {
             cell.image.kf.setImage(with: loadedImage)
         }
 
@@ -245,15 +235,16 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         cell.scrapCnt.text = "\(model.scrapCnt!)"
         cell.commentCnt.text = "\(model.commentCnt!)"
         
-        //TODO: Configure cell
         return cell
     }
     
     // 선택한 아이템
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "DetailArticleVC_Main", sender: indexPath.row)
+//        let selectedCell: ArticleCell = collectionView.cellForItem(at: indexPath) as! ArticleCell
+//        print(selectedCell)
         
-        print(indexPath.row)
+        performSegue(withIdentifier: "DetailArticleVC_Main", sender: indexPath.row)
+//        print(indexPath.row)
     }
     
     func articleCollectionViewSetting() {
