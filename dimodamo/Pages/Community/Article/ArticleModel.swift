@@ -11,7 +11,7 @@ import Foundation
 // 아티클에 필요한 모델
 struct Article {
     var uid: String?
-    var image: [URL?]
+    var images: [URL?]
     var videos: [URL?]
     var category: Category?
     var title: String?

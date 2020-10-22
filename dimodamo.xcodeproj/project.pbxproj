@@ -56,6 +56,9 @@
 		988160D3251F634C00556AEC /* RegisterIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988160D2251F634C00556AEC /* RegisterIDViewController.swift */; };
 		988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988160D7251F664E00556AEC /* RegisterPWViewController.swift */; };
 		9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9881612E251F8CA000556AEC /* LoginViewModel.swift */; };
+		9883776E2541ECE100BFA746 /* LinkWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9883776D2541ECE100BFA746 /* LinkWebViewController.swift */; };
+		988377982541F4F500BFA746 /* CommentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988377972541F4F500BFA746 /* CommentInputView.swift */; };
+		9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9883779B2541F56D00BFA746 /* TextFieldRound.swift */; };
 		98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFD251113B600943861 /* DptiSurveyViewModel.swift */; };
 		988470002511148400943861 /* DptiSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFF2511148400943861 /* DptiSurvey.swift */; };
 		9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470022511406700943861 /* Nunito-Bold.ttf */; };
@@ -193,6 +196,9 @@
 		988160D2251F634C00556AEC /* RegisterIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterIDViewController.swift; sourceTree = "<group>"; };
 		988160D7251F664E00556AEC /* RegisterPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPWViewController.swift; sourceTree = "<group>"; };
 		9881612E251F8CA000556AEC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		9883776D2541ECE100BFA746 /* LinkWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWebViewController.swift; sourceTree = "<group>"; };
+		988377972541F4F500BFA746 /* CommentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputView.swift; sourceTree = "<group>"; };
+		9883779B2541F56D00BFA746 /* TextFieldRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldRound.swift; sourceTree = "<group>"; };
 		98846FFD251113B600943861 /* DptiSurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewModel.swift; sourceTree = "<group>"; };
 		98846FFF2511148400943861 /* DptiSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurvey.swift; sourceTree = "<group>"; };
 		988470022511406700943861 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -501,6 +507,7 @@
 		986322392517855B003B0784 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				9883776C2541ECC400BFA746 /* LinkWebView */,
 				98AFDAD4253AA5C000B0D88F /* Article */,
 				98A8B82B25377D3B00351FD5 /* Information */,
 				9863223D2517858E003B0784 /* Main */,
@@ -587,6 +594,7 @@
 				98C48B1B250CF959004E24E5 /* Json */,
 				98C48B14250CD163004E24E5 /* Lottie */,
 				98067133250F1F8200C3EB72 /* Domain */,
+				988377952541F4DB00BFA746 /* Component */,
 				987F5A95250B13F300E1B856 /* Pages */,
 				986322352517852F003B0784 /* Storyboard */,
 				986EDA072509C42600AD3CEE /* AppDelegate.swift */,
@@ -690,6 +698,31 @@
 				988160D7251F664E00556AEC /* RegisterPWViewController.swift */,
 			);
 			path = PW;
+			sourceTree = "<group>";
+		};
+		9883776C2541ECC400BFA746 /* LinkWebView */ = {
+			isa = PBXGroup;
+			children = (
+				9883776D2541ECE100BFA746 /* LinkWebViewController.swift */,
+			);
+			path = LinkWebView;
+			sourceTree = "<group>";
+		};
+		988377952541F4DB00BFA746 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				988377962541F4E100BFA746 /* TextInputBox */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		988377962541F4E100BFA746 /* TextInputBox */ = {
+			isa = PBXGroup;
+			children = (
+				988377972541F4F500BFA746 /* CommentInputView.swift */,
+				9883779B2541F56D00BFA746 /* TextFieldRound.swift */,
+			);
+			path = TextInputBox;
 			sourceTree = "<group>";
 		};
 		989384CA2518668600DE2C35 /* Register */ = {
@@ -1044,6 +1077,7 @@
 				98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
+				988377982541F4F500BFA746 /* CommentInputView.swift in Sources */,
 				9800A14F253377F20090C058 /* FirstIntroViewController.swift in Sources */,
 				98AFDA532539CF2400B0D88F /* CommunityMain.swift in Sources */,
 				9800A1482533739A0090C058 /* IntroViewModel.swift in Sources */,
@@ -1052,7 +1086,9 @@
 				98AFDAD6253AA5D700B0D88F /* ArticleViewController.swift in Sources */,
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
+				9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */,
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,
+				9883776E2541ECE100BFA746 /* LinkWebViewController.swift in Sources */,
 				98A661E7252F2C0000698BA0 /* FindEmailViewController.swift in Sources */,
 				98C42313251D7CCE00B2B194 /* Register.swift in Sources */,
 				980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */,

@@ -43,10 +43,10 @@ class CommunityMainViewModel {
                     // [String] Image를 [URL?] Image로 변환
                     let documentImageString: [String] = document.data()["image"] as! [String]
                     let documnetImageURL: [URL?] = documentImageString.map { URL(string: $0) }
-                    let image = documnetImageURL
+                    let images = documnetImageURL
                     
                     let article: Article = Article(uid: uid,
-                                                   image: image,
+                                                   images: images,
                                                    videos : [],
                                                    category: .magazine,
                                                    title: title,

@@ -109,11 +109,11 @@ class CommunityMainViewController: UIViewController {
                 destination.viewModel.tagsRelay.accept(tags)
             }
             
-//            if let tags = viewModel.articles[index].tags {
-//                for (index, tag) in tags.enumerated() {
-//                    destination.tags[index].text = "\(tag)"
-//                }
-//            }
+            // 썸네일은 넘어갈 때 부드럽게 하기 위해서 prepare에서 전달
+            if let titleImg = viewModel.articles[index].images[0] {
+                destination.viewModel.thumbnailImageRelay.accept(titleImg)
+            }
+        
             break
         
         default:
@@ -215,7 +215,7 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         
         let model = viewModel.articles[indexPath.row]
 
-        if let loadedImage = viewModel.articles[indexPath.row].image[0] {
+        if let loadedImage = viewModel.articles[indexPath.row].images[0] {
             cell.image.kf.setImage(with: loadedImage)
         }
 

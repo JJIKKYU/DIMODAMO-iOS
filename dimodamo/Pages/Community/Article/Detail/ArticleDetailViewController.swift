@@ -41,6 +41,8 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var commentTableView: UITableView!
     @IBOutlet weak var commentTableViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var commentTextFieldView: TextFieldContainerView!
+    
     var imageView1: UIImageView = UIImageView()
     
     var article: Article?
@@ -105,12 +107,20 @@ class ArticleDetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        // 썸네일
+        viewModel.thumbnailImageRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext : { [weak self] url in
+                self?.titleImg.kf.setImage(with: url)
+            })
+            .disposed(by: disposeBag)
+        
+        // 본문 이미지
         viewModel.imagesRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] urls in
                 // 가장 첫 번째 이미지를 썸네일로
                 if self?.viewModel.imagesRelay.value.count ?? 0 > 0 {
-                    self?.titleImg.kf.setImage(with: urls[0])
                     self?.imageStackViewSetting()
                 }
                 
@@ -172,6 +182,23 @@ class ArticleDetailViewController: UIViewController {
                 self?.urlViewSetting()
             })
             .disposed(by: disposeBag)
+        
+        /*
+         Keyboard
+         */
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LinkWebVC" {
+            let destination = segue.destination as! LinkWebViewController
+            guard let url: URL = (sender as! URL) else {
+                return
+            }
+            destination.url.accept(url)
+            
+        }
     }
 }
 
@@ -180,7 +207,6 @@ class ArticleDetailViewController: UIViewController {
 extension ArticleDetailViewController {
     func viewDesign() {
         articleCategory.articleCategoryDesign()
-        //        drawImage()
     }
     
     // 내용 본문에 Height에 맞게 조절하기 위해
@@ -189,29 +215,6 @@ extension ArticleDetailViewController {
         arg.translatesAutoresizingMaskIntoConstraints = true
         arg.sizeToFit()
         arg.isScrollEnabled = false
-    }
-    
-    func drawImage() {
-        let imageURL: URL = URL(string: "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/articlePosts%2F0XgA8G0aM2FjkVaQ4aE4%2Fimage-1.png?alt=media&token=b29bfc85-42b6-4b46-8d44-bf2fce231961")!
-        let imageView: UIImageView = UIImageView()
-        imageView.kf.setImage(with: imageURL)
-        
-        guard let image = imageView.image else {
-            return
-        }
-        
-        let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
-        
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 12
-        imageView.layer.masksToBounds = true
-        contentView.addSubview(imageView)
-        
-        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-        imageView.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 16).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
     }
 }
 
@@ -315,7 +318,7 @@ extension ArticleDetailViewController {
             imageView.addGestureRecognizer(singleTap)
 
             print("VideoScaledHeight :  \(scaledHeight)")
-            AVAsset(url: videoURL).generateThumbnail(completion: { [weak self] image in
+            AVAsset(url: videoURL).generateThumbnail(completion: { image in
                 DispatchQueue.main.async {
                     guard let image = image else { return }
                     imageView.image = image
@@ -384,7 +387,7 @@ extension AVAsset {
 
 extension ArticleDetailViewController {
     func urlViewSetting() {
-        for linkData in viewModel.linksDataRelay.value {
+        for (index, linkData) in viewModel.linksDataRelay.value.enumerated() {
             let containerView: UIView = UIView()
             containerView.translatesAutoresizingMaskIntoConstraints = false
             containerView.layer.borderWidth = 1.5
@@ -394,6 +397,13 @@ extension ArticleDetailViewController {
             containerView.backgroundColor = .clear
             
             urlStackView.addArrangedSubview(containerView)
+            
+            // 이미지를 클릭했을 경우에 영상이 뜨도록
+            let singleTap = LinkURLSenderTapGestureRecognizer(target: self, action: #selector(linkContainerViewtapDetected(url:)))
+            singleTap.url = linkData.url
+            containerView.isUserInteractionEnabled = true
+            containerView.addGestureRecognizer(singleTap)
+            
             containerView.leadingAnchor.constraint(equalTo: urlStackView.leadingAnchor, constant: 0).isActive = true
             containerView.trailingAnchor.constraint(equalTo: urlStackView.trailingAnchor, constant: 0).isActive = true
             containerView.heightAnchor.constraint(equalToConstant: 90).isActive = true
@@ -452,6 +462,25 @@ extension ArticleDetailViewController {
             urlStackView.sizeToFit()
         }
     }
+    
+    @objc func linkContainerViewtapDetected(url: LinkURLSenderTapGestureRecognizer) {
+        // Your action
+        guard let url = url.url else {
+            return
+        }
+        
+        performSegue(withIdentifier: "LinkWebVC", sender: url)
+        
+        print(url)
+        
+//
+//        // 이미지가 URL을 가지고 있다면 클릭했을 때 띄우도록
+//        self.avPlayer = AVPlayer(url: url)
+//        avController.player = avPlayer
+//        avController.view.frame = self.view.frame
+//        self.present(avController, animated: true, completion: nil)
+//        avPlayer.play()
+    }
 }
 
 struct PreviewResponse {
@@ -466,6 +495,10 @@ struct PreviewResponse {
         self.image = image
         self.icon = icon
     }
+}
+
+class LinkURLSenderTapGestureRecognizer: UITapGestureRecognizer {
+    var url: URL?
 }
 
 
@@ -498,4 +531,29 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
 //
 //        return 130
 //    }
+}
+
+//MARK:: - Keyboard & Touch
+
+extension ArticleDetailViewController: UITextFieldDelegate {
+    // 키보드 업, 다운 관련
+    @objc func moveUpTextView(_ notification: NSNotification) {
+        let window = UIApplication.shared.keyWindow
+        let bottomSafeArea = window?.safeAreaInsets.bottom
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
+        }
+    }
+    
+    @objc func moveDownTextView() {
+        self.commentTextFieldView?.transform = .identity
+    }
+    
+    // 터치했을때 키보드 내림
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touch")
+        self.view.endEditing(true)
+    }
 }

@@ -31,9 +31,9 @@ class ArticleDetailViewModel {
     var tagsRelay = BehaviorRelay<[String]>(value: [])
     
     /*
-     썸네일 및 본문 이미지
+     이미지
      */
-    
+    let thumbnailImageRelay = BehaviorRelay<URL?>(value: URL(string: ""))
     let imagesRelay = BehaviorRelay<[URL?]>(value: [])
     
     /*
