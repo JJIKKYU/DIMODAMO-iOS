@@ -40,6 +40,7 @@ class ArticleDetailViewController: UIViewController {
     
     @IBOutlet weak var commentTableView: UITableView!
     @IBOutlet weak var commentTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var commentTableViewBottom: NSLayoutConstraint!
     
     @IBOutlet weak var commentTextFieldView: TextFieldContainerView!
     
@@ -544,11 +545,15 @@ extension ArticleDetailViewController: UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
+            self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
+//            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
         }
     }
     
     @objc func moveDownTextView() {
         self.commentTextFieldView?.transform = .identity
+//        self.scrollView?.transform = .identity
+        self.commentTableViewBottom.constant = 125
     }
     
     // 터치했을때 키보드 내림
