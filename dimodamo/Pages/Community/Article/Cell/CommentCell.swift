@@ -38,7 +38,7 @@ extension CommentCell {
     // 텍스트뷰 Height 딱 맞도록
     func adjustUITextViewHeight(arg : UITextView)
     {
-        arg.translatesAutoresizingMaskIntoConstraints = true
+        arg.translatesAutoresizingMaskIntoConstraints = false
         arg.sizeToFit()
         arg.isScrollEnabled = false
     }

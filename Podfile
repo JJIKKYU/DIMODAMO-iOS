@@ -34,6 +34,7 @@ target 'dimodamo' do
   # 링크 첨부할 때 가져오는 정보
   pod 'SwiftLinkPreview', '~> 3.2.0'
   
+  pod 'LayoutHelper'
 
 
 end
