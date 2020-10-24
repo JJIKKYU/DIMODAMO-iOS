@@ -185,6 +185,17 @@ class ArticleDetailViewController: UIViewController {
             .disposed(by: disposeBag)
         
         /*
+         댓글
+         */
+        viewModel.commentsRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.commentTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+            
+        
+        /*
          Keyboard
          */
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -513,11 +524,13 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return viewModel.commentsRelay.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
+        cell.commentDescription.text = viewModel.commentsRelay.value[indexPath.row].comment
+        cell.commentNickname.text = viewModel.commentsRelay.value[indexPath.row].nickname
     
         return cell
     }
