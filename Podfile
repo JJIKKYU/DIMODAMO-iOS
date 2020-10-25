@@ -35,6 +35,9 @@ target 'dimodamo' do
   pod 'SwiftLinkPreview', '~> 3.2.0'
   
   pod 'LayoutHelper'
+  
+  # 글 작성할 때 태그 관련
+  pod 'Tagging'
 
 
 end
