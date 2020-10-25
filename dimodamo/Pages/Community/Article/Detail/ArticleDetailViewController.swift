@@ -17,6 +17,8 @@ import Kingfisher
 import AVFoundation
 import AVKit
 
+import Lottie
+
 class ArticleDetailViewController: UIViewController {
     
     
@@ -33,11 +35,15 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var imageStackView: UIStackView!
     
     @IBOutlet weak var videoStackView: UIStackView!
+    @IBOutlet weak var videoStackViewTop: NSLayoutConstraint!
     var avPlayer = AVPlayer()
     var avController = AVPlayerViewController()
     
     @IBOutlet weak var urlStackView: UIStackView!
+    @IBOutlet weak var urlStackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var urlStackLoadingView: UIView!
     
+    @IBOutlet weak var commentCount: UILabel!
     @IBOutlet weak var commentTableView: UITableView!
     @IBOutlet weak var commentTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var commentTableViewBottom: NSLayoutConstraint!
@@ -69,7 +75,7 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
-        self.commentTableViewHeight.constant = self.commentTableView.contentSize.height
+        
     }
     
     override func viewDidLoad() {
@@ -78,7 +84,6 @@ class ArticleDetailViewController: UIViewController {
         //        scrollView.layoutIfNeeded()
         //        scrollView.isScrollEnabled = true
         //        scrollView.contentSize = CGSize(width: self.view.frame.width, height: scrollView.frame.size.height)
-    
         commentTableView.delegate = self
         commentTableView.dataSource = self
         
@@ -90,7 +95,7 @@ class ArticleDetailViewController: UIViewController {
                 if uid != "" {
                     print("\(uid)")
                     self?.viewDesign()
-
+                    
                     self?.tablewViewSetting()
                     self?.viewModel.dataSetting()
                 }
@@ -126,15 +131,20 @@ class ArticleDetailViewController: UIViewController {
                     self?.imageStackViewSetting()
                 }
                 
-
+                
             })
             .disposed(by: disposeBag)
         
         viewModel.videosRelay
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                if self?.viewModel.videosRelay.value.count ?? 0 > 0 {
-                    print("들어옵니다")
+            .subscribe(onNext: { [weak self] value in
+                
+                // 하나도 없을 경우 오토레이아웃 삭제로 간격 조절
+                if value.count == 0 {
+                    self?.videoStackViewTop.constant = 0
+                }
+                else if value.count > 0 {
+                    self?.videoStackViewTop.constant = 16
                     self?.videoStackViewSetting()
                 }
             })
@@ -144,7 +154,7 @@ class ArticleDetailViewController: UIViewController {
         viewModel.descriptionRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] desc in
-//                self?.textView.text = "\(desc)"
+                //                self?.textView.text = "\(desc)"
                 if self?.viewModel.descriptionRelay.value != "" {
                     self?.textView.text = desc.replacingOccurrences(of: "\\n", with: "\n")
                     self?.adjustUITextViewHeight(arg: self!.textView)
@@ -157,31 +167,65 @@ class ArticleDetailViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] tags in
                 if tags.count <= 0 {
-                    return
+                    
+                } else {
+                    for (index, tag) in tags.enumerated() {
+                        self?.tags[index].text = "#\(tag)"
+                    }
                 }
                 
-                for (index, tag) in tags.enumerated() {
-                    self?.tags[index].text = "#\(tag)"
-                }
+                
             })
             .disposed(by: disposeBag)
         
         
         // URL Link
-        viewModel.urlLinksRelay
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .subscribe(onNext: { [weak self] value in
-                if self?.viewModel.postUidRelay.value != "" {
-                    self?.viewModel.linkViewSetting()
-                }
-                
-            })
-            .disposed(by: disposeBag)
-
+//        viewModel.urlLinksRelay
+//            //            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+//            .subscribeOn(MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] value in
+//                if value.count == 0 {
+//
+//                } else if self?.viewModel.postUidRelay.value != "" && self?.viewModel.loadingAnimationViewIsInstalled == false {
+//                    let height = self?.viewModel.urlLinksRelay.value.count
+//                    let cgFloatHeight: CGFloat = CGFloat(height! * 90)
+//                    let cgFloatSpacing: CGFloat = CGFloat((height! - 1) * 16)
+//                    self?.urlStackViewHeight.constant = cgFloatHeight + cgFloatSpacing
+//
+//                    let animationView = Lottie.AnimationView.init(name: "Loading2")
+//                    animationView.contentMode = .scaleAspectFill
+//                    animationView.backgroundBehavior = .pauseAndRestore
+//
+//                    animationView.translatesAutoresizingMaskIntoConstraints = false
+//                    self?.urlStackLoadingView.addSubview(animationView)
+//
+//                    animationView.centerYAnchor.constraint(equalTo: self!.urlStackLoadingView.centerYAnchor).isActive = true
+//                    animationView.centerXAnchor.constraint(equalTo: self!.urlStackLoadingView.centerXAnchor).isActive = true
+//
+//                    animationView.loopMode = .loop
+//                    animationView.play()
+//
+//
+//
+//
+//                    self?.viewModel.linkViewSetting()
+//                    self?.viewModel.loadingAnimationViewIsInstalled = true
+//
+//
+//                }
+//
+//            })
+//            .disposed(by: disposeBag)
+        
         viewModel.linksDataRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] links in
-                self?.urlViewSetting()
+                if links.count == 0 {
+                    
+                } else {
+                    self?.urlStackViewHeight.isActive = false
+                    self?.urlViewSetting()
+                }
             })
             .disposed(by: disposeBag)
         
@@ -190,11 +234,20 @@ class ArticleDetailViewController: UIViewController {
          */
         viewModel.commentsRelay
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.commentTableView.reloadData()
+            .subscribe(onNext: { [weak self] value in
+                self?.commentCount.text = "댓글 \(value.count)개"
+                if value.count > 0 {
+                    self?.commentTableView.reloadData()
+                    print("size : \((self?.commentTableView.contentSize.height)!)")
+                    self?.commentTableView.layoutIfNeeded()
+                    self?.commentTableViewHeight.constant = (self?.commentTableView.contentSize.height)!
+                }
             })
             .disposed(by: disposeBag)
-            
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            self.commentTableView.reloadData()
+//            }
         
         /*
          댓글 인풋 창
@@ -203,7 +256,7 @@ class ArticleDetailViewController: UIViewController {
             .map { $0 as String }
             .bind(to: self.viewModel.commentInputRelay)
             .disposed(by: disposeBag)
-            
+        
         
         /*
          Keyboard
@@ -265,7 +318,7 @@ extension ArticleDetailViewController {
                                         let image = value.image
                                         
                                         let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
-//                                        print("scaleHeight : \(scaledHeight)")
+                                        //                                        print("scaleHeight : \(scaledHeight)")
                                         
                                         imageStackView.insertArrangedSubview(imageView, at: index)
                                         
@@ -313,23 +366,23 @@ extension ArticleDetailViewController {
             }
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
-
+            
             // 인덱스 순서에 맞춰서 이미지가 들어가도록
             videoStackView.insertArrangedSubview(imageView, at: index)
-
+            
             // width사이즈에 맞게 무조건 16:9 사이즈로 고정되도록
             let scaledHeight = (UIScreen.main.bounds.width - 40) / 16 * 9
-
+            
             // Autolayout
             imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-
+            
             // Design
             imageView.layer.cornerRadius = 12
             imageView.layer.masksToBounds = true
             imageView.contentMode = .scaleAspectFill
-
+            
             let playIconImageView: UIImageView = UIImageView.init(image: UIImage(named: "playIcon"))
             imageView.addSubview(playIconImageView)
             playIconImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -337,15 +390,15 @@ extension ArticleDetailViewController {
             playIconImageView.heightAnchor.constraint(equalToConstant: playIconImageView.image!.size.height).isActive = true
             playIconImageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
             playIconImageView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
-
-
-
+            
+            
+            
             // 이미지를 클릭했을 경우에 영상이 뜨도록
             let singleTap = URLSenderTapGestureRecognizer(target: self, action: #selector(tapDetected(avUrl:)))
             singleTap.url = videoURL
             imageView.isUserInteractionEnabled = true
             imageView.addGestureRecognizer(singleTap)
-
+            
             print("VideoScaledHeight :  \(scaledHeight)")
             AVAsset(url: videoURL).generateThumbnail(completion: { image in
                 DispatchQueue.main.async {
@@ -415,7 +468,15 @@ extension AVAsset {
 // MARK: - URL
 
 extension ArticleDetailViewController {
+    
+    
     func urlViewSetting() {
+        //        urlStackViewHeight?.isActive = false
+        //        urlStackViewHeight?.isActive = false
+        
+        //        urlStackLoadingView.isHidden = true
+        urlStackLoadingView.removeFromSuperview()
+        
         for (index, linkData) in viewModel.linksDataRelay.value.enumerated() {
             let containerView: UIView = UIView()
             containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -439,7 +500,14 @@ extension ArticleDetailViewController {
             
             let imageView: UIImageView = UIImageView()
             //        let stringImageURL = URL(string: viewModel.linksDataRelay.value[0].image)
-            imageView.kf.setImage(with: URL(string: "\(linkData.image)"))
+            
+            // 이미지가 없을 경우
+            if linkData.image == "" {
+                imageView.image = UIImage(named: "urlDefaultImage")
+            } else {
+                imageView.kf.setImage(with: URL(string: "\(linkData.image)"))
+            }
+            
             containerView.addSubview(imageView)
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8).isActive = true
@@ -502,13 +570,13 @@ extension ArticleDetailViewController {
         
         print(url)
         
-//
-//        // 이미지가 URL을 가지고 있다면 클릭했을 때 띄우도록
-//        self.avPlayer = AVPlayer(url: url)
-//        avController.player = avPlayer
-//        avController.view.frame = self.view.frame
-//        self.present(avController, animated: true, completion: nil)
-//        avPlayer.play()
+        //
+        //        // 이미지가 URL을 가지고 있다면 클릭했을 때 띄우도록
+        //        self.avPlayer = AVPlayer(url: url)
+        //        avController.player = avPlayer
+        //        avController.view.frame = self.view.frame
+        //        self.present(avController, animated: true, completion: nil)
+        //        avPlayer.play()
     }
 }
 
@@ -537,7 +605,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tablewViewSetting() {
         // Row Height를 무시하고, 각 Row 안의 내용에 따라 Row 높이가 유동적으로 결정 되도록
         commentTableView.rowHeight = UITableView.automaticDimension
-        commentTableView.estimatedRowHeight = 130
+        commentTableView.estimatedRowHeight = 70
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -552,8 +620,10 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         if let heartCount = viewModel.commentsRelay.value[indexPath.row].heartCount {
             cell.commentHeart.text = "\(heartCount)"
         }
+        cell.indexpathRow = indexPath.row
+        cell.uid = viewModel.commentsRelay.value[indexPath.row].commentId
+        cell.viewModel = self.viewModel
         
-    
         return cell
     }
     
@@ -561,12 +631,16 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         self.viewWillLayoutSubviews()
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-////        let value: CGFloat = CGFloat(indexPath.row) * 10
-//
-//
-//        return 130
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)")
+    }
+    
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    ////        let value: CGFloat = CGFloat(indexPath.row) * 10
+    //
+    //
+    //        return 130
+    //    }
 }
 
 //MARK:: - Keyboard & Touch
@@ -580,15 +654,15 @@ extension ArticleDetailViewController: UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
-            self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
-//            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
+//            self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
+            //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
         }
     }
     
     @objc func moveDownTextView() {
         self.commentTextFieldView?.transform = .identity
-//        self.scrollView?.transform = .identity
-        self.commentTableViewBottom.constant = 125
+        //        self.scrollView?.transform = .identity
+//        self.commentTableViewBottom.constant = 0
     }
     
     // 터치했을때 키보드 내림

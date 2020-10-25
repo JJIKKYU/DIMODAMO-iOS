@@ -26,9 +26,6 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         let user = Auth.auth().currentUser
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        
-        print("SPlash")
         
         _ = lottie("Splash_1.5C_top", container: topContainer)
         _ = lottie("Splash_1.5C_bottom", container: bottomContainer)

@@ -9,12 +9,16 @@
 import UIKit
 
 class CommentCell: UITableViewCell {
-
+    
     @IBOutlet weak var commentProfile: UIImageView!
     @IBOutlet weak var commentNickname: UILabel!
     @IBOutlet weak var commentDescription: UITextView!
     @IBOutlet weak var commentDate: UILabel!
     @IBOutlet weak var commentHeart: UILabel!
+    
+    var indexpathRow: Int? = nil
+    var uid: String? = nil
+    var viewModel: ArticleDetailViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +31,11 @@ class CommentCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func pressedHeartBtn(_ sender: Any) {
+        guard let checkedViewModel = viewModel else { return }
+        guard let checkedUid = uid else { return }
+        checkedViewModel.pressedCommentHeart(uid: checkedUid)
+    }
 }
 
 

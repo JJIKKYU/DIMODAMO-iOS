@@ -60,6 +60,8 @@
 		988377982541F4F500BFA746 /* CommentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988377972541F4F500BFA746 /* CommentInputView.swift */; };
 		9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9883779B2541F56D00BFA746 /* TextFieldRound.swift */; };
 		988377EB2544B49E00BFA746 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988377EA2544B49E00BFA746 /* CommentModel.swift */; };
+		988377F12545640B00BFA746 /* Loading1.json in Resources */ = {isa = PBXBuildFile; fileRef = 988377EF2545640B00BFA746 /* Loading1.json */; };
+		988377F22545640B00BFA746 /* Loading2.json in Resources */ = {isa = PBXBuildFile; fileRef = 988377F02545640B00BFA746 /* Loading2.json */; };
 		98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFD251113B600943861 /* DptiSurveyViewModel.swift */; };
 		988470002511148400943861 /* DptiSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFF2511148400943861 /* DptiSurvey.swift */; };
 		9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470022511406700943861 /* Nunito-Bold.ttf */; };
@@ -201,6 +203,8 @@
 		988377972541F4F500BFA746 /* CommentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputView.swift; sourceTree = "<group>"; };
 		9883779B2541F56D00BFA746 /* TextFieldRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldRound.swift; sourceTree = "<group>"; };
 		988377EA2544B49E00BFA746 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		988377EF2545640B00BFA746 /* Loading1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Loading1.json; path = dimodamo/lottie/Loading/Loading1.json; sourceTree = SOURCE_ROOT; };
+		988377F02545640B00BFA746 /* Loading2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Loading2.json; path = dimodamo/lottie/Loading/Loading2.json; sourceTree = SOURCE_ROOT; };
 		98846FFD251113B600943861 /* DptiSurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewModel.swift; sourceTree = "<group>"; };
 		98846FFF2511148400943861 /* DptiSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurvey.swift; sourceTree = "<group>"; };
 		988470022511406700943861 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -736,6 +740,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		988377EE254563F900BFA746 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				988377EF2545640B00BFA746 /* Loading1.json */,
+				988377F02545640B00BFA746 /* Loading2.json */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		989384CA2518668600DE2C35 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -853,6 +866,7 @@
 		98C48B14250CD163004E24E5 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				988377EE254563F900BFA746 /* Loading */,
 				98A8B8082536040B00351FD5 /* Splash */,
 				9800A137253371280090C058 /* Dpti */,
 				9800A136253371200090C058 /* Intro */,
@@ -961,6 +975,7 @@
 				98A8B7FC2534C95B00351FD5 /* PS_M.json in Resources */,
 				98A8B7F12534C95B00351FD5 /* JI_G.json in Resources */,
 				98E2416B250F9F47003BE1A3 /* Results.json in Resources */,
+				988377F22545640B00BFA746 /* Loading2.json in Resources */,
 				98A8B7F42534C95B00351FD5 /* PE_M.json in Resources */,
 				980196E2252B620100F829F6 /* SF-Pro-Display-Medium.otf in Resources */,
 				9884700C2511406700943861 /* Nunito-ExtraLight.ttf in Resources */,
@@ -1010,6 +1025,7 @@
 				98C48B13250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf in Resources */,
 				98A8B8002534C95B00351FD5 /* JE_M.json in Resources */,
 				989384E62518D76700DE2C35 /* Friends.storyboard in Resources */,
+				988377F12545640B00BFA746 /* Loading1.json in Resources */,
 				980196E3252B620100F829F6 /* SF-Pro-Display-Semibold.otf in Resources */,
 				9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */,
 				980196DC252B620100F829F6 /* SF-Pro-Display-Ultralight.otf in Resources */,

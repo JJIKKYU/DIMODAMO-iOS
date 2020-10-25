@@ -20,6 +20,8 @@ class ArticleDetailViewModel {
     private let storage = Storage.storage().reference()
     private let db = Firestore.firestore()
     
+    lazy var commentDBCollection = db.collection("hongik/article/comments")
+    
     /*
      POSTUID를 main에서 prepare로 전달 받았을 경우에 초기화 시작
      */
@@ -50,6 +52,7 @@ class ArticleDetailViewModel {
      */
     let linksDataRelay = BehaviorRelay<[PreviewResponse]>(value: []) // 링크에 있는 데이터를 해체해 가지고 있음
     let urlLinksRelay = BehaviorRelay<[String]>(value: []) // 링크만 가지고 있음
+    var loadingAnimationViewIsInstalled: Bool = false
     static let slp = SwiftLinkPreview(cache: InMemoryCache())
     
     
@@ -71,23 +74,26 @@ class ArticleDetailViewModel {
             }
             
             
-            ArticleDetailViewModel.slp.previewLink("\(link)",
-                                                   onSuccess: { [self] result in
-                                                    let resultArr = result
-                                                    let linkData: PreviewResponse = PreviewResponse(url: resultArr["url"] as! URL,
-                                                                                                    title: resultArr["title"] as! String,
-                                                                                                    image: resultArr["image"] as! String,
-                                                                                                    icon: resultArr["icon"] as! String)
-                                                    linksData.append(linkData)
-                                                    
-                                                    // 모든 데이터가 다 들어갔을 때 마지막 한 번만 호출
-                                                    if urlLinksRelay.value.count == linksData.count {
-                                                        self.linksDataRelay.accept(linksData)
-                                                        //                                    print("ulrLinks.count = \(urlLinks.count), linksData = \(linksData.count)")
-                                                    }
-                                                   }, onError: { error in
-                                                    print("\(error)")
-                                                   })
+            ArticleDetailViewModel.slp
+                .previewLink("\(link)",
+                             onSuccess: { [self] result in
+                                let resultArr = result
+                                let linkData: PreviewResponse =
+                                    PreviewResponse(url: (resultArr["url"] as? URL) ?? URL(string: "dimodamo.com")!,
+                                                    title: resultArr["title"] as? String ?? "",
+                                                    image: resultArr["image"] as? String ?? "",
+                                                    icon: resultArr["icon"] as? String ?? ""
+                                    )
+                                linksData.append(linkData)
+                                
+                                // 모든 데이터가 다 들어갔을 때 마지막 한 번만 호출
+                                if urlLinksRelay.value.count == linksData.count {
+                                    self.linksDataRelay.accept(linksData)
+                                    //                                    print("ulrLinks.count = \(urlLinks.count), linksData = \(linksData.count)")
+                                }
+                             }, onError: { error in
+                                print("\(error)")
+                             })
         }
     }
     
@@ -142,9 +148,7 @@ class ArticleDetailViewModel {
                     comment.settingDataFromDocumentData(data: data)
                     comments.append(comment)
                     
-                    print("setting완료 : \(comment.comment)")
-                    
-                    
+                    print("setting완료 : \(comment.comment)")   
                 }
                 
                 self?.commentsRelay.accept(comments)
@@ -166,11 +170,16 @@ class ArticleDetailViewModel {
         let userDefaults = UserDefaults.standard
         let nickname: String = userDefaults.string(forKey: "nickname") ?? "익명"
         
+        // DocumentID를 미리 불러오기 위해
+        
+        let document = commentDBCollection.document()
+        let id: String = document.documentID
+        
         let comment: Comment = Comment()
         comment.setData(bundle_id: unixTimestamp,
                         bundle_order: unixTimestamp,
                         comment: self.commentInputRelay.value,
-                        comment_id: "",
+                        comment_id: "\(id)",
                         created_at: "\(strDate)",
                         depth: 0,
                         heart_count: 0,
@@ -179,19 +188,43 @@ class ArticleDetailViewModel {
                         post_id: self.postUidRelay.value,
                         user_id: Auth.auth().currentUser!.uid)
         
-        var ref: DocumentReference? = nil
-        
-        ref = db.collection("hongik/article/comments").addDocument(data: comment.dictionary) {
+        var ref = document.setData(comment.dictionary) {
             err in
             if let err = err {
                 print("error adding document: \(err.localizedDescription)")
             } else {
-                print("Document added with ID: \(ref!.documentID)")
+                print("Document added with ID: \(id)")
                 self.commentSetting()
                 
             }
         }
         
+    }
+    
+    func pressedCommentHeart(uid: String) {
+        print("전달받았습니다 : \(uid)")
+        
+        let commentCellDocument = commentDBCollection.document("\(uid)")
+        
+        
+        var currentHeartCount: Int?
+        commentDBCollection.document("\(uid)").getDocument { [weak self] (document, error) in
+            if let document = document, document.exists {
+                let data = document.data()
+                
+                if let heartCount: Int = data!["heart_count"] as? Int {
+                    currentHeartCount = heartCount
+                }
+                
+                if let heartCount = currentHeartCount {
+                    commentCellDocument.updateData(["heart_count" : heartCount + 1])
+                }
+                
+                
+            } else {
+                print("Documnet does not exist")
+            }
+        }
     }
     
     init() {
