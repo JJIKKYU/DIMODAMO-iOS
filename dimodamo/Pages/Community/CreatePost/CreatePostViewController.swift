@@ -11,25 +11,69 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CreatePostViewController: UIViewController {
+import Tagging
+
+class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBOutlet weak var descriptionContainer: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var titleLimit: UILabel!
     
     @IBOutlet weak var tagsTextField: UITextField!
     @IBOutlet weak var tagsLimit: UILabel!
+    @IBOutlet weak var tagsTableView: UITableView!
     
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var descriptionLimit: UILabel!
     
+    @IBOutlet weak var tagging: Tagging! {
+        didSet {
+            tagging.accessibilityIdentifier = "Tagging"
+            tagging.textView.accessibilityIdentifier = "TaggingTextView"
+            tagging.defaultAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.gray170),
+                                         NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any]
+            tagging.taggedAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.gray170),
+                                        NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any]
+            tagging.textView.textContainer.maximumNumberOfLines = 2
+            //            tagging.textView.text = nil
+            
+            let text: String = "태그를 입력해 주세요"
+            let titleAttributes: [NSAttributedString.Key: Any] = [
+                .font : UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any,
+                .foregroundColor : UIColor.appColor(.gray210),
+            ]
+            
+            let attributedString = NSAttributedString(string: text, attributes: titleAttributes)
+            tagging.textView.attributedText = attributedString
+            
+            tagging.symbol = "#"
+            tagging.tagableList = ["DOOMFIST", "GENJI", "MCCREE", "PHARAH", "REAPER", "SOLDIER:76", "SOMBRA", "TRACER", "BASTION", "HANZO", "JUNKRAT", "MEI", "TORBJORN", "WIDOWMAKER", "D.VA", "ORISA", "REINHARDT", "ROADHOG", "WINSTON", "ZARYA", "ANA", "BRIGITTE", "LUCIO", "MERCY", "MOIRA", "SYMMETRA", "ZENYATTA", "디자이너", "한글", "디질래", "디지몬"]
+        }
+    }
+    
     var disposeBag = DisposeBag()
     let viewModel = CreatePostViewModel()
+    
+    var matchedList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
+        //        tagging.textView.delegate = self
+        tagging.dataSource = self
+        
+        tagsTableView.dataSource = self
+        tagsTableView.delegate = self
+        
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        
+        
         
         /*
          타이틀
@@ -56,9 +100,17 @@ class CreatePostViewController: UIViewController {
         /*
          태그
          */
-        tagsTextField.rx.text.orEmpty
+        tagging.textView.rx.text.orEmpty
             .map { $0 as String }
-            .bind(to: self.viewModel.tagsRelay)
+            .subscribe(onNext: { [weak self] value in
+                if self?.viewModel.tagsLimitCount == 3 {
+                    print("더이상 글을 쓸 수 없도록")
+                }
+                self?.viewModel.tagsRelay.accept(value)
+                self?.tagsLimit.text = self?.viewModel.tagsLimit
+                
+
+            })
             .disposed(by: disposeBag)
         
         /*
@@ -70,20 +122,32 @@ class CreatePostViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    func tagging(_ tagging: Tagging, didChangedTagableList tagableList: [String]) {
+        matchedList = tagableList
+        if matchedList.count > 0 {
+            tagsTableView.reloadData()
+            tagsTableView.isHidden = false
+        }
+        
+        print(matchedList.count)
+    }
+    
+    func tagging(_ tagging: Tagging, didChangedTaggedList taggedList: [TaggingModel]) {
+        print("태그완료된 리스트 :  \(taggedList)")
+    }
+    
     @IBAction func pressedCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+//        self.tagsTableView.isHidden = true
     }
-    */
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("asd")
+    }
 }
 
 // MARK: - UI Design
@@ -94,14 +158,44 @@ extension CreatePostViewController {
         self.descriptionContainer.layer.borderColor = UIColor.appColor(.white245).cgColor
         self.descriptionContainer.layer.cornerRadius = 9
         self.descriptionContainer.layer.masksToBounds = true
+        
+        self.tagsTableView.layer.borderWidth = 2
+        self.tagsTableView.layer.borderColor = UIColor.appColor(.white235).cgColor
+        self.tagsTableView.appShadow(.s4)
+        self.tagsTableView.rowHeight = 50
+        
+        tagsTableView.isHidden = true
     }
 }
 
 // MARK: - TextField
+
 extension CreatePostViewController: UITextFieldDelegate {
     func checkMaxLength(textField: UITextField!, maxLength: Int) {
         if ((textField.text!).count > maxLength) {
             textField.deleteBackward()
         }
     }
+}
+
+// MARK: - TagsTableView
+
+extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return matchedList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath) as! TagCell
+        cell.tagLabel.text = matchedList[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tagging.updateTaggedList(allText: tagging.textView.text, tagText: matchedList[indexPath.row])
+        tableView.isHidden = true
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
 }

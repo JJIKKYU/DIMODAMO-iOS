@@ -21,11 +21,48 @@ class CreatePostViewModel {
     
     // 태그
     let tagsRelay = BehaviorRelay<String>(value: "")
+    var tagsLimit: String {
+        // # 태그가 있는 단어들을 찾아서 태그 때고  다 소문자로 해주기
+        let sliceArray = tagsRelay.value.getArrayAfterRegex(regex:"#[a-zA-Z0-9]+").map { (slice) in
+            slice.replacingOccurrences(of: "#", with: "").lowercased()
+        }
+        
+        return "\(sliceArray.count)/3"
+    }
+    var tagsLimitCount: Int {
+        let sliceArray = tagsRelay.value.getArrayAfterRegex(regex:"#[a-zA-Z0-9]+").map { (slice) in
+            slice.replacingOccurrences(of: "#", with: "").lowercased()
+        }
+        
+        return sliceArray.count
+    }
     
     // 내용
     let descriptionRelay = BehaviorRelay<String>(value: "")
     
     init() {
         
+    }
+}
+
+
+
+// MARK: - 정규식 익스텐션
+// https://eunjin3786.tistory.com/12
+
+extension String{
+    func getArrayAfterRegex(regex: String) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: self,
+                                        range: NSRange(self.startIndex..., in: self))
+            return results.map {
+                String(self[Range($0.range, in: self)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
     }
 }

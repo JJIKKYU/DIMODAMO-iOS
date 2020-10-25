@@ -35,14 +35,12 @@ open class Tagging: UIView {
     open var symbol: String = "@"
     open var tagableList: [String]?
     open var defaultAttributes: [NSAttributedString.Key: Any] = {
-        return [NSAttributedString.Key.foregroundColor: UIColor.black,
-                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15),
-                NSAttributedString.Key.underlineStyle: NSNumber(value: 0)]
+        return [NSAttributedString.Key.foregroundColor: UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1),
+                NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any]
     }()
     open var symbolAttributes: [NSAttributedString.Key: Any] = {
-        return [NSAttributedString.Key.foregroundColor: UIColor.black,
-                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15),
-                NSAttributedString.Key.underlineStyle: NSNumber(value: 0)]
+        return [NSAttributedString.Key.foregroundColor: UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1),
+                NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any]
     }()
     open var taggedAttributes: [NSAttributedString.Key: Any] = {return [NSAttributedString.Key.underlineStyle: NSNumber(value: 1)]}()
     
@@ -147,8 +145,10 @@ extension Tagging {
 extension Tagging: UITextViewDelegate {
     
     public func textViewDidChange(_ textView: UITextView) {
+        textView.text = textView.text.replacingOccurrences(of: "\n", with: " ")
         tagging(textView: textView)
         updateAttributeText(selectedLocation: textView.selectedRange.location)
+        
     }
     
     public func textViewDidChangeSelection(_ textView: UITextView) {
@@ -158,6 +158,20 @@ extension Tagging: UITextViewDelegate {
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         updateTaggedList(range: range, textCount: text.utf16.count)
         return true
+    }
+    
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "태그를 입력해 주세요" {
+            textView.text = nil
+            textView.textColor = UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1)
+        }
+    }
+    
+    public func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "태그를 입력해 주세요"
+            textView.textColor = UIColor(red: 0.824, green: 0.824, blue: 0.824, alpha: 1)
+        }
     }
     
 }
