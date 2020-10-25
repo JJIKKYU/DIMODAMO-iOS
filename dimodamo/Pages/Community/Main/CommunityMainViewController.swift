@@ -76,6 +76,10 @@ class CommunityMainViewController: UIViewController {
         performSegue(withIdentifier: "\(CommunitySegueName.information)", sender: sender)
     }
     
+    @IBAction func pressedCreatePostBtn(_ sender: Any) {
+        performSegue(withIdentifier: "CreatePostVC", sender: sender)
+    }
+    
     @objc func pressedSearchBtn(sender: UIButton) {
         print("pressedSeearchBtn")
     }
@@ -114,6 +118,13 @@ class CommunityMainViewController: UIViewController {
                 destination.viewModel.thumbnailImageRelay.accept(titleImg)
             }
         
+            break
+            
+        case "CreatePostVC":
+//            let destination: CreatePostViewController = segue.destination as! CreatePostViewController
+            segue.destination.modalTransitionStyle = .coverVertical
+            segue.destination.modalPresentationStyle = .fullScreen
+            
             break
         
         default:
