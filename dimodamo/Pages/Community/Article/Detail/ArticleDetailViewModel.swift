@@ -56,7 +56,10 @@ class ArticleDetailViewModel {
     /*
      댓글
      */
+    // 목록
     let commentsRelay = BehaviorRelay<[Comment]>(value: [])
+    // 입력
+    let commentInputRelay = BehaviorRelay<String>(value: "")
     
     func linkViewSetting() {
         var linksData: [PreviewResponse] = []
@@ -120,7 +123,7 @@ class ArticleDetailViewModel {
         db.collection("hongik/article/comments/")
             .whereField("post_id", isEqualTo: postUidRelay.value)
             .whereField("is_deleted", isEqualTo: false)
-//            .order(by: <#T##String#>, descending: <#T##Bool#>)
+            .order(by: "bundle_id")
             .getDocuments(completion: { [weak self] (querySnapshot, err) in
                 if let err = err {
                     print("댓글을 가져오는데 실패했습니다. \(err.localizedDescription)")
@@ -138,6 +141,7 @@ class ArticleDetailViewModel {
                     let comment: Comment = Comment()
                     comment.settingDataFromDocumentData(data: data)
                     comments.append(comment)
+                    
                     print("setting완료 : \(comment.comment)")
                     
                     
@@ -145,6 +149,49 @@ class ArticleDetailViewModel {
                 
                 self?.commentsRelay.accept(comments)
             })
+    }
+    
+    func commentInput() {
+        if commentInputRelay.value.count == 0 { return }
+        
+        let unixTimestamp = NSDate().timeIntervalSince1970
+        let date = Date(timeIntervalSince1970: unixTimestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+9")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "MM/dd HH:mm"
+        let strDate = dateFormatter.string(from: date)
+        
+        // 유저 디폹트에서 닉네임을 불러옴
+        let userDefaults = UserDefaults.standard
+        let nickname: String = userDefaults.string(forKey: "nickname") ?? "익명"
+        
+        let comment: Comment = Comment()
+        comment.setData(bundle_id: unixTimestamp,
+                        bundle_order: unixTimestamp,
+                        comment: self.commentInputRelay.value,
+                        comment_id: "",
+                        created_at: "\(strDate)",
+                        depth: 0,
+                        heart_count: 0,
+                        is_deleted: false,
+                        nickname: "\(nickname)",
+                        post_id: self.postUidRelay.value,
+                        user_id: Auth.auth().currentUser!.uid)
+        
+        var ref: DocumentReference? = nil
+        
+        ref = db.collection("hongik/article/comments").addDocument(data: comment.dictionary) {
+            err in
+            if let err = err {
+                print("error adding document: \(err.localizedDescription)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+                self.commentSetting()
+                
+            }
+        }
+        
     }
     
     init() {

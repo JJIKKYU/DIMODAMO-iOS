@@ -448,7 +448,7 @@
                         <outlet property="tableView" destination="gvX-HO-fK5" id="zYV-zB-w9o"/>
                         <segue destination="ryl-E5-d2S" kind="show" identifier="InformationVC" id="W1f-eG-mNE"/>
                         <segue destination="iXc-eR-qQb" kind="show" identifier="ArticleVC" id="a1k-XL-XIf"/>
-                        <segue destination="uzi-lB-7YW" kind="push" identifier="DetailArticleVC_Main" id="Ae2-2V-5qG"/>
+                        <segue destination="uzi-lB-7YW" kind="show" identifier="DetailArticleVC_Main" id="Ae2-2V-5qG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gx-Ol-Ul7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -747,10 +747,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U9e-Tx-pxr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
+                                                        <rect key="frame" x="0.0" y="307" width="414" height="0.0"/>
                                                     </imageView>
                                                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEv-qk-RPB" userLabel="ImgOpacityView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
+                                                        <rect key="frame" x="0.0" y="307" width="414" height="0.0"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-h0-QOv">
@@ -966,7 +966,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ec-uz-qSw">
-                                                                    <rect key="frame" x="157.5" y="82" width="49" height="28"/>
+                                                                    <rect key="frame" x="160" y="82" width="49" height="28"/>
                                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
                                                                     <state key="normal" title="답글 달기">
                                                                         <color key="titleColor" name="GRAY - 210"/>
@@ -977,6 +977,7 @@
                                                             <constraints>
                                                                 <constraint firstItem="qHh-EO-Uav" firstAttribute="top" secondItem="pnZ-Or-zSI" secondAttribute="bottom" constant="4" id="1f5-si-dNf"/>
                                                                 <constraint firstItem="kYY-rx-wCc" firstAttribute="leading" secondItem="bnr-qI-XUT" secondAttribute="leading" id="49F-en-tSV"/>
+                                                                <constraint firstItem="3Ec-uz-qSw" firstAttribute="leading" secondItem="Ycg-lQ-E9T" secondAttribute="leading" constant="160" id="4Wz-3m-hb4"/>
                                                                 <constraint firstItem="pnZ-Or-zSI" firstAttribute="leading" secondItem="kYY-rx-wCc" secondAttribute="trailing" constant="20" id="5QM-r1-chk"/>
                                                                 <constraint firstItem="bnr-qI-XUT" firstAttribute="leading" secondItem="pvJ-ur-OKt" secondAttribute="trailing" constant="8" id="5pX-YK-0mw"/>
                                                                 <constraint firstAttribute="bottom" secondItem="3Ec-uz-qSw" secondAttribute="bottom" constant="20" id="6gp-NS-G9n"/>
@@ -984,7 +985,6 @@
                                                                 <constraint firstItem="pvJ-ur-OKt" firstAttribute="top" secondItem="Ycg-lQ-E9T" secondAttribute="top" id="8ai-9O-XDP"/>
                                                                 <constraint firstItem="pnZ-Or-zSI" firstAttribute="top" secondItem="Ycg-lQ-E9T" secondAttribute="top" constant="20" id="EJX-jw-Kb0"/>
                                                                 <constraint firstItem="pvJ-ur-OKt" firstAttribute="leading" secondItem="Ycg-lQ-E9T" secondAttribute="leading" constant="24" id="Ko1-VQ-hay"/>
-                                                                <constraint firstItem="3Ec-uz-qSw" firstAttribute="leading" secondItem="GfV-O2-T7b" secondAttribute="trailing" constant="16" id="Vgl-Pi-LNt"/>
                                                                 <constraint firstItem="kYY-rx-wCc" firstAttribute="top" secondItem="bnr-qI-XUT" secondAttribute="bottom" constant="6" id="Yjl-RE-ide"/>
                                                                 <constraint firstItem="GfV-O2-T7b" firstAttribute="leading" secondItem="kYY-rx-wCc" secondAttribute="leading" id="bA7-4C-RxB"/>
                                                                 <constraint firstItem="qHh-EO-Uav" firstAttribute="centerX" secondItem="pnZ-Or-zSI" secondAttribute="centerX" id="pm6-gL-6hK"/>
@@ -995,7 +995,9 @@
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" name="WHITE"/>
                                                         <connections>
+                                                            <outlet property="commentDate" destination="GfV-O2-T7b" id="9Qu-Xp-o46"/>
                                                             <outlet property="commentDescription" destination="kYY-rx-wCc" id="RWS-4G-fdL"/>
+                                                            <outlet property="commentHeart" destination="qHh-EO-Uav" id="rr6-BO-2fx"/>
                                                             <outlet property="commentNickname" destination="bnr-qI-XUT" id="X7y-dn-jLF"/>
                                                             <outlet property="commentProfile" destination="pvJ-ur-OKt" id="cjC-f1-LYi"/>
                                                         </connections>
@@ -1081,6 +1083,9 @@
                                                     <constraint firstAttribute="height" constant="22" id="MvM-sP-JxM"/>
                                                 </constraints>
                                                 <state key="normal" image="sendIcon"/>
+                                                <connections>
+                                                    <action selector="pressedSendCommentBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="OrY-Dd-TH7"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1142,6 +1147,7 @@
                         <outlet property="commentTableView" destination="2ZA-m7-daI" id="9md-cP-RZh"/>
                         <outlet property="commentTableViewBottom" destination="dtV-cD-bkp" id="2Tk-Rz-RmA"/>
                         <outlet property="commentTableViewHeight" destination="IW7-5C-YeI" id="v4X-8s-SdQ"/>
+                        <outlet property="commentTextField" destination="56T-W1-dRs" id="v7S-t7-Cxb"/>
                         <outlet property="commentTextFieldView" destination="kYD-Mh-DWj" id="fWS-is-0cH"/>
                         <outlet property="contentView" destination="pqZ-A9-PlE" id="wgS-6J-bQh"/>
                         <outlet property="imageStackView" destination="nxA-RJ-2LT" id="R08-GA-LzY"/>
@@ -1241,7 +1247,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RQh-cD-CdY"/>
+        <segue reference="Ae2-2V-5qG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="commentIcon" width="12" height="12"/>

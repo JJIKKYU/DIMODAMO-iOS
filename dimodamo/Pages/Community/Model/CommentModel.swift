@@ -8,43 +8,88 @@
 
 import Foundation
 
-class Comment {
-    var bundle_id: Int?
-    var bundle_order: Int?
+class Comment : Codable {
+    var bundleId: Double?
+    var bundleOrder: Double?
     var comment: String?
-    var comment_id: String?
-    var created_at: String? // Timestamp로 변경
+    var commentId: String?
+    var createdAt: String? // Timestamp로 변경
     var depth: Int?
-    var is_deleted: Bool?
+    var heartCount: Int?
+    var isDeleted: Bool?
     var nickname: String?
-    var post_id: String?
-    var user_id: String?
+    var postId: String?
+    var userId: String?
     
-    init() {
+    
+    enum CodingKeys: String, CodingKey {
+        case bundleId = "bundle_id"
+        case bundleOrder = "bundle_order"
+        case comment
+        case commentId = "comment_id"
+        case createdAt = "created_at"
+        case depth
+        case heartCount = "heart_count"
+        case isDeleted = "is_deleted"
+        case nickname
+        case postId = "postId"
+        case userId = "userId"
         
     }
     
-    func setData(bundle_id: Int, bundle_order: Int, comment: String, comment_id: String, created_at: String,
-                 depth: Int, is_deleted: Bool, nickname: String, post_id: String, user_id: String) {
-        self.bundle_id = bundle_id
-        self.bundle_order = bundle_order
+    var dictionary: [String: Any] {
+        return [
+            "bundle_id": bundleId ?? 0,
+            "bundle_order" : bundleOrder ?? 0,
+            "comment": comment ?? "",
+            "comment_id": commentId ?? "",
+            "created_at": createdAt ?? "",
+            "depth": depth ?? 0,
+            "heart_count": heartCount ?? 0,
+            "is_deleted": isDeleted ?? false,
+            "nickname": nickname ?? "",
+            "post_id": postId ?? "",
+            "user_id": userId ?? ""
+        ]
+    }
+    
+    //    required init(from decoder: Decoder) throws {
+    //        let values = try decoder.container(keyedBy: CodingKeys.self)
+    //        bundleId = (try? values.decode(Int.self, forKey: .bundleId)) ?? 0
+    //        bundleOrder = (try? values.decode(Int.self, forKey: .bundleOrder)) ?? 0
+    //        comment = (try? values.decode(String.self, forKey: .comment)) ?? ""
+    //        commentId = (try? values.decode(String.self, forKey: .commentId)) ?? ""
+    //        // 수정 예정
+    //        createdAt = (try? values.decode(String.self, forKey: .createdAt)) ?? ""
+    //        depth = (try? values.decode(Int.self, forKey: .depth)) ?? 0
+    //        isDeleted = (try? values.decode(Bool.self, forKey: .isDeleted)) ?? false
+    //        nickname = (try? values.decode(String.self, forKey: .nickname)) ?? ""
+    //        postId = (try? values.decode(String.self, forKey: .postId)) ?? ""
+    //        userId = (try? values.decode(String.self, forKey: .userid)) ?? ""
+    //    }
+    
+    func setData(bundle_id: Double, bundle_order: Double, comment: String, comment_id: String, created_at: String,
+                 depth: Int, heart_count: Int, is_deleted: Bool, nickname: String, post_id: String, user_id: String) {
+        self.bundleId = bundle_id
+        self.bundleOrder = bundle_order
         self.comment = comment
-        self.comment_id = comment_id
-        self.created_at = created_at
+        self.commentId = comment_id
+        self.createdAt = created_at
         self.depth = depth
-        self.is_deleted = is_deleted
+        self.heartCount = heart_count
+        self.isDeleted = is_deleted
         self.nickname = nickname
-        self.post_id = post_id
-        self.user_id = user_id
+        self.postId = post_id
+        self.userId = user_id
     }
     
     func settingDataFromDocumentData(data: [String: Any]) {
-        if let bundle_id: Int = data["bundle_id"] as? Int {
-            self.bundle_id = bundle_id
+        if let bundle_id: Double = data["bundle_id"] as? Double {
+            self.bundleId = bundle_id
         }
         
-        if let bundle_order: Int = data["bundle_order"] as? Int {
-            self.bundle_order = bundle_order
+        if let bundle_order: Double = data["bundle_order"] as? Double {
+            self.bundleOrder = bundle_order
         }
         
         if let commentData: String = data["comment"] as? String {
@@ -52,18 +97,23 @@ class Comment {
         }
         
         if let comment_id: String = data["comment_id"] as? String {
-            self.comment_id = comment_id
+            self.commentId = comment_id
         }
         
-        // create_at은 일단 생략
-//                    if let
+        if let created_at: String = data["created_at"] as? String {
+            self.createdAt = created_at
+        }
         
         if let comment_depth: Int = data["comment_depth"] as? Int {
             self.depth = comment_depth
         }
         
+        if let heart_count: Int = data["heart_count"] as? Int {
+            self.heartCount = heart_count
+        }
+        
         if let is_deleted: Bool = data["is_deleted"] as? Bool {
-            self.is_deleted = is_deleted
+            self.isDeleted = is_deleted
         }
         
         if let nickname: String = data["nickname"] as? String {
@@ -71,11 +121,11 @@ class Comment {
         }
         
         if let post_id: String = data["post_id"] as? String {
-            self.post_id = post_id
+            self.postId = post_id
         }
         
         if let user_id: String = data["user_id"] as? String {
-            self.user_id = user_id
+            self.userId = user_id
         }
     }
 }

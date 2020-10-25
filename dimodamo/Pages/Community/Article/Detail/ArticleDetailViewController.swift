@@ -43,6 +43,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var commentTableViewBottom: NSLayoutConstraint!
     
     @IBOutlet weak var commentTextFieldView: TextFieldContainerView!
+    @IBOutlet weak var commentTextField: UITextField!
     
     var imageView1: UIImageView = UIImageView()
     
@@ -196,6 +197,15 @@ class ArticleDetailViewController: UIViewController {
             
         
         /*
+         댓글 인풋 창
+         */
+        commentTextField.rx.text.orEmpty
+            .map { $0 as String }
+            .bind(to: self.viewModel.commentInputRelay)
+            .disposed(by: disposeBag)
+            
+        
+        /*
          Keyboard
          */
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -212,6 +222,13 @@ class ArticleDetailViewController: UIViewController {
             
         }
     }
+    
+    @IBAction func pressedSendCommentBtn(_ sender: Any) {
+        viewModel.commentInput()
+        commentTextField.text = ""
+        commentTableView.reloadData()
+    }
+    
 }
 
 // MARK:- UI
@@ -531,6 +548,11 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
         cell.commentDescription.text = viewModel.commentsRelay.value[indexPath.row].comment
         cell.commentNickname.text = viewModel.commentsRelay.value[indexPath.row].nickname
+        cell.commentDate.text = viewModel.commentsRelay.value[indexPath.row].createdAt
+        if let heartCount = viewModel.commentsRelay.value[indexPath.row].heartCount {
+            cell.commentHeart.text = "\(heartCount)"
+        }
+        
     
         return cell
     }
