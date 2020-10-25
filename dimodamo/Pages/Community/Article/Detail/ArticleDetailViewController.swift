@@ -78,6 +78,17 @@ class ArticleDetailViewController: UIViewController {
         
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if(keyPath == "contentSize"){
+            if let newvalue = change?[.newKey] {
+                let contentHeight: CGFloat = commentTableView.contentSize.height
+                DispatchQueue.main.async {
+                    self.commentTableViewHeight.constant = contentHeight
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,6 +98,8 @@ class ArticleDetailViewController: UIViewController {
         commentTableView.delegate = self
         commentTableView.dataSource = self
         
+        
+        commentTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         
         viewModel.postUidRelay
@@ -180,42 +193,42 @@ class ArticleDetailViewController: UIViewController {
         
         
         // URL Link
-//        viewModel.urlLinksRelay
-//            //            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-//            .subscribeOn(MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] value in
-//                if value.count == 0 {
-//
-//                } else if self?.viewModel.postUidRelay.value != "" && self?.viewModel.loadingAnimationViewIsInstalled == false {
-//                    let height = self?.viewModel.urlLinksRelay.value.count
-//                    let cgFloatHeight: CGFloat = CGFloat(height! * 90)
-//                    let cgFloatSpacing: CGFloat = CGFloat((height! - 1) * 16)
-//                    self?.urlStackViewHeight.constant = cgFloatHeight + cgFloatSpacing
-//
-//                    let animationView = Lottie.AnimationView.init(name: "Loading2")
-//                    animationView.contentMode = .scaleAspectFill
-//                    animationView.backgroundBehavior = .pauseAndRestore
-//
-//                    animationView.translatesAutoresizingMaskIntoConstraints = false
-//                    self?.urlStackLoadingView.addSubview(animationView)
-//
-//                    animationView.centerYAnchor.constraint(equalTo: self!.urlStackLoadingView.centerYAnchor).isActive = true
-//                    animationView.centerXAnchor.constraint(equalTo: self!.urlStackLoadingView.centerXAnchor).isActive = true
-//
-//                    animationView.loopMode = .loop
-//                    animationView.play()
-//
-//
-//
-//
-//                    self?.viewModel.linkViewSetting()
-//                    self?.viewModel.loadingAnimationViewIsInstalled = true
-//
-//
-//                }
-//
-//            })
-//            .disposed(by: disposeBag)
+        //        viewModel.urlLinksRelay
+        //            //            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        //            .subscribeOn(MainScheduler.instance)
+        //            .subscribe(onNext: { [weak self] value in
+        //                if value.count == 0 {
+        //
+        //                } else if self?.viewModel.postUidRelay.value != "" && self?.viewModel.loadingAnimationViewIsInstalled == false {
+        //                    let height = self?.viewModel.urlLinksRelay.value.count
+        //                    let cgFloatHeight: CGFloat = CGFloat(height! * 90)
+        //                    let cgFloatSpacing: CGFloat = CGFloat((height! - 1) * 16)
+        //                    self?.urlStackViewHeight.constant = cgFloatHeight + cgFloatSpacing
+        //
+        //                    let animationView = Lottie.AnimationView.init(name: "Loading2")
+        //                    animationView.contentMode = .scaleAspectFill
+        //                    animationView.backgroundBehavior = .pauseAndRestore
+        //
+        //                    animationView.translatesAutoresizingMaskIntoConstraints = false
+        //                    self?.urlStackLoadingView.addSubview(animationView)
+        //
+        //                    animationView.centerYAnchor.constraint(equalTo: self!.urlStackLoadingView.centerYAnchor).isActive = true
+        //                    animationView.centerXAnchor.constraint(equalTo: self!.urlStackLoadingView.centerXAnchor).isActive = true
+        //
+        //                    animationView.loopMode = .loop
+        //                    animationView.play()
+        //
+        //
+        //
+        //
+        //                    self?.viewModel.linkViewSetting()
+        //                    self?.viewModel.loadingAnimationViewIsInstalled = true
+        //
+        //
+        //                }
+        //
+        //            })
+        //            .disposed(by: disposeBag)
         
         viewModel.linksDataRelay
             .observeOn(MainScheduler.instance)
@@ -238,16 +251,15 @@ class ArticleDetailViewController: UIViewController {
                 self?.commentCount.text = "댓글 \(value.count)개"
                 if value.count > 0 {
                     self?.commentTableView.reloadData()
-                    print("size : \((self?.commentTableView.contentSize.height)!)")
-                    self?.commentTableView.layoutIfNeeded()
+//                    print("size : \((self?.commentTableView.contentSize.height)!)")
                     self?.commentTableViewHeight.constant = (self?.commentTableView.contentSize.height)!
                 }
             })
             .disposed(by: disposeBag)
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//            self.commentTableView.reloadData()
-//            }
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        //            self.commentTableView.reloadData()
+        //            }
         
         /*
          댓글 인풋 창
@@ -471,10 +483,6 @@ extension ArticleDetailViewController {
     
     
     func urlViewSetting() {
-        //        urlStackViewHeight?.isActive = false
-        //        urlStackViewHeight?.isActive = false
-        
-        //        urlStackLoadingView.isHidden = true
         urlStackLoadingView.removeFromSuperview()
         
         for (index, linkData) in viewModel.linksDataRelay.value.enumerated() {
@@ -605,7 +613,9 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tablewViewSetting() {
         // Row Height를 무시하고, 각 Row 안의 내용에 따라 Row 높이가 유동적으로 결정 되도록
         commentTableView.rowHeight = UITableView.automaticDimension
-        commentTableView.estimatedRowHeight = 70
+                commentTableView.estimatedRowHeight = 100
+//        commentTableView.invalidateIntrinsicContentSize()
+//        commentTableView.layoutIfNeeded()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -635,12 +645,10 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         print("\(indexPath.row)")
     }
     
-    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    ////        let value: CGFloat = CGFloat(indexPath.row) * 10
-    //
-    //
-    //        return 130
-    //    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
+    }
 }
 
 //MARK:: - Keyboard & Touch
@@ -654,7 +662,7 @@ extension ArticleDetailViewController: UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
-//            self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
+            //            self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
             //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
         }
     }
@@ -662,7 +670,7 @@ extension ArticleDetailViewController: UITextFieldDelegate {
     @objc func moveDownTextView() {
         self.commentTextFieldView?.transform = .identity
         //        self.scrollView?.transform = .identity
-//        self.commentTableViewBottom.constant = 0
+        //        self.commentTableViewBottom.constant = 0
     }
     
     // 터치했을때 키보드 내림
