@@ -92,9 +92,6 @@ class ArticleDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        scrollView.layoutIfNeeded()
-        //        scrollView.isScrollEnabled = true
-        //        scrollView.contentSize = CGSize(width: self.view.frame.width, height: scrollView.frame.size.height)
         commentTableView.delegate = self
         commentTableView.dataSource = self
         
@@ -192,43 +189,43 @@ class ArticleDetailViewController: UIViewController {
             .disposed(by: disposeBag)
         
         
-        // URL Link
-        //        viewModel.urlLinksRelay
-        //            //            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-        //            .subscribeOn(MainScheduler.instance)
-        //            .subscribe(onNext: { [weak self] value in
-        //                if value.count == 0 {
-        //
-        //                } else if self?.viewModel.postUidRelay.value != "" && self?.viewModel.loadingAnimationViewIsInstalled == false {
-        //                    let height = self?.viewModel.urlLinksRelay.value.count
-        //                    let cgFloatHeight: CGFloat = CGFloat(height! * 90)
-        //                    let cgFloatSpacing: CGFloat = CGFloat((height! - 1) * 16)
-        //                    self?.urlStackViewHeight.constant = cgFloatHeight + cgFloatSpacing
-        //
-        //                    let animationView = Lottie.AnimationView.init(name: "Loading2")
-        //                    animationView.contentMode = .scaleAspectFill
-        //                    animationView.backgroundBehavior = .pauseAndRestore
-        //
-        //                    animationView.translatesAutoresizingMaskIntoConstraints = false
-        //                    self?.urlStackLoadingView.addSubview(animationView)
-        //
-        //                    animationView.centerYAnchor.constraint(equalTo: self!.urlStackLoadingView.centerYAnchor).isActive = true
-        //                    animationView.centerXAnchor.constraint(equalTo: self!.urlStackLoadingView.centerXAnchor).isActive = true
-        //
-        //                    animationView.loopMode = .loop
-        //                    animationView.play()
-        //
-        //
-        //
-        //
-        //                    self?.viewModel.linkViewSetting()
-        //                    self?.viewModel.loadingAnimationViewIsInstalled = true
-        //
-        //
-        //                }
-        //
-        //            })
-        //            .disposed(by: disposeBag)
+        //         URL Link
+        viewModel.urlLinksRelay
+            //            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                if value.count == 0 {
+                    
+                } else if self?.viewModel.postUidRelay.value != "" && self?.viewModel.loadingAnimationViewIsInstalled == false {
+                    let height = self?.viewModel.urlLinksRelay.value.count
+                    let cgFloatHeight: CGFloat = CGFloat(height! * 90)
+                    let cgFloatSpacing: CGFloat = CGFloat((height! - 1) * 16)
+                    self?.urlStackViewHeight.constant = cgFloatHeight + cgFloatSpacing
+                    
+                    let animationView = Lottie.AnimationView.init(name: "Loading2")
+                    animationView.contentMode = .scaleAspectFill
+                    animationView.backgroundBehavior = .pauseAndRestore
+                    
+                    animationView.translatesAutoresizingMaskIntoConstraints = false
+                    self?.urlStackLoadingView.addSubview(animationView)
+                    
+                    animationView.centerYAnchor.constraint(equalTo: self!.urlStackLoadingView.centerYAnchor).isActive = true
+                    animationView.centerXAnchor.constraint(equalTo: self!.urlStackLoadingView.centerXAnchor).isActive = true
+                    
+                    animationView.loopMode = .loop
+                    animationView.play()
+                    
+                    
+                    
+                    
+                    self?.viewModel.linkViewSetting()
+                    self?.viewModel.loadingAnimationViewIsInstalled = true
+                    
+                    
+                }
+                
+            })
+            .disposed(by: disposeBag)
         
         viewModel.linksDataRelay
             .observeOn(MainScheduler.instance)
@@ -251,7 +248,7 @@ class ArticleDetailViewController: UIViewController {
                 self?.commentCount.text = "댓글 \(value.count)개"
                 if value.count > 0 {
                     self?.commentTableView.reloadData()
-//                    print("size : \((self?.commentTableView.contentSize.height)!)")
+                    //                    print("size : \((self?.commentTableView.contentSize.height)!)")
                     self?.commentTableViewHeight.constant = (self?.commentTableView.contentSize.height)!
                 }
             })
@@ -613,9 +610,9 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tablewViewSetting() {
         // Row Height를 무시하고, 각 Row 안의 내용에 따라 Row 높이가 유동적으로 결정 되도록
         commentTableView.rowHeight = UITableView.automaticDimension
-                commentTableView.estimatedRowHeight = 100
-//        commentTableView.invalidateIntrinsicContentSize()
-//        commentTableView.layoutIfNeeded()
+        commentTableView.estimatedRowHeight = 100
+        //        commentTableView.invalidateIntrinsicContentSize()
+        //        commentTableView.layoutIfNeeded()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

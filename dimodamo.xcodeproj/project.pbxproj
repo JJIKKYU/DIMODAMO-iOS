@@ -62,6 +62,7 @@
 		988377EB2544B49E00BFA746 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988377EA2544B49E00BFA746 /* CommentModel.swift */; };
 		988377F12545640B00BFA746 /* Loading1.json in Resources */ = {isa = PBXBuildFile; fileRef = 988377EF2545640B00BFA746 /* Loading1.json */; };
 		988377F22545640B00BFA746 /* Loading2.json in Resources */ = {isa = PBXBuildFile; fileRef = 988377F02545640B00BFA746 /* Loading2.json */; };
+		988377F62545B69800BFA746 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988377F52545B69700BFA746 /* CreatePostViewController.swift */; };
 		98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFD251113B600943861 /* DptiSurveyViewModel.swift */; };
 		988470002511148400943861 /* DptiSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFF2511148400943861 /* DptiSurvey.swift */; };
 		9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470022511406700943861 /* Nunito-Bold.ttf */; };
@@ -205,6 +206,7 @@
 		988377EA2544B49E00BFA746 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		988377EF2545640B00BFA746 /* Loading1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Loading1.json; path = dimodamo/lottie/Loading/Loading1.json; sourceTree = SOURCE_ROOT; };
 		988377F02545640B00BFA746 /* Loading2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Loading2.json; path = dimodamo/lottie/Loading/Loading2.json; sourceTree = SOURCE_ROOT; };
+		988377F52545B69700BFA746 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		98846FFD251113B600943861 /* DptiSurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewModel.swift; sourceTree = "<group>"; };
 		98846FFF2511148400943861 /* DptiSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurvey.swift; sourceTree = "<group>"; };
 		988470022511406700943861 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 		986322392517855B003B0784 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				988377F42545B66100BFA746 /* CreatePost */,
 				988377E92544B48A00BFA746 /* Model */,
 				9883776C2541ECC400BFA746 /* LinkWebView */,
 				98AFDAD4253AA5C000B0D88F /* Article */,
@@ -747,6 +750,14 @@
 				988377F02545640B00BFA746 /* Loading2.json */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		988377F42545B66100BFA746 /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				988377F52545B69700BFA746 /* CreatePostViewController.swift */,
+			);
+			path = CreatePost;
 			sourceTree = "<group>";
 		};
 		989384CA2518668600DE2C35 /* Register */ = {
@@ -1140,6 +1151,7 @@
 				98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */,
 				9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */,
 				98A661ED252F2F2B00698BA0 /* FindEmailPWPageViewController.swift in Sources */,
+				988377F62545B69800BFA746 /* CreatePostViewController.swift in Sources */,
 				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
 				9800A1442533737E0090C058 /* IntroPageViewController.swift in Sources */,
 				98067137250F1FD000C3EB72 /* DomainModel.swift in Sources */,
