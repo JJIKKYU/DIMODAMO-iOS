@@ -63,6 +63,7 @@
 		988377F12545640B00BFA746 /* Loading1.json in Resources */ = {isa = PBXBuildFile; fileRef = 988377EF2545640B00BFA746 /* Loading1.json */; };
 		988377F22545640B00BFA746 /* Loading2.json in Resources */ = {isa = PBXBuildFile; fileRef = 988377F02545640B00BFA746 /* Loading2.json */; };
 		988377F62545B69800BFA746 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988377F52545B69700BFA746 /* CreatePostViewController.swift */; };
+		988377F92545C41F00BFA746 /* CreatePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988377F82545C41E00BFA746 /* CreatePostViewModel.swift */; };
 		98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFD251113B600943861 /* DptiSurveyViewModel.swift */; };
 		988470002511148400943861 /* DptiSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98846FFF2511148400943861 /* DptiSurvey.swift */; };
 		9884700A2511406700943861 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 988470022511406700943861 /* Nunito-Bold.ttf */; };
@@ -207,6 +208,7 @@
 		988377EF2545640B00BFA746 /* Loading1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Loading1.json; path = dimodamo/lottie/Loading/Loading1.json; sourceTree = SOURCE_ROOT; };
 		988377F02545640B00BFA746 /* Loading2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Loading2.json; path = dimodamo/lottie/Loading/Loading2.json; sourceTree = SOURCE_ROOT; };
 		988377F52545B69700BFA746 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		988377F82545C41E00BFA746 /* CreatePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewModel.swift; sourceTree = "<group>"; };
 		98846FFD251113B600943861 /* DptiSurveyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewModel.swift; sourceTree = "<group>"; };
 		98846FFF2511148400943861 /* DptiSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurvey.swift; sourceTree = "<group>"; };
 		988470022511406700943861 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 			isa = PBXGroup;
 			children = (
 				988377F52545B69700BFA746 /* CreatePostViewController.swift */,
+				988377F82545C41E00BFA746 /* CreatePostViewModel.swift */,
 			);
 			path = CreatePost;
 			sourceTree = "<group>";
@@ -1166,6 +1169,7 @@
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
+				988377F92545C41F00BFA746 /* CreatePostViewModel.swift in Sources */,
 				98AFDA502539CD7900B0D88F /* CommunityMainViewModel.swift in Sources */,
 				984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */,
 				985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */,
