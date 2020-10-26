@@ -23,9 +23,16 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBOutlet weak var tagsTextField: UITextField!
     @IBOutlet weak var tagsLimit: UILabel!
-    @IBOutlet weak var tagsTableView: UITableView!
+    @IBOutlet weak var tagsTableView: UITableView! {
+        didSet {
+            tagsTableView.layer.borderWidth = 2
+            tagsTableView.layer.borderColor = UIColor.appColor(.white235).cgColor
+            tagsTableView.appShadow(.s4)
+            tagsTableView.rowHeight = 50
+        }
+    }
     
-    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var descriptionLimit: UILabel!
     
     @IBOutlet weak var tagging: Tagging! {
@@ -102,6 +109,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
          */
         tagging.textView.rx.text.orEmpty
             .map { $0 as String }
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
                 if self?.viewModel.tagsLimitCount == 3 {
                     print("더이상 글을 쓸 수 없도록")
@@ -116,9 +124,15 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         /*
          내용
          */
-        descriptionTextField.rx.text.orEmpty
+        descriptionTextView.rx.text.orEmpty
             .map { $0 as String }
-            .bind(to: self.viewModel.descriptionRelay)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel.descriptionRelay.accept(value)
+                self?.descriptionLimit.text = self?.viewModel.descriptionLimit
+                
+                print(value)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -127,6 +141,9 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         if matchedList.count > 0 {
             tagsTableView.reloadData()
             tagsTableView.isHidden = false
+        } else if matchedList.count == 0 {
+            tagsTableView.reloadData()
+            tagsTableView.isHidden = true
         }
         
         print(matchedList.count)
@@ -138,6 +155,8 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBAction func pressedCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    @IBAction func pressedCompleteBtn(_ sender: Any) {
     }
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
@@ -159,10 +178,7 @@ extension CreatePostViewController {
         self.descriptionContainer.layer.cornerRadius = 9
         self.descriptionContainer.layer.masksToBounds = true
         
-        self.tagsTableView.layer.borderWidth = 2
-        self.tagsTableView.layer.borderColor = UIColor.appColor(.white235).cgColor
-        self.tagsTableView.appShadow(.s4)
-        self.tagsTableView.rowHeight = 50
+        
         
         tagsTableView.isHidden = true
     }
@@ -175,6 +191,14 @@ extension CreatePostViewController: UITextFieldDelegate {
         if ((textField.text!).count > maxLength) {
             textField.deleteBackward()
         }
+    }
+    
+    // 내용 본문에 Height에 맞게 조절하기 위해
+    func adjustUITextViewHeight(arg : UITextView)
+    {
+        arg.translatesAutoresizingMaskIntoConstraints = true
+        arg.sizeToFit()
+        arg.isScrollEnabled = false
     }
 }
 

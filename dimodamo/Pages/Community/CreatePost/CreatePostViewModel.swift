@@ -23,14 +23,14 @@ class CreatePostViewModel {
     let tagsRelay = BehaviorRelay<String>(value: "")
     var tagsLimit: String {
         // # 태그가 있는 단어들을 찾아서 태그 때고  다 소문자로 해주기
-        let sliceArray = tagsRelay.value.getArrayAfterRegex(regex:"#[a-zA-Z0-9]+").map { (slice) in
+        let sliceArray = tagsRelay.value.getArrayAfterRegex(regex:"#[^ ]+").map { (slice) in
             slice.replacingOccurrences(of: "#", with: "").lowercased()
         }
         
         return "\(sliceArray.count)/3"
     }
     var tagsLimitCount: Int {
-        let sliceArray = tagsRelay.value.getArrayAfterRegex(regex:"#[a-zA-Z0-9]+").map { (slice) in
+        let sliceArray = tagsRelay.value.getArrayAfterRegex(regex:"#[^ ]+").map { (slice) in
             slice.replacingOccurrences(of: "#", with: "").lowercased()
         }
         
@@ -39,6 +39,9 @@ class CreatePostViewModel {
     
     // 내용
     let descriptionRelay = BehaviorRelay<String>(value: "")
+    var descriptionLimit: String {
+        return "\(descriptionRelay.value.count)/1000"
+    }
     
     init() {
         
