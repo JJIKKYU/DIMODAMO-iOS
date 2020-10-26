@@ -189,11 +189,35 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return viewModel.informationPosts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
+        
+        let model = viewModel.informationPosts[indexPath.row]
+        
+        if let profileImage = UIImage(named: "Profile_F_\(model.userDpti ?? "TI")") {
+            cell.profile.image = profileImage
+            cell.nickName.textColor = UIColor.appColor(.typeT)
+        }
+        
+        if let title = model.boardTitle ?? "오류가 발생했습니다" {
+            cell.title.text = "\(title)"
+        }
+         
+        if let nickname = model.nickname ?? "익명" {
+            cell.nickName.text = "\(nickname)"
+        }
+        
+        if let scrapCount = model.scrapCount ?? 0 {
+            cell.scrapCnt.text = "\(scrapCount)"
+        }
+        
+        if let commentCount = model.commentCount {
+            cell.commnetCnt.text = "\(commentCount)"
+        }
+        
         return cell
     }
     

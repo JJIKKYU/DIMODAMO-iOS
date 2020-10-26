@@ -11,8 +11,8 @@ import Foundation
 struct Board {
     var boardId: String?
     var boardTitle: String?
-    var bundleId: String?
-    var category: Category?
+    var bundleId: Double?
+    var category: String?
     var commentCount: Int?
     var createdAt: String?
     var description: String?
@@ -31,7 +31,7 @@ struct Board {
             "board_id" : boardId ?? "",
             "board_title": boardTitle ?? "",
             "bundle_id": bundleId ?? "",
-            "category": category ?? .magazine,
+            "category": category ?? "magazine",
             "comment_count": commentCount ?? 0,
             "created_at": createdAt ?? "",
             "description": description ?? "",
@@ -78,5 +78,6 @@ struct Article {
 
 // 아티클 카테고리
 enum Category {
+    case layer
     case magazine
 }

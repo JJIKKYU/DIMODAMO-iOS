@@ -157,6 +157,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func pressedCompleteBtn(_ sender: Any) {
+        viewModel.sendPost()
     }
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
