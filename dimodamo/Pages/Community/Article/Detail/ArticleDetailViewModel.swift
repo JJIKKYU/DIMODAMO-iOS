@@ -12,6 +12,7 @@ import RxSwift
 import RxRelay
 
 import Firebase
+import FirebaseFirestore
 
 import SwiftLinkPreview
 
@@ -54,6 +55,11 @@ class ArticleDetailViewModel {
     let urlLinksRelay = BehaviorRelay<[String]>(value: []) // 링크만 가지고 있음
     var loadingAnimationViewIsInstalled: Bool = false
     static let slp = SwiftLinkPreview(cache: InMemoryCache())
+    
+    /*
+     유저 프로필
+     */
+    let userDptiRelay = BehaviorRelay<String>(value: "")
     
     
     /*
@@ -112,6 +118,11 @@ class ArticleDetailViewModel {
                 if let videosArr: [String] = data!["videos"] as? [String] {
                     let videosUrlArr: [URL?] = videosArr.map { URL(string: $0) }
                     self?.videosRelay.accept(videosUrlArr)
+                }
+                
+                if let userDpti: String = data!["user_dpti"] as? String {
+                    self?.userDptiRelay.accept(userDpti)
+                    print("이 글을 쓴 유저의 타입은 \(userDpti)입니다")
                 }
                 
                 self?.descriptionRelay.accept(data!["description"] as! String)

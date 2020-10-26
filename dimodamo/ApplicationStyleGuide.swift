@@ -47,6 +47,11 @@ enum AssetsColor {
     case green3
     
     case red
+    
+    case typeF
+    case typeP
+    case typeT
+    case typeJ
 }
 
 
@@ -126,6 +131,16 @@ extension UIColor {
     // Red EB5757
     case .red:
         return #colorLiteral(red: 0.9215686275, green: 0.3411764706, blue: 0.3411764706, alpha: 1)
+        
+    // DPTI 결과에 따른 컬러
+    case .typeF:
+        return #colorLiteral(red: 0.9803921569, green: 0.4901960784, blue: 0.6078431373, alpha: 1)
+    case .typeP:
+        return #colorLiteral(red: 0.9803921569, green: 0.7450980392, blue: 0.2549019608, alpha: 1)
+    case .typeT:
+        return #colorLiteral(red: 0.1960784314, green: 0.7647058824, blue: 0.8431372549, alpha: 1)
+    case .typeJ:
+        return #colorLiteral(red: 0.3529411765, green: 0.4901960784, blue: 0.9607843137, alpha: 1)
     }
   }
 }

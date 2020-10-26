@@ -43,6 +43,9 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var urlStackViewHeight: NSLayoutConstraint!
     @IBOutlet weak var urlStackLoadingView: UIView!
     
+    @IBOutlet weak var userProfileTitleBtn: UIButton!
+    @IBOutlet weak var userProfileImageView: UIImageView!
+    
     @IBOutlet weak var commentCount: UILabel!
     @IBOutlet weak var commentTableView: UITableView!
     @IBOutlet weak var commentTableViewHeight: NSLayoutConstraint!
@@ -238,6 +241,45 @@ class ArticleDetailViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        /*
+         유저 프로필
+         */
+        viewModel.userDptiRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] type in
+                if type == "" { return }
+                
+                let profileImage: UIImage = UIImage(named: "Profile_F_\(type)") ?? UIImage()
+                
+                self?.userProfileImageView.image = profileImage
+                self?.userProfileTitleBtn.setTitle("닉네임", for: .normal)
+                
+                var color: UIColor = UIColor.appColor(.system)
+                
+                switch type[type.startIndex] {
+                case "F":
+                    color = UIColor.appColor(.typeF)
+                    break
+                case "P":
+                    color = UIColor.appColor(.typeP)
+                    break
+                case "T":
+                    color = UIColor.appColor(.typeT)
+                    break
+                case "J":
+                    color = UIColor.appColor(.typeJ)
+                    break
+                default:
+                    break
+                }
+                
+                
+                
+                self?.userProfileTitleBtn.setTitleColor(color, for: .normal)
+            })
+            .disposed(by: disposeBag)
+        
         
         /*
          댓글
