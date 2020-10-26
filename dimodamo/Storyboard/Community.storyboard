@@ -449,7 +449,7 @@
                         <outlet property="articleCollectionView" destination="UCe-Uz-ZKD" id="d5s-yG-rgm"/>
                         <outlet property="spinner" destination="4GL-KB-Fdi" id="Ded-2Q-eTM"/>
                         <outlet property="tableView" destination="gvX-HO-fK5" id="zYV-zB-w9o"/>
-                        <segue destination="ryl-E5-d2S" kind="show" identifier="InformationVC" id="W1f-eG-mNE"/>
+                        <segue destination="ryl-E5-d2S" kind="show" identifier="InformationVC_Main" id="W1f-eG-mNE"/>
                         <segue destination="iXc-eR-qQb" kind="show" identifier="ArticleVC" id="a1k-XL-XIf"/>
                         <segue destination="uzi-lB-7YW" kind="show" identifier="DetailArticleVC_Main" id="Ae2-2V-5qG"/>
                         <segue destination="YIk-yL-5NE" kind="presentation" identifier="CreatePostVC" id="BzL-x2-Mhd"/>
@@ -467,13 +467,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="BKh-4e-9DF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Fsr-jw-EKX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1y-2m-dgH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="684"/>
+            <point key="canvasLocation" x="3383" y="804"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kRb-Sh-4q8">
@@ -752,10 +752,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U9e-Tx-pxr">
-                                                        <rect key="frame" x="0.0" y="307" width="414" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                     </imageView>
                                                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEv-qk-RPB" userLabel="ImgOpacityView">
-                                                        <rect key="frame" x="0.0" y="307" width="414" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-h0-QOv">
