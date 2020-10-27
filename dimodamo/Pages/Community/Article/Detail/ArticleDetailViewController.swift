@@ -19,8 +19,16 @@ import AVKit
 
 import Lottie
 
-class ArticleDetailViewController: UIViewController {
+class ArticleTopContainerView: UIView {
     
+}
+
+class ArticleDetailViewController: UIViewController {
+    @IBOutlet var informationTopContainer: UIView!
+    @IBOutlet weak var informationTitle: UILabel!
+    @IBOutlet var informationTags: [UILabel]!
+    
+    @IBOutlet weak var articleTopContainer: UIView!
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -29,7 +37,9 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var tags: [UILabel]!
     @IBOutlet weak var articleCategory: UILabel!
+    
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textViewTopConstraint: NSLayoutConstraint!
     
     
     @IBOutlet weak var imageStackView: UIStackView!
@@ -120,6 +130,7 @@ class ArticleDetailViewController: UIViewController {
                 if value != "" {
                     self?.navigationItem.title = "\(value)"
                     self?.titleLabel.text = "\(value)"
+                    self?.informationTitle.text = "\(value)"
                 }
             })
             .disposed(by: disposeBag)
@@ -336,7 +347,44 @@ class ArticleDetailViewController: UIViewController {
 
 extension ArticleDetailViewController {
     func viewDesign() {
+        let postKind: Int = viewModel.postKindRelay.value
+        
+        // 아티클일 경우에 InformationTopContainer 숨기기
+        if postKind == PostKinds.article.rawValue {
+            informationTopContainer.isHidden = true
+        }
+        // 인포메이션일 경우에 Constraint 재설정 및 다시 보이도록
+        else if postKind == PostKinds.information.rawValue {
+            textViewTopConstraint.isActive = false
+
+            self.contentView.addSubview(informationTopContainer)
+            informationTopContainer.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
+            informationTopContainer.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0).isActive = true
+            informationTopContainer.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0).isActive = true
+            informationTopContainer.heightAnchor.constraint(equalToConstant: 240).isActive = true
+            
+            textView.topAnchor.constraint(equalTo: informationTopContainer.bottomAnchor, constant: 48).isActive = true
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            
+            articleTopContainer.isHidden = true
+            informationTagDesign()
+        }
         articleCategory.articleCategoryDesign()
+    }
+    
+    func informationTagDesign(){
+        
+        // 태그 내부 글자 수에 맞춰서 width, height 재설정
+        for tag in self.informationTags {
+            let width: Int = (Int(tag.text!.count) * 10) + 20
+            let height: Int = 20
+            tag.translatesAutoresizingMaskIntoConstraints = false
+            tag.widthAnchor.constraint(equalToConstant: CGFloat(width)).isActive = true
+            tag.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
+            
+            tag.layer.masksToBounds = true
+            tag.layer.cornerRadius = 10
+        }
     }
     
     // 내용 본문에 Height에 맞게 조절하기 위해

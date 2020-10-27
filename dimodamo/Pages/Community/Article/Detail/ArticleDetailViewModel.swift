@@ -130,7 +130,7 @@ class ArticleDetailViewModel {
                     
                     let data = document.data()
                     
-                    if let imagesArr: [String] = data!["image"] as? [String] {
+                    if let imagesArr: [String] = data!["images"] as? [String] {
                         let imagesUrlArr: [URL?] = imagesArr.map { URL(string: $0) }
                         self?.imagesRelay.accept(imagesUrlArr)
                     }
