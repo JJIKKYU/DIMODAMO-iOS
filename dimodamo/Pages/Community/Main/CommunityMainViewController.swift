@@ -48,8 +48,8 @@ class CommunityMainViewController: UIViewController {
         
         settingTableView()
         articleCollectionViewSetting()
-//        setupUI()
-
+        //        setupUI()
+        
         viewModel.articleLoading
             .observeOn(MainScheduler.instance)
             .subscribe(onNext : {[weak self] loading in
@@ -89,7 +89,7 @@ class CommunityMainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        self.hidesBottomBarWhenPushed = true
+        //        self.hidesBottomBarWhenPushed = true
         
         segue.destination.hidesBottomBarWhenPushed = true
         switch segue.identifier {
@@ -97,43 +97,76 @@ class CommunityMainViewController: UIViewController {
         // 메인에서 직접 아티클 카드를 선택했을 경우
         // sender에서는 indexpath.row가 넘어옴
         case "DetailArticleVC_Main":
+            guard let sender = sender as? [Int] else {
+                return
+            }
+            
+            // 0일 경우 Article, 1일 경우 Information
+            let postKind: Int = sender[0]
+            let postIndex: Int = sender[1]
+            
             let destination: ArticleDetailViewController
                 = segue.destination as! ArticleDetailViewController
-            let index: Int = sender as! Int
+            destination.viewModel.postKindRelay.accept(postKind)
             
-            if let postUid = viewModel.articles[index].uid {
-                destination.viewModel.postUidRelay.accept(postUid)
+            // Article일 경우 세팅
+            if postKind == PostKinds.article.rawValue {
+                
+                
+                
+                if let postUid = viewModel.articles[postIndex].uid {
+                    destination.viewModel.postUidRelay.accept(postUid)
+                }
+                
+                if let title = viewModel.articles[postIndex].title {
+                    destination.viewModel.titleRelay.accept("\(title)")
+                }
+                
+                if let tags = viewModel.articles[postIndex].tags {
+                    destination.viewModel.tagsRelay.accept(tags)
+                }
+                
+                // 썸네일은 넘어갈 때 부드럽게 하기 위해서 prepare에서 전달
+                if let titleImg = viewModel.articles[postIndex].images[0] {
+                    destination.viewModel.thumbnailImageRelay.accept(titleImg)
+                }
+                
+            }
+            // Information일 경우 세팅
+            else if postKind == PostKinds.information.rawValue {
+                
+                if let postUid = viewModel.informationPosts[postIndex].boardId {
+                    destination.viewModel.postUidRelay.accept(postUid)
+                }
+                
+                if let title = viewModel.informationPosts[postIndex].boardTitle {
+                    destination.viewModel.titleRelay.accept("\(title)")
+                }
+                
+//                let tags = viewModel.informationPosts[postIndex].tags
+//                                    destination.viewModel.tagsRelay.accept(tags)
+                
+                
             }
             
-            if let title = viewModel.articles[index].title {
-                destination.viewModel.titleRelay.accept("\(title)")
-            }
             
-            if let tags = viewModel.articles[index].tags {
-                destination.viewModel.tagsRelay.accept(tags)
-            }
             
-            // 썸네일은 넘어갈 때 부드럽게 하기 위해서 prepare에서 전달
-            if let titleImg = viewModel.articles[index].images[0] {
-                destination.viewModel.thumbnailImageRelay.accept(titleImg)
-            }
-        
             break
             
         case "CreatePostVC":
-//            let destination: CreatePostViewController = segue.destination as! CreatePostViewController
+            //            let destination: CreatePostViewController = segue.destination as! CreatePostViewController
             segue.destination.modalTransitionStyle = .coverVertical
             segue.destination.modalPresentationStyle = .fullScreen
             
             break
-        
+            
         default:
             break
         }
     }
     
     // MARK: - UI
-
+    
     private func setupUI() {
         
         // 돋보기 버튼 이미지
@@ -142,14 +175,14 @@ class CommunityMainViewController: UIViewController {
             navigationSearchBtn.setImage(image, for: .normal)
         }
         navigationSearchBtn.addTarget(self, action: #selector(self.pressedSearchBtn(sender:)), for: .touchUpInside)
-
+        
         
         let navigationPlusBtn: UIButton = UIButton(type: .custom)
         if let image = UIImage(named: "plusBtn") {
             navigationPlusBtn.setImage(image, for: .normal)
         }
         navigationPlusBtn.addTarget(self, action: #selector(self.pressedPlusBtn(sender:)), for: .touchUpInside)
-
+        
         
         // Initial setup for image for Large NavBar state since the the screen always has Large NavBar once it gets opened
         guard let navigationBar = self.navigationController?.navigationBar else { return }
@@ -205,7 +238,7 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
         if let title = model.boardTitle ?? "오류가 발생했습니다" {
             cell.title.text = "\(title)"
         }
-         
+        
         if let nickname = model.nickname ?? "익명" {
             cell.nickName.text = "\(nickname)"
         }
@@ -224,13 +257,13 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
         
-        performSegue(withIdentifier: "InformationVC_Main", sender: indexPath.row)
+        performSegue(withIdentifier: "DetailArticleVC_Main", sender: [PostKinds.information.rawValue, indexPath.row])
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        print("호출")
-//        return CGFloat(CellHeight.informationHeight)
-//    }
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        print("호출")
+    //        return CGFloat(CellHeight.informationHeight)
+    //    }
 }
 
 // MARK: - CollectionView (Article)
@@ -251,23 +284,23 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
         
         let model = viewModel.articles[indexPath.row]
-
+        
         if let loadedImage = viewModel.articles[indexPath.row].images[0] {
             cell.image.kf.setImage(with: loadedImage)
         }
-
+        
         if let loadedProfile = viewModel.articles[indexPath.row].profile {
             cell.profile.kf.setImage(with: loadedProfile)
-
+            
         }
-
+        
         cell.title.text = model.title
         
         // tags에 있는 어레이의 개수만큼 세팅
         model.tags?.enumerated().forEach{ index, tag in
             cell.tags[index].text = "#\(tag)"
         }
-
+        
         cell.nickname.text = model.nickname
         cell.scrapCnt.text = "\(model.scrapCnt!)"
         cell.commentCnt.text = "\(model.commentCnt!)"
@@ -277,11 +310,11 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     
     // 선택한 아이템
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let selectedCell: ArticleCell = collectionView.cellForItem(at: indexPath) as! ArticleCell
-//        print(selectedCell)
+        //        let selectedCell: ArticleCell = collectionView.cellForItem(at: indexPath) as! ArticleCell
+        //        print(selectedCell)
         
-        performSegue(withIdentifier: "DetailArticleVC_Main", sender: indexPath.row)
-//        print(indexPath.row)
+        performSegue(withIdentifier: "DetailArticleVC_Main", sender: [PostKinds.article.rawValue, indexPath.row])
+        //        print(indexPath.row)
     }
     
     func articleCollectionViewSetting() {

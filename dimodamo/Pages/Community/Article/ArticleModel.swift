@@ -61,18 +61,6 @@ struct Article {
     var author: String?
     var scrapCnt: Int?
     var commentCnt: Int?
-    
-//    init() {
-//        image = Data()
-//        category = .magazine
-//        title = "로딩중입니다"
-//        tags = []
-//        profile = Data()
-//        nickname = "킹모다모"
-//        author = ""
-//        scrapCnt = 0
-//        commentCnt = 0
-//    }
 }
 
 
@@ -80,4 +68,10 @@ struct Article {
 enum Category {
     case layer
     case magazine
+}
+
+// 게시글 종류
+enum PostKinds: Int {
+    case article = 0
+    case information = 1
 }

@@ -21,12 +21,20 @@ class ArticleDetailViewModel {
     private let storage = Storage.storage().reference()
     private let db = Firestore.firestore()
     
-    lazy var commentDBCollection = db.collection("hongik/article/comments")
-    
     /*
      POSTUID를 main에서 prepare로 전달 받았을 경우에 초기화 시작
+     PostKind도 함께 초기화가 되어야 함
      */
     let postUidRelay = BehaviorRelay<String>(value: "")
+    let postKindRelay = BehaviorRelay<Int>(value: -1)
+    var postDB: String {
+        if postKindRelay.value == PostKinds.article.rawValue {
+            return "articlePosts/"
+        } else if postKindRelay.value == PostKinds.information.rawValue {
+            return "hongik/information/posts/"
+        }
+        return ""
+    }
     
     var categoryRelay = BehaviorRelay<String>(value: "")
     var titleRelay = BehaviorRelay<String>(value: "")
@@ -69,6 +77,14 @@ class ArticleDetailViewModel {
     let commentsRelay = BehaviorRelay<[Comment]>(value: [])
     // 입력
     let commentInputRelay = BehaviorRelay<String>(value: "")
+    var commentDB: String {
+        if postKindRelay.value == PostKinds.article.rawValue {
+            return "hongik/article/comments/"
+        } else if postKindRelay.value == PostKinds.information.rawValue {
+            return "hongik/information/comments/"
+        }
+        return ""
+    }
     
     func linkViewSetting() {
         var linksData: [PreviewResponse] = []
@@ -104,40 +120,44 @@ class ArticleDetailViewModel {
     }
     
     func dataSetting() {
-        db.collection("articlePosts/").document("\(self.postUidRelay.value)").getDocument { [weak self] (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                
-                let data = document.data()
-                
-                if let imagesArr: [String] = data!["image"] as? [String] {
-                    let imagesUrlArr: [URL?] = imagesArr.map { URL(string: $0) }
-                    self?.imagesRelay.accept(imagesUrlArr)
+        print("POSTURL : \(self.postDB), POSTUID : \(self.postUidRelay.value)")
+        
+        db.collection("\(self.postDB)")
+            .document("\(self.postUidRelay.value)")
+            .getDocument { [weak self] (document, error) in
+                if let document = document, document.exists {
+                    _ = document.data().map(String.init(describing:)) ?? "nil"
+                    
+                    let data = document.data()
+                    
+                    if let imagesArr: [String] = data!["image"] as? [String] {
+                        let imagesUrlArr: [URL?] = imagesArr.map { URL(string: $0) }
+                        self?.imagesRelay.accept(imagesUrlArr)
+                    }
+                    
+                    if let videosArr: [String] = data!["videos"] as? [String] {
+                        let videosUrlArr: [URL?] = videosArr.map { URL(string: $0) }
+                        self?.videosRelay.accept(videosUrlArr)
+                    }
+                    
+                    if let userDpti: String = data!["user_dpti"] as? String {
+                        self?.userDptiRelay.accept(userDpti)
+                        print("이 글을 쓴 유저의 타입은 \(userDpti)입니다")
+                    }
+                    
+                    self?.descriptionRelay.accept(data!["description"] as! String)
+                    self?.urlLinksRelay.accept(data!["links"] as! [String])
+                    self?.commentSetting()
+                    //                print("documnetData : \(dataDescription)")
+                    
+                } else {
+                    print("Documnet does not exist")
                 }
-                
-                if let videosArr: [String] = data!["videos"] as? [String] {
-                    let videosUrlArr: [URL?] = videosArr.map { URL(string: $0) }
-                    self?.videosRelay.accept(videosUrlArr)
-                }
-                
-                if let userDpti: String = data!["user_dpti"] as? String {
-                    self?.userDptiRelay.accept(userDpti)
-                    print("이 글을 쓴 유저의 타입은 \(userDpti)입니다")
-                }
-                
-                self?.descriptionRelay.accept(data!["description"] as! String)
-                self?.urlLinksRelay.accept(data!["links"] as! [String])
-                self?.commentSetting()
-                //                print("documnetData : \(dataDescription)")
-                
-            } else {
-                print("Documnet does not exist")
             }
-        }
     }
     
     func commentSetting() {
-        db.collection("hongik/article/comments/")
+        db.collection("\(self.commentDB)")
             .whereField("post_id", isEqualTo: postUidRelay.value)
             .whereField("is_deleted", isEqualTo: false)
             .order(by: "bundle_id")
@@ -159,7 +179,7 @@ class ArticleDetailViewModel {
                     comment.settingDataFromDocumentData(data: data)
                     comments.append(comment)
                     
-                    print("setting완료 : \(comment.comment)")   
+                    print("setting완료 : \(String(describing: comment.comment))")
                 }
                 
                 self?.commentsRelay.accept(comments)
@@ -183,7 +203,7 @@ class ArticleDetailViewModel {
         
         // DocumentID를 미리 불러오기 위해
         
-        let document = commentDBCollection.document()
+        let document = db.collection("\(commentDB)").document()
         let id: String = document.documentID
         
         let comment: Comment = Comment()
@@ -199,7 +219,7 @@ class ArticleDetailViewModel {
                         post_id: self.postUidRelay.value,
                         user_id: Auth.auth().currentUser!.uid)
         
-        var ref = document.setData(comment.dictionary) {
+        document.setData(comment.dictionary) {
             err in
             if let err = err {
                 print("error adding document: \(err.localizedDescription)")
@@ -215,11 +235,12 @@ class ArticleDetailViewModel {
     func pressedCommentHeart(uid: String) {
         print("전달받았습니다 : \(uid)")
         
-        let commentCellDocument = commentDBCollection.document("\(uid)")
-        
-        
+        let commentCellDocument = db.collection("\(commentDB)").document("\(uid)")
+
         var currentHeartCount: Int?
-        commentDBCollection.document("\(uid)").getDocument { [weak self] (document, error) in
+        db.collection("\(commentDB)")
+            .document("\(uid)")
+            .getDocument { (document, error) in
             if let document = document, document.exists {
                 let data = document.data()
                 

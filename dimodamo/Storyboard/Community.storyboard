@@ -752,10 +752,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U9e-Tx-pxr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
+                                                        <rect key="frame" x="0.0" y="2" width="414" height="305"/>
                                                     </imageView>
                                                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEv-qk-RPB" userLabel="ImgOpacityView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
+                                                        <rect key="frame" x="0.0" y="2" width="414" height="305"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-h0-QOv">
@@ -1225,7 +1225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7J-dc-N61" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4101" y="33"/>
+            <point key="canvasLocation" x="4607" y="33"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="C1b-rd-92M">
@@ -1354,7 +1354,7 @@
                                                         <color key="backgroundColor" name="WHITE"/>
                                                         <attributedString key="attributedText">
                                                             <fragment>
-                                                                <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                                <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                 <attributes>
                                                                     <color key="NSColor" name="TEXT - SMALL"/>
                                                                     <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -1495,6 +1495,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="dYA-RN-ahE"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="nYf-eK-pkq" firstAttribute="bottom" secondItem="FGI-NB-Dkd" secondAttribute="bottom" id="7cq-Oq-JUQ"/>
@@ -1624,9 +1625,6 @@
         </namedColor>
         <namedColor name="WHITE - 245">
             <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="YELLOW">
-            <color red="1" green="0.82400000095367432" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="YELLOW">
             <color red="1" green="0.82400000095367432" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

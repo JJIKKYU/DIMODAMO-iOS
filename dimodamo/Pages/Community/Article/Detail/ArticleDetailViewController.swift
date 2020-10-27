@@ -101,21 +101,18 @@ class ArticleDetailViewController: UIViewController {
         
         commentTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
-        
-        viewModel.postUidRelay
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext : { [weak self] uid in
-                if uid != "" {
-                    print("\(uid)")
-                    self?.viewDesign()
-                    
-                    self?.tablewViewSetting()
-                    self?.viewModel.dataSetting()
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        
+        Observable.combineLatest(
+            viewModel.postUidRelay,
+            viewModel.postKindRelay
+        )
+        .map{ $0 != "" && $1 != -1}
+        .subscribeOn(MainScheduler.instance)
+        .subscribe(onNext: { [weak self] value in
+            self?.viewDesign()
+            self?.tablewViewSetting()
+            self?.viewModel.dataSetting()
+        })
+        .disposed(by: disposeBag)
         
         viewModel.titleRelay
             .observeOn(MainScheduler.instance)
