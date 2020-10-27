@@ -131,6 +131,7 @@ class ArticleDetailViewController: UIViewController {
                     self?.navigationItem.title = "\(value)"
                     self?.titleLabel.text = "\(value)"
                     self?.informationTitle.text = "\(value)"
+                    self?.informationTitle.lineBreakStrategy = .hangulWordPriority
                 }
             })
             .disposed(by: disposeBag)

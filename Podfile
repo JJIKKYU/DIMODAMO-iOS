@@ -39,7 +39,4 @@ target 'dimodamo' do
   # 글 작성할 때 태그 관련
   pod 'Tagging'
 
-  # 한글 WrodWrap 개선
-  pod 'KRWordWrapLabel'
-
 end
