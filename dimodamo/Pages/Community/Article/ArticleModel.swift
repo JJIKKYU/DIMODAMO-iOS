@@ -20,7 +20,7 @@ struct Board {
     var links: [URL?]
     var nickname: String?
     var scrapCount: Int?
-    var tags: [String?]
+    var tags: [String]?
     var userDpti: String?
     var userId: String?
     var videos: [URL?]
@@ -39,7 +39,7 @@ struct Board {
             "links": links,
             "nickname": nickname ?? "",
             "scrap_count": scrapCount ?? 0,
-            "tags": tags,
+            "tags": tags ?? [],
             "user_dpti": userDpti ?? "",
             "user_id": userId ?? "",
             "videos": videos,

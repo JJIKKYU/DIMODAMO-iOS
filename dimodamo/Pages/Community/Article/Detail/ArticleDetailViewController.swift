@@ -55,6 +55,7 @@ class ArticleDetailViewController: UIViewController {
     
     @IBOutlet weak var userProfileTitleBtn: UIButton!
     @IBOutlet weak var userProfileImageView: UIImageView!
+    @IBOutlet weak var createdAt: UILabel!
     
     @IBOutlet weak var commentCount: UILabel!
     @IBOutlet weak var commentTableView: UITableView!
@@ -252,42 +253,30 @@ class ArticleDetailViewController: UIViewController {
             .disposed(by: disposeBag)
         
         /*
-         유저 프로필
+         유저 프로필 // 작성날짜
          */
-        viewModel.userDptiRelay
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] type in
-                if type == "" { return }
-                
-                let profileImage: UIImage = UIImage(named: "Profile_F_\(type)") ?? UIImage()
-                
-                self?.userProfileImageView.image = profileImage
-                self?.userProfileTitleBtn.setTitle("닉네임", for: .normal)
-                
-                var color: UIColor = UIColor.appColor(.system)
-                
-                switch type[type.startIndex] {
-                case "F":
-                    color = UIColor.appColor(.typeF)
-                    break
-                case "P":
-                    color = UIColor.appColor(.typeP)
-                    break
-                case "T":
-                    color = UIColor.appColor(.typeT)
-                    break
-                case "J":
-                    color = UIColor.appColor(.typeJ)
-                    break
-                default:
-                    break
-                }
-                
-                
-                
-                self?.userProfileTitleBtn.setTitleColor(color, for: .normal)
-            })
-            .disposed(by: disposeBag)
+        Observable.combineLatest(
+            viewModel.userDptiRelay,
+            viewModel.userNicknameRelay,
+            viewModel.createdAtRelay
+        )
+        .observeOn(MainScheduler.instance)
+        .subscribe(onNext: { [weak self] type, nickname, createdAt in
+            if type.count == 0 || nickname.count == 0 { return }
+            
+            // 타입에 의한 프로필 사진 설정
+            let profileImage: UIImage = UIImage(named: "Profile_\(type)") ?? UIImage()
+            self?.userProfileImageView.image = profileImage
+            
+            // 타입에 의한 프로필 컬러 및 닉네임 설정
+            self?.userProfileTitleBtn.setTitle("\(nickname)", for: .normal)
+            let color: UIColor = UIColor.dptiColor(type)
+            self?.userProfileTitleBtn.setTitleColor(color, for: .normal)
+            
+            // 작성날짜 설정
+            self?.createdAt.text = "\(createdAt)"
+        })
+        .disposed(by: disposeBag)
         
         
         /*
@@ -357,7 +346,7 @@ extension ArticleDetailViewController {
         // 인포메이션일 경우에 Constraint 재설정 및 다시 보이도록
         else if postKind == PostKinds.information.rawValue {
             textViewTopConstraint.isActive = false
-
+            
             self.contentView.addSubview(informationTopContainer)
             informationTopContainer.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
             informationTopContainer.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0).isActive = true

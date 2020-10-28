@@ -115,20 +115,20 @@ class CommunityMainViewController: UIViewController {
                 
                 
                 
-                if let postUid = viewModel.articles[postIndex].uid {
+                if let postUid = viewModel.articlePosts[postIndex].boardId {
                     destination.viewModel.postUidRelay.accept(postUid)
                 }
                 
-                if let title = viewModel.articles[postIndex].title {
+                if let title = viewModel.articlePosts[postIndex].boardTitle {
                     destination.viewModel.titleRelay.accept("\(title)")
                 }
                 
-                if let tags = viewModel.articles[postIndex].tags {
+                if let tags = viewModel.articlePosts[postIndex].tags {
                     destination.viewModel.tagsRelay.accept(tags)
                 }
                 
                 // 썸네일은 넘어갈 때 부드럽게 하기 위해서 prepare에서 전달
-                if let titleImg = viewModel.articles[postIndex].images[0] {
+                if let titleImg = viewModel.articlePosts[postIndex].images[0] {
                     destination.viewModel.thumbnailImageRelay.accept(titleImg)
                 }
                 
@@ -144,8 +144,8 @@ class CommunityMainViewController: UIViewController {
                     destination.viewModel.titleRelay.accept("\(title)")
                 }
                 
-//                let tags = viewModel.informationPosts[postIndex].tags
-//                                    destination.viewModel.tagsRelay.accept(tags)
+                //                let tags = viewModel.informationPosts[postIndex].tags
+                //                                    destination.viewModel.tagsRelay.accept(tags)
                 
                 
             }
@@ -231,9 +231,10 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
         
         let model = viewModel.informationPosts[indexPath.row]
         
-        if let profileImage = UIImage(named: "Profile_F_\(model.userDpti ?? "TI")") {
+        if let type = model.userDpti,
+           let profileImage = UIImage(named: "Profile_\(type)") {
             cell.profile.image = profileImage
-            cell.nickName.textColor = UIColor.appColor(.typeT)
+            cell.nickName.textColor = UIColor.dptiColor(type)
         }
         
         if let title = model.boardTitle ?? "오류가 발생했습니다" {
@@ -278,33 +279,45 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // firestore에 있는 article의 카운트만큼 가져옴
-        return viewModel.articles.count
+        return viewModel.articlePosts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
         
-        let model = viewModel.articles[indexPath.row]
+        let model = viewModel.articlePosts[indexPath.row]
         
-        if let loadedImage = viewModel.articles[indexPath.row].images[0] {
+        if let loadedImage = viewModel.articlePosts[indexPath.row].images[0] {
             cell.image.kf.setImage(with: loadedImage)
         }
         
-        if let loadedProfile = viewModel.articles[indexPath.row].profile {
-            cell.profile.kf.setImage(with: loadedProfile)
-            
+        if let title = model.boardTitle {
+            cell.title.text = title
         }
         
-        cell.title.text = model.title
         
         // tags에 있는 어레이의 개수만큼 세팅
-        model.tags?.enumerated().forEach{ index, tag in
-            cell.tags[index].text = "#\(tag)"
+        if let tags = model.tags {
+            tags.enumerated().forEach{ index, tag in
+                cell.tags[index].text = "#\(tag)"
+            }
         }
         
-        cell.nickname.text = model.nickname
-        cell.scrapCnt.text = "\(model.scrapCnt!)"
-        cell.commentCnt.text = "\(model.commentCnt!)"
+        if let nickname = model.nickname,
+           let type = model.userDpti {
+            cell.nickname.text = nickname
+            cell.nickname.textColor = UIColor.dptiColor(type)
+            cell.profile.image = UIImage(named: "Profile_\(type)")
+        }
+        
+        if let scrapCount = model.scrapCount {
+            cell.scrapCnt.text = "\(scrapCount)"
+        }
+        
+        if let commentCount = model.commentCount {
+            cell.commentCnt.text = "\(commentCount)"
+        }
+        
         
         return cell
     }

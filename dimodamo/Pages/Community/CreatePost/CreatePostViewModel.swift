@@ -12,6 +12,8 @@ import RxSwift
 import RxRelay
 
 import Firebase
+import FirebaseStorage
+import FirebaseFirestoreSwift
 
 class CreatePostViewModel {
     
@@ -67,7 +69,7 @@ class CreatePostViewModel {
         
         // DocumentID를 미리 불러오기 위해
         
-        let document = db.collection("hongik/information/posts").document()
+        let document = db.collection("hongik/article/posts").document()
         let id: String = document.documentID
         
         

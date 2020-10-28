@@ -29,7 +29,7 @@ class ArticleDetailViewModel {
     let postKindRelay = BehaviorRelay<Int>(value: -1)
     var postDB: String {
         if postKindRelay.value == PostKinds.article.rawValue {
-            return "articlePosts/"
+            return "hongik/article/posts/"
         } else if postKindRelay.value == PostKinds.information.rawValue {
             return "hongik/information/posts/"
         }
@@ -57,6 +57,11 @@ class ArticleDetailViewModel {
     let descriptionRelay = BehaviorRelay<String>(value: "")
     
     /*
+     작성 날짜
+     */
+    let createdAtRelay = BehaviorRelay<String>(value: "")
+    
+    /*
      URL link view
      */
     let linksDataRelay = BehaviorRelay<[PreviewResponse]>(value: []) // 링크에 있는 데이터를 해체해 가지고 있음
@@ -68,6 +73,7 @@ class ArticleDetailViewModel {
      유저 프로필
      */
     let userDptiRelay = BehaviorRelay<String>(value: "")
+    let userNicknameRelay = BehaviorRelay<String>(value: "")
     
     
     /*
@@ -143,6 +149,14 @@ class ArticleDetailViewModel {
                     if let userDpti: String = data!["user_dpti"] as? String {
                         self?.userDptiRelay.accept(userDpti)
                         print("이 글을 쓴 유저의 타입은 \(userDpti)입니다")
+                    }
+                    
+                    if let nickname: String = data!["nickname"] as? String {
+                        self?.userNicknameRelay.accept(nickname)
+                    }
+                    
+                    if let createdAt: String = data!["created_at"] as? String {
+                        self?.createdAtRelay.accept(createdAt)
                     }
                     
                     self?.descriptionRelay.accept(data!["description"] as! String)
