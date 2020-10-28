@@ -16,6 +16,8 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var commentDate: UILabel!
     @IBOutlet weak var commentHeart: UILabel!
     
+    @IBOutlet weak var commentProfileLeadingConstraint: NSLayoutConstraint!
+    
     var indexpathRow: Int? = nil
     var uid: String? = nil
     var viewModel: ArticleDetailViewModel?
@@ -30,7 +32,12 @@ class CommentCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func pressedReplyBtn(_ sender: Any) {
+        guard let checkedViewModel = viewModel else { return }
+        guard let checkedUid = uid else { return }
+        print("답글달기")
+    }
+    
     @IBAction func pressedHeartBtn(_ sender: Any) {
         guard let checkedViewModel = viewModel else { return }
         guard let checkedUid = uid else { return }

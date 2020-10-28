@@ -48,22 +48,6 @@ struct Board {
     }
 }
 
-// 아티클에 필요한 모델
-struct Article {
-    var uid: String?
-    var images: [URL?]
-    var videos: [URL?]
-    var category: Category?
-    var title: String?
-    var tags: [String]?
-    var profile: URL?
-    var nickname: String?
-    var author: String?
-    var scrapCnt: Int?
-    var commentCnt: Int?
-}
-
-
 // 아티클 카테고리
 enum Category {
     case layer

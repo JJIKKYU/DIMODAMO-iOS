@@ -92,12 +92,12 @@ class CommunityMainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //        self.hidesBottomBarWhenPushed = true
         
-        segue.destination.hidesBottomBarWhenPushed = true
         switch segue.identifier {
         
         // 메인에서 직접 아티클 카드를 선택했을 경우
         // sender에서는 indexpath.row가 넘어옴
         case "DetailArticleVC_Main":
+            segue.destination.hidesBottomBarWhenPushed = true
             guard let sender = sender as? [Int] else {
                 return
             }
@@ -156,6 +156,7 @@ class CommunityMainViewController: UIViewController {
             
         case "CreatePostVC":
             //            let destination: CreatePostViewController = segue.destination as! CreatePostViewController
+            segue.destination.hidesBottomBarWhenPushed = true
             segue.destination.modalTransitionStyle = .coverVertical
             segue.destination.modalPresentationStyle = .fullScreen
             

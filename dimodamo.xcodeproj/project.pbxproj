@@ -30,7 +30,7 @@
 		980F19ED25407578007B33B8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F19EC25407577007B33B8 /* CommentCell.swift */; };
 		983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983216A6252B8CDD003E6B64 /* AddShadow.swift */; };
 		983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983485D3251C585500C4074B /* RegisterGenderViewController.swift */; };
-		983C7E99253C3F390099B07F /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C7E98253C3F390099B07F /* ArticleModel.swift */; };
+		983C7E99253C3F390099B07F /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C7E98253C3F390099B07F /* BoardModel.swift */; };
 		984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C142A252733AE0085008C /* RegisterClearViewController.swift */; };
 		984C142F252736830085008C /* DPTI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984C142E252736830085008C /* DPTI.storyboard */; };
 		985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D381225198D1F00C53378 /* RegisterViewModel.swift */; };
@@ -130,6 +130,7 @@
 		98AFDAD6253AA5D700B0D88F /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AFDAD5253AA5D700B0D88F /* ArticleViewController.swift */; };
 		98AFDADA253AE58600B0D88F /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AFDAD9253AE58600B0D88F /* ArticleDetailViewController.swift */; };
 		98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA3FE725198E2D00788486 /* ClauseViewController.swift */; };
+		98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C0D57B25490A6700BE382D /* ArticleViewModel.swift */; };
 		98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1663A252729C50080DD87 /* Service1DetailViewController.swift */; };
 		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
 		98C42313251D7CCE00B2B194 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C42312251D7CCE00B2B194 /* Register.swift */; };
@@ -174,7 +175,7 @@
 		980F19EC25407577007B33B8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		983216A6252B8CDD003E6B64 /* AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShadow.swift; sourceTree = "<group>"; };
 		983485D3251C585500C4074B /* RegisterGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderViewController.swift; sourceTree = "<group>"; };
-		983C7E98253C3F390099B07F /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		983C7E98253C3F390099B07F /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
 		984C142A252733AE0085008C /* RegisterClearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClearViewController.swift; sourceTree = "<group>"; };
 		984C142E252736830085008C /* DPTI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DPTI.storyboard; sourceTree = "<group>"; };
 		985D381225198D1F00C53378 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -276,6 +277,7 @@
 		98AFDAD5253AA5D700B0D88F /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		98AFDAD9253AE58600B0D88F /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		98BA3FE725198E2D00788486 /* ClauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauseViewController.swift; sourceTree = "<group>"; };
+		98C0D57B25490A6700BE382D /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C1663A252729C50080DD87 /* Service1DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service1DetailViewController.swift; sourceTree = "<group>"; };
 		98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStyleGuide.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				98AFDAD5253AA5D700B0D88F /* ArticleViewController.swift */,
+				98C0D57B25490A6700BE382D /* ArticleViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 		988377E92544B48A00BFA746 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				983C7E98253C3F390099B07F /* BoardModel.swift */,
 				988377EA2544B49E00BFA746 /* CommentModel.swift */,
 			);
 			path = Model;
@@ -858,7 +862,6 @@
 				980F1979253E0198007B33B8 /* Cell */,
 				983C7E97253C3F1A0099B07F /* Main */,
 				98AFDAD8253AE55800B0D88F /* Detail */,
-				983C7E98253C3F390099B07F /* ArticleModel.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -1146,7 +1149,7 @@
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
 				986322562517BB81003B0784 /* FriendMainViewController.swift in Sources */,
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
-				983C7E99253C3F390099B07F /* ArticleModel.swift in Sources */,
+				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,
 				980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */,
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
@@ -1165,6 +1168,7 @@
 				986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */,
 				98AFDA7A2539DC8400B0D88F /* ArticleCell.swift in Sources */,
 				98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */,
+				98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,
 				988377EB2544B49E00BFA746 /* CommentModel.swift in Sources */,

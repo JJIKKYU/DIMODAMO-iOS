@@ -20,6 +20,7 @@ class Comment : Codable {
     var nickname: String?
     var postId: String?
     var userId: String?
+    var userDpti: String?
     
     
     enum CodingKeys: String, CodingKey {
@@ -34,7 +35,7 @@ class Comment : Codable {
         case nickname
         case postId = "postId"
         case userId = "userId"
-        
+        case userDpti = "user_dpti"
     }
     
     var dictionary: [String: Any] {
@@ -49,7 +50,8 @@ class Comment : Codable {
             "is_deleted": isDeleted ?? false,
             "nickname": nickname ?? "",
             "post_id": postId ?? "",
-            "user_id": userId ?? ""
+            "user_id": userId ?? "",
+            "user_dpti": userDpti ?? ""
         ]
     }
     
@@ -69,7 +71,7 @@ class Comment : Codable {
     //    }
     
     func setData(bundle_id: Double, bundle_order: Double, comment: String, comment_id: String, created_at: String,
-                 depth: Int, heart_count: Int, is_deleted: Bool, nickname: String, post_id: String, user_id: String) {
+                 depth: Int, heart_count: Int, is_deleted: Bool, nickname: String, post_id: String, user_id: String, user_dpti: String) {
         self.bundleId = bundle_id
         self.bundleOrder = bundle_order
         self.comment = comment
@@ -81,6 +83,7 @@ class Comment : Codable {
         self.nickname = nickname
         self.postId = post_id
         self.userId = user_id
+        self.userDpti = user_dpti
     }
     
     func settingDataFromDocumentData(data: [String: Any]) {
@@ -104,7 +107,7 @@ class Comment : Codable {
             self.createdAt = created_at
         }
         
-        if let comment_depth: Int = data["comment_depth"] as? Int {
+        if let comment_depth: Int = data["depth"] as? Int {
             self.depth = comment_depth
         }
         
@@ -126,6 +129,10 @@ class Comment : Codable {
         
         if let user_id: String = data["user_id"] as? String {
             self.userId = user_id
+        }
+        
+        if let user_dpti: String = data["user_dpti"] as? String {
+            self.userDpti = user_dpti
         }
     }
 }

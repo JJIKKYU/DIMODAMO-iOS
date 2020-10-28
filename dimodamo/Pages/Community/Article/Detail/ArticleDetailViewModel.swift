@@ -213,12 +213,29 @@ class ArticleDetailViewModel {
         
         // 유저 디폹트에서 닉네임을 불러옴
         let userDefaults = UserDefaults.standard
-        let nickname: String = userDefaults.string(forKey: "nickname") ?? "익명"
+        let userNickname: String = userDefaults.string(forKey: "nickname") ?? "익명"
+        let userDpti: String = userDefaults.string(forKey: "dpti") ?? "M_TI"
         
         // DocumentID를 미리 불러오기 위해
         
         let document = db.collection("\(commentDB)").document()
         let id: String = document.documentID
+        
+        let depth: Int = 0
+        
+        switch depth {
+        // 일반댓글
+        case 0:
+            break
+            
+        // 대댓글
+        // TODO : 답글달기를 누른 bundle_id 세팅
+        case 1:
+            break
+            
+        default:
+            break
+        }
         
         let comment: Comment = Comment()
         comment.setData(bundle_id: unixTimestamp,
@@ -229,9 +246,10 @@ class ArticleDetailViewModel {
                         depth: 0,
                         heart_count: 0,
                         is_deleted: false,
-                        nickname: "\(nickname)",
+                        nickname: "\(userNickname)",
                         post_id: self.postUidRelay.value,
-                        user_id: Auth.auth().currentUser!.uid)
+                        user_id: Auth.auth().currentUser!.uid,
+                        user_dpti: "\(userDpti)")
         
         document.setData(comment.dictionary) {
             err in

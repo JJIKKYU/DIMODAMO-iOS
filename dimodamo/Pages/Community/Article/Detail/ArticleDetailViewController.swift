@@ -65,9 +65,6 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var commentTextFieldView: TextFieldContainerView!
     @IBOutlet weak var commentTextField: UITextField!
     
-    var imageView1: UIImageView = UIImageView()
-    
-    var article: Article?
     var disposeBag = DisposeBag()
     let viewModel = ArticleDetailViewModel()
     
@@ -559,7 +556,7 @@ extension ArticleDetailViewController {
     func urlViewSetting() {
         urlStackLoadingView.removeFromSuperview()
         
-        for (index, linkData) in viewModel.linksDataRelay.value.enumerated() {
+        for linkData in viewModel.linksDataRelay.value {
             let containerView: UIView = UIView()
             containerView.translatesAutoresizingMaskIntoConstraints = false
             containerView.layer.borderWidth = 1.5
@@ -698,14 +695,36 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
-        cell.commentDescription.text = viewModel.commentsRelay.value[indexPath.row].comment
-        cell.commentNickname.text = viewModel.commentsRelay.value[indexPath.row].nickname
-        cell.commentDate.text = viewModel.commentsRelay.value[indexPath.row].createdAt
-        if let heartCount = viewModel.commentsRelay.value[indexPath.row].heartCount {
+        
+        let cellIndex: Int = indexPath.row
+        let model: Comment = viewModel.commentsRelay.value[cellIndex]
+        
+        if let depth = viewModel.commentsRelay.value[indexPath.row].depth {
+            print("댓글의 뎁스 : \(depth)")
+            // 기본 댓글
+            if depth == 0 {
+                cell.commentProfileLeadingConstraint.constant = 24
+            }
+            // 대댓글
+            else if depth == 1 {
+                cell.commentProfileLeadingConstraint.constant = 80
+            }
+        }
+        
+        if let userType: String = model.userDpti {
+            cell.commentProfile.image = UIImage(named: "Profile_\(userType)")
+            cell.commentNickname.textColor = UIColor.dptiColor(userType)
+        }
+        
+        
+        cell.commentDescription.text = model.comment
+        cell.commentNickname.text = model.nickname
+        cell.commentDate.text = model.createdAt
+        if let heartCount = model.heartCount {
             cell.commentHeart.text = "\(heartCount)"
         }
-        cell.indexpathRow = indexPath.row
-        cell.uid = viewModel.commentsRelay.value[indexPath.row].commentId
+        cell.indexpathRow = cellIndex
+        cell.uid = model.commentId
         cell.viewModel = self.viewModel
         
         return cell
@@ -716,6 +735,10 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
+        
+        
+        
         print("\(indexPath.row)")
     }
     
