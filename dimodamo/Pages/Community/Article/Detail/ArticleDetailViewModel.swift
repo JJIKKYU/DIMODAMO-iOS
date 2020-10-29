@@ -20,7 +20,7 @@ class ArticleDetailViewModel {
     
     private let storage = Storage.storage().reference()
     private let db = Firestore.firestore()
-    let userUID = Auth.auth().currentUser?.uid
+    var userUID: String?
     
     /*
      POSTUID를 main에서 prepare로 전달 받았을 경우에 초기화 시작
@@ -94,6 +94,7 @@ class ArticleDetailViewModel {
         }
         return ""
     }
+    var commentUserHeartUidArr: [String] = []
     
     func linkViewSetting() {
         var linksData: [PreviewResponse] = []
@@ -162,9 +163,14 @@ class ArticleDetailViewModel {
                         self?.createdAtRelay.accept(createdAt)
                     }
                     
+                    if let userId: String = data!["user_id"] as? String {
+                        self?.userUID = userId
+                    }
+                    
                     self?.descriptionRelay.accept(data!["description"] as! String)
                     self?.urlLinksRelay.accept(data!["links"] as! [String])
                     self?.commentSetting()
+                    self?.userDataSetting()
                     //                print("documnetData : \(dataDescription)")
                     
                 } else {
@@ -202,6 +208,30 @@ class ArticleDetailViewModel {
                 
                 self?.commentsRelay.accept(comments)
             })
+    }
+    
+    func userDataSetting() {
+        guard let userUID = self.userUID else {
+            return
+        }
+        
+        db.collection("users")
+            .document("\(userUID)")
+            .getDocument { [weak self] (document, err) in
+                if let document = document, document.exists {
+                    let data = document.data()
+                    
+                    // 이미 하트 버튼을 누른 댓글 UID를 가져옴
+                    if let heartComments = data!["heartComments"] as? [String] {
+                        self?.commentUserHeartUidArr = heartComments
+                        print("하트 누른 댓글의 UID : \(self!.commentUserHeartUidArr)")
+                    }
+                    
+                } else {
+                    print("게시글에서 유저 정보를 불러오는데 오류가 발생했습니다.")
+                }
+            }
+    
     }
     
     func commentInput() {
@@ -273,6 +303,10 @@ class ArticleDetailViewModel {
         print("전달받았습니다 : \(uid)")
         
         let commentCellDocument = db.collection("\(commentDB)").document("\(uid)")
+        guard let userUID = self.userUID else  {
+            return
+        }
+        let userData = db.collection("users").document("\(userUID)")
 
         var currentHeartCount: Int?
         db.collection("\(commentDB)")
@@ -285,15 +319,40 @@ class ArticleDetailViewModel {
                     currentHeartCount = heartCount
                 }
                 
-                if let heartCount = currentHeartCount {
-                    commentCellDocument.updateData(["heart_count" : heartCount + 1])
+                guard let heartCount = currentHeartCount else  {
+                    return
                 }
+                
+                var removedCommentUID: Bool = false
+                for (index, heartCommentUid) in self.commentUserHeartUidArr.enumerated() {
+                    if uid == heartCommentUid {
+                        print("이미 좋아요를 눌렀으므로 사실상 제거헤야할 것 같습니다.")
+                        commentCellDocument.updateData(["heart_count" : heartCount - 1])
+                        self.commentUserHeartUidArr.remove(at: index)
+                        removedCommentUID = true
+                    }
+                }
+                
+                if removedCommentUID == false {
+                    // 좋아요를 누른게 없으면 푸쉬
+                    commentCellDocument.updateData(["heart_count" : heartCount + 1])
+                    self.commentUserHeartUidArr.append(uid)
+                }
+                
+                
+                
+                // 제거하는데 업데이트데이터는 안될듯
+                print(self.commentUserHeartUidArr)
+                userData.updateData(["heartComments" : self.commentUserHeartUidArr])
+
                 
                 
             } else {
                 print("Documnet does not exist")
             }
         }
+        
+        
     }
     
     init() {

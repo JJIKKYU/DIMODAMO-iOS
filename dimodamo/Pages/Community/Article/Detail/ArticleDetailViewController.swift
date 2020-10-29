@@ -113,7 +113,7 @@ class ArticleDetailViewController: UIViewController {
         commentTableView.delegate = self
         commentTableView.dataSource = self
         
-        
+        // 스크롤 크기 조절
         commentTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         Observable.combineLatest(
@@ -337,7 +337,7 @@ class ArticleDetailViewController: UIViewController {
     
 }
 
-// MARK:- UI
+// MARK:- UI/UX
 
 extension ArticleDetailViewController {
     func viewDesign() {
@@ -367,6 +367,9 @@ extension ArticleDetailViewController {
         
         // 댓글답글용 프로필 숨기기
         commentProfileIshidden(isHidden: true)
+        
+        // 스크롤뷰 제스쳐 추가
+        scrollviewAddTapGesture()
     }
     
     func informationTagDesign(){
@@ -390,6 +393,19 @@ extension ArticleDetailViewController {
         arg.translatesAutoresizingMaskIntoConstraints = true
         arg.sizeToFit()
         arg.isScrollEnabled = false
+    }
+    
+    func scrollviewAddTapGesture() {
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        self.scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+    }
+    
+    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
+        print("touchSCrollview")
+        self.view.endEditing(true)
     }
 }
 
@@ -691,9 +707,15 @@ class LinkURLSenderTapGestureRecognizer: UITapGestureRecognizer {
 // MARK: - Comment
 
 extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource, CommentCellDelegate {
+    func pressedHeartBtn(commentId: String, indexPathRow: Int) {
+        viewModel.pressedCommentHeart(uid: commentId)
+        
+//        let indexPath = IndexPath(item: indexPathRow, section: 0)
+//        commentTableView.reloadRows(at: [indexPath], with: .automatic)
+    }
     
     // CommentCellDelegate
-    func PressedCommentReply(type: String) {
+    func pressedCommentReply(type: String) {
         print("hello")
         commentProfileIshidden(isHidden: false)
         commentProfile.image = UIImage(named: "Profile_\(type)")
@@ -773,6 +795,17 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             }
         }
         
+        
+        // 이미 유저가 하트를 누른 경우 이미지 변경
+        for uid in viewModel.commentUserHeartUidArr {
+            if model.commentId == uid {
+                print("UID가 같으므로 하트이미지를 변경합니다.")
+                cell.selectedHeart = true
+                cell.commentHeartBtn.setImage(UIImage(named: "heartIconPressed"), for: .normal)
+            }
+        }
+        
+        
         if let userType: String = model.userDpti {
             cell.commentProfile.image = UIImage(named: "Profile_\(userType)")
             cell.commentNickname.textColor = UIColor.dptiColor(userType)
@@ -805,32 +838,14 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
         
-        guard let indexPath = tableView.indexPathForSelectedRow else {
-            return
-        }
-        let currentCell = tableView.cellForRow(at: indexPath) as! CommentCell
-        
-//        if let depth = cell.depth {
-//            print("댓글의 뎁스 : \(depth)")
-//            // 기본 댓글
-//            switch depth {
-//            case 0:
-//                cell.commentProfileLeadingConstraint.constant = 24
-//                commentProfileIshidden(isHidden: true)
-//                break
-//            // 대댓글
-//            case 1:
-//                cell.commentProfileLeadingConstraint.constant = 80
-//                commentProfileIshidden(isHidden: false)
-//                break
-//
-//            default:
-//                break
-//            }
+//        guard let indexPath = tableView.indexPathForSelectedRow else {
+//            return
 //        }
-        
+//        let currentCell = tableView.cellForRow(at: indexPath) as! CommentCell
+
+//        self.view.endEditing(true)
         print("\(indexPath.row)")
     }
     

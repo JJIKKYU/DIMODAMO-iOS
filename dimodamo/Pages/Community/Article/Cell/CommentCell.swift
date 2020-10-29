@@ -8,8 +8,13 @@
 
 import UIKit
 
+import RxSwift
+import RxRelay
+import RxCocoa
+
 protocol CommentCellDelegate {
-    func PressedCommentReply(type: String)
+    func pressedCommentReply(type: String)
+    func pressedHeartBtn(commentId: String, indexPathRow: Int)
 }
 
 class CommentCell: UITableViewCell {
@@ -19,6 +24,7 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var commentDescription: UITextView!
     @IBOutlet weak var commentDate: UILabel!
     @IBOutlet weak var commentHeart: UILabel!
+    @IBOutlet weak var commentHeartBtn: UIButton!
     @IBOutlet weak var commentAuthor: UIButton!
     
     @IBOutlet weak var commentProfileLeadingConstraint: NSLayoutConstraint!
@@ -29,14 +35,17 @@ class CommentCell: UITableViewCell {
     var viewModel: ArticleDetailViewModel?
     var delegate: CommentCellDelegate?
     
+    var selectedHeart: Bool = false
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         viewDesign()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     @IBAction func pressedReplyBtn(_ sender: Any) {
@@ -45,7 +54,7 @@ class CommentCell: UITableViewCell {
         let selectedCommentBundleId = checkedViewModel.commentsRelay.value[index].bundleId
         
         if let type = self.dptiType {
-            delegate?.PressedCommentReply(type: type)
+            delegate?.pressedCommentReply(type: type)
         }
         
         
@@ -55,9 +64,36 @@ class CommentCell: UITableViewCell {
     }
     
     @IBAction func pressedHeartBtn(_ sender: Any) {
-        guard let checkedViewModel = viewModel else { return }
         guard let checkedUid = uid else { return }
-        checkedViewModel.pressedCommentHeart(uid: checkedUid)
+        guard let checkedIndexPathRow = indexpathRow else { return }
+        
+        delegate?.pressedHeartBtn(commentId: checkedUid, indexPathRow: checkedIndexPathRow)
+        guard let commentHeartText = commentHeart.text,
+              let commentHeartInt = Int(commentHeartText) else {
+            return
+        }
+        
+        
+        var finalCommentHeartCount: Int?
+        
+        if selectedHeart == false {
+            commentHeartBtn.setImage(UIImage(named: "heartIconPressed"), for: .normal)
+            finalCommentHeartCount = commentHeartInt + 1
+            selectedHeart = true
+        } else {
+            commentHeartBtn.setImage(UIImage(named: "heartIcon"), for: .normal)
+            finalCommentHeartCount = commentHeartInt - 1
+            selectedHeart = false
+        }
+        
+        if let finalCommentHeartCount = finalCommentHeartCount {
+            commentHeart.text = "\(finalCommentHeartCount)"
+        }
+        
+        
+        
+        
+        //        checkedViewModel.pressedCommentHeart(uid: checkedUid)
     }
 }
 

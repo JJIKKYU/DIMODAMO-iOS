@@ -19,6 +19,7 @@ struct Register {
     var school: String = ""
     var schoolCertState: CertificationState = .none
     var dpti: String = ""
+    var heartComments: [String] = []
     
     func getDict() -> [String:Any] {
         let dict: [String:Any] = [
@@ -35,6 +36,7 @@ struct Register {
             "schoolCert" : self.schoolCertState.description,
             "rejectionReason" : "",
             "dpti" : "",
+            "heartComments": heartComments
         ]
         
         return dict
