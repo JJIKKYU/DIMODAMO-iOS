@@ -22,6 +22,10 @@ class ArticleViewController: UIViewController {
     let viewModel = ArticleViewModel()
     var disposeBag = DisposeBag()
     
+    var canTransitionToLarge = false
+    var canTransitionToSmall = true
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
@@ -56,7 +60,7 @@ class ArticleViewController: UIViewController {
             let destination: ArticleDetailViewController
                 = segue.destination as! ArticleDetailViewController
             destination.viewModel.postKindRelay.accept(postKind)
-        
+            
             if let postUid = viewModel.articlePosts[postIndex].boardId {
                 destination.viewModel.postUidRelay.accept(postUid)
             }
@@ -80,7 +84,7 @@ class ArticleViewController: UIViewController {
             break
         }
         
-            
+        
         
     }
 }
@@ -88,10 +92,11 @@ class ArticleViewController: UIViewController {
 // MARK: - ViewDesign
 extension ArticleViewController {
     func viewDesign() {
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.textBig),
-                          NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Bold", size: 24) as Any]
+//        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.textBig),
+//                          NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Bold", size: 24) as Any]
+//
+//        navigationController?.navigationBar.prefersLargeTitles = false
         
-        navigationController?.navigationBar.largeTitleTextAttributes = attributes
     }
 }
 
@@ -103,14 +108,9 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cellWidth: CGFloat = UIScreen.main.bounds.width - 40
         let cellHeight: CGFloat = 437
         
-        // 상하, 좌우 inset value 설정
-        let insetX: CGFloat = 20
-        let insetY: CGFloat = 0
-        
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.scrollDirection = .vertical
-        collectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -158,13 +158,34 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "DetailArticleVC", sender: [PostKinds.article, indexPath.row])
+        //        print("\(viewModel.articlePosts[indexPath.row].boardId)")
+        performSegue(withIdentifier: "DetailArticleVC", sender: [PostKinds.article.rawValue, indexPath.row])
     }
-}
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: 414, height: 100)
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
-
-extension ArticleViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ArticleHeader", for: indexPath)
+        
+        return header
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 20, bottom: 30, right: 20)
+    }
+    
+    
 }
+
+
+//extension ArticleViewController: UIScrollViewDelegate {
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.navigationController?.navigationBar.prefersLargeTitles = (velocity.y < 0)
+//        })
+//    }
+//}

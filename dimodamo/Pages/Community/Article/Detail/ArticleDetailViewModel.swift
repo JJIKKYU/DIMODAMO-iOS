@@ -26,7 +26,7 @@ class ArticleDetailViewModel {
      PostKind도 함께 초기화가 되어야 함
      */
     let postUidRelay = BehaviorRelay<String>(value: "")
-    let postKindRelay = BehaviorRelay<Int>(value: -1)
+    let postKindRelay = BehaviorRelay<Int>(value: 0)
     var postDB: String {
         if postKindRelay.value == PostKinds.article.rawValue {
             return "hongik/article/posts/"
