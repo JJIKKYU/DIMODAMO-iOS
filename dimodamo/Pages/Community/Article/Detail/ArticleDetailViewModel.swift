@@ -20,6 +20,7 @@ class ArticleDetailViewModel {
     
     private let storage = Storage.storage().reference()
     private let db = Firestore.firestore()
+    let userUID = Auth.auth().currentUser?.uid
     
     /*
      POSTUID를 main에서 prepare로 전달 받았을 경우에 초기화 시작

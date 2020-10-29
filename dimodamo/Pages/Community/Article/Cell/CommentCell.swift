@@ -15,6 +15,7 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var commentDescription: UITextView!
     @IBOutlet weak var commentDate: UILabel!
     @IBOutlet weak var commentHeart: UILabel!
+    @IBOutlet weak var commentAuthor: UIButton!
     
     @IBOutlet weak var commentProfileLeadingConstraint: NSLayoutConstraint!
     
@@ -51,6 +52,7 @@ extension CommentCell {
         commentDescription.textContainer.lineFragmentPadding = 0
         commentDescription.textContainerInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         adjustUITextViewHeight(arg: commentDescription)
+        commentAuthor.isHidden = true
     }
     
     // 텍스트뷰 Height 딱 맞도록

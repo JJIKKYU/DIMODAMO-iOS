@@ -716,6 +716,11 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.commentNickname.textColor = UIColor.dptiColor(userType)
         }
         
+        // 글 작성자와 댓글 작성자가 같은 경우 저자 표시
+        if viewModel.userUID == model.userId {
+            cell.commentAuthor.isHidden = false
+        }
+        
         
         cell.commentDescription.text = model.comment
         cell.commentNickname.text = model.nickname
