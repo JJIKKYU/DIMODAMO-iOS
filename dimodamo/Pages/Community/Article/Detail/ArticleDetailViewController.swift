@@ -62,8 +62,15 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var commentTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var commentTableViewBottom: NSLayoutConstraint!
     
+    @IBOutlet weak var commentTextFieldRoundView: TextFieldRound!
     @IBOutlet weak var commentTextFieldView: TextFieldContainerView!
     @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var commentProfile: UIImageView!
+    @IBOutlet var commentProfileWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var commentProfileLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var commentProfileTrailingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var plusBtn: UIButton!
     
     var disposeBag = DisposeBag()
     let viewModel = ArticleDetailViewModel()
@@ -357,6 +364,9 @@ extension ArticleDetailViewController {
             informationTagDesign()
         }
         articleCategory.articleCategoryDesign()
+        
+        // 댓글답글용 프로필 숨기기
+        commentProfileIshidden(isHidden: true)
     }
     
     func informationTagDesign(){
@@ -680,13 +690,60 @@ class LinkURLSenderTapGestureRecognizer: UITapGestureRecognizer {
 
 // MARK: - Comment
 
-extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource, CommentCellDelegate {
+    
+    // CommentCellDelegate
+    func PressedCommentReply(type: String) {
+        print("hello")
+        commentProfileIshidden(isHidden: false)
+        commentProfile.image = UIImage(named: "Profile_\(type)")
+        commentTextField.becomeFirstResponder()
+    }
+    
+    var textFieldReadingAnchor: NSLayoutConstraint {
+        return commentTextFieldRoundView.leadingAnchor.constraint(equalTo: plusBtn.trailingAnchor, constant: 15)
+    }
+    
+    
     func tablewViewSetting() {
         // Row Height를 무시하고, 각 Row 안의 내용에 따라 Row 높이가 유동적으로 결정 되도록
         commentTableView.rowHeight = UITableView.automaticDimension
         commentTableView.estimatedRowHeight = 100
         //        commentTableView.invalidateIntrinsicContentSize()
         //        commentTableView.layoutIfNeeded()
+    }
+    
+    func commentProfileIshidden(isHidden: Bool) {
+        // 이미 예정되어 있던 애니메이션은 모두 처리
+        self.view.layoutIfNeeded()
+        
+        switch isHidden {
+        case false:
+            print("false")
+            
+            commentProfileTrailingConstraint.constant = 15
+            commentProfileLeadingConstraint.constant = 15
+            commentProfileWidthConstraint.constant = 40
+//            commentProfile.isHidden = false
+            
+            break
+            
+        case true:
+            print("true")
+            commentProfileLeadingConstraint.constant = 0
+            commentProfileTrailingConstraint.constant = 15
+            commentProfileWidthConstraint.constant = 0
+//            commentProfile.isHidden = true
+            
+            break
+        }
+        
+        UIView.animate(withDuration: 0.5) { [self] in
+            self.view.layoutIfNeeded()
+        }
+        
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -702,18 +759,24 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         if let depth = viewModel.commentsRelay.value[indexPath.row].depth {
             print("댓글의 뎁스 : \(depth)")
             // 기본 댓글
-            if depth == 0 {
+            switch depth {
+            case 0:
                 cell.commentProfileLeadingConstraint.constant = 24
-            }
+                break
             // 대댓글
-            else if depth == 1 {
+            case 1:
                 cell.commentProfileLeadingConstraint.constant = 80
+                break
+                
+            default:
+                break
             }
         }
         
         if let userType: String = model.userDpti {
             cell.commentProfile.image = UIImage(named: "Profile_\(userType)")
             cell.commentNickname.textColor = UIColor.dptiColor(userType)
+            cell.dptiType = userType
         }
         
         // 글 작성자와 댓글 작성자가 같은 경우 저자 표시
@@ -732,6 +795,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.uid = model.commentId
         cell.viewModel = self.viewModel
         
+        cell.delegate = self
+        
         return cell
     }
     
@@ -742,10 +807,34 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
         
+        guard let indexPath = tableView.indexPathForSelectedRow else {
+            return
+        }
+        let currentCell = tableView.cellForRow(at: indexPath) as! CommentCell
         
+//        if let depth = cell.depth {
+//            print("댓글의 뎁스 : \(depth)")
+//            // 기본 댓글
+//            switch depth {
+//            case 0:
+//                cell.commentProfileLeadingConstraint.constant = 24
+//                commentProfileIshidden(isHidden: true)
+//                break
+//            // 대댓글
+//            case 1:
+//                cell.commentProfileLeadingConstraint.constant = 80
+//                commentProfileIshidden(isHidden: false)
+//                break
+//
+//            default:
+//                break
+//            }
+//        }
         
         print("\(indexPath.row)")
     }
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -764,7 +853,7 @@ extension ArticleDetailViewController: UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
-            //            self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
+//                        self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
             //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
         }
     }
@@ -772,7 +861,7 @@ extension ArticleDetailViewController: UITextFieldDelegate {
     @objc func moveDownTextView() {
         self.commentTextFieldView?.transform = .identity
         //        self.scrollView?.transform = .identity
-        //        self.commentTableViewBottom.constant = 0
+//                self.commentTableViewBottom.constant = 0
     }
     
     // 터치했을때 키보드 내림

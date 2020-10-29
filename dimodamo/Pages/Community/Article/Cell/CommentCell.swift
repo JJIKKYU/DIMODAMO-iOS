@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CommentCellDelegate {
+    func PressedCommentReply(type: String)
+}
+
 class CommentCell: UITableViewCell {
     
     @IBOutlet weak var commentProfile: UIImageView!
@@ -21,7 +25,9 @@ class CommentCell: UITableViewCell {
     
     var indexpathRow: Int? = nil
     var uid: String? = nil
+    var dptiType: String?
     var viewModel: ArticleDetailViewModel?
+    var delegate: CommentCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,8 +41,17 @@ class CommentCell: UITableViewCell {
     }
     @IBAction func pressedReplyBtn(_ sender: Any) {
         guard let checkedViewModel = viewModel else { return }
-        guard let checkedUid = uid else { return }
-        print("답글달기")
+        guard let index = indexpathRow else { return }
+        let selectedCommentBundleId = checkedViewModel.commentsRelay.value[index].bundleId
+        
+        if let type = self.dptiType {
+            delegate?.PressedCommentReply(type: type)
+        }
+        
+        
+        let depth: Int = 1
+        checkedViewModel.commentDepth = depth
+        checkedViewModel.commentBundleId = selectedCommentBundleId!
     }
     
     @IBAction func pressedHeartBtn(_ sender: Any) {

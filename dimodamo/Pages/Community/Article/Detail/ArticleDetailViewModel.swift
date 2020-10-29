@@ -84,6 +84,8 @@ class ArticleDetailViewModel {
     let commentsRelay = BehaviorRelay<[Comment]>(value: [])
     // 입력
     let commentInputRelay = BehaviorRelay<String>(value: "")
+    var commentDepth: Int = 0
+    var commentBundleId = 0.0
     var commentDB: String {
         if postKindRelay.value == PostKinds.article.rawValue {
             return "hongik/article/comments/"
@@ -176,6 +178,7 @@ class ArticleDetailViewModel {
             .whereField("post_id", isEqualTo: postUidRelay.value)
             .whereField("is_deleted", isEqualTo: false)
             .order(by: "bundle_id")
+            .order(by: "bundle_order")
             .getDocuments(completion: { [weak self] (querySnapshot, err) in
                 if let err = err {
                     print("댓글을 가져오는데 실패했습니다. \(err.localizedDescription)")
@@ -221,17 +224,18 @@ class ArticleDetailViewModel {
         
         let document = db.collection("\(commentDB)").document()
         let id: String = document.documentID
+        var bundleId: Double?
         
-        let depth: Int = 0
-        
-        switch depth {
+        switch commentDepth {
         // 일반댓글
         case 0:
+            bundleId = unixTimestamp
             break
             
         // 대댓글
         // TODO : 답글달기를 누른 bundle_id 세팅
         case 1:
+            bundleId = commentBundleId
             break
             
         default:
@@ -239,12 +243,12 @@ class ArticleDetailViewModel {
         }
         
         let comment: Comment = Comment()
-        comment.setData(bundle_id: unixTimestamp,
+        comment.setData(bundle_id: bundleId ?? unixTimestamp,
                         bundle_order: unixTimestamp,
                         comment: self.commentInputRelay.value,
                         comment_id: "\(id)",
                         created_at: "\(strDate)",
-                        depth: 0,
+                        depth: commentDepth,
                         heart_count: 0,
                         is_deleted: false,
                         nickname: "\(userNickname)",
