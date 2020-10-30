@@ -81,12 +81,8 @@ class CommunityMainViewController: UIViewController {
         performSegue(withIdentifier: "CreatePostVC", sender: sender)
     }
     
-    @objc func pressedSearchBtn(sender: UIButton) {
+    @IBAction func pressedSearchBtn(_ sender: Any) {
         performSegue(withIdentifier: "CommunitySearchVC", sender: sender)
-    }
-    
-    @objc func pressedPlusBtn(sender: UIButton) {
-        print("pressedPlusBtn")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -162,55 +158,19 @@ class CommunityMainViewController: UIViewController {
             
             break
             
+            // 검색
+        case "CommunitySearchVC":
+            segue.destination.modalTransitionStyle = .coverVertical
+            segue.destination.modalPresentationStyle = .fullScreen
+            break
+            
         default:
             break
         }
     }
     
     // MARK: - UI
-    
-    private func setupUI() {
-        
-        // 돋보기 버튼 이미지
-        let navigationSearchBtn: UIButton = UIButton(type: .custom)
-        if let image = UIImage(named: "searchIcon") {
-            navigationSearchBtn.setImage(image, for: .normal)
-        }
-        navigationSearchBtn.addTarget(self, action: #selector(self.pressedSearchBtn(sender:)), for: .touchUpInside)
-        
-        
-        let navigationPlusBtn: UIButton = UIButton(type: .custom)
-        if let image = UIImage(named: "plusBtn") {
-            navigationPlusBtn.setImage(image, for: .normal)
-        }
-        navigationPlusBtn.addTarget(self, action: #selector(self.pressedPlusBtn(sender:)), for: .touchUpInside)
-        
-        
-        // Initial setup for image for Large NavBar state since the the screen always has Large NavBar once it gets opened
-        guard let navigationBar = self.navigationController?.navigationBar else { return }
-        
-        // NavigationSearchBtn
-        navigationBar.addSubview(navigationSearchBtn)
-        navigationSearchBtn.clipsToBounds = true
-        navigationSearchBtn.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            navigationSearchBtn.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -NavigationBarConst.ImageRightMargin - 30),
-            navigationSearchBtn.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -NavigationBarConst.ImageBottomMarginForLargeState),
-            navigationSearchBtn.heightAnchor.constraint(equalToConstant: NavigationBarConst.ImageSizeForLargeState),
-            navigationSearchBtn.widthAnchor.constraint(equalTo: navigationSearchBtn.heightAnchor)
-        ])
-        
-        // NavigationPlusBtn
-        navigationBar.addSubview(navigationPlusBtn)
-        navigationPlusBtn.clipsToBounds = true
-        navigationPlusBtn.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            navigationPlusBtn.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -NavigationBarConst.ImageRightMargin),
-            navigationPlusBtn.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -NavigationBarConst.ImageBottomMarginForLargeState),
-            navigationPlusBtn.heightAnchor.constraint(equalToConstant: NavigationBarConst.ImageSizeForLargeState),
-            navigationPlusBtn.widthAnchor.constraint(equalTo: navigationPlusBtn.heightAnchor)
-        ])
-    }
+
     
     
     

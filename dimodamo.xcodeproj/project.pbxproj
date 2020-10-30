@@ -147,6 +147,7 @@
 		98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */; };
 		98E2416B250F9F47003BE1A3 /* Results.json in Resources */ = {isa = PBXBuildFile; fileRef = 98E2416A250F9F47003BE1A3 /* Results.json */; };
 		98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */; };
+		98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C836254C3D0500FDDEBF /* RecommendCell.swift */; };
 		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
 
@@ -296,6 +297,7 @@
 		98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewModel.swift; sourceTree = "<group>"; };
 		98E2416A250F9F47003BE1A3 /* Results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Results.json; sourceTree = "<group>"; };
 		98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchVC.swift; sourceTree = "<group>"; };
+		98F8C836254C3D0500FDDEBF /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -938,9 +940,18 @@
 		98F8C830254C2B6C00FDDEBF /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				98F8C835254C3CE900FDDEBF /* Cell */,
 				98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		98F8C835254C3CE900FDDEBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				98F8C836254C3D0500FDDEBF /* RecommendCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1184,6 +1195,7 @@
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,
 				988377EB2544B49E00BFA746 /* CommentModel.swift in Sources */,
+				98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */,
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
