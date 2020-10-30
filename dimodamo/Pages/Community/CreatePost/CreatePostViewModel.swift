@@ -32,7 +32,8 @@ class CreatePostViewModel {
         let sliceArray = tagsRelay.value.getArrayAfterRegex(regex:"#[^ ]+").map { (slice) in
             slice.replacingOccurrences(of: "#", with: "").lowercased()
         }
-        
+        tags = sliceArray
+        print(tags)
         return "\(sliceArray.count)/3"
     }
     var tagsLimitCount: Int {

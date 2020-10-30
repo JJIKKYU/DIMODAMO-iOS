@@ -23,12 +23,18 @@ class CommunitySearchVC: UIViewController {
     
     @IBOutlet weak var recommendView: UIView!
     @IBOutlet weak var historyView: UIView!
+    @IBOutlet weak var resultContainerView: UIView! {
+        didSet {
+            resultContainerView.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
         
         recommendCollectionView.delegate = self
         recommendCollectionView.dataSource = self
@@ -48,6 +54,7 @@ class CommunitySearchVC: UIViewController {
     @IBAction func pressedSearchBtn(_ sender: Any) {
         recommendView.isHidden = true
         historyView.isHidden = true
+        resultContainerView.isHidden = false
         print("검색")
     }
     

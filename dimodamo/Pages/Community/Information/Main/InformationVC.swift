@@ -15,7 +15,9 @@ import Lottie
 
 class InformationVC: UIViewController {
 
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var loadingView: LottieLoadingView!
     
     let viewModel = InformationViewModel()
     var disposeBag = DisposeBag()
@@ -27,11 +29,21 @@ class InformationVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.view.layoutIfNeeded()
+        mainView.addSubview(loadingView)
+        self.loadingView.centerYAnchor.constraint(equalTo: self.mainView.centerYAnchor).isActive = true
+        self.loadingView.centerXAnchor.constraint(equalTo: self.mainView.centerXAnchor).isActive = true
+        self.loadingView.layer.zPosition = 999
+        self.view.layoutIfNeeded()
+        
         viewModel.informationLoading
             .subscribeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] isLoaded in
                 if isLoaded == true {
                     self?.tableView.reloadData()
+                    self?.loadingView.isHidden = true
+                } else {
+                    self?.loadingView.isHidden = false
                 }
             })
             .disposed(by: disposeBag)
