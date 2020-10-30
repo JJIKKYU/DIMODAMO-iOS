@@ -82,7 +82,7 @@ class CommunityMainViewController: UIViewController {
     }
     
     @objc func pressedSearchBtn(sender: UIButton) {
-        print("pressedSeearchBtn")
+        performSegue(withIdentifier: "CommunitySearchVC", sender: sender)
     }
     
     @objc func pressedPlusBtn(sender: UIButton) {

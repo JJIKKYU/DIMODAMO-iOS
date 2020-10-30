@@ -85,6 +85,7 @@ class ArticleDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.invisible()
+//        navigationController?.navigationBar.barTintColor = .white
         //        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
         
         // 하단 탭바 숨기기

@@ -314,7 +314,7 @@ class ArticleDetailViewModel {
             .getDocument { (document, error) in
             if let document = document, document.exists {
                 let data = document.data()
-                
+                	
                 if let heartCount: Int = data!["heart_count"] as? Int {
                     currentHeartCount = heartCount
                 }
