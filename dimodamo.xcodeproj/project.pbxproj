@@ -148,6 +148,11 @@
 		98E2416B250F9F47003BE1A3 /* Results.json in Resources */ = {isa = PBXBuildFile; fileRef = 98E2416A250F9F47003BE1A3 /* Results.json */; };
 		98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */; };
 		98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C836254C3D0500FDDEBF /* RecommendCell.swift */; };
+		98F8C83B254C912300FDDEBF /* SearchPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C83A254C912300FDDEBF /* SearchPageVC.swift */; };
+		98F8C83F254C95F900FDDEBF /* ArticleSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C83E254C95F900FDDEBF /* ArticleSearchVC.swift */; };
+		98F8C843254C9CD600FDDEBF /* InformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C842254C9CD600FDDEBF /* InformationVC.swift */; };
+		98F8C847254C9CE400FDDEBF /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C846254C9CE400FDDEBF /* InformationViewModel.swift */; };
+		98F8C84B254CA0F300FDDEBF /* LottieLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C84A254CA0F300FDDEBF /* LottieLoadingView.swift */; };
 		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
 
@@ -298,6 +303,11 @@
 		98E2416A250F9F47003BE1A3 /* Results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Results.json; sourceTree = "<group>"; };
 		98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchVC.swift; sourceTree = "<group>"; };
 		98F8C836254C3D0500FDDEBF /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
+		98F8C83A254C912300FDDEBF /* SearchPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageVC.swift; sourceTree = "<group>"; };
+		98F8C83E254C95F900FDDEBF /* ArticleSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSearchVC.swift; sourceTree = "<group>"; };
+		98F8C842254C9CD600FDDEBF /* InformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationVC.swift; sourceTree = "<group>"; };
+		98F8C846254C9CE400FDDEBF /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
+		98F8C84A254CA0F300FDDEBF /* LottieLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieLoadingView.swift; sourceTree = "<group>"; };
 		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -733,6 +743,7 @@
 		988377952541F4DB00BFA746 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				98F8C849254CA0E200FDDEBF /* LottieLoading */,
 				988377962541F4E100BFA746 /* TextInputBox */,
 			);
 			path = Component;
@@ -847,6 +858,7 @@
 		98A8B82B25377D3B00351FD5 /* Information */ = {
 			isa = PBXGroup;
 			children = (
+				98F8C841254C9CC700FDDEBF /* Main */,
 				98A8B82D25377D7500351FD5 /* Table Cell */,
 			);
 			path = Information;
@@ -940,8 +952,10 @@
 		98F8C830254C2B6C00FDDEBF /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				98F8C83D254C95E200FDDEBF /* ArticleSearchVC */,
 				98F8C835254C3CE900FDDEBF /* Cell */,
 				98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */,
+				98F8C83A254C912300FDDEBF /* SearchPageVC.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -952,6 +966,31 @@
 				98F8C836254C3D0500FDDEBF /* RecommendCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		98F8C83D254C95E200FDDEBF /* ArticleSearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				98F8C83E254C95F900FDDEBF /* ArticleSearchVC.swift */,
+			);
+			path = ArticleSearchVC;
+			sourceTree = "<group>";
+		};
+		98F8C841254C9CC700FDDEBF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				98F8C842254C9CD600FDDEBF /* InformationVC.swift */,
+				98F8C846254C9CE400FDDEBF /* InformationViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		98F8C849254CA0E200FDDEBF /* LottieLoading */ = {
+			isa = PBXGroup;
+			children = (
+				98F8C84A254CA0F300FDDEBF /* LottieLoadingView.swift */,
+			);
+			path = LottieLoading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1146,6 +1185,7 @@
 				98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
+				98F8C847254C9CE400FDDEBF /* InformationViewModel.swift in Sources */,
 				988377982541F4F500BFA746 /* CommentInputView.swift in Sources */,
 				9800A14F253377F20090C058 /* FirstIntroViewController.swift in Sources */,
 				98AFDA532539CF2400B0D88F /* CommunityMain.swift in Sources */,
@@ -1154,9 +1194,11 @@
 				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
 				98AFDAD6253AA5D700B0D88F /* ArticleViewController.swift in Sources */,
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,
+				98F8C83F254C95F900FDDEBF /* ArticleSearchVC.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
 				9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */,
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,
+				98F8C843254C9CD600FDDEBF /* InformationVC.swift in Sources */,
 				9883776E2541ECE100BFA746 /* LinkWebViewController.swift in Sources */,
 				98A661E7252F2C0000698BA0 /* FindEmailViewController.swift in Sources */,
 				98C42313251D7CCE00B2B194 /* Register.swift in Sources */,
@@ -1171,6 +1213,7 @@
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
 				986322562517BB81003B0784 /* FriendMainViewController.swift in Sources */,
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
+				98F8C83B254C912300FDDEBF /* SearchPageVC.swift in Sources */,
 				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,
 				980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */,
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,
@@ -1191,6 +1234,7 @@
 				98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */,
 				98AFDA7A2539DC8400B0D88F /* ArticleCell.swift in Sources */,
 				98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */,
+				98F8C84B254CA0F300FDDEBF /* LottieLoadingView.swift in Sources */,
 				98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,

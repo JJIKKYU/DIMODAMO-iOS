@@ -21,6 +21,9 @@ class CommunitySearchVC: UIViewController {
     }
     @IBOutlet weak var recommendCollectionView: UICollectionView!
     
+    @IBOutlet weak var recommendView: UIView!
+    @IBOutlet weak var historyView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,6 +46,8 @@ class CommunitySearchVC: UIViewController {
     */
 
     @IBAction func pressedSearchBtn(_ sender: Any) {
+        recommendView.isHidden = true
+        historyView.isHidden = true
         print("검색")
     }
     
@@ -77,6 +82,8 @@ extension CommunitySearchVC: UITableViewDelegate, UITableViewDataSource {
 // MARK: -recommendCollectionView
 
 extension CommunitySearchVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }

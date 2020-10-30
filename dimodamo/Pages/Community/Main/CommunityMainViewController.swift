@@ -164,6 +164,10 @@ class CommunityMainViewController: UIViewController {
             segue.destination.modalPresentationStyle = .fullScreen
             break
             
+        case "InformationVC":
+            
+            break
+            
         default:
             break
         }
