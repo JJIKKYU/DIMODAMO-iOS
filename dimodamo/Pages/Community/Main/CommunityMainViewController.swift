@@ -144,6 +144,10 @@ class CommunityMainViewController: UIViewController {
                     destination.viewModel.titleRelay.accept("\(title)")
                 }
                 
+                if let tags = viewModel.informationPosts[postIndex].tags {
+                    destination.viewModel.tagsRelay.accept(tags)
+                }
+                
                 //                let tags = viewModel.informationPosts[postIndex].tags
                 //                                    destination.viewModel.tagsRelay.accept(tags)
                 
@@ -221,6 +225,13 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
         if let commentCount = model.commentCount {
             cell.commnetCnt.text = "\(commentCount)"
         }
+        
+        if let tags = model.tags {
+            for (index, tag) in tags.enumerated() {
+                cell.tags[index].text = "\(tag)"
+            }
+        }
+        cell.tagDesign()
         
         return cell
     }

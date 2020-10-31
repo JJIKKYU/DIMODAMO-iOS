@@ -34,15 +34,26 @@ class InformationTableViewCell: UITableViewCell {
 
 extension InformationTableViewCell {
     func viewDesign() {
-        tagDesign()
+//        tagDesign()
     }
     
     func tagDesign(){
         
         // 태그 내부 글자 수에 맞춰서 width, height 재설정
         for tag in tags {
-            let width: Int = (Int(tag.text!.count) * 10) + 20
+            
+            let textCount: Int = Int(tag.text!.count)
+            
+            let width: Int = (textCount * 10) + 20
             let height: Int = 20
+            
+            if tag.text?.count == 0 {
+                
+                tag.widthAnchor.constraint(equalToConstant: 0).isActive = true
+                tag.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
+                break
+            }
+            
             tag.translatesAutoresizingMaskIntoConstraints = false
             tag.widthAnchor.constraint(equalToConstant: CGFloat(width)).isActive = true
             tag.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true

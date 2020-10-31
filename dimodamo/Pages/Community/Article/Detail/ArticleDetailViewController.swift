@@ -28,9 +28,19 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var informationTitle: UILabel!
     @IBOutlet var informationTags: [UILabel]!
     
+    @IBOutlet weak var scrapIcon: UIButton! {
+        didSet {
+            scrapIcon.isHidden = true
+            scrapIcon.layer.zPosition = 999
+        }
+    }
     @IBOutlet var scrapNavbarItem: UIBarButtonItem!
-    @IBOutlet weak var scrapIcon: UIButton!
-    @IBOutlet weak var scrapCountLabel: UILabel!
+    @IBOutlet var scrapNavbarIcon: UIButton!
+    @IBOutlet weak var scrapCountLabel: UILabel! {
+        didSet {
+            scrapCountLabel.isHidden = true
+        }
+    }
     
     @IBOutlet weak var articleTopContainer: UIView!
     
@@ -89,7 +99,7 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.rightBarButtonItem = scrapNavbarItem
         
 //        navigationController?.invisible()
         self.navigationController?.hideTransparentNavigationBar()
@@ -114,6 +124,7 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         commentTableView.delegate = self
         commentTableView.dataSource = self
@@ -204,10 +215,18 @@ class ArticleDetailViewController: UIViewController {
                     
                 } else {
                     for (index, tag) in tags.enumerated() {
-                        self?.tags[index].text = "#\(tag)"
+                        if self?.viewModel.postKindRelay.value == PostKinds.article.rawValue {
+                            self?.tags[index].text = "#\(tag)"
+                        } else if self?.viewModel.postKindRelay.value == PostKinds.information.rawValue {
+                            self?.informationTags[index].text = "#\(tag)"
+                        }
                     }
                 }
                 
+                
+                if self?.viewModel.postKindRelay.value == PostKinds.information.rawValue {
+                    self?.informationTagDesign()
+                }
                 
             })
             .disposed(by: disposeBag)
@@ -333,13 +352,14 @@ class ArticleDetailViewController: UIViewController {
             .subscribe(onNext: { [weak self] flag in
                 // 이미 스크랩 했을 경우
                 if flag == true {
-                    self?.scrapIcon.setImage(UIImage(named: "scrapPressedIcon"), for: .normal)
-                    self?.scrapNavbarItem.image = UIImage(named: "scrapPressedIcon")
+//                    self?.scrapIcon.setImage(UIImage(named: "scrapPressedIcon"), for: .normal)
+                    self?.scrapNavbarIcon?.setImage(UIImage(named: "scrapPressedIconGray"), for: .normal)
+                    
                 }
                 // 스크랩 안했을 경우
                 else {
-                    self?.scrapIcon.setImage(UIImage(named: "scrapIcon"), for: .normal)
-                    self?.scrapNavbarItem.image = UIImage(named: "scrapIcon")
+//                    self?.scrapIcon.setImage(UIImage(named: "scrapIcon"), for: .normal)
+                    self?.scrapNavbarIcon?.setImage(UIImage(named: "scrapIconGray"), for: .normal)
                 }
                 
             })
@@ -374,6 +394,9 @@ class ArticleDetailViewController: UIViewController {
         viewModel.pressedScrapBtn()
     }
     
+    @IBAction func pressedScrapBtnInView(_ sender: Any) {
+        print("안되냐?")
+    }
     
 }
 
@@ -420,19 +443,27 @@ extension ArticleDetailViewController: UIScrollViewDelegate {
                 self.navigationController?.presentTransparentNavigationBar()
                 self.navItem.title = "\(viewModel.titleRelay.value)"
                 self.navigationItem.rightBarButtonItem = scrapNavbarItem
+                
             } else {
                 self.navigationController?.hideTransparentNavigationBar()
                 self.navItem.title = ""
-                self.navigationItem.rightBarButtonItem = nil
+                
+                self.navigationItem.rightBarButtonItem = scrapNavbarItem
+                
                 
             }
         } else if viewModel.postKindRelay.value == PostKinds.information.rawValue {
-            if scrollOffset > 140 {
+            if scrollOffset > 130 {
                 self.navigationController?.presentTransparentNavigationBar()
                 self.navItem.title = "\(viewModel.titleRelay.value)"
+                self.navigationItem.rightBarButtonItem = scrapNavbarItem
+                
+                // 밑으로 내렸을 때는 true로
+                self.navigationController?.navigationBar.isUserInteractionEnabled = true
             } else {
                 self.navigationController?.hideTransparentNavigationBar()
                 self.navItem.title = ""
+                self.navigationItem.rightBarButtonItem = scrapNavbarItem
             }
         }
     }
@@ -460,9 +491,9 @@ extension ArticleDetailViewController {
             
             textView.topAnchor.constraint(equalTo: informationTopContainer.bottomAnchor, constant: 48).isActive = true
             textView.translatesAutoresizingMaskIntoConstraints = false
+            informationTopContainer.layer.zPosition = -1
             
             articleTopContainer.isHidden = true
-            informationTagDesign()
         }
         articleCategory.articleCategoryDesign()
         
@@ -472,16 +503,32 @@ extension ArticleDetailViewController {
         // 스크롤뷰 제스쳐 추가
         scrollviewAddTapGesture()
         
-        // 스크랩 아이콘 추가
-//        scrapNavitemSetting()
+        /*
+         보이지는 않지만 네비게이션바 프레임으로 인해 터치 안되는 문제 떄문에
+         */
+//        // 전체 프레임은 인터랙션 제외
+//        self.navigationController?.navigationBar.isUserInteractionEnabled = false
+//        // 뒤로가기 버튼만 활성화
+//        self.navigationItem.leftBarButtonItem?.isEnabled = true
     }
     
     func informationTagDesign(){
         
         // 태그 내부 글자 수에 맞춰서 width, height 재설정
-        for tag in self.informationTags {
-            let width: Int = (Int(tag.text!.count) * 10) + 20
+        for (index, tag) in self.informationTags.enumerated() {
+            let textCount: Int = Int(tag.text!.count)
+            
+            let width: Int = (textCount * 10) + 20
             let height: Int = 20
+            
+            // 위에서 #을 포함해서 자동으로 할당하므로 1
+            if tag.text?.count == 1 {
+                
+                tag.widthAnchor.constraint(equalToConstant: 0).isActive = true
+                tag.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
+                break
+            }
+            
             tag.translatesAutoresizingMaskIntoConstraints = false
             tag.widthAnchor.constraint(equalToConstant: CGFloat(width)).isActive = true
             tag.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true

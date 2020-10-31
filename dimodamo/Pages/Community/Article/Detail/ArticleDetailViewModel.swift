@@ -409,6 +409,7 @@ class ArticleDetailViewModel {
             self.scrapUserPostsUidArr.append("\(self.postUidRelay.value)")
             userData.updateData(["scrapPosts" : self.scrapUserPostsUidArr])
             self.isScrapPost.accept(true)
+            self.scrapCountRelay.accept(updateScrapCount)
             
             break
         
@@ -422,6 +423,7 @@ class ArticleDetailViewModel {
             }
             userData.updateData(["scrapPosts" : self.scrapUserPostsUidArr])
             self.isScrapPost.accept(false)
+            self.scrapCountRelay.accept(updateScrapCount)
             
             break
             

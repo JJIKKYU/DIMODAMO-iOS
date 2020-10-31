@@ -16,13 +16,25 @@ import Tagging
 class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBOutlet weak var descriptionContainer: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var titleLimit: UILabel!
     
     @IBOutlet weak var tagsTextField: UITextField!
     @IBOutlet weak var tagsLimit: UILabel!
+    
+    /*
+     UploadImage
+     */
+    var imagePicker : UIImagePickerController = UIImagePickerController()
+    
+    @IBOutlet weak var bottomIconContainerView: UIView! {
+        didSet {
+            bottomIconContainerView.layer.cornerRadius = 16
+            bottomIconContainerView.layer.masksToBounds = true
+            bottomIconContainerView.appShadow(.s20)
+        }
+    }
     @IBOutlet weak var tagsTableView: UITableView! {
         didSet {
             tagsTableView.layer.borderWidth = 2
@@ -74,11 +86,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         tagsTableView.dataSource = self
         tagsTableView.delegate = self
         
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
-        singleTapGestureRecognizer.numberOfTapsRequired = 1
-        singleTapGestureRecognizer.isEnabled = true
-        singleTapGestureRecognizer.cancelsTouchesInView = false
-        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        imagePicker.delegate = self
         
         
         
@@ -168,6 +176,12 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("asd")
     }
+    
+    @IBAction func pressedCameraBtn(_ sender: Any) {
+        print("카메라로 사진을 촬영합니다.")
+        self.imagePickerPresent()
+    }
+    
 }
 
 // MARK: - UI Design
@@ -223,4 +237,14 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+// MARK: - ImagePicker
+
+extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerPresent(){
+        
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+        
+    }
 }
