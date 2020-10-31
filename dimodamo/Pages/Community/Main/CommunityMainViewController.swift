@@ -22,6 +22,8 @@ class CommunityMainViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     // Paging Variable (articleCollectionView)
     var currentIndex: CGFloat = 0
     let lineSpacing: CGFloat = 20
@@ -34,6 +36,8 @@ class CommunityMainViewController: UIViewController {
         super.viewWillAppear(animated)
         print("viewwillAppear")
         navigationController?.visible(color: UIColor.appColor(.textBig))
+        navigationController?.view.backgroundColor = .white
+//        self.navigationController?.presentTransparentNavigationBar()
     }
     
     override func viewDidLoad() {

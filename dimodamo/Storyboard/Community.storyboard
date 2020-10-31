@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T3-oi-p96">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kV6-pn-hOH" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1350"/>
@@ -423,7 +423,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="도큐먼트" largeTitleDisplayMode="always" id="Koh-Kf-EED">
-                        <barButtonItem key="backBarButtonItem" title=" " id="Bhb-7T-dYv"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="Bhb-7T-dYv">
+                            <color key="tintColor" name="GRAY - 190"/>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem style="plain" id="hvX-g1-EtM">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Vbr-Lg-XcG">
@@ -453,6 +455,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="articleCollectionView" destination="UCe-Uz-ZKD" id="d5s-yG-rgm"/>
+                        <outlet property="navBar" destination="Koh-Kf-EED" id="U2X-ol-wfb"/>
                         <outlet property="spinner" destination="4GL-KB-Fdi" id="Ded-2Q-eTM"/>
                         <outlet property="tableView" destination="gvX-HO-fK5" id="zYV-zB-w9o"/>
                         <segue destination="iXc-eR-qQb" kind="show" identifier="ArticleVC" id="a1k-XL-XIf"/>
@@ -476,8 +479,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Qib-wI-6kE">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="GRAY - 210"/>
-                        <color key="barTintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" name="TEXT - BIG"/>
+                        <color key="barTintColor" name="WHITE"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
                             <color key="textColor" name="TEXT - BIG"/>
@@ -732,7 +735,7 @@
             </objects>
             <point key="canvasLocation" x="3358" y="-1096"/>
         </scene>
-        <!--Article Detail View Controller-->
+        <!--안녕-->
         <scene sceneID="Gbj-hO-1bX">
             <objects>
                 <viewController extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="uzi-lB-7YW" customClass="ArticleDetailViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
@@ -1189,7 +1192,7 @@
                             <constraint firstAttribute="trailing" secondItem="apE-8D-tgH" secondAttribute="trailing" id="wFf-UB-Ht8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="HSy-h0-erT"/>
+                    <navigationItem key="navigationItem" title="안녕" largeTitleDisplayMode="never" id="HSy-h0-erT"/>
                     <connections>
                         <outlet property="articleCategory" destination="bmu-h0-QOv" id="Hwc-lR-Hx9"/>
                         <outlet property="articleTopContainer" destination="wrz-6p-uxO" id="uNb-0g-MDr"/>
@@ -1209,6 +1212,7 @@
                         <outlet property="imageStackView" destination="nxA-RJ-2LT" id="R08-GA-LzY"/>
                         <outlet property="informationTitle" destination="468-fc-Cj9" id="7yp-vi-4rA"/>
                         <outlet property="informationTopContainer" destination="mGk-pA-sBU" id="t8b-6P-7KZ"/>
+                        <outlet property="navItem" destination="HSy-h0-erT" id="3UM-8L-1il"/>
                         <outlet property="plusBtn" destination="qF7-LF-C75" id="jRD-Fj-kTR"/>
                         <outlet property="scrollView" destination="apE-8D-tgH" id="98v-Mv-OEn"/>
                         <outlet property="textView" destination="GeV-Ak-Ec7" id="qPV-ap-u4J"/>
@@ -1520,6 +1524,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="cf0-5y-wse"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="A1T-vs-eiR" firstAttribute="leading" secondItem="da8-Qa-RoL" secondAttribute="leading" id="C7T-FV-R17"/>
@@ -1969,6 +1974,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="K7P-vt-i8o"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ta0-EM-brX" firstAttribute="trailing" secondItem="Weg-Br-lnk" secondAttribute="trailing" id="AC2-Uv-Jun"/>
@@ -2239,6 +2245,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="hjr-ND-oTe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fzU-hu-V8k" firstAttribute="leading" secondItem="qxd-6d-DsA" secondAttribute="leading" id="i6d-mV-Lqa"/>
@@ -2406,6 +2413,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="XCa-Gc-iFS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KDJ-5V-Xzn" firstAttribute="top" secondItem="H0t-aJ-ils" secondAttribute="top" id="OXr-Dt-gni"/>
@@ -2654,7 +2662,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RQh-cD-CdY"/>
+        <segue reference="Ae2-2V-5qG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Empty_CMU" width="374" height="374"/>

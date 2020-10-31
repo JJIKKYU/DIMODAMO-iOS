@@ -70,6 +70,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet var commentProfileLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var commentProfileTrailingConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var plusBtn: UIButton!
     
     var disposeBag = DisposeBag()
@@ -79,17 +80,15 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationController?.presentTransparentNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.invisible()
-//        navigationController?.navigationBar.barTintColor = .white
-        //        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
+//        navigationController?.invisible()
+        self.navigationController?.hideTransparentNavigationBar()
         
-        // 하단 탭바 숨기기
-        //        (self.tabBarController as? TabBarViewController)?.invisible()
     }
     
     override func viewWillLayoutSubviews() {
@@ -114,6 +113,8 @@ class ArticleDetailViewController: UIViewController {
         commentTableView.delegate = self
         commentTableView.dataSource = self
         
+        scrollView.delegate = self
+        
         // 스크롤 크기 조절
         commentTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
@@ -134,7 +135,7 @@ class ArticleDetailViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
                 if value != "" {
-                    self?.navigationItem.title = "\(value)"
+//                    self?.navigationItem.title = "\(value)"
                     self?.titleLabel.text = "\(value)"
                     self?.informationTitle.text = "\(value)"
                     self?.informationTitle.lineBreakStrategy = .hangulWordPriority
@@ -336,6 +337,66 @@ class ArticleDetailViewController: UIViewController {
         commentTableView.reloadData()
     }
     
+    
+    
+}
+
+extension UINavigationController {
+
+    public func presentTransparentNavigationBar() {
+        view.layer.layoutIfNeeded()
+        setNavigationBarHidden(false, animated: true)
+        UIView.animate(withDuration: 0.3) { [self] in
+            navigationBar.titleTextAttributes = [.foregroundColor: UIColor.appColor(.textSmall)]
+            navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            navigationBar.shadowImage = UIImage()
+            navigationBar.isTranslucent = false
+            navigationBar.barTintColor = .white
+            view.layer.layoutIfNeeded()
+        }
+        
+    }
+
+    public func hideTransparentNavigationBar() {
+        view.layer.layoutIfNeeded()
+        setNavigationBarHidden(false, animated: true)
+        UIView.animate(withDuration: 0.3) { [self] in
+//            navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
+            navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            navigationBar.shadowImage = UIImage()
+            navigationBar.isTranslucent = true
+            navigationBar.barTintColor = .white
+            view.layer.layoutIfNeeded()
+        }
+        
+        
+    }
+}
+
+extension ArticleDetailViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+
+        let scrollOffset = scrollView.contentOffset.y
+
+        if viewModel.postKindRelay.value == PostKinds.article.rawValue {
+            if scrollOffset > 210 {
+                self.navigationController?.presentTransparentNavigationBar()
+                self.navItem.title = "\(viewModel.titleRelay.value)"
+            } else {
+                self.navigationController?.hideTransparentNavigationBar()
+                self.navItem.title = ""
+            }
+        } else if viewModel.postKindRelay.value == PostKinds.information.rawValue {
+            if scrollOffset > 140 {
+                self.navigationController?.presentTransparentNavigationBar()
+                self.navItem.title = "\(viewModel.titleRelay.value)"
+            } else {
+                self.navigationController?.hideTransparentNavigationBar()
+                self.navItem.title = ""
+            }
+        }
+    }
 }
 
 // MARK:- UI/UX
