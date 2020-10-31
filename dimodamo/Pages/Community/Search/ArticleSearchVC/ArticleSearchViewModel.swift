@@ -26,8 +26,9 @@ class ArticleSearchViewModel {
         print("검색 키워드 : \(searchKeyword.value)")
         
         db.collection("hongik").document("article").collection("posts")
-            .whereField("board_title", isGreaterThanOrEqualTo: "\(self.searchKeyword.value)")
-//            .order(by: "board_title")
+            .whereField("board_title", isLessThanOrEqualTo: "\(self.searchKeyword.value)")
+            .whereField("board_title", isLessThan: "\(self.searchKeyword.value)Z")
+            .order(by: "board_title")
 //            .start(at: ["\(self.searchKeyword.value)"])
 //            .end(at: "블랙핑크" + "\uf8ff")
             .getDocuments() { [weak self] (querySnapshot, err) in

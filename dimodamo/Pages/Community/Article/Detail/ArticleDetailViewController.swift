@@ -28,6 +28,10 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var informationTitle: UILabel!
     @IBOutlet var informationTags: [UILabel]!
     
+    @IBOutlet var scrapNavbarItem: UIBarButtonItem!
+    @IBOutlet weak var scrapIcon: UIButton!
+    @IBOutlet weak var scrapCountLabel: UILabel!
+    
     @IBOutlet weak var articleTopContainer: UIView!
     
     @IBOutlet weak var contentView: UIView!
@@ -85,6 +89,7 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationItem.rightBarButtonItem = nil
         
 //        navigationController?.invisible()
         self.navigationController?.hideTransparentNavigationBar()
@@ -314,6 +319,34 @@ class ArticleDetailViewController: UIViewController {
         
         
         /*
+         스크랩
+         */
+        viewModel.scrapCountRelay
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] count in
+                self?.scrapCountLabel.text = "\(count)"
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.isScrapPost
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] flag in
+                // 이미 스크랩 했을 경우
+                if flag == true {
+                    self?.scrapIcon.setImage(UIImage(named: "scrapPressedIcon"), for: .normal)
+                    self?.scrapNavbarItem.image = UIImage(named: "scrapPressedIcon")
+                }
+                // 스크랩 안했을 경우
+                else {
+                    self?.scrapIcon.setImage(UIImage(named: "scrapIcon"), for: .normal)
+                    self?.scrapNavbarItem.image = UIImage(named: "scrapIcon")
+                }
+                
+            })
+            .disposed(by: disposeBag)
+        
+        
+        /*
          Keyboard
          */
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -337,6 +370,9 @@ class ArticleDetailViewController: UIViewController {
         commentTableView.reloadData()
     }
     
+    @IBAction func pressedScrapBtn(_ sender: Any) {
+        viewModel.pressedScrapBtn()
+    }
     
     
 }
@@ -383,9 +419,12 @@ extension ArticleDetailViewController: UIScrollViewDelegate {
             if scrollOffset > 210 {
                 self.navigationController?.presentTransparentNavigationBar()
                 self.navItem.title = "\(viewModel.titleRelay.value)"
+                self.navigationItem.rightBarButtonItem = scrapNavbarItem
             } else {
                 self.navigationController?.hideTransparentNavigationBar()
                 self.navItem.title = ""
+                self.navigationItem.rightBarButtonItem = nil
+                
             }
         } else if viewModel.postKindRelay.value == PostKinds.information.rawValue {
             if scrollOffset > 140 {
@@ -432,6 +471,9 @@ extension ArticleDetailViewController {
         
         // 스크롤뷰 제스쳐 추가
         scrollviewAddTapGesture()
+        
+        // 스크랩 아이콘 추가
+//        scrapNavitemSetting()
     }
     
     func informationTagDesign(){
@@ -468,6 +510,31 @@ extension ArticleDetailViewController {
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
         print("touchSCrollview")
         self.view.endEditing(true)
+    }
+    
+    func scrapNavitemSetting() {
+        let viewFN = UIView(frame: CGRect.init(x: 0, y: 0, width: 180, height: 40))
+        viewFN.backgroundColor = .yellow
+        let button1 = UIButton(frame: CGRect.init(x: 0, y: 0, width: 40, height: 20))
+        button1.setImage(UIImage(named: "scrapIconGray"), for: .normal)
+        button1.setTitle("one", for: .normal)
+
+//        button1.addTarget(self, action: #selector(self.didTapOnRightButton), for: .touchUpInside)
+//        let button2 = UIButton(frame: CGRect.init(x: 40, y: 8, width: 60, height: 20))
+//        button2.setImage(UIImage(named: "notification"), for: .normal)
+//        button2.setTitle("tow", for: .normal)
+//        let button3 = UIButton(frame: CGRect.init(x: 80, y: 8, width: 60, height: 20))
+//        button3.setImage(UIImage(named: "notification"), for: .normal)
+//        button3.setTitle("three", for: .normal)
+
+//        button3.addTarget(self, action: #selector(self.didTapOnRightButton), for: .touchUpInside)
+
+        viewFN.addSubview(button1)
+//        viewFN.addSubview(button2)
+//        viewFN.addSubview(button3)
+
+        let rightBarButton = UIBarButtonItem(customView: viewFN)
+        self.navigationItem.rightBarButtonItem = rightBarButton
     }
 }
 
@@ -841,7 +908,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         let model: Comment = viewModel.commentsRelay.value[cellIndex]
         
         if let depth = viewModel.commentsRelay.value[indexPath.row].depth {
-            print("댓글의 뎁스 : \(depth)")
+//            print("댓글의 뎁스 : \(depth)")
             // 기본 댓글
             switch depth {
             case 0:
@@ -861,7 +928,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         // 이미 유저가 하트를 누른 경우 이미지 변경
         for uid in viewModel.commentUserHeartUidArr {
             if model.commentId == uid {
-                print("UID가 같으므로 하트이미지를 변경합니다.")
+//                print("UID가 같으므로 하트이미지를 변경합니다.")
                 cell.selectedHeart = true
                 cell.commentHeartBtn.setImage(UIImage(named: "heartIconPressed"), for: .normal)
             }

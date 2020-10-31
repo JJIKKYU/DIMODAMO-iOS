@@ -96,6 +96,14 @@ class ArticleDetailViewModel {
     }
     var commentUserHeartUidArr: [String] = []
     
+    /*
+     스크랩
+     */
+    let scrapCountRelay = BehaviorRelay<Int>(value: 0)
+    var scrapUserPostsUidArr: [String] = []
+    var scrapUserPostsIndex: Int?
+    let isScrapPost = BehaviorRelay<Bool>(value: false)
+    
     func linkViewSetting() {
         var linksData: [PreviewResponse] = []
         
@@ -166,6 +174,10 @@ class ArticleDetailViewModel {
                     if let userId: String = data!["user_id"] as? String {
                         self?.userUID = userId
                     }
+                
+                    if let scrapCount: Int = data!["scrap_count"] as? Int {
+                        self?.scrapCountRelay.accept(scrapCount)
+                    }
                     
                     self?.descriptionRelay.accept(data!["description"] as! String)
                     self?.urlLinksRelay.accept(data!["links"] as! [String])
@@ -225,6 +237,12 @@ class ArticleDetailViewModel {
                     if let heartComments = data!["heartComments"] as? [String] {
                         self?.commentUserHeartUidArr = heartComments
                         print("하트 누른 댓글의 UID : \(self!.commentUserHeartUidArr)")
+                    }
+                    
+                    // 이미 해당 글을 스크랩했는지 UID를 가져옴
+                    if let scrapUidArr = data!["scrapPosts"] as? [String] {
+                        self?.scrapUserPostsUidArr = scrapUidArr
+                        self?.scrapStateSetting()
                     }
                     
                 } else {
@@ -342,7 +360,7 @@ class ArticleDetailViewModel {
                 
                 
                 // 제거하는데 업데이트데이터는 안될듯
-                print(self.commentUserHeartUidArr)
+//                print(self.commentUserHeartUidArr)
                 userData.updateData(["heartComments" : self.commentUserHeartUidArr])
 
                 
@@ -351,8 +369,95 @@ class ArticleDetailViewModel {
                 print("Documnet does not exist")
             }
         }
+    }
+    
+    func scrapStateSetting() {
+        for (index, postUid) in self.scrapUserPostsUidArr.enumerated() {
+            print("postUID : \(postUid)")
+            print("postUIDRelay : \(postUidRelay.value)")
+            if postUid == self.postUidRelay.value {
+                print("스크랩한 게시물입니다.")
+                isScrapPost.accept(true)
+                scrapUserPostsIndex = index
+                return
+            }
+        }
+    }
+    
+    func pressedScrapBtn() {
+//        print("전달받았습니다. : \(uid)")
+        guard let userUID = self.userUID else  {
+            return
+        }
+        let userData = db.collection("users").document("\(userUID)")
+        let documentData = db.collection("\(postDB)").document("\(self.postUidRelay.value)")
         
+        var arrIndex: Int?
         
+        for (index, uid) in self.scrapUserPostsUidArr.enumerated() {
+            if uid == self.postUidRelay.value {
+                arrIndex = index
+            }
+        }
+        
+        switch self.isScrapPost.value {
+        
+        // 포스트를 스크랩 하지 않은 상태로, 스크랩을 시도할 경우
+        case false:
+            let updateScrapCount = self.scrapCountRelay.value + 1
+            documentData.updateData(["scrap_count" : updateScrapCount])
+            self.scrapUserPostsUidArr.append("\(self.postUidRelay.value)")
+            userData.updateData(["scrapPosts" : self.scrapUserPostsUidArr])
+            self.isScrapPost.accept(true)
+            
+            break
+        
+        // 포스트를 이미 스크랩한 상태로, 스크랩을 취소할 경우
+        case true:
+            let updateScrapCount = self.scrapCountRelay.value - 1
+            documentData.updateData(["scrap_count" : updateScrapCount])
+            
+            if let arrIndex = arrIndex {
+                self.scrapUserPostsUidArr.remove(at: arrIndex)
+            }
+            userData.updateData(["scrapPosts" : self.scrapUserPostsUidArr])
+            self.isScrapPost.accept(false)
+            
+            break
+            
+        default:
+            break
+        }
+        
+        /*
+        db.collection("\(postDB)")
+            .document("\(self.postUidRelay.value)")
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let data = document.data()
+                    
+                    // 포스트를 스크랩 하지 않은 상태로, 스크랩을 시도할 경우
+                    if self.isScrapPost.value == false {
+                        let updateScrapCount = self.scrapCountRelay.value + 1
+                        self.scrapUserPostsUidArr.append("\(self.postUidRelay.value)")
+                        
+                    }
+                    // 포스트를 이미 스크랩한 상태로, 스크랩을 취소할 경우
+                    else {
+                        if let scrapIndex = self.scrapUserPostsIndex {
+                            self.scrapUserPostsUidArr.remove(at: scrapIndex)
+                            userData.updateData(["scrapPosts" : self.scrapUserPostsUidArr])
+                        }
+                    }
+                    
+                    
+                    
+                    
+                } else {
+                    print("document does not exist")
+                }
+            }
+ */
     }
     
     init() {

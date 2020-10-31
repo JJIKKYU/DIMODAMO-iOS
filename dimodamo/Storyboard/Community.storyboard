@@ -107,7 +107,7 @@
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-9s-8jA">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-9s-8jA">
                                                                     <rect key="frame" x="275" y="399" width="10" height="12"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmV-8F-vS7">
@@ -323,7 +323,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7hy-3z-yIy">
-                                                                    <rect key="frame" x="319" y="101.5" width="10" height="12"/>
+                                                                    <rect key="frame" x="312" y="96.5" width="17" height="22"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E66-eX-cVr">
                                                                     <rect key="frame" x="0.0" y="144" width="394" height="1"/>
@@ -573,7 +573,7 @@
                                                             <color key="textColor" name="GRAY - 210"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-He-Kva">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-He-Kva">
                                                             <rect key="frame" x="275" y="399" width="10" height="12"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvF-8l-09c">
@@ -759,6 +759,19 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjY-DP-qef">
+                                                        <rect key="frame" x="377" y="58" width="17" height="22"/>
+                                                        <state key="normal" image="scrapIcon"/>
+                                                        <connections>
+                                                            <action selector="pressedScrapBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="AhS-qt-g8B"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="84" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msz-D3-dZv">
+                                                        <rect key="frame" x="377.5" y="82" width="16" height="18"/>
+                                                        <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="13"/>
+                                                        <color key="textColor" name="WHITE"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-h0-QOv">
                                                         <rect key="frame" x="16" y="141" width="74.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="14"/>
@@ -800,7 +813,11 @@
                                                     <constraint firstItem="Ahe-uL-HoW" firstAttribute="top" secondItem="PqZ-ig-Jtz" secondAttribute="bottom" constant="12" id="FwG-Iq-a9a"/>
                                                     <constraint firstItem="fEv-qk-RPB" firstAttribute="trailing" secondItem="U9e-Tx-pxr" secondAttribute="trailing" id="IhK-gs-8s5"/>
                                                     <constraint firstAttribute="trailing" secondItem="U9e-Tx-pxr" secondAttribute="trailing" id="LP1-kw-mZQ"/>
+                                                    <constraint firstItem="Msz-D3-dZv" firstAttribute="top" secondItem="OjY-DP-qef" secondAttribute="bottom" constant="2" id="OJA-Eq-D8L"/>
                                                     <constraint firstItem="U9e-Tx-pxr" firstAttribute="width" secondItem="wrz-6p-uxO" secondAttribute="width" id="QKC-VS-nuC"/>
+                                                    <constraint firstItem="Msz-D3-dZv" firstAttribute="centerX" secondItem="OjY-DP-qef" secondAttribute="centerX" id="SDS-nx-2ds"/>
+                                                    <constraint firstAttribute="trailing" secondItem="OjY-DP-qef" secondAttribute="trailing" constant="20" id="U8L-0q-Dzz"/>
+                                                    <constraint firstItem="OjY-DP-qef" firstAttribute="top" secondItem="U9e-Tx-pxr" secondAttribute="top" constant="58" id="Yln-Z8-GH7"/>
                                                     <constraint firstItem="fEv-qk-RPB" firstAttribute="leading" secondItem="U9e-Tx-pxr" secondAttribute="leading" id="Yuu-Xw-Nun"/>
                                                     <constraint firstItem="rfO-QT-lw6" firstAttribute="leading" secondItem="vjs-kQ-gPS" secondAttribute="trailing" constant="12" id="ap6-iQ-BwL"/>
                                                     <constraint firstItem="U9e-Tx-pxr" firstAttribute="leading" secondItem="wrz-6p-uxO" secondAttribute="leading" id="b4p-61-mFG"/>
@@ -1192,7 +1209,18 @@
                             <constraint firstAttribute="trailing" secondItem="apE-8D-tgH" secondAttribute="trailing" id="wFf-UB-Ht8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="HSy-h0-erT"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="HSy-h0-erT">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="VPg-ye-5Ls">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VLP-a0-dFC">
+                                <rect key="frame" x="374" y="0.0" width="20" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="scrapIconGray"/>
+                                <connections>
+                                    <action selector="pressedScrapBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="mqv-ky-d3i"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="articleCategory" destination="bmu-h0-QOv" id="Hwc-lR-Hx9"/>
                         <outlet property="articleTopContainer" destination="wrz-6p-uxO" id="uNb-0g-MDr"/>
@@ -1214,6 +1242,9 @@
                         <outlet property="informationTopContainer" destination="mGk-pA-sBU" id="t8b-6P-7KZ"/>
                         <outlet property="navItem" destination="HSy-h0-erT" id="3UM-8L-1il"/>
                         <outlet property="plusBtn" destination="qF7-LF-C75" id="jRD-Fj-kTR"/>
+                        <outlet property="scrapCountLabel" destination="Msz-D3-dZv" id="8GM-K9-rI4"/>
+                        <outlet property="scrapIcon" destination="OjY-DP-qef" id="neE-4U-ajz"/>
+                        <outlet property="scrapNavbarItem" destination="VPg-ye-5Ls" id="cQ2-KI-9WR"/>
                         <outlet property="scrollView" destination="apE-8D-tgH" id="98v-Mv-OEn"/>
                         <outlet property="textView" destination="GeV-Ak-Ec7" id="qPV-ap-u4J"/>
                         <outlet property="textViewTopConstraint" destination="e9a-k6-PGD" id="zG4-fN-Pol"/>
@@ -2044,7 +2075,7 @@
                                                     <color key="textColor" name="GRAY - 210"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Ys6-Zz-iJa">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="Ys6-Zz-iJa">
                                                     <rect key="frame" x="275" y="399" width="10" height="12"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avh-Ur-p8G">
@@ -2242,7 +2273,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ZlN-E8-UR1">
-                                                    <rect key="frame" x="319" y="101.5" width="10" height="12"/>
+                                                    <rect key="frame" x="312" y="96.5" width="17" height="22"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQl-Nk-uYO">
                                                     <rect key="frame" x="0.0" y="144" width="394" height="1"/>
@@ -2465,7 +2496,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="XAM-mU-LKr">
-                                                    <rect key="frame" x="319" y="101.5" width="10" height="12"/>
+                                                    <rect key="frame" x="312" y="96.5" width="17" height="22"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reG-94-1fD">
                                                     <rect key="frame" x="0.0" y="144" width="394" height="1"/>
@@ -2719,7 +2750,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ae2-2V-5qG"/>
+        <segue reference="RQh-cD-CdY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Empty_CMU" width="374" height="374"/>
@@ -2733,7 +2764,9 @@
         <image name="heartIcon" width="30" height="28"/>
         <image name="plusBtn" width="20" height="20"/>
         <image name="roundPlusIcon" width="40" height="40"/>
-        <image name="scrapIcon" width="10" height="12"/>
+        <image name="scrapIcon" width="17" height="22"/>
+        <image name="scrapIconGray" width="17" height="22"/>
+        <image name="scrapIconSmall" width="10" height="12"/>
         <image name="searchIcon" width="18" height="18"/>
         <image name="sendIcon" width="22" height="22"/>
         <image name="sortingIcon" width="18" height="12"/>
