@@ -157,6 +157,7 @@
 		98F8C854254D34C500FDDEBF /* CommunitySearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C853254D34C500FDDEBF /* CommunitySearchResultVC.swift */; };
 		98F8C858254D36FE00FDDEBF /* CommunitySearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C857254D36FE00FDDEBF /* CommunitySearchResultViewModel.swift */; };
 		98F8C881254D3DB000FDDEBF /* ArticleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C880254D3DB000FDDEBF /* ArticleSearchViewModel.swift */; };
+		98F8C8AB254D866900FDDEBF /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C8AA254D866900FDDEBF /* HistoryVC.swift */; };
 		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
 
@@ -316,6 +317,7 @@
 		98F8C853254D34C500FDDEBF /* CommunitySearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchResultVC.swift; sourceTree = "<group>"; };
 		98F8C857254D36FE00FDDEBF /* CommunitySearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchResultViewModel.swift; sourceTree = "<group>"; };
 		98F8C880254D3DB000FDDEBF /* ArticleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSearchViewModel.swift; sourceTree = "<group>"; };
+		98F8C8AA254D866900FDDEBF /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -960,6 +962,7 @@
 		98F8C830254C2B6C00FDDEBF /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				98F8C8A9254D865200FDDEBF /* History */,
 				98F8C856254D36E500FDDEBF /* SearchResult */,
 				98F8C84D254CA9A400FDDEBF /* InformationSearchVC */,
 				98F8C83D254C95E200FDDEBF /* ArticleSearchVC */,
@@ -1019,6 +1022,14 @@
 				98F8C857254D36FE00FDDEBF /* CommunitySearchResultViewModel.swift */,
 			);
 			path = SearchResult;
+			sourceTree = "<group>";
+		};
+		98F8C8A9254D865200FDDEBF /* History */ = {
+			isa = PBXGroup;
+			children = (
+				98F8C8AA254D866900FDDEBF /* HistoryVC.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1243,6 +1254,7 @@
 				986322562517BB81003B0784 /* FriendMainViewController.swift in Sources */,
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
 				98F8C83B254C912300FDDEBF /* SearchPageVC.swift in Sources */,
+				98F8C8AB254D866900FDDEBF /* HistoryVC.swift in Sources */,
 				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,
 				980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */,
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,

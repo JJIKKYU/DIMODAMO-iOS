@@ -30,6 +30,16 @@ class CommunitySearchVC: UIViewController {
 //
 //    @IBOutlet weak var recommendView: UIView!
 //    @IBOutlet weak var historyView: UIView!
+    @IBOutlet weak var historyContainerView: UIView! {
+        didSet {
+            historyContainerView.isHidden = false
+        }
+    }
+    @IBOutlet weak var resultIndicatorView: UIView! {
+        didSet {
+            resultIndicatorView.isHidden = true
+        }
+    }
     @IBOutlet weak var resultContainerView: UIView! {
         didSet {
             resultContainerView.isHidden = true
@@ -111,6 +121,8 @@ class CommunitySearchVC: UIViewController {
 //        recommendView.isHidden = true
 //        historyView.isHidden = true
         resultContainerView.isHidden = false
+        resultIndicatorView.isHidden = false
+        historyContainerView.isHidden = true
         
         
         if let text = textField.text {
@@ -127,41 +139,3 @@ class CommunitySearchVC: UIViewController {
     
 }
 
-//MARK: - TableView
-
-extension CommunitySearchVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(40)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommunitySearchHistoryCell", for: indexPath)
-
-        return cell
-    }
-    
-    
-}
-
-// MARK: -recommendCollectionView
-
-extension CommunitySearchVC: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommunityRecommendCell", for: indexPath)
-        
-        return cell
-    }
-    
-    
-}
