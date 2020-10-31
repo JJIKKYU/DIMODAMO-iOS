@@ -1599,7 +1599,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="ICx-yS-wXN" userLabel="ContentView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dX-fy-XXl">
@@ -1757,11 +1757,18 @@
                                                 </tableViewCell>
                                             </prototypes>
                                         </tableView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feedbackCardCharYellow" translatesAutoresizingMaskIntoConstraints="NO" id="KKK-5o-yEn">
+                                            <rect key="frame" x="20" y="967" width="374" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="128" id="eb1-Ji-4Pf"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="WfT-Rz-Jkx" firstAttribute="leading" secondItem="K1r-G2-43y" secondAttribute="trailing" constant="20" id="3ts-mK-hAL"/>
                                         <constraint firstItem="WVO-K4-8Fg" firstAttribute="leading" secondItem="ICx-yS-wXN" secondAttribute="leading" constant="42" id="3zH-EW-AQG"/>
+                                        <constraint firstItem="KKK-5o-yEn" firstAttribute="leading" secondItem="jQU-Hg-xYE" secondAttribute="leading" id="6nz-h5-Kxw"/>
                                         <constraint firstItem="XG1-sj-aL2" firstAttribute="top" secondItem="N27-ru-U2r" secondAttribute="bottom" constant="32" id="7DC-7u-CNZ"/>
                                         <constraint firstAttribute="trailing" secondItem="26X-ag-hsC" secondAttribute="trailing" constant="20" id="Asb-yb-zsP"/>
                                         <constraint firstItem="9dX-fy-XXl" firstAttribute="top" secondItem="ICx-yS-wXN" secondAttribute="top" constant="53" id="BjJ-XP-Cpk"/>
@@ -1792,6 +1799,8 @@
                                         <constraint firstItem="WfT-Rz-Jkx" firstAttribute="trailing" secondItem="5Vm-jb-xoB" secondAttribute="trailing" id="k76-pi-c0z"/>
                                         <constraint firstItem="0N1-oy-fmz" firstAttribute="leading" secondItem="ICx-yS-wXN" secondAttribute="leading" constant="20" id="no9-QB-53P"/>
                                         <constraint firstItem="WVO-K4-8Fg" firstAttribute="top" secondItem="N27-ru-U2r" secondAttribute="top" id="olH-Ji-cDw"/>
+                                        <constraint firstItem="KKK-5o-yEn" firstAttribute="top" secondItem="jQU-Hg-xYE" secondAttribute="bottom" constant="8" symbolic="YES" id="pd7-Wn-yue"/>
+                                        <constraint firstItem="KKK-5o-yEn" firstAttribute="trailing" secondItem="jQU-Hg-xYE" secondAttribute="trailing" id="r15-XX-HFm"/>
                                         <constraint firstItem="26X-ag-hsC" firstAttribute="leading" secondItem="ICx-yS-wXN" secondAttribute="leading" constant="20" id="rWO-Jh-t06"/>
                                         <constraint firstItem="0cF-aE-Vka" firstAttribute="leading" secondItem="9dX-fy-XXl" secondAttribute="leading" id="uhk-y6-Auz"/>
                                         <constraint firstAttribute="trailing" secondItem="jQU-Hg-xYE" secondAttribute="trailing" constant="20" id="wq9-RX-iEo"/>
@@ -1814,29 +1823,25 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vW7-zj-ZTI">
                                         <rect key="frame" x="76" y="16" width="40" height="40"/>
                                         <state key="normal" image="pictureIcon"/>
+                                        <connections>
+                                            <action selector="pressedAlbumBtn:" destination="Iwr-9x-kBf" eventType="touchUpInside" id="DUK-S8-wtK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nka-T1-m4i">
-                                        <rect key="frame" x="188" y="16" width="40" height="40"/>
-                                        <state key="normal" image="linkIcon"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZ3-eq-dns">
                                         <rect key="frame" x="132" y="16" width="40" height="40"/>
-                                        <state key="normal" image="cameraIcon"/>
+                                        <state key="normal" image="linkIcon"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
+                                    <constraint firstItem="nka-T1-m4i" firstAttribute="top" secondItem="vW7-zj-ZTI" secondAttribute="top" id="0Xc-t9-SDO"/>
+                                    <constraint firstItem="nka-T1-m4i" firstAttribute="leading" secondItem="vW7-zj-ZTI" secondAttribute="trailing" constant="16" id="4OY-rt-BQ9"/>
                                     <constraint firstAttribute="height" constant="110" id="7n5-rj-B9v"/>
-                                    <constraint firstItem="cZ3-eq-dns" firstAttribute="leading" secondItem="vW7-zj-ZTI" secondAttribute="trailing" constant="16" id="9J5-sS-uOa"/>
                                     <constraint firstItem="vW7-zj-ZTI" firstAttribute="top" secondItem="N2g-KS-hD3" secondAttribute="top" constant="16" id="Bc4-7I-Q9y"/>
                                     <constraint firstItem="ZAt-H8-dr0" firstAttribute="leading" secondItem="N2g-KS-hD3" secondAttribute="leading" constant="20" id="Bhs-mr-FRx"/>
-                                    <constraint firstItem="nka-T1-m4i" firstAttribute="top" secondItem="cZ3-eq-dns" secondAttribute="top" id="EnQ-7e-9N6"/>
-                                    <constraint firstItem="cZ3-eq-dns" firstAttribute="bottom" secondItem="vW7-zj-ZTI" secondAttribute="bottom" id="G9T-zg-o00"/>
-                                    <constraint firstItem="nka-T1-m4i" firstAttribute="bottom" secondItem="cZ3-eq-dns" secondAttribute="bottom" id="aww-WU-8OW"/>
                                     <constraint firstItem="ZAt-H8-dr0" firstAttribute="top" secondItem="N2g-KS-hD3" secondAttribute="top" constant="16" id="eQp-HG-lnC"/>
-                                    <constraint firstItem="nka-T1-m4i" firstAttribute="leading" secondItem="cZ3-eq-dns" secondAttribute="trailing" constant="16" id="qEL-86-m6z"/>
+                                    <constraint firstItem="nka-T1-m4i" firstAttribute="bottom" secondItem="vW7-zj-ZTI" secondAttribute="bottom" id="gyz-VZ-F1Z"/>
                                     <constraint firstItem="vW7-zj-ZTI" firstAttribute="leading" secondItem="ZAt-H8-dr0" secondAttribute="trailing" constant="16" id="qFi-ek-mtT"/>
-                                    <constraint firstItem="cZ3-eq-dns" firstAttribute="top" secondItem="vW7-zj-ZTI" secondAttribute="top" id="qRe-2Z-YAt"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1890,11 +1895,18 @@
                         <outlet property="tagging" destination="K1r-G2-43y" id="PW3-JV-QQ9"/>
                         <outlet property="tagsLimit" destination="WfT-Rz-Jkx" id="eRp-t0-WFg"/>
                         <outlet property="tagsTableView" destination="WVO-K4-8Fg" id="CmF-1U-CAK"/>
+                        <outlet property="testImageView" destination="KKK-5o-yEn" id="JeI-Ql-6vf"/>
                         <outlet property="titleLimit" destination="5Vm-jb-xoB" id="mfb-e1-b5r"/>
                         <outlet property="titleTextField" destination="TK5-5v-fGa" id="zJe-So-WBx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3h-Vh-aE5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="LVl-bp-kcA">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="325"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="P8k-pA-XQz"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="2031.8840579710147" y="-678.34821428571422"/>
         </scene>
@@ -2796,6 +2808,7 @@
         <image name="community" width="20" height="20"/>
         <image name="communitySelected" width="20" height="20"/>
         <image name="exImg" width="374" height="224"/>
+        <image name="feedbackCardCharYellow" width="374" height="387"/>
         <image name="heartIcon" width="30" height="28"/>
         <image name="linkIcon" width="40" height="40"/>
         <image name="pictureIcon" width="40" height="40"/>

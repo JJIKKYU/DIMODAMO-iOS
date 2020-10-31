@@ -27,6 +27,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
      UploadImage
      */
     var imagePicker : UIImagePickerController = UIImagePickerController()
+    @IBOutlet weak var testImageView: UIImageView!
     
     @IBOutlet weak var bottomIconContainerView: UIView! {
         didSet {
@@ -179,9 +180,24 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBAction func pressedCameraBtn(_ sender: Any) {
         print("카메라로 사진을 촬영합니다.")
-        self.imagePickerPresent()
+        
+        // 카메라 사용 가능한지 체크
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
+        imagePicker.sourceType = .camera
+        
+        imagePicker.allowsEditing = true // 촬영 후 편집할 수 있는 부분이 나온다.
+        present(imagePicker, animated: true, completion: nil)
     }
     
+    @IBAction func pressedAlbumBtn(_ sender: Any) {
+        
+        // 카메라 사용 가능한지 체크
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { return }
+        imagePicker.sourceType = .photoLibrary
+        
+        imagePicker.allowsEditing = true // 촬영 후 편집할 수 있는 부분이 나온다.
+        present(imagePicker, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UI Design
@@ -242,9 +258,13 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - ImagePicker
 
 extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerPresent(){
-        
-        self.presentViewController(imagePicker, animated: true, completion: nil)
-        
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            testImageView.image = image
+            print(info)
+        }
+        dismiss(animated: true, completion: nil)
     }
+
 }
