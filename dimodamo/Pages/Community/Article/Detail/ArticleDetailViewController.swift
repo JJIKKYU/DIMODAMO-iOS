@@ -101,7 +101,7 @@ class ArticleDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationItem.rightBarButtonItem = scrapNavbarItem
         
-//        navigationController?.invisible()
+        //        navigationController?.invisible()
         self.navigationController?.hideTransparentNavigationBar()
         
     }
@@ -124,7 +124,7 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         commentTableView.delegate = self
         commentTableView.dataSource = self
@@ -151,7 +151,7 @@ class ArticleDetailViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
                 if value != "" {
-//                    self?.navigationItem.title = "\(value)"
+                    //                    self?.navigationItem.title = "\(value)"
                     self?.titleLabel.text = "\(value)"
                     self?.informationTitle.text = "\(value)"
                     self?.informationTitle.lineBreakStrategy = .hangulWordPriority
@@ -352,13 +352,13 @@ class ArticleDetailViewController: UIViewController {
             .subscribe(onNext: { [weak self] flag in
                 // 이미 스크랩 했을 경우
                 if flag == true {
-//                    self?.scrapIcon.setImage(UIImage(named: "scrapPressedIcon"), for: .normal)
+                    //                    self?.scrapIcon.setImage(UIImage(named: "scrapPressedIcon"), for: .normal)
                     self?.scrapNavbarIcon?.setImage(UIImage(named: "scrapPressedIconGray"), for: .normal)
                     
                 }
                 // 스크랩 안했을 경우
                 else {
-//                    self?.scrapIcon.setImage(UIImage(named: "scrapIcon"), for: .normal)
+                    //                    self?.scrapIcon.setImage(UIImage(named: "scrapIcon"), for: .normal)
                     self?.scrapNavbarIcon?.setImage(UIImage(named: "scrapIconGray"), for: .normal)
                 }
                 
@@ -401,7 +401,7 @@ class ArticleDetailViewController: UIViewController {
 }
 
 extension UINavigationController {
-
+    
     public func presentTransparentNavigationBar() {
         view.layer.layoutIfNeeded()
         setNavigationBarHidden(false, animated: true)
@@ -415,7 +415,7 @@ extension UINavigationController {
         }
         
     }
-
+    
     public func hideTransparentNavigationBar() {
         view.layer.layoutIfNeeded()
         setNavigationBarHidden(false, animated: true)
@@ -435,9 +435,9 @@ extension UINavigationController {
 extension ArticleDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
-
+        
         let scrollOffset = scrollView.contentOffset.y
-
+        
         if viewModel.postKindRelay.value == PostKinds.article.rawValue {
             if scrollOffset > 210 {
                 self.navigationController?.presentTransparentNavigationBar()
@@ -506,10 +506,10 @@ extension ArticleDetailViewController {
         /*
          보이지는 않지만 네비게이션바 프레임으로 인해 터치 안되는 문제 떄문에
          */
-//        // 전체 프레임은 인터랙션 제외
-//        self.navigationController?.navigationBar.isUserInteractionEnabled = false
-//        // 뒤로가기 버튼만 활성화
-//        self.navigationItem.leftBarButtonItem?.isEnabled = true
+        //        // 전체 프레임은 인터랙션 제외
+        //        self.navigationController?.navigationBar.isUserInteractionEnabled = false
+        //        // 뒤로가기 버튼만 활성화
+        //        self.navigationItem.leftBarButtonItem?.isEnabled = true
     }
     
     func informationTagDesign(){
@@ -565,21 +565,21 @@ extension ArticleDetailViewController {
         let button1 = UIButton(frame: CGRect.init(x: 0, y: 0, width: 40, height: 20))
         button1.setImage(UIImage(named: "scrapIconGray"), for: .normal)
         button1.setTitle("one", for: .normal)
-
-//        button1.addTarget(self, action: #selector(self.didTapOnRightButton), for: .touchUpInside)
-//        let button2 = UIButton(frame: CGRect.init(x: 40, y: 8, width: 60, height: 20))
-//        button2.setImage(UIImage(named: "notification"), for: .normal)
-//        button2.setTitle("tow", for: .normal)
-//        let button3 = UIButton(frame: CGRect.init(x: 80, y: 8, width: 60, height: 20))
-//        button3.setImage(UIImage(named: "notification"), for: .normal)
-//        button3.setTitle("three", for: .normal)
-
-//        button3.addTarget(self, action: #selector(self.didTapOnRightButton), for: .touchUpInside)
-
+        
+        //        button1.addTarget(self, action: #selector(self.didTapOnRightButton), for: .touchUpInside)
+        //        let button2 = UIButton(frame: CGRect.init(x: 40, y: 8, width: 60, height: 20))
+        //        button2.setImage(UIImage(named: "notification"), for: .normal)
+        //        button2.setTitle("tow", for: .normal)
+        //        let button3 = UIButton(frame: CGRect.init(x: 80, y: 8, width: 60, height: 20))
+        //        button3.setImage(UIImage(named: "notification"), for: .normal)
+        //        button3.setTitle("three", for: .normal)
+        
+        //        button3.addTarget(self, action: #selector(self.didTapOnRightButton), for: .touchUpInside)
+        
         viewFN.addSubview(button1)
-//        viewFN.addSubview(button2)
-//        viewFN.addSubview(button3)
-
+        //        viewFN.addSubview(button2)
+        //        viewFN.addSubview(button3)
+        
         let rightBarButton = UIBarButtonItem(customView: viewFN)
         self.navigationItem.rightBarButtonItem = rightBarButton
     }
@@ -886,8 +886,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func pressedHeartBtn(commentId: String, indexPathRow: Int) {
         viewModel.pressedCommentHeart(uid: commentId)
         
-//        let indexPath = IndexPath(item: indexPathRow, section: 0)
-//        commentTableView.reloadRows(at: [indexPath], with: .automatic)
+        //        let indexPath = IndexPath(item: indexPathRow, section: 0)
+        //        commentTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     // CommentCellDelegate
@@ -922,7 +922,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             commentProfileTrailingConstraint.constant = 15
             commentProfileLeadingConstraint.constant = 15
             commentProfileWidthConstraint.constant = 40
-//            commentProfile.isHidden = false
+            //            commentProfile.isHidden = false
             
             break
             
@@ -931,7 +931,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             commentProfileLeadingConstraint.constant = 0
             commentProfileTrailingConstraint.constant = 15
             commentProfileWidthConstraint.constant = 0
-//            commentProfile.isHidden = true
+            //            commentProfile.isHidden = true
             
             break
         }
@@ -955,7 +955,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         let model: Comment = viewModel.commentsRelay.value[cellIndex]
         
         if let depth = viewModel.commentsRelay.value[indexPath.row].depth {
-//            print("댓글의 뎁스 : \(depth)")
+            //            print("댓글의 뎁스 : \(depth)")
             // 기본 댓글
             switch depth {
             case 0:
@@ -975,7 +975,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         // 이미 유저가 하트를 누른 경우 이미지 변경
         for uid in viewModel.commentUserHeartUidArr {
             if model.commentId == uid {
-//                print("UID가 같으므로 하트이미지를 변경합니다.")
+                //                print("UID가 같으므로 하트이미지를 변경합니다.")
                 cell.selectedHeart = true
                 cell.commentHeartBtn.setImage(UIImage(named: "heartIconPressed"), for: .normal)
             }
@@ -1014,14 +1014,14 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
+        //        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
         
-//        guard let indexPath = tableView.indexPathForSelectedRow else {
-//            return
-//        }
-//        let currentCell = tableView.cellForRow(at: indexPath) as! CommentCell
-
-//        self.view.endEditing(true)
+        //        guard let indexPath = tableView.indexPathForSelectedRow else {
+        //            return
+        //        }
+        //        let currentCell = tableView.cellForRow(at: indexPath) as! CommentCell
+        
+        //        self.view.endEditing(true)
         print("\(indexPath.row)")
     }
     
@@ -1044,7 +1044,7 @@ extension ArticleDetailViewController: UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
-//                        self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
+            //                        self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
             //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
         }
     }
@@ -1052,12 +1052,7 @@ extension ArticleDetailViewController: UITextFieldDelegate {
     @objc func moveDownTextView() {
         self.commentTextFieldView?.transform = .identity
         //        self.scrollView?.transform = .identity
-//                self.commentTableViewBottom.constant = 0
-    }
-    
-    // 터치했을때 키보드 내림
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touch")
-        self.view.endEditing(true)
+        //                self.commentTableViewBottom.constant = 0
     }
 }
+

@@ -47,6 +47,7 @@
 		986EDA142509C42800AD3CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA132509C42800AD3CEE /* Assets.xcassets */; };
 		986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */; };
 		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
+		987E1C6A254DF57100F5077D /* LinkPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987E1C69254DF57100F5077D /* LinkPopupView.swift */; };
 		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
 		98816093251EF23200556AEC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98816092251EF23200556AEC /* Login.storyboard */; };
 		98816097251EF5C300556AEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98816096251EF5C300556AEC /* LoginViewController.swift */; };
@@ -206,6 +207,7 @@
 		986EDA182509C42800AD3CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
+		987E1C69254DF57100F5077D /* LinkPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupView.swift; sourceTree = "<group>"; };
 		987F5A9A250B152000E1B856 /* DptiResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewController.swift; sourceTree = "<group>"; };
 		98816092251EF23200556AEC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		98816096251EF5C300556AEC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -658,6 +660,14 @@
 			path = ClassRoom;
 			sourceTree = "<group>";
 		};
+		987E1C68254DF56100F5077D /* LinkPopup */ = {
+			isa = PBXGroup;
+			children = (
+				987E1C69254DF57100F5077D /* LinkPopupView.swift */,
+			);
+			path = LinkPopup;
+			sourceTree = "<group>";
+		};
 		987F5A95250B13F300E1B856 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +799,7 @@
 		988377F42545B66100BFA746 /* CreatePost */ = {
 			isa = PBXGroup;
 			children = (
+				987E1C68254DF56100F5077D /* LinkPopup */,
 				988377F52545B69700BFA746 /* CreatePostViewController.swift */,
 				988377F82545C41E00BFA746 /* CreatePostViewModel.swift */,
 				988378252545EFF200BFA746 /* TagCell.swift */,
@@ -1237,6 +1248,7 @@
 				98F8C83F254C95F900FDDEBF /* ArticleSearchVC.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
 				9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */,
+				987E1C6A254DF57100F5077D /* LinkPopupView.swift in Sources */,
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,
 				98F8C843254C9CD600FDDEBF /* InformationVC.swift in Sources */,
 				9883776E2541ECE100BFA746 /* LinkWebViewController.swift in Sources */,

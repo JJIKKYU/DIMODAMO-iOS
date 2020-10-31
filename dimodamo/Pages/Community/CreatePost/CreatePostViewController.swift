@@ -23,6 +23,8 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     @IBOutlet weak var tagsTextField: UITextField!
     @IBOutlet weak var tagsLimit: UILabel!
     
+    @IBOutlet var linkPopupView: LinkPopupView!
+    
     /*
      UploadImage
      */
@@ -198,6 +200,12 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         imagePicker.allowsEditing = true // 촬영 후 편집할 수 있는 부분이 나온다.
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    
+    @IBAction func pressedLinkBtn(_ sender: Any) {
+        print("링크삽입")
+        self.view.layoutIfNeeded()
+    }
 }
 
 // MARK: - UI Design
@@ -209,9 +217,23 @@ extension CreatePostViewController {
         self.descriptionContainer.layer.cornerRadius = 9
         self.descriptionContainer.layer.masksToBounds = true
         
-        
-        
         tagsTableView.isHidden = true
+        
+        linkPopupViewDesign()
+    }
+    
+    func linkPopupViewDesign() {
+        self.view.layoutIfNeeded()
+        self.view.addSubview(linkPopupView)
+    
+//        linkPopupView.translatesAutoresizingMaskIntoConstraints = false
+
+        linkPopupView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        linkPopupView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        linkPopupView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        linkPopupView.heightAnchor.constraint(equalToConstant: 307).isActive = true
+        
+        self.view.layoutIfNeeded()
     }
 }
 
