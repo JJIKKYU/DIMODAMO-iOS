@@ -8,15 +8,34 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class ArticleSearchVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
+    let viewModel = ArticleSearchViewModel()
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         articleCollectionViewSetting()
         collectionView.delegate = self
         collectionView.dataSource = self
         // Do any additional setup after loading the view.
+        
+        viewModel.searchKeyword
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] keyword in
+                if keyword != "" {
+                    self?.viewModel.articleSearch()
+                }
+                
+            })
+            .disposed(by: disposeBag)
+        
     }
     
 
@@ -51,6 +70,15 @@ extension ArticleSearchVC: UICollectionViewDelegate, UICollectionViewDataSource 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath)
         
         return cell
+    }
+    
+    
+}
+
+extension ArticleSearchVC: SendSearchTextDelegate {
+    func send(keyword: String) {
+        print("\(keyword)")
+        print("keyword 전달 완료")
     }
     
     

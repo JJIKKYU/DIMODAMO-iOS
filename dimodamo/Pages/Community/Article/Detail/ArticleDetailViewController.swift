@@ -361,7 +361,7 @@ extension UINavigationController {
         view.layer.layoutIfNeeded()
         setNavigationBarHidden(false, animated: true)
         UIView.animate(withDuration: 0.3) { [self] in
-//            navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
+            navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
             navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             navigationBar.shadowImage = UIImage()
             navigationBar.isTranslucent = true

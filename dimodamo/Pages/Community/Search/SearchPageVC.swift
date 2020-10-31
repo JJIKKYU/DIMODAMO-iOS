@@ -12,11 +12,17 @@ import RxSwift
 import RxRelay
 import RxCocoa
 
+protocol CommunityPageIndexDelegate {
+    func SelectMenuItem(pageIndex: Int)
+}
+
 class SearchPageVC: UIPageViewController {
     
     var disposeBag = DisposeBag()
+    var pageDelegate: CommunityPageIndexDelegate?
     
     var pageIndex = BehaviorRelay<Int>(value: 0)
+    var keyword: String = ""
     
     lazy var VCArray: [UIViewController] = {
         return [self.VCInstance(name: "ArticleSearchVC"),
@@ -24,7 +30,17 @@ class SearchPageVC: UIPageViewController {
     }()
     
     private func VCInstance(name: String) -> UIViewController {
-        return UIStoryboard(name: "Community", bundle: nil).instantiateViewController(withIdentifier: name)
+        let vc = UIStoryboard(name: "Community", bundle: nil).instantiateViewController(withIdentifier: name)
+        
+        if name == "ArticleSearchVC" {
+            let destinationVC = vc as! ArticleSearchVC
+            destinationVC.viewModel.searchKeyword.accept(self.keyword)
+            
+        } else if name == "InformationSearchVC" {
+//            let destinationVC = vc as! ArticleSearchVC
+        }
+        
+        return vc
     }
     
 
@@ -37,6 +53,8 @@ class SearchPageVC: UIPageViewController {
         pageIndex
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { index in
+                
+                
                 self.setViewControllers([self.VCArray[index]],
                                         direction: index == 0 ? .reverse : .forward,
                                         animated: true,
@@ -44,25 +62,26 @@ class SearchPageVC: UIPageViewController {
                 
             })
             .disposed(by: disposeBag)
-        
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 
-extension SearchPageVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+extension SearchPageVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource, SendCommunityPageIndexDelegate {
+    func SelectBtn(padgeIndex: Int) {
+        pageIndex.accept(padgeIndex)
+    }
+    
+    
+    // 애니메이션이 끝날 경우에 델리게이트를 통해서 현재 페이지를 Int로 전달
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            if let currentVC = pageViewController.viewControllers?.first,
+               let index = VCArray.firstIndex(of: currentVC) {
+                self.pageDelegate?.SelectMenuItem(pageIndex: index)
+            }
+        }
+    }
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         guard let viewControllerIndex = VCArray.firstIndex(of: viewController) else { return nil }

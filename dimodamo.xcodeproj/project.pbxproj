@@ -154,6 +154,9 @@
 		98F8C847254C9CE400FDDEBF /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C846254C9CE400FDDEBF /* InformationViewModel.swift */; };
 		98F8C84B254CA0F300FDDEBF /* LottieLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C84A254CA0F300FDDEBF /* LottieLoadingView.swift */; };
 		98F8C84F254CA9C100FDDEBF /* InformationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C84E254CA9C100FDDEBF /* InformationSearchVC.swift */; };
+		98F8C854254D34C500FDDEBF /* CommunitySearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C853254D34C500FDDEBF /* CommunitySearchResultVC.swift */; };
+		98F8C858254D36FE00FDDEBF /* CommunitySearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C857254D36FE00FDDEBF /* CommunitySearchResultViewModel.swift */; };
+		98F8C881254D3DB000FDDEBF /* ArticleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C880254D3DB000FDDEBF /* ArticleSearchViewModel.swift */; };
 		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
 
@@ -310,6 +313,9 @@
 		98F8C846254C9CE400FDDEBF /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
 		98F8C84A254CA0F300FDDEBF /* LottieLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieLoadingView.swift; sourceTree = "<group>"; };
 		98F8C84E254CA9C100FDDEBF /* InformationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSearchVC.swift; sourceTree = "<group>"; };
+		98F8C853254D34C500FDDEBF /* CommunitySearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchResultVC.swift; sourceTree = "<group>"; };
+		98F8C857254D36FE00FDDEBF /* CommunitySearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchResultViewModel.swift; sourceTree = "<group>"; };
+		98F8C880254D3DB000FDDEBF /* ArticleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSearchViewModel.swift; sourceTree = "<group>"; };
 		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -954,6 +960,7 @@
 		98F8C830254C2B6C00FDDEBF /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				98F8C856254D36E500FDDEBF /* SearchResult */,
 				98F8C84D254CA9A400FDDEBF /* InformationSearchVC */,
 				98F8C83D254C95E200FDDEBF /* ArticleSearchVC */,
 				98F8C835254C3CE900FDDEBF /* Cell */,
@@ -975,6 +982,7 @@
 			isa = PBXGroup;
 			children = (
 				98F8C83E254C95F900FDDEBF /* ArticleSearchVC.swift */,
+				98F8C880254D3DB000FDDEBF /* ArticleSearchViewModel.swift */,
 			);
 			path = ArticleSearchVC;
 			sourceTree = "<group>";
@@ -1002,6 +1010,15 @@
 				98F8C84E254CA9C100FDDEBF /* InformationSearchVC.swift */,
 			);
 			path = InformationSearchVC;
+			sourceTree = "<group>";
+		};
+		98F8C856254D36E500FDDEBF /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				98F8C853254D34C500FDDEBF /* CommunitySearchResultVC.swift */,
+				98F8C857254D36FE00FDDEBF /* CommunitySearchResultViewModel.swift */,
+			);
+			path = SearchResult;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1205,6 +1222,7 @@
 				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
 				98AFDAD6253AA5D700B0D88F /* ArticleViewController.swift in Sources */,
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,
+				98F8C881254D3DB000FDDEBF /* ArticleSearchViewModel.swift in Sources */,
 				98F8C83F254C95F900FDDEBF /* ArticleSearchVC.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
 				9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */,
@@ -1240,6 +1258,7 @@
 				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
 				9800A1442533737E0090C058 /* IntroPageViewController.swift in Sources */,
 				98067137250F1FD000C3EB72 /* DomainModel.swift in Sources */,
+				98F8C854254D34C500FDDEBF /* CommunitySearchResultVC.swift in Sources */,
 				988378262545EFF200BFA746 /* TagCell.swift in Sources */,
 				986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */,
 				98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */,
@@ -1261,6 +1280,7 @@
 				98AFDA502539CD7900B0D88F /* CommunityMainViewModel.swift in Sources */,
 				984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */,
 				985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */,
+				98F8C858254D36FE00FDDEBF /* CommunitySearchResultViewModel.swift in Sources */,
 				988160D3251F634C00556AEC /* RegisterIDViewController.swift in Sources */,
 				98AFDADA253AE58600B0D88F /* ArticleDetailViewController.swift in Sources */,
 			);
