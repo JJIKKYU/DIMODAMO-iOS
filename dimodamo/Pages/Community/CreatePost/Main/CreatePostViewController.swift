@@ -174,6 +174,18 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
             .disposed(by: disposeBag)
         
         /*
+         이미지 업로드
+         */
+        viewModel.uploadImagesRelay
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext : { [weak self] _ in
+                self?.mainTableView.reloadData()
+                self?.view.layoutIfNeeded()
+            })
+            .disposed(by: disposeBag)
+        
+        
+        /*
          Keyboard
          */
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -227,7 +239,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
         imagePicker.sourceType = .camera
         
-        imagePicker.allowsEditing = true // 촬영 후 편집할 수 있는 부분이 나온다.
+        imagePicker.allowsEditing = false // 촬영 후 편집할 수 있는 부분이 나온다.
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -237,7 +249,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { return }
         imagePicker.sourceType = .photoLibrary
         
-        imagePicker.allowsEditing = true // 촬영 후 편집할 수 있는 부분이 나온다.
+        imagePicker.allowsEditing = false // 촬영 후 편집할 수 있는 부분이 나온다.
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -381,7 +393,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             return matchedList.count
             
         case 1:
-            return 3
+            return viewModel.uploadImagesRelay.value.count
             
         default:
             break
@@ -400,7 +412,22 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 1:
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath)
+            let imageArr = viewModel.uploadImagesRelay.value
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
+            
+            cell.uploadImageView.image = imageArr[indexPath.row]
+            
+            guard let cellImage = cell.uploadImageView.image else {
+                return UITableViewCell()
+            }
+        
+            let scaledHeight = ((UIScreen.main.bounds.width - 40) * cellImage.size.height) / cellImage.size.width
+            cell.heightConstraint.constant = scaledHeight
+            
+            print(scaledHeight)
+            
+            
+            
             return cell
 
         default:
@@ -440,6 +467,11 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             testImageView.image = image
+            
+            var imageArr: [UIImage] = viewModel.uploadImagesRelay.value
+            imageArr.append(image)
+            viewModel.uploadImagesRelay.accept(imageArr)
+            
             print(info)
         }
         dismiss(animated: true, completion: nil)

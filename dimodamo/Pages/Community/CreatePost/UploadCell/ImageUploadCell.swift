@@ -15,13 +15,7 @@ class ImageUploadCell: UITableViewCell {
         didSet {
             uploadImageView.layer.cornerRadius = 12
             uploadImageView.layer.masksToBounds = true
-            
-            guard let image = uploadImageView.image else {
-                return
-            }
-        
-            let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
-            heightConstraint.constant = scaledHeight
+
         }
     }
     
