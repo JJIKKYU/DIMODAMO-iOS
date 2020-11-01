@@ -57,6 +57,11 @@ class CreatePostViewModel {
      */
     let uploadImagesRelay = BehaviorRelay<[UIImage]>(value: []) // 유저가 사진을 찍거나, 앨범에서 선택할 때마다 이쪽으로 넘길 예정
     
+    /*
+     업로드 링크
+     */
+    let uploadLinksRelay = BehaviorRelay<[String]>(value: [])
+    
     init() {
         
     }

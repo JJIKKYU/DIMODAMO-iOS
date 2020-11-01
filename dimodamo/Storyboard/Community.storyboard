@@ -1592,7 +1592,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="742"/>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="ICx-yS-wXN" userLabel="ContentView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="979"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dX-fy-XXl">
@@ -1750,18 +1750,11 @@
                                                 </tableViewCell>
                                             </prototypes>
                                         </tableView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feedbackCardCharYellow" translatesAutoresizingMaskIntoConstraints="NO" id="KKK-5o-yEn">
-                                            <rect key="frame" x="20" y="967" width="374" height="128"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="128" id="eb1-Ji-4Pf"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="WfT-Rz-Jkx" firstAttribute="leading" secondItem="K1r-G2-43y" secondAttribute="trailing" constant="20" id="3ts-mK-hAL"/>
                                         <constraint firstItem="WVO-K4-8Fg" firstAttribute="leading" secondItem="ICx-yS-wXN" secondAttribute="leading" constant="42" id="3zH-EW-AQG"/>
-                                        <constraint firstItem="KKK-5o-yEn" firstAttribute="leading" secondItem="jQU-Hg-xYE" secondAttribute="leading" id="6nz-h5-Kxw"/>
                                         <constraint firstItem="XG1-sj-aL2" firstAttribute="top" secondItem="N27-ru-U2r" secondAttribute="bottom" constant="32" id="7DC-7u-CNZ"/>
                                         <constraint firstAttribute="trailing" secondItem="26X-ag-hsC" secondAttribute="trailing" constant="20" id="Asb-yb-zsP"/>
                                         <constraint firstItem="9dX-fy-XXl" firstAttribute="top" secondItem="ICx-yS-wXN" secondAttribute="top" constant="53" id="BjJ-XP-Cpk"/>
@@ -1792,8 +1785,6 @@
                                         <constraint firstItem="WfT-Rz-Jkx" firstAttribute="trailing" secondItem="5Vm-jb-xoB" secondAttribute="trailing" id="k76-pi-c0z"/>
                                         <constraint firstItem="0N1-oy-fmz" firstAttribute="leading" secondItem="ICx-yS-wXN" secondAttribute="leading" constant="20" id="no9-QB-53P"/>
                                         <constraint firstItem="WVO-K4-8Fg" firstAttribute="top" secondItem="N27-ru-U2r" secondAttribute="top" id="olH-Ji-cDw"/>
-                                        <constraint firstItem="KKK-5o-yEn" firstAttribute="top" secondItem="jQU-Hg-xYE" secondAttribute="bottom" constant="8" symbolic="YES" id="pd7-Wn-yue"/>
-                                        <constraint firstItem="KKK-5o-yEn" firstAttribute="trailing" secondItem="jQU-Hg-xYE" secondAttribute="trailing" id="r15-XX-HFm"/>
                                         <constraint firstItem="26X-ag-hsC" firstAttribute="leading" secondItem="ICx-yS-wXN" secondAttribute="leading" constant="20" id="rWO-Jh-t06"/>
                                         <constraint firstItem="0cF-aE-Vka" firstAttribute="leading" secondItem="9dX-fy-XXl" secondAttribute="leading" id="uhk-y6-Auz"/>
                                         <constraint firstAttribute="trailing" secondItem="jQU-Hg-xYE" secondAttribute="trailing" constant="20" id="wq9-RX-iEo"/>
@@ -1804,7 +1795,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UploadImage" rowHeight="400" id="ffU-5D-Ebj" customClass="ImageUploadCell" customModule="dimodamo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1328" width="414" height="400"/>
+                                        <rect key="frame" x="0.0" y="1007" width="414" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ffU-5D-Ebj" id="6Mf-0V-MkM">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
@@ -1850,18 +1841,18 @@
                                             <outlet property="uploadImageView" destination="XxM-rR-CLb" id="md1-i1-g79"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UploadLink" rowHeight="90" id="ZgV-mM-VqY" customClass="LinkUploadCell" customModule="dimodamo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1728" width="414" height="90"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UploadLink" rowHeight="120" id="ZgV-mM-VqY" customClass="LinkUploadCell" customModule="dimodamo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1407" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZgV-mM-VqY" id="uWq-ST-Ohl">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOF-Wq-DW1">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="90"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="104"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linkImage" translatesAutoresizingMaskIntoConstraints="NO" id="EiU-b6-oWd">
-                                                            <rect key="frame" x="8" y="8" width="120" height="74"/>
+                                                            <rect key="frame" x="8" y="8" width="120" height="88"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="010-pW-d1o"/>
                                                             </constraints>
@@ -1873,13 +1864,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svL-34-AuU">
-                                                            <rect key="frame" x="152" y="60" width="206" height="14"/>
+                                                            <rect key="frame" x="152" y="74" width="206" height="14"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                                                             <color key="textColor" name="GRAY - 170"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" name="WHITE"/>
                                                     <constraints>
                                                         <constraint firstItem="EiU-b6-oWd" firstAttribute="top" secondItem="aOF-Wq-DW1" secondAttribute="top" constant="8" id="34h-Cc-gDq"/>
                                                         <constraint firstItem="OlQ-hQ-2cf" firstAttribute="top" secondItem="aOF-Wq-DW1" secondAttribute="top" constant="16" id="Aw0-Mb-5rE"/>
@@ -1888,6 +1879,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="svL-34-AuU" secondAttribute="trailing" constant="16" id="Wu3-pB-pNk"/>
                                                         <constraint firstItem="OlQ-hQ-2cf" firstAttribute="leading" secondItem="EiU-b6-oWd" secondAttribute="trailing" constant="24" id="YKg-0d-gKY"/>
                                                         <constraint firstItem="svL-34-AuU" firstAttribute="leading" secondItem="EiU-b6-oWd" secondAttribute="trailing" constant="24" id="ZUg-jX-BTX"/>
+                                                        <constraint firstAttribute="height" constant="90" id="bPa-Wb-Qle"/>
                                                         <constraint firstItem="EiU-b6-oWd" firstAttribute="leading" secondItem="aOF-Wq-DW1" secondAttribute="leading" constant="8" id="g2e-3S-LNl"/>
                                                         <constraint firstAttribute="bottom" secondItem="EiU-b6-oWd" secondAttribute="bottom" constant="8" id="gb2-hq-q2V"/>
                                                     </constraints>
@@ -1901,11 +1893,12 @@
                                                     <state key="normal" image="closeBtn_2"/>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" name="WHITE"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="aOF-Wq-DW1" secondAttribute="trailing" constant="20" id="3CD-0g-de3"/>
                                                 <constraint firstItem="lqY-s2-UxW" firstAttribute="top" secondItem="aOF-Wq-DW1" secondAttribute="top" constant="16" id="9ch-6h-hBZ"/>
                                                 <constraint firstItem="aOF-Wq-DW1" firstAttribute="leading" secondItem="uWq-ST-Ohl" secondAttribute="leading" constant="20" id="Ngw-Uy-oyu"/>
-                                                <constraint firstAttribute="bottom" secondItem="aOF-Wq-DW1" secondAttribute="bottom" id="cwJ-0M-V4P"/>
+                                                <constraint firstAttribute="bottom" secondItem="aOF-Wq-DW1" secondAttribute="bottom" constant="16" id="Uir-xx-4aE"/>
                                                 <constraint firstItem="aOF-Wq-DW1" firstAttribute="top" secondItem="uWq-ST-Ohl" secondAttribute="top" id="wOZ-6z-DP8"/>
                                                 <constraint firstItem="lqY-s2-UxW" firstAttribute="leading" secondItem="aOF-Wq-DW1" secondAttribute="leading" constant="16" id="wdD-LN-3ao"/>
                                             </constraints>
@@ -2007,11 +2000,12 @@
                         <outlet property="linkInsertBtn" destination="3xo-Wj-f8D" id="4Ir-az-r2j"/>
                         <outlet property="linkPopupView" destination="LVl-bp-kcA" id="Ff8-Mc-7N8"/>
                         <outlet property="linkTextField" destination="D4z-cT-raZ" id="WNq-VG-nm4"/>
+                        <outlet property="mainTableContentView" destination="ICx-yS-wXN" id="F2f-lH-FIr"/>
                         <outlet property="mainTableView" destination="Dal-X5-CIj" id="1Ii-3R-BFJ"/>
+                        <outlet property="mainTableViewEmptyImage" destination="jQU-Hg-xYE" id="7A8-Zy-hTV"/>
                         <outlet property="tagging" destination="K1r-G2-43y" id="PW3-JV-QQ9"/>
                         <outlet property="tagsLimit" destination="WfT-Rz-Jkx" id="eRp-t0-WFg"/>
                         <outlet property="tagsTableView" destination="WVO-K4-8Fg" id="CmF-1U-CAK"/>
-                        <outlet property="testImageView" destination="KKK-5o-yEn" id="JeI-Ql-6vf"/>
                         <outlet property="titleLimit" destination="5Vm-jb-xoB" id="mfb-e1-b5r"/>
                         <outlet property="titleTextField" destination="TK5-5v-fGa" id="zJe-So-WBx"/>
                     </connections>
@@ -2912,7 +2906,6 @@
         <image name="community" width="20" height="20"/>
         <image name="communitySelected" width="20" height="20"/>
         <image name="exImg" width="374" height="224"/>
-        <image name="feedbackCardCharYellow" width="374" height="387"/>
         <image name="heartIcon" width="30" height="28"/>
         <image name="linkIcon" width="40" height="40"/>
         <image name="linkImage" width="120" height="74"/>

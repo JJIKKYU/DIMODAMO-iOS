@@ -23,6 +23,8 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     @IBOutlet weak var tagsTextField: UITextField!
     @IBOutlet weak var tagsLimit: UILabel!
     
+    @IBOutlet weak var mainTableContentView: UIView!
+    @IBOutlet weak var mainTableViewEmptyImage: UIImageView!
     @IBOutlet weak var mainTableView: UITableView! {
         didSet {
             mainTableView.rowHeight = UITableView.automaticDimension
@@ -176,13 +178,43 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         /*
          이미지 업로드
          */
-        viewModel.uploadImagesRelay
-            .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext : { [weak self] _ in
-                self?.mainTableView.reloadData()
+//        viewModel.uploadImagesRelay
+//            .subscribeOn(MainScheduler.instance)
+//            .subscribe(onNext : { [weak self] _ in
+//                self?.mainTableView.reloadData()
+//                self?.view.layoutIfNeeded()
+//            })
+//            .disposed(by: disposeBag)
+        
+        
+        /*
+         링크 업로드
+         */
+//        viewModel.uploadLinksRelay
+//            .subscribeOn(MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] _ in
+//
+//            })
+//            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(
+            viewModel.uploadImagesRelay,
+            viewModel.uploadLinksRelay
+        )
+        .map { $0.count > 0 || $1.count > 0}
+        .subscribeOn(MainScheduler.instance)
+        .subscribe(onNext: { [weak self] flag in
+            // 업로드를 처음 할 때
+            if flag == true && self!.mainTableViewEmptyImage.isHidden == false {
+                self?.mainTableViewEmptyImage.isHidden = true
+                self?.mainTableView.tableHeaderView?.frame.size = CGSize(width: self!.mainTableView.frame.width, height: CGFloat(585))
                 self?.view.layoutIfNeeded()
-            })
-            .disposed(by: disposeBag)
+            }
+            
+            self?.mainTableView.reloadData()
+            self?.view.layoutIfNeeded()
+        })
+        .disposed(by: disposeBag)
         
         
         /*
@@ -282,6 +314,14 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     }
     @IBAction func pressedLinkInsertBtn(_ sender: Any) {
         print("링크를 삽입합니다")
+        
+        guard let urlString = linkTextField.text else {
+            return
+        }
+        
+        var linkArr: [String] = viewModel.uploadLinksRelay.value
+        linkArr.append(urlString)
+        viewModel.uploadLinksRelay.accept(linkArr)
     }
 }
 
@@ -393,7 +433,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             return matchedList.count
             
         case 1:
-            return viewModel.uploadImagesRelay.value.count
+            return viewModel.uploadImagesRelay.value.count + viewModel.uploadLinksRelay.value.count
             
         default:
             break
@@ -413,20 +453,38 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             
             let imageArr = viewModel.uploadImagesRelay.value
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
+            let linkArr = viewModel.uploadLinksRelay.value
             
-            cell.uploadImageView.image = imageArr[indexPath.row]
+            if (indexPath.row + 1) <= (imageArr.count) {
+                print("imageArr.Count == indexpath.row")
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
+                
+                cell.uploadImageView.image = imageArr[indexPath.row]
+                
+                guard let cellImage = cell.uploadImageView.image else {
+                    return UITableViewCell()
+                }
             
-            guard let cellImage = cell.uploadImageView.image else {
-                return UITableViewCell()
+                let scaledHeight = ((UIScreen.main.bounds.width - 40) * cellImage.size.height) / cellImage.size.width
+                cell.heightConstraint.constant = scaledHeight
+                
+                print(scaledHeight)
+                
+                return cell
             }
-        
-            let scaledHeight = ((UIScreen.main.bounds.width - 40) * cellImage.size.height) / cellImage.size.width
-            cell.heightConstraint.constant = scaledHeight
+            else if (indexPath.row + 1) <= imageArr.count + linkArr.count {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "UploadLink", for: indexPath) as! LinkUploadCell
+                
+                
+//                cell.thumbImageView.image = UIImage(named: "BC_Char_Yellow_M2_0")
+                
+                return cell
+            }
             
-            print(scaledHeight)
             
-            return cell
+            
 
         default:
             break
@@ -478,7 +536,6 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            testImageView.image = image
             
             var imageArr: [UIImage] = viewModel.uploadImagesRelay.value
             imageArr.append(image)
