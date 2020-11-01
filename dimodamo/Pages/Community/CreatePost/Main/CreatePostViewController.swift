@@ -426,8 +426,6 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             
             print(scaledHeight)
             
-            
-            
             return cell
 
         default:
@@ -438,9 +436,23 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tagging.updateTaggedList(allText: tagging.textView.text, tagText: matchedList[indexPath.row])
-        tableView.isHidden = true
-        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch tableView.tag {
+        case 0:
+            
+            tagging.updateTaggedList(allText: tagging.textView.text, tagText: matchedList[indexPath.row])
+            tableView.isHidden = true
+            tableView.deselectRow(at: indexPath, animated: true)
+            
+            break
+            
+        case 1:
+            break
+        
+        default:
+            break
+        }
+        
     }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

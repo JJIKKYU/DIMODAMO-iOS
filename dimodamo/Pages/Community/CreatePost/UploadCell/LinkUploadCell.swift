@@ -1,0 +1,41 @@
+//
+//  LinkUploadCell.swift
+//  dimodamo
+//
+//  Created by JJIKKYU on 2020/11/01.
+//  Copyright © 2020 JJIKKYU. All rights reserved.
+//
+
+import UIKit
+
+class LinkUploadCell: UITableViewCell {
+
+    @IBOutlet weak var containerView: UIView! {
+        didSet {
+            containerView.layer.borderWidth = 1.5
+            containerView.layer.borderColor = UIColor.appColor(.white235).cgColor
+            containerView.layer.cornerRadius = 8
+            containerView.layer.masksToBounds = true
+        }
+    }
+    
+    @IBOutlet weak var thumbImageView: UIImageView! {
+        didSet {
+            thumbImageView.layer.cornerRadius = 4
+            thumbImageView.layer.masksToBounds = true
+        }
+    }
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}
