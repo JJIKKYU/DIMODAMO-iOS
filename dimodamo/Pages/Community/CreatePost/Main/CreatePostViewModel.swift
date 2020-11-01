@@ -83,11 +83,11 @@ class CreatePostViewModel {
         // 유저 디폹트에서 닉네임을 불러옴
         let userDefaults = UserDefaults.standard
         let userNickname: String = userDefaults.string(forKey: "nickname") ?? "익명"
-        let userDpti: String = userDefaults.string(forKey: "dpti") ?? "TI"
+        let userDpti: String = userDefaults.string(forKey: "dpti") ?? "M_TI"
         
         // DocumentID를 미리 불러오기 위해
         
-        let document = db.collection("hongik/article/posts").document()
+        let document = db.collection("hongik/information/posts").document()
         let id: String = document.documentID
         
         
@@ -150,6 +150,30 @@ class CreatePostViewModel {
                          }, onError: { error in
                             print("\(error)")
                          })
+    }
+    
+    func uploadImage(documentID: String) {
+        guard let uploadData = self.uploadImagesRelay.value[0].jpegData(compressionQuality: 0.5) else {
+            return
+        }
+        let storageRef = storage.child("hongik/information/posts/\(documentID).png")
+        
+        storageRef.putData(uploadData, metadata: nil) { _, error in
+                        guard error == nil else {
+                            print("Failed to upload")
+                            return
+                        }
+                        
+                        storageRef.downloadURL(completion: { url, error in
+                            guard let url = url, error == nil else {
+                                return
+                            }
+                            
+                            let urlString = url.absoluteString
+                            print("DownloadURL : \(urlString)")
+                            //                            UserDefaults.standard.set(urlString, forKey: "url")
+                        })
+                     }
     }
 }
 

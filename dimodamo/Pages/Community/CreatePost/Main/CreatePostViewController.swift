@@ -315,6 +315,14 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    /*
+     이미지 업로드 테스트
+     */
+    
+    @IBAction func testBtn(_ sender: Any) {
+        self.viewModel.uploadImage(documentID: "ABCD")
+    }
+    
     
     /*
      Link
@@ -519,17 +527,6 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             }
             else if (indexPath.row + 1) <= imageArr.count + linkArr.count {
                 let index = indexPath.row - imageArr.count
-                
-                // 이미지 0개, 링크 1개
-                // 0 - 0 = 0
-                
-                // 이미지 2개, 링크 1개
-                // 인덱스 = 2 - (2)
-//                if imageArr.count > 0 {
-//                    
-//                } else if imageArr.count == 0 {
-//                    index = indexPath.row - imageArr.count
-//                }
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UploadLink", for: indexPath) as! LinkUploadCell
                 
