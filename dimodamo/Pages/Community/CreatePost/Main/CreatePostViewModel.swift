@@ -58,6 +58,7 @@ class CreatePostViewModel {
      업로드 이미지
      */
     let uploadImagesRelay = BehaviorRelay<[UIImage]>(value: []) // 유저가 사진을 찍거나, 앨범에서 선택할 때마다 이쪽으로 넘길 예정
+    var uploadImageUrlArr: [String] = [] // 업로드 하기 전에 파이어베이스 링크를 넣음
     
     /*
      업로드 링크
@@ -90,6 +91,8 @@ class CreatePostViewModel {
         let document = db.collection("hongik/information/posts").document()
         let id: String = document.documentID
         
+        // 이미지 업로드 프로세스
+//        uploadImage(documentID: document.documentID)
         
         let board: Board = Board(boardId: id,
                                  boardTitle: titleRelay.value,
@@ -152,7 +155,9 @@ class CreatePostViewModel {
                          })
     }
     
+    // TODO : 도큐먼트 아이디를 받아서 for문 돌려서
     func uploadImage(documentID: String) {
+        
         guard let uploadData = self.uploadImagesRelay.value[0].jpegData(compressionQuality: 0.5) else {
             return
         }
@@ -171,6 +176,7 @@ class CreatePostViewModel {
                             
                             let urlString = url.absoluteString
                             print("DownloadURL : \(urlString)")
+                            self.uploadImageUrlArr.append(urlString)
                             //                            UserDefaults.standard.set(urlString, forKey: "url")
                         })
                      }
