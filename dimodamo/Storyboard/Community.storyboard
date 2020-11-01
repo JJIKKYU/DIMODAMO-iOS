@@ -1851,7 +1851,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOF-Wq-DW1">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="104"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linkImage" translatesAutoresizingMaskIntoConstraints="NO" id="EiU-b6-oWd">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linkImage" translatesAutoresizingMaskIntoConstraints="NO" id="EiU-b6-oWd">
                                                             <rect key="frame" x="8" y="8" width="120" height="88"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="010-pW-d1o"/>
@@ -1907,6 +1907,8 @@
                                         <connections>
                                             <outlet property="containerView" destination="aOF-Wq-DW1" id="eY9-cs-NzV"/>
                                             <outlet property="thumbImageView" destination="EiU-b6-oWd" id="mTF-9J-m17"/>
+                                            <outlet property="titleLabel" destination="OlQ-hQ-2cf" id="6LS-hW-ib9"/>
+                                            <outlet property="urlLabel" destination="svL-34-AuU" id="EtW-ax-epi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1998,6 +2000,7 @@
                         <outlet property="descriptionTextView" destination="Dgg-64-o0F" id="6UL-IA-hiX"/>
                         <outlet property="linkCloseBtn" destination="IYJ-JR-S7p" id="rN8-iz-N3z"/>
                         <outlet property="linkInsertBtn" destination="3xo-Wj-f8D" id="4Ir-az-r2j"/>
+                        <outlet property="linkLoadingView" destination="i7Z-kC-WSy" id="kvA-Bf-g0r"/>
                         <outlet property="linkPopupView" destination="LVl-bp-kcA" id="Ff8-Mc-7N8"/>
                         <outlet property="linkTextField" destination="D4z-cT-raZ" id="WNq-VG-nm4"/>
                         <outlet property="mainTableContentView" destination="ICx-yS-wXN" id="F2f-lH-FIr"/>
@@ -2042,14 +2045,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mqi-hP-wS8">
                             <rect key="frame" x="20" y="118" width="374" height="90"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linkImage" translatesAutoresizingMaskIntoConstraints="NO" id="ci4-Co-3FZ">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linkImage" translatesAutoresizingMaskIntoConstraints="NO" id="ci4-Co-3FZ">
                                     <rect key="frame" x="8" y="8" width="120" height="74"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="k2R-ne-uks"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용이 없습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyr-U1-9Dn">
-                                    <rect key="frame" x="152" y="16" width="206" height="15"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용이 없습니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyr-U1-9Dn">
+                                    <rect key="frame" x="152" y="16" width="206" height="14.5"/>
                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                     <color key="textColor" name="TEXT - SMALL"/>
                                     <nil key="highlightedColor"/>
@@ -2060,15 +2063,23 @@
                                     <color key="textColor" name="GRAY - 170"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7Z-kC-WSy" customClass="LottieLoadingView" customModule="dimodamo" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="90"/>
+                                    <color key="backgroundColor" name="WHITE"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" name="WHITE"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="90" id="7Uf-oW-2hB"/>
+                                <constraint firstAttribute="bottom" secondItem="i7Z-kC-WSy" secondAttribute="bottom" id="7gV-aV-LQi"/>
+                                <constraint firstItem="i7Z-kC-WSy" firstAttribute="top" secondItem="Mqi-hP-wS8" secondAttribute="top" id="9pK-02-nM9"/>
                                 <constraint firstItem="5Jb-qA-snz" firstAttribute="leading" secondItem="ci4-Co-3FZ" secondAttribute="trailing" constant="24" id="Cg6-rH-sqm"/>
+                                <constraint firstAttribute="trailing" secondItem="i7Z-kC-WSy" secondAttribute="trailing" id="Gyc-0x-geV"/>
                                 <constraint firstAttribute="trailing" secondItem="5Jb-qA-snz" secondAttribute="trailing" constant="16" id="Kdj-vi-dUO"/>
                                 <constraint firstAttribute="bottom" secondItem="5Jb-qA-snz" secondAttribute="bottom" constant="16" id="QdH-BH-S10"/>
                                 <constraint firstItem="ci4-Co-3FZ" firstAttribute="leading" secondItem="Mqi-hP-wS8" secondAttribute="leading" constant="8" id="V8B-yP-Zut"/>
                                 <constraint firstItem="ci4-Co-3FZ" firstAttribute="top" secondItem="Mqi-hP-wS8" secondAttribute="top" constant="8" id="cJs-QT-5z9"/>
+                                <constraint firstItem="i7Z-kC-WSy" firstAttribute="leading" secondItem="Mqi-hP-wS8" secondAttribute="leading" id="erZ-bQ-bUA"/>
                                 <constraint firstItem="Lyr-U1-9Dn" firstAttribute="leading" secondItem="ci4-Co-3FZ" secondAttribute="trailing" constant="24" id="fqE-EJ-L05"/>
                                 <constraint firstAttribute="bottom" secondItem="ci4-Co-3FZ" secondAttribute="bottom" constant="8" id="pCt-T1-bX4"/>
                                 <constraint firstAttribute="trailing" secondItem="Lyr-U1-9Dn" secondAttribute="trailing" constant="16" id="qNn-e3-w26"/>
@@ -2089,6 +2100,14 @@
                                 <action selector="pressedLinkInsertBtn:" destination="Iwr-9x-kBf" eventType="touchUpInside" id="cZf-jq-k7l"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7Q-wN-6pD">
+                            <rect key="frame" x="236" y="32" width="52" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="입력완료"/>
+                            <connections>
+                                <action selector="pressedLinkCheck:" destination="Iwr-9x-kBf" eventType="touchUpInside" id="e4O-D5-7kn"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" name="WHITE"/>
                     <constraints>
@@ -2107,10 +2126,12 @@
                         <constraint firstItem="D4z-cT-raZ" firstAttribute="top" secondItem="Mtk-he-gQ0" secondAttribute="bottom" constant="24" id="zQB-d1-6VP"/>
                     </constraints>
                     <connections>
+                        <outlet property="addressLabel" destination="5Jb-qA-snz" id="PvG-uc-FsQ"/>
                         <outlet property="containerView" destination="Mqi-hP-wS8" id="N6s-lj-2ZH"/>
                         <outlet property="insertBtn" destination="3xo-Wj-f8D" id="4Wh-Ll-hqk"/>
                         <outlet property="textField" destination="D4z-cT-raZ" id="bYR-AG-hxl"/>
                         <outlet property="thumbImageView" destination="ci4-Co-3FZ" id="wgd-Hz-1LD"/>
+                        <outlet property="titleLabel" destination="Lyr-U1-9Dn" id="g7k-YT-1SL"/>
                     </connections>
                 </view>
             </objects>

@@ -12,11 +12,10 @@ import Lottie
 
 class LottieLoadingView: UIView {
 
-    
+    let animationView = Lottie.AnimationView.init(name: "Loading2")
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        let animationView = Lottie.AnimationView.init(name: "Loading1")
         animationView.contentMode = .scaleAspectFill
         animationView.backgroundBehavior = .pauseAndRestore
         
@@ -28,6 +27,18 @@ class LottieLoadingView: UIView {
         
         animationView.loopMode = .loop
         animationView.play()
+        
+        print("ASDASDASDASD")
+    }
+    
+    func playAnimation() {
+        self.isHidden = false
+        animationView.play()
+    }
+    
+    func stopAnimation() {
+        self.isHidden = true
+        animationView.stop()
     }
     
 

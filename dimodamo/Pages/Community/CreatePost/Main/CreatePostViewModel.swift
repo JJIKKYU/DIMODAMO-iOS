@@ -15,6 +15,8 @@ import Firebase
 import FirebaseStorage
 import FirebaseFirestoreSwift
 
+import SwiftLinkPreview
+
 class CreatePostViewModel {
     
     private let storage = Storage.storage().reference()
@@ -60,7 +62,10 @@ class CreatePostViewModel {
     /*
      업로드 링크
      */
-    let uploadLinksRelay = BehaviorRelay<[String]>(value: [])
+    let uploadLinksRelay = BehaviorRelay<[String]>(value: []) // 링크만 가지고 있음
+    let uploadLinkDataRelay = BehaviorRelay<PreviewResponse?>(value: nil)
+    let uploadLinksDataRelay = BehaviorRelay<[PreviewResponse]>(value: []) // 링크에 있는 데이터를 해체해 가지고 있음
+    let slp = SwiftLinkPreview(cache: InMemoryCache())
     
     init() {
         
@@ -109,6 +114,42 @@ class CreatePostViewModel {
                 print("정상적으로 글이 작성되었습니다. \(id)")
             }
         }
+    }
+    
+    
+    /*
+     Link Setting
+     */
+    func linkViewSetting() {
+        var linksData: [PreviewResponse] = [] // 이전 링크 데이터
+        // 유저에게 입력받은 새로운 링크 데이터
+        guard let newLinkData: PreviewResponse = uploadLinkDataRelay.value else {
+            return
+        }
+        // 기존 데이터를 먼저 가져 온 뒤에
+        linksData = self.uploadLinksDataRelay.value
+        // 합침
+        linksData.append(newLinkData)
+        
+        self.uploadLinksDataRelay.accept(linksData)
+    }
+    
+    func linkCheck(url: String) {
+        slp.previewLink("\(url)",
+                         onSuccess: { [self] result in
+                            let resultArr = result
+                            let linkData: PreviewResponse =
+                                PreviewResponse(url: (resultArr["url"] as? URL) ?? URL(string: "dimodamo.com")!,
+                                                title: resultArr["title"] as? String ?? "",
+                                                image: resultArr["image"] as? String ?? "",
+                                                icon: resultArr["icon"] as? String ?? ""
+                                )
+                            
+                            uploadLinkDataRelay.accept(linkData)
+                            
+                         }, onError: { error in
+                            print("\(error)")
+                         })
     }
 }
 

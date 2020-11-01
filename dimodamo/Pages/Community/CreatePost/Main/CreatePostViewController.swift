@@ -13,6 +13,8 @@ import RxCocoa
 
 import Tagging
 
+import Kingfisher
+
 class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBOutlet weak var descriptionContainer: UIView!
@@ -49,6 +51,11 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var linkInsertBtn: UIButton!
     @IBOutlet weak var linkCloseBtn: UIButton!
+    @IBOutlet weak var linkLoadingView: LottieLoadingView! {
+        didSet {
+            linkLoadingView.stopAnimation()
+        }
+    }
     
     /*
      UploadImage
@@ -105,6 +112,12 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     
     var matchedList: [String] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.navigationController?.presentTransparentNavigationBar()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -190,16 +203,33 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         /*
          링크 업로드
          */
-//        viewModel.uploadLinksRelay
-//            .subscribeOn(MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] _ in
-//
-//            })
-//            .disposed(by: disposeBag)
+        // LinkPopupView에서 주소 및 이미지 체크
+        viewModel.uploadLinkDataRelay
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                guard let data = data else {
+                    return
+                }
+                self?.linkLoadingView.stopAnimation()
+                
+                let imageUrl = URL(string: data.image)
+                let title = data.title
+                let url = data.url
+                
+                
+                self?.linkPopupView.thumbImageView.kf.setImage(with: imageUrl)
+                self?.linkPopupView.titleLabel.text = "\(title)"
+                self?.linkPopupView.addressLabel.text = "\(url)"
+            })
+            .disposed(by: disposeBag)
+
         
+        /*
+         기본 Empty이미지 삭제 및 데이터가 들어올 때마다 테이블 리로드
+         */
         Observable.combineLatest(
             viewModel.uploadImagesRelay,
-            viewModel.uploadLinksRelay
+            viewModel.uploadLinksDataRelay
         )
         .map { $0.count > 0 || $1.count > 0}
         .subscribeOn(MainScheduler.instance)
@@ -305,23 +335,35 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     }
     
     @IBAction func pressedLinkPopupViewCloseBtn(_ sender: Any) {
+        hideLinkPopupView()
+    }
+    
+    @IBAction func pressedLinkCheck(_ sender: Any) {
+        print("링크를 체크합니다")
+        
+        guard let link = self.linkTextField.text else {
+            return
+        }
+        self.linkLoadingView.playAnimation()
+        
+        self.viewModel.linkCheck(url: link)
+    }
+    
+    @IBAction func pressedLinkInsertBtn(_ sender: Any) {
+        print("링크를 삽입합니다")
+        
+        viewModel.linkViewSetting()
+        hideLinkPopupView()
+    }
+    
+    func hideLinkPopupView() {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.presentTransparentNavigationBar()
         self.linkPopupView.isHidden = true
+        self.linkPopupView.dataReset()
         self.dimView.isHidden = true
         self.linkTextField.resignFirstResponder()
-    }
-    @IBAction func pressedLinkInsertBtn(_ sender: Any) {
-        print("링크를 삽입합니다")
-        
-        guard let urlString = linkTextField.text else {
-            return
-        }
-        
-        var linkArr: [String] = viewModel.uploadLinksRelay.value
-        linkArr.append(urlString)
-        viewModel.uploadLinksRelay.accept(linkArr)
     }
 }
 
@@ -433,7 +475,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
             return matchedList.count
             
         case 1:
-            return viewModel.uploadImagesRelay.value.count + viewModel.uploadLinksRelay.value.count
+            return viewModel.uploadImagesRelay.value.count + viewModel.uploadLinksDataRelay.value.count
             
         default:
             break
@@ -453,14 +495,16 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             
             let imageArr = viewModel.uploadImagesRelay.value
-            let linkArr = viewModel.uploadLinksRelay.value
+            let linkArr = viewModel.uploadLinksDataRelay.value
+            
             
             if (indexPath.row + 1) <= (imageArr.count) {
                 print("imageArr.Count == indexpath.row")
+                let index = indexPath.row
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
                 
-                cell.uploadImageView.image = imageArr[indexPath.row]
+                cell.uploadImageView.image = imageArr[index]
                 
                 guard let cellImage = cell.uploadImageView.image else {
                     return UITableViewCell()
@@ -474,11 +518,28 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
             else if (indexPath.row + 1) <= imageArr.count + linkArr.count {
+                let index = indexPath.row - imageArr.count
+                
+                // 이미지 0개, 링크 1개
+                // 0 - 0 = 0
+                
+                // 이미지 2개, 링크 1개
+                // 인덱스 = 2 - (2)
+//                if imageArr.count > 0 {
+//                    
+//                } else if imageArr.count == 0 {
+//                    index = indexPath.row - imageArr.count
+//                }
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UploadLink", for: indexPath) as! LinkUploadCell
                 
                 
-//                cell.thumbImageView.image = UIImage(named: "BC_Char_Yellow_M2_0")
+                let imageUrl: URL = URL(string: linkArr[index].image) ?? URL(string: "dimodamo.com")!
+                cell.thumbImageView.kf.setImage(with: imageUrl)
+                
+                cell.titleLabel.text = "\(linkArr[index].title)"
+                
+                cell.urlLabel.text = "\(linkArr[index].url)"
                 
                 return cell
             }

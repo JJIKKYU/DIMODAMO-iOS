@@ -10,6 +10,8 @@ import UIKit
 
 class LinkPopupView: UIView {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var containerView: UIView! {
         didSet {
             containerView.layer.borderWidth = 1.5
@@ -47,8 +49,12 @@ class LinkPopupView: UIView {
 //        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 307)
     }
     
-    @IBAction func pressedCloseBtn(_ sender: Any) {
-        self.isHidden = true
+    func dataReset() {
+        print("데이터를 초기화합니다.")
+        titleLabel.text = nil
+        addressLabel.text = "empty"
+        thumbImageView.image = UIImage(named: "linkImage")
+        textField.text = nil
     }
     
 }
