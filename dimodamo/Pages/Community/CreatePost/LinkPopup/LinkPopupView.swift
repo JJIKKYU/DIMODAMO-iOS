@@ -12,8 +12,9 @@ class LinkPopupView: UIView {
 
     @IBOutlet weak var containerView: UIView! {
         didSet {
+            containerView.layer.borderWidth = 1.5
+            containerView.layer.borderColor = UIColor.appColor(.white235).cgColor
             containerView.layer.cornerRadius = 8
-            containerView.layer.masksToBounds = true
         }
     }
     
@@ -30,13 +31,24 @@ class LinkPopupView: UIView {
             insertBtn.layer.masksToBounds = true
         }
     }
+    @IBOutlet weak var textField: UITextField! {
+        didSet {
+            textField.layer.cornerRadius = 4
+            textField.layer.masksToBounds = true
+            textField.layer.borderWidth = 1
+            textField.layer.borderColor = UIColor.appColor(.gray210).cgColor
+        }
+    }
     
     
     override func draw(_ rect: CGRect) {
         // Drawing code
-        self.roundCorners(corners: [.topLeft, .topRight], radius: 12)
-        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 307)
+//        self.roundCorners(corners: [.topLeft, .topRight], radius: 12)
+//        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 307)
     }
     
-
+    @IBAction func pressedCloseBtn(_ sender: Any) {
+        self.isHidden = true
+    }
+    
 }

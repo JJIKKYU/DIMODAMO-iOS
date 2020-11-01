@@ -23,7 +23,30 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     @IBOutlet weak var tagsTextField: UITextField!
     @IBOutlet weak var tagsLimit: UILabel!
     
-    @IBOutlet var linkPopupView: LinkPopupView!
+    @IBOutlet weak var mainTableView: UITableView! {
+        didSet {
+            mainTableView.rowHeight = UITableView.automaticDimension
+            mainTableView.estimatedRowHeight = 100
+        }
+    }
+    
+    /*
+     Link
+     */
+    
+    @IBOutlet var linkPopupView: LinkPopupView! {
+        didSet {
+            linkPopupView.roundCorners(corners: [.topLeft, .topRight], radius: 16)
+            linkPopupView.layer.masksToBounds = true
+            linkPopupView.appShadow(.s20)
+        }
+    }
+    // 팝업이 뜰 경우 뒤를 살짝 가려주는 요도로 사용
+    var dimView: UIView!
+    
+    @IBOutlet weak var linkTextField: UITextField!
+    @IBOutlet weak var linkInsertBtn: UIButton!
+    @IBOutlet weak var linkCloseBtn: UIButton!
     
     /*
      UploadImage
@@ -78,6 +101,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     var disposeBag = DisposeBag()
     let viewModel = CreatePostViewModel()
     
+    
     var matchedList: [String] = []
     
     override func viewDidLoad() {
@@ -88,6 +112,9 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         
         tagsTableView.dataSource = self
         tagsTableView.delegate = self
+        
+        mainTableView.dataSource = self
+        mainTableView.delegate = self
         
         imagePicker.delegate = self
         
@@ -128,7 +155,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
                 self?.viewModel.tagsRelay.accept(value)
                 self?.tagsLimit.text = self?.viewModel.tagsLimit
                 
-
+                
             })
             .disposed(by: disposeBag)
         
@@ -145,6 +172,12 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
                 print(value)
             })
             .disposed(by: disposeBag)
+        
+        /*
+         Keyboard
+         */
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func tagging(_ tagging: Tagging, didChangedTagableList tagableList: [String]) {
@@ -163,6 +196,13 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     func tagging(_ tagging: Tagging, didChangedTaggedList taggedList: [TaggingModel]) {
         print("태그완료된 리스트 :  \(taggedList)")
     }
+
+    
+    
+    
+    /*
+     IBAction & TouchAction
+     */
     
     @IBAction func pressedCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -173,7 +213,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
-//        self.tagsTableView.isHidden = true
+        //        self.tagsTableView.isHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -202,9 +242,34 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     }
     
     
+    /*
+     Link
+     */
+    
     @IBAction func pressedLinkBtn(_ sender: Any) {
         print("링크삽입")
-        self.view.layoutIfNeeded()
+        self.linkTextField.becomeFirstResponder()
+        
+        navigationController?.hideTransparentNavigationBar()
+        navigationController?.navigationBar.barTintColor = .clear
+        navigationController?.navigationBar.tintColor = .clear
+        navigationController?.navigationBar.backgroundColor = .clear
+        dimView.isHidden = false
+        linkPopupView.isHidden = false
+//        linkPopupView.layer.zPosition = 999
+        
+    }
+    
+    @IBAction func pressedLinkPopupViewCloseBtn(_ sender: Any) {
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.presentTransparentNavigationBar()
+        self.linkPopupView.isHidden = true
+        self.dimView.isHidden = true
+        self.linkTextField.resignFirstResponder()
+    }
+    @IBAction func pressedLinkInsertBtn(_ sender: Any) {
+        print("링크를 삽입합니다")
     }
 }
 
@@ -219,25 +284,48 @@ extension CreatePostViewController {
         
         tagsTableView.isHidden = true
         
+        // 팝업뷰가 보이지 않더라도 먼저 constraint 세팅
         linkPopupViewDesign()
     }
     
+    /*
+     Link
+     */
     func linkPopupViewDesign() {
-        self.view.layoutIfNeeded()
+        //        self.view.layoutIfNeeded()
+        
+//        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+//        window?.addSubview(linkPopupView)
+        dimView = UIView()
+        dimView.frame = UIScreen.main.bounds
+        self.view.addSubview(dimView)
+        dimView.backgroundColor = UIColor.black
+        dimView.alpha = 0.6
+        
         self.view.addSubview(linkPopupView)
-    
-//        linkPopupView.translatesAutoresizingMaskIntoConstraints = false
-
+        linkPopupView.isUserInteractionEnabled = true
+        linkInsertBtn.isUserInteractionEnabled = true
+        linkPopupView.layer.zPosition = 1
+        
+        linkPopupView.translatesAutoresizingMaskIntoConstraints = false
+        
         linkPopupView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         linkPopupView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         linkPopupView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
         linkPopupView.heightAnchor.constraint(equalToConstant: 307).isActive = true
         
-        self.view.layoutIfNeeded()
+        linkPopupView.isHidden = true
+        dimView.isHidden = true
+        
+        // Window의 자식으로 놓으므로 직접 추가 해주어야함
+        
+        //        self.view.layoutIfNeeded()
     }
+    
+   
 }
 
-// MARK: - TextField
+// MARK: - TextField & Keyboard
 
 extension CreatePostViewController: UITextFieldDelegate {
     func checkMaxLength(textField: UITextField!, maxLength: Int) {
@@ -253,19 +341,73 @@ extension CreatePostViewController: UITextFieldDelegate {
         arg.sizeToFit()
         arg.isScrollEnabled = false
     }
+    
+    // 키보드 업, 다운 관련
+    @objc func moveUpTextView(_ notification: NSNotification) {
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        guard let bottomSafeArea = window?.safeAreaInsets.bottom else {
+            return
+        }
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            //            self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
+            //                        self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
+            //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
+            
+            self.linkPopupView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+            self.bottomIconContainerView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea)
+        }
+    }
+    
+    @objc func moveDownTextView() {
+        self.linkPopupView.transform = .identity
+        self.bottomIconContainerView.transform = .identity
+        //        self.commentTextFieldView?.transform = .identity
+        //        self.scrollView?.transform = .identity
+        //                self.commentTableViewBottom.constant = 0
+    }
 }
 
 // MARK: - TagsTableView
 
 extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return matchedList.count
+        
+        switch tableView.tag {
+        case 0:
+            return matchedList.count
+            
+        case 1:
+            return 3
+            
+        default:
+            break
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath) as! TagCell
-        cell.tagLabel.text = matchedList[indexPath.row]
-        return cell
+        switch tableView.tag {
+        case 0:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath) as! TagCell
+            cell.tagLabel.text = matchedList[indexPath.row]
+            return cell
+            
+        case 1:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath)
+            return cell
+
+        default:
+            break
+        }
+     
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -274,7 +416,21 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        switch tableView.tag {
+//        case 0:
+//
+//            return CGFloat(50)
+//
+//        case 1:
+//
+//            return UITableView.automaticDimension
+//
+//        default:
+//            break
+//        }
+//        return UITableView.automaticDimension
+//    }
 }
 
 // MARK: - ImagePicker
@@ -288,5 +444,5 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
         }
         dismiss(animated: true, completion: nil)
     }
-
+    
 }

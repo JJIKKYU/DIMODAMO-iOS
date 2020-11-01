@@ -50,6 +50,13 @@ class CreatePostViewModel {
         return "\(descriptionRelay.value.count)/1000"
     }
     
+    
+    /*
+     
+     업로드 이미지
+     */
+    let uploadImagesRelay = BehaviorRelay<[UIImage]>(value: [])
+    
     init() {
         
     }
