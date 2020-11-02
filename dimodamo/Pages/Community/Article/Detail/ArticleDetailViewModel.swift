@@ -42,6 +42,15 @@ class ArticleDetailViewModel {
     var tagsRelay = BehaviorRelay<[String]>(value: [])
     
     /*
+     로딩
+     텍스트 및 이미지
+     (링크는 알아서 로딩하므로 필요 없음)
+     */
+    let descriptionLoading = BehaviorRelay<Bool>(value: false)
+    let imagesLoading = BehaviorRelay<Bool>(value: false)
+    
+    
+    /*
      이미지
      */
     let thumbnailImageRelay = BehaviorRelay<URL?>(value: URL(string: ""))
@@ -151,6 +160,7 @@ class ArticleDetailViewModel {
                     if let imagesArr: [String] = data!["images"] as? [String] {
                         let imagesUrlArr: [URL?] = imagesArr.map { URL(string: $0) }
                         self?.imagesRelay.accept(imagesUrlArr)
+                        print("images : \(self!.imagesRelay.value)")
                     }
                     
                     if let videosArr: [String] = data!["videos"] as? [String] {

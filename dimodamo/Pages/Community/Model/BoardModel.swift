@@ -16,8 +16,8 @@ struct Board {
     var commentCount: Int?
     var createdAt: String?
     var description: String?
-    var images: [URL?]
-    var links: [URL?]
+    var images: [String]?
+    var links: [String]?
     var nickname: String?
     var scrapCount: Int?
     var tags: [String]?

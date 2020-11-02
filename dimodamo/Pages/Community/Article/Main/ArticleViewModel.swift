@@ -53,10 +53,10 @@ class ArticleViewModel {
                         let userDpti = (document.data()["user_dpti"] as? String) ?? ""
                         
                         // [String] Image를 [URL?] Image로 변환
-                        var images: [URL?] = []
+                        var images: [String]? = []
                         if let documentImageString: [String] = document.data()["images"] as? [String] {
-                            let documnetImageURL: [URL?] = documentImageString.map { URL(string: $0) }
-                            images = documnetImageURL
+//                            let documnetImageURL: [URL?] = documentImageString.map { URL(string: $0) }
+                            images = documentImageString
                         }
                         
                         

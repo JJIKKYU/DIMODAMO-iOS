@@ -203,6 +203,8 @@ class ArticleDetailViewController: UIViewController {
                 if self?.viewModel.descriptionRelay.value != "" {
                     self?.textView.text = desc.replacingOccurrences(of: "\\n", with: "\n")
                     self?.adjustUITextViewHeight(arg: self!.textView)
+                    self?.viewModel.descriptionLoading.accept(true)
+                    print("글 로딩 완료")
                 }
                 
             })
@@ -365,6 +367,24 @@ class ArticleDetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        
+        /*
+         로딩
+         */
+        Observable.combineLatest(
+            viewModel.descriptionLoading,
+            viewModel.imagesLoading
+            )
+        .map { $0 && $1 }
+        .subscribeOn(MainScheduler.instance)
+        .subscribe(onNext: { [weak self] flag in
+            if flag == true {
+                print("모든 로딩이 완료되었습니다.")
+            } else {
+                print("모두 로딩이 되지 않습니다.")
+            }
+        })
+        .disposed(by: disposeBag)
         
         /*
          Keyboard
@@ -588,21 +608,25 @@ extension ArticleDetailViewController {
     
     func imageStackViewSetting() {
         for (index, imageURL) in viewModel.imagesRelay.value.enumerated() {
+            print("index처음에 : \(index)")
             let imageView = UIImageView()
+            imageStackView.insertArrangedSubview(imageView, at: index)
             imageView.kf.indicatorType = .activity
+            
             imageView.kf.setImage(with: imageURL,
-                                  options: [ .transition(.fade(2))],
                                   completionHandler:  { [self] result in
                                     switch result {
                                     case .success(let value):
                                         print(value.image)
-                                        
                                         let image = value.image
                                         
                                         let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
                                         //                                        print("scaleHeight : \(scaledHeight)")
                                         
-                                        imageStackView.insertArrangedSubview(imageView, at: index)
+//                                        print("이미지 서브뷰 추가")
+                                        print("index : \(index)")
+                                        
+//                                        print("이미지 서브뷰 했누")
                                         
                                         imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
                                         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
@@ -625,6 +649,11 @@ extension ArticleDetailViewController {
                                         
                                         print(value.cacheType)
                                         print(value.source)
+                                        
+                                        if index == (viewModel.imagesRelay.value.count - 1) {
+                                            print("\(index + 1)가지 이미지 로딩을 완료했습니다")
+                                            viewModel.imagesLoading.accept(true)
+                                        }
                                         
                                     case .failure(let error):
                                         print(error)
@@ -781,7 +810,7 @@ extension ArticleDetailViewController {
             
             // 이미지가 없을 경우
             if linkData.image == "" {
-                imageView.image = UIImage(named: "urlDefaultImage")
+                imageView.image = UIImage(named: "linkImage")
             } else {
                 imageView.kf.setImage(with: URL(string: "\(linkData.image)"))
             }

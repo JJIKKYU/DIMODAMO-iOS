@@ -51,7 +51,7 @@ class LinkPopupView: UIView {
     
     func dataReset() {
         print("데이터를 초기화합니다.")
-        titleLabel.text = nil
+        titleLabel.text = "내용이 없습니다"
         addressLabel.text = "empty"
         thumbImageView.image = UIImage(named: "linkImage")
         textField.text = nil

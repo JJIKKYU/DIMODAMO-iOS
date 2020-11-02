@@ -37,6 +37,8 @@ class CommunityMainViewController: UIViewController {
         print("viewwillAppear")
         navigationController?.visible(color: UIColor.appColor(.textBig))
         navigationController?.view.backgroundColor = .white
+        self.viewModel.loadArticlePost()
+        self.viewModel.loadInformationPost()
 //        self.navigationController?.presentTransparentNavigationBar()
     }
     
@@ -55,19 +57,26 @@ class CommunityMainViewController: UIViewController {
         articleCollectionViewSetting()
         //        setupUI()
         
-        viewModel.articleLoading
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext : {[weak self] loading in
-                if loading == true {
-                    self?.articleCollectionView.reloadData()
-                    self?.articleCollectionView.layoutIfNeeded()
-                    self?.spinner.stopAnimating()
-                } else {
-                    self?.spinner.startAnimating()
-                }
-            })
-            .disposed(by: disposeBag)
-        
+        Observable.combineLatest(
+            viewModel.articleLoading,
+            viewModel.informationLoading
+        )
+        .subscribeOn(MainScheduler.instance)
+        .subscribe(onNext: { [weak self] articleLoading, informationLoading in
+            let isLoaded: Bool = articleLoading && informationLoading
+            
+            if isLoaded {
+                self?.articleCollectionView.reloadData()
+                self?.articleCollectionView.layoutIfNeeded()
+                self?.tableView.reloadData()
+                self?.tableView.layoutIfNeeded()
+                print("리로드")
+                self?.spinner.stopAnimating()
+            } else {
+                self?.spinner.startAnimating()
+            }
+        })
+        .disposed(by: disposeBag)
     }
     
     // MARK: - IBaction
@@ -128,8 +137,9 @@ class CommunityMainViewController: UIViewController {
                 }
                 
                 // 썸네일은 넘어갈 때 부드럽게 하기 위해서 prepare에서 전달
-                if let titleImg = viewModel.articlePosts[postIndex].images[0] {
-                    destination.viewModel.thumbnailImageRelay.accept(titleImg)
+                if let titleImg = viewModel.articlePosts[postIndex].images?[0],
+                   let titleImgURL = URL(string: titleImg) {
+                    destination.viewModel.thumbnailImageRelay.accept(titleImgURL)
                 }
                 
             }
@@ -267,8 +277,9 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         
         let model = viewModel.articlePosts[indexPath.row]
         
-        if let loadedImage = viewModel.articlePosts[indexPath.row].images[0] {
-            cell.image.kf.setImage(with: loadedImage)
+        if let loadedImage = viewModel.articlePosts[indexPath.row].images?[0],
+           let loadedImageURL = URL(string: loadedImage) {
+            cell.image.kf.setImage(with: loadedImageURL)
         }
         
         if let title = model.boardTitle {

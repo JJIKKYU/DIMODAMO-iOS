@@ -148,15 +148,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
             })
             .disposed(by: disposeBag)
         
-        
-        
-        viewModel.titleRelay
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] value in
-                
-            })
-            .disposed(by: disposeBag)
-        
         /*
          태그
          */
@@ -216,8 +207,15 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
                 let title = data.title
                 let url = data.url
                 
+                // 썸네일 이미지가 없다면
+                if data.image == "" {
+                    self?.linkPopupView.thumbImageView.image = UIImage(named: "linkImage")
+                }
+                // 썸네일 이미지가 있다면
+                else {
+                    self?.linkPopupView.thumbImageView.kf.setImage(with: imageUrl)
+                }
                 
-                self?.linkPopupView.thumbImageView.kf.setImage(with: imageUrl)
                 self?.linkPopupView.titleLabel.text = "\(title)"
                 self?.linkPopupView.addressLabel.text = "\(url)"
             })
@@ -281,8 +279,12 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     @IBAction func pressedCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    /*
+     글 작성 완료
+     */
     @IBAction func pressedCompleteBtn(_ sender: Any) {
-        viewModel.sendPost()
+        viewModel.upload()
     }
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
@@ -320,7 +322,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
      */
     
     @IBAction func testBtn(_ sender: Any) {
-        self.viewModel.uploadImage(documentID: "ABCD")
+//        self.viewModel.uploadImage(documentID: "ABCD", completion: nil)
     }
     
     
@@ -344,6 +346,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBAction func pressedLinkPopupViewCloseBtn(_ sender: Any) {
         hideLinkPopupView()
+        self.viewModel.uploadLinkDataRelayReset()
     }
     
     @IBAction func pressedLinkCheck(_ sender: Any) {
@@ -531,8 +534,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UploadLink", for: indexPath) as! LinkUploadCell
                 
                 
-                let imageUrl: URL = URL(string: linkArr[index].image) ?? URL(string: "dimodamo.com")!
-                cell.thumbImageView.kf.setImage(with: imageUrl)
+                if let imageUrl: URL = URL(string: linkArr[index].image) {
+                    cell.thumbImageView.kf.setImage(with: imageUrl)
+                } else {
+                    cell.thumbImageView.image = UIImage(named: "linkImage")
+                }
+                
                 
                 cell.titleLabel.text = "\(linkArr[index].title)"
                 

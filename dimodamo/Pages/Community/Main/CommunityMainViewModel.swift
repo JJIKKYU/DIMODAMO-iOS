@@ -25,8 +25,16 @@ class CommunityMainViewModel {
     let informationLoading = BehaviorRelay<Bool>(value: false)
     
     init() {
-        // Article Setting
-        // TODO : 정렬해서 가져와야함
+        // viewWillAppear에서 호출하므로 따로 init하지 않음
+    }
+    
+    
+    func loadArticlePost() {
+        // 리로드 할 수도 있으니 비움
+        self.articlePosts = []
+        self.articleLoading.accept(false)
+        
+        print("### articleLoading : \(articleLoading.value)")
         
         db.collection("hongik/article/posts")
             .order(by: "bundle_id")
@@ -46,10 +54,10 @@ class CommunityMainViewModel {
                     let userDpti = (document.data()["user_dpti"] as? String) ?? ""
                     
                     // [String] Image를 [URL?] Image로 변환
-                    var images: [URL?] = []
+                    var images: [String]? = []
                     if let documentImageString: [String] = document.data()["images"] as? [String] {
-                        let documnetImageURL: [URL?] = documentImageString.map { URL(string: $0) }
-                        images = documnetImageURL
+//                        let documnetImageURL: [URL?] = documentImageString.map { URL(string: $0) }
+                        images = documentImageString
                     }
                     
                     
@@ -77,10 +85,21 @@ class CommunityMainViewModel {
                     // 로딩 유무 확인
                     if querySnapshot?.documents.count == (index + 1) {
                         articleLoading.accept(true)
+                        print("### articleLoading : \(articleLoading.value)")
                     }
                 }
             }
         }
+    }
+    
+    func loadInformationPost() {
+        // 리로드 할 수도 있으니 비움
+        self.informationPosts = []
+        self.informationLoading.accept(false)
+        
+        // Article Setting
+        // TODO : 정렬해서 가져와야함
+        print("### informationLoading : \(informationLoading.value)")
         
         db.collection("hongik/information/posts")
             .order(by: "bundle_id")
@@ -120,17 +139,13 @@ class CommunityMainViewModel {
                     // 로딩 유무 확인
                     if querySnapshot?.documents.count == (index + 1) {
                         informationLoading.accept(true)
+                        print("### informationLoading : \(informationLoading.value)")
                     }
                 }
             }
             
         }
-        
-        
-        
-        
     }
-    
 //    func profileDownload() {
 //        // profile Download
 //        storage.child("test/profile.png").downloadURL(completion: { url, error in

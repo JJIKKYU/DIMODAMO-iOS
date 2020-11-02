@@ -59,20 +59,30 @@ class CreatePostViewModel {
      */
     let uploadImagesRelay = BehaviorRelay<[UIImage]>(value: []) // 유저가 사진을 찍거나, 앨범에서 선택할 때마다 이쪽으로 넘길 예정
     var uploadImageUrlArr: [String] = [] // 업로드 하기 전에 파이어베이스 링크를 넣음
+    let uploadImageLoading = BehaviorRelay<Bool>(value: false)
     
     /*
      업로드 링크
      */
-    let uploadLinksRelay = BehaviorRelay<[String]>(value: []) // 링크만 가지고 있음
+    var uploadLink: String?
+    var uploadLinks: [String] = [] // 링크만 가지고 있음 (최종적으로 글 작성시, 어레이가 필요하므로)
+    
     let uploadLinkDataRelay = BehaviorRelay<PreviewResponse?>(value: nil)
     let uploadLinksDataRelay = BehaviorRelay<[PreviewResponse]>(value: []) // 링크에 있는 데이터를 해체해 가지고 있음
     let slp = SwiftLinkPreview(cache: InMemoryCache())
+    
+    /*
+     최종 글 작성 로딩
+     */
+    let sendPostLoading = BehaviorRelay<Bool>(value: false)
     
     init() {
         
     }
     
-    func sendPost() {
+    func upload(){
+        let queue = DispatchQueue(label: "UPLOAD")
+        
         let unixTimestamp = NSDate().timeIntervalSince1970
         let date = Date(timeIntervalSince1970: unixTimestamp)
         let dateFormatter = DateFormatter()
@@ -90,33 +100,66 @@ class CreatePostViewModel {
         
         let document = db.collection("hongik/information/posts").document()
         let id: String = document.documentID
+        var urlString: String?
+        var board: Board?
         
-        // 이미지 업로드 프로세스
-//        uploadImage(documentID: document.documentID)
-        
-        let board: Board = Board(boardId: id,
-                                 boardTitle: titleRelay.value,
-                                 bundleId: unixTimestamp,
-                                 category: "magazine",
-                                 commentCount: 0,
-                                 createdAt: "\(strDate)",
-                                 description: "\(descriptionRelay.value)",
-                                 images: [],
-                                 links: [],
-                                 nickname: userNickname,
-                                 scrapCount: 0,
-                                 tags: tags,
-                                 userDpti: userDpti,
-                                 userId: Auth.auth().currentUser?.uid,
-                                 videos: [])
-        
-        _ = document.setData(board.dictionary) { err in
-            if let err = err {
-                print("게시글을 작성하는데 오류가 발생했습니다. \(err.localizedDescription)")
-            } else {
-                print("정상적으로 글이 작성되었습니다. \(id)")
-            }
+        queue.async { [self] in
+            // 이미지 업로드 프로세스
+            uploadImage(documentID: document.documentID, completion:{ (isSucceded) in
+                
+                // 이미지 업로드 할 때까지 기다림
+                if isSucceded {
+                    print("업로드 성공")
+                    
+                    
+                    // 이미지 업로드에 성공 했다면 글 작성 시작
+                    queue.async { [self] in
+                        print("\(uploadLinks)")
+                        
+                        board = Board(boardId: id,
+                                      boardTitle: titleRelay.value,
+                                      bundleId: unixTimestamp,
+                                      category: "magazine",
+                                      commentCount: 0,
+                                      createdAt: "\(strDate)",
+                                      description: "\(descriptionRelay.value)",
+                                      images: uploadImageUrlArr,
+                                      links: uploadLinks,
+                                      nickname: userNickname,
+                                      scrapCount: 0,
+                                      tags: tags,
+                                      userDpti: userDpti,
+                                      userId: Auth.auth().currentUser?.uid,
+                                      videos: [])
+                        
+                        print(board)
+                        
+                        document.setData(board!.dictionary) { err in
+                            if let err = err {
+                                print("게시글을 작성하는데 오류가 발생했습니다. \(err.localizedDescription)")
+                            } else {
+                                print("정상적으로 글이 작성되었습니다. \(id)")
+                            }
+                        }
+                    }
+                    
+                    // 이미지 업로드에 실패했다면, 글 작성 역시 실패하도록
+                } else {
+                    print("업로드 실패")
+                }
+            })
+            
+            print("업로드 완료/???")
         }
+        
+        
+        
+        
+        
+    }
+    
+    func sendPost() {
+        
     }
     
     
@@ -125,21 +168,31 @@ class CreatePostViewModel {
      */
     func linkViewSetting() {
         var linksData: [PreviewResponse] = [] // 이전 링크 데이터
+        var linksString: [String] = [] // urlString만 담기 위해
+        
         // 유저에게 입력받은 새로운 링크 데이터
-        guard let newLinkData: PreviewResponse = uploadLinkDataRelay.value else {
+        guard let newLinkData: PreviewResponse = uploadLinkDataRelay.value,
+              let newLinkString: String = self.uploadLink else {
             return
         }
+        
+        print("\(newLinkString)")
         // 기존 데이터를 먼저 가져 온 뒤에
         linksData = self.uploadLinksDataRelay.value
+        linksString = self.uploadLinks
         // 합침
         linksData.append(newLinkData)
+        linksString.append(newLinkString)
         
         self.uploadLinksDataRelay.accept(linksData)
+        self.uploadLinks = linksString
+        
+        print("uploadLinks = \(linksString)")
     }
     
     func linkCheck(url: String) {
         slp.previewLink("\(url)",
-                         onSuccess: { [self] result in
+                        onSuccess: { [self] result in
                             let resultArr = result
                             let linkData: PreviewResponse =
                                 PreviewResponse(url: (resultArr["url"] as? URL) ?? URL(string: "dimodamo.com")!,
@@ -148,38 +201,71 @@ class CreatePostViewModel {
                                                 icon: resultArr["icon"] as? String ?? ""
                                 )
                             
-                            uploadLinkDataRelay.accept(linkData)
+                            uploadLinkDataRelay.accept(linkData) // 이미지 그리기 위한 용도 구조체
+                            uploadLink = linkData.url.absoluteString // 게시글 업로드용
                             
-                         }, onError: { error in
+                        }, onError: { error in
                             print("\(error)")
-                         })
+                        })
+    }
+    
+    // 링크 체크만 하고 그대로 팝업 뷰를 꺼버렸을 경우 남아있는 데이터 삭제
+    func uploadLinkDataRelayReset() {
+        self.uploadLinkDataRelay.accept(nil)
+        self.uploadLink = nil
     }
     
     // TODO : 도큐먼트 아이디를 받아서 for문 돌려서
-    func uploadImage(documentID: String) {
-        
-        guard let uploadData = self.uploadImagesRelay.value[0].jpegData(compressionQuality: 0.5) else {
-            return
+    func uploadImage(documentID: String, completion: @escaping (Bool) -> Void) {
+        if uploadImagesRelay.value.count == 0 {
+            print("이미지가 없으므로 바로 넘어갑니다.")
+            return completion(true)
         }
-        let storageRef = storage.child("hongik/information/posts/\(documentID).png")
         
-        storageRef.putData(uploadData, metadata: nil) { _, error in
-                        guard error == nil else {
-                            print("Failed to upload")
-                            return
-                        }
-                        
+        let queue = DispatchQueue(label: "UPLOADIMAGE")
+        var urlStringArr: [String] = []
+        
+        for (index, image) in uploadImagesRelay.value.enumerated() {
+            guard let uploadData = image.jpegData(compressionQuality: 0.1) else {
+                return completion(false)
+            }
+            let storageRef = storage.child("hongik/information/posts/\(documentID)_\(index).png")
+            var urlString: String = ""
+            
+            queue.async { [self] in
+                storageRef.putData(uploadData, metadata: nil) { _, error in
+                    guard error == nil else {
+                        print("Failed to upload")
+                        return completion(false)
+                    }
+                    
+                    queue.async { [self] in
                         storageRef.downloadURL(completion: { url, error in
                             guard let url = url, error == nil else {
-                                return
+                                return completion(false)
                             }
                             
-                            let urlString = url.absoluteString
+                            urlString = url.absoluteString
                             print("DownloadURL : \(urlString)")
-                            self.uploadImageUrlArr.append(urlString)
+                            urlStringArr.append(urlString)
                             //                            UserDefaults.standard.set(urlString, forKey: "url")
+                            
+                            queue.async { [self] in
+                                print("여기에 들어온 시간")
+                                if urlStringArr.count == (uploadImagesRelay.value.count) {
+                                    self.uploadImageUrlArr = urlStringArr
+                                    return completion(true)
+                                }
+                            }
+                            
                         })
-                     }
+                    }
+                }
+            }
+            
+        }
+        
+        
     }
 }
 

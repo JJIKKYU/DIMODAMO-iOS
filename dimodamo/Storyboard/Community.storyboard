@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T3-oi-p96">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kV6-pn-hOH" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1350"/>
@@ -233,7 +233,7 @@
                                             </view>
                                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gvX-HO-fK5">
                                                 <rect key="frame" x="0.0" y="739" width="414" height="565"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" name="WHITE"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="565" id="tzU-if-sUV"/>
                                                 </constraints>
@@ -322,8 +322,8 @@
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7hy-3z-yIy">
-                                                                    <rect key="frame" x="312" y="97" width="17" height="22"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="7hy-3z-yIy">
+                                                                    <rect key="frame" x="319" y="102" width="10" height="12"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E66-eX-cVr">
                                                                     <rect key="frame" x="0.0" y="144" width="394" height="1"/>
@@ -375,7 +375,7 @@
                                                 </prototypes>
                                             </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="WHITE"/>
                                         <constraints>
                                             <constraint firstItem="UCe-Uz-ZKD" firstAttribute="top" secondItem="Dwk-1a-bXo" secondAttribute="bottom" constant="1" id="0Ib-df-e0F"/>
                                             <constraint firstItem="itv-Yo-X7M" firstAttribute="leading" secondItem="mm5-Te-8bh" secondAttribute="leading" id="1hq-a7-xa9"/>
@@ -731,7 +731,6 @@
                     <connections>
                         <outlet property="collectionView" destination="Lax-X9-6LN" id="jxu-4A-V7K"/>
                         <outlet property="navBar" destination="oQH-IH-aOl" id="c22-ag-7ah"/>
-                        <outlet property="sortingLabel" destination="JRI-m8-f42" id="2SF-v9-6dc"/>
                         <segue destination="uzi-lB-7YW" kind="show" identifier="DetailArticleVC" id="RQh-cD-CdY"/>
                     </connections>
                 </viewController>
@@ -1263,6 +1262,11 @@
                                                 <color key="textColor" name="TEXT - SMALL"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                        <color key="value" name="GRAY - 190"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYy-RN-GrG">
                                                 <rect key="frame" x="233" y="9" width="22" height="22"/>
@@ -1724,12 +1728,17 @@
                                             <color key="textColor" name="TEXT - SMALL"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="텍스트를 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TK5-5v-fGa">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="텍스트를 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TK5-5v-fGa" colorLabel="IBBuiltInLabel-Orange">
                                             <rect key="frame" x="72" y="52" width="274.5" height="21"/>
                                             <color key="backgroundColor" name="WHITE"/>
                                             <color key="textColor" name="GRAY - 170"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                    <color key="value" name="GRAY - 190"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Vm-jb-xoB">
                                             <rect key="frame" x="366.5" y="57" width="27.5" height="16"/>
@@ -2787,8 +2796,8 @@
                                                     <color key="textColor" name="GRAY - 210"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="XAM-mU-LKr">
-                                                    <rect key="frame" x="312" y="96.5" width="17" height="22"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="XAM-mU-LKr">
+                                                    <rect key="frame" x="319" y="101.5" width="10" height="12"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reG-94-1fD">
                                                     <rect key="frame" x="0.0" y="144" width="394" height="1"/>
@@ -3043,7 +3052,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RQh-cD-CdY"/>
+        <segue reference="Ae2-2V-5qG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BC_Char_Yellow_M2_0" width="382" height="348"/>

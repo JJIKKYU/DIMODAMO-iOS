@@ -74,8 +74,10 @@ class ArticleViewController: UIViewController {
             }
             
             // 썸네일은 넘어갈 때 부드럽게 하기 위해서 prepare에서 전달
-            if let titleImg = viewModel.articlePosts[postIndex].images[0] {
-                destination.viewModel.thumbnailImageRelay.accept(titleImg)
+            if let titleImg = viewModel.articlePosts[postIndex].images?[0],
+               let titleImgURL = URL(string: titleImg) {
+                
+                destination.viewModel.thumbnailImageRelay.accept(titleImgURL)
             }
             
             break
@@ -126,8 +128,9 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         let model = viewModel.articlePosts[indexPath.row]
         
-        if let loadedImage = viewModel.articlePosts[indexPath.row].images[0] {
-            cell.image.kf.setImage(with: loadedImage)
+        if let loadedImage = viewModel.articlePosts[indexPath.row].images?[0],
+           let loadedImageURL = URL(string: loadedImage) {
+            cell.image.kf.setImage(with: loadedImageURL)
         }
         
         if let title = model.boardTitle {
