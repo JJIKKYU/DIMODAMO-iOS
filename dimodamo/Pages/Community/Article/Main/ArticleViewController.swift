@@ -19,11 +19,11 @@ class ArticleViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // 최신글, 스크랩순, 댓글순을 보여주는 라벨
+    @IBOutlet weak var sortingLabel: UILabel!
+    
     let viewModel = ArticleViewModel()
     var disposeBag = DisposeBag()
-    
-    var canTransitionToLarge = false
-    var canTransitionToSmall = true
     
     
     override func viewDidLoad() {
@@ -86,6 +86,10 @@ class ArticleViewController: UIViewController {
         
         
         
+    }
+    
+    
+    @IBAction func pressedSortingBtn(_ sender: Any) {
     }
 }
 
