@@ -225,8 +225,9 @@ class CreatePostViewModel {
         let queue = DispatchQueue(label: "UPLOADIMAGE")
         var urlStringArr: [String] = []
         
+        
         for (index, image) in uploadImagesRelay.value.enumerated() {
-            guard let uploadData = image.jpegData(compressionQuality: 0.1) else {
+            guard let uploadData = image.resize(withWidth: 1280)?.jpeg(.medium) else {
                 return completion(false)
             }
             let storageRef = storage.child("hongik/information/posts/\(documentID)_\(index).png")

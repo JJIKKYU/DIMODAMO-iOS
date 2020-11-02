@@ -333,7 +333,7 @@ class ArticleDetailViewModel {
         let commentCellDocument = db.collection("\(commentDB)").document("\(uid)")
         guard let userUID = self.userUID else  {
             return
-        }
+       	 }
         let userData = db.collection("users").document("\(userUID)")
 
         var currentHeartCount: Int?

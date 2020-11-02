@@ -515,7 +515,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
                 
-                cell.uploadImageView.image = imageArr[index]
+                cell.uploadImageView.image = imageArr[index].resize(withWidth: 1280)
                 
                 guard let cellImage = cell.uploadImageView.image else {
                     return UITableViewCell()

@@ -24,6 +24,13 @@ class ArticleTopContainerView: UIView {
 }
 
 class ArticleDetailViewController: UIViewController {
+    // 로딩
+    @IBOutlet weak var loadingContainerView: LottieLoadingView2! {
+        didSet {
+            loadingContainerView.playAnimation()
+        }
+    }
+    
     @IBOutlet var informationTopContainer: UIView!
     @IBOutlet weak var informationTitle: UILabel!
     @IBOutlet var informationTags: [UILabel]!
@@ -380,8 +387,12 @@ class ArticleDetailViewController: UIViewController {
         .subscribe(onNext: { [weak self] flag in
             if flag == true {
                 print("모든 로딩이 완료되었습니다.")
+//                self?.loadingContainerView.layer.zPosition = -1
+                self?.loadingContainerView.stopAnimation()
             } else {
                 print("모두 로딩이 되지 않습니다.")
+//                self?.loadingContainerView.layer.zPosition = 999
+                self?.loadingContainerView.playAnimation()
             }
         })
         .disposed(by: disposeBag)
@@ -610,6 +621,7 @@ extension ArticleDetailViewController {
         for (index, imageURL) in viewModel.imagesRelay.value.enumerated() {
             print("index처음에 : \(index)")
             let imageView = UIImageView()
+            
             imageStackView.insertArrangedSubview(imageView, at: index)
             imageView.kf.indicatorType = .activity
             
@@ -660,10 +672,10 @@ extension ArticleDetailViewController {
                                     }
                                   })
             imageStackView.layoutIfNeeded()
+            imageStackView.sizeToFit()
         }
         
         imageStackView.translatesAutoresizingMaskIntoConstraints = false
-        imageStackView.sizeToFit()
     }
 }
 
