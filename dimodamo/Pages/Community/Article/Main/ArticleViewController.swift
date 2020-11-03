@@ -21,6 +21,19 @@ class ArticleViewController: UIViewController {
     
     // 최신글, 스크랩순, 댓글순을 보여주는 라벨
     @IBOutlet weak var sortingLabel: UILabel!
+    @IBOutlet var sortingPopupView: SortingPopupView! {
+        didSet {
+//            self.view.bringSubviewToFront(sortingPopupView)
+            self.view.addSubview(sortingPopupView)
+            sortingPopupView.translatesAutoresizingMaskIntoConstraints = false
+            sortingPopupView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+            sortingPopupView.heightAnchor.constraint(equalToConstant: 178).isActive = true
+            sortingPopupView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+            sortingPopupView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
+            self.view.layoutIfNeeded()
+            sortingPopupView.isHidden = true
+        }
+    }
     
     let viewModel = ArticleViewModel()
     var disposeBag = DisposeBag()
@@ -92,6 +105,8 @@ class ArticleViewController: UIViewController {
     
     
     @IBAction func pressedSortingBtn(_ sender: Any) {
+        sortingPopupView.isHidden = false
+        print("클릭했습니다.")
     }
 }
 

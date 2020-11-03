@@ -499,7 +499,7 @@
             </objects>
             <point key="canvasLocation" x="428.98550724637687" y="85.714285714285708"/>
         </scene>
-        <!--디모 아트보드-->
+        <!--Article View Controller-->
         <scene sceneID="C11-9E-dj8">
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="iXc-eR-qQb" customClass="ArticleViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
@@ -727,10 +727,10 @@
                             <constraint firstItem="D1p-NB-cen" firstAttribute="leading" secondItem="VJo-np-sSk" secondAttribute="leading" id="zHd-ww-lNe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="디모 아트보드" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="oQH-IH-aOl"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="FJX-Ua-INJ"/>
                     <connections>
                         <outlet property="collectionView" destination="Lax-X9-6LN" id="jxu-4A-V7K"/>
-                        <outlet property="navBar" destination="oQH-IH-aOl" id="c22-ag-7ah"/>
+                        <outlet property="sortingPopupView" destination="aTc-Ns-mdX" id="bwH-kb-usm"/>
                         <segue destination="uzi-lB-7YW" kind="show" identifier="DetailArticleVC" id="RQh-cD-CdY"/>
                     </connections>
                 </viewController>
@@ -754,6 +754,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYk-Vf-buc">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="59.5"/>
                                     <state key="normal" title="체크"/>
+                                    <connections>
+                                        <action selector="pressedDateBtn:" destination="aTc-Ns-mdX" eventType="touchUpInside" id="Btc-lC-qj9"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkq-VE-ouF" userLabel="line">
                                     <rect key="frame" x="0.0" y="59" width="200" height="0.5"/>
@@ -799,11 +802,10 @@
                                     <state key="normal" title="체크"/>
                                     <connections>
                                         <action selector="pressedCommentBtn:" destination="aTc-Ns-mdX" eventType="touchUpInside" id="doq-OT-KwS"/>
-                                        <action selector="pressedDateBtn:" destination="aTc-Ns-mdX" eventType="touchUpInside" id="arf-In-yl6"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="WHITE"/>
                             <constraints>
                                 <constraint firstItem="Pjn-Tp-sqF" firstAttribute="trailing" secondItem="3YE-Zf-lmB" secondAttribute="trailing" id="41k-cM-5hm"/>
                                 <constraint firstItem="1Sw-nY-Y8c" firstAttribute="leading" secondItem="oWi-XG-5pY" secondAttribute="leading" id="5JV-0C-SpY"/>
@@ -836,7 +838,6 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" name="BLUE - DARK"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="rTD-Ie-K0j" secondAttribute="trailing" id="O8t-ii-muq"/>
                         <constraint firstItem="rTD-Ie-K0j" firstAttribute="leading" secondItem="aTc-Ns-mdX" secondAttribute="leading" id="gRj-y3-GaO"/>
@@ -1236,7 +1237,7 @@
                                 </constraints>
                             </scrollView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRx-oa-fbu" customClass="LottieLoadingView2" customModule="dimodamo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="355" width="414" height="541"/>
                                 <color key="backgroundColor" name="WHITE"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYD-Mh-DWj" customClass="TextFieldContainerView" customModule="dimodamo" customModuleProvider="target">
@@ -1329,13 +1330,13 @@
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="U9e-Tx-pxr" firstAttribute="top" secondItem="oa1-xd-Mzm" secondAttribute="top" priority="900" id="0Cb-ED-9kT"/>
+                            <constraint firstItem="bRx-oa-fbu" firstAttribute="top" secondItem="GeV-Ak-Ec7" secondAttribute="top" id="13G-fU-GDw"/>
                             <constraint firstItem="kYD-Mh-DWj" firstAttribute="leading" secondItem="oa1-xd-Mzm" secondAttribute="leading" id="2cy-2g-JPT"/>
                             <constraint firstAttribute="bottom" secondItem="kYD-Mh-DWj" secondAttribute="bottom" id="3OF-bv-LDW"/>
                             <constraint firstAttribute="trailing" secondItem="kYD-Mh-DWj" secondAttribute="trailing" id="8ug-7C-QbW"/>
                             <constraint firstAttribute="trailing" secondItem="bRx-oa-fbu" secondAttribute="trailing" id="CAn-56-XnR"/>
                             <constraint firstAttribute="bottom" secondItem="bRx-oa-fbu" secondAttribute="bottom" id="QGd-Ae-Ake"/>
                             <constraint firstItem="apE-8D-tgH" firstAttribute="leading" secondItem="oa1-xd-Mzm" secondAttribute="leading" id="RIH-8z-4x7"/>
-                            <constraint firstItem="bRx-oa-fbu" firstAttribute="top" secondItem="oa1-xd-Mzm" secondAttribute="top" id="SyD-VT-cEA"/>
                             <constraint firstItem="apE-8D-tgH" firstAttribute="bottom" secondItem="oa1-xd-Mzm" secondAttribute="bottom" id="YQb-VA-mOc"/>
                             <constraint firstItem="bRx-oa-fbu" firstAttribute="leading" secondItem="oa1-xd-Mzm" secondAttribute="leading" id="Zof-om-GST"/>
                             <constraint firstItem="apE-8D-tgH" firstAttribute="top" secondItem="oa1-xd-Mzm" secondAttribute="top" id="fbm-eG-wwh"/>
@@ -2674,7 +2675,7 @@
                             </view>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dKO-Lp-4jE">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="WHITE"/>
                                 <color key="sectionIndexBackgroundColor" name="WHITE"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="gFP-AW-ZvD">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="152"/>
@@ -2711,7 +2712,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                    <color key="backgroundColor" name="WHITE"/>
                                     <constraints>
                                         <constraint firstItem="Kgb-2z-t1d" firstAttribute="top" secondItem="M0p-8N-Ng3" secondAttribute="bottom" constant="24" id="0ic-JZ-oXT"/>
                                         <constraint firstItem="M0p-8N-Ng3" firstAttribute="leading" secondItem="gFP-AW-ZvD" secondAttribute="leading" id="567-BR-UNv"/>
@@ -3067,7 +3068,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ae2-2V-5qG"/>
+        <segue reference="RQh-cD-CdY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BC_Char_Yellow_M2_0" width="382" height="348"/>
@@ -3100,9 +3101,6 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="BLUE">
             <color red="0.47099998593330383" green="0.84299999475479126" blue="0.88200002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="BLUE - DARK">
-            <color red="0.19599999487400055" green="0.76499998569488525" blue="0.84299999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3154,9 +3152,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
