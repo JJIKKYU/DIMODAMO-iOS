@@ -442,6 +442,7 @@ extension UINavigationController {
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = false
         navigationBar.barTintColor = .white
+        
         view.layer.layoutIfNeeded()
         
     }
@@ -454,6 +455,8 @@ extension UINavigationController {
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
         navigationBar.barTintColor = .white
+        
+        
         view.layer.layoutIfNeeded()
         
         
@@ -626,11 +629,16 @@ extension ArticleDetailViewController {
             imageView.kf.indicatorType = .activity
             
             imageView.kf.setImage(with: imageURL,
+                                  progressBlock: {receivedSize, totalSize in
+                                    print("\(index) : \(receivedSize), \(totalSize)")
+                                  },
                                   completionHandler:  { [self] result in
                                     switch result {
                                     case .success(let value):
                                         print(value.image)
-                                        let image = value.image
+                                        guard let image = value.image.resize(withWidth: UIScreen.main.bounds.width) else {
+                                            return
+                                        }
                                         
                                         let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
                                         //                                        print("scaleHeight : \(scaledHeight)")
@@ -974,9 +982,9 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             break
         }
         
-        UIView.animate(withDuration: 0.5) { [self] in
-            self.view.layoutIfNeeded()
-        }
+//        UIView.animate(withDuration: 0.5) { [self] in
+//            self.view.layoutIfNeeded()
+//        }
         
         
         

@@ -25,6 +25,7 @@ class CreatePostViewModel {
     // 제목
     let titleRelay = BehaviorRelay<String>(value: "")
     var titleLimit: String { return "\(titleRelay.value.count)/20" }
+    var titleIsValid: Bool { return titleRelay.value.count > 0 }
     
     // 태그
     let tagsRelay = BehaviorRelay<String>(value: "")
@@ -51,6 +52,7 @@ class CreatePostViewModel {
     var descriptionLimit: String {
         return "\(descriptionRelay.value.count)/1000"
     }
+    var descriptionIsValid: Bool { return descriptionRelay.value.count > 0 }
     
     
     /*
@@ -74,13 +76,14 @@ class CreatePostViewModel {
     /*
      최종 글 작성 로딩
      */
-    let sendPostLoading = BehaviorRelay<Bool>(value: false)
+    let sendPostLoading = BehaviorRelay<Bool?>(value: nil)
     
     init() {
         
     }
     
     func upload(){
+        self.sendPostLoading.accept(true)
         let queue = DispatchQueue(label: "UPLOAD")
         
         let unixTimestamp = NSDate().timeIntervalSince1970
@@ -103,9 +106,9 @@ class CreatePostViewModel {
         var urlString: String?
         var board: Board?
         
-        queue.async { [self] in
+        queue.async { [weak self] in
             // 이미지 업로드 프로세스
-            uploadImage(documentID: document.documentID, completion:{ (isSucceded) in
+            self?.uploadImage(documentID: document.documentID, completion:{ (isSucceded) in
                 
                 // 이미지 업로드 할 때까지 기다림
                 if isSucceded {
@@ -113,21 +116,21 @@ class CreatePostViewModel {
                     
                     
                     // 이미지 업로드에 성공 했다면 글 작성 시작
-                    queue.async { [self] in
-                        print("\(uploadLinks)")
+                    queue.async { [weak self] in
+                        print("\(self!.uploadLinks)")
                         
                         board = Board(boardId: id,
-                                      boardTitle: titleRelay.value,
+                                      boardTitle: self!.titleRelay.value,
                                       bundleId: unixTimestamp,
                                       category: "magazine",
                                       commentCount: 0,
                                       createdAt: "\(strDate)",
-                                      description: "\(descriptionRelay.value)",
-                                      images: uploadImageUrlArr,
-                                      links: uploadLinks,
+                                      description: "\(self!.descriptionRelay.value)",
+                                      images: self!.uploadImageUrlArr,
+                                      links: self!.uploadLinks,
                                       nickname: userNickname,
                                       scrapCount: 0,
-                                      tags: tags,
+                                      tags: self!.tags,
                                       userDpti: userDpti,
                                       userId: Auth.auth().currentUser?.uid,
                                       videos: [])
@@ -139,6 +142,7 @@ class CreatePostViewModel {
                                 print("게시글을 작성하는데 오류가 발생했습니다. \(err.localizedDescription)")
                             } else {
                                 print("정상적으로 글이 작성되었습니다. \(id)")
+                                self?.sendPostLoading.accept(false)
                             }
                         }
                     }
@@ -148,8 +152,6 @@ class CreatePostViewModel {
                     print("업로드 실패")
                 }
             })
-            
-            print("업로드 완료/???")
         }
         
         

@@ -25,6 +25,31 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     @IBOutlet weak var tagsTextField: UITextField!
     @IBOutlet weak var tagsLimit: UILabel!
     
+    @IBOutlet var postLoadingView: LottieLoadingView2! {
+        didSet {
+            postLoadingView.isHidden = true
+            postLoadingView.stopAnimation()
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = view.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            postLoadingView.addSubview(blurEffectView)
+            
+            self.navigationController?.view.addSubview(postLoadingView)
+            postLoadingView.frame = UIScreen.main.bounds
+            
+            
+        }
+    }
+    var lottieLoadingView: LottieLoadingView2! {
+        didSet {
+            lottieLoadingView.isHidden = false
+            
+            
+        }
+    }
+    
     @IBOutlet weak var mainTableContentView: UIView!
     @IBOutlet weak var mainTableViewEmptyImage: UIImageView!
     @IBOutlet weak var mainTableView: UITableView! {
@@ -244,6 +269,24 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         })
         .disposed(by: disposeBag)
         
+        /*
+         로딩
+         */
+        viewModel.sendPostLoading
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] flag in
+                // 업로드 중일 경우에는 로딩 창 띄우기
+                if flag == true {
+                    self?.postLoadingView.playAnimation()
+                }
+                // 업로드 중이 아닐 경우에는 로딩 창 삭제
+                else if flag == false {
+                    self?.postLoadingView.stopAnimation()
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
+        
         
         /*
          Keyboard
@@ -284,7 +327,18 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
      글 작성 완료
      */
     @IBAction func pressedCompleteBtn(_ sender: Any) {
-        viewModel.upload()
+        // 타이틀이 작성되지 않았을 경우
+        if viewModel.titleIsValid == false {
+            
+        }
+        // 내용이 작성되지 않았을 경우
+        else if viewModel.descriptionIsValid == false {
+            
+        }
+        // 글이 모두 다 작성되었을 경우
+        else if viewModel.titleIsValid == true && viewModel.descriptionIsValid == true {
+            viewModel.upload()
+        }
     }
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
