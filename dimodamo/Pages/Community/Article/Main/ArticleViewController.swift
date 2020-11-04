@@ -15,15 +15,39 @@ import Kingfisher
 
 class ArticleViewController: UIViewController {
     
-    @IBOutlet weak var navBar: UINavigationItem!
+    let viewModel = ArticleViewModel()
+    var disposeBag = DisposeBag()
+    
+    @IBOutlet weak var navItem: UINavigationItem!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
+    // MARK: - Sorting Popup
+    
     // 최신글, 스크랩순, 댓글순을 보여주는 라벨
     @IBOutlet weak var sortingLabel: UILabel!
+    var dimView: UIView! {
+        didSet {
+            self.view.addSubview(dimView)
+            dimView.frame = UIScreen.main.bounds
+            dimView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+            dimView.isHidden = true
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.clickedDimView(_:)))
+            dimView.addGestureRecognizer(gesture)
+        }
+    }
+    
+    @objc func clickedDimView(_ sender:UITapGestureRecognizer){
+        print("Dimview를 클릭했습니다.")
+        
+        self.hideSortingPopupView()
+    }
+    
+    
     @IBOutlet var sortingPopupView: SortingPopupView! {
         didSet {
-//            self.view.bringSubviewToFront(sortingPopupView)
             self.view.addSubview(sortingPopupView)
             sortingPopupView.translatesAutoresizingMaskIntoConstraints = false
             sortingPopupView.widthAnchor.constraint(equalToConstant: 200).isActive = true
@@ -35,8 +59,55 @@ class ArticleViewController: UIViewController {
         }
     }
     
-    let viewModel = ArticleViewModel()
-    var disposeBag = DisposeBag()
+    @IBAction func pressedSortingBtn(_ sender: Any) {
+        
+        self.showSortingPopupView()
+        print("클릭했습니다.")
+    }
+    
+    func hideSortingPopupView() {
+        dimView?.isHidden = true
+        sortingPopupView.isHidden = true
+    }
+    
+    func showSortingPopupView() {
+        self.view.bringSubviewToFront(dimView)
+        self.view.bringSubviewToFront(sortingPopupView)
+        dimView?.isHidden = false
+        sortingPopupView.isHidden = false
+    }
+    
+    @IBAction func pressedSortingDate(_ sender: Any) {
+        print("최신순으로 정렬합니다.")
+        viewModel.sortingOrder.accept(.date)
+        hideSortingPopupView()
+        self.viewModel.postDataSetting()
+    }
+    
+    @IBAction func pressedSortingScrap(_ sender: Any) {
+        print("스크랩 순으로 정렬합니다.")
+        viewModel.sortingOrder.accept(.scrap)
+        hideSortingPopupView()
+        self.viewModel.postDataSetting()
+    }
+    
+    @IBAction func pressedSortingComment(_ sender: Any) {
+        print("댓글 순으로 정렬합니다.")
+        viewModel.sortingOrder.accept(.comment)
+        hideSortingPopupView()
+        self.viewModel.postDataSetting()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        navigationController?.hideTransparentNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.presentTransparentNavigationBar()
+    }
     
     
     override func viewDidLoad() {
@@ -45,6 +116,7 @@ class ArticleViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         articleCollectionViewSetting()
+        dimView = UIView()
         
         viewModel.postsLoading
             .observeOn(MainScheduler.instance)
@@ -52,6 +124,15 @@ class ArticleViewController: UIViewController {
             .subscribe(onNext: { [weak self] _ in
                 self?.collectionView.reloadData()
                 self?.collectionView.layoutIfNeeded()
+            })
+            .disposed(by: disposeBag)
+        
+        // 소팅 오더가 변경 된다면, 데이터를 다시 리로드 하도록 함수 호출
+        viewModel.sortingOrder
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                print("호출")
+                
             })
             .disposed(by: disposeBag)
     }
@@ -104,15 +185,13 @@ class ArticleViewController: UIViewController {
     }
     
     
-    @IBAction func pressedSortingBtn(_ sender: Any) {
-        sortingPopupView.isHidden = false
-        print("클릭했습니다.")
-    }
+
 }
 
 // MARK: - ViewDesign
 extension ArticleViewController {
     func viewDesign() {
+        
 //        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.textBig),
 //                          NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Bold", size: 24) as Any]
 //
@@ -199,8 +278,17 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 20, bottom: 30, right: 20)
     }
-    
-    
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yPostion = scrollView.contentOffset.y
+        print(yPostion)
+        
+        if yPostion < 70 {
+            navItem.title = ""
+        } else {
+            navItem.title = "디모 아트보드"
+        }
+    }
 }
 
 

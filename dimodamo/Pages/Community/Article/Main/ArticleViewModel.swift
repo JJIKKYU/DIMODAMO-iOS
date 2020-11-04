@@ -30,13 +30,37 @@ class ArticleViewModel {
     }
     
     /*
+     Sorting
+     */
+    let sortingOrder = BehaviorRelay<Sort>(value: .date) // 기본은 Date 순으로
+    var sortingOrderFieldString: String {
+        switch sortingOrder.value {
+        case .date:
+            return "bundle_id"
+            
+        case .scrap:
+            return "scrap_count"
+            
+        case .comment:
+            return "comment_count"
+        }
+    }
+    
+    /*
      Loading
      */
     let postsLoading = BehaviorRelay<Bool>(value: false)
     
     func postDataSetting() {
+        print("################ 호출")
+        
+        // 리로드 될 수도 있으므로, 함수를 호출할 때마다 false 선택
+        postsLoading.accept(false)
+        self.articlePosts = []
+        
         db.collection("\(postDB)")
-            .order(by: "bundle_id")
+//            .order(by: "\(sortingOrderFieldString)")
+            .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? false : true)
             .getDocuments() { [self] (querySnapshot, err) in
                 if let err = err {
                     print("아티클 포스트를 가져오는데 오류가 발생했습니다 \(err.localizedDescription)")

@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum Sort: Int {
-    case date = 0
-    case scrap = 1
-    case comment = 2
-}
-
 class SortingPopupView: UIView {
 
     @IBOutlet weak var containerView: UIView! {

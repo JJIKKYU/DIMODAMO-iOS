@@ -267,7 +267,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ky-Ui-egt">
-                                                                    <rect key="frame" x="35.5" y="50.5" width="3.5" height="17.5"/>
+                                                                    <rect key="frame" x="35.5" y="50.5" width="3.5" height="17"/>
                                                                     <color key="backgroundColor" name="WHITE - 245"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content=" ">
@@ -281,7 +281,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CI-L1-PyQ">
-                                                                    <rect key="frame" x="47" y="50.5" width="3.5" height="17.5"/>
+                                                                    <rect key="frame" x="47" y="50.5" width="3.5" height="17"/>
                                                                     <color key="backgroundColor" name="WHITE - 245"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content=" ">
@@ -429,7 +429,7 @@
                         <rightBarButtonItems>
                             <barButtonItem style="plain" id="hvX-g1-EtM">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Vbr-Lg-XcG">
-                                    <rect key="frame" x="374" y="0.0" width="20" height="44"/>
+                                    <rect key="frame" x="374" y="0.0" width="24" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="plusBtn">
                                         <color key="titleColor" name="GRAY - 190"/>
@@ -479,7 +479,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Qib-wI-6kE">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="TEXT - BIG"/>
+                        <color key="tintColor" name="GRAY - 210"/>
                         <color key="barTintColor" name="WHITE"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
@@ -727,9 +727,14 @@
                             <constraint firstItem="D1p-NB-cen" firstAttribute="leading" secondItem="VJo-np-sSk" secondAttribute="leading" id="zHd-ww-lNe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="FJX-Ua-INJ"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="FJX-Ua-INJ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="1vW-Yh-pNp">
+                            <color key="tintColor" name="GRAY - 210"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Lax-X9-6LN" id="jxu-4A-V7K"/>
+                        <outlet property="navItem" destination="FJX-Ua-INJ" id="8eo-zA-5WC"/>
                         <outlet property="sortingPopupView" destination="aTc-Ns-mdX" id="bwH-kb-usm"/>
                         <segue destination="uzi-lB-7YW" kind="show" identifier="DetailArticleVC" id="RQh-cD-CdY"/>
                     </connections>
@@ -753,9 +758,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYk-Vf-buc">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="59.5"/>
-                                    <state key="normal" title="체크"/>
                                     <connections>
                                         <action selector="pressedDateBtn:" destination="aTc-Ns-mdX" eventType="touchUpInside" id="Btc-lC-qj9"/>
+                                        <action selector="pressedSortingDate:" destination="iXc-eR-qQb" eventType="touchUpInside" id="7y0-pu-P28"/>
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkq-VE-ouF" userLabel="line">
@@ -776,9 +781,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4l-fu-Xwv">
                                     <rect key="frame" x="0.0" y="59" width="200" height="59.5"/>
-                                    <state key="normal" title="체크"/>
                                     <connections>
                                         <action selector="pressedScrapBtn:" destination="aTc-Ns-mdX" eventType="touchUpInside" id="pzN-Ug-W96"/>
+                                        <action selector="pressedSortingScrap:" destination="iXc-eR-qQb" eventType="touchUpInside" id="8wd-UU-8Px"/>
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61B-kU-OXA" userLabel="line">
@@ -799,9 +804,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zq6-s7-b58">
                                     <rect key="frame" x="0.0" y="118" width="200" height="60"/>
-                                    <state key="normal" title="체크"/>
                                     <connections>
                                         <action selector="pressedCommentBtn:" destination="aTc-Ns-mdX" eventType="touchUpInside" id="doq-OT-KwS"/>
+                                        <action selector="pressedSortingComment:" destination="iXc-eR-qQb" eventType="touchUpInside" id="eA8-h5-Ean"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -3068,7 +3073,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RQh-cD-CdY"/>
+        <segue reference="Ae2-2V-5qG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BC_Char_Yellow_M2_0" width="382" height="348"/>
