@@ -152,6 +152,10 @@
 		98D988DF254FA99A002A8AC5 /* SortingPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988DE254FA99A002A8AC5 /* SortingPopupView.swift */; };
 		98D988E3255071AE002A8AC5 /* LottieLoadingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988E2255071AD002A8AC5 /* LottieLoadingView2.swift */; };
 		98D988E72551CD48002A8AC5 /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988E62551CD46002A8AC5 /* Sort.swift */; };
+		98D988EC255248CE002A8AC5 /* ProfileMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988EB255248CE002A8AC5 /* ProfileMainVC.swift */; };
+		98D988F0255248FA002A8AC5 /* ProfileMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988EF255248FA002A8AC5 /* ProfileMainViewModel.swift */; };
+		98D988F425524B17002A8AC5 /* DimoPeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988F325524B17002A8AC5 /* DimoPeopleCell.swift */; };
+		98D988F825524B78002A8AC5 /* DamoPeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988F725524B78002A8AC5 /* DamoPeopleCell.swift */; };
 		98E2416B250F9F47003BE1A3 /* Results.json in Resources */ = {isa = PBXBuildFile; fileRef = 98E2416A250F9F47003BE1A3 /* Results.json */; };
 		98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */; };
 		98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C836254C3D0500FDDEBF /* RecommendCell.swift */; };
@@ -319,6 +323,10 @@
 		98D988DE254FA99A002A8AC5 /* SortingPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingPopupView.swift; sourceTree = "<group>"; };
 		98D988E2255071AD002A8AC5 /* LottieLoadingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieLoadingView2.swift; sourceTree = "<group>"; };
 		98D988E62551CD46002A8AC5 /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
+		98D988EB255248CE002A8AC5 /* ProfileMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainVC.swift; sourceTree = "<group>"; };
+		98D988EF255248FA002A8AC5 /* ProfileMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainViewModel.swift; sourceTree = "<group>"; };
+		98D988F325524B17002A8AC5 /* DimoPeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoPeopleCell.swift; sourceTree = "<group>"; };
+		98D988F725524B78002A8AC5 /* DamoPeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamoPeopleCell.swift; sourceTree = "<group>"; };
 		98E2416A250F9F47003BE1A3 /* Results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Results.json; sourceTree = "<group>"; };
 		98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchVC.swift; sourceTree = "<group>"; };
 		98F8C836254C3D0500FDDEBF /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
@@ -691,6 +699,7 @@
 				986EDA1E2509CBFF00AD3CEE /* ClassRoom */,
 				9863223A25178570003B0784 /* Dpti */,
 				986322392517855B003B0784 /* Community */,
+				98D988E9255248A2002A8AC5 /* Profile */,
 				9863224325178767003B0784 /* Test */,
 			);
 			path = Pages;
@@ -1011,6 +1020,33 @@
 			path = SortingPopup;
 			sourceTree = "<group>";
 		};
+		98D988E9255248A2002A8AC5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				98D988F225524B05002A8AC5 /* Cell */,
+				98D988EA255248AD002A8AC5 /* Main */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		98D988EA255248AD002A8AC5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				98D988EB255248CE002A8AC5 /* ProfileMainVC.swift */,
+				98D988EF255248FA002A8AC5 /* ProfileMainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		98D988F225524B05002A8AC5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				98D988F325524B17002A8AC5 /* DimoPeopleCell.swift */,
+				98D988F725524B78002A8AC5 /* DamoPeopleCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		98F8C830254C2B6C00FDDEBF /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -1276,11 +1312,14 @@
 				98A8B82F25377D9200351FD5 /* InformationTableViewCell.swift in Sources */,
 				9800A1582533792C0090C058 /* FourthIntroViewController.swift in Sources */,
 				98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */,
+				98D988F825524B78002A8AC5 /* DamoPeopleCell.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
 				98F8C847254C9CE400FDDEBF /* InformationViewModel.swift in Sources */,
 				988377982541F4F500BFA746 /* CommentInputView.swift in Sources */,
+				98D988F425524B17002A8AC5 /* DimoPeopleCell.swift in Sources */,
 				9800A14F253377F20090C058 /* FirstIntroViewController.swift in Sources */,
+				98D988EC255248CE002A8AC5 /* ProfileMainVC.swift in Sources */,
 				98AFDA532539CF2400B0D88F /* CommunityMain.swift in Sources */,
 				9800A1482533739A0090C058 /* IntroViewModel.swift in Sources */,
 				98A8B8042534D10B00351FD5 /* IntroMainViewController.swift in Sources */,
@@ -1299,6 +1338,7 @@
 				98C42313251D7CCE00B2B194 /* Register.swift in Sources */,
 				980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */,
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
+				98D988F0255248FA002A8AC5 /* ProfileMainViewModel.swift in Sources */,
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
 				98D988E3255071AE002A8AC5 /* LottieLoadingView2.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
