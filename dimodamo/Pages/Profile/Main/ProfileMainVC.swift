@@ -59,7 +59,7 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -136,7 +136,7 @@ extension ProfileMainVC : UIScrollViewDelegate {
 // MARK: - 핫한 디모인
 extension ProfileMainVC: UITableViewDelegate, UITableViewDataSource {
     func settingTableView() {
-        damoTableView.rowHeight = 218
+        damoTableView.rowHeight = 242
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

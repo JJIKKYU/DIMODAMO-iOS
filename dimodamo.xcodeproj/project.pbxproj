@@ -154,8 +154,9 @@
 		98D988E72551CD48002A8AC5 /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988E62551CD46002A8AC5 /* Sort.swift */; };
 		98D988EC255248CE002A8AC5 /* ProfileMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988EB255248CE002A8AC5 /* ProfileMainVC.swift */; };
 		98D988F0255248FA002A8AC5 /* ProfileMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988EF255248FA002A8AC5 /* ProfileMainViewModel.swift */; };
-		98D988F425524B17002A8AC5 /* DimoPeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988F325524B17002A8AC5 /* DimoPeopleCell.swift */; };
 		98D988F825524B78002A8AC5 /* DamoPeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988F725524B78002A8AC5 /* DamoPeopleCell.swift */; };
+		98D988FC25525652002A8AC5 /* DimoPeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D988FB25525652002A8AC5 /* DimoPeopleCell.swift */; };
+		98D988FF2553030B002A8AC5 /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98D988FE2553030A002A8AC5 /* AppleSDGothicNeoEB.ttf */; };
 		98E2416B250F9F47003BE1A3 /* Results.json in Resources */ = {isa = PBXBuildFile; fileRef = 98E2416A250F9F47003BE1A3 /* Results.json */; };
 		98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */; };
 		98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C836254C3D0500FDDEBF /* RecommendCell.swift */; };
@@ -325,8 +326,9 @@
 		98D988E62551CD46002A8AC5 /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 		98D988EB255248CE002A8AC5 /* ProfileMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainVC.swift; sourceTree = "<group>"; };
 		98D988EF255248FA002A8AC5 /* ProfileMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainViewModel.swift; sourceTree = "<group>"; };
-		98D988F325524B17002A8AC5 /* DimoPeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoPeopleCell.swift; sourceTree = "<group>"; };
 		98D988F725524B78002A8AC5 /* DamoPeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamoPeopleCell.swift; sourceTree = "<group>"; };
+		98D988FB25525652002A8AC5 /* DimoPeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoPeopleCell.swift; sourceTree = "<group>"; };
+		98D988FE2553030A002A8AC5 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
 		98E2416A250F9F47003BE1A3 /* Results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Results.json; sourceTree = "<group>"; };
 		98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchVC.swift; sourceTree = "<group>"; };
 		98F8C836254C3D0500FDDEBF /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 		987F5A9D250B1CB500E1B856 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				98D988FE2553030A002A8AC5 /* AppleSDGothicNeoEB.ttf */,
 				980196D5252B61FF00F829F6 /* SF-Pro-Display-Black.otf */,
 				980196D6252B620000F829F6 /* SF-Pro-Display-Bold.otf */,
 				980196D8252B620000F829F6 /* SF-Pro-Display-Light.otf */,
@@ -1041,8 +1044,8 @@
 		98D988F225524B05002A8AC5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				98D988F325524B17002A8AC5 /* DimoPeopleCell.swift */,
 				98D988F725524B78002A8AC5 /* DamoPeopleCell.swift */,
+				98D988FB25525652002A8AC5 /* DimoPeopleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1254,6 +1257,7 @@
 				9884700F2511406700943861 /* Nunito-Light.ttf in Resources */,
 				98A8B7BD25345BDC00351FD5 /* Onboarding_4_manito.json in Resources */,
 				98A8B7F82534C95B00351FD5 /* PI_M.json in Resources */,
+				98D988FF2553030B002A8AC5 /* AppleSDGothicNeoEB.ttf in Resources */,
 				9884700E2511406700943861 /* Nunito-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1317,7 +1321,6 @@
 				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
 				98F8C847254C9CE400FDDEBF /* InformationViewModel.swift in Sources */,
 				988377982541F4F500BFA746 /* CommentInputView.swift in Sources */,
-				98D988F425524B17002A8AC5 /* DimoPeopleCell.swift in Sources */,
 				9800A14F253377F20090C058 /* FirstIntroViewController.swift in Sources */,
 				98D988EC255248CE002A8AC5 /* ProfileMainVC.swift in Sources */,
 				98AFDA532539CF2400B0D88F /* CommunityMain.swift in Sources */,
@@ -1377,6 +1380,7 @@
 				98AFDA7A2539DC8400B0D88F /* ArticleCell.swift in Sources */,
 				98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */,
 				98F8C84B254CA0F300FDDEBF /* LottieLoadingView.swift in Sources */,
+				98D988FC25525652002A8AC5 /* DimoPeopleCell.swift in Sources */,
 				98F8C84F254CA9C100FDDEBF /* InformationSearchVC.swift in Sources */,
 				98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
