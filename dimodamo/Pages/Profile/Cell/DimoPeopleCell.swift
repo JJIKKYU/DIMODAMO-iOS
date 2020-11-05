@@ -49,6 +49,8 @@ class DimoPeopleCell: UICollectionViewCell {
                 tag.layer.borderWidth = 1.2
                 tag.layer.masksToBounds = true
                 tag.widthAnchor.constraint(equalToConstant: 61).isActive = true
+                tag.textAlignment = .center
+                tag.attributedText = NSAttributedString.init(string: "안녕", attributes: [NSAttributedString.Key.baselineOffset : -1])
             }
         }
     }
