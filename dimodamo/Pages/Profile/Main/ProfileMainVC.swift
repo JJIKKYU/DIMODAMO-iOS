@@ -21,6 +21,13 @@ class ProfileMainVC: UIViewController {
     @IBOutlet weak var damoTableView: UITableView!
     
     let viewModel = ProfileMainViewModel()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationController?.view.backgroundColor = UIColor.white
+        navigationController?.presentTransparentNavigationBar()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +44,13 @@ class ProfileMainVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    /*
+     우측 상단에 있는 프로필 사진을 눌렀을 경우
+     */
+    @IBAction func pressedMyProfileBtn(_ sender: Any) {
+        performSegue(withIdentifier: "MyProfileVC", sender: sender)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -59,7 +72,7 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
