@@ -29,5 +29,8 @@ class ProfileDptiResultVC: UIViewController {
     @IBAction func pressedCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func pressedAllTypeBtn(_ sender: Any) {
+        performSegue(withIdentifier: "AllTypeDptiVC", sender: nil)
+    }
     
 }
