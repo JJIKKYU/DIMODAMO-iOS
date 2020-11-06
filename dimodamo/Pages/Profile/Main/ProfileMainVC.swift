@@ -28,6 +28,12 @@ class ProfileMainVC: UIViewController {
         navigationController?.view.backgroundColor = UIColor.white
         navigationController?.presentTransparentNavigationBar()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        navigationController?.view.backgroundColor = UIColor.clear
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

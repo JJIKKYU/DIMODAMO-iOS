@@ -41,16 +41,14 @@ class MyProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.hideTransparentNavigationBar()
-        navItem.backBarButtonItem?.tintColor = UIColor.white
+        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.hideTransparentNavigationBar()
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        
-        navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.appColor(.gray190)
-        navigationController?.presentTransparentNavigationBar()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        navigationController?.hideTransparentNavigationBar()
     }
     
     override func viewDidLoad() {
@@ -73,7 +71,7 @@ class MyProfileVC: UIViewController {
             
         case MyProfileMoreBtn.scrap.rawValue:
             break
-            
+                
         case MyProfileMoreBtn.heart.rawValue:
             break
             
@@ -81,17 +79,37 @@ class MyProfileVC: UIViewController {
             break
         }
         
+        print("클릭")
         performSegue(withIdentifier: "ArchiveVC", sender: nil)
+//        performSegue(withIdentifier: "ArchiveVC", sender: nil)
     }
     
     /*
+     Dpti 버튼을 눌렀을 경우
+     */
+    @IBAction func pressedDptiBtn(_ sender: Any) {
+        performSegue(withIdentifier: "MyDptiVC", sender: sender)
+    }
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destination
+        
+        switch segue.identifier {
+        case "MyDptiVC":
+            let destinationVC = destination
+            destinationVC.modalPresentationStyle = .overFullScreen
+            destinationVC.modalTransitionStyle = .coverVertical
+            destinationVC.modalPresentationStyle = .currentContext
+            break
+            
+        case "ArchiveVC":
+            break
+            
+        default:
+            break
+        }
     }
-    */
 
 }

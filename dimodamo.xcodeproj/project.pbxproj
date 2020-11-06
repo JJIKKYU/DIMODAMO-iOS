@@ -31,6 +31,8 @@
 		983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983216A6252B8CDD003E6B64 /* AddShadow.swift */; };
 		983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983485D3251C585500C4074B /* RegisterGenderViewController.swift */; };
 		983C7E99253C3F390099B07F /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C7E98253C3F390099B07F /* BoardModel.swift */; };
+		9845E1852554DDAD0020574C /* ProfileArchiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9845E1842554DDAD0020574C /* ProfileArchiveVC.swift */; };
+		9845E1892554EC960020574C /* MyDptiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9845E1882554EC960020574C /* MyDptiVC.swift */; };
 		984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C142A252733AE0085008C /* RegisterClearViewController.swift */; };
 		984C142F252736830085008C /* DPTI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984C142E252736830085008C /* DPTI.storyboard */; };
 		985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D381225198D1F00C53378 /* RegisterViewModel.swift */; };
@@ -201,6 +203,8 @@
 		983216A6252B8CDD003E6B64 /* AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShadow.swift; sourceTree = "<group>"; };
 		983485D3251C585500C4074B /* RegisterGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderViewController.swift; sourceTree = "<group>"; };
 		983C7E98253C3F390099B07F /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
+		9845E1842554DDAD0020574C /* ProfileArchiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileArchiveVC.swift; sourceTree = "<group>"; };
+		9845E1882554EC960020574C /* MyDptiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDptiVC.swift; sourceTree = "<group>"; };
 		984C142A252733AE0085008C /* RegisterClearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClearViewController.swift; sourceTree = "<group>"; };
 		984C142E252736830085008C /* DPTI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DPTI.storyboard; sourceTree = "<group>"; };
 		985D381225198D1F00C53378 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -534,6 +538,22 @@
 				98C0D57B25490A6700BE382D /* ArticleViewModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		9845E1832554DD9F0020574C /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				9845E1842554DDAD0020574C /* ProfileArchiveVC.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		9845E1872554EC880020574C /* MyDpti */ = {
+			isa = PBXGroup;
+			children = (
+				9845E1882554EC960020574C /* MyDptiVC.swift */,
+			);
+			path = MyDpti;
 			sourceTree = "<group>";
 		};
 		984C1429252733950085008C /* Clear */ = {
@@ -1028,6 +1048,8 @@
 		98D988E9255248A2002A8AC5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				9845E1872554EC880020574C /* MyDpti */,
+				9845E1832554DD9F0020574C /* Archive */,
 				98D9890325547DAD002A8AC5 /* MyProfile */,
 				98D988F225524B05002A8AC5 /* Cell */,
 				98D988EA255248AD002A8AC5 /* Main */,
@@ -1387,12 +1409,14 @@
 				98F8C854254D34C500FDDEBF /* CommunitySearchResultVC.swift in Sources */,
 				988378262545EFF200BFA746 /* TagCell.swift in Sources */,
 				986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */,
+				9845E1852554DDAD0020574C /* ProfileArchiveVC.swift in Sources */,
 				98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */,
 				98D988D7254E9296002A8AC5 /* LinkUploadCell.swift in Sources */,
 				98AFDA7A2539DC8400B0D88F /* ArticleCell.swift in Sources */,
 				98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */,
 				98F8C84B254CA0F300FDDEBF /* LottieLoadingView.swift in Sources */,
 				98D988FC25525652002A8AC5 /* DimoPeopleCell.swift in Sources */,
+				9845E1892554EC960020574C /* MyDptiVC.swift in Sources */,
 				98F8C84F254CA9C100FDDEBF /* InformationSearchVC.swift in Sources */,
 				98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
