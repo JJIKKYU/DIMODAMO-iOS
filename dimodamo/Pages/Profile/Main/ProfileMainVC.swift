@@ -22,6 +22,11 @@ class ProfileMainVC: UIViewController {
     
     let viewModel = ProfileMainViewModel()
     
+    override func loadView() {
+        super.loadView()
+        setColors()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -33,6 +38,11 @@ class ProfileMainVC: UIViewController {
         super.viewDidDisappear(true)
         
         navigationController?.view.backgroundColor = UIColor.clear
+    }
+    
+    private func setColors(){
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray190)
+        navigationController?.navigationBar.barTintColor = .white
     }
 
     override func viewDidLoad() {
@@ -63,6 +73,15 @@ class ProfileMainVC: UIViewController {
     @IBAction func pressedDimoPeopleBtn(_ sender: Any) {
         performSegue(withIdentifier: "DimoPeopleVC", sender: sender)
     }
+    
+    /*
+     핫한 디모인
+     */
+    @IBAction func pressedHotDimoPeople(_ sender: Any) {
+        performSegue(withIdentifier: "HotDimoPeopleVC", sender: sender)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

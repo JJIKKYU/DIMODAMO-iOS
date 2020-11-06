@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileArchiveVC: UIViewController {
-
+    
     /*
      TopContainer
      */
@@ -31,9 +31,31 @@ class ProfileArchiveVC: UIViewController {
     @IBOutlet weak var underBar: UIView!
     @IBOutlet weak var commentsCountLabel: UILabel!
     
+    override func loadView() {
+        super.loadView()
+        
+        view.backgroundColor = .white
+        setColors()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.presentTransparentNavigationBar()
+        animate()
+    }
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+        }, completion: nil)
+    }
+    
+    private func setColors(){
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray190)
+        navigationController?.navigationBar.barTintColor = .white
     }
     
     
@@ -43,19 +65,19 @@ class ProfileArchiveVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -15,7 +15,13 @@ enum MyProfileMoreBtn: Int {
 }
 
 class MyProfileVC: UIViewController {
-
+    @IBOutlet weak var bubblePopup: UIImageView!
+    @IBOutlet weak var menuBtn: UIButton! {
+        didSet {
+            
+        }
+    }
+    
     @IBOutlet weak var navItem: UINavigationItem!
     /*
      ProfileContainer
@@ -35,29 +41,58 @@ class MyProfileVC: UIViewController {
      */
     @IBOutlet var tags: [UILabel]! {
         didSet {
-            
+            for tag in tags {
+                tag.layer.borderWidth = 1.5
+                tag.layer.borderColor = UIColor.appColor(.system).cgColor
+                tag.layer.cornerRadius = tag.frame.height / 2
+                tag.layer.masksToBounds = true
+                
+                tag.widthAnchor.constraint(equalToConstant: 73).isActive = true
+                tag.textAlignment = .center
+                tag.attributedText = NSAttributedString.init(string: "안녕", attributes: [NSAttributedString.Key.baselineOffset : -1])
+            }
         }
+    }
+    
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+        setColors()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationController?.hideTransparentNavigationBar()
+        animate()
         
+    }
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+        }, completion: nil)
+    }
+    
+    private func setColors() {
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.barTintColor = UIColor.appColor(.yellowDark)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        navigationController?.hideTransparentNavigationBar()
+//        navigationController?.hideTransparentNavigationBar()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
-
+    
     /*
      활동 내역에서 모두 보기 눌렀을 경우
      */
@@ -71,7 +106,7 @@ class MyProfileVC: UIViewController {
             
         case MyProfileMoreBtn.scrap.rawValue:
             break
-                
+            
         case MyProfileMoreBtn.heart.rawValue:
             break
             
@@ -81,7 +116,7 @@ class MyProfileVC: UIViewController {
         
         print("클릭")
         performSegue(withIdentifier: "ArchiveVC", sender: nil)
-//        performSegue(withIdentifier: "ArchiveVC", sender: nil)
+        //        performSegue(withIdentifier: "ArchiveVC", sender: nil)
     }
     
     /*
@@ -92,7 +127,7 @@ class MyProfileVC: UIViewController {
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         
@@ -111,5 +146,5 @@ class MyProfileVC: UIViewController {
             break
         }
     }
-
+    
 }

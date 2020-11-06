@@ -24,6 +24,20 @@ class DamoPeopleCell: UITableViewCell {
         }
     }
     
+    @IBOutlet var tags: [UILabel]! {
+        didSet {
+            for tag in tags {
+                tag.layer.cornerRadius = tag.frame.height / 2
+                tag.layer.borderColor = UIColor.appColor(.system).cgColor
+                tag.layer.borderWidth = 1.2
+                tag.layer.masksToBounds = true
+                tag.widthAnchor.constraint(equalToConstant: 61).isActive = true
+                tag.textAlignment = .center
+                tag.attributedText = NSAttributedString.init(string: "안녕", attributes: [NSAttributedString.Key.baselineOffset : -1])
+            }
+        }
+    }
+    
     @IBOutlet weak var bottomContainer: UIView! {
         didSet {
             bottomContainer.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 16)

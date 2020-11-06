@@ -1,5 +1,5 @@
 //
-//  DimoPeopleVC.swift
+//  HotDimoPeopleVC.swift
 //  dimodamo
 //
 //  Created by JJIKKYU on 2020/11/06.
@@ -8,7 +8,14 @@
 
 import UIKit
 
-class DimoPeopleVC: UIViewController {
+class HotDimoPeopleVC: UIViewController {
+    
+    @IBOutlet weak var filterButtonContainer: UIView! {
+        didSet {
+            filterButtonContainer.layer.cornerRadius = 4
+            filterButtonContainer.layer.masksToBounds = true
+        }
+    }
     
     let aspectWidth = (304 / 414) * UIScreen.main.bounds.width
     @IBOutlet var stackViews: [UIStackView]! {
@@ -21,15 +28,10 @@ class DimoPeopleVC: UIViewController {
         }
     }
     
-    @IBOutlet weak var filterButtonContainer: UIView! {
-        didSet {
-            filterButtonContainer.layer.cornerRadius = 4
-            filterButtonContainer.layer.masksToBounds = true
-        }
-    }
+    
     
     /*
-     Sahdow Setting / Width Height Setting
+     Sahdow Setting
      */
     @IBOutlet var buttons: [UIButton]! {
         didSet {
@@ -38,6 +40,7 @@ class DimoPeopleVC: UIViewController {
             
             for btn in buttons {
                 btn.appShadow(.s4)
+                
                 btn.widthAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
                 btn.heightAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
                 
@@ -57,13 +60,15 @@ class DimoPeopleVC: UIViewController {
      mainTableView
      */
     @IBOutlet weak var tableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         tableView.delegate = self
-        tableView.dataSource = self
+        tableView.dataSource =  self
         settingTableView()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -80,20 +85,19 @@ class DimoPeopleVC: UIViewController {
 
 }
 
-extension DimoPeopleVC: UITableViewDelegate, UITableViewDataSource {
+extension HotDimoPeopleVC: UITableViewDelegate, UITableViewDataSource {
     func settingTableView() {
-        tableView.rowHeight = 194
+        tableView.rowHeight = 242
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DimoTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HotDimoPeopleCell", for: indexPath)
         
         return cell
     }
-    
     
 }
