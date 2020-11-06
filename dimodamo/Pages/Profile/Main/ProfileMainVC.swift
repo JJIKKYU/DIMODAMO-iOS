@@ -58,6 +58,12 @@ class ProfileMainVC: UIViewController {
     }
     
     /*
+     추천 디모인 / 더 보기를 클릭할 때
+     */
+    @IBAction func pressedDimoPeopleBtn(_ sender: Any) {
+        performSegue(withIdentifier: "DimoPeopleVC", sender: sender)
+    }
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
