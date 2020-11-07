@@ -60,6 +60,12 @@ class HotDimoPeopleVC: UIViewController {
      mainTableView
      */
     @IBOutlet weak var tableView: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray190)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

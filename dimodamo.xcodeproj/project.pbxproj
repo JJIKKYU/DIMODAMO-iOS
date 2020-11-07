@@ -177,6 +177,7 @@
 		98FA22512556EE7300331755 /* F_FE.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA22312556EE7300331755 /* F_FE.json */; };
 		98FA22522556EE7300331755 /* M_TS.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA22322556EE7300331755 /* M_TS.json */; };
 		98FA22532556EE7300331755 /* F_TN.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA22332556EE7300331755 /* F_TN.json */; };
+		98FA22562556FD9500331755 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA22552556FD9500331755 /* MyProfileViewModel.swift */; };
 		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
 
@@ -356,6 +357,7 @@
 		98FA22312556EE7300331755 /* F_FE.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = F_FE.json; path = dimodamo/lottie/Dpti/F_FE.json; sourceTree = SOURCE_ROOT; };
 		98FA22322556EE7300331755 /* M_TS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = M_TS.json; path = dimodamo/lottie/Dpti/M_TS.json; sourceTree = SOURCE_ROOT; };
 		98FA22332556EE7300331755 /* F_TN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = F_TN.json; path = dimodamo/lottie/Dpti/F_TN.json; sourceTree = SOURCE_ROOT; };
+		98FA22552556FD9500331755 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1115,6 +1117,7 @@
 			isa = PBXGroup;
 			children = (
 				98D9890425547DBF002A8AC5 /* MyProfileVC.swift */,
+				98FA22552556FD9500331755 /* MyProfileViewModel.swift */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -1402,6 +1405,7 @@
 				98F8C881254D3DB000FDDEBF /* ArticleSearchViewModel.swift in Sources */,
 				98F8C83F254C95F900FDDEBF /* ArticleSearchVC.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
+				98FA22562556FD9500331755 /* MyProfileViewModel.swift in Sources */,
 				9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */,
 				987E1C6A254DF57100F5077D /* LinkPopupView.swift in Sources */,
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,

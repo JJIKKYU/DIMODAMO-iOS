@@ -8,6 +8,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 enum MyProfileMoreBtn: Int {
     case like = 0
     case scrap = 1
@@ -15,6 +18,12 @@ enum MyProfileMoreBtn: Int {
 }
 
 class MyProfileVC: UIViewController {
+    
+    let viewModel = MyProfileViewModel()
+    var disposeBag = DisposeBag()
+    
+    @IBOutlet weak var topContainer: UIView!
+    @IBOutlet weak var topStretchBG: UIView!
     @IBOutlet weak var bubblePopup: UIImageView!
     @IBOutlet weak var menuBtn: UIButton! {
         didSet {
@@ -80,7 +89,8 @@ class MyProfileVC: UIViewController {
     
     private func setColors() {
         navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.barTintColor = UIColor.appColor(.yellowDark)
+        let userType: String = UserDefaults.standard.string(forKey: "dpti") ?? "M_TI"
+        navigationController?.navigationBar.barTintColor = UIColor.dptiDarkColor(userType)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,6 +100,22 @@ class MyProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.profileSetting
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] typeString in
+                
+                // 정상적으로 값이 들어오는 경우
+                if typeString != "" {
+                    self?.profile.image = UIImage(named: "Profile_\(typeString)")
+                    self?.type.image = UIImage.dptiProfileTypeIcon(typeString, isFiiled: true)
+                    self?.topContainer.backgroundColor = UIColor.dptiDarkColor(typeString)
+                    self?.topStretchBG.backgroundColor = UIColor.dptiDarkColor(typeString)
+                } else {
+                    
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     

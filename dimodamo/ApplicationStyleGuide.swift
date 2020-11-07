@@ -49,9 +49,80 @@ enum AssetsColor {
     case red
 }
 
+extension UIImage {
+    // 프로필에 쓰이는 타입 아이콘
+    static func dptiProfileTypeIcon(_ type: String, isFiiled: Bool) -> UIImage {
+        let iconType = isFiiled == true ? "Fill" : "Stroke"
+        
+        let colorTypeCharacter = type[type.index(type.startIndex, offsetBy: 2)]
+        var colorString: String = ""
+        
+        switch colorTypeCharacter {
+        // DPTI 결과에 따른 컬러
+        case "F":
+            colorString = "Pink"
+            break
+        case "P":
+            colorString = "Yellow"
+            break
+        case "T":
+            colorString = "Blue"
+            break
+        case "J":
+            colorString = "Purple"
+            break
+        default:
+            colorString = ""
+            break
+        }
+        
+        
+        let shapeTypeCharacter = type[type.index(type.startIndex, offsetBy: 3)]
+        var shapeString: String = ""
+        
+        switch shapeTypeCharacter {
+        // DPTI 결과에 따른 컬러
+        case "I":
+            shapeString = "Star"
+            break
+        case "N":
+            shapeString = "Triangle"
+            break
+        case "S":
+            shapeString = "Square"
+            break
+        case "E":
+            shapeString = "Circle"
+            break
+        default:
+            shapeString = ""
+            break
+        }
+        
+        return UIImage(named: "Type_Icon_\(iconType)_\(shapeString)_\(colorString)")!
+    }
+}
 
 extension UIColor {
     static func dptiColor(_ type: String) -> UIColor {
+        let type = type[type.index(type.startIndex, offsetBy: 2)]
+        
+        switch type {
+        // DPTI 결과에 따른 컬러
+        case "F":
+            return #colorLiteral(red: 0.9803921569, green: 0.6274509804, blue: 0.7058823529, alpha: 1)
+        case "P":
+            return #colorLiteral(red: 0.9803921569, green: 0.8235294118, blue: 0.431372549, alpha: 1)
+        case "T":
+            return #colorLiteral(red: 0.4705882353, green: 0.8431372549, blue: 0.8823529412, alpha: 1)
+        case "J":
+            return #colorLiteral(red: 0.4705882353, green: 0.5882352941, blue: 1, alpha: 1)
+        default:
+            return #colorLiteral(red: 1, green: 0.568627451, blue: 0.3529411765, alpha: 1)
+        }
+    }
+    
+    static func dptiDarkColor(_ type: String) -> UIColor {
         let type = type[type.index(type.startIndex, offsetBy: 2)]
         
         switch type {

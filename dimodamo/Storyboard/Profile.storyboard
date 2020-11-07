@@ -1803,7 +1803,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWJ-ln-vv3" userLabel="TopContainer">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2a-Po-coq" userLabel="StretchYellowBG">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2a-Po-coq" userLabel="StretchBG">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
                                                         <color key="backgroundColor" name="YELLOW - DARK"/>
                                                     </view>
@@ -2209,6 +2209,8 @@
                         <outlet property="profile" destination="fDY-Ug-C22" id="h7P-ea-Dnb"/>
                         <outlet property="profileBG" destination="8O3-Xa-MS8" id="j70-kN-cq0"/>
                         <outlet property="registerDate" destination="w5x-2L-0Tj" id="sje-MA-28A"/>
+                        <outlet property="topContainer" destination="pWJ-ln-vv3" id="dVs-Id-RT4"/>
+                        <outlet property="topStretchBG" destination="D2a-Po-coq" id="C0a-BY-Zxy"/>
                         <outlet property="type" destination="BFD-uF-Krg" id="GgN-sG-V1t"/>
                         <outletCollection property="tags" destination="sn2-yW-pjQ" collectionClass="NSMutableArray" id="ADe-v0-1Q5"/>
                         <outletCollection property="tags" destination="1tR-dJ-Moy" collectionClass="NSMutableArray" id="KRc-kg-RBB"/>
