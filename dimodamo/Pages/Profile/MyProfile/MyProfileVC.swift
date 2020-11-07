@@ -85,7 +85,7 @@ class MyProfileVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//        navigationController?.hideTransparentNavigationBar()
+        setColors()
     }
     
     override func viewDidLoad() {
@@ -134,9 +134,6 @@ class MyProfileVC: UIViewController {
         switch segue.identifier {
         case "MyDptiVC":
             let destinationVC = destination
-            destinationVC.modalPresentationStyle = .overFullScreen
-            destinationVC.modalTransitionStyle = .coverVertical
-            destinationVC.modalPresentationStyle = .currentContext
             break
             
         case "ArchiveVC":

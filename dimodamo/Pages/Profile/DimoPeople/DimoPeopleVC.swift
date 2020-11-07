@@ -11,10 +11,13 @@ import UIKit
 class DimoPeopleVC: UIViewController {
     
     let aspectWidth = (304 / 414) * UIScreen.main.bounds.width
+    let spacing: CGFloat = UIScreen.main.bounds.width / 26
+    
     @IBOutlet var stackViews: [UIStackView]! {
         didSet {
             for stackView in stackViews {
-                stackView.widthAnchor.constraint(equalToConstant: aspectWidth).isActive = true
+//                stackView.widthAnchor.constraint(equalToConstant: aspectWidth).isActive = true
+                stackView.spacing = spacing
                 
             }
             
@@ -33,16 +36,33 @@ class DimoPeopleVC: UIViewController {
      */
     @IBOutlet var buttons: [UIButton]! {
         didSet {
-            let spacing = UIScreen.main.bounds.width / 25.875
-            let cellWidthHeight = (Int(aspectWidth) - (Int(spacing) * 3)) / 4
+            let cellWidthHeight = (aspectWidth - spacing * 3) / 4
+            
+            print("########### \(spacing)")
+            print("########### aspect \(aspectWidth)")
+            print("########## cellWidthHeight \(cellWidthHeight)")
+            
+            
+            
             
             for btn in buttons {
-                btn.appShadow(.s4)
-                btn.widthAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
-                btn.heightAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
                 
-                // 마지막 버튼은 필요 없음
-                if btn.tag == 20 { continue }
+                btn.appShadow(.s4)
+                
+                // 마지막 버튼일 경우
+//                if btn.tag == 20 {
+//                    let height = cellWidthHeight * 0.4375
+//
+//                    btn.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
+//                } else {
+//                    btn.widthAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
+//                    btn.heightAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
+//                }
+                
+                
+                
+                
+                
             }
         }
     }

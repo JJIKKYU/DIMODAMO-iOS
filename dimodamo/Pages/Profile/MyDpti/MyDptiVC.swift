@@ -10,6 +10,32 @@ import UIKit
 
 class MyDptiVC: UIViewController {
 
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+        setColors()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        animate()
+    }
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+        }, completion: nil)
+    }
+    
+    private func setColors(){
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.system)
+        navigationController?.navigationBar.barTintColor = .white
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
