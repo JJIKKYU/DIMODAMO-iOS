@@ -65,7 +65,7 @@ class ProfileMainVC: UIViewController {
                 
                 // 정상적으로 값이 들어오는 경우
                 if typeString != "" {
-                    self?.navProfileBtn.setImage(UIImage(named: "\(typeString)"), for: .normal)
+                    self?.navProfileBtn.setImage(UIImage(named: "24_Profile_\(typeString)"), for: .normal)
                 } else {
                     
                 }
