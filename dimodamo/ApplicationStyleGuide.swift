@@ -101,6 +101,32 @@ extension UIImage {
         
         return UIImage(named: "Type_Icon_\(iconType)_\(shapeString)_\(colorString)")!
     }
+    
+    static func shapeBackgroundPattern(_ type: String) -> UIImage {
+        let shapeTypeCharacter = type[type.index(type.startIndex, offsetBy: 3)]
+        var shapeString: String = ""
+        
+        switch shapeTypeCharacter {
+        // DPTI 결과에 따른 컬러
+        case "I":
+            shapeString = "Star"
+            break
+        case "N":
+            shapeString = "Triangle"
+            break
+        case "S":
+            shapeString = "Square"
+            break
+        case "E":
+            shapeString = "Circle"
+            break
+        default:
+            shapeString = ""
+            break
+        }
+        
+        return UIImage(named: "Background_Pattern_\(shapeString)")!
+    }
 }
 
 extension UIColor {

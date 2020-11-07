@@ -149,4 +149,41 @@ enum Interest: Int {
             return "interior"
         }
     }
+    
+    static func getWordFromString(from interest: String) -> String {
+        switch interest {
+        case "ad":
+            return "광고"
+        case "uxui":
+            return "UXUI"
+        case "edit":
+            return "편집"
+        case "architecture":
+            return "건축"
+        case "branding":
+            return "브랜딩"
+        case "font":
+            return "폰트"
+        case "exhibit":
+            return "전시"
+        case "crafts":
+            return "공예"
+        case "animation":
+            return "애니메이션"
+        case "broadcasting":
+            return "방송채널"
+        case "artDirector":
+            return "아트디렉터"
+        case "motion":
+            return "모션"
+        case "industrial":
+            return "산업"
+        case "mediaArt":
+            return "미디어아트"
+        case "interior":
+            return "인테리어"
+        default:
+            return ""
+        }
+    }
 }

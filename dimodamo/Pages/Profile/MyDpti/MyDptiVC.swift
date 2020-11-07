@@ -32,7 +32,7 @@ class MyDptiVC: UIViewController {
     }
     
     private func setColors(){
-        navigationController?.navigationBar.tintColor = UIColor.appColor(.system)
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray190)
         navigationController?.navigationBar.barTintColor = .white
     }
     

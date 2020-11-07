@@ -178,6 +178,8 @@
 		98FA22522556EE7300331755 /* M_TS.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA22322556EE7300331755 /* M_TS.json */; };
 		98FA22532556EE7300331755 /* F_TN.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA22332556EE7300331755 /* F_TN.json */; };
 		98FA22562556FD9500331755 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA22552556FD9500331755 /* MyProfileViewModel.swift */; };
+		98FA225925571FA300331755 /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA225825571FA300331755 /* MyProfileModel.swift */; };
+		98FA225C2557244A00331755 /* ApplicationDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA225B2557244A00331755 /* ApplicationDataAPI.swift */; };
 		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
 
@@ -358,6 +360,8 @@
 		98FA22322556EE7300331755 /* M_TS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = M_TS.json; path = dimodamo/lottie/Dpti/M_TS.json; sourceTree = SOURCE_ROOT; };
 		98FA22332556EE7300331755 /* F_TN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = F_TN.json; path = dimodamo/lottie/Dpti/F_TN.json; sourceTree = SOURCE_ROOT; };
 		98FA22552556FD9500331755 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
+		98FA225825571FA300331755 /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
+		98FA225B2557244A00331755 /* ApplicationDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDataAPI.swift; sourceTree = "<group>"; };
 		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -715,6 +719,7 @@
 				986908F62521AE7E00C844F1 /* Extension */,
 				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
 				98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */,
+				98FA225B2557244A00331755 /* ApplicationDataAPI.swift */,
 				98C48B1B250CF959004E24E5 /* Json */,
 				98C48B14250CD163004E24E5 /* Lottie */,
 				98067133250F1F8200C3EB72 /* Domain */,
@@ -1118,6 +1123,7 @@
 			children = (
 				98D9890425547DBF002A8AC5 /* MyProfileVC.swift */,
 				98FA22552556FD9500331755 /* MyProfileViewModel.swift */,
+				98FA225825571FA300331755 /* MyProfileModel.swift */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -1420,6 +1426,7 @@
 				98D988E3255071AE002A8AC5 /* LottieLoadingView2.swift in Sources */,
 				984FA9092555B1CD00D4F506 /* ProfileDptiResultVC.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
+				98FA225C2557244A00331755 /* ApplicationDataAPI.swift in Sources */,
 				98A8B816253605CE00351FD5 /* SplashViewController.swift in Sources */,
 				980F19ED25407578007B33B8 /* CommentCell.swift in Sources */,
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,
@@ -1472,6 +1479,7 @@
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
+				98FA225925571FA300331755 /* MyProfileModel.swift in Sources */,
 				988377F92545C41F00BFA746 /* CreatePostViewModel.swift in Sources */,
 				98AFDA502539CD7900B0D88F /* CommunityMainViewModel.swift in Sources */,
 				984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */,
