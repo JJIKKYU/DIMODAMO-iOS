@@ -216,21 +216,32 @@ class ProfileDptiResultVC: UIViewController {
         
         
 
-        typeChar.layer.cornerRadius = 24
+        animationView.layer.cornerRadius = 24
         animationView.play()
         animationView.loopMode = .loop
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case "AllTypeDptiVC":
+            let destination = segue.destination
+            destination.modalPresentationStyle = .fullScreen
+            destination.modalTransitionStyle = .coverVertical
+            break
+        case .none:
+            break
+        case .some(_):
+            break
+        }
     }
-    */
+    
     
     @IBAction func pressedAllTypeBtn(_ sender: Any) {
         performSegue(withIdentifier: "AllTypeDptiVC", sender: nil)

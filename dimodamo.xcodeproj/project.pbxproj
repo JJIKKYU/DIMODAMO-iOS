@@ -180,6 +180,7 @@
 		98FA22562556FD9500331755 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA22552556FD9500331755 /* MyProfileViewModel.swift */; };
 		98FA225925571FA300331755 /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA225825571FA300331755 /* MyProfileModel.swift */; };
 		98FA225C2557244A00331755 /* ApplicationDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA225B2557244A00331755 /* ApplicationDataAPI.swift */; };
+		98FA226225572AC700331755 /* AllDptiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA226125572AC700331755 /* AllDptiVC.swift */; };
 		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
 
@@ -362,6 +363,7 @@
 		98FA22552556FD9500331755 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		98FA225825571FA300331755 /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
 		98FA225B2557244A00331755 /* ApplicationDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDataAPI.swift; sourceTree = "<group>"; };
+		98FA226125572AC700331755 /* AllDptiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDptiVC.swift; sourceTree = "<group>"; };
 		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1088,6 +1090,7 @@
 		98D988E9255248A2002A8AC5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				98FA226025572AB000331755 /* AllDpti */,
 				984FA9072555B1BA00D4F506 /* ProfileDptiResult */,
 				984FA9022555965600D4F506 /* HotDimoPeople */,
 				984FA8FD2555901600D4F506 /* DimoPeople */,
@@ -1200,6 +1203,14 @@
 				98F8C8AA254D866900FDDEBF /* HistoryVC.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		98FA226025572AB000331755 /* AllDpti */ = {
+			isa = PBXGroup;
+			children = (
+				98FA226125572AC700331755 /* AllDptiVC.swift */,
+			);
+			path = AllDpti;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1412,6 +1423,7 @@
 				98F8C83F254C95F900FDDEBF /* ArticleSearchVC.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
 				98FA22562556FD9500331755 /* MyProfileViewModel.swift in Sources */,
+				98FA226225572AC700331755 /* AllDptiVC.swift in Sources */,
 				9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */,
 				987E1C6A254DF57100F5077D /* LinkPopupView.swift in Sources */,
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,

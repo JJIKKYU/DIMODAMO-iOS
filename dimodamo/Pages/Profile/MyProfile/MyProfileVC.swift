@@ -145,6 +145,7 @@ class MyProfileVC: UIViewController {
                 self?.commentHeartCountLabel.text = "+\(data.commentHeartCount)"
                 self?.scrapCountLabel.text = "+\(data.scrapCount)"
                 self?.manitoGoodCountLabel.text = "+\(data.manitoGoodCount)"
+                self?.registerDate.text = "\(data.createdAt)"
                 
                 for (index, tag) in self!.tags.enumerated() {
                     tag.text = "\(data.interests[index])"
