@@ -15,7 +15,14 @@ import Firebase
 
 class ProfileMainViewModel {
     
+    let profileSetting = BehaviorRelay<String>(value: "")
+    
     init() {
-        
+        self.getUserType()
+    }
+    
+    func getUserType() {
+        let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_TI"
+        profileSetting.accept(type)
     }
 }

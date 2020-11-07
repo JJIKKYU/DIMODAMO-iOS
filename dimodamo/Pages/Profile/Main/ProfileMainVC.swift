@@ -13,14 +13,16 @@ import RxCocoa
 
 class ProfileMainVC: UIViewController {
 
+    let viewModel = ProfileMainViewModel()
+    let disposeBag = DisposeBag()
+    
+    @IBOutlet weak var navProfileBtn: UIButton!
     @IBOutlet weak var dimoCollectionView: UICollectionView!
     var currentIndex: CGFloat = 0
     let lineSpacing: CGFloat = 20
     var isOneStepPaging = true
     
     @IBOutlet weak var damoTableView: UITableView!
-    
-    let viewModel = ProfileMainViewModel()
     
     override func loadView() {
         super.loadView()
@@ -57,6 +59,19 @@ class ProfileMainVC: UIViewController {
         dimoCollectionViewSetting()
         settingTableView()
 
+        viewModel.profileSetting
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] typeString in
+                
+                // 정상적으로 값이 들어오는 경우
+                if typeString != "" {
+                    self?.navProfileBtn.setImage(UIImage(named: "\(typeString)"), for: .normal)
+                } else {
+                    
+                }
+            })
+            .disposed(by: disposeBag)
+        
         // Do any additional setup after loading the view.
     }
     

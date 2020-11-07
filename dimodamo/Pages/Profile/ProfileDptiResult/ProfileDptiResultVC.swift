@@ -11,9 +11,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+import Lottie
+
 class ProfileDptiResultVC: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var resultCardView: UIView! {
         didSet {
             resultCardView.layer.cornerRadius = 24
@@ -112,6 +113,12 @@ class ProfileDptiResultVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel.colorHex
+            .map { $0 }
+            .asDriver(onErrorJustReturn: UIColor.appColor(.system))
+            .drive(resultCardView.rx.backgroundColor)
+            .disposed(by: disposeBag)
+
         // UILabel Binding
         viewModel.resultObservable.flatMap { [weak self] in
             Observable.from([
@@ -127,29 +134,29 @@ class ProfileDptiResultVC: UIViewController {
             label?.text = text
         })
         .disposed(by: disposeBag)
-        
+
         // TypeDesc Binding
         viewModel.typeDesc
             .map { "\($0)"}
             .asDriver(onErrorJustReturn: "")
             .drive(typeDesc.rx.text)
             .disposed(by: disposeBag)
-    
-        
+
+
         viewModel.designsDesc
             .map{ "\($0[0])"}
             .asDriver(onErrorJustReturn: "")
             .drive(designsDesc[0].rx.text)
             .disposed(by: disposeBag)
 
-        
+
         viewModel.designsDesc
             .map{ "\($0[1])"}
             .asDriver(onErrorJustReturn: "")
             .drive(designsDesc[1].rx.text)
             .disposed(by: disposeBag)
-    
-        
+
+
         // UITextView Binding
         viewModel.resultObservable.flatMap { [weak self] in
             Observable.from([
@@ -162,7 +169,7 @@ class ProfileDptiResultVC: UIViewController {
             textView?.text = text
         })
         .disposed(by: disposeBag)
-        
+
         // UIImage Binding
         viewModel.resultObservable.flatMap { [weak self] in
             Observable.from([
@@ -174,11 +181,44 @@ class ProfileDptiResultVC: UIViewController {
         }
         .asDriver(onErrorJustReturn: ("", nil))
         .drive(onNext: { imageName, uiImage in
-            print("이미지 네임 : \(imageName), 이미지 : \(uiImage)")
             uiImage!.image = UIImage(named : imageName)
         })
         .disposed(by: disposeBag)
         
+        /*
+         LottieChar
+         */
+        viewModel.typeGenderForLottie
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { type in
+                // 기본값이 아닐때
+                if type != "" {
+                    print("로띠를 부릅니당")
+                    self.lottieChar(typeGender: type)
+                } else {
+                    
+                }
+            })
+            .disposed(by: disposeBag)
+        
+    }
+    
+    func lottieChar(typeGender: String) {
+        let animationView = Lottie.AnimationView.init(name: "\(typeGender)")
+//        animationView.contentMode = .scaleAspectFill
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        resultCardView.translatesAutoresizingMaskIntoConstraints = false
+        resultCardView.addSubview(animationView)
+//        typeChar.rightAnchor.constraint(equalTo: resultCardView.rightAnchor, constant: 0).isActive = true
+//        typeChar.bottomAnchor.constraint(equalTo: resultCardView.bottomAnchor, constant: 0).isActive = true
+        
+        
+
+        typeChar.layer.cornerRadius = 24
+        animationView.play()
+        animationView.loopMode = .loop
     }
     
 

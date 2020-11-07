@@ -18,6 +18,8 @@ class ProfileDptiResultViewModel {
     var type : String = "M_TI"
     var gender: String = "M"
     
+    var typeGenderForLottie = BehaviorRelay<String>(value: "")
+    
     // 결과 모두를 가지고 있음
     lazy var resultObservable = BehaviorRelay<DptiResult>(value: DptiResult())
     
@@ -45,6 +47,7 @@ class ProfileDptiResultViewModel {
         
         self.type = onlyType
         self.gender = onlyGender
+        self.typeGenderForLottie.accept(userDefaultsType)
         
         print("type = \(self.type), gender = \(self.gender)")
        
