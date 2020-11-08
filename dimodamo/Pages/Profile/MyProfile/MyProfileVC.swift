@@ -50,6 +50,12 @@ class MyProfileVC: UIViewController {
     @IBOutlet weak var scrapCountLabel: UILabel!
     @IBOutlet weak var manitoGoodCountLabel: UILabel!
     
+    @IBOutlet weak var messageBtn: UIButton! {
+        didSet {
+            messageBtn.layer.cornerRadius = 12
+            messageBtn.layer.masksToBounds = true
+        }
+    }
     /*
      Tags
      */
@@ -94,10 +100,11 @@ class MyProfileVC: UIViewController {
     
     private func setColors() {
         navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.barTintColor = UIColor.clear
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.barTintColor = UIColor.dptiDarkColor(viewModel.profileSetting.value)
+//        navigationController?.navigationBar.barTintColor = UIColor.clear
+//        navigationController?.navigationBar.backgroundColor = UIColor.clear
+//        navigationController?.navigationBar.isTranslucent = true
+//        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -190,6 +197,12 @@ class MyProfileVC: UIViewController {
         performSegue(withIdentifier: "MyDptiVC", sender: sender)
     }
     
+    /*
+     쪽지 보내기 버튼을 클릭했을 경우
+     */
+    @IBAction func pressedMessageBtn(_ sender: Any) {
+        performSegue(withIdentifier: "MessageVC", sender: sender)
+    }
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -201,6 +214,9 @@ class MyProfileVC: UIViewController {
             break
             
         case "ArchiveVC":
+            break
+            
+        case "MessageVC":
             break
             
         default:

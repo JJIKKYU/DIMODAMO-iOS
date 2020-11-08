@@ -183,6 +183,7 @@
 		98FA226225572AC700331755 /* AllDptiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA226125572AC700331755 /* AllDptiVC.swift */; };
 		98FA22672557FBDA00331755 /* AllDptiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA22662557FBDA00331755 /* AllDptiCell.swift */; };
 		98FA226A2558040000331755 /* AllDptiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA22692558040000331755 /* AllDptiViewModel.swift */; };
+		98FA226F25585B9E00331755 /* MessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FA226E25585B9E00331755 /* MessageVC.swift */; };
 		D8A7ADBE36BF5BE7DCBFA2A4 /* Pods_dimodamo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2872BDEB9F67B1A61BAF480F /* Pods_dimodamo.framework */; };
 /* End PBXBuildFile section */
 
@@ -368,6 +369,7 @@
 		98FA226125572AC700331755 /* AllDptiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDptiVC.swift; sourceTree = "<group>"; };
 		98FA22662557FBDA00331755 /* AllDptiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDptiCell.swift; sourceTree = "<group>"; };
 		98FA22692558040000331755 /* AllDptiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDptiViewModel.swift; sourceTree = "<group>"; };
+		98FA226E25585B9E00331755 /* MessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVC.swift; sourceTree = "<group>"; };
 		BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dimodamo.release.xcconfig"; path = "Target Support Files/Pods-dimodamo/Pods-dimodamo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1094,6 +1096,7 @@
 		98D988E9255248A2002A8AC5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				98FA226C25585A4300331755 /* Message */,
 				98FA226025572AB000331755 /* AllDpti */,
 				984FA9072555B1BA00D4F506 /* ProfileDptiResult */,
 				984FA9022555965600D4F506 /* HotDimoPeople */,
@@ -1217,6 +1220,14 @@
 				98FA22692558040000331755 /* AllDptiViewModel.swift */,
 			);
 			path = AllDpti;
+			sourceTree = "<group>";
+		};
+		98FA226C25585A4300331755 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				98FA226E25585B9E00331755 /* MessageVC.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1470,6 +1481,7 @@
 				98D988DF254FA99A002A8AC5 /* SortingPopupView.swift in Sources */,
 				984FA9042555966400D4F506 /* HotDimoPeopleVC.swift in Sources */,
 				98A661ED252F2F2B00698BA0 /* FindEmailPWPageViewController.swift in Sources */,
+				98FA226F25585B9E00331755 /* MessageVC.swift in Sources */,
 				98D988E72551CD48002A8AC5 /* Sort.swift in Sources */,
 				988377F62545B69800BFA746 /* CreatePostViewController.swift in Sources */,
 				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
