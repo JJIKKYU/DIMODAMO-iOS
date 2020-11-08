@@ -53,7 +53,7 @@ class AllDptiViewModel {
         var typePArr: [DptiResult] = []
         var typeJArr: [DptiResult] = []
         
-        for result in resultObservable.value {
+        for result in results {
             let typeCharacter = result.type[result.type.index(result.type.startIndex, offsetBy: 0)]
             if typeCharacter == "F" {
                 typeFArr.append(result)
