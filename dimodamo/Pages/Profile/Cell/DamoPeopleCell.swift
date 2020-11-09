@@ -15,13 +15,6 @@ class DamoPeopleCell: UITableViewCell {
         didSet {
             shadowView.layer.cornerRadius = 16
             shadowView.appShadow(.s12)
-            
-//            shadowView.layer.shadowColor = UIColor.black.cgColor
-//            shadowView.layer.shadowOffset = CGSize(width: 0, height: -10)
-//            shadowView.layer.shadowOpacity = 0.08
-//            shadowView.layer.shadowRadius = 16
-//            shadowView.layer.masksToBounds = false
-//            shadowView.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
         }
     }
     
@@ -29,14 +22,20 @@ class DamoPeopleCell: UITableViewCell {
     @IBOutlet weak var backgroundPattern: UIImageView!
     @IBOutlet var tags: [UILabel]! {
         didSet {
+            
+            
             for tag in tags {
+                TagManager.getTagWidthSize(stringValue: tag.text!)
                 tag.layer.cornerRadius = tag.frame.height / 2
                 tag.layer.borderColor = UIColor.appColor(.system).cgColor
                 tag.layer.borderWidth = 1.2
                 tag.layer.masksToBounds = true
-                tag.widthAnchor.constraint(equalToConstant: 61).isActive = true
+                
                 tag.textAlignment = .center
                 tag.attributedText = NSAttributedString.init(string: "안녕", attributes: [NSAttributedString.Key.baselineOffset : -1])
+            
+//                let labelWidthSize: CGFloat = tag.intrinsicContentSize.width + 32
+//                tag.widthAnchor.constraint(equalToConstant: labelWidthSize).isActive = true
             }
         }
     }

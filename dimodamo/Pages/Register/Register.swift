@@ -11,32 +11,51 @@ import Foundation
 // 가입 프로세스에 포함되는 정보
 // 추가된다면 DPTI 추가 될듯
 struct Register {
-    var marketing: Bool = false
-    var id: String = ""
+    var createdAt: String = ""
+    var dpti: String = ""
     var Gender: Gender = .male
+    
+    
+    var id: String = ""
+    
+    
+    var getCommentHeartCounnt: Int = 0
+    var getManitoGoodCount: Int = 0
+    var getProfileScore: Int = 0
+    var getScrapCount: Int = 0
+    
     var Interest: [Interest] = []
+    var marketing: Bool = false
     var nickName: String = ""
     var school: String = ""
     var schoolCertState: CertificationState = .none
-    var dpti: String = ""
+    
+    var scrapPosts: [String] = []
+    
     var heartComments: [String] = []
     
     func getDict() -> [String:Any] {
         let dict: [String:Any] = [
-            "marketing": self.marketing == true ? "true" : "false",
-            "id": self.id,
+            "created_at" : self.createdAt,
+            "dpti" : "",
             "gender": self.Gender.description,
+            "id": self.id,
+            "get_comment_heart_comment" : getCommentHeartCounnt,
+            "get_manito_good_count" : getManitoGoodCount,
+            "get_profile_score" : getProfileScore,
+            "get_scrap_count": getScrapCount,
             "interest": [
                 self.Interest[0].description,
                 self.Interest[1].description,
                 self.Interest[2].description,
             ],
+            "marketing": self.marketing == true ? "true" : "false",
             "nickName": self.nickName,
             "school" : self.school,
             "schoolCert" : self.schoolCertState.description,
             "rejectionReason" : "",
-            "dpti" : "",
-            "heartComments": heartComments
+            "scrapPosts": self.scrapPosts,
+            "heartComments": self.heartComments
         ]
         
         return dict

@@ -167,6 +167,9 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         
         for (tagIndex, tag) in cell.tags.enumerated() {
             tag.text = Interest.getWordFromString(from: dimoArr[index].interests[tagIndex])
+            let labelWidthSize: CGFloat = tag.intrinsicContentSize.width + 32
+//            tag.widthAnchor.constraint(equalToConstant: labelWidthSize).isActive = true
+            tag.frame = CGRect(x: 0, y: 0, width: labelWidthSize, height: 24)
         }
         
         return cell
@@ -266,6 +269,29 @@ extension ProfileMainVC: UITableViewDelegate, UITableViewDataSource {
         cell.commentHeartIcon.image = hotDimoArr.getMedal(kind: .comment)
         cell.scrapIcon .image = hotDimoArr.getMedal(kind: .scrap)
         cell.manitoIcon.image = hotDimoArr.getMedal(kind: .manito)
+        
+        
+        let lankString: String = "\(index + 1)위"
+        let stringLocation: Int = (String(index + 1).count - 1) + 1
+        var lankMutableString = NSMutableAttributedString()
+        lankMutableString = NSMutableAttributedString(
+            string: lankString,
+            attributes: [NSAttributedString.Key.font:UIFont(name: "SFProDisplay-Semibold", size: 16.0)!])
+        lankMutableString.addAttribute(
+            NSAttributedString.Key.font, value: UIFont(name: "AppleSDGothicNeoEB00", size: 12.0)!,
+            range: NSRange(location: stringLocation ,length:1))
+        cell.rankingLabel.attributedText = lankMutableString
+        
+        
+//        SFProDisplay-Semibold
+//        AppleSDGothicNeoEB00
+        
+//        for family in UIFont.familyNames {
+//                print("family:", family)
+//                for font in UIFont.fontNames(forFamilyName: family) {
+//                    print("font:", font)
+//                }
+//            }
         
         return cell
     }

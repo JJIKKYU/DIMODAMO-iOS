@@ -334,6 +334,21 @@ var statusBarUIView: UIView? {
 }
 
 
+//MARK: - Tag Width
+class TagManager {
+    static func getTagWidthSize(stringValue: String) {
+        var spacing: Int = 0
+        for chr in stringValue {
+            if (chr >= "a" && chr <= "z") || (chr >= "A" && chr <= "Z") {
+                print("\(chr)은 알파벳입니다.")
+            } else {
+                print("알파벳이 아닙니다.")
+            }
+            
+        }
+    }
+}
+
 
 //MARK: - AppStyleGuide
 

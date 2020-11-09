@@ -49,9 +49,10 @@ class DimoPeopleCell: UICollectionViewCell {
                 tag.layer.borderColor = UIColor.appColor(.system).cgColor
                 tag.layer.borderWidth = 1.2
                 tag.layer.masksToBounds = true
-                tag.widthAnchor.constraint(equalToConstant: 61).isActive = true
                 tag.textAlignment = .center
                 tag.attributedText = NSAttributedString.init(string: "안녕", attributes: [NSAttributedString.Key.baselineOffset : -1])
+//                let labelWidthSize: CGFloat = tag.intrinsicContentSize.width + 32
+//                tag.widthAnchor.constraint(equalToConstant: labelWidthSize).isActive = true
             }
         }
     }
