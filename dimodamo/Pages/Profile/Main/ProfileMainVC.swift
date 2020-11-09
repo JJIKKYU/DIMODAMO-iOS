@@ -90,7 +90,20 @@ class ProfileMainVC: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // Do any additional setup after loading the view.
+        /*
+         핫한 디모인
+         */
+        viewModel.hotDimoPeopleArrIsLoading
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] flag in
+                if flag == false {
+                    print("핫한 디모인을 로딩중입니다.")
+                } else {
+                    print("핫한 디모인 로딩이 완료되어 컬렉션 뷰를 리로딩 합니다.")
+                    self?.damoTableView.reloadData()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     /*
@@ -150,9 +163,10 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         cell.profile.image = dimoArr[index].getProfileImage()
         cell.topContainer.backgroundColor = dimoArr[index].getBackgroundColor()
         cell.typeImage.image = dimoArr[index].getTypeImage()
+        cell.backgroundPattern.image = dimoArr[index].getBackgroundPattern()
         
-        for (index, tag) in cell.tags.enumerated() {
-            tag.text = Interest.getWordFromString(from: dimoArr[index].interests[index])
+        for (tagIndex, tag) in cell.tags.enumerated() {
+            tag.text = Interest.getWordFromString(from: dimoArr[index].interests[tagIndex])
         }
         
         return cell
@@ -230,11 +244,28 @@ extension ProfileMainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return viewModel.hotDimoPeopleArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DamoPeopleCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DamoPeopleCell", for: indexPath) as! DamoPeopleCell
+        
+        let index = indexPath.row
+        let hotDimoArr = viewModel.hotDimoPeopleArr[index]
+        
+        cell.nickname.text = hotDimoArr.nickname
+        cell.profile.image = hotDimoArr.getProfileImage()
+        cell.topContainer.backgroundColor = hotDimoArr.getBackgroundColor()
+        cell.typeImage.image = hotDimoArr.getTypeImage()
+        cell.backgroundPattern.image = hotDimoArr.getBackgroundPattern()
+        
+        cell.commentHeartCount.text = "+\(hotDimoArr.commentHeartCount)"
+        cell.manitoCount.text = "+\(hotDimoArr.manitoGoodCount)"
+        cell.scrapCount.text = "+\(hotDimoArr.documnetScrapCount)"
+        
+        cell.commentHeartIcon.image = hotDimoArr.getMedal(kind: .comment)
+        cell.scrapIcon .image = hotDimoArr.getMedal(kind: .scrap)
+        cell.manitoIcon.image = hotDimoArr.getMedal(kind: .manito)
         
         return cell
     }

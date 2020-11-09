@@ -10,6 +10,7 @@ import UIKit
 
 class DamoPeopleCell: UITableViewCell {
 
+    @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var shadowView: UIView! {
         didSet {
             shadowView.layer.cornerRadius = 16
@@ -24,6 +25,8 @@ class DamoPeopleCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var typeImage: UIImageView!
+    @IBOutlet weak var backgroundPattern: UIImageView!
     @IBOutlet var tags: [UILabel]! {
         didSet {
             for tag in tags {
@@ -57,6 +60,7 @@ class DamoPeopleCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var profileBG: UIView! {
         didSet {
             profileBG.layer.cornerRadius = profileBG.frame.height / 2

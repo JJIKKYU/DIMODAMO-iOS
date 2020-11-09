@@ -63,7 +63,7 @@ class MyProfileViewModel {
                         newUserProfile.commentHeartCount = commentHeartCount
                     }
                     
-                    if let scrapCount = data!["get_scrap"] as? Int {
+                    if let scrapCount = data!["get_scrap_count"] as? Int {
                         newUserProfile.scrapCount = scrapCount
                     }
                     

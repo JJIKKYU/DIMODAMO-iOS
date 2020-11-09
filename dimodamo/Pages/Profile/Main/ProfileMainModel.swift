@@ -9,11 +9,24 @@
 import Foundation
 import UIKit
 
+enum MedalKinds: Int {
+    case comment = 0
+    case scrap = 1
+    case manito = 2
+}
+
 class DimoPeople {
     var rank: Int = 0
     var dpti: String = ""
     var nickname: String = ""
     var interests: [String] = []
+    
+    /*
+     핫한 디모인에서만 사용하는 변수
+     */
+    var commentHeartCount: Int = 0
+    var documnetScrapCount: Int = 0
+    var manitoGoodCount: Int = 0
     
     func getProfileImage() -> UIImage {
         if dpti == "" {
@@ -40,5 +53,48 @@ class DimoPeople {
         let typeImage = UIImage.dptiProfileTypeIcon(dpti, isFiiled: true)
         
         return typeImage
+    }
+    
+    /*
+     핫한 디모인에서 쓰이는 함수
+     */
+    
+    func getMedal(kind: MedalKinds) -> UIImage {
+        switch kind {
+        case .comment:
+            if commentHeartCount < 100 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Default_Heart") ?? UIImage()
+            } else if commentHeartCount < 200 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Bronze_Heart") ?? UIImage()
+            } else if commentHeartCount < 300 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Silver_Heart") ?? UIImage()
+            } else if commentHeartCount >= 300 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Gold_Heart") ?? UIImage()
+            }
+            
+        case .manito:
+            if manitoGoodCount < 100 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Default_Like") ?? UIImage()
+            } else if manitoGoodCount < 200 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Bronze_Like") ?? UIImage()
+            } else if manitoGoodCount < 300 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Silver_Like") ?? UIImage()
+            } else if manitoGoodCount >= 300 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Gold_Like") ?? UIImage()
+            }
+            
+        case .scrap:
+            if documnetScrapCount < 100 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Default_Scrap") ?? UIImage()
+            } else if documnetScrapCount < 200 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Bronze_Scrap") ?? UIImage()
+            } else if documnetScrapCount < 300 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Silver_Scrap") ?? UIImage()
+            } else if documnetScrapCount >= 300 {
+                return UIImage(named: "Profile_Medal_Icon_Small_Gold_Scrap") ?? UIImage()
+            }
+        }
+        
+        return UIImage()
     }
 }

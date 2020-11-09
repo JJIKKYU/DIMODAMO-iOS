@@ -40,6 +40,7 @@ class DimoPeopleCell: UICollectionViewCell {
     @IBOutlet weak var nickname: UILabel!
     
     @IBOutlet weak var typeImage: UIImageView!
+    @IBOutlet weak var backgroundPattern: UIImageView!
     
     @IBOutlet var tags: [UILabel]! {
         didSet {
