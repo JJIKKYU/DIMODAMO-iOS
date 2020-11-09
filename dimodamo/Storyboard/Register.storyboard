@@ -1001,7 +1001,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="soL-tf-Qvj">
-                                                <rect key="frame" x="0.0" y="162" width="374" height="328"/>
+                                                <rect key="frame" x="0.0" y="162" width="374" height="396"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="9Rh-GO-8KV">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
@@ -1088,7 +1088,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="전시무대">
+                                                                <state key="normal" title="전시">
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
@@ -1135,7 +1135,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="애니메이션">
+                                                                <state key="normal" title="애니">
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
@@ -1154,7 +1154,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="방송채널">
+                                                                <state key="normal" title="방송">
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
@@ -1168,7 +1168,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="아트디렉터">
+                                                                <state key="normal" title="산업">
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
@@ -1182,7 +1182,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="모션그래픽">
+                                                                <state key="normal" title="모션">
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
@@ -1201,7 +1201,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="산업">
+                                                                <state key="normal" title="제품">
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
@@ -1215,7 +1215,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="미디어아트">
+                                                                <state key="normal" title="미디어">
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">
@@ -1229,7 +1229,54 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                 <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="인테리어">
+                                                                <state key="normal" title="실내">
+                                                                    <color key="titleColor" name="GRAY - 210"/>
+                                                                </state>
+                                                                <state key="selected">
+                                                                    <color key="titleColor" name="SYSTEM"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="nQv-xy-6xt">
+                                                        <rect key="frame" x="0.0" y="340" width="374" height="56"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fmr-jg-pDT">
+                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="56"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="56" id="RUK-5o-rWB"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" title="무대">
+                                                                    <color key="titleColor" name="GRAY - 210"/>
+                                                                </state>
+                                                                <state key="selected">
+                                                                    <color key="titleColor" name="SYSTEM"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3A-1I-16N">
+                                                                <rect key="frame" x="127" y="0.0" width="120" height="56"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="56" id="0We-RL-xya"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" title="디렉터">
+                                                                    <color key="titleColor" name="GRAY - 210"/>
+                                                                </state>
+                                                                <state key="selected">
+                                                                    <color key="titleColor" name="SYSTEM"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbD-4N-fj4">
+                                                                <rect key="frame" x="254" y="0.0" width="120" height="56"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="56" id="Ovw-ss-sWx"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" title="아트">
                                                                     <color key="titleColor" name="GRAY - 210"/>
                                                                 </state>
                                                                 <state key="selected">

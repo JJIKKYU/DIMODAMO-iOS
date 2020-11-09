@@ -167,9 +167,6 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         
         for (tagIndex, tag) in cell.tags.enumerated() {
             tag.text = Interest.getWordFromString(from: dimoArr[index].interests[tagIndex])
-            let labelWidthSize: CGFloat = tag.intrinsicContentSize.width + 32
-//            tag.widthAnchor.constraint(equalToConstant: labelWidthSize).isActive = true
-            tag.frame = CGRect(x: 0, y: 0, width: labelWidthSize, height: 24)
         }
         
         return cell

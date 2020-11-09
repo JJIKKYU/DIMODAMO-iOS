@@ -128,11 +128,15 @@ enum Interest: Int {
     case crafts         // 공예
     case animation      // 애니메이션
     case broadcasting   // 방송채널
-    case artDirector    // 아트디렉터
-    case motion         // 모션
     case industrial     // 산업
-    case mediaArt       // 미디어아트
-    case interior       // 인테리어
+    case motion         // 모션
+    case product        // 제품
+    case media          // 미디어
+    case interior       // 실내
+    case space          // 무대
+    case director      // 디렉터
+    case art            // 아트
+    
     
     var description: String {
         switch self {
@@ -156,16 +160,25 @@ enum Interest: Int {
             return "animation"
         case .broadcasting:
             return "broadcasting"
-        case .artDirector:
-            return "artDirector"
-        case .motion:
-            return "motion"
         case .industrial:
             return "industrial"
-        case .mediaArt:
-            return "mediaArt"
+        case .motion:
+            return "motion"
+            
+        case .product:
+            return "product"
+        case .media:
+            return "media"
         case .interior:
             return "interior"
+            
+        case .space:
+            return "space"
+        case .director:
+            return "director"
+        case .art:
+            return "art"
+        
         }
     }
     
@@ -188,19 +201,26 @@ enum Interest: Int {
         case "crafts":
             return "공예"
         case "animation":
-            return "애니메이션"
+            return "애니"
         case "broadcasting":
-            return "방송채널"
-        case "artDirector":
-            return "아트디렉터"
-        case "motion":
-            return "모션"
+            return "방송"
         case "industrial":
             return "산업"
-        case "mediaArt":
-            return "미디어아트"
+        case "motion":
+            return "모션"
+        case "product":
+            return "제품"
+        case "media":
+            return "미디어"
         case "interior":
-            return "인테리어"
+            return "실내"
+        case "space":
+            return "무대"
+        case "director":
+            return "디렉터"
+        case "art":
+            return "아트"
+
         default:
             return ""
         }
