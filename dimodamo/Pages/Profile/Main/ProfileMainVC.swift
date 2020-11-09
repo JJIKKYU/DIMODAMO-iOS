@@ -59,6 +59,9 @@ class ProfileMainVC: UIViewController {
         dimoCollectionViewSetting()
         settingTableView()
 
+        /*
+         유저 프로필 세팅
+         */
         viewModel.profileSetting
             .subscribeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] typeString in
@@ -68,6 +71,21 @@ class ProfileMainVC: UIViewController {
                     self?.navProfileBtn.setImage(UIImage(named: "24_Profile_\(typeString)"), for: .normal)
                 } else {
                     
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        /*
+         디모인
+         */
+        viewModel.dimoPeopleArrIsLoading
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] flag in
+                if flag == false {
+                    print("디모인을 로딩중입니다.")
+                } else {
+                    print("디모인 로딩이 완료되어 컬렉션 뷰를 리로딩 합니다.")
+                    self?.dimoCollectionView.reloadData()
                 }
             })
             .disposed(by: disposeBag)
@@ -119,11 +137,23 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return viewModel.dimoPeopleArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DimoPeopleCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DimoPeopleCell", for: indexPath) as! DimoPeopleCell
+        
+        let index = indexPath.row
+        let dimoArr = viewModel.dimoPeopleArr
+        
+        cell.nickname.text = dimoArr[index].nickname
+        cell.profile.image = dimoArr[index].getProfileImage()
+        cell.topContainer.backgroundColor = dimoArr[index].getBackgroundColor()
+        cell.typeImage.image = dimoArr[index].getTypeImage()
+        
+        for (index, tag) in cell.tags.enumerated() {
+            tag.text = Interest.getWordFromString(from: dimoArr[index].interests[index])
+        }
         
         return cell
     }

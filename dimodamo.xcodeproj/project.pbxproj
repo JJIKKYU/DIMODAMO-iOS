@@ -87,6 +87,7 @@
 		98A661E7252F2C0000698BA0 /* FindEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A661E6252F2C0000698BA0 /* FindEmailViewController.swift */; };
 		98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A661E9252F2C1000698BA0 /* FindPWViewController.swift */; };
 		98A661ED252F2F2B00698BA0 /* FindEmailPWPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A661EC252F2F2B00698BA0 /* FindEmailPWPageViewController.swift */; };
+		98A860C32558D9A300F921AA /* ProfileMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A860C22558D9A300F921AA /* ProfileMainModel.swift */; };
 		98A8B7BC25345BDC00351FD5 /* Onboarding_1_type.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B7B825345BDC00351FD5 /* Onboarding_1_type.json */; };
 		98A8B7BD25345BDC00351FD5 /* Onboarding_4_manito.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B7B925345BDC00351FD5 /* Onboarding_4_manito.json */; };
 		98A8B7BE25345BDC00351FD5 /* Onboarding_2_room.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8B7BA25345BDC00351FD5 /* Onboarding_2_room.json */; };
@@ -272,6 +273,7 @@
 		98A661E6252F2C0000698BA0 /* FindEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailViewController.swift; sourceTree = "<group>"; };
 		98A661E9252F2C1000698BA0 /* FindPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewController.swift; sourceTree = "<group>"; };
 		98A661EC252F2F2B00698BA0 /* FindEmailPWPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWPageViewController.swift; sourceTree = "<group>"; };
+		98A860C22558D9A300F921AA /* ProfileMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainModel.swift; sourceTree = "<group>"; };
 		98A8B7B825345BDC00351FD5 /* Onboarding_1_type.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Onboarding_1_type.json; path = dimodamo/lottie/Intro/Onboarding_1_type.json; sourceTree = SOURCE_ROOT; };
 		98A8B7B925345BDC00351FD5 /* Onboarding_4_manito.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Onboarding_4_manito.json; path = dimodamo/lottie/Intro/Onboarding_4_manito.json; sourceTree = SOURCE_ROOT; };
 		98A8B7BA25345BDC00351FD5 /* Onboarding_2_room.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Onboarding_2_room.json; path = dimodamo/lottie/Intro/Onboarding_2_room.json; sourceTree = SOURCE_ROOT; };
@@ -1115,6 +1117,7 @@
 			children = (
 				98D988EB255248CE002A8AC5 /* ProfileMainVC.swift */,
 				98D988EF255248FA002A8AC5 /* ProfileMainViewModel.swift */,
+				98A860C22558D9A300F921AA /* ProfileMainModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1503,6 +1506,7 @@
 				98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,
+				98A860C32558D9A300F921AA /* ProfileMainModel.swift in Sources */,
 				988377EB2544B49E00BFA746 /* CommentModel.swift in Sources */,
 				98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,

@@ -65,6 +65,16 @@ class DamoPeopleCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var rankingLabel: UILabel!
+    @IBOutlet weak var commentHeartIcon: UIImageView!
+    @IBOutlet weak var commentHeartCount: UILabel!
+    
+    @IBOutlet weak var scrapIcon: UIImageView!
+    @IBOutlet weak var scrapCount: UILabel!
+    
+    @IBOutlet weak var manitoIcon: UIImageView!
+    @IBOutlet weak var manitoCount: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

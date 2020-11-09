@@ -39,7 +39,7 @@ class DimoPeopleCell: UICollectionViewCell {
     
     @IBOutlet weak var nickname: UILabel!
     
-    @IBOutlet weak var tpyeImage: UIImageView!
+    @IBOutlet weak var typeImage: UIImageView!
     
     @IBOutlet var tags: [UILabel]! {
         didSet {
