@@ -13,6 +13,8 @@ import RxRelay
 
 class ProfileDptiResultViewModel {
     
+    let typeRelay = BehaviorRelay<String>(value: "M_TI")
+    
     var resultTypes : [[String : Any]] = []
     
     var type : String = "M_TI"
@@ -32,22 +34,31 @@ class ProfileDptiResultViewModel {
     lazy var todoDesc = resultObservable.map { $0.todo }
     
     lazy var colorHex = resultObservable.map { UIColor(hexString: $0.colorHex) }
+
+    var disposeBag = DisposeBag()
     
     init() {
-        setTypeGender()
+        self.typeRelay
+            .subscribe(onNext: { [weak self] type in
+                //type이 정상적으로 넘어왔을 경우
+                if type != "" || type.count != 0 {
+                    self?.setTypeGender(type: type)
+                }
+                
+            })
+            .disposed(by: disposeBag)
+        
+        
     }
     
-    func setTypeGender() {
+    func setTypeGender(type: String) {
         
-        let userDefaults = UserDefaults.standard
-        let userDefaultsType = userDefaults.string(forKey: "dpti") ?? "M_TI"
-        
-        let onlyType: String = userDefaultsType.components(separatedBy: "_")[1]
-        let onlyGender: String = userDefaultsType.components(separatedBy: "_")[0]
+        let onlyType: String = type.components(separatedBy: "_")[1]
+        let onlyGender: String = type.components(separatedBy: "_")[0]
         
         self.type = onlyType
         self.gender = onlyGender
-        self.typeGenderForLottie.accept(userDefaultsType)
+        self.typeGenderForLottie.accept(type)
         
         print("type = \(self.type), gender = \(self.gender)")
        

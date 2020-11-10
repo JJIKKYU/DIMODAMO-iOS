@@ -230,7 +230,8 @@ class MyProfileVC: UIViewController {
         
         switch segue.identifier {
         case "MyDptiVC":
-            let destinationVC = destination
+            let destinationVC = destination as! ProfileDptiResultVC
+            destinationVC.viewModel.typeRelay.accept(self.viewModel.getUserType())
             break
             
         case "ArchiveVC":

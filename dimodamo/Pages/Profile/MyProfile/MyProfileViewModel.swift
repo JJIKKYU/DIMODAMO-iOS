@@ -33,7 +33,6 @@ class MyProfileViewModel {
                 if uid != "" || uid.count != 0 {
                     print("uid가 넘어와서 세팅합니다 \(uid)")
                     self.userSetting(userUID: uid)
-                    self.isMyProfile()
                 } else {
                     print("uid가 정상적으로 넘어오지 않았습니다.")
                 }
@@ -41,15 +40,8 @@ class MyProfileViewModel {
             .disposed(by: disposeBag)
     }
     
-    func getUserType() {
-        
-        guard let userNickname = UserDefaults.standard.string(forKey: "nickname"),
-              let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_TI" else {
-            return
-        }
-        
-        self.userNickname = userNickname
-        profileSetting.accept(type)
+    func getUserType() -> String {
+        return self.userProfileData.value.dpti
     }
     
     func userSetting(userUID: String) {
