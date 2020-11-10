@@ -62,6 +62,8 @@ class ProfileMainViewModel {
                         let data = document.data()
                         let dimoPeopleData = DimoPeople()
                         
+                        dimoPeopleData.uid = document.documentID
+                        
                         if let dptiType: String = data["dpti"] as? String {
                             dimoPeopleData.dpti = dptiType
                         }
@@ -104,6 +106,8 @@ class ProfileMainViewModel {
                     for document in querySnapshot!.documents {
                         let data = document.data()
                         let dimoPeopleData = DimoPeople()
+                        
+                        dimoPeopleData.uid = document.documentID
                         
                         if let dptiType: String = data["dpti"] as? String {
                             dimoPeopleData.dpti = dptiType

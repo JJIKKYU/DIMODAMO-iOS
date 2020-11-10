@@ -18,6 +18,8 @@ class MyProfileViewModel {
     private let storage = Storage.storage().reference()
     private let db = Firestore.firestore()
     
+    let profileUID = BehaviorRelay<String>(value: "")
+    
     let profileSetting = BehaviorRelay<String>(value: "")
     let userProfileData = BehaviorRelay<UserProfileData>(value: UserProfileData())
     var userNickname: String = ""

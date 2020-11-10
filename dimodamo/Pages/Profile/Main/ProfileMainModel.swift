@@ -15,7 +15,14 @@ enum MedalKinds: Int {
     case manito = 2
 }
 
+enum DimoKinds: Int {
+    case dimo = 0
+    case hotDimo = 1
+    case myProfile = 2
+}
+
 class DimoPeople {
+    var uid: String = ""
     var rank: Int = 0
     var dpti: String = ""
     var nickname: String = ""

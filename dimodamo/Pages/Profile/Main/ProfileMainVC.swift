@@ -110,7 +110,7 @@ class ProfileMainVC: UIViewController {
      우측 상단에 있는 프로필 사진을 눌렀을 경우
      */
     @IBAction func pressedMyProfileBtn(_ sender: Any) {
-        performSegue(withIdentifier: "MyProfileVC", sender: sender)
+        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.myProfile.rawValue, sender])
     }
     
     /*
@@ -128,15 +128,44 @@ class ProfileMainVC: UIViewController {
     }
     
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let identifier = segue.identifier
+        
+        switch identifier {
+        case "MyProfileVC":
+            let senderData: [Int] = sender as! [Int]
+            let destination = segue.destination as! MyProfileVC
+            let arrIndex: Int = senderData[1] as Int
+            
+            var selectedUserUID: String?
+            
+            switch senderData[0] {
+            case DimoKinds.myProfile.rawValue:
+                return
+                
+            case DimoKinds.dimo.rawValue:
+                break
+                
+            case DimoKinds.hotDimo.rawValue:
+                selectedUserUID = viewModel.hotDimoPeopleArr[arrIndex].uid
+                break
+                
+            default:
+                break
+            }
+            
+            guard let UID = selectedUserUID else {
+                return
+            }
+            
+            destination.viewModel.profileUID.accept(UID)
+            
+            break
+        default:
+            break
+        }
     }
-    */
 
 }
 
@@ -170,6 +199,12 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = indexPath.row
+        
+        print(viewModel.dimoPeopleArr[index].uid)
     }
     
     func dimoCollectionViewSetting() {
@@ -279,18 +314,14 @@ extension ProfileMainVC: UITableViewDelegate, UITableViewDataSource {
             range: NSRange(location: stringLocation ,length:1))
         cell.rankingLabel.attributedText = lankMutableString
         
-        
-//        SFProDisplay-Semibold
-//        AppleSDGothicNeoEB00
-        
-//        for family in UIFont.familyNames {
-//                print("family:", family)
-//                for font in UIFont.fontNames(forFamilyName: family) {
-//                    print("font:", font)
-//                }
-//            }
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        
+        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.hotDimo.rawValue, index])
+//        print(viewModel.hotDimoPeopleArr[index].uid)
     }
     
     
