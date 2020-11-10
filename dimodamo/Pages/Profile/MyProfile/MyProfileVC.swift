@@ -167,19 +167,6 @@ class MyProfileVC: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-        
-        
-        /*
-         자신의 프로필인지, 상대방의 프로필인지 체크하고자 함
-         그에 따라서 긁어오는 데이터가 달라짐
-         */
-//        viewModel.profileUID
-//            .subscribeOn(MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] uid in
-//                print("### UID가 넘어왔습니다 : \(uid)")
-//            })
-//            .disposed(by: disposeBag)
-        
     }
     
     
@@ -223,6 +210,7 @@ class MyProfileVC: UIViewController {
     @IBAction func pressedMessageBtn(_ sender: Any) {
         performSegue(withIdentifier: "MessageVC", sender: sender)
     }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -244,5 +232,4 @@ class MyProfileVC: UIViewController {
             break
         }
     }
-    
 }

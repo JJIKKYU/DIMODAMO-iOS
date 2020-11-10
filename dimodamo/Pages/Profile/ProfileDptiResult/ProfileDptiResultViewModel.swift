@@ -47,8 +47,6 @@ class ProfileDptiResultViewModel {
                 
             })
             .disposed(by: disposeBag)
-        
-        
     }
     
     func setTypeGender(type: String) {

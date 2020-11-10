@@ -8,8 +8,15 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class HotDimoPeopleVC: UIViewController {
     
+    let viewModel = HotDimoPeopleViewModel()
+    var disposeBag = DisposeBag()
+    
+    @IBOutlet weak var tableViewTopContainer: UIView!
     @IBOutlet weak var filterButtonContainer: UIView! {
         didSet {
             filterButtonContainer.layer.cornerRadius = 4
@@ -17,6 +24,7 @@ class HotDimoPeopleVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var filterBtnArrow: UIImageView!
     let aspectWidth = (304 / 414) * UIScreen.main.bounds.width
     @IBOutlet var stackViews: [UIStackView]! {
         didSet {
@@ -27,8 +35,6 @@ class HotDimoPeopleVC: UIViewController {
             
         }
     }
-    
-    
     
     /*
      Sahdow Setting
@@ -75,10 +81,36 @@ class HotDimoPeopleVC: UIViewController {
         tableView.dataSource =  self
         settingTableView()
         
-        // Do any additional setup after loading the view.
+        for index in 0...3 {
+            buttons[index].rx.tap
+                .scan(false) { lastValue, _ in
+                    return !lastValue
+                }
+                .bind(to: buttons[index].rx.isSelected)
+                .disposed(by: disposeBag)
+        }
+        
     }
     
 
+    @IBAction func pressedFilterBtn(_ sender: Any) {
+        print("pressedFilterBtn")
+        
+        switch viewModel.isTurnOnFilter {
+        
+        // 이미 필터가 켜져있을 경우
+        case true:
+            self.filter(isTurnOn: false)
+            break
+            
+        // 필터가 꺼져있을 경우
+        case false:
+            self.filter(isTurnOn: true)
+            break
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -90,6 +122,46 @@ class HotDimoPeopleVC: UIViewController {
     */
 
 }
+
+//MARK: - FilterBtnAction
+extension HotDimoPeopleVC {
+    func filter(isTurnOn: Bool) {
+        let turnOnHeight: CGFloat = 200
+        let turnOffHeight: CGFloat = 460
+        
+        var newHaderViewFrame = tableView.tableHeaderView!.frame
+        switch isTurnOn {
+        case true:
+            newHaderViewFrame.size.height = turnOnHeight
+            self.filterContainer.isHidden = true
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.filterBtnArrow.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+            }
+            print("true")
+            break
+            
+        case false:
+            newHaderViewFrame.size.height = turnOffHeight
+            self.filterContainer.isHidden = false
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.filterBtnArrow.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
+            }
+            
+            print("false")
+            break
+        }
+        
+        let tableHeaderView = tableView.tableHeaderView
+        
+        // 애니메이션을 넣으려면 여기로
+        tableHeaderView!.frame = newHaderViewFrame
+        self.tableView.tableHeaderView = tableHeaderView
+        
+        viewModel.isTurnOnFilter = isTurnOn
+    }
+}
+
+//MARK: - TableView
 
 extension HotDimoPeopleVC: UITableViewDelegate, UITableViewDataSource {
     func settingTableView() {

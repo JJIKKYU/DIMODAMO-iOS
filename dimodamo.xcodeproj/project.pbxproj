@@ -110,6 +110,8 @@
 		98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA3FE725198E2D00788486 /* ClauseViewController.swift */; };
 		98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C0D57B25490A6700BE382D /* ArticleViewModel.swift */; };
 		98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1663A252729C50080DD87 /* Service1DetailViewController.swift */; };
+		98C3437E255B0C5D00E77463 /* DimoPeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C3437D255B0C5D00E77463 /* DimoPeopleViewModel.swift */; };
+		98C34381255B0D0600E77463 /* HotDimoPeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34380255B0D0600E77463 /* HotDimoPeopleViewModel.swift */; };
 		98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */; };
 		98C42313251D7CCE00B2B194 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C42312251D7CCE00B2B194 /* Register.swift */; };
 		98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C42317251DFFA600B2B194 /* RegisterInterestViewController.swift */; };
@@ -298,6 +300,8 @@
 		98C0D57B25490A6700BE382D /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		98C1622D2513680F000CAC43 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C1663A252729C50080DD87 /* Service1DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service1DetailViewController.swift; sourceTree = "<group>"; };
+		98C3437D255B0C5D00E77463 /* DimoPeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoPeopleViewModel.swift; sourceTree = "<group>"; };
+		98C34380255B0D0600E77463 /* HotDimoPeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotDimoPeopleViewModel.swift; sourceTree = "<group>"; };
 		98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStyleGuide.swift; sourceTree = "<group>"; };
 		98C42312251D7CCE00B2B194 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		98C42317251DFFA600B2B194 /* RegisterInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInterestViewController.swift; sourceTree = "<group>"; };
@@ -594,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				984FA8FE2555902500D4F506 /* DimoPeopleVC.swift */,
+				98C3437D255B0C5D00E77463 /* DimoPeopleViewModel.swift */,
 			);
 			path = DimoPeople;
 			sourceTree = "<group>";
@@ -602,6 +607,7 @@
 			isa = PBXGroup;
 			children = (
 				984FA9032555966400D4F506 /* HotDimoPeopleVC.swift */,
+				98C34380255B0D0600E77463 /* HotDimoPeopleViewModel.swift */,
 			);
 			path = HotDimoPeople;
 			sourceTree = "<group>";
@@ -1509,6 +1515,7 @@
 				98F8C84F254CA9C100FDDEBF /* InformationSearchVC.swift in Sources */,
 				98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
+				98C34381255B0D0600E77463 /* HotDimoPeopleViewModel.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,
 				98A860C32558D9A300F921AA /* ProfileMainModel.swift in Sources */,
 				988377EB2544B49E00BFA746 /* CommentModel.swift in Sources */,
@@ -1520,6 +1527,7 @@
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
 				98FA225925571FA300331755 /* MyProfileModel.swift in Sources */,
 				988377F92545C41F00BFA746 /* CreatePostViewModel.swift in Sources */,
+				98C3437E255B0C5D00E77463 /* DimoPeopleViewModel.swift in Sources */,
 				98FA226A2558040000331755 /* AllDptiViewModel.swift in Sources */,
 				98AFDA502539CD7900B0D88F /* CommunityMainViewModel.swift in Sources */,
 				984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */,
