@@ -24,9 +24,21 @@ class MyProfileViewModel {
     let userProfileData = BehaviorRelay<UserProfileData>(value: UserProfileData())
     var userNickname: String = ""
     
+    var disposeBag = DisposeBag()
+    
     init() {
-        self.getUserType()
-        self.userSetting()
+        profileUID
+            .subscribe(onNext: { uid in
+                // uid가 정상적으로 들어왔을 경우 세팅하도록
+                if uid != "" || uid.count != 0 {
+                    print("uid가 넘어와서 세팅합니다 \(uid)")
+                    self.userSetting(userUID: uid)
+                    self.isMyProfile()
+                } else {
+                    print("uid가 정상적으로 넘어오지 않았습니다.")
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func getUserType() {
@@ -40,11 +52,7 @@ class MyProfileViewModel {
         profileSetting.accept(type)
     }
     
-    func userSetting() {
-        guard let userUID = Auth.auth().currentUser?.uid else {
-            return
-        }
-        
+    func userSetting(userUID: String) {
         db.collection("users")
             .document("\(userUID)")
             .getDocument { [weak self] (document, err) in
@@ -55,6 +63,12 @@ class MyProfileViewModel {
                     
                     if let nickname = data!["nickName"] as? String {
                         newUserProfile.nickname = nickname
+                        self?.userNickname = nickname
+                    }
+                    
+                    if let type = data!["dpti"] as? String {
+                        newUserProfile.dpti = type
+                        self?.profileSetting.accept(type)
                     }
                     
                     if let createdAt = data!["created_at"] as? String {
@@ -87,5 +101,19 @@ class MyProfileViewModel {
                 
                 
             }
+    }
+    
+    // 내 프로필일 경우에는 쪽지 보내기 버튼을 비활성화 하기 위해서
+    func isMyProfile() -> Bool {
+        let uid = profileUID.value
+        let myUID = Auth.auth().currentUser!.uid
+        
+        if uid == myUID {
+            print("내 프로필 입니다.")
+            return true
+        } else {
+            print("내 프로필이 아닙니다.")
+            return false
+        }
     }
 }

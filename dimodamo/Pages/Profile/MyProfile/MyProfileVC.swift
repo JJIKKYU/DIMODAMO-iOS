@@ -158,6 +158,13 @@ class MyProfileVC: UIViewController {
                     tag.text = "\(data.interests[index])"
                     tag.text = "\(Interest.getWordFromString(from: data.interests[index]))"
                 }
+                
+                // 내 프로필일 경우에 쪽지 보내기 비활성화
+                if self?.viewModel.isMyProfile() == true {
+                    self?.messageBtn.isHidden = true
+                } else {
+                    self?.messageBtn.isHidden = false
+                }
             })
             .disposed(by: disposeBag)
         
@@ -166,12 +173,12 @@ class MyProfileVC: UIViewController {
          자신의 프로필인지, 상대방의 프로필인지 체크하고자 함
          그에 따라서 긁어오는 데이터가 달라짐
          */
-        viewModel.profileUID
-            .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] uid in
-                print("### UID가 넘어왔습니다 : \(uid)")
-            })
-            .disposed(by: disposeBag)
+//        viewModel.profileUID
+//            .subscribeOn(MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] uid in
+//                print("### UID가 넘어왔습니다 : \(uid)")
+//            })
+//            .disposed(by: disposeBag)
         
     }
     

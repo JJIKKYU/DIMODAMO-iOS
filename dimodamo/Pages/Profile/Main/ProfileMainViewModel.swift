@@ -19,6 +19,7 @@ class ProfileMainViewModel {
     private let db = Firestore.firestore()
     
     let profileSetting = BehaviorRelay<String>(value: "")
+    let userUID: String = Auth.auth().currentUser!.uid
     
     /*
      디모인
@@ -41,6 +42,16 @@ class ProfileMainViewModel {
     func getUserType() {
         let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_TI"
         profileSetting.accept(type)
+    }
+    
+    func myDptiType() -> String {
+        let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_TI"
+        return type
+    }
+    
+    func myNickname() -> String {
+        let nickname = UserDefaults.standard.string(forKey: "nickname") ?? "익명"
+        return nickname
     }
     
     func loadDimoPeople() {

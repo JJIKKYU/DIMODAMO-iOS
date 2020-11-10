@@ -11,6 +11,7 @@ import Foundation
 class UserProfileData {
     var nickname: String = ""
     var createdAt: String = ""
+    var dpti: String = ""
     var commentHeartCount: Int = 0
     var manitoGoodCount: Int = 0
     var scrapCount: Int = 0

@@ -110,7 +110,7 @@ class ProfileMainVC: UIViewController {
      우측 상단에 있는 프로필 사진을 눌렀을 경우
      */
     @IBAction func pressedMyProfileBtn(_ sender: Any) {
-        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.myProfile.rawValue, sender])
+        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.myProfile.rawValue, -1])
     }
     
     /*
@@ -142,13 +142,19 @@ class ProfileMainVC: UIViewController {
             
             switch senderData[0] {
             case DimoKinds.myProfile.rawValue:
-                return
+                print(viewModel.userUID)
+                selectedUserUID = viewModel.userUID
+                destination.viewModel.profileSetting.accept(viewModel.myDptiType())
+                destination.viewModel.userNickname = viewModel.myNickname()
+                break
                 
             case DimoKinds.dimo.rawValue:
                 break
                 
             case DimoKinds.hotDimo.rawValue:
                 selectedUserUID = viewModel.hotDimoPeopleArr[arrIndex].uid
+                destination.viewModel.profileSetting.accept(viewModel.hotDimoPeopleArr[arrIndex].dpti)
+                destination.viewModel.userNickname = viewModel.hotDimoPeopleArr[arrIndex].nickname
                 break
                 
             default:
