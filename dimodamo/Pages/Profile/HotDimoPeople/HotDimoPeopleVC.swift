@@ -25,7 +25,6 @@ class HotDimoPeopleVC: UIViewController {
     }
     
     @IBOutlet weak var filterBtnArrow: UIImageView!
-    let aspectWidth = (304 / 414) * UIScreen.main.bounds.width
     @IBOutlet var stackViews: [UIStackView]! {
         didSet {
             for stackView in stackViews {
@@ -39,19 +38,26 @@ class HotDimoPeopleVC: UIViewController {
     /*
      Sahdow Setting
      */
+    let aspectWidth = (304 / 414) * UIScreen.main.bounds.width
+    let spacing: CGFloat = UIScreen.main.bounds.width / 26
     @IBOutlet var buttons: [UIButton]! {
         didSet {
-            let spacing = UIScreen.main.bounds.width / 25.875
-            let cellWidthHeight = (Int(aspectWidth) - (Int(spacing) * 3)) / 4
+            let cellWidthHeight = (aspectWidth - spacing * 3) / 4
             
             for btn in buttons {
+                
                 btn.appShadow(.s4)
                 
-                btn.widthAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
-                btn.heightAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
+                // 마지막 버튼일 경우
+                if btn.tag == 20 {
+                    let height = cellWidthHeight * 0.4375
+
+                    btn.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
+                } else {
+                    btn.widthAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
+                    btn.heightAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
+                }
                 
-                // 마지막 버튼은 필요 없음
-                if btn.tag == 20 { continue }
             }
         }
     }
@@ -81,7 +87,7 @@ class HotDimoPeopleVC: UIViewController {
         tableView.dataSource =  self
         settingTableView()
         
-        for index in 0...3 {
+        for index in 0...8 {
             buttons[index].rx.tap
                 .scan(false) { lastValue, _ in
                     return !lastValue

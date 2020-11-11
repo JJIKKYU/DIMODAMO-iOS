@@ -2,38 +2,84 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Friend Main View Controller-->
+        <!--마니또-->
         <scene sceneID="B4f-k8-iT8">
             <objects>
-                <viewController storyboardIdentifier="FriendsMain" id="BF0-Ay-AlH" customClass="FriendMainViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BF0-Ay-AlH" customClass="FriendMainViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KL9-Ba-kI7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Og-8Y-U0J">
-                                <rect key="frame" x="186" y="438" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UQ5-JE-Cyh">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ffu-2j-sVZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
+                        <constraints>
+                            <constraint firstItem="ffu-2j-sVZ" firstAttribute="trailing" secondItem="UQ5-JE-Cyh" secondAttribute="trailing" id="1ix-Eq-KE4"/>
+                            <constraint firstItem="UQ5-JE-Cyh" firstAttribute="top" secondItem="ffu-2j-sVZ" secondAttribute="top" id="BAY-tu-fxR"/>
+                            <constraint firstItem="UQ5-JE-Cyh" firstAttribute="leading" secondItem="ffu-2j-sVZ" secondAttribute="leading" id="aDH-zu-Ul0"/>
+                            <constraint firstItem="ffu-2j-sVZ" firstAttribute="bottom" secondItem="UQ5-JE-Cyh" secondAttribute="bottom" id="ozi-L9-SNF"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="마니또" id="vRH-7i-ynd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKM-AP-vN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410" y="19"/>
+            <point key="canvasLocation" x="1136" y="-98"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LsJ-Fn-ydo">
+            <objects>
+                <navigationController storyboardIdentifier="FriendsMain" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WJQ-mb-k2z" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="friend" selectedImage="friendSelected" id="Guc-SB-kp0"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="gbd-sv-LRo">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="GRAY - 210"/>
+                        <color key="barTintColor" name="WHITE"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                            <color key="textColor" name="TEXT - BIG"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="36"/>
+                            <color key="textColor" name="TEXT - BIG"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BF0-Ay-AlH" kind="relationship" relationship="rootViewController" id="4Ey-1M-AZP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ed-E6-Ipr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="429" y="-98"/>
         </scene>
     </scenes>
     <resources>
+        <image name="friend" width="20" height="20"/>
+        <image name="friendSelected" width="20" height="20"/>
+        <namedColor name="GRAY - 210">
+            <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TEXT - BIG">
+            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WHITE">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

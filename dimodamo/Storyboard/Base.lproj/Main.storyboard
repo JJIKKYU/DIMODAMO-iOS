@@ -98,7 +98,7 @@
                         <segue destination="U1X-jK-vjF" kind="relationship" relationship="viewControllers" id="abQ-H6-mIm"/>
                         <segue destination="qLm-Nf-Sq2" kind="relationship" relationship="viewControllers" id="Rnh-3x-kM2"/>
                         <segue destination="XIB-mF-kLE" kind="relationship" relationship="viewControllers" id="tcD-fx-gsr"/>
-                        <segue destination="JdQ-p9-eVX" kind="relationship" relationship="viewControllers" id="Pqh-hr-bic"/>
+                        <segue destination="XqL-PQ-a9k" kind="relationship" relationship="viewControllers" id="UbP-rR-xFz"/>
                         <segue destination="I0M-G3-KAm" kind="relationship" relationship="viewControllers" id="y1c-ki-BlT"/>
                     </connections>
                 </tabBarController>
@@ -144,43 +144,15 @@
             </objects>
             <point key="canvasLocation" x="3701" y="2054"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="43V-lL-NmY">
-            <objects>
-                <viewController id="JdQ-p9-eVX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lt0-51-UyK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Zx-di-OqX">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <connections>
-                                    <segue destination="XqL-PQ-a9k" kind="embed" id="q9N-hH-Vr2"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="lHH-3C-3dt"/>
-                        <color key="backgroundColor" name="WHITE"/>
-                        <constraints>
-                            <constraint firstItem="lHH-3C-3dt" firstAttribute="bottom" secondItem="3Zx-di-OqX" secondAttribute="bottom" id="U4x-F1-3BC"/>
-                            <constraint firstItem="lHH-3C-3dt" firstAttribute="trailing" secondItem="3Zx-di-OqX" secondAttribute="trailing" id="c5Y-iu-Ir9"/>
-                            <constraint firstItem="3Zx-di-OqX" firstAttribute="top" secondItem="lHH-3C-3dt" secondAttribute="top" id="qAX-2l-O3c"/>
-                            <constraint firstItem="3Zx-di-OqX" firstAttribute="leading" secondItem="lHH-3C-3dt" secondAttribute="leading" id="xnC-y5-VAj"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="friend" selectedImage="friendSelected" id="xTT-7B-bYF"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J70-zy-zI8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3142" y="1604"/>
-        </scene>
         <!--FriendsMain-->
         <scene sceneID="gTA-L5-X7e">
             <objects>
-                <viewControllerPlaceholder storyboardName="Friends" referencedIdentifier="FriendsMain" id="XqL-PQ-a9k" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Friends" referencedIdentifier="FriendsMain" id="XqL-PQ-a9k" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="LYK-cO-UyX"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZBY-GI-omp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3701" y="1604"/>
+            <point key="canvasLocation" x="1882" y="579"/>
         </scene>
         <!--ProfileMain-->
         <scene sceneID="f6V-kK-FsI">
@@ -208,8 +180,6 @@
         <image name="classRoomSelected" width="20" height="20"/>
         <image name="community" width="20" height="20"/>
         <image name="communitySelected" width="20" height="20"/>
-        <image name="friend" width="20" height="20"/>
-        <image name="friendSelected" width="20" height="20"/>
         <image name="home" width="20" height="20"/>
         <image name="homeSelected" width="20" height="20"/>
         <namedColor name="BLUE - DARK">

@@ -50,18 +50,14 @@ class DimoPeopleVC: UIViewController {
                 btn.appShadow(.s4)
                 
                 // 마지막 버튼일 경우
-//                if btn.tag == 20 {
-//                    let height = cellWidthHeight * 0.4375
-//
-//                    btn.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
-//                } else {
-//                    btn.widthAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
-//                    btn.heightAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
-//                }
-                
-                
-                
-                
+                if btn.tag == 20 {
+                    let height = cellWidthHeight * 0.4375
+
+                    btn.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
+                } else {
+                    btn.widthAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
+                    btn.heightAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
+                }
                 
             }
         }
