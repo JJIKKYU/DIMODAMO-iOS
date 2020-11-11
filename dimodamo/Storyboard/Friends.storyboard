@@ -8,34 +8,185 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoEB.ttf">
+            <string>AppleSDGothicNeoEB00</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--마니또-->
         <scene sceneID="B4f-k8-iT8">
             <objects>
-                <viewController id="BF0-Ay-AlH" customClass="FriendMainViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BF0-Ay-AlH" customClass="FriendMainVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KL9-Ba-kI7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UQ5-JE-Cyh">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZN-k3-3wH">
+                                <rect key="frame" x="0.0" y="140" width="414" height="96"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRx-qw-90k" userLabel="UnderBar">
+                                        <rect key="frame" x="24.5" y="66" width="78" height="4"/>
+                                        <color key="backgroundColor" name="SYSTEM"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="78" id="WzR-sj-k3l"/>
+                                            <constraint firstAttribute="height" constant="4" id="mtE-iM-SkD"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEa-wz-ezh">
+                                        <rect key="frame" x="24" y="37" width="79" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="oX0-LV-mWL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="21"/>
+                                        <state key="normal" title="내 마니또">
+                                            <color key="titleColor" name="TEXT - SMALL"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd3-9y-pwi">
+                                        <rect key="frame" x="119" y="37" width="55" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="OXR-gA-Lco"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="21"/>
+                                        <state key="normal" title="쪽지함">
+                                            <color key="titleColor" name="WHITE - 235"/>
+                                        </state>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kq0-ak-6gf">
+                                        <rect key="frame" x="20" y="94" width="374" height="2"/>
+                                        <color key="backgroundColor" name="WHITE - 245"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="Hut-qw-JWi"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="WHITE"/>
+                                <constraints>
+                                    <constraint firstItem="Dd3-9y-pwi" firstAttribute="centerY" secondItem="fEa-wz-ezh" secondAttribute="centerY" id="1Jc-DL-TRw"/>
+                                    <constraint firstItem="fRx-qw-90k" firstAttribute="top" secondItem="fEa-wz-ezh" secondAttribute="bottom" constant="4" id="7oK-WF-uNu"/>
+                                    <constraint firstItem="Dd3-9y-pwi" firstAttribute="leading" secondItem="fEa-wz-ezh" secondAttribute="trailing" constant="16" id="B3h-2H-655"/>
+                                    <constraint firstItem="fEa-wz-ezh" firstAttribute="top" secondItem="RZN-k3-3wH" secondAttribute="top" constant="37" id="Gph-xI-AUd"/>
+                                    <constraint firstItem="kq0-ak-6gf" firstAttribute="leading" secondItem="RZN-k3-3wH" secondAttribute="leading" constant="20" id="VNR-Hb-f1j"/>
+                                    <constraint firstItem="fEa-wz-ezh" firstAttribute="leading" secondItem="RZN-k3-3wH" secondAttribute="leading" constant="24" id="Vde-A2-P6C"/>
+                                    <constraint firstAttribute="height" constant="96" id="YNn-zm-UYU"/>
+                                    <constraint firstAttribute="bottom" secondItem="kq0-ak-6gf" secondAttribute="bottom" id="hfi-sb-o2i"/>
+                                    <constraint firstAttribute="trailing" secondItem="kq0-ak-6gf" secondAttribute="trailing" constant="20" id="ini-S0-h5g"/>
+                                    <constraint firstItem="fRx-qw-90k" firstAttribute="centerX" secondItem="fEa-wz-ezh" secondAttribute="centerX" id="mpv-p9-rMV"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VuF-KR-fVO">
+                                <rect key="frame" x="0.0" y="236" width="414" height="577"/>
+                                <color key="backgroundColor" name="WHITE"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyManitoCell" rowHeight="98" id="ib7-Ts-60F">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="98"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ib7-Ts-60F" id="pkY-pS-fRa">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="24_Profile_F_PE" translatesAutoresizingMaskIntoConstraints="NO" id="O4f-Nq-qbC">
+                                                    <rect key="frame" x="24" y="16" width="56" height="56"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="56" id="ewp-En-fiy"/>
+                                                        <constraint firstAttribute="height" constant="56" id="quX-Bn-wGD"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사는게쉽지않네" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vue-GV-co9">
+                                                    <rect key="frame" x="96" y="16" width="85" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="14"/>
+                                                    <color key="textColor" name="YELLOW - DARK"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kh-b7-ouy">
+                                                    <rect key="frame" x="96" y="43" width="229" height="35.5"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="안녕하세요~! 반갑습니다! 마니또 요청 받아드릴게요! 잠시만요~!">
+                                                            <attributes>
+                                                                <color key="NSColor" name="TEXT - SMALL"/>
+                                                                <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEu-Lm-v8c">
+                                                    <rect key="frame" x="24" y="97" width="366" height="1"/>
+                                                    <color key="backgroundColor" name="WHITE - 245"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="xHb-4F-hm5"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" name="WHITE"/>
+                                            <constraints>
+                                                <constraint firstItem="O4f-Nq-qbC" firstAttribute="top" secondItem="pkY-pS-fRa" secondAttribute="top" constant="16" id="8Co-4B-eTg"/>
+                                                <constraint firstItem="vue-GV-co9" firstAttribute="top" secondItem="pkY-pS-fRa" secondAttribute="top" constant="16" id="Hxh-9Z-0io"/>
+                                                <constraint firstItem="rEu-Lm-v8c" firstAttribute="leading" secondItem="pkY-pS-fRa" secondAttribute="leading" constant="24" id="IJT-LA-fmp"/>
+                                                <constraint firstItem="4Kh-b7-ouy" firstAttribute="top" secondItem="vue-GV-co9" secondAttribute="bottom" constant="8" symbolic="YES" id="OJh-d6-WO0"/>
+                                                <constraint firstItem="O4f-Nq-qbC" firstAttribute="leading" secondItem="pkY-pS-fRa" secondAttribute="leading" constant="24" id="YCB-gK-sWl"/>
+                                                <constraint firstItem="vue-GV-co9" firstAttribute="leading" secondItem="O4f-Nq-qbC" secondAttribute="trailing" constant="16" id="dQ0-nQ-6Dw"/>
+                                                <constraint firstAttribute="trailing" secondItem="rEu-Lm-v8c" secondAttribute="trailing" constant="24" id="g7F-fb-8bv"/>
+                                                <constraint firstAttribute="bottom" secondItem="rEu-Lm-v8c" secondAttribute="bottom" id="ocT-F4-Fxd"/>
+                                                <constraint firstItem="4Kh-b7-ouy" firstAttribute="leading" secondItem="vue-GV-co9" secondAttribute="leading" id="uim-p0-xfH"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Kh-b7-ouy" secondAttribute="trailing" constant="89" id="xxb-Kj-K9o"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ffu-2j-sVZ"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
-                            <constraint firstItem="ffu-2j-sVZ" firstAttribute="trailing" secondItem="UQ5-JE-Cyh" secondAttribute="trailing" id="1ix-Eq-KE4"/>
-                            <constraint firstItem="UQ5-JE-Cyh" firstAttribute="top" secondItem="ffu-2j-sVZ" secondAttribute="top" id="BAY-tu-fxR"/>
-                            <constraint firstItem="UQ5-JE-Cyh" firstAttribute="leading" secondItem="ffu-2j-sVZ" secondAttribute="leading" id="aDH-zu-Ul0"/>
-                            <constraint firstItem="ffu-2j-sVZ" firstAttribute="bottom" secondItem="UQ5-JE-Cyh" secondAttribute="bottom" id="ozi-L9-SNF"/>
+                            <constraint firstItem="RZN-k3-3wH" firstAttribute="top" secondItem="ffu-2j-sVZ" secondAttribute="top" id="0G8-tv-pf8"/>
+                            <constraint firstItem="RZN-k3-3wH" firstAttribute="leading" secondItem="ffu-2j-sVZ" secondAttribute="leading" id="5Tr-c6-srz"/>
+                            <constraint firstItem="ffu-2j-sVZ" firstAttribute="trailing" secondItem="VuF-KR-fVO" secondAttribute="trailing" id="6vK-45-d4o"/>
+                            <constraint firstItem="VuF-KR-fVO" firstAttribute="top" secondItem="RZN-k3-3wH" secondAttribute="bottom" id="9bc-gj-Hgg"/>
+                            <constraint firstItem="VuF-KR-fVO" firstAttribute="leading" secondItem="ffu-2j-sVZ" secondAttribute="leading" id="PeL-Ac-MrG"/>
+                            <constraint firstItem="ffu-2j-sVZ" firstAttribute="bottom" secondItem="VuF-KR-fVO" secondAttribute="bottom" id="WZU-Zg-9B2"/>
+                            <constraint firstItem="ffu-2j-sVZ" firstAttribute="trailing" secondItem="RZN-k3-3wH" secondAttribute="trailing" id="zRV-ih-vhI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="마니또" id="vRH-7i-ynd"/>
+                    <navigationItem key="navigationItem" title="마니또" largeTitleDisplayMode="always" id="vRH-7i-ynd"/>
+                    <connections>
+                        <outlet property="manitoTableView" destination="VuF-KR-fVO" id="hs0-50-lTh"/>
+                        <segue destination="8Nx-F2-kf6" kind="show" identifier="ManitoChatVC" id="tPO-53-9hn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKM-AP-vN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1136" y="-98"/>
+            <point key="canvasLocation" x="1134.7826086956522" y="-98.4375"/>
+        </scene>
+        <!--내 마니또-->
+        <scene sceneID="uhh-rP-fIP">
+            <objects>
+                <viewController id="8Nx-F2-kf6" customClass="ManitoChatVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mr5-Ir-yQx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lQw-CB-pEm">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SMC-0u-WfC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lQw-CB-pEm" firstAttribute="leading" secondItem="SMC-0u-WfC" secondAttribute="leading" id="RgG-Gu-zJ4"/>
+                            <constraint firstItem="lQw-CB-pEm" firstAttribute="top" secondItem="SMC-0u-WfC" secondAttribute="top" id="hHm-mG-j2Z"/>
+                            <constraint firstItem="SMC-0u-WfC" firstAttribute="bottom" secondItem="lQw-CB-pEm" secondAttribute="bottom" id="jzm-gK-wIo"/>
+                            <constraint firstItem="SMC-0u-WfC" firstAttribute="trailing" secondItem="lQw-CB-pEm" secondAttribute="trailing" id="wpE-lO-s72"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="내 마니또" largeTitleDisplayMode="never" id="A1j-Iq-FDX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qfW-Zp-fZp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2322" y="-98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LsJ-Fn-ydo">
@@ -69,16 +220,32 @@
         </scene>
     </scenes>
     <resources>
+        <image name="24_Profile_F_PE" width="24" height="24"/>
         <image name="friend" width="20" height="20"/>
         <image name="friendSelected" width="20" height="20"/>
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="SYSTEM">
+            <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="TEXT - BIG">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="TEXT - SMALL">
+            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="WHITE">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WHITE - 235">
+            <color red="0.92199999094009399" green="0.92199999094009399" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WHITE - 245">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="YELLOW - DARK">
+            <color red="0.98000001907348633" green="0.74500000476837158" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

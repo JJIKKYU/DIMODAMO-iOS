@@ -25,7 +25,7 @@ class ProfileMainViewModel {
      디모인
      */
     var dimoPeopleArr: [DimoPeople] = []
-    let dimoPeopleArrIsLoading = BehaviorRelay<Bool>(value: false)
+    let dimoPeopleArrIsLoading = BehaviorRelay<Bool>(value: false)	
     
     /*
      핫한디모인

@@ -44,7 +44,7 @@
 		9863224525178773003B0784 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863224425178773003B0784 /* TestViewController.swift */; };
 		9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986322492517B814003B0784 /* TabBarViewController.swift */; };
 		9863224D2517B9AB003B0784 /* ClassRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9863224C2517B9AB003B0784 /* ClassRoom.storyboard */; };
-		986322562517BB81003B0784 /* FriendMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986322552517BB81003B0784 /* FriendMainViewController.swift */; };
+		986322562517BB81003B0784 /* FriendMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986322552517BB81003B0784 /* FriendMainVC.swift */; };
 		986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986908F72521AE8E00C844F1 /* AlertViewController.swift */; };
 		986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA072509C42600AD3CEE /* AppDelegate.swift */; };
 		986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA0D2509C42600AD3CEE /* Main.storyboard */; };
@@ -121,6 +121,7 @@
 		98C48B13250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */; };
 		98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */; };
 		98C48B1D250CF97E004E24E5 /* Survey.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B1C250CF97E004E24E5 /* Survey.json */; };
+		98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */; };
 		98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */; };
 		98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */; };
 		98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */; };
@@ -231,7 +232,7 @@
 		9863224425178773003B0784 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		986322492517B814003B0784 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9863224C2517B9AB003B0784 /* ClassRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClassRoom.storyboard; sourceTree = "<group>"; };
-		986322552517BB81003B0784 /* FriendMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMainViewController.swift; sourceTree = "<group>"; };
+		986322552517BB81003B0784 /* FriendMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMainVC.swift; sourceTree = "<group>"; };
 		986908F72521AE8E00C844F1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		986EDA042509C42600AD3CEE /* dimodamo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dimodamo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986EDA072509C42600AD3CEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +312,7 @@
 		98C48B0F250B9ED5004E24E5 /* NanumSquareRoundOTFR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFR.otf; sourceTree = "<group>"; };
 		98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewController.swift; sourceTree = "<group>"; };
 		98C48B1C250CF97E004E24E5 /* Survey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Survey.json; sourceTree = "<group>"; };
+		98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatVC.swift; sourceTree = "<group>"; };
 		98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewController.swift; sourceTree = "<group>"; };
 		98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewModel.swift; sourceTree = "<group>"; };
@@ -691,6 +693,7 @@
 		986322532517BB64003B0784 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
+				98C735A2255C46E200252BF2 /* Chat */,
 				986322542517BB73003B0784 /* Main */,
 			);
 			path = Friend;
@@ -699,7 +702,7 @@
 		986322542517BB73003B0784 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				986322552517BB81003B0784 /* FriendMainViewController.swift */,
+				986322552517BB81003B0784 /* FriendMainVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1046,6 +1049,14 @@
 				98C48B1C250CF97E004E24E5 /* Survey.json */,
 			);
 			path = Json;
+			sourceTree = "<group>";
+		};
+		98C735A2255C46E200252BF2 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		98CB2DD12519C91C00CEE5FB /* Name */ = {
@@ -1474,7 +1485,8 @@
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
-				986322562517BB81003B0784 /* FriendMainViewController.swift in Sources */,
+				986322562517BB81003B0784 /* FriendMainVC.swift in Sources */,
+				98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */,
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
 				98F8C83B254C912300FDDEBF /* SearchPageVC.swift in Sources */,
 				98F8C8AB254D866900FDDEBF /* HistoryVC.swift in Sources */,

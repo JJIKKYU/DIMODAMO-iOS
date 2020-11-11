@@ -1,25 +1,19 @@
 //
-//  FriendMainViewController.swift
+//  ManitoChatVC.swift
 //  dimodamo
 //
-//  Created by JJIKKYU on 2020/09/21.
+//  Created by JJIKKYU on 2020/11/12.
 //  Copyright © 2020 JJIKKYU. All rights reserved.
 //
 
 import UIKit
 
-import RxSwift
-import RxCocoa
-
-class FriendMainViewController: UIViewController {
-    
-    var disposeBag = DisposeBag()
+class ManitoChatVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("마니또 연결이 되었니?")
     }
     
 
