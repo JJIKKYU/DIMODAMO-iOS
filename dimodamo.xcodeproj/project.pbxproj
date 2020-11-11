@@ -122,6 +122,8 @@
 		98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */; };
 		98C48B1D250CF97E004E24E5 /* Survey.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B1C250CF97E004E24E5 /* Survey.json */; };
 		98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */; };
+		98C735AA255C53D600252BF2 /* FriendPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A9255C53D600252BF2 /* FriendPageVC.swift */; };
+		98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735AD255C551400252BF2 /* MainManitoChatVC.swift */; };
 		98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */; };
 		98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */; };
 		98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */; };
@@ -313,6 +315,8 @@
 		98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewController.swift; sourceTree = "<group>"; };
 		98C48B1C250CF97E004E24E5 /* Survey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Survey.json; sourceTree = "<group>"; };
 		98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatVC.swift; sourceTree = "<group>"; };
+		98C735A9255C53D600252BF2 /* FriendPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageVC.swift; sourceTree = "<group>"; };
+		98C735AD255C551400252BF2 /* MainManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoChatVC.swift; sourceTree = "<group>"; };
 		98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewController.swift; sourceTree = "<group>"; };
 		98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewModel.swift; sourceTree = "<group>"; };
@@ -702,6 +706,7 @@
 		986322542517BB73003B0784 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				98C735A8255C53B300252BF2 /* PageVC */,
 				986322552517BB81003B0784 /* FriendMainVC.swift */,
 			);
 			path = Main;
@@ -1054,9 +1059,26 @@
 		98C735A2255C46E200252BF2 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				98C735A7255C53A700252BF2 /* Main */,
 				98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		98C735A7255C53A700252BF2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		98C735A8255C53B300252BF2 /* PageVC */ = {
+			isa = PBXGroup;
+			children = (
+				98C735A9255C53D600252BF2 /* FriendPageVC.swift */,
+				98C735AD255C551400252BF2 /* MainManitoChatVC.swift */,
+			);
+			path = PageVC;
 			sourceTree = "<group>";
 		};
 		98CB2DD12519C91C00CEE5FB /* Name */ = {
@@ -1485,6 +1507,7 @@
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
+				98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */,
 				986322562517BB81003B0784 /* FriendMainVC.swift in Sources */,
 				98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */,
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
@@ -1495,6 +1518,7 @@
 				980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */,
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,
 				984FA8FF2555902500D4F506 /* DimoPeopleVC.swift in Sources */,
+				98C735AA255C53D600252BF2 /* FriendPageVC.swift in Sources */,
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
 				98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */,
 				989384CD251866A900DE2C35 /* RegisterViewController.swift in Sources */,

@@ -14,14 +14,9 @@ import RxCocoa
 class FriendMainVC: UIViewController {
     
     var disposeBag = DisposeBag()
-    @IBOutlet weak var manitoTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        manitoTableView.delegate = self
-        manitoTableView.dataSource = self
-        manitoTableViewSetting()
     }
     
 
@@ -35,23 +30,4 @@ class FriendMainVC: UIViewController {
     }
     */
 
-}
-
-
-extension FriendMainVC: UITableViewDelegate, UITableViewDataSource {
-    func manitoTableViewSetting() {
-        manitoTableView.rowHeight = 98
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyManitoCell", for: indexPath)
-        
-        return cell
-    }
-    
-    
 }
