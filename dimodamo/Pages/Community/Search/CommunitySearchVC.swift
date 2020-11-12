@@ -61,12 +61,12 @@ class CommunitySearchVC: UIViewController {
 //        recommendCollectionView.delegate = self
 //        recommendCollectionView.dataSource = self
         
-        textField.rx.text.orEmpty
-            .map { $0 as! String }
-            .subscribe(onNext: {
-                
-            })
-            .disposed(by: disposeBag)
+//        textField.rx.text.orEmpty
+//            .map { $0 as! String }
+//            .subscribe(onNext: {
+//                
+//            })
+//            .disposed(by: disposeBag)
     }
     
     func searchResult() {
@@ -90,9 +90,6 @@ class CommunitySearchVC: UIViewController {
         } else {
             communitySearchResultVC!.keyword = textField.text!
         }
-        
-        
-        print(communitySearchResultVC)
     }
     
 

@@ -436,9 +436,6 @@ class ArticleDetailViewModel {
             self.scrapCountRelay.accept(updateScrapCount)
             
             break
-            
-        default:
-            break
         }
         
         /*

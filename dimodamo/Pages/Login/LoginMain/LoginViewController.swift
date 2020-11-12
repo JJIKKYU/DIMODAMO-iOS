@@ -100,11 +100,6 @@ class LoginViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        
-        if let user = Auth.auth().currentUser {
-            loginCheckLabel.text = "이미 로그인 중입니다"
-        }
-        
         // Do any additional setup after loading the view.
     }
     

@@ -120,7 +120,8 @@ class ArticleDetailViewController: UIViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if(keyPath == "contentSize"){
-            if let newvalue = change?[.newKey] {
+//            if let newvalue = change?[.newKey] {
+            if (change?[.newKey]) != nil {
                 let contentHeight: CGFloat = commentTableView.contentSize.height
                 DispatchQueue.main.async {
                     self.commentTableViewHeight.constant = contentHeight
@@ -407,7 +408,7 @@ class ArticleDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LinkWebVC" {
             let destination = segue.destination as! LinkWebViewController
-            guard let url: URL = (sender as! URL) else {
+            guard let url: URL = (sender as? URL) else {
                 return
             }
             destination.url.accept(url)

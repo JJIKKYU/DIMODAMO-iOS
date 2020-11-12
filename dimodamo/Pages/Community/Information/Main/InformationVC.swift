@@ -82,15 +82,15 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
             cell.nickName.textColor = UIColor.dptiColor(type)
         }
         
-        if let title = model.boardTitle ?? "오류가 발생했습니다" {
+        if let title = model.boardTitle {
             cell.title.text = "\(title)"
         }
         
-        if let nickname = model.nickname ?? "익명" {
+        if let nickname = model.nickname {
             cell.nickName.text = "\(nickname)"
         }
         
-        if let scrapCount = model.scrapCount ?? 0 {
+        if let scrapCount = model.scrapCount {
             cell.scrapCnt.text = "\(scrapCount)"
         }
         

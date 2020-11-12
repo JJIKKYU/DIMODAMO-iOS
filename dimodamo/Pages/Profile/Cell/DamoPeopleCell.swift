@@ -25,7 +25,6 @@ class DamoPeopleCell: UITableViewCell {
             
             
             for tag in tags {
-                TagManager.getTagWidthSize(stringValue: tag.text!)
                 tag.layer.cornerRadius = tag.frame.height / 2
                 tag.layer.borderColor = UIColor.appColor(.system).cgColor
                 tag.layer.borderWidth = 1.2

@@ -31,9 +31,9 @@ class ArticleSearchViewModel {
             .order(by: "board_title")
 //            .start(at: ["\(self.searchKeyword.value)"])
 //            .end(at: "블랙핑크" + "\uf8ff")
-            .getDocuments() { [weak self] (querySnapshot, err) in
+            .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("검색에 실패했습니다.")
+                    print("검색에 실패했습니다.\(err.localizedDescription)")
                 } else {
                     for (index, document) in querySnapshot!.documents.enumerated() {
                         

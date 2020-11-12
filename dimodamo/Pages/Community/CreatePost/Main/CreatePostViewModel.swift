@@ -103,7 +103,6 @@ class CreatePostViewModel {
         
         let document = db.collection("hongik/information/posts").document()
         let id: String = document.documentID
-        var urlString: String?
         var board: Board?
         
         queue.async { [weak self] in
@@ -134,8 +133,6 @@ class CreatePostViewModel {
                                       userDpti: userDpti,
                                       userId: Auth.auth().currentUser?.uid,
                                       videos: [])
-                        
-                        print(board)
                         
                         document.setData(board!.dictionary) { err in
                             if let err = err {

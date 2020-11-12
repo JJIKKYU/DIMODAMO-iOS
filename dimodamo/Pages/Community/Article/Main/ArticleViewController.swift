@@ -130,7 +130,7 @@ class ArticleViewController: UIViewController {
         // 소팅 오더가 변경 된다면, 데이터를 다시 리로드 하도록 함수 호출
         viewModel.sortingOrder
             .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
+            .subscribe(onNext: { _ in
                 print("호출")
                 
             })

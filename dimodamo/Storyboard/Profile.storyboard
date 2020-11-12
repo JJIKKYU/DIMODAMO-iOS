@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaY-a1-yY3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="676"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="624"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lv2-r3-KoK" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1450"/>
@@ -1771,7 +1771,6 @@
         <!--Navigation Controller-->
         <scene sceneID="jVL-pR-XbD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QCc-A9-hpe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="ProfileMain" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wMO-k2-IpN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" selectedImage="profileSelected" id="GFN-HU-ZyC"/>
                     <toolbarItems/>
@@ -1795,6 +1794,7 @@
                         <segue destination="TS6-ka-uAZ" kind="relationship" relationship="rootViewController" id="fpz-kw-RFw"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCc-A9-hpe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="429" y="-98"/>
         </scene>
@@ -2296,7 +2296,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuT-41-B1I" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="76" y="0.0" width="226.5" height="45"/>
+                                                    <rect key="frame" x="76" y="0.0" width="249" height="45"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="안녕하세요! 아트보드 글 보고 쪽지 남깁니다!안녕하세요! 아트보드 글 보고 쪽지 남깁니다!">
                                                             <attributes>
@@ -2347,7 +2347,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18Z-qp-1Bx" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="104.5" y="0.0" width="289.5" height="45"/>
+                                                    <rect key="frame" x="82" y="0.0" width="312" height="45"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="안녕하세요! 아트보드 글 보고 쪽지 남깁니다!안녕하세요! 아트보드 글 보고 쪽지 남깁니다!">
                                                             <attributes>

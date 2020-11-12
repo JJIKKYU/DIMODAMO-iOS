@@ -35,7 +35,7 @@ class FindPWViewController: UIViewController {
         
         viewModel.userSchoolIdRelay
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] newValue in
+            .subscribe(onNext: { newValue in
                 
             })
             .disposed(by: disposeBag)

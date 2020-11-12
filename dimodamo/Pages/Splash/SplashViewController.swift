@@ -41,7 +41,7 @@ class SplashViewController: UIViewController {
             // 로그아웃 상태일 때는 로그인 화면으로
             if user != nil {
                 print("현재 로그인중입니다")
-                print("현재 로그인 되어 있는 UID : \(Auth.auth().currentUser?.uid)")
+                print("현재 로그인 되어 있는 UID : \(Auth.auth().currentUser?.uid ?? "로그인 UID가 없습니다.")")
                 self.getUserData()
 
                 mainVC.modalPresentationStyle = .fullScreen

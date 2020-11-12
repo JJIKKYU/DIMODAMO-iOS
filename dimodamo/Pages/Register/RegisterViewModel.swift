@@ -173,7 +173,7 @@ class RegisterViewModel {
             guard self.userEmailRelay.value.count > 3 else { return }
             
             if (error) != nil {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
             }
             
             // 가입 불가능

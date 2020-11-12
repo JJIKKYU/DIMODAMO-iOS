@@ -231,6 +231,7 @@
 		984FA8FE2555902500D4F506 /* DimoPeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoPeopleVC.swift; sourceTree = "<group>"; };
 		984FA9032555966400D4F506 /* HotDimoPeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotDimoPeopleVC.swift; sourceTree = "<group>"; };
 		984FA9082555B1CD00D4F506 /* ProfileDptiResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDptiResultVC.swift; sourceTree = "<group>"; };
+		9853DB18255D0A8300E8EBD5 /* dimodamo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dimodamo.entitlements; sourceTree = "<group>"; };
 		985D381225198D1F00C53378 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		9863223625178546003B0784 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		9863223E251785AE003B0784 /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
@@ -751,6 +752,7 @@
 		986EDA062509C42600AD3CEE /* dimodamo */ = {
 			isa = PBXGroup;
 			children = (
+				9853DB18255D0A8300E8EBD5 /* dimodamo.entitlements */,
 				98C735E4255CC66A00252BF2 /* dimodamoRelease.entitlements */,
 				986908F62521AE7E00C844F1 /* Extension */,
 				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
@@ -1731,19 +1733,20 @@
 			baseConfigurationReference = 964E5003C706C9319E5FB896 /* Pods-dimodamo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.00;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = jjikkyu.dimodamo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Dimodamo Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1757,14 +1760,14 @@
 				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamoRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.00;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = jjikkyu.dimodamo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

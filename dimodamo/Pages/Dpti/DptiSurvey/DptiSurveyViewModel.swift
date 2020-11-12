@@ -51,7 +51,7 @@ class DptiSurveyViewModel {
         
         docRef.getDocument { document, error in
             if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                _ = document.data().map(String.init(describing:)) ?? "nil"
 //                print("documnet data : \(dataDescription)")
                 let gender: String = document.data()?["gender"] as! String
                 self.gender = gender == "female" ? "G" : "M"

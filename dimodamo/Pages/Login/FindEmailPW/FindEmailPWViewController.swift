@@ -52,9 +52,6 @@ class FindEmailPWViewController: UIViewController, UIPageViewControllerDelegate 
                     self?.underLineCenterX.constant = 175
                     print("false입니다")
                     break
-                    
-                default:
-                    break
                 }
                 self?.underLine.setNeedsUpdateConstraints()
                 
