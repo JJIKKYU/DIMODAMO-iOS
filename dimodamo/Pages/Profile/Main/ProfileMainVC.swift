@@ -34,6 +34,7 @@ class ProfileMainVC: UIViewController {
         
         navigationController?.view.backgroundColor = UIColor.white
         navigationController?.presentTransparentNavigationBar()
+        animate()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -45,6 +46,23 @@ class ProfileMainVC: UIViewController {
     private func setColors(){
         navigationController?.navigationBar.tintColor = UIColor.appColor(.gray190)
         navigationController?.navigationBar.barTintColor = .white
+    }
+
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+        }, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setColors()
     }
 
     override func viewDidLoad() {

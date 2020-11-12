@@ -237,6 +237,11 @@ class MyProfileVC: UIViewController {
             break
             
         case "MessageVC":
+            let destinationVC = destination as! MessageVC
+            // 메세지 보내는 창에 유저 UID를 전송
+            destinationVC.viewModel.userUID.accept(self.viewModel.profileUID.value)
+            destinationVC.viewModel.userType.accept(self.viewModel.getUserType())
+            
             break
             
         default:
