@@ -211,6 +211,17 @@ class MyProfileVC: UIViewController {
         performSegue(withIdentifier: "MessageVC", sender: sender)
     }
     
+    /*
+     활동 내역 오른쪽 인포메이션 버튼 클릭했을 경우
+     */
+    var isSettingMedalInformationView: Bool = false
+    @IBAction func pressedMedalInfoBtn(_ sender: Any) {
+        performSegue(withIdentifier: "MedalInformationVC", sender: sender)
+        
+        
+        
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

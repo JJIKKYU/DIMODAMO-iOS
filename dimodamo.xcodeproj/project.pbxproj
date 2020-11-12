@@ -38,6 +38,7 @@
 		984FA8FF2555902500D4F506 /* DimoPeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984FA8FE2555902500D4F506 /* DimoPeopleVC.swift */; };
 		984FA9042555966400D4F506 /* HotDimoPeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984FA9032555966400D4F506 /* HotDimoPeopleVC.swift */; };
 		984FA9092555B1CD00D4F506 /* ProfileDptiResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984FA9082555B1CD00D4F506 /* ProfileDptiResultVC.swift */; };
+		9853DB1C255D3E7400E8EBD5 /* MedalInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853DB1B255D3E7400E8EBD5 /* MedalInformationVC.swift */; };
 		985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D381225198D1F00C53378 /* RegisterViewModel.swift */; };
 		9863223725178546003B0784 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9863223625178546003B0784 /* Community.storyboard */; };
 		9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863223E251785AE003B0784 /* CommunityMainViewController.swift */; };
@@ -232,6 +233,7 @@
 		984FA9032555966400D4F506 /* HotDimoPeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotDimoPeopleVC.swift; sourceTree = "<group>"; };
 		984FA9082555B1CD00D4F506 /* ProfileDptiResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDptiResultVC.swift; sourceTree = "<group>"; };
 		9853DB18255D0A8300E8EBD5 /* dimodamo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dimodamo.entitlements; sourceTree = "<group>"; };
+		9853DB1B255D3E7400E8EBD5 /* MedalInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalInformationVC.swift; sourceTree = "<group>"; };
 		985D381225198D1F00C53378 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		9863223625178546003B0784 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		9863223E251785AE003B0784 /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
@@ -633,6 +635,14 @@
 				98FA221125569CFB00331755 /* ProfileDptiResultViewModel.swift */,
 			);
 			path = ProfileDptiResult;
+			sourceTree = "<group>";
+		};
+		9853DB1A255D3E5A00E8EBD5 /* MedalInformation */ = {
+			isa = PBXGroup;
+			children = (
+				9853DB1B255D3E7400E8EBD5 /* MedalInformationVC.swift */,
+			);
+			path = MedalInformation;
 			sourceTree = "<group>";
 		};
 		985D380E25198CF500C53378 /* Clause */ = {
@@ -1198,6 +1208,7 @@
 		98D9890325547DAD002A8AC5 /* MyProfile */ = {
 			isa = PBXGroup;
 			children = (
+				9853DB1A255D3E5A00E8EBD5 /* MedalInformation */,
 				98D9890425547DBF002A8AC5 /* MyProfileVC.swift */,
 				98FA22552556FD9500331755 /* MyProfileViewModel.swift */,
 				98FA225825571FA300331755 /* MyProfileModel.swift */,
@@ -1585,6 +1596,7 @@
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
+				9853DB1C255D3E7400E8EBD5 /* MedalInformationVC.swift in Sources */,
 				98FA225925571FA300331755 /* MyProfileModel.swift in Sources */,
 				988377F92545C41F00BFA746 /* CreatePostViewModel.swift in Sources */,
 				98C3437E255B0C5D00E77463 /* DimoPeopleViewModel.swift in Sources */,

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -60,7 +59,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6o4-sk-Y2b"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="f2z-lY-Hbi" firstAttribute="leading" secondItem="6o4-sk-Y2b" secondAttribute="leading" constant="32" id="2so-0m-syV"/>
                             <constraint firstItem="f2z-lY-Hbi" firstAttribute="top" secondItem="6o4-sk-Y2b" secondAttribute="top" constant="44" id="Ibh-km-RK7"/>
@@ -130,7 +129,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rfp-xG-Icg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="Clu-QF-EFT" firstAttribute="centerX" secondItem="VM0-xn-5lG" secondAttribute="centerX" id="CNc-FM-eHW"/>
                             <constraint firstItem="VM0-xn-5lG" firstAttribute="top" secondItem="fM0-3U-ebQ" secondAttribute="top" constant="67" id="Lsz-GF-PH4"/>
@@ -763,7 +762,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bOl-sV-Nyj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Wdw-bn-Jfh" secondAttribute="trailing" id="58j-gl-Mug"/>
                             <constraint firstItem="beV-3Q-qOe" firstAttribute="top" secondItem="Wdw-bn-Jfh" secondAttribute="bottom" constant="36" id="8fG-qI-l0j"/>
@@ -820,7 +819,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="woU-Ed-GJh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="T48-Kp-VOa" firstAttribute="top" secondItem="TVO-z6-ciy" secondAttribute="top" constant="67" id="XCl-R7-Q8U"/>
                             <constraint firstItem="S2Y-gQ-tgY" firstAttribute="top" secondItem="jwc-EH-lVS" secondAttribute="bottom" constant="33" id="Zfp-T2-C1m"/>
@@ -877,7 +876,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bET-eh-umE"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="aEa-DG-SGV" firstAttribute="top" secondItem="LYA-cO-Tah" secondAttribute="top" constant="67" id="63h-fb-iZD"/>
                             <constraint firstItem="1CI-mN-9FA" firstAttribute="centerX" secondItem="aEa-DG-SGV" secondAttribute="centerX" id="Fal-96-Egy"/>
@@ -899,7 +898,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Q7b-2N-ykw"/>
+        <segue reference="1jE-oP-2EV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="loginPattern" width="414" height="278"/>
@@ -943,8 +942,5 @@
         <namedColor name="WHITE - 235">
             <color red="0.92199999094009399" green="0.92199999094009399" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

@@ -149,6 +149,10 @@ class ProfileMainVC: UIViewController {
                 break
                 
             case DimoKinds.dimo.rawValue:
+                print(viewModel.userUID)
+                selectedUserUID = viewModel.dimoPeopleArr[arrIndex].uid
+                destination.viewModel.profileSetting.accept(viewModel.dimoPeopleArr[arrIndex].dpti)
+                destination.viewModel.userNickname = viewModel.dimoPeopleArr[arrIndex].nickname
                 break
                 
             case DimoKinds.hotDimo.rawValue:
@@ -210,7 +214,7 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
         
-        print(viewModel.dimoPeopleArr[index].uid)
+        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.dimo.rawValue, index])
     }
     
     func dimoCollectionViewSetting() {
@@ -228,11 +232,11 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         layout.scrollDirection = .horizontal
         dimoCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX - 4, bottom: insetY, right: insetX - 4)
         
-        
         // 스크롤 시 빠르게 감속 되도록 설정
         dimoCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
     }
 }
+
 
 // MARK: - Dimo Paging
 
@@ -309,6 +313,9 @@ extension ProfileMainVC: UITableViewDelegate, UITableViewDataSource {
         cell.manitoIcon.image = hotDimoArr.getMedal(kind: .manito)
         
         
+        /*
+         랭킹
+         */
         let lankString: String = "\(index + 1)위"
         let stringLocation: Int = (String(index + 1).count - 1) + 1
         var lankMutableString = NSMutableAttributedString()
