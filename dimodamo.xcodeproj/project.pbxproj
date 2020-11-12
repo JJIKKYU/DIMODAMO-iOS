@@ -124,6 +124,8 @@
 		98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */; };
 		98C735AA255C53D600252BF2 /* FriendPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A9255C53D600252BF2 /* FriendPageVC.swift */; };
 		98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735AD255C551400252BF2 /* MainManitoChatVC.swift */; };
+		98C735D8255C5B8100252BF2 /* MainChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735D7255C5B8100252BF2 /* MainChatCell.swift */; };
+		98C735DC255C5F1100252BF2 /* YoutChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735DB255C5F1100252BF2 /* YoutChatCell.swift */; };
 		98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */; };
 		98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */; };
 		98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */; };
@@ -317,6 +319,9 @@
 		98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatVC.swift; sourceTree = "<group>"; };
 		98C735A9255C53D600252BF2 /* FriendPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageVC.swift; sourceTree = "<group>"; };
 		98C735AD255C551400252BF2 /* MainManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoChatVC.swift; sourceTree = "<group>"; };
+		98C735D7255C5B8100252BF2 /* MainChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChatCell.swift; sourceTree = "<group>"; };
+		98C735DB255C5F1100252BF2 /* YoutChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutChatCell.swift; sourceTree = "<group>"; };
+		98C735E4255CC66A00252BF2 /* dimodamoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dimodamoRelease.entitlements; sourceTree = "<group>"; };
 		98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewController.swift; sourceTree = "<group>"; };
 		98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewModel.swift; sourceTree = "<group>"; };
@@ -706,6 +711,7 @@
 		986322542517BB73003B0784 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				98C735D6255C5B6900252BF2 /* Cell */,
 				98C735A8255C53B300252BF2 /* PageVC */,
 				986322552517BB81003B0784 /* FriendMainVC.swift */,
 			);
@@ -743,6 +749,7 @@
 		986EDA062509C42600AD3CEE /* dimodamo */ = {
 			isa = PBXGroup;
 			children = (
+				98C735E4255CC66A00252BF2 /* dimodamoRelease.entitlements */,
 				986908F62521AE7E00C844F1 /* Extension */,
 				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
 				98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */,
@@ -1081,6 +1088,14 @@
 			path = PageVC;
 			sourceTree = "<group>";
 		};
+		98C735D6255C5B6900252BF2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				98C735D7255C5B8100252BF2 /* MainChatCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		98CB2DD12519C91C00CEE5FB /* Name */ = {
 			isa = PBXGroup;
 			children = (
@@ -1202,6 +1217,7 @@
 			isa = PBXGroup;
 			children = (
 				98F8C836254C3D0500FDDEBF /* RecommendCell.swift */,
+				98C735DB255C5F1100252BF2 /* YoutChatCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1498,6 +1514,7 @@
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				98D988F0255248FA002A8AC5 /* ProfileMainViewModel.swift in Sources */,
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
+				98C735D8255C5B8100252BF2 /* MainChatCell.swift in Sources */,
 				98D988E3255071AE002A8AC5 /* LottieLoadingView2.swift in Sources */,
 				984FA9092555B1CD00D4F506 /* ProfileDptiResultVC.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
@@ -1526,6 +1543,7 @@
 				9800A152253378EF0090C058 /* SecondIntroViewController.swift in Sources */,
 				98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */,
 				98FA221225569CFB00331755 /* ProfileDptiResultViewModel.swift in Sources */,
+				98C735DC255C5F1100252BF2 /* YoutChatCell.swift in Sources */,
 				9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */,
 				98D988DF254FA99A002A8AC5 /* SortingPopupView.swift in Sources */,
 				984FA9042555966400D4F506 /* HotDimoPeopleVC.swift in Sources */,
@@ -1711,7 +1729,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1732,9 +1750,10 @@
 			baseConfigurationReference = BFB1B8FF08ED4F7B3DA32B20 /* Pods-dimodamo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamoRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1744,7 +1763,7 @@
 				MARKETING_VERSION = 1.00;
 				PRODUCT_BUNDLE_IDENTIFIER = jjikkyu.dimodamo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Dimodamo Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

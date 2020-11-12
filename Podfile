@@ -28,6 +28,7 @@ target 'dimodamo' do
   pod 'Firebase/Database'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Messaging'
   
   pod 'Kingfisher', '~> 5.0'
   

@@ -5,12 +5,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="AppleSDGothicNeoEB.ttf">
             <string>AppleSDGothicNeoEB00</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
         </array>
     </customFonts>
     <scenes>
@@ -23,10 +28,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZN-k3-3wH">
-                                <rect key="frame" x="0.0" y="140" width="414" height="96"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="106"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRx-qw-90k" userLabel="UnderBar">
-                                        <rect key="frame" x="24.5" y="66" width="78" height="4"/>
+                                        <rect key="frame" x="24.5" y="77" width="78" height="4"/>
                                         <color key="backgroundColor" name="SYSTEM"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="78" id="WzR-sj-k3l"/>
@@ -34,7 +39,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEa-wz-ezh">
-                                        <rect key="frame" x="24" y="37" width="79" height="25"/>
+                                        <rect key="frame" x="24" y="48" width="79" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="oX0-LV-mWL"/>
                                         </constraints>
@@ -44,7 +49,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd3-9y-pwi">
-                                        <rect key="frame" x="119" y="37" width="55" height="25"/>
+                                        <rect key="frame" x="119" y="48" width="55" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="OXR-gA-Lco"/>
                                         </constraints>
@@ -54,29 +59,35 @@
                                         </state>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kq0-ak-6gf">
-                                        <rect key="frame" x="20" y="94" width="374" height="2"/>
+                                        <rect key="frame" x="20" y="104" width="374" height="2"/>
                                         <color key="backgroundColor" name="WHITE - 245"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="Hut-qw-JWi"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATo-ob-1iH">
+                                        <rect key="frame" x="376" y="54" width="18" height="22"/>
+                                        <state key="normal" image="sortingIcon"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
                                     <constraint firstItem="Dd3-9y-pwi" firstAttribute="centerY" secondItem="fEa-wz-ezh" secondAttribute="centerY" id="1Jc-DL-TRw"/>
                                     <constraint firstItem="fRx-qw-90k" firstAttribute="top" secondItem="fEa-wz-ezh" secondAttribute="bottom" constant="4" id="7oK-WF-uNu"/>
                                     <constraint firstItem="Dd3-9y-pwi" firstAttribute="leading" secondItem="fEa-wz-ezh" secondAttribute="trailing" constant="16" id="B3h-2H-655"/>
-                                    <constraint firstItem="fEa-wz-ezh" firstAttribute="top" secondItem="RZN-k3-3wH" secondAttribute="top" constant="37" id="Gph-xI-AUd"/>
+                                    <constraint firstItem="fEa-wz-ezh" firstAttribute="top" secondItem="RZN-k3-3wH" secondAttribute="top" constant="48" id="Gph-xI-AUd"/>
+                                    <constraint firstAttribute="bottom" secondItem="ATo-ob-1iH" secondAttribute="bottom" constant="30" id="JrU-ha-dJN"/>
+                                    <constraint firstAttribute="trailing" secondItem="ATo-ob-1iH" secondAttribute="trailing" constant="20" id="Kmr-9q-VMD"/>
                                     <constraint firstItem="kq0-ak-6gf" firstAttribute="leading" secondItem="RZN-k3-3wH" secondAttribute="leading" constant="20" id="VNR-Hb-f1j"/>
                                     <constraint firstItem="fEa-wz-ezh" firstAttribute="leading" secondItem="RZN-k3-3wH" secondAttribute="leading" constant="24" id="Vde-A2-P6C"/>
-                                    <constraint firstAttribute="height" constant="96" id="YNn-zm-UYU"/>
+                                    <constraint firstAttribute="height" constant="106" id="YNn-zm-UYU"/>
                                     <constraint firstAttribute="bottom" secondItem="kq0-ak-6gf" secondAttribute="bottom" id="hfi-sb-o2i"/>
                                     <constraint firstAttribute="trailing" secondItem="kq0-ak-6gf" secondAttribute="trailing" constant="20" id="ini-S0-h5g"/>
                                     <constraint firstItem="fRx-qw-90k" firstAttribute="centerX" secondItem="fEa-wz-ezh" secondAttribute="centerX" id="mpv-p9-rMV"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPN-rM-gnn">
-                                <rect key="frame" x="0.0" y="236" width="414" height="577"/>
+                                <rect key="frame" x="0.0" y="246" width="414" height="567"/>
                                 <connections>
                                     <segue destination="GYn-hs-EAd" kind="embed" id="tkc-fe-1Lp"/>
                                 </connections>
@@ -95,9 +106,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="마니또" largeTitleDisplayMode="always" id="vRH-7i-ynd"/>
-                    <connections>
-                        <segue destination="8Nx-F2-kf6" kind="show" identifier="ManitoChatVC" id="tPO-53-9hn"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKM-AP-vN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,18 +114,78 @@
         <!--내 마니또-->
         <scene sceneID="uhh-rP-fIP">
             <objects>
-                <viewController id="8Nx-F2-kf6" customClass="ManitoChatVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="8Nx-F2-kf6" customClass="ManitoChatVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mr5-Ir-yQx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lQw-CB-pEm">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lQw-CB-pEm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" name="WHITE"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourChat" rowHeight="53" id="SNq-8K-5Xa" customClass="YoutChatCell" customModule="dimodamo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="53"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SNq-8K-5Xa" id="U35-t8-9j1">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="24_Profile_F_FN" translatesAutoresizingMaskIntoConstraints="NO" id="MtS-dY-hgs">
+                                                    <rect key="frame" x="20" y="0.0" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="NHk-dD-3nX"/>
+                                                        <constraint firstAttribute="width" constant="40" id="YKW-fz-dLQ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNo-JV-4ek" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
+                                                    <rect key="frame" x="76" y="0.0" width="249" height="45"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="안녕하세요! 아트보드 글 보고 쪽지 남깁니다!안녕하세요! 아트보드 글 보고 쪽지 남깁니다!">
+                                                            <attributes>
+                                                                <color key="NSColor" name="TEXT - SMALL"/>
+                                                                <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="13"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="11"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="WHITE"/>
+                                            <constraints>
+                                                <constraint firstItem="jNo-JV-4ek" firstAttribute="leading" secondItem="MtS-dY-hgs" secondAttribute="trailing" constant="16" id="FeS-VB-6Fy"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jNo-JV-4ek" secondAttribute="trailing" constant="79" id="IxP-yt-zrG"/>
+                                                <constraint firstAttribute="bottom" secondItem="jNo-JV-4ek" secondAttribute="bottom" constant="8" id="V8P-5C-rZU"/>
+                                                <constraint firstItem="MtS-dY-hgs" firstAttribute="leading" secondItem="U35-t8-9j1" secondAttribute="leading" constant="20" id="dWY-th-9uO"/>
+                                                <constraint firstItem="jNo-JV-4ek" firstAttribute="top" secondItem="U35-t8-9j1" secondAttribute="top" id="s4V-Jq-M8B"/>
+                                                <constraint firstItem="MtS-dY-hgs" firstAttribute="top" secondItem="U35-t8-9j1" secondAttribute="top" id="zhr-wP-9ko"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="WHITE"/>
+                                        <connections>
+                                            <outlet property="messageBox" destination="jNo-JV-4ek" id="gMX-mR-sq5"/>
+                                            <outlet property="profile" destination="MtS-dY-hgs" id="JKK-Ma-SrC"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SMC-0u-WfC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="lQw-CB-pEm" firstAttribute="leading" secondItem="SMC-0u-WfC" secondAttribute="leading" id="RgG-Gu-zJ4"/>
                             <constraint firstItem="lQw-CB-pEm" firstAttribute="top" secondItem="SMC-0u-WfC" secondAttribute="top" id="hHm-mG-j2Z"/>
@@ -126,10 +194,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="내 마니또" largeTitleDisplayMode="never" id="A1j-Iq-FDX"/>
+                    <connections>
+                        <outlet property="tableView" destination="lQw-CB-pEm" id="Qmx-yX-7iX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfW-Zp-fZp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2322" y="-98"/>
+            <point key="canvasLocation" x="1959" y="-98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LsJ-Fn-ydo">
@@ -181,7 +252,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="577"/>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyManitoCell" rowHeight="98" id="HuG-j4-1Ez">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyManitoCell" rowHeight="98" id="HuG-j4-1Ez" customClass="MainChatCell" customModule="dimodamo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HuG-j4-1Ez" id="1V7-bQ-p3R">
@@ -221,25 +292,68 @@
                                                         <constraint firstAttribute="height" constant="1" id="hAO-T0-bXb"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 10:10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2K-uS-jo6">
+                                                    <rect key="frame" x="339.5" y="16" width="54.5" height="14"/>
+                                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
+                                                    <color key="textColor" name="GRAY - 210"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNP-26-l3h" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
+                                                    <rect key="frame" x="379.5" y="42" width="14.5" height="20"/>
+                                                    <color key="backgroundColor" name="RED"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="e86-X7-VyD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
+                                                    <color key="textColor" name="WHITE"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" name="WHITE"/>
                                             <constraints>
                                                 <constraint firstItem="hoX-pn-M7M" firstAttribute="top" secondItem="1V7-bQ-p3R" secondAttribute="top" constant="16" id="1mY-QO-g1l"/>
+                                                <constraint firstItem="WNP-26-l3h" firstAttribute="top" secondItem="t2K-uS-jo6" secondAttribute="bottom" constant="12" id="8wX-k6-Vbl"/>
                                                 <constraint firstItem="eyX-aw-G4q" firstAttribute="top" secondItem="1V7-bQ-p3R" secondAttribute="top" constant="16" id="COM-Do-L16"/>
                                                 <constraint firstItem="hoX-pn-M7M" firstAttribute="leading" secondItem="1V7-bQ-p3R" secondAttribute="leading" constant="24" id="IhC-lW-GaN"/>
                                                 <constraint firstItem="QTe-lc-4Us" firstAttribute="top" secondItem="eyX-aw-G4q" secondAttribute="bottom" constant="8" symbolic="YES" id="LVU-Af-1Tz"/>
+                                                <constraint firstAttribute="trailing" secondItem="WNP-26-l3h" secondAttribute="trailing" constant="20" id="VWs-cj-s1A"/>
+                                                <constraint firstItem="t2K-uS-jo6" firstAttribute="top" secondItem="1V7-bQ-p3R" secondAttribute="top" constant="16" id="Xnd-nX-aZu"/>
                                                 <constraint firstAttribute="bottom" secondItem="UFV-iO-syL" secondAttribute="bottom" id="YBU-i3-VFQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="QTe-lc-4Us" secondAttribute="trailing" constant="89" id="dNF-wX-un2"/>
                                                 <constraint firstItem="UFV-iO-syL" firstAttribute="leading" secondItem="1V7-bQ-p3R" secondAttribute="leading" constant="24" id="f72-is-WlE"/>
                                                 <constraint firstItem="QTe-lc-4Us" firstAttribute="leading" secondItem="eyX-aw-G4q" secondAttribute="leading" id="guD-Ic-1Bc"/>
+                                                <constraint firstAttribute="trailing" secondItem="t2K-uS-jo6" secondAttribute="trailing" constant="20" id="rfb-6f-556"/>
                                                 <constraint firstAttribute="trailing" secondItem="UFV-iO-syL" secondAttribute="trailing" constant="24" id="s1o-Fp-YHa"/>
                                                 <constraint firstItem="eyX-aw-G4q" firstAttribute="leading" secondItem="hoX-pn-M7M" secondAttribute="trailing" constant="16" id="xWN-Dw-D6m"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="WHITE"/>
+                                        <connections>
+                                            <outlet property="chatDate" destination="t2K-uS-jo6" id="0Kq-NB-dVk"/>
+                                            <outlet property="chatDescription" destination="QTe-lc-4Us" id="fm8-8K-70L"/>
+                                            <outlet property="chatNickname" destination="eyX-aw-G4q" id="7JE-Im-vn8"/>
+                                            <outlet property="chatProfile" destination="hoX-pn-M7M" id="TTx-8b-bow"/>
+                                            <outlet property="chatRemainCount" destination="WNP-26-l3h" id="ZH9-aI-IAN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="aka-J4-prp"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="9ix-Zh-oqb" firstAttribute="top" secondItem="R6y-bJ-bR1" secondAttribute="top" id="3TB-WW-NaC"/>
@@ -251,25 +365,42 @@
                     <size key="freeformSize" width="414" height="577"/>
                     <connections>
                         <outlet property="tableView" destination="9ix-Zh-oqb" id="eDm-pl-Qga"/>
+                        <segue destination="8Nx-F2-kf6" kind="show" identifier="ManitoChatVC" id="szU-5d-FGa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHa-Rm-sgu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1788" y="-657"/>
+            <point key="canvasLocation" x="1778" y="-653"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="WNP-26-l3h">
+            <size key="intrinsicContentSize" width="14.5" height="15.5"/>
+        </designable>
+        <designable name="jNo-JV-4ek">
+            <size key="intrinsicContentSize" width="452.5" height="16"/>
+        </designable>
+    </designables>
     <resources>
+        <image name="24_Profile_F_FN" width="24" height="24"/>
         <image name="24_Profile_F_PE" width="24" height="24"/>
         <image name="friend" width="20" height="20"/>
         <image name="friendSelected" width="20" height="20"/>
+        <image name="sortingIcon" width="18" height="12"/>
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RED">
+            <color red="0.92199999094009399" green="0.34099999070167542" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT - BIG">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TEXT - SMALL">
+            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT - SMALL">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -286,8 +417,5 @@
         <namedColor name="YELLOW - DARK">
             <color red="0.98000001907348633" green="0.74500000476837158" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
