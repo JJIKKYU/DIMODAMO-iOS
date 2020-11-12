@@ -126,6 +126,7 @@
 		98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735AD255C551400252BF2 /* MainManitoChatVC.swift */; };
 		98C735D8255C5B8100252BF2 /* MainChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735D7255C5B8100252BF2 /* MainChatCell.swift */; };
 		98C735DC255C5F1100252BF2 /* YoutChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735DB255C5F1100252BF2 /* YoutChatCell.swift */; };
+		98C73619255CD77400252BF2 /* MyChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C73618255CD77400252BF2 /* MyChatCell.swift */; };
 		98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */; };
 		98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */; };
 		98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */; };
@@ -322,6 +323,7 @@
 		98C735D7255C5B8100252BF2 /* MainChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChatCell.swift; sourceTree = "<group>"; };
 		98C735DB255C5F1100252BF2 /* YoutChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutChatCell.swift; sourceTree = "<group>"; };
 		98C735E4255CC66A00252BF2 /* dimodamoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dimodamoRelease.entitlements; sourceTree = "<group>"; };
+		98C73618255CD77400252BF2 /* MyChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatCell.swift; sourceTree = "<group>"; };
 		98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewController.swift; sourceTree = "<group>"; };
 		98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewModel.swift; sourceTree = "<group>"; };
@@ -1091,7 +1093,9 @@
 		98C735D6255C5B6900252BF2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				98C735DB255C5F1100252BF2 /* YoutChatCell.swift */,
 				98C735D7255C5B8100252BF2 /* MainChatCell.swift */,
+				98C73618255CD77400252BF2 /* MyChatCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1217,7 +1221,6 @@
 			isa = PBXGroup;
 			children = (
 				98F8C836254C3D0500FDDEBF /* RecommendCell.swift */,
-				98C735DB255C5F1100252BF2 /* YoutChatCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1559,6 +1562,7 @@
 				986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */,
 				9845E1852554DDAD0020574C /* ProfileArchiveVC.swift in Sources */,
 				98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */,
+				98C73619255CD77400252BF2 /* MyChatCell.swift in Sources */,
 				98FA22672557FBDA00331755 /* AllDptiCell.swift in Sources */,
 				98D988D7254E9296002A8AC5 /* LinkUploadCell.swift in Sources */,
 				98AFDA7A2539DC8400B0D88F /* ArticleCell.swift in Sources */,

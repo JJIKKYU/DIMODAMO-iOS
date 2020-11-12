@@ -10,6 +10,8 @@ import UIKit
 
 class MessageVC: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var manitoBtn: UIButton! {
         didSet {
             manitoBtn.layer.cornerRadius = manitoBtn.frame.height / 2
@@ -23,8 +25,6 @@ class MessageVC: UIViewController {
     /*
      ViewLoad
      */
-    
-    
     override func loadView() {
         super.loadView()
         view.backgroundColor = .white
@@ -64,7 +64,8 @@ class MessageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
 
@@ -78,4 +79,25 @@ class MessageVC: UIViewController {
     }
     */
 
+}
+
+
+extension MessageVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row % 2 == 0 {
+            let yourCell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath)
+            return yourCell
+        } else {
+            let myCell = tableView.dequeueReusableCell(withIdentifier: "MyChat", for: indexPath)
+            return myCell
+        }
+        
+        
+    }
+    
+    
 }
