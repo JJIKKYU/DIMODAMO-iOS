@@ -240,7 +240,7 @@ extension UIColor {
         
     // Red EB5757
     case .red:
-        return #colorLiteral(red: 0.9215686275, green: 0.3411764706, blue: 0.3411764706, alpha: 1)
+        return #colorLiteral(red: 0.9607843137, green: 0.3725490196, blue: 0.3725490196, alpha: 1)
     }
   }
 }

@@ -8,7 +8,13 @@
 
 import UIKit
 
+import RxSwift
+import RxRelay
+
 class MainManitoChatVC: UIViewController {
+    
+    let viewModel = MainManitoChatViewModel()
+    var disposeBag = DisposeBag()
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,11 +45,20 @@ extension MainManitoChatVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.manitoChatList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyManitoCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyManitoCell", for: indexPath) as! MainChatCell
+        
+        let index = indexPath.row
+        let model = viewModel.manitoChatList[index]
+        
+        cell.chatProfile.image = UIImage(named: "Profile_\(model.type)")
+        cell.chatDate.text = "\(model.date)"
+        cell.chatNickname.text = "\(model.nickname)"
+        cell.chatDescription.text = "\(model.lastChat)"
+        cell.chatRemainCount.text = "5"
         
         return cell
     }

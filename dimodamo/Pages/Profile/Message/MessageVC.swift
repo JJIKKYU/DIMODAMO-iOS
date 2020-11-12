@@ -17,6 +17,7 @@ class MessageVC: UIViewController {
     var disposeBag = DisposeBag()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textField: TextFieldContainerView!
     
     @IBOutlet weak var manitoBtn: UIButton! {
         didSet {
@@ -82,9 +83,16 @@ class MessageVC: UIViewController {
         tableView.dataSource = self
         
         self.tableView.reloadData()
-        self.scrollToBottom()
+        self.scrollToBottom(false)
+        self.tableViewSetting()
+        
+        
+        /*
+         키보드 높이 조절
+         */
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+          NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
     
     /*
      // MARK: - Navigation
@@ -100,8 +108,12 @@ class MessageVC: UIViewController {
 
 
 extension MessageVC: UITableViewDelegate, UITableViewDataSource {
+    func tableViewSetting() {
+        self.tableView.contentInset.top = 116 // 마니또 요청하기 height만큼
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return 9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,10 +132,46 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    func scrollToBottom(){
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.endEditing(true)
+    }
+    
+    func scrollToBottom(_ isAnimated: Bool){
         DispatchQueue.main.async {
-            let indexPath = IndexPath(row: 12 - 1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            let indexPath = IndexPath(row: 9 - 1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: isAnimated)
         }
+    }
+}
+
+
+//MARK: - 키보드 높이 조절
+extension MessageVC {
+    @objc func moveUpTextView(_ notification: NSNotification) {
+        let window = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+        guard let bottomSafeArea = window?.safeAreaInsets.bottom else {
+            return
+        }
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            self.textField?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea)
+            self.tableView.contentInset.bottom = keyboardSize.height
+            self.scrollToBottom(true)
+            //                        self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
+            //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
+        }
+    }
+    
+    @objc func moveDownTextView() {
+        self.textField?.transform = .identity
+        self.tableView.contentInset.bottom = 0
+        //        self.scrollView?.transform = .identity
+        //                self.commentTableViewBottom.constant = 0
     }
 }

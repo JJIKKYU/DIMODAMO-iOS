@@ -28,6 +28,8 @@
 		980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */; };
 		980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F197A253E01B7007B33B8 /* UploadImageCell.swift */; };
 		980F19ED25407578007B33B8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F19EC25407577007B33B8 /* CommentCell.swift */; };
+		9830CF6F255D8EED009F448F /* MainManitoChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830CF6E255D8EED009F448F /* MainManitoChatViewModel.swift */; };
+		9830CF76255D8F4E009F448F /* MainManitoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830CF75255D8F4E009F448F /* MainManitoModel.swift */; };
 		983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983216A6252B8CDD003E6B64 /* AddShadow.swift */; };
 		983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983485D3251C585500C4074B /* RegisterGenderViewController.swift */; };
 		983C7E99253C3F390099B07F /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C7E98253C3F390099B07F /* BoardModel.swift */; };
@@ -223,6 +225,8 @@
 		980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		980F197A253E01B7007B33B8 /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
 		980F19EC25407577007B33B8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		9830CF6E255D8EED009F448F /* MainManitoChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoChatViewModel.swift; sourceTree = "<group>"; };
+		9830CF75255D8F4E009F448F /* MainManitoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoModel.swift; sourceTree = "<group>"; };
 		983216A6252B8CDD003E6B64 /* AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShadow.swift; sourceTree = "<group>"; };
 		983485D3251C585500C4074B /* RegisterGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderViewController.swift; sourceTree = "<group>"; };
 		983C7E98253C3F390099B07F /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
@@ -569,6 +573,23 @@
 				980F19EC25407577007B33B8 /* CommentCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		9830CF73255D8F29009F448F /* ManitoChatList */ = {
+			isa = PBXGroup;
+			children = (
+				9830CF6E255D8EED009F448F /* MainManitoChatViewModel.swift */,
+				98C735AD255C551400252BF2 /* MainManitoChatVC.swift */,
+				9830CF75255D8F4E009F448F /* MainManitoModel.swift */,
+			);
+			path = ManitoChatList;
+			sourceTree = "<group>";
+		};
+		9830CF74255D8F39009F448F /* MessageChatList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MessageChatList;
 			sourceTree = "<group>";
 		};
 		983485D2251C584300C4074B /* Gender */ = {
@@ -1083,7 +1104,6 @@
 			isa = PBXGroup;
 			children = (
 				98C735A7255C53A700252BF2 /* Main */,
-				98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1091,6 +1111,7 @@
 		98C735A7255C53A700252BF2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1098,8 +1119,9 @@
 		98C735A8255C53B300252BF2 /* PageVC */ = {
 			isa = PBXGroup;
 			children = (
+				9830CF74255D8F39009F448F /* MessageChatList */,
+				9830CF73255D8F29009F448F /* ManitoChatList */,
 				98C735A9255C53D600252BF2 /* FriendPageVC.swift */,
-				98C735AD255C551400252BF2 /* MainManitoChatVC.swift */,
 			);
 			path = PageVC;
 			sourceTree = "<group>";
@@ -1559,6 +1581,7 @@
 				986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */,
 				98BA3FE825198E2D00788486 /* ClauseViewController.swift in Sources */,
 				989384CD251866A900DE2C35 /* RegisterViewController.swift in Sources */,
+				9830CF76255D8F4E009F448F /* MainManitoModel.swift in Sources */,
 				9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */,
 				9800A152253378EF0090C058 /* SecondIntroViewController.swift in Sources */,
 				98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */,
@@ -1599,6 +1622,7 @@
 				98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */,
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
+				9830CF6F255D8EED009F448F /* MainManitoChatViewModel.swift in Sources */,
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
 				9853DB1C255D3E7400E8EBD5 /* MedalInformationVC.swift in Sources */,
 				98FA225925571FA300331755 /* MyProfileModel.swift in Sources */,
