@@ -47,6 +47,9 @@
                                         <state key="normal" title="내 마니또">
                                             <color key="titleColor" name="TEXT - SMALL"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pressedManitoBtn:" destination="BF0-Ay-AlH" eventType="touchUpInside" id="SDa-UZ-13v"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd3-9y-pwi">
                                         <rect key="frame" x="119" y="48" width="55" height="25"/>
@@ -57,6 +60,9 @@
                                         <state key="normal" title="쪽지함">
                                             <color key="titleColor" name="WHITE - 235"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pressedMessageBtn:" destination="BF0-Ay-AlH" eventType="touchUpInside" id="38D-JX-n13"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kq0-ak-6gf">
                                         <rect key="frame" x="20" y="104" width="374" height="2"/>
@@ -68,6 +74,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATo-ob-1iH">
                                         <rect key="frame" x="376" y="54" width="18" height="22"/>
                                         <state key="normal" image="sortingIcon"/>
+                                        <connections>
+                                            <action selector="pressedSortingBtn:" destination="BF0-Ay-AlH" eventType="touchUpInside" id="z0j-cd-oZ3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="WHITE"/>
@@ -106,6 +115,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="마니또" largeTitleDisplayMode="always" id="vRH-7i-ynd"/>
+                    <connections>
+                        <outlet property="underBar" destination="fRx-qw-90k" id="dBe-wX-0Aw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKM-AP-vN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -267,13 +279,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사는게쉽지않네" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyX-aw-G4q">
-                                                    <rect key="frame" x="96" y="16" width="85" height="16.5"/>
+                                                    <rect key="frame" x="96" y="16" width="85" height="19"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="14"/>
                                                     <color key="textColor" name="YELLOW - DARK"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTe-lc-4Us">
-                                                    <rect key="frame" x="96" y="40.5" width="229" height="35.5"/>
+                                                    <rect key="frame" x="96" y="43" width="229" height="35.5"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="안녕하세요~! 반갑습니다! 마니또 요청 받아드릴게요! 잠시만요~!">
                                                             <attributes>
@@ -293,13 +305,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 10:10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2K-uS-jo6">
-                                                    <rect key="frame" x="339.5" y="16" width="54.5" height="14"/>
+                                                    <rect key="frame" x="342.5" y="16" width="51.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                                                     <color key="textColor" name="GRAY - 210"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNP-26-l3h" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="379.5" y="42" width="14.5" height="20"/>
+                                                    <rect key="frame" x="377.5" y="42" width="16.5" height="20"/>
                                                     <color key="backgroundColor" name="RED"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="e86-X7-VyD"/>
@@ -383,7 +395,7 @@
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="RED">
-            <color red="0.92199999094009399" green="0.34099999070167542" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96100002527236938" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

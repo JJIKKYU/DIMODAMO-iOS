@@ -15,6 +15,13 @@ class FriendMainVC: UIViewController {
     
     var disposeBag = DisposeBag()
     
+    @IBOutlet weak var underBar: UIView! {
+        didSet {
+            underBar.layer.cornerRadius = underBar.layer.frame.height / 2
+            underBar.layer.masksToBounds = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,4 +37,23 @@ class FriendMainVC: UIViewController {
     }
     */
 
+//MARK: - 버튼 클릭했을 때 이벤트 처리
+    
+    /*
+     우측 소팅 버튼을 클릭했을 때
+     */
+    @IBAction func pressedSortingBtn(_ sender: Any) {
+    }
+    
+    /*
+     내 마니또 버튼 클릭했을 때
+     */
+    @IBAction func pressedManitoBtn(_ sender: Any) {
+    }
+    
+    /*
+     쪽지함 버튼을 클릭했을 때
+     */
+    @IBAction func pressedMessageBtn(_ sender: Any) {
+    }
 }

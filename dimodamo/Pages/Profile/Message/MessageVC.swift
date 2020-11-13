@@ -17,6 +17,7 @@ class MessageVC: UIViewController {
     var disposeBag = DisposeBag()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textFieldBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textField: TextFieldContainerView!
     
     @IBOutlet weak var manitoBtn: UIButton! {
@@ -175,3 +176,4 @@ extension MessageVC {
         //                self.commentTableViewBottom.constant = 0
     }
 }
+
