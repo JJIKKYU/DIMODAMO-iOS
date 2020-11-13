@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -316,17 +315,95 @@
             </objects>
             <point key="canvasLocation" x="3171" y="-98"/>
         </scene>
-        <!--View Controller-->
+        <!--Side MenuVC-->
         <scene sceneID="mwN-Zb-GYQ">
             <objects>
-                <viewController id="hPK-B9-Vbm" sceneMemberID="viewController">
+                <viewController id="hPK-B9-Vbm" customClass="SideMenuVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OBM-Nc-Lrp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6M0-0y-nzk"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-hG-9zn">
+                                <rect key="frame" x="174" y="44" width="240" height="798"/>
+                                <color key="backgroundColor" name="WHITE"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="BPT-qt-HeN"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Vh-1g-6r5">
+                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마니또 서랍장" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5D-V0-ugG">
+                                        <rect key="frame" x="24" y="32" width="95" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="95" id="tOv-Jt-Pwj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <color key="textColor" name="TEXT - SMALL"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpz-by-h96">
+                                        <rect key="frame" x="378" y="32" width="16" height="22"/>
+                                        <state key="normal" image="closeBtn"/>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manito_archive_photo_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Tux-XA-uYn">
+                                        <rect key="frame" x="24" y="84" width="18" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="3jO-Sk-B5w"/>
+                                            <constraint firstAttribute="width" constant="18" id="azx-LK-gxK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytd-rM-Fxn">
+                                        <rect key="frame" x="50" y="85.5" width="35" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="0Lq-K4-hbx"/>
+                                            <constraint firstAttribute="height" constant="17" id="Nte-km-HES"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
+                                        <state key="normal" title="사진">
+                                            <color key="titleColor" name="TEXT - SMALL"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFQ-de-kQI">
+                                        <rect key="frame" x="342" y="92" width="52" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="Gmj-Ua-koj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
+                                        <state key="normal" title="+ 더 보기">
+                                            <color key="titleColor" name="GRAY - 190"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="PURPLE - LIGHT"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="uFQ-de-kQI" secondAttribute="trailing" constant="20" id="1kM-eb-zKb"/>
+                                    <constraint firstItem="Tux-XA-uYn" firstAttribute="top" secondItem="I5D-V0-ugG" secondAttribute="bottom" constant="32" id="3fh-qC-ipL"/>
+                                    <constraint firstItem="Tux-XA-uYn" firstAttribute="leading" secondItem="I5D-V0-ugG" secondAttribute="leading" id="7wm-oA-qfq"/>
+                                    <constraint firstItem="I5D-V0-ugG" firstAttribute="leading" secondItem="1Vh-1g-6r5" secondAttribute="leading" constant="24" id="C6w-GE-2fa"/>
+                                    <constraint firstItem="ytd-rM-Fxn" firstAttribute="centerY" secondItem="Tux-XA-uYn" secondAttribute="centerY" constant="1" id="JlO-IR-nIL"/>
+                                    <constraint firstItem="ytd-rM-Fxn" firstAttribute="leading" secondItem="Tux-XA-uYn" secondAttribute="trailing" constant="8" id="Olw-tW-Cur"/>
+                                    <constraint firstItem="wpz-by-h96" firstAttribute="top" secondItem="1Vh-1g-6r5" secondAttribute="top" constant="32" id="c9v-dh-GjD"/>
+                                    <constraint firstItem="I5D-V0-ugG" firstAttribute="top" secondItem="1Vh-1g-6r5" secondAttribute="top" constant="32" id="ixZ-WM-27f"/>
+                                    <constraint firstAttribute="trailing" secondItem="wpz-by-h96" secondAttribute="trailing" constant="20" id="lfX-aO-1g4"/>
+                                    <constraint firstItem="uFQ-de-kQI" firstAttribute="top" secondItem="wpz-by-h96" secondAttribute="bottom" constant="38" id="zxV-gI-iqM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Ysp-hG-9zn" firstAttribute="top" secondItem="1Vh-1g-6r5" secondAttribute="top" id="5VU-dp-JHd"/>
+                            <constraint firstAttribute="trailing" secondItem="1Vh-1g-6r5" secondAttribute="trailing" id="ASe-hd-pmR"/>
+                            <constraint firstItem="Ysp-hG-9zn" firstAttribute="bottom" secondItem="1Vh-1g-6r5" secondAttribute="bottom" id="EZS-me-e9e"/>
+                            <constraint firstItem="1Vh-1g-6r5" firstAttribute="top" secondItem="OBM-Nc-Lrp" secondAttribute="top" constant="44" id="M8n-KK-M95"/>
+                            <constraint firstAttribute="bottom" secondItem="1Vh-1g-6r5" secondAttribute="bottom" id="Oeb-IM-Ual"/>
+                            <constraint firstItem="Ysp-hG-9zn" firstAttribute="trailing" secondItem="1Vh-1g-6r5" secondAttribute="trailing" id="bDW-EP-BLa"/>
+                            <constraint firstItem="1Vh-1g-6r5" firstAttribute="leading" secondItem="OBM-Nc-Lrp" secondAttribute="leading" id="eLO-Uf-3Ci"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WHR-7N-zky"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="1Vh-1g-6r5" id="13q-Aw-gec"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDJ-iz-kRh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -536,6 +613,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="soE-37-umR">
+                        <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="hPK-B9-Vbm" kind="relationship" relationship="rootViewController" id="2tg-sd-w5S"/>
                     </connections>
@@ -548,8 +629,10 @@
     <resources>
         <image name="Profile_F_FN" width="96" height="96"/>
         <image name="Profile_F_PE" width="96" height="96"/>
+        <image name="closeBtn" width="16" height="16"/>
         <image name="friend" width="20" height="20"/>
         <image name="friendSelected" width="20" height="20"/>
+        <image name="manito_archive_photo_icon" width="18" height="18"/>
         <image name="manito_chat_archive_icon" width="18" height="18"/>
         <image name="roundPlusIcon" width="40" height="40"/>
         <image name="search_icon_white" width="18" height="18"/>
@@ -560,6 +643,9 @@
         </namedColor>
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PURPLE - LIGHT">
+            <color red="0.82400000095367432" green="0.86299997568130493" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="RED">
             <color red="0.96100002527236938" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -588,8 +674,5 @@
         <namedColor name="YELLOW - DARK">
             <color red="0.98000001907348633" green="0.74500000476837158" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

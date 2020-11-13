@@ -15,6 +15,8 @@ class ChatSideMenuNavigation: SideMenuNavigationController {
         super.viewDidLoad()
         
         self.presentationStyle = .menuSlideIn
+        self.presentationStyle.presentingEndAlpha = 0.7
+
         self.menuWidth = self.view.frame.width * 0.7
     }
     /*
