@@ -11,6 +11,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+import SideMenu
+
 class ManitoChatVC: UIViewController {
     
     let viewModel = ManitoChatViewModel()
@@ -78,6 +80,22 @@ class ManitoChatVC: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    // MARK: - Button Binding
+    
+    // 검색버튼 눌렀을때
+    @IBAction func pressedSearchBtn(_ sender: Any) {
+    }
+    
+    // 서랍버튼 눌렀을때
+    @IBAction func pressedArchiveBtn(_ sender: Any) {
+//        let vc =
+//        let menu = UISideMenuNavigationController(rootViewController: <#T##UIViewController#>)
+//        let storyboard = UIStoryboard(name: "Friends", bundle: nil)
+//        let menu = storyboard.instantiateViewController(withIdentifier: "ArchiveVC") as! UISideMenuNavigationController
+//        present(menu, animated: true, completion: nil)
+    }
+    
 }
 
 

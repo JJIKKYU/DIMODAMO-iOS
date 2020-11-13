@@ -74,6 +74,10 @@ class MyProfileVC: UIViewController {
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     override func loadView() {
         super.loadView()
         view.backgroundColor = .white

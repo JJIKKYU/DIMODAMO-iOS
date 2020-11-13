@@ -39,5 +39,8 @@ target 'dimodamo' do
   
   # 글 작성할 때 태그 관련
   pod 'Tagging'
+  
+  # For Swift 5 use: 슬라이드 메뉴용
+  pod 'SideMenu', '~> 6.0'
 
 end
