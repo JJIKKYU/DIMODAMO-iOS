@@ -57,14 +57,29 @@ extension MainManitoChatVC: UITableViewDelegate, UITableViewDataSource {
         cell.chatProfile.image = UIImage(named: "Profile_\(model.type)")
         cell.chatDate.text = "\(model.date)"
         cell.chatNickname.text = "\(model.nickname)"
+        cell.chatNickname.textColor = UIColor.dptiDarkColor(model.type)
         cell.chatDescription.text = "\(model.lastChat)"
         cell.chatRemainCount.text = "5"
         
         return cell
     }
     
+    /*
+     테이블 셀을 눌렀을 경우
+     */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ManitoChatVC", sender: indexPath.row)
+        
+        let storyboard = UIStoryboard(name: "Friends", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ManitoChatVC") as! ManitoChatVC
+        
+        /*
+         상대방 UID 및 type 세팅
+         */
+        let index = indexPath.row
+        vc.viewModel.yourType.accept(viewModel.manitoChatList[index].type)
+        vc.viewModel.yourUID.accept(viewModel.manitoChatList[index].uid)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

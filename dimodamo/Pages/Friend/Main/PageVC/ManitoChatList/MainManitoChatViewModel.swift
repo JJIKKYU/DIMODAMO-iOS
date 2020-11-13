@@ -10,12 +10,6 @@ import Foundation
 
 class MainManitoChatViewModel {
     
-    var user1: MainListManitoChat = MainListManitoChat(uid: "M53GwqRWVafgI3eV6rZjyuGKHOM2",
-                                                 type: "M_FS",
-                                                 nickname: "디모다모",
-                                                 date: "오후 04:14",
-                                                 lastChat: "졸업 심사가 얼마 남지 않았다면서요? 힘내세요!")
-    
     var manitoChatList: [MainListManitoChat] = [
         MainListManitoChat(uid: "M53GwqRWVafgI3eV6rZjyuGKHOM2",
                                                      type: "M_FS",

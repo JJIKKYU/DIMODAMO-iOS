@@ -114,7 +114,9 @@
                             <constraint firstItem="ffu-2j-sVZ" firstAttribute="trailing" secondItem="RZN-k3-3wH" secondAttribute="trailing" id="zRV-ih-vhI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="마니또" largeTitleDisplayMode="always" id="vRH-7i-ynd"/>
+                    <navigationItem key="navigationItem" title="마니또" largeTitleDisplayMode="always" id="vRH-7i-ynd">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Ve4-gI-0qI"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="underBar" destination="fRx-qw-90k" id="dBe-wX-0Aw"/>
                     </connections>
@@ -126,16 +128,16 @@
         <!--내 마니또-->
         <scene sceneID="uhh-rP-fIP">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="8Nx-F2-kf6" customClass="ManitoChatVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ManitoChatVC" hidesBottomBarWhenPushed="YES" id="8Nx-F2-kf6" customClass="ManitoChatVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mr5-Ir-yQx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lQw-CB-pEm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="708"/>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourChat" rowHeight="53" id="SNq-8K-5Xa" customClass="YoutChatCell" customModule="dimodamo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourChat" rowHeight="53" id="SNq-8K-5Xa" customClass="YourChatCell" customModule="dimodamo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SNq-8K-5Xa" id="U35-t8-9j1">
@@ -195,24 +197,117 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yN-zT-brw" customClass="TextFieldContainerView" customModule="dimodamo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="708" width="414" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02x-a5-6Jn">
+                                        <rect key="frame" x="20" y="12" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="fi1-pv-mDz"/>
+                                            <constraint firstAttribute="height" constant="40" id="qcW-N7-RL7"/>
+                                        </constraints>
+                                        <state key="normal" image="roundPlusIcon"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOS-Jz-oeW" customClass="TextFieldRound" customModule="dimodamo" customModuleProvider="target">
+                                        <rect key="frame" x="76" y="12" width="318" height="40"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="텍스트를 입력해 주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VfS-z5-RQt">
+                                                <rect key="frame" x="19" y="0.0" width="249" height="40"/>
+                                                <color key="backgroundColor" name="WHITE"/>
+                                                <color key="textColor" name="TEXT - SMALL"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                        <color key="value" name="GRAY - 190"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Je-9k-uip">
+                                                <rect key="frame" x="287" y="9" width="22" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="22" id="9WL-O3-298"/>
+                                                    <constraint firstAttribute="height" constant="22" id="EU8-9g-7MS"/>
+                                                </constraints>
+                                                <state key="normal" image="sendIcon"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="WHITE"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="VfS-z5-RQt" secondAttribute="bottom" id="Ahv-1v-WwV"/>
+                                            <constraint firstAttribute="height" constant="40" id="DbQ-Ln-1tB"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Je-9k-uip" secondAttribute="trailing" constant="9" id="Wda-q6-wkD"/>
+                                            <constraint firstItem="6Je-9k-uip" firstAttribute="top" secondItem="SOS-Jz-oeW" secondAttribute="top" constant="9" id="Zog-og-suJ"/>
+                                            <constraint firstItem="VfS-z5-RQt" firstAttribute="top" secondItem="SOS-Jz-oeW" secondAttribute="top" id="c4d-CZ-J32"/>
+                                            <constraint firstItem="VfS-z5-RQt" firstAttribute="height" secondItem="SOS-Jz-oeW" secondAttribute="height" id="eSX-Wt-Lom"/>
+                                            <constraint firstItem="VfS-z5-RQt" firstAttribute="leading" secondItem="SOS-Jz-oeW" secondAttribute="leading" constant="19" id="gzl-ew-8Pt"/>
+                                            <constraint firstItem="6Je-9k-uip" firstAttribute="leading" secondItem="VfS-z5-RQt" secondAttribute="trailing" constant="19" id="ylX-Hd-orh"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="WHITE"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4pp-B7-Dwx" customClass="NSLayoutHelper" customModule="LayoutHelper">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="iPhone8">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="iPhone8Plus">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="iPhone4s">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="iPhoneSE">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </constraint>
+                                    <constraint firstAttribute="trailing" secondItem="SOS-Jz-oeW" secondAttribute="trailing" constant="20" id="etp-nx-QbX"/>
+                                    <constraint firstItem="SOS-Jz-oeW" firstAttribute="leading" secondItem="02x-a5-6Jn" secondAttribute="trailing" constant="16" id="hKV-Nh-SBH"/>
+                                    <constraint firstItem="02x-a5-6Jn" firstAttribute="leading" secondItem="2yN-zT-brw" secondAttribute="leading" constant="20" id="ji3-Hs-iiv"/>
+                                    <constraint firstItem="SOS-Jz-oeW" firstAttribute="centerY" secondItem="02x-a5-6Jn" secondAttribute="centerY" id="uxm-4x-ELf"/>
+                                    <constraint firstItem="02x-a5-6Jn" firstAttribute="top" secondItem="2yN-zT-brw" secondAttribute="top" constant="12" id="yvR-G0-q8I"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="SMC-0u-WfC"/>
+                        <viewLayoutGuide key="safeArea" id="J5m-zJ-ZXp"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
-                            <constraint firstItem="lQw-CB-pEm" firstAttribute="leading" secondItem="SMC-0u-WfC" secondAttribute="leading" id="RgG-Gu-zJ4"/>
-                            <constraint firstItem="lQw-CB-pEm" firstAttribute="top" secondItem="SMC-0u-WfC" secondAttribute="top" id="hHm-mG-j2Z"/>
-                            <constraint firstItem="SMC-0u-WfC" firstAttribute="bottom" secondItem="lQw-CB-pEm" secondAttribute="bottom" id="jzm-gK-wIo"/>
-                            <constraint firstItem="SMC-0u-WfC" firstAttribute="trailing" secondItem="lQw-CB-pEm" secondAttribute="trailing" id="wpE-lO-s72"/>
+                            <constraint firstAttribute="bottom" secondItem="2yN-zT-brw" secondAttribute="bottom" id="2Aw-1L-6Sl"/>
+                            <constraint firstItem="2yN-zT-brw" firstAttribute="leading" secondItem="Mr5-Ir-yQx" secondAttribute="leading" id="8sd-9v-Vx7"/>
+                            <constraint firstItem="lQw-CB-pEm" firstAttribute="leading" secondItem="Mr5-Ir-yQx" secondAttribute="leading" id="RgG-Gu-zJ4"/>
+                            <constraint firstAttribute="trailing" secondItem="2yN-zT-brw" secondAttribute="trailing" id="Xqx-yv-zW6"/>
+                            <constraint firstItem="2yN-zT-brw" firstAttribute="top" secondItem="lQw-CB-pEm" secondAttribute="bottom" id="hAn-BT-9OV"/>
+                            <constraint firstItem="lQw-CB-pEm" firstAttribute="top" secondItem="Mr5-Ir-yQx" secondAttribute="top" id="hHm-mG-j2Z"/>
+                            <constraint firstAttribute="trailing" secondItem="lQw-CB-pEm" secondAttribute="trailing" id="wpE-lO-s72"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="내 마니또" largeTitleDisplayMode="never" id="A1j-Iq-FDX"/>
+                    <navigationItem key="navigationItem" title="내 마니또" largeTitleDisplayMode="never" id="6EO-4u-9fz">
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="xtO-x2-Yrk">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JXM-UR-jst">
+                                    <rect key="frame" x="376" y="11" width="18" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="manito_chat_archive_icon"/>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="bh2-Za-FiB">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RdO-ud-G8r">
+                                    <rect key="frame" x="350" y="11" width="18" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="search_icon_white"/>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="lQw-CB-pEm" id="Qmx-yX-7iX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfW-Zp-fZp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1959" y="-98"/>
+            <point key="canvasLocation" x="3171" y="-98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LsJ-Fn-ydo">
@@ -377,12 +472,35 @@
                     <size key="freeformSize" width="414" height="577"/>
                     <connections>
                         <outlet property="tableView" destination="9ix-Zh-oqb" id="eDm-pl-Qga"/>
-                        <segue destination="8Nx-F2-kf6" kind="show" identifier="ManitoChatVC" id="szU-5d-FGa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHa-Rm-sgu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1778" y="-653"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KlV-hZ-uzx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ist-17-tSG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0Lk-yo-QqC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="WHITE"/>
+                        <color key="barTintColor" name="YELLOW - DARK"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                            <color key="textColor" name="WHITE"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Nx-F2-kf6" kind="relationship" relationship="rootViewController" id="jtT-7A-FmI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NR0-NA-Ld7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2505.7971014492755" y="-98.4375"/>
         </scene>
     </scenes>
     <resources>
@@ -390,7 +508,14 @@
         <image name="Profile_F_PE" width="96" height="96"/>
         <image name="friend" width="20" height="20"/>
         <image name="friendSelected" width="20" height="20"/>
+        <image name="manito_chat_archive_icon" width="18" height="18"/>
+        <image name="roundPlusIcon" width="40" height="40"/>
+        <image name="search_icon_white" width="18" height="18"/>
+        <image name="sendIcon" width="22" height="22"/>
         <image name="sortingIcon" width="18" height="12"/>
+        <namedColor name="GRAY - 190">
+            <color red="0.74500000476837158" green="0.74500000476837158" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

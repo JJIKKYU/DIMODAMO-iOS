@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YoutChatCell: UITableViewCell {
+class YourChatCell: UITableViewCell {
 
     @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var messageBox: PaddingLabel! {

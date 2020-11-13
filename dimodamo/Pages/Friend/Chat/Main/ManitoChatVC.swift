@@ -8,9 +8,61 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class ManitoChatVC: UIViewController {
+    
+    let viewModel = ManitoChatViewModel()
+    var disposeBag = DisposeBag()
 
     @IBOutlet weak var tableView: UITableView!
+    
+    /*
+     ViewLoad
+     */
+    
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+        setColors()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        animate()
+    }
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+        }, completion: nil)
+    }
+    
+    private func setColors(){
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
+        
+        // 해당 유저 컬러로 변경할 것
+        let userType = viewModel.yourType.value
+        navigationController?.navigationBar.barTintColor = UIColor.dptiDarkColor(userType)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.appColor(.textBig)]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setColors()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,25 +70,23 @@ class ManitoChatVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableviewSetting()
+        
+        viewModel.yourType
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { type in
+                
+            })
+            .disposed(by: disposeBag)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
+
+//MARK: - TableView
 
 extension ManitoChatVC: UITableViewDelegate, UITableViewDataSource {
     func tableviewSetting() {
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.contentInset.top = 16
 //        tableView.estimatedRowHeight = 58
     }
     
@@ -45,7 +95,12 @@ extension ManitoChatVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath) as! YourChatCell
+        
+        let type = viewModel.yourType.value
+        
+        cell.profile.image = UIImage(named: "Profile_\(type)")
+        cell.messageBox.layer.borderColor = UIColor.dptiDarkColor(type).cgColor
         
         return cell
     }

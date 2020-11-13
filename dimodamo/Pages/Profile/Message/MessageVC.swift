@@ -44,6 +44,12 @@ class MessageVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         animate()
+        
+        /*
+         키보드 높이 조절
+         */
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+          NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func animate() {
@@ -70,6 +76,11 @@ class MessageVC: UIViewController {
         super.viewWillDisappear(animated)
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.appColor(.textBig)]
+        
+        /*
+         키보드 높이 조절 옵저버 해제
+         */
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,13 +97,6 @@ class MessageVC: UIViewController {
         self.tableView.reloadData()
         self.scrollToBottom(false)
         self.tableViewSetting()
-        
-        
-        /*
-         키보드 높이 조절
-         */
-        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
-          NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     /*
@@ -119,7 +123,7 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row % 2 == 0 {
-            let yourCell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath) as! YoutChatCell
+            let yourCell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath) as! YourChatCell
             
             let userType = self.viewModel.userType.value
             yourCell.messageBox.layer.borderColor = UIColor.dptiDarkColor(userType).cgColor
@@ -176,4 +180,3 @@ extension MessageVC {
         //                self.commentTableViewBottom.constant = 0
     }
 }
-
