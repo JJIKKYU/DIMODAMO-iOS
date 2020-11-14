@@ -31,6 +31,8 @@
 		9821BADF255EBC3200C47987 /* ManitoChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */; };
 		9821BB62255EDBEC00C47987 /* ChatSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */; };
 		9821BB66255EDE1900C47987 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB65255EDE1900C47987 /* SideMenuVC.swift */; };
+		9821BBC2255F0CC900C47987 /* ExitAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BBC1255F0CC900C47987 /* ExitAlertView.swift */; };
+		9821BBC6255F16D100C47987 /* ExitAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9821BBC5255F16D100C47987 /* ExitAlertView.xib */; };
 		9830CF6F255D8EED009F448F /* MainManitoChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830CF6E255D8EED009F448F /* MainManitoChatViewModel.swift */; };
 		9830CF76255D8F4E009F448F /* MainManitoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830CF75255D8F4E009F448F /* MainManitoModel.swift */; };
 		983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983216A6252B8CDD003E6B64 /* AddShadow.swift */; };
@@ -231,6 +233,8 @@
 		9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatViewModel.swift; sourceTree = "<group>"; };
 		9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSideMenuNavigation.swift; sourceTree = "<group>"; };
 		9821BB65255EDE1900C47987 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
+		9821BBC1255F0CC900C47987 /* ExitAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitAlertView.swift; sourceTree = "<group>"; };
+		9821BBC5255F16D100C47987 /* ExitAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExitAlertView.xib; sourceTree = "<group>"; };
 		9830CF6E255D8EED009F448F /* MainManitoChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoChatViewModel.swift; sourceTree = "<group>"; };
 		9830CF75255D8F4E009F448F /* MainManitoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoModel.swift; sourceTree = "<group>"; };
 		983216A6252B8CDD003E6B64 /* AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShadow.swift; sourceTree = "<group>"; };
@@ -584,10 +588,20 @@
 		9821BB60255EDBBF00C47987 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				9821BBC0255F0CB600C47987 /* ExitAlert */,
 				9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */,
 				9821BB65255EDE1900C47987 /* SideMenuVC.swift */,
 			);
 			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		9821BBC0255F0CB600C47987 /* ExitAlert */ = {
+			isa = PBXGroup;
+			children = (
+				9821BBC1255F0CC900C47987 /* ExitAlertView.swift */,
+				9821BBC5255F16D100C47987 /* ExitAlertView.xib */,
+			);
+			path = ExitAlert;
 			sourceTree = "<group>";
 		};
 		9830CF73255D8F29009F448F /* ManitoChatList */ = {
@@ -1435,6 +1449,7 @@
 				98A8B7BE25345BDC00351FD5 /* Onboarding_2_room.json in Resources */,
 				98FA22342556EE7300331755 /* M_PS.json in Resources */,
 				98816093251EF23200556AEC /* Login.storyboard in Resources */,
+				9821BBC6255F16D100C47987 /* ExitAlertView.xib in Resources */,
 				98FA22422556EE7300331755 /* F_PS.json in Resources */,
 				980196E1252B620100F829F6 /* SF-Pro-Display-Thin.otf in Resources */,
 				98FA22352556EE7300331755 /* F_TS.json in Resources */,
@@ -1587,6 +1602,7 @@
 				986322562517BB81003B0784 /* FriendMainVC.swift in Sources */,
 				98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */,
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
+				9821BBC2255F0CC900C47987 /* ExitAlertView.swift in Sources */,
 				98F8C83B254C912300FDDEBF /* SearchPageVC.swift in Sources */,
 				98F8C8AB254D866900FDDEBF /* HistoryVC.swift in Sources */,
 				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,

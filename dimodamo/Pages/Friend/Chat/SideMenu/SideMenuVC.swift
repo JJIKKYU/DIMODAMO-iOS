@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Malert
+
 class SideMenuVC: UIViewController {
 
     @IBOutlet weak var backgroundView: UIView! {
@@ -18,13 +20,42 @@ class SideMenuVC: UIViewController {
         }
     }
     
+    @IBOutlet var exitView: ExitAlertView! {
+        didSet {
+//            exitView = ExitAlertView()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func pressedExitBtn(_ sender: Any) {
+//        let alertVC = AlertController(title: "타이틀", message: "메세지입니다", preferredStyle: .alert)
+//        alertVC.addAction(UIAlertAction(title: "나가기", style: .default, handler: nil))
+//
+//        self.present(alertVC, animated: true, completion: nil)
+        
+//        let exitAlertView = ExitAlertView()
+        
+        let exampleView: ExitAlertView = UIView.fromNib()
+        print(exampleView)
+        
+//        let malert = Malert(customView: exampleView)
+//        let malert = Malert(title: "하이", customView: view, tapToDismiss: true, dismissOnActionTapped: true)
+//        let action = MalertAction(title: "나가기")
+//        action.backgroundColor = UIColor.appColor(.system)
+//        action.tintColor = UIColor.appColor(.white255)
+//
+//        malert.addAction(action)
+//        malert.animationType = .fadeIn
+//        malert.presentDuration = 1
+//
+//        present(malert, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -35,4 +66,14 @@ class SideMenuVC: UIViewController {
     }
     */
 
+
 }
+
+extension UIView {
+    class func fromNib<T: UIView>() -> T {
+        return Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+    }
+}
+
+
+

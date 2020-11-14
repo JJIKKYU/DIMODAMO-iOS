@@ -42,5 +42,8 @@ target 'dimodamo' do
   
   # For Swift 5 use: 슬라이드 메뉴용
   pod 'SideMenu', '~> 6.0'
+  
+  # Alert / 알림팝업용
+  pod 'Malert'
 
 end

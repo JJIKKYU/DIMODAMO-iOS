@@ -85,6 +85,7 @@ class ManitoChatVC: UIViewController {
     
     // 검색버튼 눌렀을때
     @IBAction func pressedSearchBtn(_ sender: Any) {
+
     }
     
     // 서랍버튼 눌렀을때

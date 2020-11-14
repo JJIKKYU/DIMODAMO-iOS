@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoEB.ttf">
+            <string>AppleSDGothicNeoEB00</string>
+        </array>
+        <array key="Nunito-ExtraBold.ttf">
+            <string>Nunito-ExtraBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="ExitAlertView" id="C23-J8-AW4" customClass="ExitAlertView" customModule="dimodamo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL2-hJ-PZq">
+                    <rect key="frame" x="378" y="20" width="16" height="22"/>
+                    <state key="normal" image="closeBtnSystemColor"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정말 나가시겠어요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgJ-LE-OnE">
+                    <rect key="frame" x="146" y="64" width="122" height="20"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                    <color key="textColor" name="TEXT - SMALL"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마니또에게 그동안의 감사 인사를 전해보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuV-m8-svH">
+                    <rect key="frame" x="91.5" y="92" width="231" height="16"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
+                    <color key="textColor" name="TEXT - SMALL"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주고받은 최고예요 개수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79M-X8-EYo">
+                    <rect key="frame" x="152" y="198" width="110.5" height="15"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
+                    <color key="textColor" name="GRAY - 190"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBk-zs-WjM" userLabel="goodCountContainer">
+                    <rect key="frame" x="145" y="221" width="124" height="48"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="beX-q9-hxt">
+                            <rect key="frame" x="8" y="8" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="TGE-5d-zIh"/>
+                                <constraint firstAttribute="width" constant="32" id="sDD-KD-hUs"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+245" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ox-A0-Bcr">
+                            <rect key="frame" x="60" y="10" width="48" height="29"/>
+                            <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="21"/>
+                            <color key="textColor" name="BLUE - DARK"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="3ox-A0-Bcr" secondAttribute="trailing" constant="16" id="2PJ-pC-yYM"/>
+                        <constraint firstItem="3ox-A0-Bcr" firstAttribute="top" secondItem="hBk-zs-WjM" secondAttribute="top" constant="10" id="4CE-ww-9Bt"/>
+                        <constraint firstAttribute="bottom" secondItem="3ox-A0-Bcr" secondAttribute="bottom" constant="9" id="8tH-90-1xc"/>
+                        <constraint firstAttribute="height" constant="48" id="UvA-zi-aPl"/>
+                        <constraint firstItem="beX-q9-hxt" firstAttribute="top" secondItem="hBk-zs-WjM" secondAttribute="top" constant="8" id="ldV-0s-YbE"/>
+                        <constraint firstAttribute="width" constant="124" id="qh4-Ua-2DT"/>
+                        <constraint firstItem="beX-q9-hxt" firstAttribute="leading" secondItem="hBk-zs-WjM" secondAttribute="leading" constant="8" id="wfT-48-ekR"/>
+                        <constraint firstAttribute="bottom" secondItem="beX-q9-hxt" secondAttribute="bottom" constant="8" id="y0M-nr-Odw"/>
+                    </constraints>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_Medal_Icon_Big_Gold_Like" translatesAutoresizingMaskIntoConstraints="NO" id="QpT-8T-Fkc">
+                    <rect key="frame" x="183" y="317" width="48" height="63"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="63" id="McL-u4-J4D"/>
+                        <constraint firstAttribute="width" constant="48" id="MoP-l1-fCX"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="우리는 환상의 콤비~!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RV4-aJ-EQx">
+                    <rect key="frame" x="87" y="414" width="240" height="16.5"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="14"/>
+                    <color key="textColor" name="SYSTEM"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="manito_exit_sketchbook" translatesAutoresizingMaskIntoConstraints="NO" id="W4w-aa-To8">
+                    <rect key="frame" x="87" y="148" width="240" height="334"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="U4j-Dt-YBb"/>
+            <color key="backgroundColor" name="WHITE"/>
+            <constraints>
+                <constraint firstItem="W4w-aa-To8" firstAttribute="centerX" secondItem="C23-J8-AW4" secondAttribute="centerX" id="6qx-oX-smb"/>
+                <constraint firstItem="RV4-aJ-EQx" firstAttribute="leading" secondItem="W4w-aa-To8" secondAttribute="leading" id="8VH-gg-fk6"/>
+                <constraint firstItem="YgJ-LE-OnE" firstAttribute="top" secondItem="C23-J8-AW4" secondAttribute="top" constant="64" id="C3Y-tJ-8Jb"/>
+                <constraint firstItem="uuV-m8-svH" firstAttribute="top" secondItem="YgJ-LE-OnE" secondAttribute="bottom" constant="8" id="Cs4-dK-vAM"/>
+                <constraint firstItem="YgJ-LE-OnE" firstAttribute="centerX" secondItem="C23-J8-AW4" secondAttribute="centerX" id="Dsy-oG-fkT"/>
+                <constraint firstItem="uuV-m8-svH" firstAttribute="centerX" secondItem="YgJ-LE-OnE" secondAttribute="centerX" id="EQj-Re-MQw"/>
+                <constraint firstItem="kL2-hJ-PZq" firstAttribute="top" secondItem="C23-J8-AW4" secondAttribute="top" constant="20" id="Gco-QP-LQn"/>
+                <constraint firstItem="hBk-zs-WjM" firstAttribute="top" secondItem="79M-X8-EYo" secondAttribute="bottom" constant="8" id="NXy-i7-CWh"/>
+                <constraint firstItem="W4w-aa-To8" firstAttribute="top" secondItem="uuV-m8-svH" secondAttribute="bottom" constant="40" id="OvU-bh-zE8"/>
+                <constraint firstItem="RV4-aJ-EQx" firstAttribute="trailing" secondItem="W4w-aa-To8" secondAttribute="trailing" id="UAo-e5-OEd"/>
+                <constraint firstItem="79M-X8-EYo" firstAttribute="top" secondItem="W4w-aa-To8" secondAttribute="top" constant="50" id="aEZ-XQ-84M"/>
+                <constraint firstItem="RV4-aJ-EQx" firstAttribute="firstBaseline" secondItem="QpT-8T-Fkc" secondAttribute="baseline" constant="47.5" id="c6H-ui-aR9"/>
+                <constraint firstItem="79M-X8-EYo" firstAttribute="centerX" secondItem="W4w-aa-To8" secondAttribute="centerX" id="peq-z1-3PL"/>
+                <constraint firstAttribute="trailing" secondItem="kL2-hJ-PZq" secondAttribute="trailing" constant="20" id="qTx-2o-k1k"/>
+                <constraint firstItem="RV4-aJ-EQx" firstAttribute="centerX" secondItem="QpT-8T-Fkc" secondAttribute="centerX" id="qdM-Bt-Yq7"/>
+                <constraint firstItem="hBk-zs-WjM" firstAttribute="centerX" secondItem="W4w-aa-To8" secondAttribute="centerX" id="sT4-0D-aVK"/>
+                <constraint firstItem="QpT-8T-Fkc" firstAttribute="centerX" secondItem="W4w-aa-To8" secondAttribute="centerX" id="sbG-1b-4Wp"/>
+                <constraint firstItem="QpT-8T-Fkc" firstAttribute="top" secondItem="hBk-zs-WjM" secondAttribute="bottom" constant="48" id="w7G-J9-im5"/>
+            </constraints>
+            <connections>
+                <outlet property="bgSketchbookImage" destination="W4w-aa-To8" id="eR6-Fh-6uf"/>
+                <outlet property="goodCountContainer" destination="hBk-zs-WjM" id="lqs-ik-YTp"/>
+                <outlet property="likeCountLabel" destination="3ox-A0-Bcr" id="uds-Jw-vCY"/>
+                <outlet property="likeImage" destination="beX-q9-hxt" id="HSL-r7-0nV"/>
+                <outlet property="medalImage" destination="QpT-8T-Fkc" id="aDg-43-pg3"/>
+            </connections>
+            <point key="canvasLocation" x="2836" y="-525"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Profile_Medal_Icon_Big_Gold_Like" width="40" height="53"/>
+        <image name="closeBtnSystemColor" width="16" height="16"/>
+        <image name="manito_exit_sketchbook" width="240" height="334"/>
+        <namedColor name="BLUE - DARK">
+            <color red="0.19599999487400055" green="0.76499998569488525" blue="0.84299999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GRAY - 190">
+            <color red="0.74500000476837158" green="0.74500000476837158" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SYSTEM">
+            <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TEXT - SMALL">
+            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WHITE">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
