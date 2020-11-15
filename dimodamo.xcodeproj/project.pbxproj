@@ -33,6 +33,10 @@
 		9821BB66255EDE1900C47987 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB65255EDE1900C47987 /* SideMenuVC.swift */; };
 		9821BBC2255F0CC900C47987 /* ExitAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BBC1255F0CC900C47987 /* ExitAlertView.swift */; };
 		9821BBC6255F16D100C47987 /* ExitAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9821BBC5255F16D100C47987 /* ExitAlertView.xib */; };
+		9821BBCB255FEEAB00C47987 /* ManitoApplyBtn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9821BBCA255FEEAB00C47987 /* ManitoApplyBtn.xib */; };
+		9821BBCF255FEF0A00C47987 /* ManitoApplyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BBCE255FEF0A00C47987 /* ManitoApplyBtn.swift */; };
+		9821BBD32561037C00C47987 /* MultiTabDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BBD22561037C00C47987 /* MultiTabDetector.swift */; };
+		9821BBD625611CAC00C47987 /* ImageColorChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BBD525611CAC00C47987 /* ImageColorChange.swift */; };
 		9830CF6F255D8EED009F448F /* MainManitoChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830CF6E255D8EED009F448F /* MainManitoChatViewModel.swift */; };
 		9830CF76255D8F4E009F448F /* MainManitoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830CF75255D8F4E009F448F /* MainManitoModel.swift */; };
 		983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983216A6252B8CDD003E6B64 /* AddShadow.swift */; };
@@ -235,6 +239,10 @@
 		9821BB65255EDE1900C47987 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		9821BBC1255F0CC900C47987 /* ExitAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitAlertView.swift; sourceTree = "<group>"; };
 		9821BBC5255F16D100C47987 /* ExitAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExitAlertView.xib; sourceTree = "<group>"; };
+		9821BBCA255FEEAB00C47987 /* ManitoApplyBtn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManitoApplyBtn.xib; sourceTree = "<group>"; };
+		9821BBCE255FEF0A00C47987 /* ManitoApplyBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoApplyBtn.swift; sourceTree = "<group>"; };
+		9821BBD22561037C00C47987 /* MultiTabDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTabDetector.swift; sourceTree = "<group>"; };
+		9821BBD525611CAC00C47987 /* ImageColorChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageColorChange.swift; sourceTree = "<group>"; };
 		9830CF6E255D8EED009F448F /* MainManitoChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoChatViewModel.swift; sourceTree = "<group>"; };
 		9830CF75255D8F4E009F448F /* MainManitoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoModel.swift; sourceTree = "<group>"; };
 		983216A6252B8CDD003E6B64 /* AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShadow.swift; sourceTree = "<group>"; };
@@ -604,6 +612,15 @@
 			path = ExitAlert;
 			sourceTree = "<group>";
 		};
+		9821BBC9255FEE8B00C47987 /* ManitoApplyBtn */ = {
+			isa = PBXGroup;
+			children = (
+				9821BBCA255FEEAB00C47987 /* ManitoApplyBtn.xib */,
+				9821BBCE255FEF0A00C47987 /* ManitoApplyBtn.swift */,
+			);
+			path = ManitoApplyBtn;
+			sourceTree = "<group>";
+		};
 		9830CF73255D8F29009F448F /* ManitoChatList */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +806,8 @@
 				986908F72521AE8E00C844F1 /* AlertViewController.swift */,
 				983216A6252B8CDD003E6B64 /* AddShadow.swift */,
 				98A860C52559C15000F921AA /* UILabelPadding.swift */,
+				9821BBD22561037C00C47987 /* MultiTabDetector.swift */,
+				9821BBD525611CAC00C47987 /* ImageColorChange.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -950,6 +969,7 @@
 		988377952541F4DB00BFA746 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				9821BBC9255FEE8B00C47987 /* ManitoApplyBtn */,
 				98D988DD254FA986002A8AC5 /* SortingPopup */,
 				98F8C849254CA0E200FDDEBF /* LottieLoading */,
 				988377962541F4E100BFA746 /* TextInputBox */,
@@ -1426,6 +1446,7 @@
 				98FA22522556EE7300331755 /* M_TS.json in Resources */,
 				98E2416B250F9F47003BE1A3 /* Results.json in Resources */,
 				98FA22472556EE7300331755 /* F_JI.json in Resources */,
+				9821BBCB255FEEAB00C47987 /* ManitoApplyBtn.xib in Resources */,
 				98FA224E2556EE7300331755 /* M_JS.json in Resources */,
 				988377F22545640B00BFA746 /* Loading2.json in Resources */,
 				980196E2252B620100F829F6 /* SF-Pro-Display-Medium.otf in Resources */,
@@ -1600,6 +1621,7 @@
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
 				98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */,
 				986322562517BB81003B0784 /* FriendMainVC.swift in Sources */,
+				9821BBD625611CAC00C47987 /* ImageColorChange.swift in Sources */,
 				98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */,
 				98C4226625143F7400B1E1A1 /* ApplicationStyleGuide.swift in Sources */,
 				9821BBC2255F0CC900C47987 /* ExitAlertView.swift in Sources */,
@@ -1607,6 +1629,7 @@
 				98F8C8AB254D866900FDDEBF /* HistoryVC.swift in Sources */,
 				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,
 				98D988D2254E8932002A8AC5 /* ImageUploadCell.swift in Sources */,
+				9821BBCF255FEF0A00C47987 /* ManitoApplyBtn.swift in Sources */,
 				980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */,
 				9853DB20255D62F700E8EBD5 /* MessageViewModel.swift in Sources */,
 				98067139250F206300C3EB72 /* APIService.swift in Sources */,
@@ -1629,6 +1652,7 @@
 				9821BADF255EBC3200C47987 /* ManitoChatViewModel.swift in Sources */,
 				98FA226F25585B9E00331755 /* MessageVC.swift in Sources */,
 				98D988E72551CD48002A8AC5 /* Sort.swift in Sources */,
+				9821BBD32561037C00C47987 /* MultiTabDetector.swift in Sources */,
 				988377F62545B69800BFA746 /* CreatePostViewController.swift in Sources */,
 				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
 				9800A1442533737E0090C058 /* IntroPageViewController.swift in Sources */,

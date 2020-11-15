@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ManitoApplyBtn" customModule="dimodamo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마니또가 요청되었습니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3z-iW-UNF">
+                    <rect key="frame" x="143" y="100" width="128" height="16"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
+                    <color key="textColor" name="GRAY - 210"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ol-OT-sST" userLabel="BtnContainer">
+                    <rect key="frame" x="133" y="44" width="148" height="48"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNB-Sa-ziI">
+                            <rect key="frame" x="0.0" y="16" width="148" height="19"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                            <state key="normal" title="마니또 요청하기"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray2Color"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="oNB-Sa-ziI" secondAttribute="bottom" constant="13" id="8IO-94-hTP"/>
+                        <constraint firstAttribute="width" constant="148" id="E67-om-ySo"/>
+                        <constraint firstAttribute="trailing" secondItem="oNB-Sa-ziI" secondAttribute="trailing" id="Tls-yD-4Yo"/>
+                        <constraint firstItem="oNB-Sa-ziI" firstAttribute="top" secondItem="3Ol-OT-sST" secondAttribute="top" constant="16" id="neK-tP-vXE"/>
+                        <constraint firstAttribute="height" constant="48" id="nek-lV-wmS"/>
+                        <constraint firstItem="oNB-Sa-ziI" firstAttribute="leading" secondItem="3Ol-OT-sST" secondAttribute="leading" id="uho-bN-nmt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstItem="3Ol-OT-sST" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="0vK-sO-aFW"/>
+                <constraint firstItem="w3z-iW-UNF" firstAttribute="centerX" secondItem="3Ol-OT-sST" secondAttribute="centerX" id="Yvn-Jj-0HE"/>
+                <constraint firstItem="w3z-iW-UNF" firstAttribute="top" secondItem="3Ol-OT-sST" secondAttribute="bottom" constant="8" id="c5B-ID-cUA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="3Ol-OT-sST" secondAttribute="top" id="wOh-3i-e2F"/>
+            </constraints>
+            <connections>
+                <outlet property="btnContainer" destination="3Ol-OT-sST" id="XPW-ZT-k12"/>
+                <outlet property="manitoApplyBtn" destination="oNB-Sa-ziI" id="LFp-xn-2n7"/>
+                <outlet property="manitoApplyLabel" destination="w3z-iW-UNF" id="gGe-gW-M1E"/>
+            </connections>
+            <point key="canvasLocation" x="66.666666666666671" y="133.92857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="GRAY - 210">
+            <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

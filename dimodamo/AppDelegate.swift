@@ -17,7 +17,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -30,23 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          FMC 설정
          */
         Messaging.messaging().delegate = self
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
-        
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions,completionHandler: {_, _ in })
         application.registerForRemoteNotifications()
-        
-        
         
         
         /*
@@ -66,58 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      FCM Function
      */
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        print("[Log] deviceToken :", deviceTokenString)
-        
         Messaging.messaging().apnsToken = deviceToken
     }
     
-    
-    // MARK: KAKAO
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        //        if (AuthApi.isKakaoTalkLoginUrl(url)) {
-        //            return AuthController.handleOpenUrl(url: url)
-        //        }
-        
-        return false
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-      // If you are receiving a notification message while your app is in the background,
-      // this callback will not be fired till the user taps on the notification launching the application.
-      // TODO: Handle data of notification
-
-      // With swizzling disabled you must let Messaging know about the message, for Analytics
-      // Messaging.messaging().appDidReceiveMessage(userInfo)
-
-      // Print message ID.
-//      if let messageID = userInfo[gcmMessageIDKey] {
-//        print("Message ID: \(messageID)")
-//      }
-
-      // Print full message.
-      print(userInfo)
-    }
-
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-//                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//      // If you are receiving a notification message while your app is in the background,
-//      // this callback will not be fired till the user taps on the notification launching the application.
-//      // TODO: Handle data of notification
-//
-//      // With swizzling disabled you must let Messaging know about the message, for Analytics
-//      // Messaging.messaging().appDidReceiveMessage(userInfo)
-//
-//      // Print message ID.
-//      if let messageID = userInfo[gcmMessageIDKey] {
-//        print("Message ID: \(messageID)")
-//      }
-//
-//      // Print full message.
-//      print(userInfo)
-//
-//      completionHandler(UIBackgroundFetchResult.newData)
-//    }
     
     // MARK: - Core Data stack
     
@@ -172,6 +110,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  */
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("\(#function)")
+        completionHandler([.banner, .sound])
+    }
+    
     // 사용자에게 푸시 권한을 요청
     func requestAuthorizationForRemotePushNotification() {
         let current = UNUserNotificationCenter.current()
@@ -179,39 +122,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             // granted가 true로 떨어지면 푸시를 받을 수 있습닏.
         }
     }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.badge, .sound])
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler()
-    }
 }
 
 /*
  FCM 확장
  */
-extension AppDelegate : MessagingDelegate {
-    // [START refresh_token]
+extension AppDelegate: MessagingDelegate {
+    
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-      print("Firebase registration token: \(String(describing: fcmToken))")
-
-        let dataDict:[String: String] = ["token": fcmToken ]
-      NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-      // TODO: If necessary send token to application server.
-      // Note: This callback is fired at each app startup and whenever a new token is generated.
+        print("Firebase registration token: \(fcmToken)")
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }
-
-    // [END refresh_token]
-    // [START ios_10_data_message]
-    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
-    // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
-    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print("Received data message: \(remoteMessage.appData)")
-        Messaging.messaging().shouldEstablishDirectChannel = true
-    }
-    
-    
-    // [END ios_10_data_message]
 }

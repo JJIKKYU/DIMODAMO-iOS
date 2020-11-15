@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YourChatCell: UITableViewCell {
+class YourChatCell: UITableViewCell{
 
     @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var messageBox: PaddingLabel! {
@@ -21,6 +21,7 @@ class YourChatCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.addSingleAndDoubleTapGesture()
         // Initialization code
     }
 
@@ -30,4 +31,23 @@ class YourChatCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    private func addSingleAndDoubleTapGesture() {
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap))
+        singleTapGesture.numberOfTapsRequired = 1
+        self.addGestureRecognizer(singleTapGesture)
+
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+        doubleTapGesture.numberOfTapsRequired = 2
+        self.addGestureRecognizer(doubleTapGesture)
+
+        singleTapGesture.require(toFail: doubleTapGesture)
+    }
+
+    @objc private func handleSingleTap(_ tapGesture: UITapGestureRecognizer) {
+        print("YoutChatCell singleTap")
+    }
+
+    @objc private func handleDoubleTap(_ tapGesture: UITapGestureRecognizer) {
+        print("YourChatCell doubleTap")
+    }
 }

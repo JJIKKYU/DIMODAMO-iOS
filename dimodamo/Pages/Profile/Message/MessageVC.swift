@@ -111,8 +111,14 @@ class MessageVC: UIViewController {
     
 }
 
+//MARK: - TableView
 
-extension MessageVC: UITableViewDelegate, UITableViewDataSource {
+extension MessageVC: UITableViewDelegate, UITableViewDataSource, TableReloadProtocol {
+    func tableReload() {
+        self.tableView.reloadData()
+        print("reload합니다")
+    }
+    
     func tableViewSetting() {
         self.tableView.contentInset.top = 116 // 마니또 요청하기 height만큼
     }
@@ -130,11 +136,10 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
             yourCell.profile.image = UIImage(named: "Profile_\(userType)")
             return yourCell
         } else {
-            let myCell = tableView.dequeueReusableCell(withIdentifier: "MyChat", for: indexPath)
+            let myCell = tableView.dequeueReusableCell(withIdentifier: "MyChat", for: indexPath) as! MyChatCell
+            myCell.delegate = self
             return myCell
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -150,7 +155,9 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 
+
 //MARK: - 키보드 높이 조절
+
 extension MessageVC {
     @objc func moveUpTextView(_ notification: NSNotification) {
         let window = UIApplication.shared.connectedScenes

@@ -2819,6 +2819,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="WHITE"/>
                                         <connections>
+                                            <outlet property="goodContainer" destination="4qf-Nq-SBF" id="b6u-YY-ABg"/>
+                                            <outlet property="goodContainerBottomConstraint" destination="EZG-yX-0fX" id="Qdy-li-eP4"/>
+                                            <outlet property="goodContainerHeightConstraint" destination="0gg-wx-kdM" id="Omp-gS-Jyz"/>
                                             <outlet property="messageBox" destination="18Z-qp-1Bx" id="I7R-QL-lNM"/>
                                         </connections>
                                     </tableViewCell>
