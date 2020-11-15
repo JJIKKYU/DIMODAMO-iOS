@@ -28,6 +28,8 @@ class MyChatCell: UITableViewCell {
         self.addSingleAndDoubleTapGesture()
     }
 
+    @IBOutlet weak var goodIconImageView: UIImageView!
+    @IBOutlet weak var goodLabel: UILabel!
     @IBOutlet weak var goodContainer: UIView! {
         didSet {
             goodContainer.isHidden = true
@@ -50,8 +52,12 @@ class MyChatCell: UITableViewCell {
 
     }
     
-    //MARK: - 이미지 컬러 변경
-    
+    //MARK: - 이미지 및 최고예요 컬러 변경
+    func chagneColorGoodSign(yourType: String) {
+        let color: UIColor = UIColor.dptiDarkColor(yourType)
+        self.goodIconImageView.setImageColor(color: color)
+        self.goodLabel.textColor = color
+    }
     
     
     //MARK: - 최고예요

@@ -2688,11 +2688,11 @@
                                 <color key="backgroundColor" name="WHITE"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourChat" rowHeight="53" id="0BS-1D-h2h" customClass="YourChatCell" customModule="dimodamo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="53"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourChat" rowHeight="100" id="0BS-1D-h2h" customClass="YourChatCell" customModule="dimodamo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0BS-1D-h2h" id="djX-w4-t0P">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_F_FN" translatesAutoresizingMaskIntoConstraints="NO" id="DFy-J3-Sg3">
@@ -2703,7 +2703,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuT-41-B1I" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="76" y="0.0" width="249" height="45"/>
+                                                    <rect key="frame" x="76" y="0.0" width="249" height="62"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="안녕하세요! 아트보드 글 보고 쪽지 남깁니다!안녕하세요! 아트보드 글 보고 쪽지 남깁니다!">
                                                             <attributes>
@@ -2729,12 +2729,40 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Bh-ma-jGn" userLabel="goodContainer">
+                                                    <rect key="frame" x="76" y="68" width="262" height="16"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manito_good_icon" translatesAutoresizingMaskIntoConstraints="NO" id="vgn-zh-saI">
+                                                            <rect key="frame" x="16" y="2" width="14" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="12" id="MLx-J3-cIT"/>
+                                                                <constraint firstAttribute="width" constant="14" id="V8h-20-5cR"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최고예요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwf-HY-6X8">
+                                                            <rect key="frame" x="36" y="-1" width="49" height="18"/>
+                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="13"/>
+                                                            <color key="textColor" name="YELLOW - DARK"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="vgn-zh-saI" firstAttribute="leading" secondItem="6Bh-ma-jGn" secondAttribute="leading" constant="16" id="6Qz-ih-auV"/>
+                                                        <constraint firstItem="kwf-HY-6X8" firstAttribute="centerY" secondItem="vgn-zh-saI" secondAttribute="centerY" id="B47-Yg-k1j"/>
+                                                        <constraint firstItem="vgn-zh-saI" firstAttribute="centerY" secondItem="6Bh-ma-jGn" secondAttribute="centerY" id="QLx-sl-ybB"/>
+                                                        <constraint firstItem="kwf-HY-6X8" firstAttribute="leading" secondItem="vgn-zh-saI" secondAttribute="trailing" constant="6" id="UCa-IJ-4sU"/>
+                                                        <constraint firstAttribute="height" constant="16" id="o9U-Nv-t17"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" name="WHITE"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vuT-41-B1I" secondAttribute="trailing" constant="79" id="0Ok-ZS-D87"/>
-                                                <constraint firstAttribute="bottom" secondItem="vuT-41-B1I" secondAttribute="bottom" constant="8" id="8rb-bY-gCJ"/>
+                                                <constraint firstItem="6Bh-ma-jGn" firstAttribute="leading" secondItem="vuT-41-B1I" secondAttribute="leading" id="6kO-ub-OIP"/>
                                                 <constraint firstItem="DFy-J3-Sg3" firstAttribute="top" secondItem="djX-w4-t0P" secondAttribute="top" id="HY6-PQ-Pvz"/>
+                                                <constraint firstAttribute="bottom" secondItem="6Bh-ma-jGn" secondAttribute="bottom" constant="16" id="IBn-iM-vZF"/>
+                                                <constraint firstItem="6Bh-ma-jGn" firstAttribute="top" secondItem="vuT-41-B1I" secondAttribute="bottom" constant="6" id="QlY-UG-YX1"/>
+                                                <constraint firstItem="6Bh-ma-jGn" firstAttribute="centerX" secondItem="djX-w4-t0P" secondAttribute="centerX" id="StU-kt-dmb"/>
                                                 <constraint firstItem="vuT-41-B1I" firstAttribute="top" secondItem="djX-w4-t0P" secondAttribute="top" id="UgN-FW-x3Y"/>
                                                 <constraint firstItem="DFy-J3-Sg3" firstAttribute="leading" secondItem="djX-w4-t0P" secondAttribute="leading" constant="20" id="Z6z-0k-zjI"/>
                                                 <constraint firstItem="vuT-41-B1I" firstAttribute="leading" secondItem="DFy-J3-Sg3" secondAttribute="trailing" constant="16" id="sK3-9b-YqV"/>
@@ -2742,21 +2770,26 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="WHITE"/>
                                         <connections>
+                                            <outlet property="goodContainer" destination="6Bh-ma-jGn" id="GaS-eO-ATc"/>
+                                            <outlet property="goodContainerBottomConstraint" destination="IBn-iM-vZF" id="YCG-qp-CiK"/>
+                                            <outlet property="goodContainerHeightConstraint" destination="o9U-Nv-t17" id="Kkf-TN-e1N"/>
+                                            <outlet property="goodIconImageView" destination="vgn-zh-saI" id="pmB-lA-1Oz"/>
+                                            <outlet property="goodLabel" destination="kwf-HY-6X8" id="cV9-MK-75E"/>
                                             <outlet property="messageBox" destination="vuT-41-B1I" id="Bjh-ax-RM0"/>
                                             <outlet property="profile" destination="DFy-J3-Sg3" id="5Ev-ty-TmD"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyChat" rowHeight="100" id="APM-lD-hEQ" customClass="MyChatCell" customModule="dimodamo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="81" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="128" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="APM-lD-hEQ" id="ZtM-pd-PvC">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18Z-qp-1Bx" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="82" y="0.0" width="312" height="58"/>
+                                                    <rect key="frame" x="375" y="0.0" width="19" height="58"/>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="안녕하세요! 아트보드 글 보고 쪽지 남깁니다!안녕하세요! 아트보드 글 보고 쪽지 남깁니다!">
+                                                        <fragment content="asd">
                                                             <attributes>
                                                                 <color key="NSColor" name="TEXT - SMALL"/>
                                                                 <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
@@ -2781,17 +2814,17 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qf-Nq-SBF" userLabel="goodContainer">
-                                                    <rect key="frame" x="82" y="64" width="250" height="16"/>
+                                                    <rect key="frame" x="294" y="64" width="100" height="16"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="manito_good_icon" translatesAutoresizingMaskIntoConstraints="NO" id="JIJ-aW-lKc">
-                                                            <rect key="frame" x="16" y="2" width="14" height="12"/>
+                                                            <rect key="frame" x="31" y="2" width="14" height="12"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="12" id="SfO-ot-one"/>
                                                                 <constraint firstAttribute="width" constant="14" id="U2q-gQ-aDG"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최고예요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYj-XW-m54">
-                                                            <rect key="frame" x="36" y="-1" width="49" height="18"/>
+                                                            <rect key="frame" x="51" y="-1" width="49" height="18"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="13"/>
                                                             <color key="textColor" name="YELLOW - DARK"/>
                                                             <nil key="highlightedColor"/>
@@ -2799,8 +2832,9 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="0gg-wx-kdM"/>
+                                                        <constraint firstAttribute="trailing" secondItem="aYj-XW-m54" secondAttribute="trailing" id="2Gg-HC-dW9"/>
                                                         <constraint firstItem="aYj-XW-m54" firstAttribute="centerY" secondItem="JIJ-aW-lKc" secondAttribute="centerY" id="Dlq-m3-Bx3"/>
-                                                        <constraint firstItem="JIJ-aW-lKc" firstAttribute="leading" secondItem="4qf-Nq-SBF" secondAttribute="leading" constant="16" id="Xi9-Zj-fcT"/>
+                                                        <constraint firstAttribute="width" constant="100" id="E1D-qu-oKM"/>
                                                         <constraint firstItem="JIJ-aW-lKc" firstAttribute="centerY" secondItem="4qf-Nq-SBF" secondAttribute="centerY" id="auL-UH-sdK"/>
                                                         <constraint firstItem="aYj-XW-m54" firstAttribute="leading" secondItem="JIJ-aW-lKc" secondAttribute="trailing" constant="6" id="jqj-T6-klv"/>
                                                     </constraints>
@@ -2811,9 +2845,8 @@
                                                 <constraint firstAttribute="bottom" secondItem="4qf-Nq-SBF" secondAttribute="bottom" constant="20" symbolic="YES" id="EZG-yX-0fX"/>
                                                 <constraint firstItem="18Z-qp-1Bx" firstAttribute="top" secondItem="ZtM-pd-PvC" secondAttribute="top" id="FoB-44-vxe"/>
                                                 <constraint firstAttribute="trailing" secondItem="18Z-qp-1Bx" secondAttribute="trailing" constant="20" id="SgE-NO-lBt"/>
-                                                <constraint firstItem="18Z-qp-1Bx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZtM-pd-PvC" secondAttribute="leading" constant="76" id="TY4-B0-IH7"/>
-                                                <constraint firstItem="4qf-Nq-SBF" firstAttribute="centerX" secondItem="ZtM-pd-PvC" secondAttribute="centerX" id="aDc-tY-fwn"/>
-                                                <constraint firstItem="4qf-Nq-SBF" firstAttribute="leading" secondItem="18Z-qp-1Bx" secondAttribute="leading" id="evK-oM-4I9"/>
+                                                <constraint firstItem="18Z-qp-1Bx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZtM-pd-PvC" secondAttribute="leading" id="TY4-B0-IH7"/>
+                                                <constraint firstItem="4qf-Nq-SBF" firstAttribute="trailing" secondItem="18Z-qp-1Bx" secondAttribute="trailing" id="dkc-gA-cbD"/>
                                                 <constraint firstItem="4qf-Nq-SBF" firstAttribute="top" secondItem="18Z-qp-1Bx" secondAttribute="bottom" constant="6" id="ilB-UA-sSI"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -2822,6 +2855,8 @@
                                             <outlet property="goodContainer" destination="4qf-Nq-SBF" id="b6u-YY-ABg"/>
                                             <outlet property="goodContainerBottomConstraint" destination="EZG-yX-0fX" id="Qdy-li-eP4"/>
                                             <outlet property="goodContainerHeightConstraint" destination="0gg-wx-kdM" id="Omp-gS-Jyz"/>
+                                            <outlet property="goodIconImageView" destination="JIJ-aW-lKc" id="VGS-Fa-0kH"/>
+                                            <outlet property="goodLabel" destination="aYj-XW-m54" id="kNh-uw-pTd"/>
                                             <outlet property="messageBox" destination="18Z-qp-1Bx" id="I7R-QL-lNM"/>
                                         </connections>
                                     </tableViewCell>

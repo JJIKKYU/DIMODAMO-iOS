@@ -128,15 +128,27 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource, TableReloadProt
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // 상대방 유저 타입
+        let userType = self.viewModel.userType.value
+        
         if indexPath.row % 2 == 0 {
             let yourCell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath) as! YourChatCell
             
-            let userType = self.viewModel.userType.value
+            // 상대방 유저 타입
             yourCell.messageBox.layer.borderColor = UIColor.dptiDarkColor(userType).cgColor
             yourCell.profile.image = UIImage(named: "Profile_\(userType)")
+            yourCell.delegate = self
+            
+            yourCell.chagneColorGoodSign(yourType: "\(userType)")
+            
             return yourCell
         } else {
             let myCell = tableView.dequeueReusableCell(withIdentifier: "MyChat", for: indexPath) as! MyChatCell
+            
+            myCell.chagneColorGoodSign(yourType: "\(userType)")
+            
+            // DoubleTap Delegate
             myCell.delegate = self
             return myCell
         }
