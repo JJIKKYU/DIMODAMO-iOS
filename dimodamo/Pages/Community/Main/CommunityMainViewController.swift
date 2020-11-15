@@ -39,7 +39,7 @@ class CommunityMainViewController: UIViewController {
         navigationController?.view.backgroundColor = .white
         self.viewModel.loadArticlePost()
         self.viewModel.loadInformationPost()
-//        self.navigationController?.presentTransparentNavigationBar()
+        //        self.navigationController?.presentTransparentNavigationBar()
     }
     
     override func viewDidLoad() {
@@ -81,11 +81,12 @@ class CommunityMainViewController: UIViewController {
     
     // MARK: - IBaction
     
-    // 디모다모 교과서 타이틀을 눌렀을 경우
+    // 디모다모 교과서 타이틀 및 더 보기를 눌렀을 경우
     @IBAction func pressedArticleTitle(_ sender: Any) {
         performSegue(withIdentifier: "\(CommunitySegueName.article)", sender: sender)
     }
     
+    // 다모 레이어 타이틀 및 더 보기를 눌렀을 경우
     @IBAction func pressedInformationTitle(_ sender: Any) {
         performSegue(withIdentifier: "\(CommunitySegueName.information)", sender: sender)
     }
@@ -176,7 +177,7 @@ class CommunityMainViewController: UIViewController {
             
             break
             
-            // 검색
+        // 검색
         case "CommunitySearchVC":
             segue.destination.modalTransitionStyle = .coverVertical
             segue.destination.modalPresentationStyle = .fullScreen
@@ -192,13 +193,13 @@ class CommunityMainViewController: UIViewController {
     }
     
     // MARK: - UI
-
+    
     
     
     
 }
 
-// MARK: - TableView (Information)(
+// MARK: - TableView (Information)(layer)
 
 extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegate {
     func settingTableView() {
@@ -238,10 +239,10 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
         
         if let tags = model.tags {
             for (index, tag) in tags.enumerated() {
-                cell.tags[index].text = "\(tag)"
+                cell.tags[index].text = "#\(tag)"
+                cell.tags[index].isHidden = false
             }
         }
-        cell.tagDesign()
         
         return cell
     }
@@ -279,7 +280,20 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         
         if let loadedImage = viewModel.articlePosts[indexPath.row].images?[0],
            let loadedImageURL = URL(string: loadedImage) {
-            cell.image.kf.setImage(with: loadedImageURL)
+            
+            KingfisherManager.shared.retrieveImage(with: loadedImageURL, options: nil, progressBlock: nil, completionHandler: { result in
+                
+                switch result {
+                case .success(let imageResult):
+                    let resizedImage = imageResult.image.resize(withWidth: cell.frame.width)
+                    cell.image.image = resizedImage
+                    break
+                    
+                case .failure(let error):
+                    print("썸네일 이미지를 불러오는데 에러가 발생했습니다. \(error.localizedDescription)")
+                    break
+                }
+            })
         }
         
         if let title = model.boardTitle {

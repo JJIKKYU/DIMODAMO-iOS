@@ -84,7 +84,14 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var commentTableViewBottom: NSLayoutConstraint!
     
     @IBOutlet weak var commentTextFieldRoundView: TextFieldRound!
-    @IBOutlet weak var commentTextFieldView: TextFieldContainerView!
+    @IBOutlet weak var commentTextFieldView: UIView! {
+        didSet {
+            commentTextFieldView.layer.cornerRadius = 24
+            commentTextFieldView.clipsToBounds = true
+            commentTextFieldView.layer.masksToBounds = false
+            commentTextFieldView.appShadow(.s20)
+        }
+    }
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentProfile: UIImageView!
     @IBOutlet var commentProfileWidthConstraint: NSLayoutConstraint!
@@ -633,7 +640,7 @@ extension ArticleDetailViewController {
                                   progressBlock: {receivedSize, totalSize in
                                     print("\(index) : \(receivedSize), \(totalSize)")
                                   },
-                                  completionHandler:  { [self] result in
+                                  completionHandler:  { [weak self] result in
                                     switch result {
                                     case .success(let value):
                                         print(value.image)
@@ -650,8 +657,8 @@ extension ArticleDetailViewController {
 //                                        print("이미지 서브뷰 했누")
                                         
                                         imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
-                                        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-                                        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+                                        imageView.trailingAnchor.constraint(equalTo: self!.contentView.trailingAnchor, constant: -20).isActive = true
+                                        imageView.leadingAnchor.constraint(equalTo: self!.contentView.leadingAnchor, constant: 20).isActive = true
                                         imageView.layer.cornerRadius = 12
                                         imageView.layer.masksToBounds = true
                                         
@@ -671,9 +678,9 @@ extension ArticleDetailViewController {
                                         print(value.cacheType)
                                         print(value.source)
                                         
-                                        if index == (viewModel.imagesRelay.value.count - 1) {
+                                        if index == (self!.viewModel.imagesRelay.value.count - 1) {
                                             print("\(index + 1)가지 이미지 로딩을 완료했습니다")
-                                            viewModel.imagesLoading.accept(true)
+                                            self?.viewModel.imagesLoading.accept(true)
                                         }
                                         
                                     case .failure(let error):

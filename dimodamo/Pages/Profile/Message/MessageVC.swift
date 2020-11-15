@@ -26,7 +26,7 @@ class MessageVC: UIViewController {
             manitoBtn.layer.borderWidth = 1.5
             
             // 상대방 쪽지 컬러로 변경할 것
-            let userType = viewModel.userType.value
+            let userType = viewModel.yourUserType.value
             manitoBtn.layer.borderColor = UIColor.dptiDarkColor(userType).cgColor
             manitoBtn.setTitleColor(UIColor.dptiDarkColor(userType), for: .normal)
         }
@@ -66,7 +66,7 @@ class MessageVC: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
         
         // 해당 유저 컬러로 변경할 것
-        let userType = viewModel.userType.value
+        let userType = viewModel.yourUserType.value
         navigationController?.navigationBar.barTintColor = UIColor.dptiDarkColor(userType)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController?.navigationBar.shadowImage = nil
@@ -108,6 +108,9 @@ class MessageVC: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    @IBAction func pressedManitoApplyBtn(_ sender: Any) {
+        
+    }
     
 }
 
@@ -130,7 +133,7 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource, TableReloadProt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // 상대방 유저 타입
-        let userType = self.viewModel.userType.value
+        let userType = self.viewModel.yourUserType.value
         
         if indexPath.row % 2 == 0 {
             let yourCell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath) as! YourChatCell

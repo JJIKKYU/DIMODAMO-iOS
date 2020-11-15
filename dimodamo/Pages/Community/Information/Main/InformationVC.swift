@@ -62,6 +62,8 @@ class InformationVC: UIViewController {
 
 }
 
+//MARK: - TableView
+
 extension InformationVC: UITableViewDelegate, UITableViewDataSource {
     func settingTableView() {
         tableView.rowHeight = 145
@@ -98,8 +100,17 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
             cell.commnetCnt.text = "\(commentCount)"
         }
         
+        if let tags = model.tags {
+            for (index, tag) in tags.enumerated() {
+                cell.tags[index].text = "#\(tag)"
+                cell.tags[index].isHidden = false
+            }
+        }
+        
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
 }

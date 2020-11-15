@@ -71,7 +71,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCj-R8-Rrf">
-                                                                    <rect key="frame" x="20" y="240" width="72" height="16.5"/>
+                                                                    <rect key="frame" x="20" y="240" width="74.5" height="19.5"/>
                                                                     <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="14"/>
                                                                     <color key="textColor" name="SYSTEM"/>
                                                                     <nil key="highlightedColor"/>
@@ -96,22 +96,22 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pER-7q-vec">
-                                                                    <rect key="frame" x="319.5" y="399" width="12" height="12"/>
+                                                                    <rect key="frame" x="317.5" y="399" width="12" height="12"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQN-DM-pZr">
-                                                                    <rect key="frame" x="335.5" y="397" width="14.5" height="16"/>
+                                                                    <rect key="frame" x="333.5" y="397" width="16.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5f5-wr-7Tl">
-                                                                    <rect key="frame" x="293" y="397" width="14.5" height="16"/>
+                                                                    <rect key="frame" x="289" y="397" width="16.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-9s-8jA">
-                                                                    <rect key="frame" x="279" y="399" width="10" height="12"/>
+                                                                    <rect key="frame" x="275" y="399" width="10" height="12"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmV-8F-vS7">
                                                                     <rect key="frame" x="24" y="376" width="326" height="1"/>
@@ -202,8 +202,21 @@
                                                     <action selector="pressedArticleTitle:" destination="Vgi-od-Fnr" eventType="touchUpInside" id="0uY-xW-pNP"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유인물 게시글에서 선별한 양질의 글을 확인해 보세요! " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwk-1a-bXo">
-                                                <rect key="frame" x="24" y="81" width="297" height="17"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnF-SY-gBk">
+                                                <rect key="frame" x="342" y="52" width="52" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="17" id="kAK-mz-cLL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
+                                                <state key="normal" title="+ 더 보기">
+                                                    <color key="titleColor" name="GRAY - 190"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressedArticleTitle:" destination="Vgi-od-Fnr" eventType="touchUpInside" id="a9S-tp-Srh"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다모 레이어에서 선별된 양질의 글을 확인해 보세요! " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwk-1a-bXo">
+                                                <rect key="frame" x="24" y="81" width="370" height="17"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <nil key="highlightedColor"/>
@@ -221,8 +234,21 @@
                                                     <action selector="pressedInformationTitle:" destination="Vgi-od-Fnr" eventType="touchUpInside" id="qmE-mP-UND"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="운영진이 직접 작성하고 선별한 양질의 글을 확인해 보세요! " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itv-Yo-X7M">
-                                                <rect key="frame" x="24" y="672" width="324" height="17"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="749-jj-zcY">
+                                                <rect key="frame" x="342" y="643" width="52" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="17" id="hvh-Mc-N8S"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
+                                                <state key="normal" title="+ 더 보기">
+                                                    <color key="titleColor" name="GRAY - 190"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressedInformationTitle:" destination="Vgi-od-Fnr" eventType="touchUpInside" id="I5S-sI-mBT"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="혼자 알기 아까운 다양한 꿀팁을 함께 공유해요!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itv-Yo-X7M">
+                                                <rect key="frame" x="24" y="672" width="370" height="17"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <nil key="highlightedColor"/>
@@ -255,7 +281,7 @@
                                                                     <color key="textColor" name="TEXT - SMALL"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3N-O0-X1D">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3N-O0-X1D" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
                                                                     <rect key="frame" x="24" y="50" width="3.5" height="18"/>
                                                                     <color key="backgroundColor" name="WHITE - 245"/>
                                                                     <attributedString key="attributedText">
@@ -268,8 +294,22 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                            <real key="value" value="9"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                            <real key="value" value="9"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ky-Ui-egt">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ky-Ui-egt" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
                                                                     <rect key="frame" x="35.5" y="50.5" width="3.5" height="17"/>
                                                                     <color key="backgroundColor" name="WHITE - 245"/>
                                                                     <attributedString key="attributedText">
@@ -282,8 +322,22 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                            <real key="value" value="9"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                            <real key="value" value="9"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CI-L1-PyQ">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CI-L1-PyQ" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
                                                                     <rect key="frame" x="47" y="50.5" width="3.5" height="17"/>
                                                                     <color key="backgroundColor" name="WHITE - 245"/>
                                                                     <attributedString key="attributedText">
@@ -296,6 +350,20 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                            <real key="value" value="9"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                            <real key="value" value="9"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Hq3-Od-Us5">
                                                                     <rect key="frame" x="24" y="92" width="32" height="32"/>
@@ -311,22 +379,22 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nKI-r6-Q5b">
-                                                                    <rect key="frame" x="363.5" y="102" width="12" height="12"/>
+                                                                    <rect key="frame" x="361.5" y="102" width="12" height="12"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtU-hw-OX9">
-                                                                    <rect key="frame" x="379.5" y="100" width="14.5" height="16"/>
+                                                                    <rect key="frame" x="377.5" y="100" width="16.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIV-X6-rZJ">
-                                                                    <rect key="frame" x="337" y="100" width="14.5" height="16"/>
+                                                                    <rect key="frame" x="333" y="100" width="16.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                     <color key="textColor" name="GRAY - 210"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="7hy-3z-yIy">
-                                                                    <rect key="frame" x="323" y="102" width="10" height="12"/>
+                                                                    <rect key="frame" x="319" y="102" width="10" height="12"/>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E66-eX-cVr">
                                                                     <rect key="frame" x="0.0" y="144" width="394" height="1"/>
@@ -383,16 +451,22 @@
                                             <constraint firstItem="UCe-Uz-ZKD" firstAttribute="top" secondItem="Dwk-1a-bXo" secondAttribute="bottom" constant="1" id="0Ib-df-e0F"/>
                                             <constraint firstItem="itv-Yo-X7M" firstAttribute="leading" secondItem="mm5-Te-8bh" secondAttribute="leading" id="1hq-a7-xa9"/>
                                             <constraint firstItem="cBB-t8-LMI" firstAttribute="top" secondItem="itv-Yo-X7M" secondAttribute="bottom" constant="24" id="3QO-Ud-e3W"/>
+                                            <constraint firstAttribute="trailing" secondItem="LnF-SY-gBk" secondAttribute="trailing" constant="20" id="AmK-jS-sMz"/>
                                             <constraint firstAttribute="height" constant="1350" id="BFg-he-aS3"/>
                                             <constraint firstItem="cBB-t8-LMI" firstAttribute="leading" secondItem="kV6-pn-hOH" secondAttribute="leading" id="CK8-vM-U8I"/>
                                             <constraint firstItem="mm5-Te-8bh" firstAttribute="top" secondItem="UCe-Uz-ZKD" secondAttribute="bottom" constant="40" id="GJH-2M-21J"/>
                                             <constraint firstItem="Gol-Sa-DWM" firstAttribute="leading" secondItem="kV6-pn-hOH" secondAttribute="leading" constant="24" id="MQq-bk-53z"/>
                                             <constraint firstItem="UCe-Uz-ZKD" firstAttribute="leading" secondItem="kV6-pn-hOH" secondAttribute="leading" id="NQg-nd-lmF"/>
+                                            <constraint firstAttribute="trailing" secondItem="749-jj-zcY" secondAttribute="trailing" constant="20" id="NiY-Nm-v87"/>
+                                            <constraint firstAttribute="trailing" secondItem="Dwk-1a-bXo" secondAttribute="trailing" constant="20" id="UJP-Ig-9Nk"/>
                                             <constraint firstAttribute="trailing" secondItem="cBB-t8-LMI" secondAttribute="trailing" id="YXe-PN-ukQ"/>
                                             <constraint firstItem="Dwk-1a-bXo" firstAttribute="top" secondItem="Gol-Sa-DWM" secondAttribute="bottom" constant="8" id="a6v-Py-15i"/>
+                                            <constraint firstItem="LnF-SY-gBk" firstAttribute="centerY" secondItem="Gol-Sa-DWM" secondAttribute="centerY" id="arQ-Sh-6QO"/>
                                             <constraint firstItem="Gol-Sa-DWM" firstAttribute="top" secondItem="kV6-pn-hOH" secondAttribute="top" constant="48" id="auk-h4-MbC"/>
                                             <constraint firstItem="Dwk-1a-bXo" firstAttribute="leading" secondItem="Gol-Sa-DWM" secondAttribute="leading" id="hOV-tm-aGL"/>
+                                            <constraint firstAttribute="trailing" secondItem="itv-Yo-X7M" secondAttribute="trailing" constant="20" id="heg-Qe-lhj"/>
                                             <constraint firstItem="mm5-Te-8bh" firstAttribute="leading" secondItem="Gol-Sa-DWM" secondAttribute="leading" id="hfH-6V-jBp"/>
+                                            <constraint firstItem="749-jj-zcY" firstAttribute="centerY" secondItem="mm5-Te-8bh" secondAttribute="centerY" id="jcw-Mc-dim"/>
                                             <constraint firstItem="gvX-HO-fK5" firstAttribute="leading" secondItem="kV6-pn-hOH" secondAttribute="leading" id="mDV-8G-g3O"/>
                                             <constraint firstAttribute="trailing" secondItem="gvX-HO-fK5" secondAttribute="trailing" id="nDq-BO-BoF"/>
                                             <constraint firstItem="itv-Yo-X7M" firstAttribute="top" secondItem="mm5-Te-8bh" secondAttribute="bottom" constant="8" id="wRs-Jt-9ax"/>
@@ -1248,7 +1322,7 @@
                                 <rect key="frame" x="0.0" y="355" width="414" height="541"/>
                                 <color key="backgroundColor" name="WHITE"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYD-Mh-DWj" customClass="TextFieldContainerView" customModule="dimodamo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYD-Mh-DWj">
                                 <rect key="frame" x="0.0" y="796" width="414" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qF7-LF-C75">
@@ -1505,7 +1579,7 @@
             <objects>
                 <viewController id="wuW-i4-vh6" customClass="CommunitySearchVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="da8-Qa-RoL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veH-aZ-If2">
@@ -1652,7 +1726,7 @@
             <objects>
                 <viewController id="wjB-gz-cMF" customClass="LinkWebViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jfp-a4-wpb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxs-2x-PjI">
@@ -1730,7 +1804,7 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iwr-9x-kBf" customClass="CreatePostViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FGI-NB-Dkd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dal-X5-CIj">
@@ -2750,7 +2824,7 @@
                                                     <color key="textColor" name="TEXT - SMALL"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uF-hW-7lb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uF-hW-7lb" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
                                                     <rect key="frame" x="24" y="50" width="30" height="17.5"/>
                                                     <color key="backgroundColor" name="WHITE - 245"/>
                                                     <attributedString key="attributedText">
@@ -2763,8 +2837,22 @@
                                                         </fragment>
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akO-Kz-cBZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akO-Kz-cBZ" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
                                                     <rect key="frame" x="62" y="50" width="41" height="17.5"/>
                                                     <color key="backgroundColor" name="WHITE - 245"/>
                                                     <attributedString key="attributedText">
@@ -2777,8 +2865,22 @@
                                                         </fragment>
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acN-3V-tHv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acN-3V-tHv" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
                                                     <rect key="frame" x="111" y="50" width="52" height="17.5"/>
                                                     <color key="backgroundColor" name="WHITE - 245"/>
                                                     <attributedString key="attributedText">
@@ -2791,6 +2893,20 @@
                                                         </fragment>
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testProfile" translatesAutoresizingMaskIntoConstraints="NO" id="aph-md-yTu">
                                                     <rect key="frame" x="24" y="91.5" width="32" height="32"/>
@@ -2806,22 +2922,22 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="1JP-ee-vuo">
-                                                    <rect key="frame" x="363.5" y="101.5" width="12" height="12"/>
+                                                    <rect key="frame" x="361.5" y="101.5" width="12" height="12"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nd-x2-imr">
-                                                    <rect key="frame" x="379.5" y="99.5" width="14.5" height="16"/>
+                                                    <rect key="frame" x="377.5" y="99.5" width="16.5" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                     <color key="textColor" name="GRAY - 210"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbF-7w-ESH">
-                                                    <rect key="frame" x="337" y="99.5" width="14.5" height="16"/>
+                                                    <rect key="frame" x="333" y="99.5" width="16.5" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                     <color key="textColor" name="GRAY - 210"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="XAM-mU-LKr">
-                                                    <rect key="frame" x="323" y="101.5" width="10" height="12"/>
+                                                    <rect key="frame" x="319" y="101.5" width="10" height="12"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reG-94-1fD">
                                                     <rect key="frame" x="0.0" y="144" width="394" height="1"/>
@@ -2865,9 +2981,9 @@
                                             <outlet property="profile" destination="aph-md-yTu" id="ARE-nj-k7C"/>
                                             <outlet property="scrapCnt" destination="vbF-7w-ESH" id="cPM-br-AAh"/>
                                             <outlet property="title" destination="b7y-YV-8ap" id="CiZ-yM-ZZD"/>
-                                            <outletCollection property="tags" destination="8uF-hW-7lb" collectionClass="NSMutableArray" id="V8V-Lu-11T"/>
-                                            <outletCollection property="tags" destination="akO-Kz-cBZ" collectionClass="NSMutableArray" id="Kss-e5-ceG"/>
-                                            <outletCollection property="tags" destination="acN-3V-tHv" collectionClass="NSMutableArray" id="Vvt-9z-VkF"/>
+                                            <outletCollection property="tags" destination="8uF-hW-7lb" collectionClass="NSMutableArray" id="lEf-ll-A4U"/>
+                                            <outletCollection property="tags" destination="akO-Kz-cBZ" collectionClass="NSMutableArray" id="Aqk-dY-Gl3"/>
+                                            <outletCollection property="tags" destination="acN-3V-tHv" collectionClass="NSMutableArray" id="R43-Zg-Eaq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3123,7 +3239,7 @@
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="RED">
-            <color red="0.92199999094009399" green="0.34099999070167542" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96100002527236938" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

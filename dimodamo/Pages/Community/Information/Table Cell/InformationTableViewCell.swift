@@ -12,7 +12,15 @@ class InformationTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var title: UILabel!
-    @IBOutlet var tags: [UILabel]!
+    @IBOutlet var tags: [UILabel]! {
+        didSet {
+            for tag in tags {
+                tag.layer.cornerRadius = tag.frame.height / 2
+                tag.layer.masksToBounds = true
+                tag.isHidden = true
+            }
+        }
+    }
     @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var nickName: UILabel!
     
