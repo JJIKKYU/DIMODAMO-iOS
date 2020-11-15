@@ -50,15 +50,40 @@ class InformationVC: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destination
+        
+        switch segue.identifier {
+        case "DetailArticleVC":
+            
+            let postIndex = sender as! Int
+            
+            let destinationVC = destination as! ArticleDetailViewController
+            
+            destinationVC.viewModel.postKindRelay.accept(PostKinds.information.rawValue)
+            
+            if let postUid = viewModel.informationPosts[postIndex].boardId {
+                destinationVC.viewModel.postUidRelay.accept(postUid)
+            }
+            
+            if let title = viewModel.informationPosts[postIndex].boardTitle {
+                destinationVC.viewModel.titleRelay.accept("\(title)")
+            }
+            
+            if let tags = viewModel.informationPosts[postIndex].tags {
+                destinationVC.viewModel.tagsRelay.accept(tags)
+            }
+            
+            break
+            
+        default:
+            break
+        }
     }
-    */
+
 
 }
 
@@ -111,6 +136,7 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
+        performSegue(withIdentifier: "DetailArticleVC", sender: indexPath.row)
     }
 }

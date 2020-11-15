@@ -156,7 +156,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNo-JV-4ek" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="76" y="0.0" width="249" height="45"/>
+                                                    <rect key="frame" x="76" y="0.0" width="226.5" height="45"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="안녕하세요! 아트보드 글 보고 쪽지 남깁니다!안녕하세요! 아트보드 글 보고 쪽지 남깁니다!">
                                                             <attributes>
@@ -201,7 +201,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yN-zT-brw" customClass="TextFieldContainerView" customModule="dimodamo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yN-zT-brw">
                                 <rect key="frame" x="0.0" y="708" width="414" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02x-a5-6Jn">
@@ -314,6 +314,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="lQw-CB-pEm" id="Qmx-yX-7iX"/>
+                        <outlet property="textFieldView" destination="2yN-zT-brw" id="ynP-oZ-0FI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfW-Zp-fZp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

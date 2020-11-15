@@ -18,7 +18,14 @@ class MessageVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textFieldBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var textField: TextFieldContainerView!
+    @IBOutlet weak var textField: UIView! {
+        didSet {
+            textField.layer.cornerRadius = 24
+            textField.clipsToBounds = true
+            textField.layer.masksToBounds = false
+            textField.appShadow(.s20)
+        }
+    }
     
     @IBOutlet weak var manitoBtn: UIButton! {
         didSet {

@@ -18,6 +18,14 @@ class ManitoChatVC: UIViewController {
     let viewModel = ManitoChatViewModel()
     var disposeBag = DisposeBag()
 
+    @IBOutlet weak var textFieldView: UIView! {
+        didSet {
+            textFieldView.layer.cornerRadius = 24
+            textFieldView.clipsToBounds = true
+            textFieldView.layer.masksToBounds = false
+            textFieldView.appShadow(.s20)
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
     
     /*

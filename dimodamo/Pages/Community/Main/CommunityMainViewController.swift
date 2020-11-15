@@ -37,14 +37,16 @@ class CommunityMainViewController: UIViewController {
         print("viewwillAppear")
         navigationController?.visible(color: UIColor.appColor(.textBig))
         navigationController?.view.backgroundColor = .white
-        self.viewModel.loadArticlePost()
-        self.viewModel.loadInformationPost()
+        
         //        self.navigationController?.presentTransparentNavigationBar()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewdidload")
+        
+        self.viewModel.loadArticlePost()
+        self.viewModel.loadInformationPost()
         
         // UI 및 delegate 세팅
         tableView.delegate = self
