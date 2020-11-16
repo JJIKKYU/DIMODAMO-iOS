@@ -66,6 +66,9 @@
 		986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */; };
 		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
 		987D6D702562CE77000FCA16 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D6F2562CE77000FCA16 /* UITableView.swift */; };
+		987D6D742562DF2E000FCA16 /* ClassRoomMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D732562DF2E000FCA16 /* ClassRoomMainVC.swift */; };
+		987D6D792562DF42000FCA16 /* ClassRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D782562DF42000FCA16 /* ClassRoomViewModel.swift */; };
+		987D6D7D2562DF4A000FCA16 /* ClassRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D7C2562DF4A000FCA16 /* ClassRoomModel.swift */; };
 		987E1C6A254DF57100F5077D /* LinkPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987E1C69254DF57100F5077D /* LinkPopupView.swift */; };
 		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
 		98816093251EF23200556AEC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98816092251EF23200556AEC /* Login.storyboard */; };
@@ -276,6 +279,9 @@
 		986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
 		987D6D6F2562CE77000FCA16 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		987D6D732562DF2E000FCA16 /* ClassRoomMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomMainVC.swift; sourceTree = "<group>"; };
+		987D6D782562DF42000FCA16 /* ClassRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewModel.swift; sourceTree = "<group>"; };
+		987D6D7C2562DF4A000FCA16 /* ClassRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomModel.swift; sourceTree = "<group>"; };
 		987E1C69254DF57100F5077D /* LinkPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupView.swift; sourceTree = "<group>"; };
 		987F5A9A250B152000E1B856 /* DptiResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewController.swift; sourceTree = "<group>"; };
 		98816092251EF23200556AEC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -862,9 +868,20 @@
 		986EDA1E2509CBFF00AD3CEE /* ClassRoom */ = {
 			isa = PBXGroup;
 			children = (
+				987D6D722562DF16000FCA16 /* Main */,
 				986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */,
 			);
 			path = ClassRoom;
+			sourceTree = "<group>";
+		};
+		987D6D722562DF16000FCA16 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				987D6D732562DF2E000FCA16 /* ClassRoomMainVC.swift */,
+				987D6D782562DF42000FCA16 /* ClassRoomViewModel.swift */,
+				987D6D7C2562DF4A000FCA16 /* ClassRoomModel.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		987E1C68254DF56100F5077D /* LinkPopup */ = {
@@ -1597,6 +1614,7 @@
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,
 				98F8C881254D3DB000FDDEBF /* ArticleSearchViewModel.swift in Sources */,
 				98F8C83F254C95F900FDDEBF /* ArticleSearchVC.swift in Sources */,
+				987D6D792562DF42000FCA16 /* ClassRoomViewModel.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
 				98FA22562556FD9500331755 /* MyProfileViewModel.swift in Sources */,
 				98FA226225572AC700331755 /* AllDptiVC.swift in Sources */,
@@ -1606,6 +1624,7 @@
 				98F8C843254C9CD600FDDEBF /* InformationVC.swift in Sources */,
 				9883776E2541ECE100BFA746 /* LinkWebViewController.swift in Sources */,
 				98A661E7252F2C0000698BA0 /* FindEmailViewController.swift in Sources */,
+				987D6D7D2562DF4A000FCA16 /* ClassRoomModel.swift in Sources */,
 				98C42313251D7CCE00B2B194 /* Register.swift in Sources */,
 				980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */,
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
@@ -1682,6 +1701,7 @@
 				98A860C32558D9A300F921AA /* ProfileMainModel.swift in Sources */,
 				988377EB2544B49E00BFA746 /* CommentModel.swift in Sources */,
 				98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */,
+				987D6D742562DF2E000FCA16 /* ClassRoomMainVC.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */,
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
