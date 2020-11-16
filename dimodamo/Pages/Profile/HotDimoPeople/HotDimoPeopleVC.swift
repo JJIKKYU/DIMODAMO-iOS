@@ -43,7 +43,7 @@ class HotDimoPeopleVC: UIViewController {
                 // 마지막 버튼일 경우
                 if btn.tag == 20 {
                     let height = cellWidthHeight * 0.4375
-
+                    
                     btn.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
                 } else {
                     btn.widthAnchor.constraint(equalToConstant: CGFloat(cellWidthHeight)).isActive = true
@@ -54,30 +54,64 @@ class HotDimoPeopleVC: UIViewController {
         }
     }
     
-    @IBOutlet weak var filterContainer: UIView! {
-        didSet {
-//            filterContainer.isHidden = true
-        }
-    }
+    @IBOutlet weak var filterContainer: UIView!
     
     /*
      mainTableView
      */
     @IBOutlet weak var tableView: UITableView!
     
+    
+    override func loadView() {
+        super.loadView()
+        setColors()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(true)
         
+        navigationController?.view.backgroundColor = UIColor.white
         navigationController?.navigationBar.tintColor = UIColor.appColor(.gray190)
+        animate()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        navigationController?.view.backgroundColor = UIColor.clear
+    }
+    
+    private func setColors(){
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray190)
+        navigationController?.navigationBar.barTintColor = .white
     }
 
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+        }, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setColors()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         tableView.delegate = self
         tableView.dataSource =  self
         settingTableView()
+        
+        // 기본은 필터가 올라가있는 상태로
         self.filter(isTurnOn: true)
         
         for index in 0...8 {
@@ -104,7 +138,7 @@ class HotDimoPeopleVC: UIViewController {
             .disposed(by: disposeBag)
     }
     
-
+    
     @IBAction func pressedFilterBtn(_ sender: Any) {
         print("pressedFilterBtn")
         
@@ -123,16 +157,34 @@ class HotDimoPeopleVC: UIViewController {
         
     }
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let identifier = segue.identifier
+        
+        switch identifier {
+        case "MyProfileVC":
+            let index: Int = sender as! Int
+            let destination = segue.destination as! MyProfileVC
+            
+            var selectedUserUID: String?
+            
+            selectedUserUID = viewModel.hotDimoPeopleArr[index].uid
+            destination.viewModel.profileSetting.accept(viewModel.hotDimoPeopleArr[index].dpti)
+            destination.viewModel.userNickname = viewModel.hotDimoPeopleArr[index].nickname
+            
+            guard let UID = selectedUserUID else {
+                return
+            }
+            
+            destination.viewModel.profileUID.accept(UID)
+            
+            break
+        default:
+            break
+        }
     }
-    */
-
+    
 }
 
 //MARK: - FilterBtnAction
@@ -189,9 +241,7 @@ extension HotDimoPeopleVC: UITableViewDelegate, UITableViewDataSource {
         
         let index = indexPath.row
         let hotDimoArr = viewModel.hotDimoPeopleArr[index]
-        print(hotDimoArr)
         
-        /*
         cell.nickname.text = hotDimoArr.nickname
         cell.profile.image = hotDimoArr.getProfileImage()
         cell.topContainer.backgroundColor = hotDimoArr.getBackgroundColor()
@@ -220,9 +270,13 @@ extension HotDimoPeopleVC: UITableViewDelegate, UITableViewDataSource {
             NSAttributedString.Key.font, value: UIFont(name: "AppleSDGothicNeoEB00", size: 12.0)!,
             range: NSRange(location: stringLocation ,length:1))
         cell.rankingLabel.attributedText = lankMutableString
- */
+        
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "MyProfileVC", sender: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

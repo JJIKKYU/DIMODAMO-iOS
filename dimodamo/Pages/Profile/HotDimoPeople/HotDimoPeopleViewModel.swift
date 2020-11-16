@@ -60,7 +60,6 @@ class HotDimoPeopleViewModel {
         db.collection("users")
             .whereField("school", isEqualTo: "홍익대학교")
             .order(by: "get_profile_score", descending: true)
-            .limit(to: 4)
             .getDocuments{ [weak self] (querySnapshot, err) in
                 if let err = err {
                     print("디모피플을 가져오는데 오류가 발생했습니다. \(err.localizedDescription)")
@@ -99,7 +98,7 @@ class HotDimoPeopleViewModel {
                         }
                         
                         newHotDimoPeopleArr.append(dimoPeopleData)
-//                        print("newDimoPeopleArr = \(newHotDimoPeopleArr[0].nickname)")
+                        print("newDimoPeopleArr = \(newHotDimoPeopleArr[0].nickname)")
                     }
                     
                     self?.hotDimoPeopleArr = newHotDimoPeopleArr

@@ -1208,11 +1208,22 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="WHITE"/>
                                         <connections>
+                                            <outlet property="backgroundPattern" destination="XRI-NL-WPK" id="YkQ-yY-GB0"/>
                                             <outlet property="bottomContainer" destination="vtg-5r-bTz" id="g4w-6Q-dCh"/>
+                                            <outlet property="commentHeartCount" destination="6Ru-Ua-JvK" id="5Rx-hH-uKB"/>
+                                            <outlet property="commentHeartIcon" destination="xTq-T3-rgR" id="Qt5-si-F4Z"/>
                                             <outlet property="containerView" destination="fw6-y8-0Qc" id="bcq-lM-9V1"/>
+                                            <outlet property="manitoCount" destination="VpE-4O-EIH" id="l89-Sl-OXv"/>
+                                            <outlet property="manitoIcon" destination="mVd-h7-0E8" id="V7V-X1-aQJ"/>
+                                            <outlet property="nickname" destination="XpG-z1-9EV" id="MCK-Ep-5US"/>
+                                            <outlet property="profile" destination="ZIb-1W-u03" id="UDm-pX-uNj"/>
                                             <outlet property="profileBG" destination="9Oa-Gf-xf1" id="Trx-n5-aBR"/>
+                                            <outlet property="rankingLabel" destination="dj2-Fg-Ho5" id="x69-t0-FOj"/>
+                                            <outlet property="scrapCount" destination="Xed-lu-6eT" id="7Yw-SG-odx"/>
+                                            <outlet property="scrapIcon" destination="nl9-BH-WJt" id="f4l-VJ-gQl"/>
                                             <outlet property="shadowView" destination="HlS-hh-kfP" id="JId-SN-S9F"/>
                                             <outlet property="topContainer" destination="IAd-Eo-nfX" id="JFy-zk-DLl"/>
+                                            <outlet property="typeImage" destination="F8r-El-Vfd" id="CGH-IC-nUT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1245,6 +1256,7 @@
                         <outletCollection property="buttons" destination="JHL-mb-3vw" collectionClass="NSMutableArray" id="ffW-6o-Lxy"/>
                         <outletCollection property="stackViews" destination="GGa-sr-Vyk" collectionClass="NSMutableArray" id="0jb-Eq-Rrc"/>
                         <outletCollection property="stackViews" destination="KJ8-p8-h1I" collectionClass="NSMutableArray" id="sM4-BC-dG0"/>
+                        <segue destination="sAM-ds-ZdE" kind="show" identifier="MyProfileVC" id="KVu-UL-sdg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ano-og-jZY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2698,7 +2710,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuT-41-B1I" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="76" y="0.0" width="226.5" height="62"/>
+                                                    <rect key="frame" x="76" y="0.0" width="249" height="62"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="안녕하세요! 아트보드 글 보고 쪽지 남깁니다!안녕하세요! 아트보드 글 보고 쪽지 남깁니다!">
                                                             <attributes>
@@ -3711,7 +3723,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="2500"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZu-ew-BSu">
-                                                <rect key="frame" x="18" y="14" width="376" height="74.5"/>
+                                                <rect key="frame" x="18" y="14" width="376" height="55"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="디자인 성향 검사 이하">
                                                         <attributes>
@@ -3780,14 +3792,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Inb-is-udv" userLabel="Line">
-                                                <rect key="frame" x="20" y="152.5" width="374" height="2"/>
+                                                <rect key="frame" x="20" y="133" width="374" height="2"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="Bca-as-g3Q"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEd-tU-DJ7" userLabel="감정풍부형">
-                                                <rect key="frame" x="0.0" y="202.5" width="414" height="545"/>
+                                                <rect key="frame" x="0.0" y="183" width="414" height="545"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감정풍부형" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBd-5y-gVq">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="27"/>
@@ -3893,14 +3905,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gI9-rt-ucR" userLabel="Line">
-                                                <rect key="frame" x="20" y="747.5" width="374" height="2"/>
+                                                <rect key="frame" x="20" y="728" width="374" height="2"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="N9j-99-YzN"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYQ-RK-pHH" userLabel="상상표출형">
-                                                <rect key="frame" x="0.0" y="797.5" width="414" height="545"/>
+                                                <rect key="frame" x="0.0" y="778" width="414" height="545"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상상표출형" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEL-gS-XYj">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="27"/>
@@ -3909,7 +3921,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EI4-cg-QGI">
-                                                        <rect key="frame" x="20" y="67" width="375" height="57"/>
+                                                        <rect key="frame" x="20" y="67" width="375" height="36.5"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="뛰어난 상상력을 바탕으로 자아에 대한 이해부터 호기심에 대한 탐구 능력까지, 말 그대로 자신의 다양한 생각과 상상을 각자의 방식으로 표출해내요!">
                                                                 <attributes>
@@ -3927,7 +3939,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8BV-Bd-d9D">
-                                                        <rect key="frame" x="0.0" y="132.5" width="414" height="416"/>
+                                                        <rect key="frame" x="0.0" y="112" width="414" height="416"/>
                                                         <color key="backgroundColor" name="WHITE"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="416" id="UOb-mg-Tqi"/>
@@ -4009,14 +4021,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kL-bk-R3j" userLabel="Line">
-                                                <rect key="frame" x="20" y="1342.5" width="374" height="2"/>
+                                                <rect key="frame" x="20" y="1323" width="374" height="2"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="OKk-gI-Lbc"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CE-VL-IYv" userLabel="현실직시형">
-                                                <rect key="frame" x="0.0" y="1392.5" width="414" height="545"/>
+                                                <rect key="frame" x="0.0" y="1373" width="414" height="545"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현실직시형" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVe-en-MPi">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="27"/>
@@ -4125,14 +4137,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4P-0y-AiH" userLabel="Line">
-                                                <rect key="frame" x="20" y="1937.5" width="374" height="2"/>
+                                                <rect key="frame" x="20" y="1918" width="374" height="2"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="90Q-oZ-c4s"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eul-zb-tHe" userLabel="자기성찰형">
-                                                <rect key="frame" x="0.0" y="1987.5" width="414" height="545"/>
+                                                <rect key="frame" x="0.0" y="1968" width="414" height="545"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자기성찰형" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBx-7M-dQq">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="27"/>
@@ -4346,6 +4358,9 @@
             <point key="canvasLocation" x="2733" y="761"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KVu-UL-sdg"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="24TestProfile" width="24" height="24"/>
         <image name="BC_BG_P_Star" width="374" height="348"/>
