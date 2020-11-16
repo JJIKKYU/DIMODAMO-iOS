@@ -96,7 +96,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="U1X-jK-vjF" kind="relationship" relationship="viewControllers" id="abQ-H6-mIm"/>
-                        <segue destination="qLm-Nf-Sq2" kind="relationship" relationship="viewControllers" id="Rnh-3x-kM2"/>
+                        <segue destination="wv7-iR-7cy" kind="relationship" relationship="viewControllers" id="3Gw-4E-III"/>
                         <segue destination="XIB-mF-kLE" kind="relationship" relationship="viewControllers" id="tcD-fx-gsr"/>
                         <segue destination="XqL-PQ-a9k" kind="relationship" relationship="viewControllers" id="UbP-rR-xFz"/>
                         <segue destination="I0M-G3-KAm" kind="relationship" relationship="viewControllers" id="y1c-ki-BlT"/>
@@ -106,43 +106,15 @@
             </objects>
             <point key="canvasLocation" x="1870" y="161"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="7qK-Al-ndZ">
-            <objects>
-                <viewController id="qLm-Nf-Sq2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zJC-4D-F6m">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzO-Wh-Kqa">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <connections>
-                                    <segue destination="wv7-iR-7cy" kind="embed" id="vOX-r6-Hsz"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="bdd-iD-bEX"/>
-                        <color key="backgroundColor" name="WHITE"/>
-                        <constraints>
-                            <constraint firstItem="bdd-iD-bEX" firstAttribute="trailing" secondItem="CzO-Wh-Kqa" secondAttribute="trailing" id="1OJ-1g-Fgm"/>
-                            <constraint firstItem="bdd-iD-bEX" firstAttribute="bottom" secondItem="CzO-Wh-Kqa" secondAttribute="bottom" id="3mo-gj-frQ"/>
-                            <constraint firstItem="CzO-Wh-Kqa" firstAttribute="top" secondItem="bdd-iD-bEX" secondAttribute="top" id="DNt-bM-vf3"/>
-                            <constraint firstItem="CzO-Wh-Kqa" firstAttribute="leading" secondItem="bdd-iD-bEX" secondAttribute="leading" id="e0f-Qm-6Ib"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="classRoom" selectedImage="classRoomSelected" id="QMQ-wk-nOq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DQg-vm-Jw5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3141" y="2257"/>
-        </scene>
         <!--classRoomMain-->
         <scene sceneID="5RM-e8-D7t">
             <objects>
-                <viewControllerPlaceholder storyboardName="ClassRoom" referencedIdentifier="classRoomMain" id="wv7-iR-7cy" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ClassRoom" referencedIdentifier="classRoomMain" id="wv7-iR-7cy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Ed3-jd-MNP"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PC7-j4-oXj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3701" y="2054"/>
+            <point key="canvasLocation" x="1912" y="713"/>
         </scene>
         <!--FriendsMain-->
         <scene sceneID="gTA-L5-X7e">
@@ -176,8 +148,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="classRoom" width="20" height="20"/>
-        <image name="classRoomSelected" width="20" height="20"/>
         <image name="community" width="20" height="20"/>
         <image name="communitySelected" width="20" height="20"/>
         <image name="home" width="20" height="20"/>
