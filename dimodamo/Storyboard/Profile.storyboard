@@ -878,9 +878,6 @@
                                                             <state key="highlighted" image="Profile_Filter_Color_Purple_unActive"/>
                                                         </button>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="64" id="y6H-0D-9Za"/>
-                                                    </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도형" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIK-za-df8">
                                                     <rect key="frame" x="4" y="111.5" width="28" height="19.5"/>
@@ -916,9 +913,6 @@
                                                             <state key="highlighted" image="Profile_Filter_Shape_Square_unActive"/>
                                                         </button>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="64" id="WaW-g5-s8Q"/>
-                                                    </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관심사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02c-Za-XPJ">
                                                     <rect key="frame" x="4" y="185" width="42" height="19.5"/>
@@ -975,7 +969,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotDimoPeopleCell" rowHeight="242" id="n5U-YP-hq9" customClass="DamoPeopleCell" customModule="dimodamo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DamoPeopleCell" rowHeight="242" id="n5U-YP-hq9" customClass="DamoPeopleCell" customModule="dimodamo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="491" width="414" height="242"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n5U-YP-hq9" id="VTp-fs-cJd">

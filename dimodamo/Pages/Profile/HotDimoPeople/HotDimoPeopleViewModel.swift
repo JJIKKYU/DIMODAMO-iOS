@@ -27,7 +27,29 @@ class HotDimoPeopleViewModel {
     var isTurnOnFilter: Bool = false
     
     init() {
+        self.loadHotDimoPeople()
+    }
+    
+    func loadDimoePeopleData() {
+        let first = db.collection("users")
+            .order(by: "get_profile_score", descending: true)
+            .limit(to: 2)
         
+        first.addSnapshotListener { [weak self] (snapshot, error) in
+            guard let snapshot = snapshot else {
+                print("Error retreving cities: \(error.debugDescription)")
+                return
+            }
+            
+            guard let lastSnapshot = snapshot.documents.last else {
+                // The collection is empty
+                return
+            }
+            
+            let next = self?.db.collection("users")
+                .order(by: "get_profile_score", descending: true)
+                .start(afterDocument: lastSnapshot)
+        }
     }
     
     func loadHotDimoPeople() {

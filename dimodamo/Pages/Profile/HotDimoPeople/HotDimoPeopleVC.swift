@@ -25,15 +25,7 @@ class HotDimoPeopleVC: UIViewController {
     }
     
     @IBOutlet weak var filterBtnArrow: UIImageView!
-    @IBOutlet var stackViews: [UIStackView]! {
-        didSet {
-            for stackView in stackViews {
-                stackView.widthAnchor.constraint(equalToConstant: aspectWidth).isActive = true
-                
-            }
-            
-        }
-    }
+    @IBOutlet var stackViews: [UIStackView]!
     
     /*
      Sahdow Setting
@@ -86,6 +78,7 @@ class HotDimoPeopleVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource =  self
         settingTableView()
+        self.filter(isTurnOn: true)
         
         for index in 0...8 {
             buttons[index].rx.tap
@@ -96,6 +89,19 @@ class HotDimoPeopleVC: UIViewController {
                 .disposed(by: disposeBag)
         }
         
+        /*
+         로딩이 됐을 경우 테이블 리로드
+         */
+        viewModel.hotDimoPeopleArrIsLoading
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] flag in
+                if flag == true {
+                    self?.tableView.reloadData()
+                } else {
+                    print("loading...")
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
 
@@ -175,13 +181,56 @@ extension HotDimoPeopleVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return viewModel.hotDimoPeopleArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HotDimoPeopleCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DamoPeopleCell", for: indexPath) as! DamoPeopleCell
+        
+        let index = indexPath.row
+        let hotDimoArr = viewModel.hotDimoPeopleArr[index]
+        print(hotDimoArr)
+        
+        /*
+        cell.nickname.text = hotDimoArr.nickname
+        cell.profile.image = hotDimoArr.getProfileImage()
+        cell.topContainer.backgroundColor = hotDimoArr.getBackgroundColor()
+        cell.typeImage.image = hotDimoArr.getTypeImage()
+        cell.backgroundPattern.image = hotDimoArr.getBackgroundPattern()
+        
+        cell.commentHeartCount.text = "+\(hotDimoArr.commentHeartCount)"
+        cell.manitoCount.text = "+\(hotDimoArr.manitoGoodCount)"
+        cell.scrapCount.text = "+\(hotDimoArr.documnetScrapCount)"
+        
+        cell.commentHeartIcon.image = hotDimoArr.getMedal(kind: .comment)
+        cell.scrapIcon .image = hotDimoArr.getMedal(kind: .scrap)
+        cell.manitoIcon.image = hotDimoArr.getMedal(kind: .manito)
+        
+        
+        /*
+         랭킹
+         */
+        let lankString: String = "\(index + 1)위"
+        let stringLocation: Int = (String(index + 1).count - 1) + 1
+        var lankMutableString = NSMutableAttributedString()
+        lankMutableString = NSMutableAttributedString(
+            string: lankString,
+            attributes: [NSAttributedString.Key.font:UIFont(name: "SFProDisplay-Semibold", size: 16.0)!])
+        lankMutableString.addAttribute(
+            NSAttributedString.Key.font, value: UIFont(name: "AppleSDGothicNeoEB00", size: 12.0)!,
+            range: NSRange(location: stringLocation ,length:1))
+        cell.rankingLabel.attributedText = lankMutableString
+ */
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // need to pass your indexpath then it showing your indicator at bottom
+        tableView.addLoading(indexPath) {
+            // add your code here
+            // append Your array and reload your tableview
+            tableView.stopLoading() // stop your indicator
+        }
+    }
 }
