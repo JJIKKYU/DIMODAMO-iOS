@@ -110,7 +110,13 @@ class ManitoChatVC: UIViewController {
 
 //MARK: - TableView
 
-extension ManitoChatVC: UITableViewDelegate, UITableViewDataSource {
+extension ManitoChatVC: UITableViewDelegate, UITableViewDataSource, TableReloadProtocol {
+    
+    func tableReload() {
+        self.tableView.reloadData()
+        print("reload합니다")
+    }
+    
     func tableviewSetting() {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.contentInset.top = 16
@@ -122,14 +128,15 @@ extension ManitoChatVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath) as! YourChatCell
+        let yourCell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath) as! YourChatCell
+        let yourType = viewModel.yourType.value
         
-        let type = viewModel.yourType.value
+        yourCell.profile.image = UIImage(named: "Profile_\(yourType)")
+        yourCell.messageBox.layer.borderColor = UIColor.dptiDarkColor(yourType).cgColor
+        yourCell.chagneColorGoodSign(yourType: "\(yourType)")
+        yourCell.delegate = self
         
-        cell.profile.image = UIImage(named: "Profile_\(type)")
-        cell.messageBox.layer.borderColor = UIColor.dptiDarkColor(type).cgColor
-        
-        return cell
+        return yourCell
     }
     
     
