@@ -85,13 +85,13 @@ extension ClassRoomMainVC: UICollectionViewDataSource, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
         
-        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.dimo.rawValue, index])
+//        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.dimo.rawValue, index])
     }
     
     func collectionViewSetting() {
         // width, height 설정
         let cellWidth: CGFloat = UIScreen.main.bounds.width - 48
-        let cellHeight: CGFloat = 172
+        let cellHeight: CGFloat = 180
         
         // 상하, 좌우 inset value 설정
         let insetX: CGFloat = 20
@@ -107,7 +107,7 @@ extension ClassRoomMainVC: UICollectionViewDataSource, UICollectionViewDelegate,
         bestCollectionViewLayout.minimumLineSpacing = lineSpacing
         bestCollectionViewLayout.scrollDirection = .horizontal
         
-        recommendCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX - 4, bottom: insetY, right: insetX - 4)
+        recommendCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX - 4, bottom: insetY, right: insetX - 8)
         bestCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX - 8)
         
         // 스크롤 시 빠르게 감속 되도록 설정
