@@ -33,7 +33,14 @@ class ArticleDetailViewController: UIViewController {
     
     @IBOutlet var informationTopContainer: UIView!
     @IBOutlet weak var informationTitle: UILabel!
-    @IBOutlet var informationTags: [UILabel]!
+    @IBOutlet var informationTags: [UILabel]! {
+        didSet {
+            for tag in informationTags {
+                tag.text = ""
+                tag.isHidden = true
+            }
+        }
+    }
     
     @IBOutlet weak var scrapIcon: UIButton! {
         didSet {
@@ -56,7 +63,14 @@ class ArticleDetailViewController: UIViewController {
     
     @IBOutlet weak var titleImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet var tags: [UILabel]!
+    @IBOutlet var tags: [UILabel]! {
+        didSet {
+            for tag in tags {
+                tag.text = ""
+                tag.isHidden = true
+            }
+        }
+    }
     @IBOutlet weak var articleCategory: UILabel!
     
     @IBOutlet weak var textView: UITextView!
@@ -234,8 +248,10 @@ class ArticleDetailViewController: UIViewController {
                     for (index, tag) in tags.enumerated() {
                         if self?.viewModel.postKindRelay.value == PostKinds.article.rawValue {
                             self?.tags[index].text = "#\(tag)"
+                            self?.tags[index].isHidden = false
                         } else if self?.viewModel.postKindRelay.value == PostKinds.information.rawValue {
                             self?.informationTags[index].text = "#\(tag)"
+                            self?.informationTags[index].isHidden = false
                         }
                     }
                 }

@@ -37,7 +37,8 @@ class CommunityMainViewModel {
         print("### articleLoading : \(articleLoading.value)")
         
         db.collection("hongik/article/posts")
-            .order(by: "bundle_id")
+            .order(by: "bundle_id", descending: true)
+            
             .getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("아티클 포스트를 가져오는데 오류가 생겼습니다. \(err)")
@@ -102,7 +103,7 @@ class CommunityMainViewModel {
         print("### informationLoading : \(informationLoading.value)")
         
         db.collection("hongik/information/posts")
-            .order(by: "bundle_id")
+            .order(by: "bundle_id", descending: true)
             .getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("인포메이션 포스트를 가져오는데 오류가 생겼습니다. \(err)")

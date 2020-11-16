@@ -211,8 +211,10 @@ class ProfileDptiResultVC: UIViewController {
         
 //        resultCardView.translatesAutoresizingMaskIntoConstraints = false
         resultCardView.addSubview(animationView)
-//        typeChar.rightAnchor.constraint(equalTo: resultCardView.rightAnchor, constant: 0).isActive = true
-//        typeChar.bottomAnchor.constraint(equalTo: resultCardView.bottomAnchor, constant: 0).isActive = true
+        animationView.topAnchor.constraint(equalTo: resultCardView.topAnchor, constant: 0).isActive = true
+        animationView.leftAnchor.constraint(equalTo: resultCardView.leftAnchor, constant: 0).isActive = true
+        animationView.rightAnchor.constraint(equalTo: resultCardView.rightAnchor, constant: 0).isActive = true
+        animationView.bottomAnchor.constraint(equalTo: resultCardView.bottomAnchor, constant: 0).isActive = true
         
         
 

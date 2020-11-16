@@ -142,6 +142,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="633"/>
                     <connections>
+                        <outlet property="animationConstraintHeight" destination="k0s-22-awz" id="40v-Cz-JdP"/>
                         <outlet property="animationContainerView" destination="VM0-xn-5lG" id="gMk-Ar-Ib5"/>
                     </connections>
                 </viewController>
@@ -157,9 +158,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="loginPattern" translatesAutoresizingMaskIntoConstraints="NO" id="n0I-G0-Kij">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="278"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWz-Bp-6Yy">
                                 <rect key="frame" x="32" y="91" width="350" height="63"/>
                                 <attributedString key="attributedText">
@@ -167,7 +165,7 @@
                                         <string key="content">환영합니다
 디모다모입니다</string>
                                         <attributes>
-                                            <color key="NSColor" name="WHITE"/>
+                                            <color key="NSColor" red="0.51879220950000005" green="0.0" blue="0.91751509899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="24" name="NanumSquareRoundOTFEB"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="7" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -364,18 +362,15 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hQb-9K-tLz"/>
-                        <color key="backgroundColor" name="SYSTEM"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="PWz-Bp-6Yy" firstAttribute="top" secondItem="nSK-Xe-Vhb" secondAttribute="top" constant="91" id="6Zj-49-8aj"/>
                             <constraint firstItem="KkZ-js-czE" firstAttribute="top" secondItem="nSK-Xe-Vhb" secondAttribute="top" constant="219" id="KuY-y3-ZaR"/>
-                            <constraint firstItem="n0I-G0-Kij" firstAttribute="leading" secondItem="nSK-Xe-Vhb" secondAttribute="leading" id="REK-yk-qcY"/>
                             <constraint firstItem="KkZ-js-czE" firstAttribute="leading" secondItem="nSK-Xe-Vhb" secondAttribute="leading" id="bMP-zm-NgM"/>
-                            <constraint firstItem="n0I-G0-Kij" firstAttribute="top" secondItem="nSK-Xe-Vhb" secondAttribute="top" id="fLE-WT-5tD"/>
                             <constraint firstAttribute="trailing" secondItem="PWz-Bp-6Yy" secondAttribute="trailing" constant="32" id="gJ6-Zp-1p6"/>
                             <constraint firstItem="PWz-Bp-6Yy" firstAttribute="leading" secondItem="nSK-Xe-Vhb" secondAttribute="leading" constant="32" id="kpn-Hb-2DQ"/>
                             <constraint firstAttribute="trailing" secondItem="KkZ-js-czE" secondAttribute="trailing" id="mVi-54-igI"/>
                             <constraint firstAttribute="bottom" secondItem="KkZ-js-czE" secondAttribute="bottom" id="plr-lU-oXb"/>
-                            <constraint firstAttribute="trailing" secondItem="n0I-G0-Kij" secondAttribute="trailing" id="w6J-iO-jgf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ffy-6I-aLe">
@@ -898,10 +893,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1jE-oP-2EV"/>
+        <segue reference="Q7b-2N-ykw"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="loginPattern" width="414" height="278"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -913,7 +907,7 @@
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="RED">
-            <color red="0.92199999094009399" green="0.34099999070167542" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96100002527236938" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -932,9 +926,6 @@
         </namedColor>
         <namedColor name="TEXT - SMALL">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="WHITE">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="WHITE">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

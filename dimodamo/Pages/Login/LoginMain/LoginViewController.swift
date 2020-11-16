@@ -19,7 +19,11 @@ class LoginViewController: UIViewController {
     
     
     
-    @IBOutlet weak var loginTitle: UILabel!
+    @IBOutlet weak var loginTitle: UILabel! {
+        didSet {
+            loginTitle.textColor = UIColor.appColor(.system)
+        }
+    }
     @IBOutlet weak var loginCheckLabel: UILabel!
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -252,8 +256,6 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     func viewDesign() {
-//        roundView.roundCorners(corners: [.topLeft, .topRight], radius: 24)
-        roundView.layer.cornerRadius = 24
         loginBtn.layer.cornerRadius = 16
         registerBtn.layer.cornerRadius = 16
         
