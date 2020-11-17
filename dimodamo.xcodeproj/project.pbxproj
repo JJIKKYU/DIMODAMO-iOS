@@ -69,6 +69,7 @@
 		987D6D742562DF2E000FCA16 /* ClassRoomMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D732562DF2E000FCA16 /* ClassRoomMainVC.swift */; };
 		987D6D792562DF42000FCA16 /* ClassRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D782562DF42000FCA16 /* ClassRoomViewModel.swift */; };
 		987D6D7D2562DF4A000FCA16 /* ClassRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D7C2562DF4A000FCA16 /* ClassRoomModel.swift */; };
+		987D6D822563BBC7000FCA16 /* RoomDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D812563BBC7000FCA16 /* RoomDetailVC.swift */; };
 		987E1C6A254DF57100F5077D /* LinkPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987E1C69254DF57100F5077D /* LinkPopupView.swift */; };
 		987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987F5A9A250B152000E1B856 /* DptiResultViewController.swift */; };
 		98816093251EF23200556AEC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98816092251EF23200556AEC /* Login.storyboard */; };
@@ -282,6 +283,7 @@
 		987D6D732562DF2E000FCA16 /* ClassRoomMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomMainVC.swift; sourceTree = "<group>"; };
 		987D6D782562DF42000FCA16 /* ClassRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewModel.swift; sourceTree = "<group>"; };
 		987D6D7C2562DF4A000FCA16 /* ClassRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomModel.swift; sourceTree = "<group>"; };
+		987D6D812563BBC7000FCA16 /* RoomDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailVC.swift; sourceTree = "<group>"; };
 		987E1C69254DF57100F5077D /* LinkPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupView.swift; sourceTree = "<group>"; };
 		987F5A9A250B152000E1B856 /* DptiResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewController.swift; sourceTree = "<group>"; };
 		98816092251EF23200556AEC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -868,6 +870,7 @@
 		986EDA1E2509CBFF00AD3CEE /* ClassRoom */ = {
 			isa = PBXGroup;
 			children = (
+				987D6D7F2563BB90000FCA16 /* RoomDetail */,
 				987D6D722562DF16000FCA16 /* Main */,
 				986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */,
 			);
@@ -882,6 +885,14 @@
 				987D6D7C2562DF4A000FCA16 /* ClassRoomModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		987D6D7F2563BB90000FCA16 /* RoomDetail */ = {
+			isa = PBXGroup;
+			children = (
+				987D6D812563BBC7000FCA16 /* RoomDetailVC.swift */,
+			);
+			path = RoomDetail;
 			sourceTree = "<group>";
 		};
 		987E1C68254DF56100F5077D /* LinkPopup */ = {
@@ -1710,6 +1721,7 @@
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
 				9853DB1C255D3E7400E8EBD5 /* MedalInformationVC.swift in Sources */,
 				98FA225925571FA300331755 /* MyProfileModel.swift in Sources */,
+				987D6D822563BBC7000FCA16 /* RoomDetailVC.swift in Sources */,
 				988377F92545C41F00BFA746 /* CreatePostViewModel.swift in Sources */,
 				98C3437E255B0C5D00E77463 /* DimoPeopleViewModel.swift in Sources */,
 				98FA226A2558040000331755 /* AllDptiViewModel.swift in Sources */,

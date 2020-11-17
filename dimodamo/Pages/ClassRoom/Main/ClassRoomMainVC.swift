@@ -22,6 +22,47 @@ class ClassRoomMainVC: UIViewController {
     let lineSpacing: CGFloat = 20
     var isOneStepPaging = true
     
+    override func loadView() {
+        super.loadView()
+        setColors()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationController?.view.backgroundColor = UIColor.white
+        navigationController?.presentTransparentNavigationBar()
+        animate()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        navigationController?.view.backgroundColor = UIColor.clear
+    }
+    
+    private func setColors(){
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray190)
+        navigationController?.navigationBar.barTintColor = .white
+    }
+
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+        }, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setColors()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,7 +88,6 @@ class ClassRoomMainVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 //MARK: - CollectionView (추천 과방, 베스트 과방)
