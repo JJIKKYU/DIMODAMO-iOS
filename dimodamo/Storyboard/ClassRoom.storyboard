@@ -1413,29 +1413,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="xdY-Zu-3hg"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="lhm-uw-szP" kind="show" identifier="ClassRoomVC" id="qnE-Jq-nba"/>
+                        <segue destination="KvJ-zH-FaN" kind="show" identifier="ClassRoomVC" id="feh-AL-aRy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvA-Wq-eCX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="buq-au-LAP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2319" y="47"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="rNu-av-UFD">
-            <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="lhm-uw-szP" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DSJ-Qc-IlA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="HvS-8N-mJV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="f7y-qW-MRM"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MVo-4I-gmE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3001" y="47"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WXX-Kj-iWL">
@@ -1467,6 +1451,51 @@
             </objects>
             <point key="canvasLocation" x="951" y="47"/>
         </scene>
+        <!--Shake View Controller-->
+        <scene sceneID="N11-2v-XWz">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="KvJ-zH-FaN" customClass="ShakeViewController" customModule="InteractionTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NGw-D0-lCk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="test_1" translatesAutoresizingMaskIntoConstraints="NO" id="rIO-JS-cUt">
+                                <rect key="frame" x="-37" y="-2" width="487" height="898"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" fixedFrame="YES" image="cheer_icon" translatesAutoresizingMaskIntoConstraints="NO" id="YdO-tp-yR2">
+                                <rect key="frame" x="184" y="337" width="14" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDj-xU-uTi">
+                                <rect key="frame" x="131" y="452" width="152" height="197"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon_beer"/>
+                                <connections>
+                                    <action selector="pressedShakeIcon:" destination="KvJ-zH-FaN" eventType="touchUpInside" id="6yx-rl-3kC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Nza-Lf-u8K"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="2cL-dW-9zS">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="Ydy-oN-dF3">
+                            <connections>
+                                <action selector="pressedNextButton:" destination="KvJ-zH-FaN" id="eAU-iH-fU0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bg" destination="rIO-JS-cUt" id="1Qx-Gd-PDf"/>
+                        <outlet property="cheerIcon" destination="YdO-tp-yR2" id="BF2-Si-vB1"/>
+                        <outlet property="shakeIcon" destination="VDj-xU-uTi" id="c6q-NQ-AOP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pec-al-1pA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2988" y="47"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Profile_F_FE" width="96" height="96"/>
@@ -1487,12 +1516,15 @@
         <image name="Type_Icon_Stroke_Star_Pink" width="72" height="24"/>
         <image name="chart_frame" width="168" height="113"/>
         <image name="chart_test" width="360" height="123"/>
+        <image name="cheer_icon" width="102" height="205"/>
         <image name="classRoom" width="20" height="20"/>
         <image name="classRoomSelected" width="20" height="20"/>
+        <image name="icon_beer" width="152" height="197"/>
         <image name="plusBtn" width="20" height="20"/>
         <image name="profile_bg_circle" width="328" height="80"/>
         <image name="rangkingIcon" width="42" height="34"/>
         <image name="searchIcon" width="18" height="18"/>
+        <image name="test_1" width="414" height="896"/>
         <image name="test_peopl2" width="101" height="120"/>
         <image name="test_people" width="91" height="120"/>
         <namedColor name="BLUE - DARK">
