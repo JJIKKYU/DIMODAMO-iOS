@@ -85,7 +85,7 @@ extension ClassRoomMainVC: UICollectionViewDataSource, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
         
-//        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.dimo.rawValue, index])
+        performSegue(withIdentifier: "ClassRoomDetailVC", sender: [DimoKinds.dimo.rawValue, index])
     }
     
     func collectionViewSetting() {
@@ -234,7 +234,7 @@ extension ClassRoomMainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
         
-//        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.hotDimo.rawValue, index])
+        performSegue(withIdentifier: "ClassRoomDetailVC", sender: [DimoKinds.hotDimo.rawValue, index])
 //        print(viewModel.hotDimoPeopleArr[index].uid)
     }
 }
