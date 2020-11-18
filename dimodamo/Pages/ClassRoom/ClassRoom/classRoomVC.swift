@@ -309,6 +309,9 @@ class ShakeViewController: UIViewController {
         }
               
     }
+    @IBAction func pressedChat(_ sender: Any) {
+        performSegue(withIdentifier: "pr_1", sender: sender)
+    }
     
     func startGyros() {
         

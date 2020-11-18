@@ -65,6 +65,7 @@
 		986EDA142509C42800AD3CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA132509C42800AD3CEE /* Assets.xcassets */; };
 		986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */; };
 		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
+		987252E725649CDA00746591 /* prViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987252E625649CDA00746591 /* prViewController.swift */; };
 		987D6D702562CE77000FCA16 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D6F2562CE77000FCA16 /* UITableView.swift */; };
 		987D6D742562DF2E000FCA16 /* ClassRoomMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D732562DF2E000FCA16 /* ClassRoomMainVC.swift */; };
 		987D6D792562DF42000FCA16 /* ClassRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D782562DF42000FCA16 /* ClassRoomViewModel.swift */; };
@@ -280,6 +281,7 @@
 		986EDA182509C42800AD3CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
+		987252E625649CDA00746591 /* prViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prViewController.swift; sourceTree = "<group>"; };
 		987D6D6F2562CE77000FCA16 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		987D6D732562DF2E000FCA16 /* ClassRoomMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomMainVC.swift; sourceTree = "<group>"; };
 		987D6D782562DF42000FCA16 /* ClassRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewModel.swift; sourceTree = "<group>"; };
@@ -1140,6 +1142,7 @@
 			isa = PBXGroup;
 			children = (
 				98ABEDE72563D1DD004F62CD /* classRoomVC.swift */,
+				987252E625649CDA00746591 /* prViewController.swift */,
 			);
 			path = ClassRoom;
 			sourceTree = "<group>";
@@ -1724,6 +1727,7 @@
 				98A860C32558D9A300F921AA /* ProfileMainModel.swift in Sources */,
 				988377EB2544B49E00BFA746 /* CommentModel.swift in Sources */,
 				98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */,
+				987252E725649CDA00746591 /* prViewController.swift in Sources */,
 				987D6D742562DF2E000FCA16 /* ClassRoomMainVC.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */,
@@ -1884,7 +1888,7 @@
 				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1908,7 +1912,7 @@
 				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamoRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

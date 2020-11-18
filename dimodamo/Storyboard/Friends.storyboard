@@ -134,7 +134,7 @@
             <objects>
                 <viewController storyboardIdentifier="ManitoChatVC" hidesBottomBarWhenPushed="YES" id="8Nx-F2-kf6" customClass="ManitoChatVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mr5-Ir-yQx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lQw-CB-pEm">
@@ -295,7 +295,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="WHITE"/>
                                             <constraints>
-                                                <constraint firstItem="yfC-ze-w04" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3fT-md-Y4n" secondAttribute="leading" id="BUs-36-svT"/>
+                                                <constraint firstItem="yfC-ze-w04" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3fT-md-Y4n" secondAttribute="leading" constant="100" id="BUs-36-svT"/>
                                                 <constraint firstItem="MC9-ug-XfC" firstAttribute="top" secondItem="yfC-ze-w04" secondAttribute="bottom" constant="6" id="U29-iL-LzK"/>
                                                 <constraint firstItem="yfC-ze-w04" firstAttribute="top" secondItem="3fT-md-Y4n" secondAttribute="top" id="Umj-AX-6HG"/>
                                                 <constraint firstAttribute="trailing" secondItem="yfC-ze-w04" secondAttribute="trailing" constant="20" id="bQ4-5N-XTn"/>
@@ -450,7 +450,7 @@
             <objects>
                 <viewController id="hPK-B9-Vbm" customClass="SideMenuVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OBM-Nc-Lrp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-hG-9zn">

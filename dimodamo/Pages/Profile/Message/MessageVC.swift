@@ -39,6 +39,12 @@ class MessageVC: UIViewController {
         }
     }
     
+    var manitoChat: [Chat] = [
+        Chat(kind: 0, text: "안녕하세요! 아트보드 글 보고 쪽지 남깁니다!"),
+        Chat(kind: 0, text: "혹시 마니또 요청 받아주실수 있으신지요ㅠㅠㅠㅜ가능할까요?"),
+        Chat(kind: 1, text: "안녕하세요~! 반갑습니다! 마니또 요청 받아드릴게요! 잠시만요~!"),
+    ]
+    
     /*
      ViewLoad
      */
@@ -134,33 +140,42 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource, TableReloadProt
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // 상대방 유저 타입
-        let userType = self.viewModel.yourUserType.value
+        let yourType = self.viewModel.yourUserType.value
+        let index: Int = indexPath.row
         
-        if indexPath.row % 2 == 0 {
+        let key = manitoChat[index].text
+        let value = manitoChat[index].kind
+        
+        print("\(key) + \(value) == \(index)")
+        
+        switch value {
+        case 0:
             let yourCell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath) as! YourChatCell
             
-            // 상대방 유저 타입
-            yourCell.messageBox.layer.borderColor = UIColor.dptiDarkColor(userType).cgColor
-            yourCell.profile.image = UIImage(named: "Profile_\(userType)")
+            yourCell.profile.image = UIImage(named: "Profile_\(yourType)")
+            yourCell.messageBox.layer.borderColor = UIColor.dptiDarkColor(yourType).cgColor
+            yourCell.chagneColorGoodSign(yourType: "\(yourType)")
+            yourCell.delegate = self
+            yourCell.messageBox.text = "\(key)"
             yourCell.delegate = self
             
-            yourCell.chagneColorGoodSign(yourType: "\(userType)")
-            
             return yourCell
-        } else {
+            
+        case 1:
             let myCell = tableView.dequeueReusableCell(withIdentifier: "MyChat", for: indexPath) as! MyChatCell
+            myCell.messageBox.text = "\(key)"
             
-            myCell.chagneColorGoodSign(yourType: "\(userType)")
-            
-            // DoubleTap Delegate
-            myCell.delegate = self
             return myCell
+            
+        default:
+            
+            return UITableViewCell()
         }
     }
     
@@ -170,7 +185,7 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource, TableReloadProt
     
     func scrollToBottom(_ isAnimated: Bool){
         DispatchQueue.main.async {
-            let indexPath = IndexPath(row: 9 - 1, section: 0)
+            let indexPath = IndexPath(row: 3 - 1, section: 0)
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: isAnimated)
         }
     }

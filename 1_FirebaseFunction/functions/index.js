@@ -48,7 +48,7 @@ exports.createUser = functions.firestore
       const payload = {
         notification: {
           title: '작성하신 글에 댓글이 달렸습니다!',
-          body: `${nickname} : ${user_uid}`
+          body: `${nickname} : ${comment}`
         }
       };
 
