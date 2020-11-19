@@ -150,15 +150,22 @@ class CreatePostViewModel {
                 }
             })
         }
-        
-        
-        
-        
-        
     }
     
     func sendPost() {
         
+    }
+    
+    /*
+     Image
+     */
+    func deleteImage(tagIndex: Int) {
+        var imageArr: [UIImage] = self.uploadImagesRelay.value
+        imageArr.remove(at: tagIndex)
+        
+        self.uploadImagesRelay.accept(imageArr)
+        
+        print("Images Delete Complete!")
     }
     
     

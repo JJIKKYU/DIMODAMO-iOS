@@ -106,7 +106,8 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBOutlet weak var descriptionTextView: UITextView! {
         didSet {
-            descriptionTextView.text = nil
+            descriptionTextView.text = "내용을 입력해 주세요"
+            descriptionTextView.textColor = UIColor.appColor(.gray210)
         }
     }
     @IBOutlet weak var descriptionLimit: UILabel!
@@ -162,7 +163,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         
         imagePicker.delegate = self
         
-        
+        descriptionTextView.delegate = self
         
         /*
          타이틀
@@ -203,8 +204,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
             .subscribe(onNext: { [weak self] value in
                 self?.viewModel.descriptionRelay.accept(value)
                 self?.descriptionLimit.text = self?.viewModel.descriptionLimit
-                
-                print(value)
             })
             .disposed(by: disposeBag)
         
@@ -315,9 +314,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     func tagging(_ tagging: Tagging, didChangedTaggedList taggedList: [TaggingModel]) {
         print("태그완료된 리스트 :  \(taggedList)")
     }
-
-    
-    
     
     /*
      IBAction & TouchAction
@@ -550,7 +546,15 @@ extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
 
 // MARK: - TagsTableView
 
-extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
+extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, DeleteUploadImage {
+    
+    // 업로드 된 이미지에서 삭제 버튼을 눌렀을 경우
+    func deleteImage(tagIndex: Int) {
+        print("이미지를 삭제합니다")
+        print(tagIndex)
+        viewModel.deleteImage(tagIndex: tagIndex)
+    }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -589,7 +593,11 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
                 
-                cell.uploadImageView.image = imageArr[index].resize(withWidth: 1280)
+                cell.uploadImageView.image = imageArr[index].resize(withWidth: UIScreen.main.bounds.width)
+                
+                // 이미지 삭제 버튼을 눌렀을 경우 삭제할 수 있도록 델리게이트 설정
+                cell.deleteUploadImageDelegate = self
+                cell.tagIndex = index
                 
                 guard let cellImage = cell.uploadImageView.image else {
                     return UITableViewCell()
