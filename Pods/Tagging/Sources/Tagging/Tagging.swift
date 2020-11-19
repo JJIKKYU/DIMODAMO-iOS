@@ -163,14 +163,14 @@ extension Tagging: UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "태그를 입력해 주세요" {
             textView.text = nil
-            textView.textColor = UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1)
+            textView.textColor = UIColor(red: 0.024, green: 0.024, blue: 0.024, alpha: 1)
         }
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "태그를 입력해 주세요"
-            textView.textColor = UIColor(red: 0.824, green: 0.824, blue: 0.824, alpha: 1)
+            textView.textColor = UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1)
         }
     }
     

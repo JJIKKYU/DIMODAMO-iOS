@@ -104,7 +104,11 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         }
     }
     
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView! {
+        didSet {
+            descriptionTextView.text = nil
+        }
+    }
     @IBOutlet weak var descriptionLimit: UILabel!
     
     @IBOutlet weak var tagging: Tagging! {
@@ -486,7 +490,7 @@ extension CreatePostViewController {
 
 // MARK: - TextField & Keyboard
 
-extension CreatePostViewController: UITextFieldDelegate {
+extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
     func checkMaxLength(textField: UITextField!, maxLength: Int) {
         if ((textField.text!).count > maxLength) {
             textField.deleteBackward()
@@ -525,6 +529,22 @@ extension CreatePostViewController: UITextFieldDelegate {
         //        self.commentTextFieldView?.transform = .identity
         //        self.scrollView?.transform = .identity
         //                self.commentTableViewBottom.constant = 0
+    }
+    
+    
+    // TextView (메인) placehorder logic
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.appColor(.gray210) {
+            textView.text = nil
+            textView.textColor = UIColor.appColor(.gray170)
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "내용을 입력해 주세요"
+            textView.textColor = UIColor.appColor(.gray210)
+        }
     }
 }
 
