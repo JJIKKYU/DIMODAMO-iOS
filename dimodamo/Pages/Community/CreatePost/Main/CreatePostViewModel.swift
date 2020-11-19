@@ -157,7 +157,7 @@ class CreatePostViewModel {
     }
     
     /*
-     Image
+     Delete Logic
      */
     func deleteImage(tagIndex: Int) {
         var imageArr: [UIImage] = self.uploadImagesRelay.value
@@ -166,6 +166,18 @@ class CreatePostViewModel {
         self.uploadImagesRelay.accept(imageArr)
         
         print("Images Delete Complete!")
+    }
+    
+    func deleteLink(tagIndex: Int) {
+        var linkStringArr: [String] = uploadLinks
+        linkStringArr.remove(at: tagIndex)
+        self.uploadLinks = linkStringArr
+        
+        var linkDataArr = uploadLinksDataRelay.value
+        linkDataArr.remove(at: tagIndex)
+        self.uploadLinksDataRelay.accept(linkDataArr)
+        
+        print("Links Delete Complete!")
     }
     
     

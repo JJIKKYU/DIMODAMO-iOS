@@ -546,13 +546,22 @@ extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
 
 // MARK: - TagsTableView
 
-extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, DeleteUploadImage {
+extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, DeleteUploadCellDelegate {
     
     // 업로드 된 이미지에서 삭제 버튼을 눌렀을 경우
-    func deleteImage(tagIndex: Int) {
+    func deleteCell(tagIndex: Int, Kinds: UploadCellKinds) {
         print("이미지를 삭제합니다")
-        print(tagIndex)
-        viewModel.deleteImage(tagIndex: tagIndex)
+        
+        switch Kinds {
+        case .image:
+            viewModel.deleteImage(tagIndex: tagIndex)
+            break
+            
+        case .link:
+            viewModel.deleteLink(tagIndex: tagIndex)
+            break
+        }
+        
     }
     
     
@@ -622,6 +631,8 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, 
                     cell.thumbImageView.image = UIImage(named: "linkImage")
                 }
                 
+                cell.deleteCellDelegate = self
+                cell.tagIndex = index
                 
                 cell.titleLabel.text = "\(linkArr[index].title)"
                 

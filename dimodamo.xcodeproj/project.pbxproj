@@ -65,6 +65,7 @@
 		986EDA142509C42800AD3CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA132509C42800AD3CEE /* Assets.xcassets */; };
 		986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */; };
 		986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */; };
+		987252EB2566BFE700746591 /* CreatePostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987252EA2566BFE700746591 /* CreatePostModel.swift */; };
 		987D6D702562CE77000FCA16 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D6F2562CE77000FCA16 /* UITableView.swift */; };
 		987D6D742562DF2E000FCA16 /* ClassRoomMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D732562DF2E000FCA16 /* ClassRoomMainVC.swift */; };
 		987D6D792562DF42000FCA16 /* ClassRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6D782562DF42000FCA16 /* ClassRoomViewModel.swift */; };
@@ -279,6 +280,7 @@
 		986EDA182509C42800AD3CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		986EDA212509D7E000AD3CEE /* ClassRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewController.swift; sourceTree = "<group>"; };
+		987252EA2566BFE700746591 /* CreatePostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostModel.swift; sourceTree = "<group>"; };
 		987D6D6F2562CE77000FCA16 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		987D6D732562DF2E000FCA16 /* ClassRoomMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomMainVC.swift; sourceTree = "<group>"; };
 		987D6D782562DF42000FCA16 /* ClassRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoomViewModel.swift; sourceTree = "<group>"; };
@@ -1261,6 +1263,7 @@
 			children = (
 				988377F52545B69700BFA746 /* CreatePostViewController.swift */,
 				988377F82545C41E00BFA746 /* CreatePostViewModel.swift */,
+				987252EA2566BFE700746591 /* CreatePostModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1651,6 +1654,7 @@
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
 				9821BB62255EDBEC00C47987 /* ChatSideMenuNavigation.swift in Sources */,
+				987252EB2566BFE700746591 /* CreatePostModel.swift in Sources */,
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
 				98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */,
 				986322562517BB81003B0784 /* FriendMainVC.swift in Sources */,

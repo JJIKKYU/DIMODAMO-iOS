@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol DeleteUploadImage {
-    func deleteImage(tagIndex: Int)
+protocol DeleteUploadCellDelegate {
+    func deleteCell(tagIndex: Int, Kinds: UploadCellKinds)
 }
 
 class ImageUploadCell: UITableViewCell {
 
-    var deleteUploadImageDelegate: DeleteUploadImage?
+    var deleteUploadImageDelegate: DeleteUploadCellDelegate?
     // 업로드할 때 부여 (인덱스 역할)
     var tagIndex: Int?
     
@@ -38,7 +38,7 @@ class ImageUploadCell: UITableViewCell {
         guard let tagIndex = tagIndex else {
             return
         }
-        deleteUploadImageDelegate?.deleteImage(tagIndex: tagIndex)
+        deleteUploadImageDelegate?.deleteCell(tagIndex: tagIndex, Kinds: UploadCellKinds.image)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

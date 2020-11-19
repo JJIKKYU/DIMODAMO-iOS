@@ -10,6 +10,10 @@ import UIKit
 
 class LinkUploadCell: UITableViewCell {
 
+    var deleteCellDelegate: DeleteUploadCellDelegate?
+    
+    var tagIndex: Int?
+    
     @IBOutlet weak var containerView: UIView! {
         didSet {
             containerView.layer.borderWidth = 1.5
@@ -33,7 +37,14 @@ class LinkUploadCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    @IBAction func presssedDeleteBtn(_ sender: Any) {
+        guard let tagIndex = tagIndex else {
+            return
+        }
+        deleteCellDelegate?.deleteCell(tagIndex: tagIndex, Kinds: UploadCellKinds.link)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
