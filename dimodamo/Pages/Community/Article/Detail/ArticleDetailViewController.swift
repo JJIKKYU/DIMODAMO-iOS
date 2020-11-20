@@ -103,7 +103,7 @@ class ArticleDetailViewController: UIViewController {
             commentTextFieldView.layer.cornerRadius = 24
             commentTextFieldView.clipsToBounds = true
             commentTextFieldView.layer.masksToBounds = false
-            commentTextFieldView.appShadow(.s20)
+//            commentTextFieldView.appShadow(.s20)
         }
     }
     @IBOutlet weak var commentTextField: UITextField!
@@ -612,6 +612,9 @@ extension ArticleDetailViewController {
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
         print("touchSCrollview")
         self.view.endEditing(true)
+        
+        self.commentProfileIshidden(isHidden: true)
+        print("TODO : 프로필은 숨겨지지만 viewmodel에서 답변 플래그 변경 해야합니다")
     }
     
     func scrapNavitemSetting() {
@@ -962,10 +965,13 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     // CommentCellDelegate
     func pressedCommentReply(type: String) {
-        print("hello")
         commentProfileIshidden(isHidden: false)
         commentProfile.image = UIImage(named: "Profile_\(type)")
-        commentTextField.becomeFirstResponder()
+        
+        if commentTextField.canBecomeFirstResponder {
+            commentTextField.becomeFirstResponder()
+        }
+        
     }
     
     var textFieldReadingAnchor: NSLayoutConstraint {
@@ -983,7 +989,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     func commentProfileIshidden(isHidden: Bool) {
         // 이미 예정되어 있던 애니메이션은 모두 처리
-        self.view.layoutIfNeeded()
+//        self.view.layoutIfNeeded()
         
         switch isHidden {
         case false:
