@@ -59,6 +59,8 @@
 		9863224D2517B9AB003B0784 /* ClassRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9863224C2517B9AB003B0784 /* ClassRoom.storyboard */; };
 		986322562517BB81003B0784 /* FriendMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986322552517BB81003B0784 /* FriendMainVC.swift */; };
 		986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986908F72521AE8E00C844F1 /* AlertViewController.swift */; };
+		986BD61B25684581007F49ED /* LinkPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BD61A25684581007F49ED /* LinkPopupVC.swift */; };
+		986BD62025684980007F49ED /* LinkPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BD61F25684980007F49ED /* LinkPopupViewModel.swift */; };
 		986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA072509C42600AD3CEE /* AppDelegate.swift */; };
 		986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA0D2509C42600AD3CEE /* Main.storyboard */; };
 		986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */; };
@@ -272,6 +274,8 @@
 		9863224C2517B9AB003B0784 /* ClassRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClassRoom.storyboard; sourceTree = "<group>"; };
 		986322552517BB81003B0784 /* FriendMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMainVC.swift; sourceTree = "<group>"; };
 		986908F72521AE8E00C844F1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		986BD61A25684581007F49ED /* LinkPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupVC.swift; sourceTree = "<group>"; };
+		986BD61F25684980007F49ED /* LinkPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupViewModel.swift; sourceTree = "<group>"; };
 		986EDA042509C42600AD3CEE /* dimodamo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dimodamo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986EDA072509C42600AD3CEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		986EDA0E2509C42600AD3CEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -901,6 +905,8 @@
 			isa = PBXGroup;
 			children = (
 				987E1C69254DF57100F5077D /* LinkPopupView.swift */,
+				986BD61A25684581007F49ED /* LinkPopupVC.swift */,
+				986BD61F25684980007F49ED /* LinkPopupViewModel.swift */,
 			);
 			path = LinkPopup;
 			sourceTree = "<group>";
@@ -1650,6 +1656,7 @@
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
 				98FA225C2557244A00331755 /* ApplicationDataAPI.swift in Sources */,
 				98A8B816253605CE00351FD5 /* SplashViewController.swift in Sources */,
+				986BD61B25684581007F49ED /* LinkPopupVC.swift in Sources */,
 				980F19ED25407578007B33B8 /* CommentCell.swift in Sources */,
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
@@ -1683,6 +1690,7 @@
 				98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */,
 				98FA221225569CFB00331755 /* ProfileDptiResultViewModel.swift in Sources */,
 				98C735DC255C5F1100252BF2 /* YourChatCell.swift in Sources */,
+				986BD62025684980007F49ED /* LinkPopupViewModel.swift in Sources */,
 				9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */,
 				98D988DF254FA99A002A8AC5 /* SortingPopupView.swift in Sources */,
 				984FA9042555966400D4F506 /* HotDimoPeopleVC.swift in Sources */,

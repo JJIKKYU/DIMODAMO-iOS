@@ -15,6 +15,8 @@ import Tagging
 
 import Kingfisher
 
+import BottomPopup
+
 class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBOutlet weak var descriptionContainer: UIView!
@@ -63,19 +65,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
      Link
      */
     
-    @IBOutlet var linkPopupView: LinkPopupView! {
-        didSet {
-            linkPopupView.roundCorners(corners: [.topLeft, .topRight], radius: 16)
-            linkPopupView.layer.masksToBounds = true
-            linkPopupView.appShadow(.s20)
-        }
-    }
-    // 팝업이 뜰 경우 뒤를 살짝 가려주는 요도로 사용
-    var dimView: UIView!
-    
-    @IBOutlet weak var linkTextField: UITextField!
-    @IBOutlet weak var linkInsertBtn: UIButton!
-    @IBOutlet weak var linkCloseBtn: UIButton!
     @IBOutlet weak var linkLoadingView: LottieLoadingView! {
         didSet {
             linkLoadingView.stopAnimation()
@@ -86,7 +75,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
      UploadImage
      */
     var imagePicker : UIImagePickerController = UIImagePickerController()
-    @IBOutlet weak var testImageView: UIImageView!
     
     @IBOutlet weak var bottomIconContainerView: UIView! {
         didSet {
@@ -237,15 +225,15 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
                 
                 // 썸네일 이미지가 없다면
                 if data.image == "" {
-                    self?.linkPopupView.thumbImageView.image = UIImage(named: "linkImage")
+//                    self?.linkPopupView.thumbImageView.image = UIImage(named: "linkImage")
                 }
                 // 썸네일 이미지가 있다면
                 else {
-                    self?.linkPopupView.thumbImageView.kf.setImage(with: imageUrl)
+//                    self?.linkPopupView.thumbImageView.kf.setImage(with: imageUrl)
                 }
                 
-                self?.linkPopupView.titleLabel.text = "\(title)"
-                self?.linkPopupView.addressLabel.text = "\(url)"
+//                self?.linkPopupView.titleLabel.text = "\(title)"
+//                self?.linkPopupView.addressLabel.text = "\(url)"
             })
             .disposed(by: disposeBag)
 
@@ -386,16 +374,16 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBAction func pressedLinkBtn(_ sender: Any) {
         print("링크삽입")
-        self.linkTextField.becomeFirstResponder()
+//        self.linkTextField.becomeFirstResponder()
         
-        navigationController?.hideTransparentNavigationBar()
-        navigationController?.navigationBar.barTintColor = .clear
-        navigationController?.navigationBar.tintColor = .clear
-        navigationController?.navigationBar.backgroundColor = .clear
-        dimView.isHidden = false
-        linkPopupView.isHidden = false
-//        linkPopupView.layer.zPosition = 999
-        
+        let storyboard = UIStoryboard(name: "Community", bundle: nil)
+
+        guard let popupVC = storyboard.instantiateViewController(withIdentifier: "LinkPopupVC") as? LinkPopupVC else { return }
+        popupVC.presentDuration = 0.5
+        popupVC.dismissDuration = 0.5
+        popupVC.shouldDismissInteractivelty = true
+        popupVC.popupDelegate = self
+        present(popupVC, animated: true, completion: nil)
     }
     
     @IBAction func pressedLinkPopupViewCloseBtn(_ sender: Any) {
@@ -406,12 +394,12 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     @IBAction func pressedLinkCheck(_ sender: Any) {
         print("링크를 체크합니다")
         
-        guard let link = self.linkTextField.text else {
-            return
-        }
-        self.linkLoadingView.playAnimation()
-        
-        self.viewModel.linkCheck(url: link)
+//        guard let link = self.linkTextField.text else {
+//            return
+//        }
+//        self.linkLoadingView.playAnimation()
+//
+//        self.viewModel.linkCheck(url: link)
     }
     
     @IBAction func pressedLinkInsertBtn(_ sender: Any) {
@@ -422,13 +410,13 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     }
     
     func hideLinkPopupView() {
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.backgroundColor = .white
-        navigationController?.presentTransparentNavigationBar()
-        self.linkPopupView.isHidden = true
-        self.linkPopupView.dataReset()
-        self.dimView.isHidden = true
-        self.linkTextField.resignFirstResponder()
+//        navigationController?.navigationBar.tintColor = .white
+//        navigationController?.navigationBar.backgroundColor = .white
+//        navigationController?.presentTransparentNavigationBar()
+//        self.linkPopupView.isHidden = true
+//        self.linkPopupView.dataReset()
+//        self.dimView.isHidden = true
+//        self.linkTextField.resignFirstResponder()
     }
 }
 
@@ -442,46 +430,7 @@ extension CreatePostViewController {
         self.descriptionContainer.layer.masksToBounds = true
         
         tagsTableView.isHidden = true
-        
-        // 팝업뷰가 보이지 않더라도 먼저 constraint 세팅
-        linkPopupViewDesign()
     }
-    
-    /*
-     Link
-     */
-    func linkPopupViewDesign() {
-        //        self.view.layoutIfNeeded()
-        
-//        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-//        window?.addSubview(linkPopupView)
-        dimView = UIView()
-        dimView.frame = UIScreen.main.bounds
-        self.view.addSubview(dimView)
-        dimView.backgroundColor = UIColor.black
-        dimView.alpha = 0.6
-        
-        self.view.addSubview(linkPopupView)
-        linkPopupView.isUserInteractionEnabled = true
-        linkInsertBtn.isUserInteractionEnabled = true
-        linkPopupView.layer.zPosition = 1
-        
-        linkPopupView.translatesAutoresizingMaskIntoConstraints = false
-        
-        linkPopupView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        linkPopupView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        linkPopupView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
-        linkPopupView.heightAnchor.constraint(equalToConstant: 307).isActive = true
-        
-        linkPopupView.isHidden = true
-        dimView.isHidden = true
-        
-        // Window의 자식으로 놓으므로 직접 추가 해주어야함
-        
-        //        self.view.layoutIfNeeded()
-    }
-    
-   
 }
 
 // MARK: - TextField & Keyboard
@@ -514,13 +463,13 @@ extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
             //                        self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
             //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
             
-            self.linkPopupView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+//            self.linkPopupView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
             self.bottomIconContainerView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea)
         }
     }
     
     @objc func moveDownTextView() {
-        self.linkPopupView.transform = .identity
+//        self.linkPopupView.transform = .identity
         self.bottomIconContainerView.transform = .identity
         //        self.commentTextFieldView?.transform = .identity
         //        self.scrollView?.transform = .identity
@@ -703,5 +652,10 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
         }
         dismiss(animated: true, completion: nil)
     }
+}
+
+// MARK: - Bottom Pupup VC
+
+extension CreatePostViewController: BottomPopupDelegate {
     
 }

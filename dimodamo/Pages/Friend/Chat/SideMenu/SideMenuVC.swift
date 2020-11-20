@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Malert
-
 class SideMenuVC: UIViewController {
 
     @IBOutlet weak var backgroundView: UIView! {
