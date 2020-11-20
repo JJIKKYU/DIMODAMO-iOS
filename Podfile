@@ -43,7 +43,7 @@ target 'dimodamo' do
   # For Swift 5 use: 슬라이드 메뉴용
   pod 'SideMenu', '~> 6.0'
   
-  # Alert / 알림팝업용
-  pod 'Malert'
+  # Alert / 글 쓸 때 밑에서 링크 추가할 때 사용
+  pod 'BottomPopup'
 
 end

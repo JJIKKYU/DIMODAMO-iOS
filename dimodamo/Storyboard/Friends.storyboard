@@ -134,7 +134,7 @@
             <objects>
                 <viewController storyboardIdentifier="ManitoChatVC" hidesBottomBarWhenPushed="YES" id="8Nx-F2-kf6" customClass="ManitoChatVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mr5-Ir-yQx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lQw-CB-pEm">
@@ -156,7 +156,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUt-2d-jmZ" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="76" y="0.0" width="249" height="62"/>
+                                                    <rect key="frame" x="76" y="0.0" width="226.5" height="62"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="안녕하세요! 아트보드 글 보고 쪽지 남깁니다!안녕하세요! 아트보드 글 보고 쪽지 남깁니다!">
                                                             <attributes>
@@ -193,7 +193,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최고예요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3o-De-hhk">
-                                                            <rect key="frame" x="36" y="-1" width="49" height="18"/>
+                                                            <rect key="frame" x="36" y="0.5" width="49" height="15.5"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="13"/>
                                                             <color key="textColor" name="YELLOW - DARK"/>
                                                             <nil key="highlightedColor"/>
@@ -277,7 +277,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최고예요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fn-Le-hNN">
-                                                            <rect key="frame" x="51" y="-1" width="49" height="18"/>
+                                                            <rect key="frame" x="51" y="0.5" width="49" height="15.5"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="13"/>
                                                             <color key="textColor" name="YELLOW - DARK"/>
                                                             <nil key="highlightedColor"/>
@@ -450,7 +450,7 @@
             <objects>
                 <viewController id="hPK-B9-Vbm" customClass="SideMenuVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OBM-Nc-Lrp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-hG-9zn">
@@ -708,7 +708,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+245" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKJ-oR-0T1">
-                                    <rect key="frame" x="57.5" y="10" width="50.5" height="29"/>
+                                    <rect key="frame" x="60" y="10" width="48" height="29"/>
                                     <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="21"/>
                                     <color key="textColor" name="BLUE - DARK"/>
                                     <nil key="highlightedColor"/>
@@ -734,7 +734,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="우리는 환상의 콤비~!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQB-OW-4lN">
-                            <rect key="frame" x="67" y="412" width="240" height="19"/>
+                            <rect key="frame" x="67" y="414" width="240" height="16.5"/>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="14"/>
                             <color key="textColor" name="SYSTEM"/>
                             <nil key="highlightedColor"/>
@@ -838,13 +838,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사는게쉽지않네" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyX-aw-G4q">
-                                                    <rect key="frame" x="96" y="16" width="85" height="19"/>
+                                                    <rect key="frame" x="96" y="16" width="85" height="16.5"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="14"/>
                                                     <color key="textColor" name="YELLOW - DARK"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTe-lc-4Us">
-                                                    <rect key="frame" x="96" y="43" width="229" height="35.5"/>
+                                                    <rect key="frame" x="96" y="40.5" width="229" height="35.5"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="안녕하세요~! 반갑습니다! 마니또 요청 받아드릴게요! 잠시만요~!">
                                                             <attributes>
@@ -864,13 +864,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 10:10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2K-uS-jo6">
-                                                    <rect key="frame" x="342.5" y="16" width="51.5" height="14"/>
+                                                    <rect key="frame" x="339.5" y="16" width="54.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                                                     <color key="textColor" name="GRAY - 210"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNP-26-l3h" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="377.5" y="42" width="16.5" height="20"/>
+                                                    <rect key="frame" x="379.5" y="42" width="14.5" height="20"/>
                                                     <color key="backgroundColor" name="RED"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="e86-X7-VyD"/>

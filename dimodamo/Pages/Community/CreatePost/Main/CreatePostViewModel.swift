@@ -117,7 +117,7 @@ class CreatePostViewModel {
                     // 이미지 업로드에 성공 했다면 글 작성 시작
                     queue.async { [weak self] in
                         print("\(self!.uploadLinks)")
-                        
+            
                         board = Board(boardId: id,
                                       boardTitle: self!.titleRelay.value,
                                       bundleId: unixTimestamp,

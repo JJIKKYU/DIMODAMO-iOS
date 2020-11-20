@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double MalertVersionNumber;
-FOUNDATION_EXPORT const unsigned char MalertVersionString[];
+FOUNDATION_EXPORT double BottomPopupVersionNumber;
+FOUNDATION_EXPORT const unsigned char BottomPopupVersionString[];
 
