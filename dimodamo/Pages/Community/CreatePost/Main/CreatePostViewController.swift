@@ -17,6 +17,8 @@ import Kingfisher
 
 import BottomPopup
 
+import STPopup
+
 class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBOutlet weak var descriptionContainer: UIView!
@@ -65,6 +67,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
      Link
      */
     
+    var linkPopupVC: LinkPopupVC?
     @IBOutlet weak var linkLoadingView: LottieLoadingView! {
         didSet {
             linkLoadingView.stopAnimation()
@@ -282,8 +285,8 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         /*
          Keyboard
          */
-        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func tagging(_ tagging: Tagging, didChangedTagableList tagableList: [String]) {
@@ -378,12 +381,23 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         
         let storyboard = UIStoryboard(name: "Community", bundle: nil)
 
-        guard let popupVC = storyboard.instantiateViewController(withIdentifier: "LinkPopupVC") as? LinkPopupVC else { return }
-        popupVC.presentDuration = 0.5
-        popupVC.dismissDuration = 0.5
-        popupVC.shouldDismissInteractivelty = true
-        popupVC.popupDelegate = self
-        present(popupVC, animated: true, completion: nil)
+        let popupVC = storyboard.instantiateViewController(withIdentifier: "LinkPopupVCTest")
+//
+//        linkPopupVC = popupVC
+//
+//        guard let linkPopupVC = linkPopupVC else {
+//            return
+//        }
+//        linkPopupVC.presentDuration = 0.25
+//        linkPopupVC.dismissDuration = 0.25
+//        linkPopupVC.shouldDismissInteractivelty = true
+//        linkPopupVC.popupDelegate = self
+//        present(popupVC, animated: true, completion: nil)
+        
+        let popupController = STPopupController(rootViewController: popupVC)
+        popupController.style = .bottomSheet
+        popupController.present(in: self)
+        
     }
     
     @IBAction func pressedLinkPopupViewCloseBtn(_ sender: Any) {

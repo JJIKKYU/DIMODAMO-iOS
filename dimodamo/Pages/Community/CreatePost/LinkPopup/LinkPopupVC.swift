@@ -75,11 +75,13 @@ class LinkPopupVC: BottomPopupViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.textField.becomeFirstResponder()
+        
         /*
          Keyboard
          */
-        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func dataReset() {
@@ -121,7 +123,8 @@ extension LinkPopupVC: UITextFieldDelegate {
         }
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+            self.view.transform = CGAffineTransform(translationX: 0, y: -50)
+            self.view.layer.zPosition = 999
         }
     }
     
