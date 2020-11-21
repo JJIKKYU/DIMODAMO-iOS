@@ -209,38 +209,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
 //            })
 //            .disposed(by: disposeBag)
         
-        
-        /*
-         링크 업로드
-         */
-        // LinkPopupView에서 주소 및 이미지 체크
-        viewModel.uploadLinkDataRelay
-            .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] data in
-                guard let data = data else {
-                    return
-                }
-                self?.linkLoadingView.stopAnimation()
-                
-                let imageUrl = URL(string: data.image)
-                let title = data.title
-                let url = data.url
-                
-                // 썸네일 이미지가 없다면
-                if data.image == "" {
-//                    self?.linkPopupView.thumbImageView.image = UIImage(named: "linkImage")
-                }
-                // 썸네일 이미지가 있다면
-                else {
-//                    self?.linkPopupView.thumbImageView.kf.setImage(with: imageUrl)
-                }
-                
-//                self?.linkPopupView.titleLabel.text = "\(title)"
-//                self?.linkPopupView.addressLabel.text = "\(url)"
-            })
-            .disposed(by: disposeBag)
-
-        
         /*
          기본 Empty이미지 삭제 및 데이터가 들어올 때마다 테이블 리로드
          */
@@ -362,75 +330,27 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    /*
-     이미지 업로드 테스트
-     */
-    
-    @IBAction func testBtn(_ sender: Any) {
-//        self.viewModel.uploadImage(documentID: "ABCD", completion: nil)
-    }
-    
     
     /*
      Link
      */
     
     @IBAction func pressedLinkBtn(_ sender: Any) {
-        print("링크삽입")
-//        self.linkTextField.becomeFirstResponder()
-        
         let storyboard = UIStoryboard(name: "Community", bundle: nil)
 
-        let popupVC = storyboard.instantiateViewController(withIdentifier: "LinkPopupVCTest")
-//
-//        linkPopupVC = popupVC
-//
-//        guard let linkPopupVC = linkPopupVC else {
-//            return
-//        }
-//        linkPopupVC.presentDuration = 0.25
-//        linkPopupVC.dismissDuration = 0.25
-//        linkPopupVC.shouldDismissInteractivelty = true
-//        linkPopupVC.popupDelegate = self
-//        present(popupVC, animated: true, completion: nil)
+        let popupVC = storyboard.instantiateViewController(withIdentifier: "LinkPopupVC") as! LinkPopupVC
+        popupVC.sendLinkDataDelegate = self
         
         let popupController = STPopupController(rootViewController: popupVC)
         popupController.style = .bottomSheet
         popupController.present(in: self)
-        
     }
-    
-    @IBAction func pressedLinkPopupViewCloseBtn(_ sender: Any) {
-        hideLinkPopupView()
-        self.viewModel.uploadLinkDataRelayReset()
-    }
-    
-    @IBAction func pressedLinkCheck(_ sender: Any) {
-        print("링크를 체크합니다")
-        
-//        guard let link = self.linkTextField.text else {
-//            return
-//        }
-//        self.linkLoadingView.playAnimation()
-//
-//        self.viewModel.linkCheck(url: link)
-    }
-    
-    @IBAction func pressedLinkInsertBtn(_ sender: Any) {
-        print("링크를 삽입합니다")
-        
-        viewModel.linkViewSetting()
-        hideLinkPopupView()
-    }
-    
-    func hideLinkPopupView() {
-//        navigationController?.navigationBar.tintColor = .white
-//        navigationController?.navigationBar.backgroundColor = .white
-//        navigationController?.presentTransparentNavigationBar()
-//        self.linkPopupView.isHidden = true
-//        self.linkPopupView.dataReset()
-//        self.dimView.isHidden = true
-//        self.linkTextField.resignFirstResponder()
+}
+
+// MARK: - Link Data 받기
+extension CreatePostViewController: SendLinkData {
+    func sendLinkData(uploadLink: String, uploadLinkData: PreviewResponse) {
+        viewModel.linkViewSetting(uploadLink: uploadLink, uploadLinkData: uploadLinkData)
     }
 }
 

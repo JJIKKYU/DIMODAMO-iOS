@@ -13,10 +13,15 @@ import STPopup
 import RxSwift
 import RxCocoa
 
+protocol SendLinkData {
+    func sendLinkData(uploadLink: String, uploadLinkData: PreviewResponse)
+}
+
 class LinkPopupVC: UIViewController {
     
     let viewModel = LinkPopupViewModel()
     var disposeBag = DisposeBag()
+    var sendLinkDataDelegate: SendLinkData?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -57,6 +62,12 @@ class LinkPopupVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var loadingView: LottieLoadingView! {
+        didSet {
+            loadingView.stopAnimation()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -91,6 +102,36 @@ class LinkPopupVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*
+         링크 업로드
+         */
+        // LinkPopupView에서 주소 및 이미지 체크
+        viewModel.uploadLinkDataRelay
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                guard let data = data else {
+                    return
+                }
+                self?.loadingView.stopAnimation()
+                
+                let imageUrl = URL(string: data.image)
+                let title = data.title
+                let url = data.url
+                
+                // 썸네일 이미지가 없다면
+                if data.image == "" {
+                    self?.thumbImageView.image = UIImage(named: "linkImage")
+                }
+                // 썸네일 이미지가 있다면
+                else {
+                    self?.thumbImageView.kf.setImage(with: imageUrl)
+                }
+                
+                self?.titleLabel.text = "\(title)"
+                self?.addressLabel.text = "\(url)"
+            })
+            .disposed(by: disposeBag)
     }
     
     func dataReset() {
@@ -102,7 +143,30 @@ class LinkPopupVC: UIViewController {
     }
     
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
+        viewModel.uploadLinkDataRelayReset()
         dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func pressedLinkCheck(_ sender: Any) {
+        guard let link = self.textField.text else {
+            return
+        }
+        self.loadingView.playAnimation()
+        
+        self.viewModel.linkCheck(url: link)
+    }
+    
+    @IBAction func pressedInsertBtn(_ sender: Any) {
+        guard let uploadLink = viewModel.uploadLink else {
+            return
+        }
+        
+        guard let uploadLinkDataRelayValue = viewModel.uploadLinkDataRelay.value else {
+            return
+        }
+        
+        sendLinkDataDelegate?.sendLinkData(uploadLink: uploadLink, uploadLinkData: uploadLinkDataRelayValue)
     }
     
     @objc func backgroundViewDidTap() {

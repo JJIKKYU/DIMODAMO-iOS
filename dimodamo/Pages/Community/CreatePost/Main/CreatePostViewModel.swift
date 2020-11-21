@@ -184,7 +184,12 @@ class CreatePostViewModel {
     /*
      Link Setting
      */
-    func linkViewSetting() {
+    func linkViewSetting(uploadLink: String, uploadLinkData: PreviewResponse) {
+        
+        // LinkPopupVC에서 전달 받은 데이터를 먼저 넣은 뒤에
+        self.uploadLinkDataRelay.accept(uploadLinkData) // 이미지 그리기 위한 용도 구조체
+        self.uploadLink = uploadLink // 게시글 업로드용
+        
         var linksData: [PreviewResponse] = [] // 이전 링크 데이터
         var linksString: [String] = [] // urlString만 담기 위해
         
@@ -206,31 +211,6 @@ class CreatePostViewModel {
         self.uploadLinks = linksString
         
         print("uploadLinks = \(linksString)")
-    }
-    
-    func linkCheck(url: String) {
-        slp.previewLink("\(url)",
-                        onSuccess: { [self] result in
-                            let resultArr = result
-                            let linkData: PreviewResponse =
-                                PreviewResponse(url: (resultArr["url"] as? URL) ?? URL(string: "dimodamo.com")!,
-                                                title: resultArr["title"] as? String ?? "",
-                                                image: resultArr["image"] as? String ?? "",
-                                                icon: resultArr["icon"] as? String ?? ""
-                                )
-                            
-                            uploadLinkDataRelay.accept(linkData) // 이미지 그리기 위한 용도 구조체
-                            uploadLink = linkData.url.absoluteString // 게시글 업로드용
-                            
-                        }, onError: { error in
-                            print("\(error)")
-                        })
-    }
-    
-    // 링크 체크만 하고 그대로 팝업 뷰를 꺼버렸을 경우 남아있는 데이터 삭제
-    func uploadLinkDataRelayReset() {
-        self.uploadLinkDataRelay.accept(nil)
-        self.uploadLink = nil
     }
     
     // TODO : 도큐먼트 아이디를 받아서 for문 돌려서
