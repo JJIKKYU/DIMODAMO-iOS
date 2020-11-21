@@ -61,6 +61,7 @@
 		986908F82521AE8E00C844F1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986908F72521AE8E00C844F1 /* AlertViewController.swift */; };
 		986BD61B25684581007F49ED /* LinkPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BD61A25684581007F49ED /* LinkPopupVC.swift */; };
 		986BD62025684980007F49ED /* LinkPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BD61F25684980007F49ED /* LinkPopupViewModel.swift */; };
+		986BD67C25693F7F007F49ED /* Hide_ShowNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BD67B25693F7F007F49ED /* Hide_ShowNavigationController.swift */; };
 		986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA072509C42600AD3CEE /* AppDelegate.swift */; };
 		986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA0D2509C42600AD3CEE /* Main.storyboard */; };
 		986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */; };
@@ -276,6 +277,7 @@
 		986908F72521AE8E00C844F1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		986BD61A25684581007F49ED /* LinkPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupVC.swift; sourceTree = "<group>"; };
 		986BD61F25684980007F49ED /* LinkPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupViewModel.swift; sourceTree = "<group>"; };
+		986BD67B25693F7F007F49ED /* Hide_ShowNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hide_ShowNavigationController.swift; sourceTree = "<group>"; };
 		986EDA042509C42600AD3CEE /* dimodamo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dimodamo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986EDA072509C42600AD3CEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		986EDA0E2509C42600AD3CEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -825,6 +827,7 @@
 				9821BBD22561037C00C47987 /* MultiTabDetector.swift */,
 				9821BBD525611CAC00C47987 /* ImageColorChange.swift */,
 				987D6D6F2562CE77000FCA16 /* UITableView.swift */,
+				986BD67B25693F7F007F49ED /* Hide_ShowNavigationController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1624,6 +1627,7 @@
 				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
 				98F8C847254C9CE400FDDEBF /* InformationViewModel.swift in Sources */,
 				988377982541F4F500BFA746 /* CommentInputView.swift in Sources */,
+				986BD67C25693F7F007F49ED /* Hide_ShowNavigationController.swift in Sources */,
 				9800A14F253377F20090C058 /* FirstIntroViewController.swift in Sources */,
 				98D988EC255248CE002A8AC5 /* ProfileMainVC.swift in Sources */,
 				98AFDA532539CF2400B0D88F /* CommunityMain.swift in Sources */,

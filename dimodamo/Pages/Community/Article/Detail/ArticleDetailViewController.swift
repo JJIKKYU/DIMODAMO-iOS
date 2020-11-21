@@ -19,10 +19,6 @@ import AVKit
 
 import Lottie
 
-class ArticleTopContainerView: UIView {
-    
-}
-
 class ArticleDetailViewController: UIViewController {
     // 로딩
     @IBOutlet weak var loadingContainerView: LottieLoadingView2! {
@@ -118,8 +114,6 @@ class ArticleDetailViewController: UIViewController {
     var disposeBag = DisposeBag()
     let viewModel = ArticleDetailViewModel()
     
-    
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.presentTransparentNavigationBar()
@@ -128,8 +122,6 @@ class ArticleDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.rightBarButtonItem = scrapNavbarItem
-        
-        //        navigationController?.invisible()
         self.navigationController?.hideTransparentNavigationBar()
         
     }
@@ -357,10 +349,6 @@ class ArticleDetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-        //            self.commentTableView.reloadData()
-        //            }
-        
         /*
          댓글 인풋 창
          */
@@ -441,8 +429,11 @@ class ArticleDetailViewController: UIViewController {
     
     @IBAction func pressedSendCommentBtn(_ sender: Any) {
         viewModel.commentInput()
-        commentTextField.text = ""
-        commentTableView.reloadData()
+        commentTextField.text = "" // 텍스트 초기화
+        self.viewModel.commentDepth = 0 // 일반 댓글 뎁스로 초기화
+        self.commentProfileIshidden(isHidden: true) // 대댓글 프로필 삭제
+        self.view.endEditing(true) // 키보드 내리기
+//        commentTableView.reloadData() // 데이터 리로드
     }
     
     @IBAction func pressedScrapBtn(_ sender: Any) {
@@ -475,37 +466,7 @@ class ArticleDetailViewController: UIViewController {
     
 }
 
-extension UINavigationController {
-    
-    public func presentTransparentNavigationBar() {
-        view.layer.layoutIfNeeded()
-        setNavigationBarHidden(false, animated: true)
-        
-        navigationBar.titleTextAttributes = [.foregroundColor: UIColor.appColor(.textSmall)]
-        navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.isTranslucent = false
-        navigationBar.barTintColor = .white
-        
-        view.layer.layoutIfNeeded()
-        
-    }
-    
-    public func hideTransparentNavigationBar() {
-        view.layer.layoutIfNeeded()
-        setNavigationBarHidden(false, animated: true)
-        navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
-        navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.isTranslucent = true
-        navigationBar.barTintColor = .white
-        
-        
-        view.layer.layoutIfNeeded()
-        
-        
-    }
-}
+// MARK: - Scroll 할때 네비게이션 보이기 / 안보이기
 
 extension ArticleDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -634,32 +595,7 @@ extension ArticleDetailViewController {
         self.view.endEditing(true)
         
         self.commentProfileIshidden(isHidden: true)
-        print("TODO : 프로필은 숨겨지지만 viewmodel에서 답변 플래그 변경 해야합니다")
-    }
-    
-    func scrapNavitemSetting() {
-        let viewFN = UIView(frame: CGRect.init(x: 0, y: 0, width: 180, height: 40))
-        viewFN.backgroundColor = .yellow
-        let button1 = UIButton(frame: CGRect.init(x: 0, y: 0, width: 40, height: 20))
-        button1.setImage(UIImage(named: "scrapIconGray"), for: .normal)
-        button1.setTitle("one", for: .normal)
-        
-        //        button1.addTarget(self, action: #selector(self.didTapOnRightButton), for: .touchUpInside)
-        //        let button2 = UIButton(frame: CGRect.init(x: 40, y: 8, width: 60, height: 20))
-        //        button2.setImage(UIImage(named: "notification"), for: .normal)
-        //        button2.setTitle("tow", for: .normal)
-        //        let button3 = UIButton(frame: CGRect.init(x: 80, y: 8, width: 60, height: 20))
-        //        button3.setImage(UIImage(named: "notification"), for: .normal)
-        //        button3.setTitle("three", for: .normal)
-        
-        //        button3.addTarget(self, action: #selector(self.didTapOnRightButton), for: .touchUpInside)
-        
-        viewFN.addSubview(button1)
-        //        viewFN.addSubview(button2)
-        //        viewFN.addSubview(button3)
-        
-        let rightBarButton = UIBarButtonItem(customView: viewFN)
-        self.navigationItem.rightBarButtonItem = rightBarButton
+        self.viewModel.commentDepth = 0 // 일반 댓글 뎁스로 변경
     }
 }
 
@@ -688,12 +624,6 @@ extension ArticleDetailViewController {
                                         }
                                         
                                         let scaledHeight = ((UIScreen.main.bounds.width - 40) * image.size.height) / image.size.width
-                                        //                                        print("scaleHeight : \(scaledHeight)")
-                                        
-//                                        print("이미지 서브뷰 추가")
-                                        print("index : \(index)")
-                                        
-//                                        print("이미지 서브뷰 했누")
                                         
                                         imageView.heightAnchor.constraint(equalToConstant: scaledHeight).isActive = true
                                         imageView.trailingAnchor.constraint(equalTo: self!.contentView.trailingAnchor, constant: -20).isActive = true
@@ -714,8 +644,8 @@ extension ArticleDetailViewController {
                                         iconView.layer.zPosition = 2
                                         
                                         
-                                        print(value.cacheType)
-                                        print(value.source)
+//                                        print(value.cacheType)
+//                                        print(value.source)
                                         
                                         if index == (self!.viewModel.imagesRelay.value.count - 1) {
                                             print("\(index + 1)가지 이미지 로딩을 완료했습니다")
@@ -1067,9 +997,14 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             }
         }
         
+        // 기본적으로 하트 아이콘으로 변경한 뒤에
+        cell.selectedHeart = false
+        cell.commentHeartBtn.setImage(UIImage(named: "heartIcon"), for: .normal)
+        
         
         // 이미 유저가 하트를 누른 경우 이미지 변경
         for uid in viewModel.commentUserHeartUidArr {
+            // 내가 적은 댓글일 경우에는 하트 추가
             if model.commentId == uid {
                 //                print("UID가 같으므로 하트이미지를 변경합니다.")
                 cell.selectedHeart = true
@@ -1129,7 +1064,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
 }
 
-//MARK:: - Keyboard & Touch
+// MARK: - Keyboard & Touch
 
 extension ArticleDetailViewController: UITextFieldDelegate {
     // 키보드 업, 다운 관련

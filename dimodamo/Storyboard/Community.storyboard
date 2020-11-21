@@ -574,7 +574,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYH-97-D8U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="428.98550724637687" y="85.714285714285708"/>
+            <point key="canvasLocation" x="675" y="86"/>
         </scene>
         <!--Article View Controller-->
         <scene sceneID="C11-9E-dj8">
@@ -1019,7 +1019,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OjY-DP-qef">
-                                                <rect key="frame" x="377" y="567" width="17" height="22"/>
+                                                <rect key="frame" x="377" y="596" width="17" height="22"/>
                                                 <state key="normal" image="scrapIcon"/>
                                                 <connections>
                                                     <action selector="pressedScrapBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="AhS-qt-g8B"/>
@@ -1027,7 +1027,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="84" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msz-D3-dZv">
-                                                <rect key="frame" x="378.5" y="591" width="14.5" height="15.5"/>
+                                                <rect key="frame" x="378.5" y="620" width="14.5" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="13"/>
                                                 <color key="textColor" name="WHITE"/>
                                                 <nil key="highlightedColor"/>
@@ -1325,7 +1325,7 @@
                                 <rect key="frame" x="0.0" y="787" width="414" height="75"/>
                             </imageView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRx-oa-fbu" customClass="LottieLoadingView2" customModule="dimodamo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-154" width="414" height="1016"/>
+                                <rect key="frame" x="0.0" y="-183" width="414" height="1045"/>
                                 <color key="backgroundColor" name="WHITE"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYD-Mh-DWj">
@@ -2968,7 +2968,9 @@
                             <constraint firstItem="qIV-Fk-aSK" firstAttribute="bottom" secondItem="7y0-vZ-Av1" secondAttribute="bottom" id="klE-PQ-dPU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="Phx-4B-Vyv"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="Phx-4B-Vyv">
+                        <barButtonItem key="backBarButtonItem" title=" " id="I1n-iU-BFp"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="loadingView" destination="7y0-vZ-Av1" id="CV2-JG-iK5"/>
                         <outlet property="mainView" destination="KjL-zS-AOV" id="Zep-eX-whd"/>
@@ -3322,7 +3324,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ae2-2V-5qG"/>
+        <segue reference="ROi-qZ-LzO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BC_Char_Yellow_M2_0" width="382" height="348"/>
