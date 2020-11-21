@@ -187,6 +187,7 @@ class ProfileMainVC: UIViewController {
                 return
             }
             
+            
             destination.viewModel.profileUID.accept(UID)
             
             break

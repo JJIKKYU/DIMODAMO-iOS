@@ -453,6 +453,26 @@ class ArticleDetailViewController: UIViewController {
         print("안되냐?")
     }
     
+    /*
+     게시글 작성자 이름을 클릭했을 경우
+     */
+    @IBAction func pressedAuthorName(_ sender: Any) {
+        print("작성자 프로필로 이동합니다.")
+        
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "MyProfileVC") as! MyProfileVC
+        
+        guard let selectedUserUID = viewModel.userUID else {
+            return
+            
+        }
+        profileVC.viewModel.profileSetting.accept(viewModel.userDptiRelay.value)
+        profileVC.viewModel.userNickname = viewModel.userNicknameRelay.value
+        profileVC.viewModel.profileUID.accept(selectedUserUID)
+        
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
 }
 
 extension UINavigationController {
