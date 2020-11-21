@@ -71,6 +71,8 @@ class LinkPopupVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.dataReset()
+        
         /*
          상단바 제거
          */
@@ -167,9 +169,11 @@ class LinkPopupVC: UIViewController {
         }
         
         sendLinkDataDelegate?.sendLinkData(uploadLink: uploadLink, uploadLinkData: uploadLinkDataRelayValue)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func backgroundViewDidTap() {
+        viewModel.uploadLinkDataRelayReset()
         dismiss(animated: true, completion: nil)
     }
     

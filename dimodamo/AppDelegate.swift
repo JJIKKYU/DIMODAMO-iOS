@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        IQKeyboardManager.shared.enableAutoToolbar = false
 //        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
+        // 네비게이션바 밑에 하단 줄 제거
+        
+        
         // 알림 권한 요청
         requestAuthorizationForRemotePushNotification()
         FirebaseApp.configure()

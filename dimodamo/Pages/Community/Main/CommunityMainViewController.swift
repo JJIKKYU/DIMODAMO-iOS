@@ -38,7 +38,10 @@ class CommunityMainViewController: UIViewController {
         navigationController?.visible(color: UIColor.appColor(.textBig))
         navigationController?.view.backgroundColor = .white
         
-        //        self.navigationController?.presentTransparentNavigationBar()
+        // 네비게이션바 밑줄 삭제
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
     }
     
     override func viewDidLoad() {
@@ -351,7 +354,7 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.minimumLineSpacing = lineSpacing
         layout.scrollDirection = .horizontal
-        articleCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX - 4, bottom: insetY, right: insetX - 4)
+        articleCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX - 8)
         
         
         // 스크롤 시 빠르게 감속 되도록 설정
