@@ -15,6 +15,17 @@ class TestViewController: UIViewController {
     let registerStoryboard: UIStoryboard = UIStoryboard(name: "Register", bundle: .main)
     let loginStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: .main)
     let DPTIStoryboard: UIStoryboard = UIStoryboard(name: "DPTI", bundle: .main)
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.tabBarController?.tabBar.layer.masksToBounds = true
+        self.tabBarController?.tabBar.isTranslucent = true
+        self.tabBarController?.tabBar.barStyle = .black
+        self.tabBarController?.tabBar.layer.cornerRadius = 25
+        self.tabBarController?.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.tabBarController?.tabBar.appShadow(.s20)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

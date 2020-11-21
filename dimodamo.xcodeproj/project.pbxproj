@@ -62,6 +62,7 @@
 		986BD61B25684581007F49ED /* LinkPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BD61A25684581007F49ED /* LinkPopupVC.swift */; };
 		986BD62025684980007F49ED /* LinkPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BD61F25684980007F49ED /* LinkPopupViewModel.swift */; };
 		986BD67C25693F7F007F49ED /* Hide_ShowNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BD67B25693F7F007F49ED /* Hide_ShowNavigationController.swift */; };
+		986BD68125696CDD007F49ED /* RoundedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986BD68025696CDD007F49ED /* RoundedTabBarController.swift */; };
 		986EDA082509C42600AD3CEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA072509C42600AD3CEE /* AppDelegate.swift */; };
 		986EDA0F2509C42600AD3CEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986EDA0D2509C42600AD3CEE /* Main.storyboard */; };
 		986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 986EDA102509C42600AD3CEE /* dimodamo.xcdatamodeld */; };
@@ -278,6 +279,7 @@
 		986BD61A25684581007F49ED /* LinkPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupVC.swift; sourceTree = "<group>"; };
 		986BD61F25684980007F49ED /* LinkPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPopupViewModel.swift; sourceTree = "<group>"; };
 		986BD67B25693F7F007F49ED /* Hide_ShowNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hide_ShowNavigationController.swift; sourceTree = "<group>"; };
+		986BD68025696CDD007F49ED /* RoundedTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTabBarController.swift; sourceTree = "<group>"; };
 		986EDA042509C42600AD3CEE /* dimodamo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dimodamo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986EDA072509C42600AD3CEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		986EDA0E2509C42600AD3CEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -791,12 +793,12 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		9863224325178767003B0784 /* Test */ = {
+		9863224325178767003B0784 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				9863224425178773003B0784 /* TestViewController.swift */,
 			);
-			path = Test;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		986322532517BB64003B0784 /* Friend */ = {
@@ -830,6 +832,14 @@
 				986BD67B25693F7F007F49ED /* Hide_ShowNavigationController.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		986BD67F25696CB6007F49ED /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				986BD68025696CDD007F49ED /* RoundedTabBarController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		986ED9FB2509C42600AD3CEE = {
@@ -925,7 +935,7 @@
 				9863223A25178570003B0784 /* Dpti */,
 				986322392517855B003B0784 /* Community */,
 				98D988E9255248A2002A8AC5 /* Profile */,
-				9863224325178767003B0784 /* Test */,
+				9863224325178767003B0784 /* Main */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1011,6 +1021,7 @@
 		988377952541F4DB00BFA746 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				986BD67F25696CB6007F49ED /* TabBar */,
 				9821BBC9255FEE8B00C47987 /* ManitoApplyBtn */,
 				98D988DD254FA986002A8AC5 /* SortingPopup */,
 				98F8C849254CA0E200FDDEBF /* LottieLoading */,
@@ -1635,6 +1646,7 @@
 				98A8B8042534D10B00351FD5 /* IntroMainViewController.swift in Sources */,
 				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
 				98AFDAD6253AA5D700B0D88F /* ArticleViewController.swift in Sources */,
+				986BD68125696CDD007F49ED /* RoundedTabBarController.swift in Sources */,
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,
 				98F8C881254D3DB000FDDEBF /* ArticleSearchViewModel.swift in Sources */,
 				98F8C83F254C95F900FDDEBF /* ArticleSearchVC.swift in Sources */,

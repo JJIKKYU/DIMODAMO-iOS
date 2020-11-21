@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="3142.0289855072465" y="154.6875"/>
         </scene>
-        <!--Tab Bar View Controller-->
+        <!--Rounded Tab Bar Controller-->
         <scene sceneID="udh-i4-UUe">
             <objects>
-                <tabBarController storyboardIdentifier="MainVC" automaticallyAdjustsScrollViewInsets="NO" id="J5H-rv-9TU" customClass="TabBarViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainVC" automaticallyAdjustsScrollViewInsets="NO" id="J5H-rv-9TU" customClass="RoundedTabBarController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="eMS-o8-xd9"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="glq-5Q-BKZ">
@@ -88,11 +88,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="TEXT - BIG"/>
                         <color key="barTintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" name="BLUE - DARK"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="U1X-jK-vjF" kind="relationship" relationship="viewControllers" id="abQ-H6-mIm"/>
@@ -152,9 +147,6 @@
         <image name="communitySelected" width="20" height="20"/>
         <image name="home" width="20" height="20"/>
         <image name="homeSelected" width="20" height="20"/>
-        <namedColor name="BLUE - DARK">
-            <color red="0.19599999487400055" green="0.76499998569488525" blue="0.84299999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="TEXT - BIG">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

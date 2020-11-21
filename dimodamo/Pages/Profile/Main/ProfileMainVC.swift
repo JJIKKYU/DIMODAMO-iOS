@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class ProfileMainVC: UIViewController {
-
+    
     let viewModel = ProfileMainViewModel()
     let disposeBag = DisposeBag()
     
@@ -27,6 +27,10 @@ class ProfileMainVC: UIViewController {
     override func loadView() {
         super.loadView()
         setColors()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +51,7 @@ class ProfileMainVC: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.appColor(.gray190)
         navigationController?.navigationBar.barTintColor = .white
     }
-
+    
     
     private func animate() {
         guard let coordinator = self.transitionCoordinator else {
@@ -64,7 +68,7 @@ class ProfileMainVC: UIViewController {
         super.viewDidAppear(true)
         setColors()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,7 +80,7 @@ class ProfileMainVC: UIViewController {
         
         dimoCollectionViewSetting()
         settingTableView()
-
+        
         /*
          유저 프로필 세팅
          */
@@ -195,7 +199,7 @@ class ProfileMainVC: UIViewController {
             break
         }
     }
-
+    
 }
 
 // MARK: - 추천 디모인
@@ -353,7 +357,7 @@ extension ProfileMainVC: UITableViewDelegate, UITableViewDataSource {
         let index = indexPath.row
         
         performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.hotDimo.rawValue, index])
-//        print(viewModel.hotDimoPeopleArr[index].uid)
+        //        print(viewModel.hotDimoPeopleArr[index].uid)
     }
     
     

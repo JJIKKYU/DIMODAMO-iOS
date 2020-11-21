@@ -94,11 +94,19 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var commentTableViewBottom: NSLayoutConstraint!
     
     @IBOutlet weak var commentTextFieldRoundView: TextFieldRound!
+    @IBOutlet weak var commentTextFieldTopRoundView: UIView! {
+        didSet {
+            commentTextFieldTopRoundView.layer.cornerRadius = 24
+            commentTextFieldTopRoundView.clipsToBounds = true
+            commentTextFieldTopRoundView.layer.masksToBounds = true
+            commentTextFieldTopRoundView.appShadow(.s20)
+        }
+    }
     @IBOutlet weak var commentTextFieldView: UIView! {
         didSet {
-            commentTextFieldView.layer.cornerRadius = 24
-            commentTextFieldView.clipsToBounds = true
-            commentTextFieldView.layer.masksToBounds = false
+//            commentTextFieldView.layer.cornerRadius = 24
+//            commentTextFieldView.clipsToBounds = true
+//            commentTextFieldView.layer.masksToBounds = false
 //            commentTextFieldView.appShadow(.s20)
         }
     }
