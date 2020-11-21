@@ -552,14 +552,6 @@ extension ArticleDetailViewController {
         
         // 스크롤뷰 제스쳐 추가
         scrollviewAddTapGesture()
-        
-        /*
-         보이지는 않지만 네비게이션바 프레임으로 인해 터치 안되는 문제 떄문에
-         */
-        //        // 전체 프레임은 인터랙션 제외
-        //        self.navigationController?.navigationBar.isUserInteractionEnabled = false
-        //        // 뒤로가기 버튼만 활성화
-        //        self.navigationItem.leftBarButtonItem?.isEnabled = true
     }
     
     func informationTagDesign(){
@@ -1084,12 +1076,14 @@ extension ArticleDetailViewController: UITextFieldDelegate {
     // 키보드 업, 다운 관련
     @objc func moveUpTextView(_ notification: NSNotification) {
         let window = UIApplication.shared.keyWindow
-        let bottomSafeArea = window?.safeAreaInsets.bottom
+        guard let bottomSafeArea = window?.safeAreaInsets.bottom else {
+            return
+        }
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
-            self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
-            //                        self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
+            self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea)
+            self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height - bottomSafeArea
             //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
         }
     }
@@ -1097,7 +1091,7 @@ extension ArticleDetailViewController: UITextFieldDelegate {
     @objc func moveDownTextView() {
         self.commentTextFieldView?.transform = .identity
         //        self.scrollView?.transform = .identity
-        //                self.commentTableViewBottom.constant = 0
+        self.commentTableViewBottom.constant = 0
     }
 }
 
