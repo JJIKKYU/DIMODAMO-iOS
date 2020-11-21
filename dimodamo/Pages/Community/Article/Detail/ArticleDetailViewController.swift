@@ -570,7 +570,7 @@ extension ArticleDetailViewController {
     func informationTagDesign(){
         
         // 태그 내부 글자 수에 맞춰서 width, height 재설정
-        for (index, tag) in self.informationTags.enumerated() {
+        for  tag in self.informationTags {
             let textCount: Int = Int(tag.text!.count)
             
             let width: Int = (textCount * 10) + 20

@@ -8,12 +8,12 @@
 
 import UIKit
 
-import BottomPopup
+import STPopup
 
 import RxSwift
 import RxCocoa
 
-class LinkPopupVC: BottomPopupViewController {
+class LinkPopupVC: UIViewController {
     
     let viewModel = LinkPopupViewModel()
     var disposeBag = DisposeBag()
@@ -49,39 +49,48 @@ class LinkPopupVC: BottomPopupViewController {
             textField.layer.borderColor = UIColor.appColor(.gray210).cgColor
         }
     }
+    @IBOutlet weak var roundView: UIView! {
+        didSet {
+//            self.view.backgroundColor = UIColor.clear
+            roundView.layer.cornerRadius = 16
+            roundView.layer.masksToBounds = true
+        }
+    }
     
-    
-    let height: CGFloat = 307
-    var topCornerRadius: CGFloat = 16
-    var presentDuration: Double?
-    var dismissDuration: Double?
-    var shouldDismissInteractivelty: Bool?
-    
-   
-    
-    override var popupHeight: CGFloat { return height }
-    
-    override var popupTopCornerRadius: CGFloat { return topCornerRadius }
-    
-    override var popupPresentDuration: Double { return presentDuration ?? 1.0 }
-    
-    override var popupDismissDuration: Double { return dismissDuration ?? 1.0 }
-    
-    override var popupShouldDismissInteractivelty: Bool { return shouldDismissInteractivelty ?? true }
-    
-    override var popupDimmingViewAlpha: CGFloat { return 0.6 }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        /*
+         상단바 제거
+         */
+        self.popupController?.navigationBarHidden = true
+        self.popupController?.containerView.backgroundColor = UIColor.clear
+        
+        /*
+         뒷 배경 제거
+         */
+        self.view.backgroundColor = UIColor.clear
+        
+        /*
+         크기 동적 제어
+         */
+        contentSizeInPopup = CGSize(width: UIScreen.main.bounds.width, height: 307)
+        
+        /*
+         팝업 바깥을 눌렀을 경우에 꺼지도록
+         */
+        self.popupController?.backgroundView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundViewDidTap)))
+        
+        /*
+         뷰가 올라오기 전에 미리 키보드 올리기
+         */
+        self.textField.becomeFirstResponder()
+
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.textField.becomeFirstResponder()
-        
-        /*
-         Keyboard
-         */
-//        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func dataReset() {
@@ -96,9 +105,9 @@ class LinkPopupVC: BottomPopupViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    // Bottom popup attribute variables
-    // You can override the desired variable to change appearance
-    
+    @objc func backgroundViewDidTap() {
+        dismiss(animated: true, completion: nil)
+    }
     
     /*
      // MARK: - Navigation
@@ -110,25 +119,4 @@ class LinkPopupVC: BottomPopupViewController {
      }
      */
     
-}
-
-// MARK: - Keyboard
-
-extension LinkPopupVC: UITextFieldDelegate {
-    // 키보드 업, 다운 관련
-    @objc func moveUpTextView(_ notification: NSNotification) {
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        guard let bottomSafeArea = window?.safeAreaInsets.bottom else {
-            return
-        }
-        
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.transform = CGAffineTransform(translationX: 0, y: -50)
-            self.view.layer.zPosition = 999
-        }
-    }
-    
-    @objc func moveDownTextView() {
-        self.view.transform = .identity
-    }
 }
