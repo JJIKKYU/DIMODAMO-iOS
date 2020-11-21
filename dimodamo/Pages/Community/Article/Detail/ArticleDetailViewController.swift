@@ -132,7 +132,7 @@ class ArticleDetailViewController: UIViewController {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if(keyPath == "contentSize"){
+        if (keyPath == "contentSize"){
 //            if let newvalue = change?[.newKey] {
             if (change?[.newKey]) != nil {
                 let contentHeight: CGFloat = commentTableView.contentSize.height
@@ -437,7 +437,21 @@ class ArticleDetailViewController: UIViewController {
     }
     
     @IBAction func pressedScrapBtn(_ sender: Any) {
-        viewModel.pressedScrapBtn()
+        
+        // 스크랩된 게시물이 아닐 경우에는, 스크랩 되었다고 얼ㄹ럿을 띄우고 스크랩
+        if self.viewModel.isScrapPost.value == false {
+            let alert = AlertController(title: "스크랩 되었습니다", message: "게시물은 프로필에서 확인할 수 있습니다", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertScrap"))
+            let action = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+                self?.viewModel.pressedScrapBtn()
+            }
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
+        // 스크랩이 이미 된 게시물일 경우, 추가 얼럿 없이 취소
+        else {
+            self.viewModel.pressedScrapBtn()
+        }
     }
     
     @IBAction func pressedScrapBtnInView(_ sender: Any) {

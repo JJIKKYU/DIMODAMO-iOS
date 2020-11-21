@@ -1019,7 +1019,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OjY-DP-qef">
-                                                <rect key="frame" x="377" y="596" width="17" height="22"/>
+                                                <rect key="frame" x="377" y="1196" width="17" height="22"/>
                                                 <state key="normal" image="scrapIcon"/>
                                                 <connections>
                                                     <action selector="pressedScrapBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="AhS-qt-g8B"/>
@@ -1027,7 +1027,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="84" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msz-D3-dZv">
-                                                <rect key="frame" x="378.5" y="620" width="14.5" height="15.5"/>
+                                                <rect key="frame" x="378.5" y="1220" width="14.5" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="13"/>
                                                 <color key="textColor" name="WHITE"/>
                                                 <nil key="highlightedColor"/>
@@ -1288,9 +1288,9 @@
                                             <constraint firstItem="1Xl-da-p2T" firstAttribute="top" secondItem="ntG-qx-31M" secondAttribute="bottom" constant="48" id="Qxu-VD-0gI"/>
                                             <constraint firstItem="2ZA-m7-daI" firstAttribute="top" secondItem="TG1-iB-IxE" secondAttribute="bottom" constant="24" id="TnD-iH-wv5"/>
                                             <constraint firstAttribute="trailing" secondItem="wrz-6p-uxO" secondAttribute="trailing" id="cJV-Yj-QS1"/>
-                                            <constraint firstItem="gcb-Ng-Yjb" firstAttribute="leading" secondItem="IGY-xW-dqZ" secondAttribute="trailing" constant="130" id="cX5-Ei-RZc"/>
+                                            <constraint firstItem="gcb-Ng-Yjb" firstAttribute="leading" relation="lessThanOrEqual" secondItem="IGY-xW-dqZ" secondAttribute="trailing" constant="130" id="cX5-Ei-RZc"/>
                                             <constraint firstItem="CWe-v5-i7H" firstAttribute="top" secondItem="1Xl-da-p2T" secondAttribute="bottom" constant="16" id="dYs-Ee-kGQ"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2ZA-m7-daI" secondAttribute="bottom" constant="125" id="dtV-cD-bkp"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2ZA-m7-daI" secondAttribute="bottom" constant="100" id="dtV-cD-bkp"/>
                                             <constraint firstItem="GeV-Ak-Ec7" firstAttribute="top" secondItem="wrz-6p-uxO" secondAttribute="bottom" constant="48" id="e9a-k6-PGD"/>
                                             <constraint firstItem="9iW-El-MZB" firstAttribute="top" secondItem="ntG-qx-31M" secondAttribute="bottom" constant="8" id="ejo-zW-T0k"/>
                                             <constraint firstAttribute="trailing" secondItem="GeV-Ak-Ec7" secondAttribute="trailing" constant="20" id="fd4-tx-w23"/>
@@ -1324,8 +1324,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textfield_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="xAS-WU-hhu">
                                 <rect key="frame" x="0.0" y="787" width="414" height="75"/>
                             </imageView>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRx-oa-fbu" customClass="LottieLoadingView2" customModule="dimodamo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-183" width="414" height="1045"/>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRx-oa-fbu" customClass="LottieLoadingView2" customModule="dimodamo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-783" width="414" height="1645"/>
                                 <color key="backgroundColor" name="WHITE"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYD-Mh-DWj">
