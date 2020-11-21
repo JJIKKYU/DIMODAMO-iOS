@@ -204,9 +204,13 @@ extension ArticleViewController {
 
 extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func articleCollectionViewSetting() {
+        let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width
+        
         // width, height 설정
-        let cellWidth: CGFloat = UIScreen.main.bounds.width - 40
-        let cellHeight: CGFloat = 437
+        let cellWidth: CGFloat = UIScreen.main.bounds.width - 48
+        let cellHeight: CGFloat = cellAspectHeight
+        print("aspecthHeight = \(cellAspectHeight)")
+
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)

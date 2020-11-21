@@ -31,17 +31,21 @@ class RoundedTabBarController: UITabBarController {
             return
         }
         
+        // to make the cornerRadius of coustmeTabBarView
+        view.backgroundColor = .white
+//        view.layer.cornerRadius = 24
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.clipsToBounds = true
         
         
         let layer = CAShapeLayer()
-        layer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: self.tabBar.bounds.minY, width: self.tabBar.bounds.width, height: self.tabBar.bounds.height + bottomSafeArea), cornerRadius: 24).cgPath
+        layer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: self.tabBar.bounds.minY, width: self.tabBar.bounds.width, height: self.tabBar.bounds.height + bottomSafeArea + 20), cornerRadius: 24).cgPath
         
-        layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowRadius = 3
-        layer.shadowOpacity = 0.2
+//        layer.shadowColor = UIColor.lightGray.cgColor
+//        layer.shadowOffset = CGSize(width: 0, height: 0)
+//        layer.shadowRadius = 3
+//        layer.shadowOpacity = 0.2
         
-        self.view.backgroundColor = UIColor.appColor(.system)
         tabBar.backgroundColor = UIColor.black
         
         layer.opacity = 1.0

@@ -19,10 +19,10 @@ class TestViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        self.tabBarController?.tabBar.layer.masksToBounds = true
+        self.tabBarController?.tabBar.layer.masksToBounds = false
         self.tabBarController?.tabBar.isTranslucent = true
         self.tabBarController?.tabBar.barStyle = .black
-        self.tabBarController?.tabBar.layer.cornerRadius = 25
+        self.tabBarController?.tabBar.layer.cornerRadius = 24
         self.tabBarController?.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.tabBarController?.tabBar.appShadow(.s20)
     }

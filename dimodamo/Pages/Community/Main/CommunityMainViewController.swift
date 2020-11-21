@@ -18,6 +18,12 @@ import Kingfisher
 class CommunityMainViewController: UIViewController {
     
     @IBOutlet weak var articleCollectionView: UICollectionView!
+    @IBOutlet weak var articleCollectionViewHeightConstraint: NSLayoutConstraint! {
+        didSet {
+            let aspectHeight: CGFloat = (500 / 414) * UIScreen.main.bounds.width
+            articleCollectionViewHeightConstraint.constant = aspectHeight
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -46,7 +52,6 @@ class CommunityMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewdidload")
         
         self.viewModel.loadArticlePost()
         self.viewModel.loadInformationPost()
@@ -290,7 +295,8 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
                 
                 switch result {
                 case .success(let imageResult):
-                    let resizedImage = imageResult.image.resize(withWidth: cell.frame.width)
+                    // 리사이즈 할 경우 너무 화질 저하가 심해서 일단 락
+                    let resizedImage = imageResult.image
                     cell.image.image = resizedImage
                     break
                     
@@ -342,9 +348,12 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func articleCollectionViewSetting() {
+        let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width
+        
         // width, height 설정
         let cellWidth: CGFloat = UIScreen.main.bounds.width - 48
-        let cellHeight: CGFloat = 437
+        let cellHeight: CGFloat = cellAspectHeight
+        print("aspecthHeight = \(cellAspectHeight)")
         
         // 상하, 좌우 inset value 설정
         let insetX: CGFloat = 20
