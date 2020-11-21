@@ -13,10 +13,15 @@ import RxCocoa
 
 import Kingfisher
 
+import GoogleMobileAds
+
 class ArticleViewController: UIViewController {
     
     let viewModel = ArticleViewModel()
     var disposeBag = DisposeBag()
+    
+    // 구글 광고
+    var bannerView: GADBannerView!
     
     @IBOutlet weak var navItem: UINavigationItem!
     
@@ -101,7 +106,7 @@ class ArticleViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.hideTransparentNavigationBar()
+        //        navigationController?.hideTransparentNavigationBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -135,6 +140,17 @@ class ArticleViewController: UIViewController {
                 
             })
             .disposed(by: disposeBag)
+        
+        /*
+         구글 광고 로드
+         */
+        // In this case, we instantiate the banner with desired ad size.
+        let adSize = GADAdSizeFromCGSize(CGSize(width: UIScreen.main.bounds.width, height: 50))
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest()) // 광고 로드
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -185,17 +201,17 @@ class ArticleViewController: UIViewController {
     }
     
     
-
+    
 }
 
 // MARK: - ViewDesign
 extension ArticleViewController {
     func viewDesign() {
         
-//        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.textBig),
-//                          NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Bold", size: 24) as Any]
-//
-//        navigationController?.navigationBar.prefersLargeTitles = false
+        //        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.textBig),
+        //                          NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Bold", size: 24) as Any]
+        //
+        //        navigationController?.navigationBar.prefersLargeTitles = false
         
     }
 }
@@ -207,10 +223,10 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width
         
         // width, height 설정
-        let cellWidth: CGFloat = UIScreen.main.bounds.width - 48
+        let cellWidth: CGFloat = UIScreen.main.bounds.width - 40
         let cellHeight: CGFloat = cellAspectHeight
         print("aspecthHeight = \(cellAspectHeight)")
-
+        
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
@@ -267,12 +283,12 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
         performSegue(withIdentifier: "DetailArticleVC", sender: [PostKinds.article.rawValue, indexPath.row])
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: 414, height: 100)
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    //        return CGSize(width: 414, height: 100)
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
+        
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ArticleHeader", for: indexPath)
         
@@ -282,7 +298,14 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 20, bottom: 30, right: 20)
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width
+        
+        return CGSize(width: UIScreen.main.bounds.width - 40, height: cellAspectHeight)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yPostion = scrollView.contentOffset.y
         print(yPostion)
@@ -303,3 +326,30 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
 //        })
 //    }
 //}
+
+
+//MARK: - Googld Ads
+
+extension ArticleViewController {
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        bannerView.backgroundColor = UIColor.appColor(.white255)
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: view.safeAreaLayoutGuide,
+                                attribute: .bottom,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
+}

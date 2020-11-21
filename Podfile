@@ -44,9 +44,12 @@ target 'dimodamo' do
   pod 'SideMenu', '~> 6.0'
   
   # Alert / 글 쓸 때 밑에서 링크 추가할 때 사용
-  pod 'BottomPopup'
   pod 'STPopup'
 
   # 키보드
   pod 'IQKeyboardManagerSwift'
+  
+  # 구글 광고
+  pod 'Google-Mobile-Ads-SDK'
+
 end

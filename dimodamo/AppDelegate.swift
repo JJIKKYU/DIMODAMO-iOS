@@ -15,6 +15,8 @@ import UserNotifications
 
 import IQKeyboardManagerSwift
 
+import GoogleMobileAds
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -31,8 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 네비게이션바 밑에 하단 줄 제거
         
         // 알림 권한 요청
+        // TODO : 나중에 권한 요청 뷰 따로 만들 것
         requestAuthorizationForRemotePushNotification()
         FirebaseApp.configure()
+        
+        // Initialize the Google Mobile Ads SDK.
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         /*
          FMC 설정
