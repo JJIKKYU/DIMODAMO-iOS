@@ -131,6 +131,7 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource, TableReloadProt
     
     func tableViewSetting() {
         self.tableView.contentInset.top = 116 // 마니또 요청하기 height만큼
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

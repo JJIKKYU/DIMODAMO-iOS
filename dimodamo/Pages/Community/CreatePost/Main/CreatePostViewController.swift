@@ -15,8 +15,6 @@ import Tagging
 
 import Kingfisher
 
-import BottomPopup
-
 import STPopup
 
 class CreatePostViewController: UIViewController, TaggingDataSource {
@@ -60,6 +58,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         didSet {
             mainTableView.rowHeight = UITableView.automaticDimension
             mainTableView.estimatedRowHeight = 100
+//            mainTableView.keyboardDismissMode = .onDrag
         }
     }
     
@@ -79,11 +78,12 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
      */
     var imagePicker : UIImagePickerController = UIImagePickerController()
     
-    @IBOutlet weak var bottomIconContainerView: UIView! {
+    @IBOutlet weak var bottomIconContainerView: UIView!
+    @IBOutlet weak var bottomIconContainerRoundView: UIView! {
         didSet {
-            bottomIconContainerView.layer.cornerRadius = 16
-            bottomIconContainerView.layer.masksToBounds = true
-            bottomIconContainerView.appShadow(.s20)
+            bottomIconContainerRoundView.layer.cornerRadius = 24
+            bottomIconContainerRoundView.layer.masksToBounds = true
+            bottomIconContainerRoundView.appShadow(.s20)
         }
     }
     @IBOutlet weak var tagsTableView: UITableView! {
@@ -197,18 +197,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
                 self?.descriptionLimit.text = self?.viewModel.descriptionLimit
             })
             .disposed(by: disposeBag)
-        
-        /*
-         이미지 업로드
-         */
-//        viewModel.uploadImagesRelay
-//            .subscribeOn(MainScheduler.instance)
-//            .subscribe(onNext : { [weak self] _ in
-//                self?.mainTableView.reloadData()
-//                self?.view.layoutIfNeeded()
-//            })
-//            .disposed(by: disposeBag)
-        
+
         /*
          기본 Empty이미지 삭제 및 데이터가 들어올 때마다 테이블 리로드
          */
@@ -253,8 +242,8 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         /*
          Keyboard
          */
-//        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func tagging(_ tagging: Tagging, didChangedTagableList tagableList: [String]) {
@@ -297,6 +286,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         // 글이 모두 다 작성되었을 경우
         else if viewModel.titleIsValid == true && viewModel.descriptionIsValid == true {
             viewModel.upload()
+            self.view.endEditing(true)
         }
     }
     
@@ -392,22 +382,15 @@ extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
         }
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            
-            //            self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
-            //                        self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height
-            //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
-            
-//            self.linkPopupView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+           
             self.bottomIconContainerView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea)
+            self.mainTableView.contentInset.bottom = keyboardSize.height
         }
     }
     
     @objc func moveDownTextView() {
-//        self.linkPopupView.transform = .identity
         self.bottomIconContainerView.transform = .identity
-        //        self.commentTextFieldView?.transform = .identity
-        //        self.scrollView?.transform = .identity
-        //                self.commentTableViewBottom.constant = 0
+        self.mainTableView.contentInset.bottom = 0
     }
     
     
@@ -445,6 +428,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, 
             break
         }
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !mainTableView.isDecelerating {
+            view.endEditing(true)
+        }
     }
     
     
@@ -553,22 +542,6 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, 
         }
         
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        switch tableView.tag {
-//        case 0:
-//
-//            return CGFloat(50)
-//
-//        case 1:
-//
-//            return UITableView.automaticDimension
-//
-//        default:
-//            break
-//        }
-//        return UITableView.automaticDimension
-//    }
 }
 
 // MARK: - ImagePicker
@@ -586,10 +559,4 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
         }
         dismiss(animated: true, completion: nil)
     }
-}
-
-// MARK: - Bottom Pupup VC
-
-extension CreatePostViewController: BottomPopupDelegate {
-    
 }
