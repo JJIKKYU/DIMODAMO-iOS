@@ -201,9 +201,7 @@ class ArticleDetailViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] urls in
                 // 가장 첫 번째 이미지를 썸네일로
-                if self?.viewModel.imagesRelay.value.count ?? 0 > 0 {
-                    self?.imageStackViewSetting()
-                }
+                self?.imageStackViewSetting()
                 
                 
             })
@@ -618,6 +616,18 @@ extension ArticleDetailViewController {
 extension ArticleDetailViewController {
     
     func imageStackViewSetting() {
+        /*
+         이미지가 없을 경우
+         */
+        if viewModel.imagesRelay.value.count == 0 {
+            print("이미지의 개수가 0개이므로 로딩을 완료합니다.")
+            viewModel.imagesLoading.accept(true)
+            return
+        }
+        
+        /*
+         이미지가 있을 경우
+         */
         for (index, imageURL) in viewModel.imagesRelay.value.enumerated() {
             print("index처음에 : \(index)")
             let imageView = UIImageView()

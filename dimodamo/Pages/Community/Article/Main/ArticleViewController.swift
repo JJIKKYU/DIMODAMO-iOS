@@ -318,7 +318,6 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 }
 
-
 //extension ArticleViewController: UIScrollViewDelegate {
 //    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 //        UIView.animate(withDuration: 0.5, animations: {
