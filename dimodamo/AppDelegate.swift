@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         // 네비게이션바 밑에 하단 줄 제거
+        UITabBar.appearance().clipsToBounds = true
+        UITabBar.appearance().shadowImage = nil
         
         // 알림 권한 요청
         // TODO : 나중에 권한 요청 뷰 따로 만들 것
