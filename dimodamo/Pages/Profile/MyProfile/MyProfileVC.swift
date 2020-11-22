@@ -52,8 +52,8 @@ class MyProfileVC: UIViewController {
     
     @IBOutlet weak var messageBtn: UIButton! {
         didSet {
-            messageBtn.layer.cornerRadius = 12
-            messageBtn.layer.masksToBounds = true
+//            messageBtn.layer.cornerRadius = 12
+//            messageBtn.layer.masksToBounds = true
         }
     }
     /*

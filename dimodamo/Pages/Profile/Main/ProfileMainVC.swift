@@ -253,7 +253,7 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.minimumLineSpacing = lineSpacing
         layout.scrollDirection = .horizontal
-        dimoCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX - 4, bottom: insetY, right: insetX - 4)
+        dimoCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX - 8)
         
         // 스크롤 시 빠르게 감속 되도록 설정
         dimoCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
@@ -324,6 +324,7 @@ extension ProfileMainVC: UITableViewDelegate, UITableViewDataSource {
         cell.nickname.text = hotDimoArr.nickname
         cell.profile.image = hotDimoArr.getProfileImage()
         cell.topContainer.backgroundColor = hotDimoArr.getBackgroundColor()
+        cell.topContainerBottomView.backgroundColor = hotDimoArr.getBackgroundColor()
         cell.typeImage.image = hotDimoArr.getTypeImage()
         cell.backgroundPattern.image = hotDimoArr.getBackgroundPattern()
         

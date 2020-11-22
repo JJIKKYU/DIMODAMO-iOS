@@ -54,9 +54,12 @@ class DamoPeopleCell: UITableViewCell {
     }
     @IBOutlet weak var topContainer: UIView! {
         didSet {
-            topContainer.roundCorners(corners: [.topLeft, .topRight], radius: 16)
+//            topContainer.roundCorners(corners: [.topLeft, .topRight], radius: 16)
+            topContainer.layer.cornerRadius = 16
+            topContainer.layer.masksToBounds = true
         }
     }
+    @IBOutlet weak var topContainerBottomView: UIView!
     
     @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var profileBG: UIView! {
