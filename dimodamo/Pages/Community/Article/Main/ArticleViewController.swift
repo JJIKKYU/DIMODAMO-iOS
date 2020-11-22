@@ -145,7 +145,6 @@ class ArticleViewController: UIViewController {
          구글 광고 로드
          */
         // In this case, we instantiate the banner with desired ad size.
-        let adSize = GADAdSizeFromCGSize(CGSize(width: UIScreen.main.bounds.width, height: 50))
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"

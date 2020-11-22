@@ -13,11 +13,17 @@ import RxCocoa
 
 import Lottie
 
+import GoogleMobileAds
+
 class InformationVC: UIViewController {
 
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var loadingView: LottieLoadingView!
+    @IBOutlet weak var navItem: UINavigationItem!
+    
+    // 구글 광고
+    var bannerView: GADBannerView!
     
     let viewModel = InformationViewModel()
     var disposeBag = DisposeBag()
@@ -47,6 +53,21 @@ class InformationVC: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        /*
+         구글 광고 로드
+         */
+        // In this case, we instantiate the banner with desired ad size.
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest()) // 광고 로드
+        
+        
+    }
+    @IBAction func pressedPlusBtn(_ sender: Any) {
+        performSegue(withIdentifier: "CreatePostVC", sender: nil)
     }
     
 
@@ -77,6 +98,12 @@ class InformationVC: UIViewController {
                 destinationVC.viewModel.tagsRelay.accept(tags)
             }
             
+            break
+            
+        case "CreatePostVC":
+            destination.hidesBottomBarWhenPushed = true
+            destination.modalTransitionStyle = .coverVertical
+            destination.modalPresentationStyle = .fullScreen
             break
             
         default:
@@ -138,5 +165,42 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "DetailArticleVC", sender: indexPath.row)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yPostion = scrollView.contentOffset.y
+        print(yPostion)
+        
+        if yPostion < 70 {
+            navItem.title = ""
+        } else {
+            navItem.title = "디모 레이어"
+        }
+    }
+}
+
+//MARK: - Googld Ads
+
+extension InformationVC {
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        bannerView.backgroundColor = UIColor.appColor(.white255)
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: view.safeAreaLayoutGuide,
+                                attribute: .bottom,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
     }
 }
