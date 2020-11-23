@@ -10,7 +10,12 @@ import UIKit
 
 class ServiceBannerCell: UICollectionViewCell {
     
-    @IBOutlet weak var bannerBtn: UIButton!
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet {
+            imageView.layer.cornerRadius = 12
+            imageView.layer.masksToBounds = true
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

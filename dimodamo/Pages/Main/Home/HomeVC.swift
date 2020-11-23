@@ -98,7 +98,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -112,7 +112,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
         
-        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.dimo.rawValue, index])
+//        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.dimo.rawValue, index])
     }
     
     func serviceBannerCollectionViewSetting() {
