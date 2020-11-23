@@ -52,4 +52,6 @@ target 'dimodamo' do
   # 구글 광고
   pod 'Google-Mobile-Ads-SDK'
 
+  # Json
+  pod 'SwiftyJSON', '~> 4.0'
 end
