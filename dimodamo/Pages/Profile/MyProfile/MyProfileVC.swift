@@ -202,6 +202,53 @@ class MyProfileVC: UIViewController {
     }
     
     /*
+     Menu 버튼을 눌렀을 경우
+     */
+    @IBAction func pressedMenuBtn(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        switch viewModel.isMyProfile() {
+        
+        // 내 프로필일때
+        case true:
+            // Create your actions - take a look at different style attributes
+            let nicknameChangeAction = UIAlertAction(title: "닉네임 수정하기", style: .default) { (action) in
+                // observe it in the buttons block, what button has been pressed
+                print("didPress report abuse")
+            }
+            
+            let interestChangeAction = UIAlertAction(title: "관심사 수정하기", style: .default) { (action) in
+                print("didPress block")
+            }
+            
+            actionSheet.addAction(nicknameChangeAction)
+            actionSheet.addAction(interestChangeAction)
+            
+            break
+            
+        // 상대방 프로필일때
+        case false:
+            
+            let reportAction = UIAlertAction(title: "신고하기", style: .destructive) { (action) in
+                print("didPress block")
+            }
+            
+            actionSheet.addAction(reportAction)
+            
+            break
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소하기", style: .cancel) { (action) in
+            print("didPress cancel")
+        }
+        actionSheet.addAction(cancelAction)
+        
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    /*
      Dpti 버튼을 눌렀을 경우
      */
     @IBAction func pressedDptiBtn(_ sender: Any) {
