@@ -581,7 +581,7 @@
         <!--Article View Controller-->
         <scene sceneID="C11-9E-dj8">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iXc-eR-qQb" customClass="ArticleViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArtboardMainVC" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iXc-eR-qQb" customClass="ArticleViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z6y-uq-adB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3370,7 +3370,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="BzL-x2-Mhd"/>
-        <segue reference="Ae2-2V-5qG"/>
+        <segue reference="RQh-cD-CdY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BC_Char_Yellow_M2_0" width="382" height="348"/>

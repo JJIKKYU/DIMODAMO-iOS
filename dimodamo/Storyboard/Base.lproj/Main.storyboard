@@ -94,6 +94,9 @@
                                                         <state key="normal" title="최신 아트보드">
                                                             <color key="titleColor" name="TEXT - SMALL"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="pressedRecentArtboardTitleMoreBtn:" destination="U1X-jK-vjF" eventType="touchUpInside" id="FAB-eK-4xl"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAq-2C-hNZ">
                                                         <rect key="frame" x="342" y="36" width="52" height="17"/>
@@ -104,6 +107,9 @@
                                                         <state key="normal" title="+ 더 보기">
                                                             <color key="titleColor" name="GRAY - 190"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="pressedRecentArtboardTitleMoreBtn:" destination="U1X-jK-vjF" eventType="touchUpInside" id="V9a-JY-ZtA"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지금 바로 양질의 디자인 컨텐츠를 확인해보세요!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzM-hx-Qfi">
                                                         <rect key="frame" x="24" y="65" width="370" height="17"/>
@@ -141,7 +147,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGz-QT-MkT" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                                <rect key="frame" x="20" y="240" width="334" height="19.5"/>
+                                                                <rect key="frame" x="20" y="240" width="72" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="14"/>
                                                                 <color key="textColor" name="SYSTEM"/>
                                                                 <nil key="highlightedColor"/>
@@ -161,7 +167,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pRp-0P-uDh">
-                                                                <rect key="frame" x="317.5" y="399" width="12" height="12"/>
+                                                                <rect key="frame" x="319.5" y="399" width="12" height="12"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#어도비 #어도비 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKx-lj-Wb2">
                                                                 <rect key="frame" x="24" y="343" width="330" height="16"/>
@@ -170,19 +176,19 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjY-oe-F2h">
-                                                                <rect key="frame" x="289" y="397" width="16.5" height="16"/>
+                                                                <rect key="frame" x="293" y="397" width="14.5" height="16"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                 <color key="textColor" name="GRAY - 210"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFl-4w-LNf">
-                                                                <rect key="frame" x="333.5" y="397" width="16.5" height="16"/>
+                                                                <rect key="frame" x="335.5" y="397" width="14.5" height="16"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                 <color key="textColor" name="GRAY - 210"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="kWF-7j-RWU">
-                                                                <rect key="frame" x="275" y="399" width="10" height="12"/>
+                                                                <rect key="frame" x="279" y="399" width="10" height="12"/>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lEK-7I-Zxj" userLabel="Line">
                                                                 <rect key="frame" x="24" y="375" width="326" height="1"/>
@@ -202,7 +208,6 @@
                                                         <constraints>
                                                             <constraint firstItem="BjY-oe-F2h" firstAttribute="centerY" secondItem="pRp-0P-uDh" secondAttribute="centerY" id="47f-fQ-dp1"/>
                                                             <constraint firstItem="kWF-7j-RWU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Cdt-Ig-ZlI" secondAttribute="trailing" constant="8" symbolic="YES" id="5yU-Gz-16S"/>
-                                                            <constraint firstAttribute="trailing" secondItem="RGz-QT-MkT" secondAttribute="trailing" constant="20" id="64r-Ba-EE2"/>
                                                             <constraint firstAttribute="bottom" secondItem="pFl-4w-LNf" secondAttribute="bottom" constant="24" id="8Uf-we-ztP"/>
                                                             <constraint firstItem="kWF-7j-RWU" firstAttribute="centerY" secondItem="BjY-oe-F2h" secondAttribute="centerY" id="Dps-mZ-yR6"/>
                                                             <constraint firstAttribute="bottom" secondItem="krY-ot-DEU" secondAttribute="bottom" constant="17" id="Ei2-HV-BsJ"/>
@@ -295,6 +300,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="swl-YL-3kO">
+                        <barButtonItem key="backBarButtonItem" title=" " id="gdv-Ay-jcW"/>
                         <barButtonItem key="leftBarButtonItem" image="dimodamoOrange" id="N1I-bj-BeW">
                             <inset key="imageInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <color key="tintColor" name="SYSTEM"/>
@@ -306,6 +312,9 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <inset key="contentEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="24_Profile_F_FN"/>
+                                    <connections>
+                                        <action selector="pressedProfileBtn:" destination="U1X-jK-vjF" eventType="touchUpInside" id="UHx-Zu-h7O"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
                             <barButtonItem style="plain" id="hdE-OA-4uY">
@@ -326,6 +335,7 @@
                         <outlet property="artboardCardView" destination="KCO-7g-Nd9" id="uJI-8O-c8V"/>
                         <outlet property="artboardCardViewShadow" destination="SjU-4F-1r2" id="ngw-Ry-WJs"/>
                         <outlet property="magazineLabel" destination="RGz-QT-MkT" id="0H9-hg-hz5"/>
+                        <outlet property="profileNavBtn" destination="tRw-01-RW7" id="GWB-Ys-Hyx"/>
                         <outlet property="serviceBannerCollectionView" destination="qMD-V7-ND1" id="p3o-7H-tOq"/>
                     </connections>
                 </viewController>
@@ -458,6 +468,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JAw-ph-sGC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="GRAY - 210"/>
                         <color key="barTintColor" name="WHITE"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

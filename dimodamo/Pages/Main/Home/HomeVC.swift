@@ -8,7 +8,22 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class HomeVC: UIViewController {
+    
+    let viewModel = HomeViewModel()
+    var disposeBag = DisposeBag()
+    
+    /*
+     Navigation Profile
+     */
+    @IBOutlet weak var profileNavBtn: UIButton! {
+        didSet {
+            profileNavBtn.setImage(UIImage(named: "24_Profile_\(viewModel.myDptiType())"), for: .normal)
+        }
+    }
     
     /*
      ServiceBanner Variables
@@ -45,10 +60,50 @@ class HomeVC: UIViewController {
     }
     
     
+    override func loadView() {
+        super.loadView()
+        setColors()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        navigationController?.view.backgroundColor = UIColor.clear
+    }
+    
+    private func setColors(){
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray210)
+        navigationController?.navigationBar.barTintColor = .white
+    }
+    
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+        }, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setColors()
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // 상단 노치 컬러
+        navigationController?.view.backgroundColor = UIColor.white
+        animate()
         
         // 네비게이션바 하단 밑줄 제거
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -72,18 +127,40 @@ class HomeVC: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
+    
 
     @IBAction func pressedSettingBtn(_ sender: Any) {
         performSegue(withIdentifier: "testVC", sender: nil)
+    }
+    
+    @IBAction func pressedProfileBtn(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: .main)
+        
+        // 디모 아트보드로 이동
+        let myProfileVC: MyProfileVC = storyboard.instantiateViewController(identifier: "MyProfileVC")
+        let UID = viewModel.userUID
+        myProfileVC.viewModel.profileSetting.accept(viewModel.myDptiType())
+        myProfileVC.viewModel.userNickname = viewModel.myNickname()
+        myProfileVC.viewModel.profileUID.accept(UID)
+        
+        self.navigationController?.pushViewController(myProfileVC, animated: true)
+    }
+    
+    
+    // 최신 아트보드 + 더보기 클릭했을 경우
+    @IBAction func pressedRecentArtboardTitleMoreBtn(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Community", bundle: .main)
+        
+        // 디모 아트보드로 이동
+        let communityVC: UIViewController = storyboard.instantiateViewController(identifier: "ArtboardMainVC")
+        self.navigationController?.pushViewController(communityVC, animated: true)
     }
 }
 
