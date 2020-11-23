@@ -171,6 +171,7 @@
 		98EAAC3E256B546900B70CA8 /* ServiceBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EAAC3D256B546900B70CA8 /* ServiceBannerCell.swift */; };
 		98EAAC43256B5BB900B70CA8 /* ArtboardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EAAC42256B5BB900B70CA8 /* ArtboardCardView.swift */; };
 		98EAAC47256BCDB500B70CA8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EAAC46256BCDB500B70CA8 /* HomeViewModel.swift */; };
+		98EAAC79256C386300B70CA8 /* NoticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EAAC78256C386300B70CA8 /* NoticeVC.swift */; };
 		98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */; };
 		98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C836254C3D0500FDDEBF /* RecommendCell.swift */; };
 		98F8C83B254C912300FDDEBF /* SearchPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C83A254C912300FDDEBF /* SearchPageVC.swift */; };
@@ -396,6 +397,7 @@
 		98EAAC3D256B546900B70CA8 /* ServiceBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBannerCell.swift; sourceTree = "<group>"; };
 		98EAAC42256B5BB900B70CA8 /* ArtboardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardCardView.swift; sourceTree = "<group>"; };
 		98EAAC46256BCDB500B70CA8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		98EAAC78256C386300B70CA8 /* NoticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeVC.swift; sourceTree = "<group>"; };
 		98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchVC.swift; sourceTree = "<group>"; };
 		98F8C836254C3D0500FDDEBF /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		98F8C83A254C912300FDDEBF /* SearchPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageVC.swift; sourceTree = "<group>"; };
@@ -814,6 +816,7 @@
 		9863224325178767003B0784 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				98EAAC77256C384A00B70CA8 /* Notice */,
 				98EAAC3C256B544B00B70CA8 /* Cell */,
 				98138FD3256ADBD70063F8BD /* Home */,
 				9863224425178773003B0784 /* TestViewController.swift */,
@@ -1381,6 +1384,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		98EAAC77256C384A00B70CA8 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				98EAAC78256C386300B70CA8 /* NoticeVC.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
 		98F8C830254C2B6C00FDDEBF /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -1728,6 +1739,7 @@
 				98F8C8AB254D866900FDDEBF /* HistoryVC.swift in Sources */,
 				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,
 				98D988D2254E8932002A8AC5 /* ImageUploadCell.swift in Sources */,
+				98EAAC79256C386300B70CA8 /* NoticeVC.swift in Sources */,
 				9821BBCF255FEF0A00C47987 /* ManitoApplyBtn.swift in Sources */,
 				980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */,
 				9853DB20255D62F700E8EBD5 /* MessageViewModel.swift in Sources */,

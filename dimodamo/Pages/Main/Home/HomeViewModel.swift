@@ -37,7 +37,8 @@ class HomeViewModel {
     /*
      ServiceBanner
      */
-    var serviceBannerImgUrlStringRelay = BehaviorRelay<[String]>(value: [])
+    var serviceBannerImgUrlString375Relay = BehaviorRelay<[String]>(value: [])
+    var serviceBannerImgUrlString414Relay = BehaviorRelay<[String]>(value: [])
     
     /*
      ArticlePost
@@ -51,9 +52,10 @@ class HomeViewModel {
     }
     
     func loadServiceBanner() {
-        let serviceBannerJsonURL = "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/service_banner%2Fservice_banner.json?alt=media&token=9edb5b69-9914-421c-9d9f-40d2e32b5956"
+        let serviceBannerJsonURL = "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/service_banner%2Fservice_banner.json?alt=media&token=a8edaa82-7c89-4eb7-b625-ee6705749c1c"
         
-        var newImageStringArr: [String] = []
+        var newImageStringArr375: [String] = []
+        var newImageStringArr414: [String] = []
         
         AF.request(serviceBannerJsonURL, method: .get)
             .validate().responseData{ response in
@@ -67,10 +69,12 @@ class HomeViewModel {
                                 // let value = siArray[i]["value"]
                                 // values.append(value.stringValue)
                                 print(bannerImgUrlArr[i]["banner_image"].stringValue)
-                                newImageStringArr.append(bannerImgUrlArr[i]["banner_image"].stringValue)
+                                newImageStringArr375.append(bannerImgUrlArr[i]["banner_image_375"].stringValue)
+                                newImageStringArr414.append(bannerImgUrlArr[i]["banner_image_414"].stringValue)
                             }
                         }
-                        self.serviceBannerImgUrlStringRelay.accept(newImageStringArr)
+                        self.serviceBannerImgUrlString375Relay.accept(newImageStringArr375)
+                        self.serviceBannerImgUrlString414Relay.accept(newImageStringArr414)
                     }
                 case .failure:
                     print("error : \(response.error!)")

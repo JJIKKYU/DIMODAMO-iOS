@@ -258,16 +258,31 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.serviceBannerImgUrlStringRelay.value.count
+        
+        // 375나 414 둘 중 하나 카운트
+        return self.viewModel.serviceBannerImgUrlString414Relay.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceBannerCell", for: indexPath) as! ServiceBannerCell
         
         let index = indexPath.row
-        let imageUrlString = self.viewModel.serviceBannerImgUrlStringRelay.value[index]
+        let deviceWidth: CGFloat = UIScreen.main.bounds.width
+        var imageUrlString: String?
         
-        cell.imageView.kf.setImage(with: URL(string: imageUrlString))
+        if deviceWidth <= 390 {
+            imageUrlString = self.viewModel.serviceBannerImgUrlString375Relay.value[index]
+            print("390 이하 디바이스 사이즈 : \(deviceWidth)")
+        } else {
+            imageUrlString = self.viewModel.serviceBannerImgUrlString414Relay.value[index]
+            print("391 이상 디바이스 사이즈 : \(deviceWidth)")
+        }
+        
+        guard let checkedImageStringUrl = imageUrlString else {
+            return UICollectionViewCell()
+        }
+        
+        cell.imageView.kf.setImage(with: URL(string: checkedImageStringUrl))
         
         return cell
     }
@@ -275,7 +290,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
         
-//        performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.dimo.rawValue, index])
+        performSegue(withIdentifier: "ServiceNoticeVC", sender: [DimoKinds.dimo.rawValue, index])
     }
     
     func serviceBannerCollectionViewSetting() {

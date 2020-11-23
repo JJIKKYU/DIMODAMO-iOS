@@ -354,11 +354,47 @@
                         <outlet property="magazineLabel" destination="RGz-QT-MkT" id="0H9-hg-hz5"/>
                         <outlet property="profileNavBtn" destination="tRw-01-RW7" id="GWB-Ys-Hyx"/>
                         <outlet property="serviceBannerCollectionView" destination="qMD-V7-ND1" id="p3o-7H-tOq"/>
+                        <segue destination="gfo-xX-ig8" kind="show" identifier="ServiceNoticeVC" id="alH-Uk-vMR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1m-jQ-IcS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4233" y="161"/>
+        </scene>
+        <!--공지사항-->
+        <scene sceneID="Ooh-gB-V8S">
+            <objects>
+                <viewController id="gfo-xX-ig8" customClass="NoticeVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="efg-xw-f3b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYv-Ua-pgv">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" name="WHITE"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lEX-Ir-lFG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lEX-Ir-lFG" firstAttribute="bottom" secondItem="dYv-Ua-pgv" secondAttribute="bottom" id="72A-0q-Vlh"/>
+                            <constraint firstItem="lEX-Ir-lFG" firstAttribute="trailing" secondItem="dYv-Ua-pgv" secondAttribute="trailing" id="9xH-8i-ftT"/>
+                            <constraint firstItem="dYv-Ua-pgv" firstAttribute="top" secondItem="lEX-Ir-lFG" secondAttribute="top" id="VYC-rh-MWg"/>
+                            <constraint firstItem="dYv-Ua-pgv" firstAttribute="leading" secondItem="lEX-Ir-lFG" secondAttribute="leading" id="i7p-2a-AFL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="공지사항" id="KSA-8p-7Bt"/>
+                    <connections>
+                        <outlet property="webView" destination="dYv-Ua-pgv" id="3de-EE-gfH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSx-31-lNI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5019" y="177"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="qxA-xp-5H1">
