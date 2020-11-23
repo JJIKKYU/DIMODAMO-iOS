@@ -41,7 +41,7 @@ class HomeVC: UIViewController {
         didSet {
             magazineLabel.layer.borderColor = UIColor.appColor(.system).cgColor
             magazineLabel.layer.borderWidth = 2
-            magazineLabel.layer.cornerRadius = magazineLabel.frame.height / 2
+            magazineLabel.layer.cornerRadius = magazineLabel.layer.frame.height / 2
             magazineLabel.layer.masksToBounds = true
         }
     }
@@ -58,6 +58,13 @@ class HomeVC: UIViewController {
             artboardCardView.layer.masksToBounds = true
         }
     }
+    @IBOutlet weak var artboardImage: UIImageView!
+    @IBOutlet weak var artboardTitle: UILabel!
+    @IBOutlet weak var artboardTag: UILabel!
+    @IBOutlet weak var artboardProfile: UIImageView!
+    @IBOutlet weak var artboardNickname: UILabel!
+    @IBOutlet weak var artboardScrapCount: UILabel!
+    @IBOutlet weak var artboardCommentCount: UILabel!
     
     
     override func loadView() {
@@ -124,6 +131,51 @@ class HomeVC: UIViewController {
         serviceBannerCollectionView.delegate = self
         serviceBannerCollectionView.dataSource = self
         self.serviceBannerCollectionViewSetting()
+        
+        viewModel.articleLoading
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] flag in
+                if flag == true {
+                    guard let model = self?.viewModel.articlePost else {
+                        return
+                    }
+                    
+                    // 이미지 깨졌을때 대비 할 것
+                    if let image: String = model.images?[0] {
+                        self?.artboardImage.kf.setImage(with: URL(string: image))
+                    }
+                    
+                    if let title = model.boardTitle {
+                        self?.artboardTitle.text = "\(title)"
+                    }
+                    
+                    if let tags = model.tags {
+                        var tagTitle: String = ""
+                        for tag in tags {
+                            tagTitle += "#\(tag) "
+                        }
+                        self?.artboardTag.text = "\(tagTitle)"
+                    }
+                    
+                    if let nickname = model.nickname {
+                        self?.artboardNickname.text = "\(nickname)"
+                    }
+                    
+                    if let dpti = model.userDpti {
+                        self?.artboardNickname.textColor = UIColor.dptiDarkColor(dpti)
+                        self?.artboardProfile.image = UIImage(named: "Profile_\(dpti)")
+                    }
+                    
+                    if let scrapCount: Int = model.scrapCount{
+                        self?.artboardScrapCount.text = "\(scrapCount)"
+                    }
+                    
+                    if let commentCount: Int = model.commentCount {
+                        self?.artboardCommentCount.text = "\(commentCount)"
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
 
@@ -132,7 +184,9 @@ class HomeVC: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if let viewController = segue.destination as? ArticleDetailViewController {
+                print("전달 ㄲ")
+            }
     }
     
 
@@ -153,6 +207,38 @@ class HomeVC: UIViewController {
         self.navigationController?.pushViewController(myProfileVC, animated: true)
     }
     
+    // 아티클에 숨겨진 버튼(?)을 클릭했을 경우
+    @IBAction func pressedArtboardArticle(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Community", bundle: .main)
+        
+        // 디모 아트보드로 이동
+        let articleDetailVC: ArticleDetailViewController = storyboard.instantiateViewController(identifier: "ArticleDetailVC")
+        let articleModel = viewModel.articlePost
+        
+        if let boardId: String = articleModel?.boardId {
+            articleDetailVC.viewModel.postUidRelay.accept(boardId)
+        }
+        
+        if let title: String = articleModel?.boardTitle {
+            articleDetailVC.viewModel.titleRelay.accept("\(title)")
+        }
+        
+        if let backgroundImg: String = articleModel?.images?[0] {
+            articleDetailVC.viewModel.thumbnailImageRelay.accept(URL(string: backgroundImg))
+        }
+        
+        // TODO : Tags 수정
+        if let tags: [String] = articleModel?.tags {
+            var newTag: String = ""
+            for tag in tags {
+                newTag += "#\(tag)"
+            }
+//            articleDetailVC.viewModel.tagsRelay
+        }
+
+        self.navigationController?.pushViewController(articleDetailVC, animated: true)
+
+    }
     
     // 최신 아트보드 + 더보기 클릭했을 경우
     @IBAction func pressedRecentArtboardTitleMoreBtn(_ sender: Any) {

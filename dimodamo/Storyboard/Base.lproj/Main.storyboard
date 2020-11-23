@@ -147,7 +147,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGz-QT-MkT" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                                <rect key="frame" x="20" y="240" width="72" height="16.5"/>
+                                                                <rect key="frame" x="20" y="240" width="74.5" height="19.5"/>
                                                                 <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="14"/>
                                                                 <color key="textColor" name="SYSTEM"/>
                                                                 <nil key="highlightedColor"/>
@@ -167,7 +167,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pRp-0P-uDh">
-                                                                <rect key="frame" x="319.5" y="399" width="12" height="12"/>
+                                                                <rect key="frame" x="317.5" y="399" width="12" height="12"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#어도비 #어도비 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKx-lj-Wb2">
                                                                 <rect key="frame" x="24" y="343" width="330" height="16"/>
@@ -176,19 +176,19 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjY-oe-F2h">
-                                                                <rect key="frame" x="293" y="397" width="14.5" height="16"/>
+                                                                <rect key="frame" x="289" y="397" width="16.5" height="16"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                 <color key="textColor" name="GRAY - 210"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFl-4w-LNf">
-                                                                <rect key="frame" x="335.5" y="397" width="14.5" height="16"/>
+                                                                <rect key="frame" x="333.5" y="397" width="16.5" height="16"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="13"/>
                                                                 <color key="textColor" name="GRAY - 210"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrapIconSmall" translatesAutoresizingMaskIntoConstraints="NO" id="kWF-7j-RWU">
-                                                                <rect key="frame" x="279" y="399" width="10" height="12"/>
+                                                                <rect key="frame" x="275" y="399" width="10" height="12"/>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lEK-7I-Zxj" userLabel="Line">
                                                                 <rect key="frame" x="24" y="375" width="326" height="1"/>
@@ -236,23 +236,33 @@
                                                             <constraint firstAttribute="trailing" secondItem="aKx-lj-Wb2" secondAttribute="trailing" constant="20" id="ziQ-C8-bNs"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN6-Hb-sr2">
+                                                        <rect key="frame" x="20" y="106" width="374" height="437"/>
+                                                        <connections>
+                                                            <action selector="pressedArtboardArticle:" destination="U1X-jK-vjF" eventType="touchUpInside" id="RRY-nS-WYt"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <constraints>
                                                     <constraint firstItem="SjU-4F-1r2" firstAttribute="bottom" secondItem="KCO-7g-Nd9" secondAttribute="bottom" id="2oj-IS-M3a"/>
                                                     <constraint firstItem="dAq-2C-hNZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ig7-Sa-q3r" secondAttribute="trailing" constant="20" id="2y8-ME-VQ0"/>
+                                                    <constraint firstItem="jN6-Hb-sr2" firstAttribute="bottom" secondItem="KCO-7g-Nd9" secondAttribute="bottom" id="5iY-L1-cH1"/>
                                                     <constraint firstItem="KCO-7g-Nd9" firstAttribute="leading" secondItem="bWM-vu-ua4" secondAttribute="leading" constant="20" id="7PP-Ox-MfU"/>
                                                     <constraint firstAttribute="trailing" secondItem="KCO-7g-Nd9" secondAttribute="trailing" constant="20" id="DZU-Gz-qlb"/>
                                                     <constraint firstItem="ig7-Sa-q3r" firstAttribute="top" secondItem="bWM-vu-ua4" secondAttribute="top" constant="32" id="Fqr-ro-zfd"/>
                                                     <constraint firstItem="SjU-4F-1r2" firstAttribute="top" secondItem="KCO-7g-Nd9" secondAttribute="top" id="Ixl-dB-s3E"/>
                                                     <constraint firstItem="SjU-4F-1r2" firstAttribute="trailing" secondItem="KCO-7g-Nd9" secondAttribute="trailing" id="JVo-a1-Oke"/>
+                                                    <constraint firstItem="jN6-Hb-sr2" firstAttribute="top" secondItem="KCO-7g-Nd9" secondAttribute="top" id="KJ0-vx-cyc"/>
                                                     <constraint firstAttribute="trailing" secondItem="dAq-2C-hNZ" secondAttribute="trailing" constant="20" id="Kga-Pq-453"/>
+                                                    <constraint firstItem="jN6-Hb-sr2" firstAttribute="trailing" secondItem="KCO-7g-Nd9" secondAttribute="trailing" id="VTY-yl-Kho"/>
                                                     <constraint firstItem="ig7-Sa-q3r" firstAttribute="leading" secondItem="bWM-vu-ua4" secondAttribute="leading" constant="24" id="cdt-Vu-hL1"/>
                                                     <constraint firstItem="SjU-4F-1r2" firstAttribute="leading" secondItem="KCO-7g-Nd9" secondAttribute="leading" id="mrS-dS-wDb"/>
                                                     <constraint firstItem="bzM-hx-Qfi" firstAttribute="leading" secondItem="ig7-Sa-q3r" secondAttribute="leading" id="nsO-k2-fzT"/>
                                                     <constraint firstAttribute="height" constant="580" id="ty2-Ud-TuF"/>
                                                     <constraint firstItem="KCO-7g-Nd9" firstAttribute="top" secondItem="bzM-hx-Qfi" secondAttribute="bottom" constant="24" id="uMJ-qs-uDw"/>
                                                     <constraint firstItem="dAq-2C-hNZ" firstAttribute="top" secondItem="bWM-vu-ua4" secondAttribute="top" constant="36" id="urd-Pb-sX4"/>
+                                                    <constraint firstItem="jN6-Hb-sr2" firstAttribute="leading" secondItem="KCO-7g-Nd9" secondAttribute="leading" id="xzy-qo-O2d"/>
                                                     <constraint firstItem="bzM-hx-Qfi" firstAttribute="top" secondItem="ig7-Sa-q3r" secondAttribute="bottom" constant="8" id="yC6-Wu-xE3"/>
                                                     <constraint firstItem="bzM-hx-Qfi" firstAttribute="trailing" secondItem="dAq-2C-hNZ" secondAttribute="trailing" id="zac-Jo-YO9"/>
                                                 </constraints>
@@ -334,6 +344,13 @@
                     <connections>
                         <outlet property="artboardCardView" destination="KCO-7g-Nd9" id="uJI-8O-c8V"/>
                         <outlet property="artboardCardViewShadow" destination="SjU-4F-1r2" id="ngw-Ry-WJs"/>
+                        <outlet property="artboardCommentCount" destination="pFl-4w-LNf" id="erZ-iH-txC"/>
+                        <outlet property="artboardImage" destination="0YN-Ys-I4X" id="0cH-sr-hbR"/>
+                        <outlet property="artboardNickname" destination="Cdt-Ig-ZlI" id="dpn-7E-1we"/>
+                        <outlet property="artboardProfile" destination="krY-ot-DEU" id="9mE-Gb-2xz"/>
+                        <outlet property="artboardScrapCount" destination="BjY-oe-F2h" id="Tdb-Xe-7qH"/>
+                        <outlet property="artboardTag" destination="aKx-lj-Wb2" id="GpV-iL-c4Y"/>
+                        <outlet property="artboardTitle" destination="SEc-8z-Xvb" id="gl4-FS-QsF"/>
                         <outlet property="magazineLabel" destination="RGz-QT-MkT" id="0H9-hg-hz5"/>
                         <outlet property="profileNavBtn" destination="tRw-01-RW7" id="GWB-Ys-Hyx"/>
                         <outlet property="serviceBannerCollectionView" destination="qMD-V7-ND1" id="p3o-7H-tOq"/>
@@ -427,7 +444,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PC7-j4-oXj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="713"/>
+            <point key="canvasLocation" x="1870" y="725"/>
         </scene>
         <!--FriendsMain-->
         <scene sceneID="gTA-L5-X7e">
@@ -437,7 +454,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZBY-GI-omp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1699" y="593"/>
+            <point key="canvasLocation" x="1578" y="579"/>
         </scene>
         <!--ProfileMain-->
         <scene sceneID="f6V-kK-FsI">
@@ -447,7 +464,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXw-Dp-08P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2370" y="579"/>
+            <point key="canvasLocation" x="2385" y="579"/>
         </scene>
         <!--CommunityMain-->
         <scene sceneID="vJ9-C7-mZZ">
@@ -457,7 +474,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLY-i9-YeO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2125" y="621"/>
+            <point key="canvasLocation" x="2128" y="579"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DMJ-lS-EBJ">
