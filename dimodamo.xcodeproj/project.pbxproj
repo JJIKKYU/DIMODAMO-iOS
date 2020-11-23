@@ -168,6 +168,8 @@
 		98D988FF2553030B002A8AC5 /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98D988FE2553030A002A8AC5 /* AppleSDGothicNeoEB.ttf */; };
 		98D9890525547DBF002A8AC5 /* MyProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D9890425547DBF002A8AC5 /* MyProfileVC.swift */; };
 		98E2416B250F9F47003BE1A3 /* Results.json in Resources */ = {isa = PBXBuildFile; fileRef = 98E2416A250F9F47003BE1A3 /* Results.json */; };
+		98EAAC3E256B546900B70CA8 /* ServiceBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EAAC3D256B546900B70CA8 /* ServiceBannerCell.swift */; };
+		98EAAC43256B5BB900B70CA8 /* ArtboardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EAAC42256B5BB900B70CA8 /* ArtboardCardView.swift */; };
 		98F8C832254C2B8800FDDEBF /* CommunitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */; };
 		98F8C837254C3D0500FDDEBF /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C836254C3D0500FDDEBF /* RecommendCell.swift */; };
 		98F8C83B254C912300FDDEBF /* SearchPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8C83A254C912300FDDEBF /* SearchPageVC.swift */; };
@@ -390,6 +392,8 @@
 		98D988FE2553030A002A8AC5 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
 		98D9890425547DBF002A8AC5 /* MyProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileVC.swift; sourceTree = "<group>"; };
 		98E2416A250F9F47003BE1A3 /* Results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Results.json; sourceTree = "<group>"; };
+		98EAAC3D256B546900B70CA8 /* ServiceBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBannerCell.swift; sourceTree = "<group>"; };
+		98EAAC42256B5BB900B70CA8 /* ArtboardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardCardView.swift; sourceTree = "<group>"; };
 		98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchVC.swift; sourceTree = "<group>"; };
 		98F8C836254C3D0500FDDEBF /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		98F8C83A254C912300FDDEBF /* SearchPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageVC.swift; sourceTree = "<group>"; };
@@ -618,6 +622,7 @@
 		98138FD3256ADBD70063F8BD /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				98EAAC41256B5BA200B70CA8 /* View */,
 				98138FD4256ADBEF0063F8BD /* HomeVC.swift */,
 			);
 			path = Home;
@@ -806,6 +811,7 @@
 		9863224325178767003B0784 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				98EAAC3C256B544B00B70CA8 /* Cell */,
 				98138FD3256ADBD70063F8BD /* Home */,
 				9863224425178773003B0784 /* TestViewController.swift */,
 			);
@@ -1356,6 +1362,22 @@
 			path = MyProfile;
 			sourceTree = "<group>";
 		};
+		98EAAC3C256B544B00B70CA8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				98EAAC3D256B546900B70CA8 /* ServiceBannerCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		98EAAC41256B5BA200B70CA8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98EAAC42256B5BB900B70CA8 /* ArtboardCardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		98F8C830254C2B6C00FDDEBF /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -1651,6 +1673,7 @@
 				98F8C847254C9CE400FDDEBF /* InformationViewModel.swift in Sources */,
 				988377982541F4F500BFA746 /* CommentInputView.swift in Sources */,
 				986BD67C25693F7F007F49ED /* Hide_ShowNavigationController.swift in Sources */,
+				98EAAC3E256B546900B70CA8 /* ServiceBannerCell.swift in Sources */,
 				9800A14F253377F20090C058 /* FirstIntroViewController.swift in Sources */,
 				98D988EC255248CE002A8AC5 /* ProfileMainVC.swift in Sources */,
 				98AFDA532539CF2400B0D88F /* CommunityMain.swift in Sources */,
@@ -1745,6 +1768,7 @@
 				98D988FC25525652002A8AC5 /* DimoPeopleCell.swift in Sources */,
 				9845E1892554EC960020574C /* MyDptiVC.swift in Sources */,
 				98F8C84F254CA9C100FDDEBF /* InformationSearchVC.swift in Sources */,
+				98EAAC43256B5BB900B70CA8 /* ArtboardCardView.swift in Sources */,
 				98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
 				98C34381255B0D0600E77463 /* HotDimoPeopleViewModel.swift in Sources */,
