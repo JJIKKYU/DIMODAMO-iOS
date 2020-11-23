@@ -258,13 +258,16 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.viewModel.serviceBannerImgUrlStringRelay.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceBannerCell", for: indexPath) as! ServiceBannerCell
         
         let index = indexPath.row
+        let imageUrlString = self.viewModel.serviceBannerImgUrlStringRelay.value[index]
+        
+        cell.imageView.kf.setImage(with: URL(string: imageUrlString))
         
         return cell
     }
