@@ -1597,11 +1597,18 @@
                                                                 <constraint firstItem="4VT-CT-71D" firstAttribute="top" secondItem="PHV-ng-B8e" secondAttribute="top" constant="40" id="xRF-Kf-xKN"/>
                                                             </constraints>
                                                         </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7N-md-Bzt">
+                                                            <rect key="frame" x="0.0" y="98" width="374" height="14"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="14" id="6Ni-dE-0dK"/>
+                                                            </constraints>
+                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmz-Ra-2lg" userLabel="BottomContainer">
                                                             <rect key="frame" x="0.0" y="112" width="374" height="76"/>
                                                             <color key="backgroundColor" name="WHITE"/>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="건축" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTU-c8-f9B">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="건축" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTU-c8-f9B" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
                                                             <rect key="frame" x="163.5" y="131" width="22.5" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="M5S-F2-hsh"/>
@@ -1609,8 +1616,22 @@
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
                                                             <color key="textColor" name="SYSTEM - ACTIVE"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                    <real key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                    <real key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UXUI" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQj-N3-gcw">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UXUI" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQj-N3-gcw" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
                                                             <rect key="frame" x="96" y="131" width="29" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="2CX-Wl-LZs"/>
@@ -1618,6 +1639,20 @@
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
                                                             <color key="textColor" name="SYSTEM - ACTIVE"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                    <real key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                    <real key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관심사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD3-wY-dB4">
                                                             <rect key="frame" x="35" y="135" width="34" height="16"/>
@@ -1625,7 +1660,7 @@
                                                             <color key="textColor" name="GRAY - 170"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편집" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDS-qq-Fpy">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편집" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDS-qq-Fpy" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
                                                             <rect key="frame" x="133" y="131" width="22.5" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="efc-UF-TKV"/>
@@ -1633,6 +1668,20 @@
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
                                                             <color key="textColor" name="SYSTEM - ACTIVE"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                    <real key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                    <real key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
@@ -1643,11 +1692,14 @@
                                                         <constraint firstItem="PHV-ng-B8e" firstAttribute="top" secondItem="4qj-x0-F2t" secondAttribute="top" constant="16" id="Ezd-uG-tnS"/>
                                                         <constraint firstItem="PHV-ng-B8e" firstAttribute="leading" secondItem="4qj-x0-F2t" secondAttribute="leading" id="GJ6-NW-AbN"/>
                                                         <constraint firstItem="MTU-c8-f9B" firstAttribute="leading" secondItem="UDS-qq-Fpy" secondAttribute="trailing" constant="8" id="HGH-L5-4rt"/>
+                                                        <constraint firstItem="B7N-md-Bzt" firstAttribute="trailing" secondItem="PHV-ng-B8e" secondAttribute="trailing" id="ONv-Hc-eGf"/>
                                                         <constraint firstItem="MQj-N3-gcw" firstAttribute="leading" secondItem="bD3-wY-dB4" secondAttribute="trailing" constant="27" id="RZp-qk-8E7"/>
                                                         <constraint firstItem="bD3-wY-dB4" firstAttribute="top" secondItem="PHV-ng-B8e" secondAttribute="bottom" constant="23" id="TCz-Ea-XrT"/>
                                                         <constraint firstItem="UDS-qq-Fpy" firstAttribute="leading" secondItem="MQj-N3-gcw" secondAttribute="trailing" constant="8" id="UBo-HM-s3f"/>
                                                         <constraint firstItem="MQj-N3-gcw" firstAttribute="centerY" secondItem="bD3-wY-dB4" secondAttribute="centerY" id="Xx5-XJ-4cZ"/>
+                                                        <constraint firstItem="B7N-md-Bzt" firstAttribute="bottom" secondItem="PHV-ng-B8e" secondAttribute="bottom" id="azr-bc-DM8"/>
                                                         <constraint firstItem="MQj-N3-gcw" firstAttribute="top" secondItem="PHV-ng-B8e" secondAttribute="bottom" constant="19" id="oRS-tr-2MI"/>
+                                                        <constraint firstItem="B7N-md-Bzt" firstAttribute="leading" secondItem="PHV-ng-B8e" secondAttribute="leading" id="ohA-3G-Dvp"/>
                                                         <constraint firstItem="qmz-Ra-2lg" firstAttribute="top" secondItem="PHV-ng-B8e" secondAttribute="bottom" id="pGe-cm-9tn"/>
                                                         <constraint firstAttribute="trailing" secondItem="PHV-ng-B8e" secondAttribute="trailing" id="vDh-Bk-B2e"/>
                                                         <constraint firstItem="qmz-Ra-2lg" firstAttribute="leading" secondItem="PHV-ng-B8e" secondAttribute="leading" id="z54-iQ-33Z"/>
@@ -1714,11 +1766,16 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="WHITE"/>
                                         <connections>
+                                            <outlet property="backgroundPattern" destination="Kxn-nf-F8E" id="UKW-pj-X1A"/>
                                             <outlet property="bottomContainer" destination="qmz-Ra-2lg" id="cWS-RR-8l8"/>
                                             <outlet property="containerView" destination="4qj-x0-F2t" id="J2b-lx-Cy2"/>
+                                            <outlet property="nickname" destination="kbU-mZ-hw4" id="1Mc-fd-Pvc"/>
+                                            <outlet property="profile" destination="YX8-4z-hpS" id="Cmj-nS-eHm"/>
                                             <outlet property="profileBG" destination="Txi-ov-uBA" id="cMa-Go-ZIO"/>
                                             <outlet property="shadowView" destination="d1W-Xw-vJg" id="SIG-Gg-KKL"/>
                                             <outlet property="topContainer" destination="PHV-ng-B8e" id="s92-ZX-cjh"/>
+                                            <outlet property="topContainerBottomView" destination="B7N-md-Bzt" id="y4V-FL-1Hl"/>
+                                            <outlet property="typeImage" destination="4VT-CT-71D" id="jI2-AW-unQ"/>
                                             <outletCollection property="tags" destination="MQj-N3-gcw" collectionClass="NSMutableArray" id="HrO-U9-Luv"/>
                                             <outletCollection property="tags" destination="UDS-qq-Fpy" collectionClass="NSMutableArray" id="nIN-Ba-Ewk"/>
                                             <outletCollection property="tags" destination="MTU-c8-f9B" collectionClass="NSMutableArray" id="USI-df-axx"/>
@@ -4926,6 +4983,9 @@
         </namedColor>
         <namedColor name="PINK - DARK">
             <color red="0.98000001907348633" green="0.49000000953674316" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SYSTEM">
+            <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

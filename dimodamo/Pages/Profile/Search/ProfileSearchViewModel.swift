@@ -47,6 +47,11 @@ class ProfileSearchViewModel {
             }
         }
     }
+    
+    func getBackgroundPattern(dpti: String) -> UIImage {
+        let image = UIImage.shapeBackgroundPattern(dpti)
+        return image
+    }
 }
 
 

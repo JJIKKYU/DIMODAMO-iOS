@@ -81,6 +81,7 @@ class ProfileSearchVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        self.settingTableView()
         
         viewModel.searchResultsRelay
             .observeOn(MainScheduler.instance)
@@ -128,6 +129,10 @@ extension ProfileSearchVC: UISearchResultsUpdating, UISearchBarDelegate {
 // MARK: - Result Table View
 
 extension ProfileSearchVC: UITableViewDelegate, UITableViewDataSource {
+    func settingTableView() {
+        tableView.rowHeight = 242
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.searchResultsRelay.value.count
     }
@@ -136,6 +141,29 @@ extension ProfileSearchVC: UITableViewDelegate, UITableViewDataSource {
         
         print("\(indexPath.row)를 그립니다.")
         let cell = tableView.dequeueReusableCell(withIdentifier: "DimoTableViewCell", for: indexPath) as! DamoPeopleCell
+        
+        let index = indexPath.row
+        let model = viewModel.searchResultsRelay.value[index]
+        
+        
+        if let nickname: String = model.nickName {
+            cell.nickname?.text = "\(nickname)"
+        }
+
+        if let dptiType: String = model.dpti {
+            cell.profile.image = UIImage(named: "Profile_\(dptiType)")
+            cell.topContainer.backgroundColor = UIColor.dptiDarkColor("\(dptiType)")
+            cell.topContainerBottomView.backgroundColor = UIColor.dptiDarkColor("\(dptiType)")
+            cell.backgroundPattern.image = viewModel.getBackgroundPattern(dpti: "\(dptiType)")
+            cell.typeImage.image = UIImage.dptiProfileTypeIcon("\(dptiType)", isFiiled: true)
+        }
+
+        if let interestArr: [String] = model.interest {
+            for (index, tag) in cell.tags.enumerated() {
+                tag.text = Interest.getWordFromString(from: interestArr[index])
+            }
+        }
+        
         
         return cell
     }
