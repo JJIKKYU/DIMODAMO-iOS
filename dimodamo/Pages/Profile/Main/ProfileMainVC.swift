@@ -44,7 +44,7 @@ class ProfileMainVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         
-        navigationController?.view.backgroundColor = UIColor.clear
+//        navigationController?.view.backgroundColor = UIColor.clear
     }
     
     private func setColors(){
@@ -133,6 +133,13 @@ class ProfileMainVC: UIViewController {
      */
     @IBAction func pressedMyProfileBtn(_ sender: Any) {
         performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.myProfile.rawValue, -1])
+    }
+    
+    /*
+     검색 버튼을 눌렀을 경우
+     */
+    @IBAction func pressedSearchBtn(_ sender: Any) {
+        performSegue(withIdentifier: "ProfileSearchVC", sender: sender)
     }
     
     /*

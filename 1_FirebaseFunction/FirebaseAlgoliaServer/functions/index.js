@@ -4,13 +4,15 @@ const algoliasearch = require('algoliasearch');
 
 const ALGOLIA_APP_ID = "N13Z39TVCC";
 const ALGOLIA_ADMIN_KEY = "a61ca167a4f8cd2463ce8d0d886c2f65";
-const ALGOLIA_INDEX_NAME = "posts";
+const ALGOLIA_INDEX_NAME = "hongik_users";
 
 admin.initializeApp(functions.config().firebase);
 
 exports.firestoreToAlgolia = functions.https.onRequest((req, res) => {
     const arr = [];
-    admin.firestore().collection('users').get().then(docs => {
+    admin.firestore().collection('users')
+    .where('school', '==', '홍익대학교')
+    .get().then(docs => {
         docs.forEach(doc => {
             const verb = doc.data();
             verb.objectID = doc.id;

@@ -53,6 +53,8 @@
 		9853DB1C255D3E7400E8EBD5 /* MedalInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853DB1B255D3E7400E8EBD5 /* MedalInformationVC.swift */; };
 		9853DB20255D62F700E8EBD5 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9853DB1F255D62F700E8EBD5 /* MessageViewModel.swift */; };
 		985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D381225198D1F00C53378 /* RegisterViewModel.swift */; };
+		9860A24D256CA66E00806297 /* ProfileSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9860A24C256CA66E00806297 /* ProfileSearchVC.swift */; };
+		9860A251256CAB5B00806297 /* ProfileSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9860A250256CAB5B00806297 /* ProfileSearchViewModel.swift */; };
 		9863223725178546003B0784 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9863223625178546003B0784 /* Community.storyboard */; };
 		9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863223E251785AE003B0784 /* CommunityMainViewController.swift */; };
 		9863224525178773003B0784 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863224425178773003B0784 /* TestViewController.swift */; };
@@ -275,6 +277,8 @@
 		9853DB1B255D3E7400E8EBD5 /* MedalInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalInformationVC.swift; sourceTree = "<group>"; };
 		9853DB1F255D62F700E8EBD5 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		985D381225198D1F00C53378 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		9860A24C256CA66E00806297 /* ProfileSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSearchVC.swift; sourceTree = "<group>"; };
+		9860A250256CAB5B00806297 /* ProfileSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSearchViewModel.swift; sourceTree = "<group>"; };
 		9863223625178546003B0784 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		9863223E251785AE003B0784 /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
 		9863224425178773003B0784 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -761,6 +765,15 @@
 				98C1663A252729C50080DD87 /* Service1DetailViewController.swift */,
 			);
 			path = Clause;
+			sourceTree = "<group>";
+		};
+		9860A24B256CA66000806297 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				9860A24C256CA66E00806297 /* ProfileSearchVC.swift */,
+				9860A250256CAB5B00806297 /* ProfileSearchViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		986322352517852F003B0784 /* Storyboard */ = {
@@ -1323,6 +1336,7 @@
 		98D988E9255248A2002A8AC5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				9860A24B256CA66000806297 /* Search */,
 				98FA226C25585A4300331755 /* Message */,
 				98FA226025572AB000331755 /* AllDpti */,
 				984FA9072555B1BA00D4F506 /* ProfileDptiResult */,
@@ -1692,6 +1706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98D9890525547DBF002A8AC5 /* MyProfileVC.swift in Sources */,
+				9860A24D256CA66E00806297 /* ProfileSearchVC.swift in Sources */,
 				98816097251EF5C300556AEC /* LoginViewController.swift in Sources */,
 				9800A155253379240090C058 /* ThirdIntroViewController.swift in Sources */,
 				98A8B82F25377D9200351FD5 /* InformationTableViewCell.swift in Sources */,
@@ -1720,6 +1735,7 @@
 				987D6D792562DF42000FCA16 /* ClassRoomViewModel.swift in Sources */,
 				98EAAC47256BCDB500B70CA8 /* HomeViewModel.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
+				9860A251256CAB5B00806297 /* ProfileSearchViewModel.swift in Sources */,
 				98FA22562556FD9500331755 /* MyProfileViewModel.swift in Sources */,
 				98FA226225572AC700331755 /* AllDptiVC.swift in Sources */,
 				9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */,

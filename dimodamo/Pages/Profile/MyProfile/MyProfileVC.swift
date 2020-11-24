@@ -268,10 +268,8 @@ class MyProfileVC: UIViewController {
     var isSettingMedalInformationView: Bool = false
     @IBAction func pressedMedalInfoBtn(_ sender: Any) {
         performSegue(withIdentifier: "MedalInformationVC", sender: sender)
-        
-        
-        
     }
+    
     
     // MARK: - Navigation
     
