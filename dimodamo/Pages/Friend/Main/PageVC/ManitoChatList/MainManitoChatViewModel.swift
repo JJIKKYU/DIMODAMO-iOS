@@ -28,7 +28,7 @@ class MainManitoChatViewModel {
         return "hongik/chatList/\(userUID)"
     }
     let chatListRelay = BehaviorRelay<[userChatList]>(value: [])
-    var userData: [String: String] = []
+    var userDataArr = BehaviorRelay<[String: String]>(value: [String: String]())
     
     var manitoChatList: [MainListManitoChat] = [
         MainListManitoChat(uid: "M53GwqRWVafgI3eV6rZjyuGKHOM2",
@@ -78,6 +78,7 @@ class MainManitoChatViewModel {
                     
                     if let targetUserUid: String = data["target_user_uid"] as? String {
                         chatData.target_user_uid = targetUserUid
+                        self?.targetUserLoad(userUid: targetUserUid)
                     }
                     
                     if let timestamp: Int = data["timestamp"] as? Int {
@@ -100,22 +101,43 @@ class MainManitoChatViewModel {
     }
     
     func targetUserLoad(userUid: String) {
+        print("userUID Dict 함수를 시작합니다")
+        
         db.collection("users").document("\(userUid)")
             .getDocument { [weak self] (document, err) in
                 if let document = document, document.exists {
                     let data = document.data()
-                    
+                    var dict = self!.userDataArr.value
                     if let nickname: String = data!["nickName"] as? String {
-                        
+                        dict.updateValue("\(nickname)", forKey: "\(userUid)_nickname")
                     }
                     
                     if let dpti: String = data!["dpti"] as? String {
-                        
+                        dict.updateValue("\(dpti)", forKey: "\(userUid)_dpti")
                     }
                     
+                    print(dict)
+                    
+                    self?.userDataArr.accept(dict)
                 } else {
                     print("메인 채팅 리스트에서 유저 정보를 불러오는데 오류가 발생했습니다.")
                 }
             }
+    }
+    
+    func getUserNickname(userUid: String) -> String {
+        
+        let nickname: String = self.userDataArr.value["\(userUid)_nickname"] ?? ""
+        print("\(nickname) 닉네임 로드합니다")
+        
+        return nickname
+    }
+    
+    func getUserDpti(userUid: String) -> String {
+        
+        let dpti: String = self.userDataArr.value["\(userUid)_dpti"] ?? ""
+        print("\(dpti) 타입 로드합니다")
+        
+        return dpti
     }
 }

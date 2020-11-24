@@ -25,13 +25,25 @@ class MainManitoChatVC: UIViewController {
         tableView.dataSource = self
         tableViewSetting()
         
-        self.viewModel.chatListRelay
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
+        
+        Observable.combineLatest(
+            self.viewModel.chatListRelay,
+            self.viewModel.userDataArr
+        ).observeOn(MainScheduler.instance)
+        .subscribe(onNext: { [weak self] chatList, userData in
+            if chatList.count == userData.count && userData.count != 0 {
                 self?.tableView.reloadData()
-                print("리로드합니다.")
-            })
-            .disposed(by: disposeBag)
+            }
+        })
+        .disposed(by: disposeBag)
+        
+//        self.viewModel.chatListRelay
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] _ in
+//                self?.tableView.reloadData()
+//                print("리로드합니다.")
+//            })
+//            .disposed(by: disposeBag)
     }
     
 
@@ -62,10 +74,15 @@ extension MainManitoChatVC: UITableViewDelegate, UITableViewDataSource {
         let index = indexPath.row
         let model = viewModel.chatListRelay.value[index]
         
-//        cell.chatProfile.image = UIImage(named: "Profile_\(model.chat_room_uid)")
         cell.chatDate.text = "\(model.timestamp)"
-        cell.chatNickname.text = "\(model.target_user_uid)"
-//        cell.chatNickname.textColor = UIColor.dptiDarkColor(model.type)
+        
+        let nickname = self.viewModel.getUserNickname(userUid: model.target_user_uid)
+        cell.chatNickname.text = "\(nickname)"
+        
+        let type = self.viewModel.getUserDpti(userUid: model.target_user_uid)
+        cell.chatNickname.textColor = UIColor.dptiDarkColor(type)
+        cell.chatProfile.image = UIImage(named: "Profile_\(type)")
+        
         cell.chatDescription.text = "\(model.last_message)"
         cell.chatRemainCount.text = "\(model.unread_message_count)"
         
