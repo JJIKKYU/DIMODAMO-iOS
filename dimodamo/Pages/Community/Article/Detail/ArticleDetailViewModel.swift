@@ -104,6 +104,7 @@ class ArticleDetailViewModel {
         return ""
     }
     var commentUserHeartUidArr: [String] = []
+    var commentCount: Int = 0 // 해당 글의 코멘트 카운드를 가지고 있음
     
     /*
      스크랩
@@ -183,6 +184,10 @@ class ArticleDetailViewModel {
                     
                     if let userId: String = data!["user_id"] as? String {
                         self?.userUID = userId
+                    }
+                    
+                    if let commentCount: Int = data!["comment_count"] as? Int {
+                        self?.commentCount = commentCount
                     }
                 
                     if let scrapCount: Int = data!["scrap_count"] as? Int {
@@ -321,10 +326,20 @@ class ArticleDetailViewModel {
             } else {
                 print("Document added with ID: \(id)")
                 self.commentSetting()
+                self.commentCountUp() // 게시글 댓글 카운트 업
                 
             }
         }
         
+    }
+    
+    // 게사글에 댓글 달았을 경우 카운트 업
+    func commentCountUp() {
+        let uid = self.postUidRelay.value
+        let articlePostDocument = db.collection("\(postDB)").document("\(uid)")
+        
+        articlePostDocument.updateData(["comment_count" : self.commentCount + 1])
+        print("코멘트 카운트 \(self.commentCount) -> \(self.commentCount + 1)")
     }
     
     func pressedCommentHeart(uid: String) {
