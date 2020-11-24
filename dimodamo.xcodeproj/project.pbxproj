@@ -55,6 +55,7 @@
 		985D381325198D1F00C53378 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985D381225198D1F00C53378 /* RegisterViewModel.swift */; };
 		9860A24D256CA66E00806297 /* ProfileSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9860A24C256CA66E00806297 /* ProfileSearchVC.swift */; };
 		9860A251256CAB5B00806297 /* ProfileSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9860A250256CAB5B00806297 /* ProfileSearchViewModel.swift */; };
+		9860A308256D7EC900806297 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9860A307256D7EC900806297 /* FriendModel.swift */; };
 		9863223725178546003B0784 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9863223625178546003B0784 /* Community.storyboard */; };
 		9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863223E251785AE003B0784 /* CommunityMainViewController.swift */; };
 		9863224525178773003B0784 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863224425178773003B0784 /* TestViewController.swift */; };
@@ -279,6 +280,7 @@
 		985D381225198D1F00C53378 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		9860A24C256CA66E00806297 /* ProfileSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSearchVC.swift; sourceTree = "<group>"; };
 		9860A250256CAB5B00806297 /* ProfileSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSearchViewModel.swift; sourceTree = "<group>"; };
+		9860A307256D7EC900806297 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
 		9863223625178546003B0784 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		9863223E251785AE003B0784 /* CommunityMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainViewController.swift; sourceTree = "<group>"; };
 		9863224425178773003B0784 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -776,6 +778,21 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		9860A304256D759100806297 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		9860A306256D7E7800806297 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9860A307256D7EC900806297 /* FriendModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		986322352517852F003B0784 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,6 +866,7 @@
 		986322542517BB73003B0784 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				9860A306256D7E7800806297 /* Model */,
 				98C735D6255C5B6900252BF2 /* Cell */,
 				98C735A8255C53B300252BF2 /* PageVC */,
 				986322552517BB81003B0784 /* FriendMainVC.swift */,
@@ -1168,6 +1186,7 @@
 		98A8B813253605BF00351FD5 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				9860A304256D759100806297 /* Authorization */,
 				98A8B815253605CE00351FD5 /* SplashViewController.swift */,
 			);
 			path = Splash;
@@ -1817,6 +1836,7 @@
 				98F8C84B254CA0F300FDDEBF /* LottieLoadingView.swift in Sources */,
 				98D988FC25525652002A8AC5 /* DimoPeopleCell.swift in Sources */,
 				9845E1892554EC960020574C /* MyDptiVC.swift in Sources */,
+				9860A308256D7EC900806297 /* FriendModel.swift in Sources */,
 				98F8C84F254CA9C100FDDEBF /* InformationSearchVC.swift in Sources */,
 				98EAAC43256B5BB900B70CA8 /* ArtboardCardView.swift in Sources */,
 				98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */,

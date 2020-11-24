@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    lazy var db = Firestore.firestore()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -149,5 +150,11 @@ extension AppDelegate: MessagingDelegate {
         print("Firebase registration token: \(fcmToken)")
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        
+        let user = Auth.auth().currentUser
+        if let userUID = user?.uid {
+            let userFcmIdDB = db.collection("FcmId").document("\(userUID)")
+            userFcmIdDB.setData(["FCM" : "\(fcmToken)"])
+        }
     }
 }

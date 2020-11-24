@@ -24,6 +24,14 @@ class MainManitoChatVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableViewSetting()
+        
+        self.viewModel.chatListRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.tableView.reloadData()
+                print("리로드합니다.")
+            })
+            .disposed(by: disposeBag)
     }
     
 
@@ -45,21 +53,21 @@ extension MainManitoChatVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.manitoChatList.count
+        return self.viewModel.chatListRelay.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyManitoCell", for: indexPath) as! MainChatCell
         
         let index = indexPath.row
-        let model = viewModel.manitoChatList[index]
+        let model = viewModel.chatListRelay.value[index]
         
-        cell.chatProfile.image = UIImage(named: "Profile_\(model.type)")
-        cell.chatDate.text = "\(model.date)"
-        cell.chatNickname.text = "\(model.nickname)"
-        cell.chatNickname.textColor = UIColor.dptiDarkColor(model.type)
-        cell.chatDescription.text = "\(model.lastChat)"
-        cell.chatRemainCount.text = "5"
+//        cell.chatProfile.image = UIImage(named: "Profile_\(model.chat_room_uid)")
+        cell.chatDate.text = "\(model.timestamp)"
+        cell.chatNickname.text = "\(model.target_user_uid)"
+//        cell.chatNickname.textColor = UIColor.dptiDarkColor(model.type)
+        cell.chatDescription.text = "\(model.last_message)"
+        cell.chatRemainCount.text = "\(model.unread_message_count)"
         
         return cell
     }
