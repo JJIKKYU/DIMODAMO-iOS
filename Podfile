@@ -54,4 +54,7 @@ target 'dimodamo' do
 
   # Json
   pod 'SwiftyJSON', '~> 4.0'
+
+  # 검색
+  pod 'AlgoliaSearchClient', '~> 8.2'
 end
