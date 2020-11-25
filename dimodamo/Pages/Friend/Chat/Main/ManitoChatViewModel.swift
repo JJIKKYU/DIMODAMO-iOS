@@ -41,6 +41,10 @@ class ManitoChatViewModel {
     let messageLoadingRelay = BehaviorRelay<Bool>(value: false)
     
     init() {
+        
+        /*
+         chat uid가 초기화 되었을 때 메세지가 로딩될 수 있도록 안전장치 추가
+         */
         chatUid
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .subscribe(onNext: { [weak self] chatuid in
@@ -53,6 +57,9 @@ class ManitoChatViewModel {
             
     }
     
+    /*
+     채팅 메세지 로딩
+     */
     func chatMessagesLoad() {
         db.collection("\(chatDB)")
             .order(by: "timestamp", descending: false)

@@ -38,6 +38,15 @@ class ProfileMainVC: UIViewController {
         
         navigationController?.view.backgroundColor = UIColor.white
         navigationController?.presentTransparentNavigationBar()
+        
+        // 네비게이션바 하단 밑줄 제거
+        // 네비게이션바 하단 그림자 추가
+        DispatchQueue.main.async {
+            self.tabBarController?.roundedTabbar()
+            self.navigationController?.hideBottomTabbarLine()
+        }
+        view.layoutIfNeeded()
+        
         animate()
     }
     
@@ -67,6 +76,14 @@ class ProfileMainVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setColors()
+        
+        // 네비게이션바 하단 밑줄 제거
+        // 네비게이션바 하단 그림자 추가
+        DispatchQueue.main.async {
+            self.tabBarController?.roundedTabbar()
+            self.navigationController?.hideBottomTabbarLine()
+        }
+        view.layoutIfNeeded()
     }
     
     override func viewDidLoad() {

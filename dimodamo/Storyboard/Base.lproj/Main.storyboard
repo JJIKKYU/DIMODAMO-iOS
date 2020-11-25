@@ -26,11 +26,11 @@
             <objects>
                 <viewController id="U1X-jK-vjF" customClass="HomeVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aQM-5j-dSU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNb-pS-aBb">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u12-lB-3Op" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
@@ -309,7 +309,7 @@
                             <constraint firstItem="gQJ-c0-3Rl" firstAttribute="bottom" secondItem="GNb-pS-aBb" secondAttribute="bottom" id="y4Q-vE-bY4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="swl-YL-3kO">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="swl-YL-3kO">
                         <barButtonItem key="backBarButtonItem" title=" " id="gdv-Ay-jcW"/>
                         <barButtonItem key="leftBarButtonItem" image="dimodamoOrange" id="N1I-bj-BeW">
                             <inset key="imageInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -364,13 +364,13 @@
         <!--공지사항-->
         <scene sceneID="Ooh-gB-V8S">
             <objects>
-                <viewController id="gfo-xX-ig8" customClass="NoticeVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="gfo-xX-ig8" customClass="NoticeVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="efg-xw-f3b">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYv-Ua-pgv">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -379,7 +379,7 @@
                             </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lEX-Ir-lFG"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="lEX-Ir-lFG" firstAttribute="bottom" secondItem="dYv-Ua-pgv" secondAttribute="bottom" id="72A-0q-Vlh"/>
                             <constraint firstItem="lEX-Ir-lFG" firstAttribute="trailing" secondItem="dYv-Ua-pgv" secondAttribute="trailing" id="9xH-8i-ftT"/>
@@ -387,7 +387,7 @@
                             <constraint firstItem="dYv-Ua-pgv" firstAttribute="leading" secondItem="lEX-Ir-lFG" secondAttribute="leading" id="i7p-2a-AFL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="공지사항" id="KSA-8p-7Bt"/>
+                    <navigationItem key="navigationItem" title="공지사항" largeTitleDisplayMode="never" id="KSA-8p-7Bt"/>
                     <connections>
                         <outlet property="webView" destination="dYv-Ua-pgv" id="3de-EE-gfH"/>
                     </connections>
@@ -401,29 +401,29 @@
             <objects>
                 <viewController id="iws-cX-vZT" customClass="TestViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ggb-dH-gFk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test ViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYc-Gz-GQJ">
-                                <rect key="frame" x="56" y="98" width="301" height="41"/>
+                                <rect key="frame" x="56" y="10" width="301" height="41"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="34"/>
                                 <color key="textColor" name="TEXT - BIG"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBE-5G-XxJ">
-                                <rect key="frame" x="56" y="215" width="70" height="30"/>
+                                <rect key="frame" x="56" y="127" width="70" height="30"/>
                                 <state key="normal" title="DPTI Main"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxO-0L-kDg">
-                                <rect key="frame" x="56" y="277" width="116" height="30"/>
+                                <rect key="frame" x="56" y="189" width="116" height="30"/>
                                 <state key="normal" title="Community Main"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpa-mj-e4N">
-                                <rect key="frame" x="56" y="335" width="57" height="30"/>
+                                <rect key="frame" x="56" y="247" width="57" height="30"/>
                                 <state key="normal" title="Register"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3l-EP-8f8">
-                                <rect key="frame" x="56" y="398" width="38" height="30"/>
+                                <rect key="frame" x="56" y="310" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                             </button>
                         </subviews>
@@ -462,7 +462,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="dVU-98-3mA" kind="relationship" relationship="viewControllers" id="abQ-H6-mIm"/>
-                        <segue destination="wv7-iR-7cy" kind="relationship" relationship="viewControllers" id="3Gw-4E-III"/>
                         <segue destination="XIB-mF-kLE" kind="relationship" relationship="viewControllers" id="tcD-fx-gsr"/>
                         <segue destination="XqL-PQ-a9k" kind="relationship" relationship="viewControllers" id="UbP-rR-xFz"/>
                         <segue destination="I0M-G3-KAm" kind="relationship" relationship="viewControllers" id="y1c-ki-BlT"/>
@@ -518,7 +517,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dVU-98-3mA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="home" selectedImage="homeSelected" id="Z4P-1r-R3T"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JAw-ph-sGC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="JAw-ph-sGC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="GRAY - 210"/>

@@ -44,10 +44,24 @@ class CommunityMainViewController: UIViewController {
         navigationController?.visible(color: UIColor.appColor(.textBig))
         navigationController?.view.backgroundColor = .white
         
-        // 네비게이션바 밑줄 삭제
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
+        // 네비게이션바 하단 밑줄 제거
+        // 네비게이션바 하단 그림자 추가
+        DispatchQueue.main.async {
+            self.tabBarController?.roundedTabbar()
+        }
+        navigationController?.hideBottomTabbarLine()
+        view.layoutIfNeeded()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 네비게이션바 하단 밑줄 제거
+        // 네비게이션바 하단 그림자 추가
+        DispatchQueue.main.async {
+            self.tabBarController?.roundedTabbar()
+        }
+        navigationController?.hideBottomTabbarLine()
+        view.layoutIfNeeded()
     }
     
     override func viewDidLoad() {

@@ -102,6 +102,14 @@ class HomeVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setColors()
+        
+        // 네비게이션바 하단 밑줄 제거
+        // 네비게이션바 하단 그림자 추가
+        DispatchQueue.main.async {
+            self.tabBarController?.roundedTabbar()
+            self.navigationController?.hideBottomTabbarLine()
+        }
+        view.layoutIfNeeded()
     }
     
     
@@ -113,16 +121,12 @@ class HomeVC: UIViewController {
         animate()
         
         // 네비게이션바 하단 밑줄 제거
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
         // 네비게이션바 하단 그림자 추가
-        self.tabBarController?.tabBar.layer.masksToBounds = false
-        self.tabBarController?.tabBar.isTranslucent = true
-        self.tabBarController?.tabBar.barStyle = .black
-        self.tabBarController?.tabBar.layer.cornerRadius = 24
-        self.tabBarController?.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        self.tabBarController?.tabBar.appShadow(.s20)
+        DispatchQueue.main.async {
+            self.tabBarController?.roundedTabbar()
+            self.navigationController?.hideBottomTabbarLine()
+        }
+        view.layoutIfNeeded()
     }
 
     override func viewDidLoad() {
@@ -173,6 +177,18 @@ class HomeVC: UIViewController {
                     if let commentCount: Int = model.commentCount {
                         self?.artboardCommentCount.text = "\(commentCount)"
                     }
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        /*
+         Service Banner
+         */
+        viewModel.serviceBannerLoading
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] flag in
+                if flag == true {
+                    self?.serviceBannerCollectionView.reloadData()
                 }
             })
             .disposed(by: disposeBag)
@@ -260,7 +276,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         // 375나 414 둘 중 하나 카운트
-        return self.viewModel.serviceBannerImgUrlString414Relay.value.count
+        return self.viewModel.serviceBannerImgUrlString414.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -271,10 +287,10 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         var imageUrlString: String?
         
         if deviceWidth <= 390 {
-            imageUrlString = self.viewModel.serviceBannerImgUrlString375Relay.value[index]
+            imageUrlString = self.viewModel.serviceBannerImgUrlString375[index]
             print("390 이하 디바이스 사이즈 : \(deviceWidth)")
         } else {
-            imageUrlString = self.viewModel.serviceBannerImgUrlString414Relay.value[index]
+            imageUrlString = self.viewModel.serviceBannerImgUrlString414[index]
             print("391 이상 디바이스 사이즈 : \(deviceWidth)")
         }
         

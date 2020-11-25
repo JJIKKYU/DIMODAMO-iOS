@@ -37,8 +37,10 @@ class HomeViewModel {
     /*
      ServiceBanner
      */
-    var serviceBannerImgUrlString375Relay = BehaviorRelay<[String]>(value: [])
-    var serviceBannerImgUrlString414Relay = BehaviorRelay<[String]>(value: [])
+    var serviceBannerImgUrlString375: [String] = []
+    var serviceBannerImgUrlString414: [String] = []
+    let serviceBannerLoading = BehaviorRelay<Bool>(value: false)
+    
     
     /*
      ArticlePost
@@ -73,8 +75,9 @@ class HomeViewModel {
                                 newImageStringArr414.append(bannerImgUrlArr[i]["banner_image_414"].stringValue)
                             }
                         }
-                        self.serviceBannerImgUrlString375Relay.accept(newImageStringArr375)
-                        self.serviceBannerImgUrlString414Relay.accept(newImageStringArr414)
+                        self.serviceBannerImgUrlString375 = newImageStringArr375
+                        self.serviceBannerImgUrlString414 = newImageStringArr414
+                        self.serviceBannerLoading.accept(true)
                     }
                 case .failure:
                     print("error : \(response.error!)")
