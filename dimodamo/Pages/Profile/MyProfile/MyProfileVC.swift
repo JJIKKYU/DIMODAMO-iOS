@@ -50,6 +50,7 @@ class MyProfileVC: UIViewController {
     @IBOutlet weak var scrapCountLabel: UILabel!
     @IBOutlet weak var manitoGoodCountLabel: UILabel!
     
+    @IBOutlet weak var messageBtnHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageBtn: UIButton! {
         didSet {
 //            messageBtn.layer.cornerRadius = 12
@@ -166,6 +167,7 @@ class MyProfileVC: UIViewController {
                 // 내 프로필일 경우에 쪽지 보내기 비활성화
                 if self?.viewModel.isMyProfile() == true {
                     self?.messageBtn.isHidden = true
+                    self?.messageBtnHeightConstraint.constant = 0
                 } else {
                     self?.messageBtn.isHidden = false
                 }
@@ -252,7 +254,11 @@ class MyProfileVC: UIViewController {
      Dpti 버튼을 눌렀을 경우
      */
     @IBAction func pressedDptiBtn(_ sender: Any) {
-        performSegue(withIdentifier: "MyDptiVC", sender: sender)
+        if viewModel.myDptiTypeIsDefault() == true {
+            print("DPTI하는 페이지로 넘겨")
+        } else {
+            performSegue(withIdentifier: "MyDptiVC", sender: sender)
+        }
     }
     
     /*

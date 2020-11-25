@@ -118,6 +118,7 @@ class HomeVC: UIViewController {
         
         // 상단 노치 컬러
         navigationController?.view.backgroundColor = UIColor.white
+        navigationController?.presentTransparentNavigationBar()
         animate()
         
         // 네비게이션바 하단 밑줄 제거

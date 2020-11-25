@@ -81,7 +81,7 @@ class RegisterSchoolViewController: UIViewController {
 
 extension RegisterSchoolViewController {
     func viewDesisgn() {
-        self.nextTryBtn.layer.cornerRadius = 16
+//        self.nextTryBtn.layer.cornerRadius = 16
         AppStyleGuide.systemBtnRadius16(btn: finishBtn, isActive: false)
     }
 }

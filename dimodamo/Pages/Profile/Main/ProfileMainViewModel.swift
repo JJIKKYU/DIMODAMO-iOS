@@ -61,6 +61,7 @@ class ProfileMainViewModel {
         
         db.collection("users")
             .whereField("school", isEqualTo: "홍익대학교")
+            .whereField("dpti", isNotEqualTo: "DD")
             .limit(to: 4)
             .getDocuments{ [weak self] (querySnapshot, err) in
                 if let err = err {
@@ -104,8 +105,10 @@ class ProfileMainViewModel {
         self.hotDimoPeopleArrIsLoading.accept(false)
         
         db.collection("users")
-            .whereField("school", isEqualTo: "홍익대학교")
+            .order(by: "dpti")
+            .whereField("dpti", isNotEqualTo: "DD")
             .order(by: "get_profile_score", descending: true)
+            .whereField("school", isEqualTo: "홍익대학교")
             .limit(to: 4)
             .getDocuments{ [weak self] (querySnapshot, err) in
                 if let err = err {

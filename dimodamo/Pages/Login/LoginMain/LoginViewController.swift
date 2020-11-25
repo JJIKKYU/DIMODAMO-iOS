@@ -19,12 +19,18 @@ class LoginViewController: UIViewController {
     
     
     
+    @IBOutlet weak var welcomeTitleBottomConstraint: NSLayoutConstraint! {
+        didSet {
+            if UIScreen.main.bounds.height < 700 {
+                self.welcomeTitleBottomConstraint.constant = 0
+            }
+        }
+    }
     @IBOutlet weak var loginTitle: UILabel! {
         didSet {
             loginTitle.textColor = UIColor.appColor(.system)
         }
     }
-    @IBOutlet weak var loginCheckLabel: UILabel!
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailLine: UIView!
@@ -38,6 +44,18 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var findEmailBtn: UIView! {
+        didSet {
+            // 미구현으로 숨김 처리
+            findEmailBtn.isHidden = true
+        }
+    }
+    @IBOutlet weak var findPwBtn: UIButton! {
+        didSet {
+            // 미구현으로 숨김 처리
+            findPwBtn.isHidden = true
+        }
+    }
     
     
     var viewModel = LoginViewModel()
@@ -161,7 +179,6 @@ class LoginViewController: UIViewController {
                                 }
                             } else {
                                 print("loginSucess")
-                                self.loginCheckLabel.text = "로그인 성공"
                                 self.presentMainScreen()
                             }
                            })
@@ -173,7 +190,6 @@ class LoginViewController: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
         print("로그아웃이 완료되었습니다")
-        loginCheckLabel.text = "로그아웃 상태"
     }
     
     @IBAction func pressedRegisterBtn(_ sender: Any) {

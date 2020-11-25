@@ -18,6 +18,12 @@ class IntroMainViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var loginBtn: UIButton!
     
+    @IBOutlet weak var introPageVCHeight: NSLayoutConstraint! {
+        didSet {
+            let aspectHeight = (633 / 414) * UIScreen.main.bounds.width
+            introPageVCHeight.constant = aspectHeight
+        }
+    }
     lazy var maxNumberOfPages: Int = pageControl.numberOfPages - 1
     
     var currentPage = BehaviorRelay<Int>(value: 0)

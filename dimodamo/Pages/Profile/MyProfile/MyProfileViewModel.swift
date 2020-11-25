@@ -26,6 +26,20 @@ class MyProfileViewModel {
     
     var disposeBag = DisposeBag()
     
+    func myDptiType() -> String {
+        let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_DD"
+        return type
+    }
+    
+    func myDptiTypeIsDefault() -> Bool {
+        let type = myDptiType()
+        
+        if type == "DD" {
+            return true
+        }
+        return false
+    }
+    
     init() {
         profileUID
             .subscribe(onNext: { uid in

@@ -25,7 +25,7 @@ class HomeViewModel {
     let userUID: String = Auth.auth().currentUser?.uid ?? ""
     
     func myDptiType() -> String {
-        let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_TI"
+        let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_DD"
         return type
     }
     

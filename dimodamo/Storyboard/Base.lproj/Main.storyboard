@@ -335,7 +335,6 @@
                                     <state key="normal" image="setting_icon"/>
                                     <connections>
                                         <action selector="pressedSettingBtn:" destination="U1X-jK-vjF" eventType="touchUpInside" id="Ef0-Bz-Kb7"/>
-                                        <segue destination="iws-cX-vZT" kind="show" identifier="testVC" id="AbK-E8-2xJ"/>
                                     </connections>
                                 </button>
                             </barButtonItem>
@@ -355,6 +354,7 @@
                         <outlet property="profileNavBtn" destination="tRw-01-RW7" id="GWB-Ys-Hyx"/>
                         <outlet property="serviceBannerCollectionView" destination="qMD-V7-ND1" id="p3o-7H-tOq"/>
                         <segue destination="gfo-xX-ig8" kind="show" identifier="ServiceNoticeVC" id="alH-Uk-vMR"/>
+                        <segue destination="iws-cX-vZT" kind="show" identifier="testVC" id="PiW-yW-BlT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1m-jQ-IcS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -413,18 +413,30 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBE-5G-XxJ">
                                 <rect key="frame" x="56" y="127" width="70" height="30"/>
                                 <state key="normal" title="DPTI Main"/>
+                                <connections>
+                                    <action selector="pressDptiMain:" destination="iws-cX-vZT" eventType="touchUpInside" id="vpz-qK-v8G"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxO-0L-kDg">
                                 <rect key="frame" x="56" y="189" width="116" height="30"/>
                                 <state key="normal" title="Community Main"/>
+                                <connections>
+                                    <action selector="pressCommunityMain:" destination="iws-cX-vZT" eventType="touchUpInside" id="hUK-rN-zWR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpa-mj-e4N">
                                 <rect key="frame" x="56" y="247" width="57" height="30"/>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="pressRegister:" destination="iws-cX-vZT" eventType="touchUpInside" id="3vb-rV-dgP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3l-EP-8f8">
                                 <rect key="frame" x="56" y="310" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="pressLogin:" destination="iws-cX-vZT" eventType="touchUpInside" id="6Wd-Kv-aER"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b2B-VL-0wT"/>
