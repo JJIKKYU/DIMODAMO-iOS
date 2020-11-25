@@ -101,8 +101,14 @@ extension MainManitoChatVC: UITableViewDelegate, UITableViewDataSource {
          상대방 UID 및 type 세팅
          */
         let index = indexPath.row
-        vc.viewModel.yourType.accept(viewModel.manitoChatList[index].type)
-        vc.viewModel.yourUID.accept(viewModel.manitoChatList[index].uid)
+        let model = viewModel.chatListRelay.value[index]
+        
+        vc.viewModel.yourType = viewModel.getUserDpti(userUid: "\(model.target_user_uid)")
+        vc.viewModel.yourNickname = viewModel.getUserNickname(userUid: "\(model.target_user_uid)")
+        vc.viewModel.yourUID = "\(model.target_user_uid)"
+        
+        vc.viewModel.chatUid.accept("\(model.chat_room_uid)")
+        vc.viewModel.userDataArr = self.viewModel.userDataArr.value
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

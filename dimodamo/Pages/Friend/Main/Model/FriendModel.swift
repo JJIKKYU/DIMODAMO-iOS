@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct Messages: Codable {
-    let uid: String // messages의 uid
-    let message: String // 메세지 내용
-    let photo: String // 이미지 URL
-    let timestamp: Int
-    let user_uid: String // user_uid를 통해서 닉네임과 dpti 가져오기
-    let is_read: Bool // 읽음 표시
+struct Message {
+    var uid: String = "" // messages의 uid
+    var message: String = "" // 메세지 내용
+    var photo: String = "" // 이미지 URL
+    var timestamp: Int = 0
+    var user_uid: String = "" // user_uid를 통해서 닉네임과 dpti 가져오기
+    var is_read: Bool = false // 읽음 표시
 }
 
 struct ChatUsers: Codable {
