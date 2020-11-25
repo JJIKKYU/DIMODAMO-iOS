@@ -46,6 +46,10 @@ class APIService {
             return Disposables.create()
         }
     }
+    
+    // MARK: - HomeVC 공지 Json Parsing
+    
+    
 
     
 //    static func questionTitleParsing(onComplete : (Result<[String : Any], Error>) -> Void) {

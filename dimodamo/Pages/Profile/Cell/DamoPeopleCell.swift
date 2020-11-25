@@ -31,8 +31,8 @@ class DamoPeopleCell: UITableViewCell {
                 tag.layer.masksToBounds = true
                 
                 tag.textAlignment = .center
-                tag.attributedText = NSAttributedString.init(string: "안녕", attributes: [NSAttributedString.Key.baselineOffset : -1])
-            
+//                tag.attributedText = NSAttributedString.init(string: "안녕", attributes: [NSAttributedString.Key.baselineOffset : -1])
+//
 //                let labelWidthSize: CGFloat = tag.intrinsicContentSize.width + 32
 //                tag.widthAnchor.constraint(equalToConstant: labelWidthSize).isActive = true
             }

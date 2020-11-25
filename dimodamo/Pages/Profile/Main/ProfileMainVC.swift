@@ -38,13 +38,22 @@ class ProfileMainVC: UIViewController {
         
         navigationController?.view.backgroundColor = UIColor.white
         navigationController?.presentTransparentNavigationBar()
+        
+        // 네비게이션바 하단 밑줄 제거
+        // 네비게이션바 하단 그림자 추가
+        DispatchQueue.main.async {
+            self.tabBarController?.roundedTabbar()
+            self.navigationController?.hideBottomTabbarLine()
+        }
+        view.layoutIfNeeded()
+        
         animate()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         
-        navigationController?.view.backgroundColor = UIColor.clear
+//        navigationController?.view.backgroundColor = UIColor.clear
     }
     
     private func setColors(){
@@ -67,6 +76,14 @@ class ProfileMainVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setColors()
+        
+        // 네비게이션바 하단 밑줄 제거
+        // 네비게이션바 하단 그림자 추가
+        DispatchQueue.main.async {
+            self.tabBarController?.roundedTabbar()
+            self.navigationController?.hideBottomTabbarLine()
+        }
+        view.layoutIfNeeded()
     }
     
     override func viewDidLoad() {
@@ -133,6 +150,13 @@ class ProfileMainVC: UIViewController {
      */
     @IBAction func pressedMyProfileBtn(_ sender: Any) {
         performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.myProfile.rawValue, -1])
+    }
+    
+    /*
+     검색 버튼을 눌렀을 경우
+     */
+    @IBAction func pressedSearchBtn(_ sender: Any) {
+        performSegue(withIdentifier: "ProfileSearchVC", sender: sender)
     }
     
     /*

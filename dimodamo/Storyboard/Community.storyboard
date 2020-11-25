@@ -581,7 +581,7 @@
         <!--Article View Controller-->
         <scene sceneID="C11-9E-dj8">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iXc-eR-qQb" customClass="ArticleViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArtboardMainVC" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iXc-eR-qQb" customClass="ArticleViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z6y-uq-adB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -955,7 +955,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="Gbj-hO-1bX">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="uzi-lB-7YW" customClass="ArticleDetailViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleDetailVC" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="uzi-lB-7YW" customClass="ArticleDetailViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oa1-xd-Mzm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -970,10 +970,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U9e-Tx-pxr">
-                                                        <rect key="frame" x="0.0" y="63" width="414" height="244"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                     </imageView>
                                                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEv-qk-RPB" userLabel="ImgOpacityView">
-                                                        <rect key="frame" x="0.0" y="63" width="414" height="244"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGAZINE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-h0-QOv">
@@ -1032,7 +1032,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OjY-DP-qef">
-                                                <rect key="frame" x="377" y="121" width="17" height="22"/>
+                                                <rect key="frame" x="377" y="58" width="17" height="22"/>
                                                 <state key="normal" image="scrapIcon"/>
                                                 <connections>
                                                     <action selector="pressedScrapBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="AhS-qt-g8B"/>
@@ -1040,7 +1040,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="84" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msz-D3-dZv">
-                                                <rect key="frame" x="378.5" y="145" width="14.5" height="15.5"/>
+                                                <rect key="frame" x="378.5" y="82" width="14.5" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="Nunito-ExtraBold" family="Nunito" pointSize="13"/>
                                                 <color key="textColor" name="WHITE"/>
                                                 <nil key="highlightedColor"/>
@@ -1335,7 +1335,7 @@
                                 </constraints>
                             </scrollView>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRx-oa-fbu" customClass="LottieLoadingView2" customModule="dimodamo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="292" width="414" height="570"/>
+                                <rect key="frame" x="0.0" y="355" width="414" height="507"/>
                                 <color key="backgroundColor" name="WHITE"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYD-Mh-DWj">
@@ -3369,8 +3369,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="a4Z-5V-8SM"/>
-        <segue reference="ROi-qZ-LzO"/>
+        <segue reference="BzL-x2-Mhd"/>
+        <segue reference="Ae2-2V-5qG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BC_Char_Yellow_M2_0" width="382" height="348"/>

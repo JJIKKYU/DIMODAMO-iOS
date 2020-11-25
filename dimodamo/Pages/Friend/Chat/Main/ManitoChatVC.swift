@@ -57,7 +57,9 @@ class ManitoChatVC: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.appColor(.white255)
         
         // 해당 유저 컬러로 변경할 것
-        let userType = viewModel.yourType.value
+        guard let userType = viewModel.yourType else {
+            return
+        }
         navigationController?.navigationBar.barTintColor = UIColor.dptiDarkColor(userType)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -81,10 +83,15 @@ class ManitoChatVC: UIViewController {
         tableView.dataSource = self
         tableviewSetting()
         
-        viewModel.yourType
+        /*
+         메세지가 로딩이 다 되었으면 테이블 로드
+         */
+        self.viewModel.messageLoadingRelay
             .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { type in
-                
+            .subscribe(onNext: { [weak self] flag in
+                if flag == true {
+                    self?.tableView.reloadData()
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -124,17 +131,23 @@ extension ManitoChatVC: UITableViewDelegate, UITableViewDataSource, TableReloadP
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return viewModel.messageArrRelay.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let yourCell = tableView.dequeueReusableCell(withIdentifier: "YourChat", for: indexPath) as! YourChatCell
-        let yourType = viewModel.yourType.value
+        guard let yourType = viewModel.yourType else {
+            return UITableViewCell()
+        }
+        
+        let index = indexPath.row
+        let model = viewModel.messageArrRelay.value[index]
         
         yourCell.profile.image = UIImage(named: "Profile_\(yourType)")
         yourCell.messageBox.layer.borderColor = UIColor.dptiDarkColor(yourType).cgColor
         yourCell.chagneColorGoodSign(yourType: "\(yourType)")
         yourCell.delegate = self
+        yourCell.messageBox.text = "\(model.message)"
         
         return yourCell
     }

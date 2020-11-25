@@ -12,7 +12,7 @@ import Foundation
 // 추가된다면 DPTI 추가 될듯
 struct Register {
     var createdAt: String = ""
-    var dpti: String = ""
+    var dpti: String = "DD"
     var Gender: Gender = .male
     
     
@@ -35,9 +35,17 @@ struct Register {
     var heartComments: [String] = []
     
     func getDict() -> [String:Any] {
+        var dptiTypeString: String = ""
+        if dpti == "DD" {
+            dptiTypeString = "DD"
+        } else {
+            dptiTypeString = "\(self.Gender.description)_\(self.dpti)"
+        }
+        
+        
         let dict: [String:Any] = [
             "created_at" : self.createdAt,
-            "dpti" : "",
+            "dpti" : "\(dptiTypeString)",
             "gender": self.Gender.description,
             "id": self.id,
             "get_comment_heart_comment" : getCommentHeartCounnt,
@@ -88,9 +96,9 @@ enum Gender {
     var description: String {
         switch self {
         case .female:
-            return "female"
+            return "F"
         case .male:
-            return "male"
+            return "M"
         }
     }
 }

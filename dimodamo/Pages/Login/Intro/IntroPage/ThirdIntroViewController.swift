@@ -12,7 +12,16 @@ import Lottie
 
 class ThirdIntroViewController: UIViewController {
 
-    @IBOutlet weak var animationContainerView: UIView!
+    @IBOutlet weak var animationConstraintHeight: NSLayoutConstraint!
+    @IBOutlet weak var animationContainerView: UIView! {
+        didSet {
+            let screenWidtSize = UIScreen.main.bounds.width
+            let aspect: CGFloat = 0.96
+            let resizeHeight = screenWidtSize * aspect
+            
+            animationConstraintHeight.constant = resizeHeight
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
