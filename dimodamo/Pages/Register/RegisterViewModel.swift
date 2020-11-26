@@ -56,6 +56,8 @@ class RegisterViewModel {
     // 학교 인증
     var schoolCardImageData: Data?
     var schoolCertificationState: CertificationState = .none
+    let schoolArrData: [[String]] = [["홍익대학교"]] // 학교 목록
+    var schoolIdRelay = BehaviorRelay<String>(value: "")
     
     
     // 최종 유저 프로필

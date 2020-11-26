@@ -12,9 +12,6 @@
         <array key="SF-Pro-Display-Heavy.otf">
             <string>SFProDisplay-Heavy</string>
         </array>
-        <array key="SF-Pro-Display-Medium.otf">
-            <string>SFProDisplay-Medium</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Clause View Controller-->
@@ -1567,8 +1564,50 @@
                                                 <color key="textColor" name="TEXT - BIG"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nl7-xj-pmv">
-                                                <rect key="frame" x="0.0" y="299" width="374" height="230"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="다니시는 학교를 선택해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6t-8z-c45" customClass="McTextField" customModule="McPicker">
+                                                <rect key="frame" x="4" y="162" width="366" height="22"/>
+                                                <color key="textColor" name="GRAY - 170"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrw-Oj-nFf" userLabel="DivideLine">
+                                                <rect key="frame" x="4" y="196" width="366" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <color key="tintColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="BP8-of-7Ok"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ple-nB-Rk0" userLabel="DivideLine">
+                                                <rect key="frame" x="4" y="263" width="366" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <color key="tintColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="2T4-6P-EiJ"/>
+                                                </constraints>
+                                            </view>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학번을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sbq-8f-R0a">
+                                                <rect key="frame" x="4" y="229" width="366" height="22"/>
+                                                <color key="textColor" name="GRAY - 170"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학생증을 촬영해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElX-lo-bD1">
+                                                <rect key="frame" x="4" y="313" width="366" height="21"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <color key="textColor" name="GRAY - 210"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="z7m-td-hbE">
+                                                <rect key="frame" x="358" y="169.5" width="12" height="7.5"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="12" id="5Zz-Aj-LAc"/>
+                                                    <constraint firstAttribute="height" constant="7.5" id="IhY-mu-yVY"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nl7-xj-pmv">
+                                                <rect key="frame" x="0.0" y="346" width="374" height="230"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="230" id="G5k-LX-ApP"/>
                                                 </constraints>
@@ -1577,34 +1616,39 @@
                                                     <action selector="pressSchoolCardBtn:" destination="RVb-Vv-BpH" eventType="touchUpInside" id="gKT-1M-Zcy"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학번을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sbq-8f-R0a">
-                                                <rect key="frame" x="135" y="176" width="97" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="textColor" name="GRAY - 170"/>
-                                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="SYSTEM"/>
                                         <constraints>
+                                            <constraint firstItem="rrw-Oj-nFf" firstAttribute="top" secondItem="t6t-8z-c45" secondAttribute="bottom" constant="12" id="03n-R9-Xuh"/>
                                             <constraint firstAttribute="trailing" secondItem="DzP-US-hCU" secondAttribute="trailing" id="5HK-Xw-xE9"/>
+                                            <constraint firstAttribute="trailing" secondItem="t6t-8z-c45" secondAttribute="trailing" constant="4" id="9yz-eD-zkH"/>
+                                            <constraint firstItem="Nl7-xj-pmv" firstAttribute="top" secondItem="ElX-lo-bD1" secondAttribute="bottom" constant="12" id="BvY-Og-yj9"/>
                                             <constraint firstAttribute="trailing" secondItem="Nl7-xj-pmv" secondAttribute="trailing" id="CIe-Xb-uRa"/>
+                                            <constraint firstItem="rrw-Oj-nFf" firstAttribute="leading" secondItem="t6t-8z-c45" secondAttribute="leading" id="FQW-6b-o8k"/>
                                             <constraint firstItem="y2j-hd-Es8" firstAttribute="trailing" secondItem="DzP-US-hCU" secondAttribute="trailing" id="J1r-CQ-V7e"/>
+                                            <constraint firstItem="Ple-nB-Rk0" firstAttribute="top" secondItem="Sbq-8f-R0a" secondAttribute="bottom" constant="12" id="MYM-Vx-3XX"/>
+                                            <constraint firstItem="Ple-nB-Rk0" firstAttribute="leading" secondItem="Sbq-8f-R0a" secondAttribute="leading" id="OMp-4c-9Lf"/>
+                                            <constraint firstItem="ElX-lo-bD1" firstAttribute="trailing" secondItem="Sbq-8f-R0a" secondAttribute="trailing" id="PLz-JW-rmB"/>
                                             <constraint firstAttribute="height" constant="1000" id="Paq-eq-mHe"/>
+                                            <constraint firstItem="t6t-8z-c45" firstAttribute="top" secondItem="y2j-hd-Es8" secondAttribute="bottom" constant="80" id="Qg2-m5-cm1"/>
+                                            <constraint firstItem="Sbq-8f-R0a" firstAttribute="top" secondItem="rrw-Oj-nFf" secondAttribute="bottom" constant="31" id="SdT-c7-zkJ"/>
+                                            <constraint firstItem="ElX-lo-bD1" firstAttribute="top" secondItem="Ple-nB-Rk0" secondAttribute="bottom" constant="48" id="Wch-lI-xO6"/>
                                             <constraint firstItem="y2j-hd-Es8" firstAttribute="leading" secondItem="DzP-US-hCU" secondAttribute="leading" id="Zbd-hh-a04"/>
+                                            <constraint firstItem="rrw-Oj-nFf" firstAttribute="trailing" secondItem="t6t-8z-c45" secondAttribute="trailing" id="bKO-ow-a9e"/>
+                                            <constraint firstItem="t6t-8z-c45" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" constant="4" id="dAn-F1-Tol"/>
+                                            <constraint firstItem="ElX-lo-bD1" firstAttribute="leading" secondItem="Sbq-8f-R0a" secondAttribute="leading" id="f5h-zf-i2j"/>
+                                            <constraint firstItem="rrw-Oj-nFf" firstAttribute="top" secondItem="z7m-td-hbE" secondAttribute="bottom" constant="19" id="fyT-dB-RGc"/>
                                             <constraint firstItem="Nl7-xj-pmv" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="g2B-ck-qFz"/>
+                                            <constraint firstItem="Ple-nB-Rk0" firstAttribute="trailing" secondItem="Sbq-8f-R0a" secondAttribute="trailing" id="kd3-RH-rBQ"/>
                                             <constraint firstItem="DzP-US-hCU" firstAttribute="top" secondItem="XkK-vm-O1y" secondAttribute="top" constant="24" id="r8W-A3-sDh"/>
+                                            <constraint firstItem="z7m-td-hbE" firstAttribute="trailing" secondItem="rrw-Oj-nFf" secondAttribute="trailing" id="sNZ-d9-vro"/>
                                             <constraint firstItem="y2j-hd-Es8" firstAttribute="top" secondItem="DzP-US-hCU" secondAttribute="bottom" constant="25" id="tZR-nu-sEc"/>
+                                            <constraint firstItem="Sbq-8f-R0a" firstAttribute="trailing" secondItem="t6t-8z-c45" secondAttribute="trailing" id="uA6-vF-r40"/>
+                                            <constraint firstItem="Sbq-8f-R0a" firstAttribute="leading" secondItem="rrw-Oj-nFf" secondAttribute="leading" id="ul8-Kb-GCA"/>
                                             <constraint firstItem="DzP-US-hCU" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="utD-bs-9dr"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="다니시는 학교를 선택해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6t-8z-c45">
-                                        <rect key="frame" x="159" y="106" width="97" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
@@ -1673,7 +1717,12 @@
                         <outlet property="nextTryBtn" destination="ugl-ao-Oe1" id="6zU-Cp-02I"/>
                         <outlet property="progress" destination="DzP-US-hCU" id="WJI-3N-big"/>
                         <outlet property="schoolCardBtn" destination="Nl7-xj-pmv" id="uDI-0e-mj1"/>
+                        <outlet property="schoolCartBtnHeightConstraint" destination="G5k-LX-ApP" id="Yuo-3M-a3M"/>
                         <outlet property="schoolDropDownView" destination="nUV-fB-gDZ" id="r7I-Ut-SvJ"/>
+                        <outlet property="schoolIdLine" destination="Ple-nB-Rk0" id="MWC-VB-38O"/>
+                        <outlet property="schoolIdTextField" destination="Sbq-8f-R0a" id="9SI-nA-3qD"/>
+                        <outlet property="schoolLine" destination="rrw-Oj-nFf" id="5dX-sN-9fY"/>
+                        <outlet property="schoolTextField" destination="t6t-8z-c45" id="Mhu-8U-G92"/>
                         <segue destination="YZI-bj-yhp" kind="show" identifier="RegisterFinish" id="PbT-PS-fAk"/>
                     </connections>
                 </viewController>
@@ -2039,6 +2088,7 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="down_arrow" width="12" height="8"/>
         <image name="registerClear" width="359" height="322"/>
         <image name="schoolCard" width="374" height="230"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

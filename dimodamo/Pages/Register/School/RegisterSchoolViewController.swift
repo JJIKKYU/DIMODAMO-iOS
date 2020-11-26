@@ -14,16 +14,30 @@ import RxCocoa
 import FirebaseStorage
 import FirebaseAuth
 
-import YNDropDownMenu
+import McPicker
 
 class RegisterSchoolViewController: UIViewController {
     
     @IBOutlet weak var finishBtn: UIButton!
     @IBOutlet weak var nextTryBtn: UIButton!
     @IBOutlet weak var progress: UIProgressView!
-    @IBOutlet weak var schoolCardBtn: UIButton!
+    
+    @IBOutlet weak var schoolCartBtnHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var schoolCardBtn: UIButton! {
+        didSet {
+            let aspectHeight = (230 / 414) * UIScreen.main.bounds.width
+            schoolCartBtnHeightConstraint?.constant = aspectHeight
+        }
+    }
+    
     
     @IBOutlet var schoolDropDownView: UIView!
+    @IBOutlet weak var schoolTextField: McTextField!
+    @IBOutlet weak var schoolLine: UIView!
+    
+    @IBOutlet weak var schoolIdTextField: UITextField!
+    @IBOutlet weak var schoolIdLine: UIView!
+    
     
     var viewModel: RegisterViewModel?
     var disposeBag = DisposeBag()
@@ -33,11 +47,27 @@ class RegisterSchoolViewController: UIViewController {
         super.viewDidLoad()
         viewDesisgn()
         imagePickerController.delegate = self
+        self.pickerSchoolTextfieldSetting()
         
-        let view = YNDropDownMenu(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 42, height: 200), dropDownViews: [schoolDropDownView], dropDownViewTitles: ["호롤롤로"])
-        self.view.addSubview(view)
+        schoolIdTextField.rx.text.orEmpty
+            .map { $0 as String }
+            .bind(to: self.viewModel!.schoolIdRelay)
+            .disposed(by: disposeBag)
         
-        // Do any additional setup after loading the view.
+        self.viewModel?.schoolIdRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] id in
+                if id.count == 7 {
+                    UIView.animate(withDuration: 0.5) {
+                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.gray190)
+                    }
+                } else {
+                    UIView.animate(withDuration: 0.5) {
+                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.white235)
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     @IBAction func pressCloseBtn(_ sender: Any) {
@@ -90,6 +120,49 @@ extension RegisterSchoolViewController {
     func viewDesisgn() {
 //        self.nextTryBtn.layer.cornerRadius = 16
         AppStyleGuide.systemBtnRadius16(btn: finishBtn, isActive: false)
+    }
+    
+    func pickerSchoolTextfieldSetting() {
+//        guard let schoolData = self.viewModel?.schoolArrData else {
+//            return
+//        }
+        
+        // 임시데이터
+        let schoolArrData: [[String]] = [["홍익대학교"]]
+        let data: [[String]] = schoolArrData
+        let mcInputView = McPicker(data: data)
+        mcInputView.backgroundColor = .gray
+        mcInputView.backgroundColorAlpha = 0.25
+        schoolTextField.inputViewMcPicker = mcInputView
+        
+        schoolTextField.doneHandler = { [weak schoolTextField] (selections) in
+            schoolTextField?.text = selections[0]!
+            UIView.animate(withDuration: 0.5) {
+                self.schoolLine.backgroundColor = UIColor.appColor(.gray190)
+            }
+        }
+        schoolTextField.selectionChangedHandler = { [weak schoolTextField] (selections, componentThatChanged) in
+            schoolTextField?.text = selections[componentThatChanged]!
+            UIView.animate(withDuration: 0.5) {
+                self.schoolLine.backgroundColor = UIColor.appColor(.gray190)
+            }
+        }
+        schoolTextField.cancelHandler = { [weak schoolTextField] in
+            schoolTextField?.text = "다니시는 학교를 선택해 주세요."
+            UIView.animate(withDuration: 0.5) {
+                self.schoolLine.backgroundColor = UIColor.appColor(.white235)
+            }
+        }
+        schoolTextField.textFieldWillBeginEditingHandler = { [weak schoolTextField] (selections) in
+            if schoolTextField?.text == "" {
+                // Selections always default to the first value per component
+                schoolTextField?.text = selections[0]
+                UIView.animate(withDuration: 0.5) {
+                    self.schoolLine.backgroundColor = UIColor.appColor(.white235)
+                }
+            }
+        }
+        
     }
 }
 
