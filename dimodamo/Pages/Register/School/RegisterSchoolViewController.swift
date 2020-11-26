@@ -14,12 +14,16 @@ import RxCocoa
 import FirebaseStorage
 import FirebaseAuth
 
+import YNDropDownMenu
+
 class RegisterSchoolViewController: UIViewController {
     
     @IBOutlet weak var finishBtn: UIButton!
     @IBOutlet weak var nextTryBtn: UIButton!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var schoolCardBtn: UIButton!
+    
+    @IBOutlet var schoolDropDownView: UIView!
     
     var viewModel: RegisterViewModel?
     var disposeBag = DisposeBag()
@@ -29,6 +33,9 @@ class RegisterSchoolViewController: UIViewController {
         super.viewDidLoad()
         viewDesisgn()
         imagePickerController.delegate = self
+        
+        let view = YNDropDownMenu(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 42, height: 200), dropDownViews: [schoolDropDownView], dropDownViewTitles: ["호롤롤로"])
+        self.view.addSubview(view)
         
         // Do any additional setup after loading the view.
     }
@@ -58,7 +65,7 @@ class RegisterSchoolViewController: UIViewController {
         viewModel?.makeStructUserProfile()
         viewModel?.signUp()
         if viewModel?.canUploadSchoolCard() == false {
-            let alert = UIAlertController(title: "사진을 촬영해주세요", message: "학교 인증 어쩌구", preferredStyle: .alert)
+            let alert = UIAlertController(title: "학생증을 촬영해 주세요", message: "", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }

@@ -12,6 +12,9 @@
         <array key="SF-Pro-Display-Heavy.otf">
             <string>SFProDisplay-Heavy</string>
         </array>
+        <array key="SF-Pro-Display-Medium.otf">
+            <string>SFProDisplay-Medium</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Clause View Controller-->
@@ -1544,7 +1547,7 @@
         <!--Register School View Controller-->
         <scene sceneID="TGh-Ie-D9t">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="RVb-Vv-BpH" customClass="RegisterSchoolViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterSchoolVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RVb-Vv-BpH" customClass="RegisterSchoolViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mc2-oP-Pga">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1553,7 +1556,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="684"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkK-vm-O1y" userLabel="ContentView">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="420"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="1000"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.83999999999999997" translatesAutoresizingMaskIntoConstraints="NO" id="DzP-US-hCU">
                                                 <rect key="frame" x="0.0" y="24" width="374" height="4"/>
@@ -1564,8 +1567,8 @@
                                                 <color key="textColor" name="TEXT - BIG"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nl7-xj-pmv">
-                                                <rect key="frame" x="0.0" y="162" width="374" height="230"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nl7-xj-pmv">
+                                                <rect key="frame" x="0.0" y="299" width="374" height="230"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="230" id="G5k-LX-ApP"/>
                                                 </constraints>
@@ -1574,15 +1577,21 @@
                                                     <action selector="pressSchoolCardBtn:" destination="RVb-Vv-BpH" eventType="touchUpInside" id="gKT-1M-Zcy"/>
                                                 </connections>
                                             </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학번을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sbq-8f-R0a">
+                                                <rect key="frame" x="135" y="176" width="97" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" name="GRAY - 170"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="SYSTEM"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="DzP-US-hCU" secondAttribute="trailing" id="5HK-Xw-xE9"/>
                                             <constraint firstAttribute="trailing" secondItem="Nl7-xj-pmv" secondAttribute="trailing" id="CIe-Xb-uRa"/>
-                                            <constraint firstItem="Nl7-xj-pmv" firstAttribute="top" secondItem="y2j-hd-Es8" secondAttribute="bottom" constant="80" id="EOP-Od-YL0"/>
                                             <constraint firstItem="y2j-hd-Es8" firstAttribute="trailing" secondItem="DzP-US-hCU" secondAttribute="trailing" id="J1r-CQ-V7e"/>
-                                            <constraint firstAttribute="height" constant="420" id="Paq-eq-mHe"/>
+                                            <constraint firstAttribute="height" constant="1000" id="Paq-eq-mHe"/>
                                             <constraint firstItem="y2j-hd-Es8" firstAttribute="leading" secondItem="DzP-US-hCU" secondAttribute="leading" id="Zbd-hh-a04"/>
                                             <constraint firstItem="Nl7-xj-pmv" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="g2B-ck-qFz"/>
                                             <constraint firstItem="DzP-US-hCU" firstAttribute="top" secondItem="XkK-vm-O1y" secondAttribute="top" constant="24" id="r8W-A3-sDh"/>
@@ -1590,6 +1599,12 @@
                                             <constraint firstItem="DzP-US-hCU" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="utD-bs-9dr"/>
                                         </constraints>
                                     </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="다니시는 학교를 선택해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6t-8z-c45">
+                                        <rect key="frame" x="159" y="106" width="97" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
@@ -1658,12 +1673,28 @@
                         <outlet property="nextTryBtn" destination="ugl-ao-Oe1" id="6zU-Cp-02I"/>
                         <outlet property="progress" destination="DzP-US-hCU" id="WJI-3N-big"/>
                         <outlet property="schoolCardBtn" destination="Nl7-xj-pmv" id="uDI-0e-mj1"/>
+                        <outlet property="schoolDropDownView" destination="nUV-fB-gDZ" id="r7I-Ut-SvJ"/>
                         <segue destination="YZI-bj-yhp" kind="show" identifier="RegisterFinish" id="PbT-PS-fAk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqI-n9-EC5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="nUV-fB-gDZ">
+                    <rect key="frame" x="0.0" y="0.0" width="396" height="230"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="테스트하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DK0-vo-7Y6">
+                            <rect key="frame" x="177" y="114" width="74" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    <color key="tintColor" name="GRAY - 170"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="4248" y="420"/>
+            <point key="canvasLocation" x="4245" y="420"/>
         </scene>
         <!--Service1 Detail View Controller-->
         <scene sceneID="16D-Cd-oFu">
@@ -1875,7 +1906,7 @@
         <!--Register Clear View Controller-->
         <scene sceneID="uPS-T3-Yku">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="YZI-bj-yhp" customClass="RegisterClearViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YZI-bj-yhp" customClass="RegisterClearViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sss-U8-15C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2049,6 +2080,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
