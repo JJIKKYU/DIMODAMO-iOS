@@ -21,9 +21,9 @@ struct UserSurveyAnswer {
 
 struct FeedbackCardTitle {
     var title : [String] = [
-        "좋아! 아주 멋져~",
-        "매우 잘하고 있어!",
-        "좋아 최고야~",
-        "잠시만 기다려줘!"
+        "좋아! 잘하고 있어!",
+        "호~ 그렇단 말이지!",
+        "와! 아주 멋진걸?",
+        "결과를 보러가자!"
     ]
 }

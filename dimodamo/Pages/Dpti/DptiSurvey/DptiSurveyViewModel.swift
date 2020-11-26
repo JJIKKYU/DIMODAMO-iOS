@@ -51,10 +51,9 @@ class DptiSurveyViewModel {
         
         docRef.getDocument { document, error in
             if let document = document, document.exists {
-                _ = document.data().map(String.init(describing:)) ?? "nil"
-//                print("documnet data : \(dataDescription)")
-                let gender: String = document.data()?["gender"] as! String
-                self.gender = gender == "female" ? "G" : "M"
+                if let gender: String = document.data()?["gender"] as? String {
+                    self.gender = gender
+                }
                 print(self.gender)
             } else {
                 print("documnet does not exist")
@@ -138,9 +137,10 @@ class DptiSurveyViewModel {
             else { colorType = "P" }
         }
         
-        let finalType: String = "\(colorType)\(figureType)"
+        let finalType: String = "\(self.gender)_\(colorType)\(figureType)"
         
         print("finalType : \(finalType)")
+    
         
         return finalType
     }

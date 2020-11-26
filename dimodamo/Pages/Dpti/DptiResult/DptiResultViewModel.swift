@@ -14,10 +14,13 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class DptiResultViewModel {
+    
+    private let db = Firestore.firestore()
+    
     var resultTypes : [[String : Any]] = []
     
     // Survey 이후 최종 User Type
-    var type : String = "TI"
+    var type : String = "M_TI"
     
     var gender: String = ""
     
@@ -44,6 +47,8 @@ class DptiResultViewModel {
     
     func setType(type: String) {
         self.type = type
+        // 타입을 지정할 때, 저장도 함께 진행
+        self.saveType()
        
         _ = APIService.fetchLocalJsonRx(fileName: "Results")
             .map { data -> [[String : Any]] in
@@ -64,15 +69,33 @@ class DptiResultViewModel {
         }
         .map { dptiResultsArray -> DptiResult in
             let finalUserType = dptiResultsArray.filter{
-                $0.type == self.type
+                $0.type == self.getOnlyTypeWithoutGender(type: self.type)
             }
             print("$0.type = \(self.type)")
             return finalUserType[0]
         }
         .take(1)
         .bind(to: resultObservable)
+    }
+    
+    // 검사 결과 유저 정보에 저장
+    func saveType() {
+        guard let userUID: String = Auth.auth().currentUser?.uid else {
+            return
+        }
         
+        db.collection("users").document("\(userUID)")
+            .updateData(["dpti" : "\(self.type)"])
         
+        print("유저의 dpti를 변경했습니다.")
+    }
+    
+    func getOnlyTypeWithoutGender(type: String) -> String {
+        let startIdx = type.index(type.startIndex, offsetBy: 2)
+        let endIdx = type.index(before: type.endIndex)
+        let range = startIdx...endIdx
+        
+        return String(type[range])
     }
     
     func setGender(gender: String) {

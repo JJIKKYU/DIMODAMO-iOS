@@ -14,10 +14,23 @@ import Lottie
 
 class DptiResultViewController: UIViewController {
 
+    // height는 빌드할 때 사라지도록 해놓음
+    @IBOutlet weak var resultCardView: UIView! {
+        didSet {
+            resultCardView.layer.cornerRadius = 24
+            let aspectRatioHeight: CGFloat = (348 / 414) * UIScreen.main.bounds.width
+            resultCardView.heightAnchor.constraint(equalToConstant: aspectRatioHeight).isActive = true
+            resultCardView.appShadow(.s12)
+        }
+    }
+    
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var resultCardView: UIView!
     @IBOutlet weak var typeTitle: UILabel!
-    @IBOutlet weak var typeIcon: UIImageView!
+    @IBOutlet weak var typeIcon: UIImageView! {
+        didSet {
+            typeIcon.appShadow(.s12)
+        }
+    }
     @IBOutlet weak var typeDesc: UITextView!
     @IBOutlet weak var typeChar: UIImageView!
     @IBOutlet weak var patternBG: UIImageView!
@@ -117,9 +130,10 @@ class DptiResultViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe (onNext : { value in
                 print(value)
-                self.lottieChar(type: self.viewModel.type, gender: self.viewModel.genderObservable.value)
+                self.lottieChar(type: self.viewModel.type)
             })
             .disposed(by: disposeBag)
+
         
         
                 
@@ -161,12 +175,6 @@ class DptiResultViewController: UIViewController {
             .asDriver(onErrorJustReturn: UIColor.black)
             .drive(resultCardView.rx.backgroundColor)
             .disposed(by: disposeBag)
-
-        
-        resultCardView.layer.cornerRadius = 24
-        resultCardView.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
-    
-        typeIcon.addShadow(offset: CGSize(width: 0, height: 4), color: UIColor.black, radius: 16, opacity: 0.12)
         
         // ColorSetting
         positionDesc.textColor = UIColor.appColor(.system)
@@ -183,22 +191,21 @@ class DptiResultViewController: UIViewController {
         }
     }
     
-    var animationView: AnimationView?
-    
-    func lottieChar(type: String, gender: String) {
-        animationView = Lottie.AnimationView.init(name: "\(type)_\(gender)")
-        animationView?.contentMode = .scaleAspectFill
-        animationView?.backgroundBehavior = .pauseAndRestore
+    func lottieChar(type: String) {
+        let animationView = Lottie.AnimationView.init(name: "\(type)")
+        animationView.contentMode = .scaleAspectFill
+        animationView.backgroundBehavior = .pauseAndRestore
         
-        // Test
-        typeChar.subviews.forEach({ $0.removeFromSuperview() })
-        
-        typeChar.addSubview(animationView!)
+        resultCardView.addSubview(animationView)
+        animationView.topAnchor.constraint(equalTo: resultCardView.topAnchor, constant: 0).isActive = true
+        animationView.leftAnchor.constraint(equalTo: resultCardView.leftAnchor, constant: 0).isActive = true
+        animationView.rightAnchor.constraint(equalTo: resultCardView.rightAnchor, constant: 0).isActive = true
+        animationView.bottomAnchor.constraint(equalTo: resultCardView.bottomAnchor, constant: 0).isActive = true
         
         typeChar.image = nil
         typeChar.layer.cornerRadius = 24
-        animationView?.play()
-        animationView?.loopMode = .loop
+        animationView.play()
+        animationView.loopMode = .loop
     }
 
     /*

@@ -95,12 +95,6 @@ class DptiSurveyViewController: UIViewController {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if touches.count == 2 {
-            print("2번 눌렀읍니다.")
-        }
-    }
-    
 
     // MARK: - UI
     
@@ -110,8 +104,6 @@ class DptiSurveyViewController: UIViewController {
     
     
     @objc func selectBtn(sender : UIButton) {
-        
-        print("터치터치 \(sender.tag), \(sender)")
  
         // all answer border color & text color init
         for answer in answers {
