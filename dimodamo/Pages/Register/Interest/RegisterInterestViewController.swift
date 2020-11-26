@@ -131,7 +131,7 @@ extension RegisterInterestViewController {
     
     func designNextBtn() {
         nextBtn?.backgroundColor = UIColor.appColor(.gray210)
-        nextBtn?.layer.cornerRadius = 16
+//        nextBtn?.layer.cornerRadius = 16
     }
     
     func selectedBtn(button: UIButton, isSelected: Bool) {

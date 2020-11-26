@@ -20,7 +20,8 @@ class ArticleDetailViewModel {
     
     private let storage = Storage.storage().reference()
     private let db = Firestore.firestore()
-    var userUID: String?
+    var userUID: String? // 글을 작성한 user의 UID
+    let myUID = Auth.auth().currentUser?.uid
     
     /*
      POSTUID를 main에서 prepare로 전달 받았을 경우에 초기화 시작
@@ -238,7 +239,7 @@ class ArticleDetailViewModel {
     }
     
     func userDataSetting() {
-        guard let userUID = self.userUID else {
+        guard let userUID: String = self.myUID else {
             return
         }
         
@@ -346,9 +347,9 @@ class ArticleDetailViewModel {
         print("전달받았습니다 : \(uid)")
         
         let commentCellDocument = db.collection("\(commentDB)").document("\(uid)")
-        guard let userUID = self.userUID else  {
+        guard let userUID: String = self.myUID else {
             return
-       	 }
+        }
         let userData = db.collection("users").document("\(userUID)")
 
         var currentHeartCount: Int?
@@ -411,9 +412,10 @@ class ArticleDetailViewModel {
     
     func pressedScrapBtn() {
 //        print("전달받았습니다. : \(uid)")
-        guard let userUID = self.userUID else  {
+        guard let userUID: String = self.myUID else {
             return
         }
+        
         let userData = db.collection("users").document("\(userUID)")
         let documentData = db.collection("\(postDB)").document("\(self.postUidRelay.value)")
         

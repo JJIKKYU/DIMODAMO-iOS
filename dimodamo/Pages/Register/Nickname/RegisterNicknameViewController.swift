@@ -186,6 +186,6 @@ extension RegisterNicknameViewController {
     
     func designNextBtn() {
         nextBtn?.backgroundColor = UIColor.appColor(.gray210)
-        nextBtn?.layer.cornerRadius = 16
+//        nextBtn?.layer.cornerRadius = 16
     }
 }

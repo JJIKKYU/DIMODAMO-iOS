@@ -22,6 +22,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var profileNavBtn: UIButton! {
         didSet {
             profileNavBtn.setImage(UIImage(named: "24_Profile_\(viewModel.myDptiType())"), for: .normal)
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -201,6 +202,20 @@ class HomeVC: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        switch segue.identifier {
+        case "ServiceNoticeVC":
+            let destination = segue.destination as! NoticeVC
+            let index = sender as! Int
+            print("link를 전달합니다.\(viewModel.serviceBannerUrlArr[index])")
+            destination.urlRelay.accept(viewModel.serviceBannerUrlArr[index])
+            
+            break
+            
+        default:
+            break
+        }
     }
     
 
@@ -307,7 +322,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
         
-        performSegue(withIdentifier: "ServiceNoticeVC", sender: [DimoKinds.dimo.rawValue, index])
+        performSegue(withIdentifier: "ServiceNoticeVC", sender: index)
     }
     
     func serviceBannerCollectionViewSetting() {

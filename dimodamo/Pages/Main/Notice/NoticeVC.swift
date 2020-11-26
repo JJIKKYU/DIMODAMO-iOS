@@ -10,15 +10,29 @@ import UIKit
 
 import WebKit
 
+import RxRelay
+import RxSwift
+import RxCocoa
+
 class NoticeVC: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
+    var url: String?
+    
+    let urlRelay = BehaviorRelay<String>(value: "")
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.loadUrl()
-        // Do any additional setup after loading the view.
+        urlRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] url in
+                if url.count > 0 {
+                    self?.loadUrl()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
 
@@ -41,8 +55,11 @@ extension NoticeVC: WKUIDelegate, WKNavigationDelegate {
 //        view.addSubview(webView)
         
         // WKWebview Setting
-        let url = URL(string: "http://dimodamo.com")
-        let request = URLRequest(url: url!)
+        guard let url = URL(string: "\(self.urlRelay.value)") else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
         
         webView.load(request)
         

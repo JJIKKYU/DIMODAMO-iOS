@@ -39,6 +39,7 @@ class HomeViewModel {
      */
     var serviceBannerImgUrlString375: [String] = []
     var serviceBannerImgUrlString414: [String] = []
+    var serviceBannerUrlArr: [String] = []
     let serviceBannerLoading = BehaviorRelay<Bool>(value: false)
     
     
@@ -54,10 +55,11 @@ class HomeViewModel {
     }
     
     func loadServiceBanner() {
-        let serviceBannerJsonURL = "https://firebasestorage.googleapis.com/v0/b/dimodamo-f9e85.appspot.com/o/service_banner%2Fservice_banner.json?alt=media&token=a8edaa82-7c89-4eb7-b625-ee6705749c1c"
+        let serviceBannerJsonURL = "http://dimodamo.com/appService/service_banner.json"
         
         var newImageStringArr375: [String] = []
         var newImageStringArr414: [String] = []
+        var newNoticUrlArr: [String] = []
         
         AF.request(serviceBannerJsonURL, method: .get)
             .validate().responseData{ response in
@@ -68,15 +70,16 @@ class HomeViewModel {
                         
                         if let bannerImgUrlArr = newJson.array {
                             for i in 0..<bannerImgUrlArr.count {
-                                // let value = siArray[i]["value"]
-                                // values.append(value.stringValue)
-                                print(bannerImgUrlArr[i]["banner_image"].stringValue)
+                                
+                                newNoticUrlArr.append(bannerImgUrlArr[i]["link"].stringValue)
+                                print("##### \(bannerImgUrlArr[i]["link"].stringValue)")
                                 newImageStringArr375.append(bannerImgUrlArr[i]["banner_image_375"].stringValue)
                                 newImageStringArr414.append(bannerImgUrlArr[i]["banner_image_414"].stringValue)
                             }
                         }
                         self.serviceBannerImgUrlString375 = newImageStringArr375
                         self.serviceBannerImgUrlString414 = newImageStringArr414
+                        self.serviceBannerUrlArr = newNoticUrlArr
                         self.serviceBannerLoading.accept(true)
                     }
                 case .failure:
