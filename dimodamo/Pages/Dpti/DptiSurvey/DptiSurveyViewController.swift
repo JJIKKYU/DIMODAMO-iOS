@@ -155,8 +155,15 @@ class DptiSurveyViewController: UIViewController {
     }
     
     @IBAction func closeBtn(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-//        finishSurvey()
+        let alert = AlertController(title: "정말 그만두시겠습니까?", message: "진행과정은 저장되지 않습니다", preferredStyle: .alert)
+        alert.setTitleImage(UIImage(named: "alertError"))
+        let actionOK = UIAlertAction(title: "확인", style: .destructive) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        let actionCancle = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        alert.addAction(actionOK)
+        alert.addAction(actionCancle)
+        present(alert, animated: true, completion: nil)
     }
     
     func finishSurvey() {
