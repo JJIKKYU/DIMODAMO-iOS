@@ -95,6 +95,12 @@ class DptiSurveyViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.count == 2 {
+            print("2번 눌렀읍니다.")
+        }
+    }
+    
 
     // MARK: - UI
     
@@ -104,6 +110,8 @@ class DptiSurveyViewController: UIViewController {
     
     
     @objc func selectBtn(sender : UIButton) {
+        
+        print("터치터치 \(sender.tag), \(sender)")
  
         // all answer border color & text color init
         for answer in answers {
@@ -195,6 +203,7 @@ extension DptiSurveyViewController {
             
             answer.tag = (cardValue - (index % 5)) * reverse
             answer.addTarget(self, action: #selector(selectBtn), for: .touchDown)
+            answer.isExclusiveTouch = true
         }
         
         let margin: CGFloat = 40 // left margin + Right margin
@@ -262,21 +271,5 @@ extension DptiSurveyViewController {
         navBar?.backgroundColor = UIColor.appColor(.white255)
         navBar?.setBackgroundImage(UIImage(), for: .default)
         navBar?.shadowImage = UIImage()
-////        self.navigationController?.view.backgroundColor = UIColor.white
-        self.navigationController?.hidesBarsOnSwipe = true
-//
-//
-//        // StatusBar White
-        if #available(iOS 13.0, *) {
-            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-            // Reference - https://stackoverflow.com/a/57899013/7316675
-            let statusBar = UIView(frame: window?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero)
-            statusBar.backgroundColor = UIColor.appColor(.white255)
-            window?.addSubview(statusBar)
-        } else {
-            UIApplication.shared.statusBarUIView?.backgroundColor = UIColor.appColor(.white255)
-            UIApplication.shared.statusBarStyle = .lightContent
-        }
-
     }
 }
