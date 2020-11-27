@@ -11,6 +11,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+import STPopup
+
 class HomeVC: UIViewController {
     
     let viewModel = HomeViewModel()
@@ -66,6 +68,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var artboardNickname: UILabel!
     @IBOutlet weak var artboardScrapCount: UILabel!
     @IBOutlet weak var artboardCommentCount: UILabel!
+
+    
     
     
     override func loadView() {
@@ -109,6 +113,7 @@ class HomeVC: UIViewController {
         DispatchQueue.main.async {
             self.tabBarController?.roundedTabbar()
             self.navigationController?.hideBottomTabbarLine()
+            self.popupViewSetting()
         }
         view.layoutIfNeeded()
     }
@@ -133,6 +138,7 @@ class HomeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         serviceBannerCollectionView.delegate = self
         serviceBannerCollectionView.dataSource = self
@@ -383,5 +389,25 @@ extension HomeVC : UIScrollViewDelegate {
         // 위 코드를 통해 페이징 될 좌표값을 targetContentOffset에 대입하면 된다.
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
+    }
+}
+
+
+//MARK: - DPTI Try Bottom Popup
+
+extension HomeVC {
+    func popupViewSetting() {
+        if HomeViewModel.isPopupCount == 0 {
+            let storyboard = UIStoryboard(name: "DPTI", bundle: nil)
+
+            let popupVC = storyboard.instantiateViewController(withIdentifier: "DptiBottomPopupVC") as! DptiBottomPopupVC
+            
+            let popupController = STPopupController(rootViewController: popupVC)
+            popupController.style = .bottomSheet
+            popupController.present(in: self)
+            HomeViewModel.isPopupCount += 1
+        } else  {
+            print("팝업 카운드 : \(HomeViewModel.isPopupCount)")
+        }
     }
 }

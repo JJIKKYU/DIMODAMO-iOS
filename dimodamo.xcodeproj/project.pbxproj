@@ -149,6 +149,8 @@
 		98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */; };
 		98C48B1D250CF97E004E24E5 /* Survey.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C48B1C250CF97E004E24E5 /* Survey.json */; };
 		98C6C2BD256E97BD005B8F40 /* RoundedTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6C2BC256E97BD005B8F40 /* RoundedTabBar.swift */; };
+		98C6C34C25710BCA005B8F40 /* DptiBottomPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6C34B25710BCA005B8F40 /* DptiBottomPopupVC.swift */; };
+		98C6C35125710D35005B8F40 /* Test_alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C6C35025710D35005B8F40 /* Test_alert.json */; };
 		98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */; };
 		98C735AA255C53D600252BF2 /* FriendPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A9255C53D600252BF2 /* FriendPageVC.swift */; };
 		98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735AD255C551400252BF2 /* MainManitoChatVC.swift */; };
@@ -378,6 +380,8 @@
 		98C48B19250CDB94004E24E5 /* DptiSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiSurveyViewController.swift; sourceTree = "<group>"; };
 		98C48B1C250CF97E004E24E5 /* Survey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Survey.json; sourceTree = "<group>"; };
 		98C6C2BC256E97BD005B8F40 /* RoundedTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTabBar.swift; sourceTree = "<group>"; };
+		98C6C34B25710BCA005B8F40 /* DptiBottomPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiBottomPopupVC.swift; sourceTree = "<group>"; };
+		98C6C35025710D35005B8F40 /* Test_alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Test_alert.json; path = dimodamo/lottie/DptiPopup/Test_alert.json; sourceTree = SOURCE_ROOT; };
 		98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatVC.swift; sourceTree = "<group>"; };
 		98C735A9255C53D600252BF2 /* FriendPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageVC.swift; sourceTree = "<group>"; };
 		98C735AD255C551400252BF2 /* MainManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoChatVC.swift; sourceTree = "<group>"; };
@@ -829,6 +833,7 @@
 		9863223A25178570003B0784 /* Dpti */ = {
 			isa = PBXGroup;
 			children = (
+				98C6C34A25710BB6005B8F40 /* DptiBottomPopup */,
 				9806712F250F14F500C3EB72 /* DptiSurvey */,
 				98067130250F1D7700C3EB72 /* DptiResult */,
 			);
@@ -1243,6 +1248,7 @@
 		98C48B14250CD163004E24E5 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				98C6C34F25710D2A005B8F40 /* DptiPopup */,
 				988377EE254563F900BFA746 /* Loading */,
 				98A8B8082536040B00351FD5 /* Splash */,
 				9800A137253371280090C058 /* Dpti */,
@@ -1258,6 +1264,22 @@
 				98C48B1C250CF97E004E24E5 /* Survey.json */,
 			);
 			path = Json;
+			sourceTree = "<group>";
+		};
+		98C6C34A25710BB6005B8F40 /* DptiBottomPopup */ = {
+			isa = PBXGroup;
+			children = (
+				98C6C34B25710BCA005B8F40 /* DptiBottomPopupVC.swift */,
+			);
+			path = DptiBottomPopup;
+			sourceTree = "<group>";
+		};
+		98C6C34F25710D2A005B8F40 /* DptiPopup */ = {
+			isa = PBXGroup;
+			children = (
+				98C6C35025710D35005B8F40 /* Test_alert.json */,
+			);
+			path = DptiPopup;
 			sourceTree = "<group>";
 		};
 		98C735A2255C46E200252BF2 /* Chat */ = {
@@ -1603,6 +1625,7 @@
 				9863223725178546003B0784 /* Community.storyboard in Resources */,
 				98FA224C2556EE7300331755 /* M_FE.json in Resources */,
 				98FA223C2556EE7300331755 /* M_FN.json in Resources */,
+				98C6C35125710D35005B8F40 /* Test_alert.json in Resources */,
 				98A8B8202536083200351FD5 /* Splash_1.5C_top.json in Resources */,
 				98A8B82625360AF100351FD5 /* LaunchScreen.storyboard in Resources */,
 				98A8B7BE25345BDC00351FD5 /* Onboarding_2_room.json in Resources */,
@@ -1734,6 +1757,7 @@
 				98A8B82F25377D9200351FD5 /* InformationTableViewCell.swift in Sources */,
 				98A860C62559C15000F921AA /* UILabelPadding.swift in Sources */,
 				9800A1582533792C0090C058 /* FourthIntroViewController.swift in Sources */,
+				98C6C34C25710BCA005B8F40 /* DptiBottomPopupVC.swift in Sources */,
 				98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */,
 				98138FD5256ADBEF0063F8BD /* HomeVC.swift in Sources */,
 				98D988F825524B78002A8AC5 /* DamoPeopleCell.swift in Sources */,

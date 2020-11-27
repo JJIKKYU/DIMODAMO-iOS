@@ -254,8 +254,10 @@ class MyProfileVC: UIViewController {
      Dpti 버튼을 눌렀을 경우
      */
     @IBAction func pressedDptiBtn(_ sender: Any) {
-        if viewModel.myDptiTypeIsDefault() == true {
+        if viewModel.myDptiTypeIsDefault() == true && viewModel.isMyProfile() == true {
             print("DPTI하는 페이지로 넘겨")
+        } else if viewModel.myDptiTypeIsDefault() == true && viewModel.isMyProfile() == false {
+            performSegue(withIdentifier: "MyDptiVC", sender: sender)
         } else {
             performSegue(withIdentifier: "MyDptiVC", sender: sender)
         }

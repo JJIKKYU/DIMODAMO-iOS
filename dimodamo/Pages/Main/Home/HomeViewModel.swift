@@ -49,6 +49,11 @@ class HomeViewModel {
     let articleLoading = BehaviorRelay<Bool>(value: false)
     var articlePost: Board?
     
+    /*
+     DPTI popup
+     */
+    static var isPopupCount: Int = 0
+    
     init() {
         self.loadArticlePost()
         self.loadServiceBanner()
