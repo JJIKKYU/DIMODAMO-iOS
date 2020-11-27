@@ -21,6 +21,7 @@ class RegisterSchoolViewController: UIViewController {
     @IBOutlet weak var finishBtn: UIButton!
     @IBOutlet weak var nextTryBtn: UIButton!
     @IBOutlet weak var progress: UIProgressView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var schoolCartBtnHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var schoolCardBtn: UIButton! {
@@ -47,25 +48,62 @@ class RegisterSchoolViewController: UIViewController {
         imagePickerController.delegate = self
         self.pickerSchoolTextfieldSetting()
         
-//        schoolIdTextField.rx.text.orEmpty
-//            .map { $0 as String }
-//            .bind(to: self.viewModel!.schoolIdRelay)
-//            .disposed(by: disposeBag)
+        schoolIdTextField.delegate = self
+        
+        schoolIdTextField.rx.text.orEmpty
+            .map { $0 as String }
+            .bind(to: self.viewModel!.schoolIdRelay)
+            .disposed(by: disposeBag)
+
+        self.viewModel?.schoolIdRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] id in
+                if id.count == 7 {
+                    UIView.animate(withDuration: 0.5) {
+                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.gray190)
+                    }
+                } else {
+                    UIView.animate(withDuration: 0.5) {
+                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.white245)
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(
+            viewModel!.school,
+            viewModel!.schoolIdRelay,
+            viewModel!.schoolCardImageData
+        )
+        .observeOn(MainScheduler.instance)
+        .subscribe(onNext: { [weak self] school, schoolId, schoolCard in
+            // 대학교 선택을 안했을 경우
+//            if school.count < 3 {
 //
-//        self.viewModel?.schoolIdRelay
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] id in
-//                if id.count == 7 {
-//                    UIView.animate(withDuration: 0.5) {
-//                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.gray190)
-//                    }
-//                } else {
-//                    UIView.animate(withDuration: 0.5) {
-//                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.white245)
-//                    }
-//                }
-//            })
-//            .disposed(by: disposeBag)
+//            }
+            
+            if school.count > 3 && schoolId.count > 6 && schoolCard != nil {
+                UIView.animate(withDuration: 0.5) {
+                    AppStyleGuide.systemBtnRadius16(btn: self!.finishBtn, isActive: true)
+                    self?.progress.setProgress(1, animated: true)
+                }
+            }
+        })
+        .disposed(by: disposeBag)
+            
+        
+        
+        // 터치하면 키보드 내려가도록
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(singleTap(sender:)))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+    }
+    
+    @objc func singleTap(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+        
     }
     
     @IBAction func pressCloseBtn(_ sender: Any) {
@@ -90,13 +128,17 @@ class RegisterSchoolViewController: UIViewController {
     
     // 다음으로
     @IBAction func pressFinishBtn(_ sender: Any) {
-        viewModel?.makeStructUserProfile()
-        viewModel?.signUp()
+        // 학생증 업로드를 안했을 경우에 넘어갈 수 없음
         if viewModel?.canUploadSchoolCard() == false {
             let alert = UIAlertController(title: "학생증을 촬영해 주세요", message: "", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
+            return
         }
+        
+        viewModel?.makeStructUserProfile()
+        viewModel?.signUp()
+       
         
         performSegue(withIdentifier: "RegisterFinish", sender: sender)
         //        dismiss(animated: true, completion: nil)
@@ -118,6 +160,16 @@ class RegisterSchoolViewController: UIViewController {
     
 }
 
+//MARK: - TextField
+
+extension RegisterSchoolViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+//MARK: - ViewDesign
 extension RegisterSchoolViewController {
     func viewDesisgn() {
         //        self.nextTryBtn.layer.cornerRadius = 16
@@ -191,7 +243,7 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
             return
         }
         // 대학교정보와 학번정보 선택했을 경우에만
-        if schooldIdCount >= 7 && viewModel?.school?.count != 0 {
+        if schooldIdCount >= 7 && viewModel?.school.value.count != 0 {
             self.present(self.imagePickerController, animated: true, completion: nil)
         } else {
             let alert = AlertController(title: "학교와 학번을 먼저 작성해주세요", message: "", preferredStyle: .alert)
@@ -215,15 +267,11 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
         guard let imageData = image.resize(withWidth: 400)?.jpeg(.lowest) else { return }
-        viewModel?.schoolCardImageData = imageData
+        viewModel?.schoolCardImageData.accept(imageData)
         
         // 이미지 저장이 끝났으면 스쿨 이미지 변경 및 버튼 변경
         schoolCardBtn.setImage(UIImage(named: "schoolCardActive"), for: .normal)
         viewModel?.schoolCertificationState = .submit
-        UIView.animate(withDuration: 0.5) {
-            AppStyleGuide.systemBtnRadius16(btn: self.finishBtn, isActive: true)
-            self.progress.setProgress(1, animated: true)
-        }
     }
     
     func cropImage(imageToCrop:UIImage, toRect rect:CGRect) -> UIImage{

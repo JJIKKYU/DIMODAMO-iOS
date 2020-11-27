@@ -54,9 +54,9 @@ class RegisterViewModel {
     
     // RegisterSchool
     // 학교 인증
-    var schoolCardImageData: Data?
+    var schoolCardImageData = BehaviorRelay<Data?>(value: nil)
     var schoolCertificationState: CertificationState = .none
-    var school: String?
+    var school = BehaviorRelay<String>(value: "")
     let schoolArrData: [[String]] = [["홍익대학교"]] // 학교 목록
     var schoolIdRelay = BehaviorRelay<String>(value: "")
     
@@ -124,21 +124,25 @@ class RegisterViewModel {
         self.userProfile.Gender = gender!
         self.userProfile.Interest = interestList.value
         self.userProfile.nickName = nickNameRelay.value
-        self.userProfile.school = self.school ?? ""
+        self.userProfile.school = self.school.value
         self.userProfile.schoolCertState = self.schoolCertificationState
         self.userProfile.schoolId = schoolIdRelay.value
     }
     
     func canUploadSchoolCard() -> Bool{
-        if schoolCardImageData == nil {    
+        if schoolCardImageData.value == nil {
             return false
         }
         return true
     }
     
     func uploadSchoolCard(userUID: String) {
+        guard let imageData = schoolCardImageData.value else {
+            return
+        }
+        
         storage.child("certification/\(userUID).png")
-            .putData(schoolCardImageData!
+            .putData(imageData
                      , metadata: nil
                      , completion: { _, error in
                         guard error == nil else {

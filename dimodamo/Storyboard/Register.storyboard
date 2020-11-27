@@ -1008,7 +1008,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATW-Jf-OIL">
-                                                <rect key="frame" x="282.5" y="50" width="83.5" height="57.5"/>
+                                                <rect key="frame" x="296.5" y="50" width="69.5" height="56"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Heavy" family="SF Pro Display" pointSize="48"/>
                                                 <color key="textColor" name="WHITE - 235"/>
                                                 <nil key="highlightedColor"/>
@@ -1573,7 +1573,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="684"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkK-vm-O1y" userLabel="ContentView">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="1000"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="600"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.83999999999999997" translatesAutoresizingMaskIntoConstraints="NO" id="DzP-US-hCU">
                                                 <rect key="frame" x="0.0" y="24" width="374" height="4"/>
@@ -1615,7 +1615,7 @@
                                                 <rect key="frame" x="4" y="229" width="366" height="22"/>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                                         <color key="value" name="GRAY - 210"/>
@@ -1660,7 +1660,7 @@
                                             <constraint firstItem="Ple-nB-Rk0" firstAttribute="top" secondItem="Sbq-8f-R0a" secondAttribute="bottom" constant="12" id="MYM-Vx-3XX"/>
                                             <constraint firstItem="Ple-nB-Rk0" firstAttribute="leading" secondItem="Sbq-8f-R0a" secondAttribute="leading" id="OMp-4c-9Lf"/>
                                             <constraint firstItem="ElX-lo-bD1" firstAttribute="trailing" secondItem="Sbq-8f-R0a" secondAttribute="trailing" id="PLz-JW-rmB"/>
-                                            <constraint firstAttribute="height" constant="1000" id="Paq-eq-mHe"/>
+                                            <constraint firstAttribute="height" constant="600" id="Paq-eq-mHe"/>
                                             <constraint firstItem="t6t-8z-c45" firstAttribute="top" secondItem="y2j-hd-Es8" secondAttribute="bottom" constant="80" id="Qg2-m5-cm1"/>
                                             <constraint firstItem="Sbq-8f-R0a" firstAttribute="top" secondItem="rrw-Oj-nFf" secondAttribute="bottom" constant="31" id="SdT-c7-zkJ"/>
                                             <constraint firstItem="ElX-lo-bD1" firstAttribute="top" secondItem="Ple-nB-Rk0" secondAttribute="bottom" constant="48" id="Wch-lI-xO6"/>
@@ -1752,6 +1752,7 @@
                         <outlet property="schoolIdTextField" destination="Sbq-8f-R0a" id="9SI-nA-3qD"/>
                         <outlet property="schoolLine" destination="rrw-Oj-nFf" id="5dX-sN-9fY"/>
                         <outlet property="schoolTextField" destination="t6t-8z-c45" id="Mhu-8U-G92"/>
+                        <outlet property="scrollView" destination="haF-BN-R1g" id="rhq-FP-PxU"/>
                         <segue destination="YZI-bj-yhp" kind="show" identifier="RegisterFinish" id="PbT-PS-fAk"/>
                     </connections>
                 </viewController>
@@ -2003,7 +2004,7 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWJ-v7-1CE">
-                                                <rect key="frame" x="12" y="0.0" width="362" height="59.5"/>
+                                                <rect key="frame" x="12" y="0.0" width="362" height="62"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="디모다모의 일원이되신걸 축하드립니다!">
                                                         <attributes>
@@ -2021,16 +2022,16 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="registerClear" translatesAutoresizingMaskIntoConstraints="NO" id="vQT-hW-5AJ">
-                                                <rect key="frame" x="7.5" y="119.5" width="359" height="322"/>
+                                                <rect key="frame" x="7.5" y="122" width="359" height="322"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지금 바로 디자인 성향을 확인해보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMp-Aq-Rmc">
-                                                <rect key="frame" x="50" y="497.5" width="274" height="22"/>
+                                                <rect key="frame" x="50" y="500" width="274" height="22"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
                                                 <color key="textColor" name="WHITE"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zY-z0-3Ym">
-                                                <rect key="frame" x="62.5" y="545" width="249.5" height="38"/>
+                                                <rect key="frame" x="62.5" y="547.5" width="249.5" height="38"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">저희가 준비한 디자인 성향 검사(DPTI)를 통해

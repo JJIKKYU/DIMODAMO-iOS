@@ -205,10 +205,10 @@ class LoginViewController: UIViewController {
     @IBAction func pressedRegisterBtn(_ sender: Any) {
         let registerStoryboard = UIStoryboard(name: "Register", bundle: nil)
         // 원본
-//        let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterVC")
+        let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterVC")
         
         // 테스트용으로 바로 학생증 인증 VC로
-        let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterSchoolVC")
+//        let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterSchoolVC")
         
         //        let registerVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
         //
