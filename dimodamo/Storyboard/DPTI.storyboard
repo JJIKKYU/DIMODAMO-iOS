@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -25,23 +25,23 @@
             <objects>
                 <viewController id="toI-1s-MaT" userLabel="DptiResult" customClass="DptiResultViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LC9-Yz-aLT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuD-WZ-l60">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5X-Es-wGD" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2200"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyq-hA-P6o">
-                                                <rect key="frame" x="20" y="11" width="374" height="348"/>
+                                                <rect key="frame" x="20" y="11" width="335" height="348"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BC_BG_P_Star" translatesAutoresizingMaskIntoConstraints="NO" id="Ycu-hj-9BZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="348"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="348"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ju4-yM-Ot4">
-                                                        <rect key="frame" x="32" y="40" width="306" height="55.5"/>
+                                                        <rect key="frame" x="32" y="40" width="262.5" height="55.5"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="어찌저찌이러저러그저그냥디자이너">
                                                                 <attributes>
@@ -57,7 +57,7 @@
                                                         <rect key="frame" x="32" y="267" width="41" height="65"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BC_Char_Yellow_M2_0" translatesAutoresizingMaskIntoConstraints="NO" id="Rgv-nR-aqJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="348"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="348"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" name="YELLOW - DARK"/>
@@ -81,7 +81,7 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NuJ-WV-mXe">
-                                                <rect key="frame" x="16" y="391" width="382" height="190"/>
+                                                <rect key="frame" x="16" y="391" width="343" height="213.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="190" id="0ms-7Q-ngk"/>
                                                 </constraints>
@@ -98,14 +98,14 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDp-lo-b3r" userLabel="Line">
-                                                <rect key="frame" x="20" y="631" width="374" height="2"/>
+                                                <rect key="frame" x="20" y="654.5" width="335" height="2"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="Lya-dI-88L"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="paB-cZ-ife" userLabel="PositionWrap">
-                                                <rect key="frame" x="16" y="663" width="382" height="234"/>
+                                                <rect key="frame" x="16" y="686.5" width="343" height="234"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나의 조별과제 포지션 타입" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INU-Gn-HcN">
                                                         <rect key="frame" x="0.0" y="0.0" width="194" height="20"/>
@@ -114,14 +114,14 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Icon_PE" translatesAutoresizingMaskIntoConstraints="NO" id="loz-Ll-qg9">
-                                                        <rect key="frame" x="159" y="84" width="64" height="64"/>
+                                                        <rect key="frame" x="139.5" y="84" width="64" height="64"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="64" id="6TE-Hs-xTc"/>
                                                             <constraint firstAttribute="height" constant="64" id="M4g-rk-aKW"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeW-r8-9XT">
-                                                        <rect key="frame" x="6.5" y="172" width="369.5" height="27"/>
+                                                        <rect key="frame" x="-13" y="172" width="369.5" height="27"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="모든걸 기록하고기억하는 팔만대장경!">
                                                                 <attributes>
@@ -146,7 +146,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PHF-Fa-hB8" userLabel="Line">
-                                                <rect key="frame" x="20" y="947" width="374" height="2"/>
+                                                <rect key="frame" x="20" y="970.5" width="335" height="2"/>
                                                 <viewLayoutGuide key="safeArea" id="kjx-HW-ccK"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <constraints>
@@ -154,7 +154,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCr-ER-QAI" userLabel="DesignWrap">
-                                                <rect key="frame" x="20" y="979" width="374" height="360"/>
+                                                <rect key="frame" x="20" y="1002.5" width="335" height="360"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나와 어울리는 디자인 분야" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVY-Ff-SMn">
                                                         <rect key="frame" x="0.0" y="0.0" width="194" height="20"/>
@@ -163,7 +163,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="toA-Jy-iAC" userLabel="Design_1">
-                                                        <rect key="frame" x="132" y="108" width="110.5" height="32"/>
+                                                        <rect key="frame" x="112.5" y="108" width="110.5" height="32"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvS-Gh-cIh">
                                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -199,7 +199,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yc2-HG-BFa">
-                                                        <rect key="frame" x="97.5" y="164" width="179" height="43.5"/>
+                                                        <rect key="frame" x="78" y="164" width="179" height="43.5"/>
                                                         <attributedString key="attributedText">
                                                             <fragment>
                                                                 <string key="content">객관적인 논리를 갖춘 당신!
@@ -221,7 +221,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ozE-ca-O0t" userLabel="Design_2">
-                                                        <rect key="frame" x="141" y="255.5" width="92" height="32"/>
+                                                        <rect key="frame" x="121.5" y="255.5" width="92" height="32"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JX-tK-X1P">
                                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -258,7 +258,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-3w-fl3">
-                                                        <rect key="frame" x="13" y="311.5" width="348" height="19.5"/>
+                                                        <rect key="frame" x="-6.5" y="311.5" width="348" height="19.5"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="꼼꼼하고 정확한 편집디자인!당신이라면 믿을 수 있어요!">
                                                                 <attributes>
@@ -287,7 +287,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8OW-jp-LPP" userLabel="Line">
-                                                <rect key="frame" x="20" y="1389" width="374" height="2"/>
+                                                <rect key="frame" x="20" y="1412.5" width="335" height="2"/>
                                                 <viewLayoutGuide key="safeArea" id="Vet-5E-LDv"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <constraints>
@@ -295,7 +295,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86f-FF-g8e" userLabel="ToolWrap">
-                                                <rect key="frame" x="20" y="1421" width="374" height="345"/>
+                                                <rect key="frame" x="20" y="1444.5" width="335" height="345"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나와 닮은 디자인 툴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7K-9Z-Wh3">
                                                         <rect key="frame" x="0.0" y="0.0" width="145" height="20"/>
@@ -304,20 +304,20 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Tool_Name_Indesign" translatesAutoresizingMaskIntoConstraints="NO" id="E7U-X1-ppC">
-                                                        <rect key="frame" x="155" y="84" width="64" height="64"/>
+                                                        <rect key="frame" x="135.5" y="84" width="64" height="64"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="64" id="Xfb-r3-lvt"/>
                                                             <constraint firstAttribute="width" constant="64" id="vJs-AR-Kxt"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indesign" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34N-Ow-dOV">
-                                                        <rect key="frame" x="129" y="164" width="116" height="31"/>
+                                                        <rect key="frame" x="109.5" y="164" width="116" height="31"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="28"/>
                                                         <color key="textColor" name="SYSTEM"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsn-ed-4C6">
-                                                        <rect key="frame" x="-4" y="243" width="382" height="115"/>
+                                                        <rect key="frame" x="-4" y="243" width="343" height="136"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="115" id="ddc-qC-YUE"/>
                                                         </constraints>
@@ -345,7 +345,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJz-Gv-w5F" userLabel="Line">
-                                                <rect key="frame" x="20" y="1816" width="374" height="2"/>
+                                                <rect key="frame" x="20" y="1839.5" width="335" height="2"/>
                                                 <viewLayoutGuide key="safeArea" id="5Pu-vH-EvM"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <constraints>
@@ -353,16 +353,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dl6-12-mOc" userLabel="TodoWrap">
-                                                <rect key="frame" x="20" y="1848" width="374" height="210"/>
+                                                <rect key="frame" x="20" y="1871.5" width="335" height="210"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디자인 작업이 막힐 때는?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcl-eJ-Qfl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="18"/>
                                                         <color key="textColor" name="TEXT - BIG"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nod-3G-HLR">
-                                                        <rect key="frame" x="-4" y="60" width="382" height="162"/>
+                                                        <rect key="frame" x="-4" y="60" width="343" height="188"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="115" id="57e-Fy-cUP"/>
                                                         </constraints>
@@ -479,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJt-bD-v8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6177" y="155"/>
+            <point key="canvasLocation" x="7116" y="154.27286356821591"/>
         </scene>
         <!--Dpti Bottom PopupVC-->
         <scene sceneID="Gj3-2u-bCL">
@@ -562,6 +562,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="pD7-sl-i6h"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="U0B-3I-Icl" firstAttribute="top" secondItem="jPE-JL-Wo6" secondAttribute="top" constant="80" id="1oR-bc-7pM"/>
@@ -599,28 +600,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTO-cU-5kh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7049" y="155"/>
+            <point key="canvasLocation" x="7987.1999999999998" y="154.72263868065968"/>
         </scene>
         <!--DptiSurvey-->
         <scene sceneID="7ec-Ee-cts">
             <objects>
                 <viewController storyboardIdentifier="DptiSurvey" id="eVq-LI-GH7" userLabel="DptiSurvey" customClass="DptiSurveyViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Mi-UP-809">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2K-pW-Wwl">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2K-pW-Wwl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAq-ai-ed0" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="680"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="680"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oSE-bs-TlQ">
-                                                <rect key="frame" x="20" y="35" width="374" height="4"/>
+                                                <rect key="frame" x="20" y="35" width="335" height="4"/>
                                                 <color key="tintColor" name="YELLOW"/>
                                             </progressView>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNn-Rl-tAD" userLabel="CardHorizontalScrollView">
-                                                <rect key="frame" x="0.0" y="35" width="414" height="648.5"/>
+                                                <rect key="frame" x="0.0" y="35" width="375" height="648.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7p-ui-JAq" userLabel="CardContainerView">
                                                         <rect key="frame" x="0.0" y="0.0" width="8600" height="648.5"/>
@@ -3432,46 +3433,401 @@
                         <outletCollection property="questionTitle" destination="ib1-FL-7fb" collectionClass="NSMutableArray" id="3AK-he-G00"/>
                         <outletCollection property="questionTitle" destination="QLw-zu-NGQ" collectionClass="NSMutableArray" id="rGd-VS-cgS"/>
                         <outletCollection property="questionTitle" destination="w4c-Ca-8Ql" collectionClass="NSMutableArray" id="nYl-cZ-HX4"/>
+                        <outletCollection property="answersHeightConstraint" destination="GLS-fS-dWW" collectionClass="NSMutableArray" id="SNg-Ww-R7X"/>
+                        <outletCollection property="answersHeightConstraint" destination="Hgz-5Y-i47" collectionClass="NSMutableArray" id="eQz-in-KAW"/>
+                        <outletCollection property="answersHeightConstraint" destination="T5a-W7-ryd" collectionClass="NSMutableArray" id="itD-Hv-ocM"/>
+                        <outletCollection property="answersHeightConstraint" destination="mpM-JG-IU2" collectionClass="NSMutableArray" id="vWF-hK-KDk"/>
+                        <outletCollection property="answersHeightConstraint" destination="kwG-kg-lWl" collectionClass="NSMutableArray" id="WiI-jz-jSP"/>
+                        <outletCollection property="answersHeightConstraint" destination="GLS-fS-dWW" collectionClass="NSMutableArray" id="fmT-FW-F3N"/>
+                        <outletCollection property="answersHeightConstraint" destination="Hgz-5Y-i47" collectionClass="NSMutableArray" id="FKh-MG-AnB"/>
+                        <outletCollection property="answersHeightConstraint" destination="T5a-W7-ryd" collectionClass="NSMutableArray" id="hwk-f6-FfW"/>
+                        <outletCollection property="answersHeightConstraint" destination="mpM-JG-IU2" collectionClass="NSMutableArray" id="EOM-P9-5GB"/>
+                        <outletCollection property="answersHeightConstraint" destination="rgM-zZ-tSj" collectionClass="NSMutableArray" id="PCZ-Ln-Yfd"/>
+                        <outletCollection property="answersHeightConstraint" destination="qo4-8d-Tkw" collectionClass="NSMutableArray" id="zrO-bT-bXD"/>
+                        <outletCollection property="answersHeightConstraint" destination="Dcw-tG-Ubu" collectionClass="NSMutableArray" id="G2C-bg-H7E"/>
+                        <outletCollection property="answersHeightConstraint" destination="3Lg-29-LMC" collectionClass="NSMutableArray" id="2s0-iI-0bW"/>
+                        <outletCollection property="answersHeightConstraint" destination="1M6-A8-AiN" collectionClass="NSMutableArray" id="TjV-nb-XBC"/>
+                        <outletCollection property="answersHeightConstraint" destination="HKl-14-QvO" collectionClass="NSMutableArray" id="BAr-hg-BBl"/>
+                        <outletCollection property="answersHeightConstraint" destination="UJi-N1-zLN" collectionClass="NSMutableArray" id="z5N-3p-aB3"/>
+                        <outletCollection property="answersHeightConstraint" destination="jzs-M3-OTq" collectionClass="NSMutableArray" id="xUK-QR-bFv"/>
+                        <outletCollection property="answersHeightConstraint" destination="Chg-QI-DRR" collectionClass="NSMutableArray" id="4Td-bj-ghG"/>
+                        <outletCollection property="answersHeightConstraint" destination="LVn-eK-KzW" collectionClass="NSMutableArray" id="4zm-S3-lYi"/>
+                        <outletCollection property="answersHeightConstraint" destination="669-XC-Gi5" collectionClass="NSMutableArray" id="lvk-DD-SM5"/>
+                        <outletCollection property="answersHeightConstraint" destination="e9e-p5-FzL" collectionClass="NSMutableArray" id="Ib3-06-CSK"/>
+                        <outletCollection property="answersHeightConstraint" destination="IJ0-Cl-6YV" collectionClass="NSMutableArray" id="xDC-Wx-W3j"/>
+                        <outletCollection property="answersHeightConstraint" destination="OM9-1A-1Z0" collectionClass="NSMutableArray" id="wRe-J6-5W2"/>
+                        <outletCollection property="answersHeightConstraint" destination="rya-B2-8C4" collectionClass="NSMutableArray" id="hb1-PM-l7D"/>
+                        <outletCollection property="answersHeightConstraint" destination="Qec-gi-C6M" collectionClass="NSMutableArray" id="Pjf-nB-bbb"/>
+                        <outletCollection property="answersHeightConstraint" destination="hcR-oW-aYg" collectionClass="NSMutableArray" id="dh9-Ni-a6s"/>
+                        <outletCollection property="answersHeightConstraint" destination="qCU-o0-pDK" collectionClass="NSMutableArray" id="6KE-wE-WJg"/>
+                        <outletCollection property="answersHeightConstraint" destination="ngL-WD-Cl0" collectionClass="NSMutableArray" id="IZ0-G0-sd8"/>
+                        <outletCollection property="answersHeightConstraint" destination="oOw-Bl-dKe" collectionClass="NSMutableArray" id="arK-Aj-S1W"/>
+                        <outletCollection property="answersHeightConstraint" destination="OYi-N4-N4f" collectionClass="NSMutableArray" id="bie-vm-ZgP"/>
+                        <outletCollection property="answersHeightConstraint" destination="Ywy-27-yUM" collectionClass="NSMutableArray" id="ZLc-SM-OQT"/>
+                        <outletCollection property="answersHeightConstraint" destination="Wmr-mh-GHU" collectionClass="NSMutableArray" id="2hG-3U-2jK"/>
+                        <outletCollection property="answersHeightConstraint" destination="AFI-CS-I2L" collectionClass="NSMutableArray" id="LFb-q7-Ajf"/>
+                        <outletCollection property="answersHeightConstraint" destination="MSG-2O-ifD" collectionClass="NSMutableArray" id="l6j-Z8-ppr"/>
+                        <outletCollection property="answersHeightConstraint" destination="Vt0-gK-STf" collectionClass="NSMutableArray" id="woB-Q7-3Wu"/>
+                        <outletCollection property="answersHeightConstraint" destination="Bxb-De-hxD" collectionClass="NSMutableArray" id="0iN-7n-aXj"/>
+                        <outletCollection property="answersHeightConstraint" destination="nwi-Ur-yXg" collectionClass="NSMutableArray" id="crd-X5-EMN"/>
+                        <outletCollection property="answersHeightConstraint" destination="c6P-th-mjn" collectionClass="NSMutableArray" id="KD2-hu-NQj"/>
+                        <outletCollection property="answersHeightConstraint" destination="ulp-Ow-ABY" collectionClass="NSMutableArray" id="mSU-ft-Qm1"/>
+                        <outletCollection property="answersHeightConstraint" destination="8Xs-9s-KPu" collectionClass="NSMutableArray" id="3GK-lP-lsh"/>
+                        <outletCollection property="answersHeightConstraint" destination="mvL-AZ-wUG" collectionClass="NSMutableArray" id="f4e-vt-1El"/>
+                        <outletCollection property="answersHeightConstraint" destination="cBm-QE-pqx" collectionClass="NSMutableArray" id="SC9-7s-gi7"/>
+                        <outletCollection property="answersHeightConstraint" destination="5Xg-uJ-5Ph" collectionClass="NSMutableArray" id="Pyd-4W-Qw5"/>
+                        <outletCollection property="answersHeightConstraint" destination="hHe-LM-biR" collectionClass="NSMutableArray" id="IqZ-l7-ys0"/>
+                        <outletCollection property="answersHeightConstraint" destination="bbv-mb-l8v" collectionClass="NSMutableArray" id="s9Z-NW-thh"/>
+                        <outletCollection property="answersHeightConstraint" destination="pzS-hw-txf" collectionClass="NSMutableArray" id="vOS-pG-Yux"/>
+                        <outletCollection property="answersHeightConstraint" destination="WII-GY-Si4" collectionClass="NSMutableArray" id="D50-z2-gyP"/>
+                        <outletCollection property="answersHeightConstraint" destination="qnk-aG-9Sf" collectionClass="NSMutableArray" id="s5S-zA-wYm"/>
+                        <outletCollection property="answersHeightConstraint" destination="e8T-vl-mX5" collectionClass="NSMutableArray" id="qfD-Pb-Xx2"/>
+                        <outletCollection property="answersHeightConstraint" destination="Td3-x9-PaZ" collectionClass="NSMutableArray" id="h7h-em-Cl2"/>
+                        <outletCollection property="answersHeightConstraint" destination="RwT-hu-eMY" collectionClass="NSMutableArray" id="xqJ-CN-Pl2"/>
+                        <outletCollection property="answersHeightConstraint" destination="RNA-YE-M6V" collectionClass="NSMutableArray" id="Gvk-GH-bmz"/>
+                        <outletCollection property="answersHeightConstraint" destination="Qps-qq-3Qs" collectionClass="NSMutableArray" id="Y2l-UV-4BN"/>
+                        <outletCollection property="answersHeightConstraint" destination="r4M-rJ-aaL" collectionClass="NSMutableArray" id="6Tv-6Q-2a9"/>
+                        <outletCollection property="answersHeightConstraint" destination="uPx-QE-qoB" collectionClass="NSMutableArray" id="uqy-hc-hw2"/>
+                        <outletCollection property="answersHeightConstraint" destination="LEb-FM-2tX" collectionClass="NSMutableArray" id="d0E-F1-yAT"/>
+                        <outletCollection property="answersHeightConstraint" destination="ETy-Rg-EID" collectionClass="NSMutableArray" id="Nym-Ge-wAC"/>
+                        <outletCollection property="answersHeightConstraint" destination="EnW-k0-OH1" collectionClass="NSMutableArray" id="OSx-1z-HK4"/>
+                        <outletCollection property="answersHeightConstraint" destination="iPI-9x-ffk" collectionClass="NSMutableArray" id="mQx-aQ-waI"/>
+                        <outletCollection property="answersHeightConstraint" destination="UJ7-0T-ypW" collectionClass="NSMutableArray" id="uSb-Vw-aTy"/>
+                        <outletCollection property="answersHeightConstraint" destination="CF1-zm-hqj" collectionClass="NSMutableArray" id="odj-i4-ieI"/>
+                        <outletCollection property="answersHeightConstraint" destination="TmJ-lt-8J4" collectionClass="NSMutableArray" id="hMD-cU-FGG"/>
+                        <outletCollection property="answersHeightConstraint" destination="ISk-PP-n8K" collectionClass="NSMutableArray" id="uTO-0o-pO7"/>
+                        <outletCollection property="answersHeightConstraint" destination="Txq-QI-3lS" collectionClass="NSMutableArray" id="qIS-yO-Lvb"/>
+                        <outletCollection property="answersHeightConstraint" destination="MEx-Et-sQw" collectionClass="NSMutableArray" id="g1g-Fs-oRZ"/>
+                        <outletCollection property="answersHeightConstraint" destination="uJo-Yh-qai" collectionClass="NSMutableArray" id="MPw-8s-EnN"/>
+                        <outletCollection property="answersHeightConstraint" destination="Ldi-RB-uY5" collectionClass="NSMutableArray" id="6En-Gx-haE"/>
+                        <outletCollection property="answersHeightConstraint" destination="Gg6-IP-Idx" collectionClass="NSMutableArray" id="3eJ-zj-I7z"/>
+                        <outletCollection property="answersHeightConstraint" destination="tzi-Kw-9Kk" collectionClass="NSMutableArray" id="6Ra-WO-WzT"/>
+                        <outletCollection property="answersHeightConstraint" destination="b3q-NW-BT5" collectionClass="NSMutableArray" id="vXB-H4-c2P"/>
+                        <outletCollection property="answersHeightConstraint" destination="geV-DH-Ob6" collectionClass="NSMutableArray" id="bJm-nh-dQe"/>
+                        <outletCollection property="answersHeightConstraint" destination="z8w-gU-Fvf" collectionClass="NSMutableArray" id="YlZ-dk-rZb"/>
+                        <outletCollection property="answersHeightConstraint" destination="Ssa-b8-oBu" collectionClass="NSMutableArray" id="KKr-4A-9mI"/>
+                        <outletCollection property="answersHeightConstraint" destination="pk8-gj-8Fa" collectionClass="NSMutableArray" id="QV7-Mp-gGu"/>
+                        <outletCollection property="answersHeightConstraint" destination="RQe-ao-331" collectionClass="NSMutableArray" id="KIu-Ww-4jA"/>
+                        <outletCollection property="answersHeightConstraint" destination="xzu-tU-8VE" collectionClass="NSMutableArray" id="tmT-ah-Q3U"/>
+                        <outletCollection property="answersHeightConstraint" destination="OCD-av-0DG" collectionClass="NSMutableArray" id="ZXF-kh-csE"/>
+                        <outletCollection property="answersHeightConstraint" destination="Le4-M2-zfx" collectionClass="NSMutableArray" id="Fwr-fN-LW9"/>
+                        <outletCollection property="answersHeightConstraint" destination="ss7-Z9-noV" collectionClass="NSMutableArray" id="zyl-AT-G2j"/>
+                        <outletCollection property="answersHeightConstraint" destination="TkC-Aw-sZp" collectionClass="NSMutableArray" id="T0y-7y-mSo"/>
+                        <outletCollection property="answersHeightConstraint" destination="Akz-bc-mV5" collectionClass="NSMutableArray" id="fiy-s9-FEd"/>
+                        <outletCollection property="answersHeightConstraint" destination="XCJ-OM-DJC" collectionClass="NSMutableArray" id="8T2-UU-5zR"/>
+                        <outletCollection property="answersHeightConstraint" destination="2YB-Za-rB0" collectionClass="NSMutableArray" id="mwD-wG-D9I"/>
+                        <outletCollection property="answersHeightConstraint" destination="9Qt-eY-tT9" collectionClass="NSMutableArray" id="ASG-lE-1Dp"/>
+                        <outletCollection property="answersHeightConstraint" destination="x0b-f9-Sgb" collectionClass="NSMutableArray" id="Wcw-WO-k89"/>
+                        <outletCollection property="answersHeightConstraint" destination="VWm-oF-M9M" collectionClass="NSMutableArray" id="XsI-Pm-eGa"/>
+                        <outletCollection property="answersHeightConstraint" destination="PRV-b4-2k8" collectionClass="NSMutableArray" id="Wm2-dT-xPB"/>
+                        <outletCollection property="answersHeightConstraint" destination="zfy-lW-JwS" collectionClass="NSMutableArray" id="5Xd-Cl-6tK"/>
+                        <outletCollection property="answersHeightConstraint" destination="qU0-6s-Gwa" collectionClass="NSMutableArray" id="qXe-TZ-dN0"/>
+                        <outletCollection property="answersHeightConstraint" destination="KZc-wE-YJR" collectionClass="NSMutableArray" id="88q-bw-Ucf"/>
+                        <outletCollection property="answersHeightConstraint" destination="SAw-6q-xlV" collectionClass="NSMutableArray" id="6M5-fi-Aab"/>
+                        <outletCollection property="answersHeightConstraint" destination="c2f-LG-qp8" collectionClass="NSMutableArray" id="f5w-ik-aJE"/>
+                        <outletCollection property="answersHeightConstraint" destination="XYt-2Z-R46" collectionClass="NSMutableArray" id="EFi-Xv-GhZ"/>
+                        <outletCollection property="answersHeightConstraint" destination="7T2-SV-Rfa" collectionClass="NSMutableArray" id="J6g-9M-SFw"/>
+                        <outletCollection property="answersHeightConstraint" destination="hDn-0e-BVX" collectionClass="NSMutableArray" id="h9E-Ze-DxD"/>
+                        <outletCollection property="answersHeightConstraint" destination="LJe-9u-cf7" collectionClass="NSMutableArray" id="K07-AU-SH4"/>
+                        <outletCollection property="answersHeightConstraint" destination="Qch-Lm-Bz5" collectionClass="NSMutableArray" id="VW6-oa-DT0"/>
+                        <outletCollection property="answersHeightConstraint" destination="RmZ-ne-aDL" collectionClass="NSMutableArray" id="mQC-E6-943"/>
+                        <outletCollection property="answersHeightConstraint" destination="Typ-Ow-sMm" collectionClass="NSMutableArray" id="GP5-iF-aJ8"/>
+                        <outletCollection property="answersHeightConstraint" destination="bWE-u4-As6" collectionClass="NSMutableArray" id="AO7-Il-jMR"/>
+                        <outletCollection property="answersHeightConstraint" destination="ivZ-Sd-4T6" collectionClass="NSMutableArray" id="cdB-hI-gm6"/>
+                        <outletCollection property="answersHeightConstraint" destination="aeH-Nm-bt0" collectionClass="NSMutableArray" id="ymR-mg-1Md"/>
+                        <outletCollection property="answersHeightConstraint" destination="Rey-AD-PTr" collectionClass="NSMutableArray" id="UXn-m6-h7q"/>
+                        <outletCollection property="cardsHeightConstraint" destination="81t-oS-zjh" collectionClass="NSMutableArray" id="Hy3-IZ-bM4"/>
+                        <outletCollection property="cardsHeightConstraint" destination="Db6-LI-GWx" collectionClass="NSMutableArray" id="hqa-6K-ZDj"/>
+                        <outletCollection property="cardsHeightConstraint" destination="SXv-aU-Scp" collectionClass="NSMutableArray" id="neC-1K-osi"/>
+                        <outletCollection property="cardsHeightConstraint" destination="vRL-BY-Neh" collectionClass="NSMutableArray" id="qhG-AE-H8o"/>
+                        <outletCollection property="cardsHeightConstraint" destination="MyQ-XB-pJP" collectionClass="NSMutableArray" id="ySA-7M-pez"/>
+                        <outletCollection property="cardsHeightConstraint" destination="mEt-df-0i5" collectionClass="NSMutableArray" id="vtW-8T-Vo0"/>
+                        <outletCollection property="cardsHeightConstraint" destination="dX2-9M-qyx" collectionClass="NSMutableArray" id="Gj7-4W-NGa"/>
+                        <outletCollection property="cardsHeightConstraint" destination="qCk-06-Tyv" collectionClass="NSMutableArray" id="O5z-nA-YYK"/>
+                        <outletCollection property="cardsHeightConstraint" destination="cSQ-jQ-nXl" collectionClass="NSMutableArray" id="C42-7j-8gg"/>
+                        <outletCollection property="cardsHeightConstraint" destination="QEd-Gh-IiW" collectionClass="NSMutableArray" id="DnM-T6-sR9"/>
+                        <outletCollection property="cardsHeightConstraint" destination="oVc-aA-CDn" collectionClass="NSMutableArray" id="Jw8-Af-2ca"/>
+                        <outletCollection property="cardsHeightConstraint" destination="qDc-a4-Z8D" collectionClass="NSMutableArray" id="VVS-k9-MHB"/>
+                        <outletCollection property="cardsHeightConstraint" destination="qZG-k9-Iiz" collectionClass="NSMutableArray" id="H3q-WX-5LQ"/>
+                        <outletCollection property="cardsHeightConstraint" destination="9pi-ff-n6f" collectionClass="NSMutableArray" id="huY-ji-My5"/>
+                        <outletCollection property="cardsHeightConstraint" destination="dxK-VM-0Df" collectionClass="NSMutableArray" id="kGo-4a-O2l"/>
+                        <outletCollection property="cardsHeightConstraint" destination="nyY-6y-eoI" collectionClass="NSMutableArray" id="HIY-JV-v6d"/>
+                        <outletCollection property="cardsHeightConstraint" destination="Hze-47-3jR" collectionClass="NSMutableArray" id="Zx6-hn-bdr"/>
+                        <outletCollection property="cardsHeightConstraint" destination="Q1T-OU-Ato" collectionClass="NSMutableArray" id="Fvb-UC-cao"/>
+                        <outletCollection property="cardsHeightConstraint" destination="6Y0-od-TdX" collectionClass="NSMutableArray" id="SUv-0h-id1"/>
+                        <outletCollection property="cardsHeightConstraint" destination="yBr-qI-3K5" collectionClass="NSMutableArray" id="8Zw-kr-qBs"/>
+                        <outletCollection property="answersHeightConstraint" destination="mFY-sd-VN3" collectionClass="NSMutableArray" id="9LI-kg-QjO"/>
                         <segue destination="toI-1s-MaT" kind="show" identifier="DptiResult" id="Qxa-se-HXw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ioj-FU-3BB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5449.275362318841" y="154.6875"/>
+            <point key="canvasLocation" x="6388" y="154.27286356821591"/>
         </scene>
-        <!--View Controller-->
+        <!--Dpti StartVC-->
         <scene sceneID="cvA-wF-0x1">
             <objects>
-                <viewController id="5H8-kR-BTe" sceneMemberID="viewController">
+                <viewController id="5H8-kR-BTe" customClass="DptiStartVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BEA-SF-Gwo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="dpti_left_right" translatesAutoresizingMaskIntoConstraints="NO" id="Ncm-Zz-D28">
+                                <rect key="frame" x="20" y="320" width="335" height="363"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2d-bB-AId">
+                                <rect key="frame" x="20" y="20" width="335" height="320"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uW6-7C-7b8">
+                                        <rect key="frame" x="20" y="20" width="295" height="280"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="디자인성향검사 이하 DPTI">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.23529" green="0.23529" blue="0.23529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="(Design Pattern Type Indicator)는">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="0.56862999999999997" blue="0.35293999999999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" 디자인 성향을 파악할 수 있는 테스트입니다.">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.23529" green="0.23529" blue="0.23529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="도형, 색상, 캐릭터">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="0.56862999999999997" blue="0.35293999999999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="의 조합으로 결과가 도출되며 총 ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.23529" green="0.23529" blue="0.23529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="20문항">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="0.56862999999999997" blue="0.35293999999999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="약 ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.23529" green="0.23529" blue="0.23529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="3분">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="0.56862999999999997" blue="0.35293999999999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="의 시간이 소요됩니다. ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.23529" green="0.23529" blue="0.23529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="깊게 생각하지 마시고 ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.23529" green="0.23529" blue="0.23529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="직관적으로 선택">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="0.56862999999999997" blue="0.35293999999999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="해주세요!">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.23529" green="0.23529" blue="0.23529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2.0791666666666666" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="B2r-SI-gEN">
+                                        <rect key="frame" x="30" y="66" width="275" height="212"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ie-LQ-oCV">
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="v0j-E0-HUl"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bM0-XC-i7Q">
+                                                <rect key="frame" x="0.0" y="35" width="275" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="9CW-nw-YF8"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tvq-M5-k52">
+                                                <rect key="frame" x="0.0" y="70" width="275" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="nEz-nR-6h2"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQw-E9-75p">
+                                                <rect key="frame" x="0.0" y="105" width="275" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="GxE-WS-faW"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avC-8Z-zlY">
+                                                <rect key="frame" x="0.0" y="140" width="275" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="JR4-aB-HQb"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="khF-i9-VMU">
+                                                <rect key="frame" x="0.0" y="175" width="275" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="0Na-2c-52R"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Jn-Hc-221">
+                                                <rect key="frame" x="0.0" y="210" width="275" height="2"/>
+                                                <color key="backgroundColor" name="WHITE - 245"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="vJh-z7-YTq"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstItem="uW6-7C-7b8" firstAttribute="centerX" secondItem="O2d-bB-AId" secondAttribute="centerX" id="0mg-8x-NNp"/>
+                                    <constraint firstItem="uW6-7C-7b8" firstAttribute="leading" secondItem="O2d-bB-AId" secondAttribute="leading" constant="20" id="1Qd-Jg-jTi"/>
+                                    <constraint firstAttribute="trailing" secondItem="uW6-7C-7b8" secondAttribute="trailing" constant="20" id="K1O-2T-rOU"/>
+                                    <constraint firstAttribute="bottom" secondItem="uW6-7C-7b8" secondAttribute="bottom" constant="20" id="NiN-Kr-abg"/>
+                                    <constraint firstItem="B2r-SI-gEN" firstAttribute="leading" secondItem="O2d-bB-AId" secondAttribute="leading" constant="30" id="Ot2-tZ-OMn"/>
+                                    <constraint firstItem="B2r-SI-gEN" firstAttribute="top" secondItem="O2d-bB-AId" secondAttribute="top" constant="66" id="Y6J-cb-Qac"/>
+                                    <constraint firstItem="uW6-7C-7b8" firstAttribute="top" secondItem="O2d-bB-AId" secondAttribute="top" constant="20" id="edb-oa-vuH"/>
+                                    <constraint firstAttribute="trailing" secondItem="B2r-SI-gEN" secondAttribute="trailing" constant="30" id="wxm-m4-cwZ"/>
+                                    <constraint firstAttribute="height" constant="320" id="yPl-B2-UGg"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbG-K4-jcn">
+                                <rect key="frame" x="0.0" y="567" width="375" height="56"/>
+                                <color key="backgroundColor" name="SYSTEM"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="NyF-Xv-aHu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                <state key="normal" title="시작해요">
+                                    <color key="titleColor" name="WHITE"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedStartBtn:" destination="5H8-kR-BTe" eventType="touchUpInside" id="IAe-fG-Xtg"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="v1t-Gl-aEf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
+                        <constraints>
+                            <constraint firstItem="Ncm-Zz-D28" firstAttribute="trailing" secondItem="v1t-Gl-aEf" secondAttribute="trailing" constant="-20" id="5vr-VW-7aH"/>
+                            <constraint firstItem="O2d-bB-AId" firstAttribute="top" secondItem="v1t-Gl-aEf" secondAttribute="top" constant="20" id="6Yh-Zt-Oe3"/>
+                            <constraint firstAttribute="bottom" secondItem="rbG-K4-jcn" secondAttribute="bottom" id="F1r-zH-18H"/>
+                            <constraint firstItem="rbG-K4-jcn" firstAttribute="leading" secondItem="v1t-Gl-aEf" secondAttribute="leading" id="KVO-si-0RZ"/>
+                            <constraint firstItem="O2d-bB-AId" firstAttribute="leading" secondItem="v1t-Gl-aEf" secondAttribute="leading" constant="20" id="Njn-us-9hY"/>
+                            <constraint firstItem="v1t-Gl-aEf" firstAttribute="trailing" secondItem="O2d-bB-AId" secondAttribute="trailing" constant="20" id="QSq-27-rAr"/>
+                            <constraint firstItem="Ncm-Zz-D28" firstAttribute="leading" secondItem="v1t-Gl-aEf" secondAttribute="leading" constant="20" id="rre-9a-hac"/>
+                            <constraint firstItem="v1t-Gl-aEf" firstAttribute="trailing" secondItem="rbG-K4-jcn" secondAttribute="trailing" id="svL-qp-5uP"/>
+                            <constraint firstItem="Ncm-Zz-D28" firstAttribute="bottom" secondItem="v1t-Gl-aEf" secondAttribute="bottom" constant="60" id="yNv-ie-KL2"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Kiu-ha-r5h">
+                        <barButtonItem key="rightBarButtonItem" image="closeBtnSystemColor" id="t9u-i6-Wy4">
+                            <connections>
+                                <action selector="pressedCloseBtn:" destination="5H8-kR-BTe" id="Xx3-Ss-6Vd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textViewContainer" destination="O2d-bB-AId" id="HTp-0T-wJb"/>
+                        <segue destination="eVq-LI-GH7" kind="show" identifier="DptiSurveyVC" id="aVi-db-lPk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKq-ad-sSq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4001" y="155"/>
+            <point key="canvasLocation" x="5665" y="154"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="ul8-yQ-ich">
+        <scene sceneID="QvZ-Xb-8Mo">
             <objects>
-                <navigationController storyboardIdentifier="DptiVC" automaticallyAdjustsScrollViewInsets="NO" id="qFP-Vj-wIB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DptiStartVC" automaticallyAdjustsScrollViewInsets="NO" id="5Qx-yK-3TH" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="qjt-ed-aWv">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="58w-9B-KH2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="SYSTEM"/>
                         <color key="barTintColor" name="WHITE"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="eVq-LI-GH7" kind="relationship" relationship="rootViewController" id="zbZ-Oa-nEB"/>
+                        <segue destination="5H8-kR-BTe" kind="relationship" relationship="rootViewController" id="63G-FK-vWV"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XMr-b8-czE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="krO-F6-ab0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4757" y="155"/>
+            <point key="canvasLocation" x="4953" y="153"/>
         </scene>
     </scenes>
     <resources>
@@ -3482,6 +3838,7 @@
         <image name="Tool_Name_Indesign" width="64" height="64"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="closeBtnSystemColor" width="16" height="16"/>
+        <image name="dpti_left_right" width="385" height="363"/>
         <image name="feedbackCardBGBlue" width="355" height="263"/>
         <image name="feedbackCardBGPink" width="355" height="263"/>
         <image name="feedbackCardBGPurple" width="355" height="263"/>
@@ -3515,6 +3872,9 @@
         <namedColor name="TEXT - SMALL">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="TEXT - SMALL">
+            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="WHITE">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -3527,8 +3887,8 @@
         <namedColor name="YELLOW - DARK">
             <color red="0.98000001907348633" green="0.74500000476837158" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

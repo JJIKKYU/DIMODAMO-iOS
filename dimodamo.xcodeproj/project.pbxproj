@@ -151,6 +151,7 @@
 		98C6C2BD256E97BD005B8F40 /* RoundedTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6C2BC256E97BD005B8F40 /* RoundedTabBar.swift */; };
 		98C6C34C25710BCA005B8F40 /* DptiBottomPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6C34B25710BCA005B8F40 /* DptiBottomPopupVC.swift */; };
 		98C6C35125710D35005B8F40 /* Test_alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C6C35025710D35005B8F40 /* Test_alert.json */; };
+		98C6C35525716DC9005B8F40 /* DptiStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6C35425716DC9005B8F40 /* DptiStartVC.swift */; };
 		98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */; };
 		98C735AA255C53D600252BF2 /* FriendPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A9255C53D600252BF2 /* FriendPageVC.swift */; };
 		98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735AD255C551400252BF2 /* MainManitoChatVC.swift */; };
@@ -382,6 +383,7 @@
 		98C6C2BC256E97BD005B8F40 /* RoundedTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTabBar.swift; sourceTree = "<group>"; };
 		98C6C34B25710BCA005B8F40 /* DptiBottomPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiBottomPopupVC.swift; sourceTree = "<group>"; };
 		98C6C35025710D35005B8F40 /* Test_alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Test_alert.json; path = dimodamo/lottie/DptiPopup/Test_alert.json; sourceTree = SOURCE_ROOT; };
+		98C6C35425716DC9005B8F40 /* DptiStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiStartVC.swift; sourceTree = "<group>"; };
 		98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatVC.swift; sourceTree = "<group>"; };
 		98C735A9255C53D600252BF2 /* FriendPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageVC.swift; sourceTree = "<group>"; };
 		98C735AD255C551400252BF2 /* MainManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoChatVC.swift; sourceTree = "<group>"; };
@@ -833,6 +835,7 @@
 		9863223A25178570003B0784 /* Dpti */ = {
 			isa = PBXGroup;
 			children = (
+				98C6C35325716DB9005B8F40 /* DptiStart */,
 				98C6C34A25710BB6005B8F40 /* DptiBottomPopup */,
 				9806712F250F14F500C3EB72 /* DptiSurvey */,
 				98067130250F1D7700C3EB72 /* DptiResult */,
@@ -1280,6 +1283,14 @@
 				98C6C35025710D35005B8F40 /* Test_alert.json */,
 			);
 			path = DptiPopup;
+			sourceTree = "<group>";
+		};
+		98C6C35325716DB9005B8F40 /* DptiStart */ = {
+			isa = PBXGroup;
+			children = (
+				98C6C35425716DC9005B8F40 /* DptiStartVC.swift */,
+			);
+			path = DptiStart;
 			sourceTree = "<group>";
 		};
 		98C735A2255C46E200252BF2 /* Chat */ = {
@@ -1802,6 +1813,7 @@
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
 				98FA225C2557244A00331755 /* ApplicationDataAPI.swift in Sources */,
 				98A8B816253605CE00351FD5 /* SplashViewController.swift in Sources */,
+				98C6C35525716DC9005B8F40 /* DptiStartVC.swift in Sources */,
 				986BD61B25684581007F49ED /* LinkPopupVC.swift in Sources */,
 				980F19ED25407578007B33B8 /* CommentCell.swift in Sources */,
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,

@@ -53,6 +53,13 @@ class HomeViewModel {
      DPTI popup
      */
     static var isPopupCount: Int = 0
+    func isAvailablePopup() -> Bool {
+        if myDptiType() == "DD" && HomeViewModel.isPopupCount == 0 {
+            print("기본 DPTI이고 카운트가 0이므로 팝업을 올립니다.")
+            return true
+        }
+        return false
+    }
     
     init() {
         self.loadArticlePost()

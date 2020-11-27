@@ -12,12 +12,38 @@ import RxSwift
 import RxCocoa
 
 class DptiSurveyViewController: UIViewController {
-
+    
     let viewModel = DptiSurveyViewModel()
     var disposeBag = DisposeBag()
     
+    @IBOutlet var cardsHeightConstraint: Array<NSLayoutConstraint>! {
+        didSet {
+            let screenHeight = UIScreen.main.bounds.height
+            
+            // SE2
+            if screenHeight < 700 {
+                for height in cardsHeightConstraint {
+                    height.constant = 530
+                }
+            }
+
+        }
+    }
     @IBOutlet weak var card: UIView!
     @IBOutlet var cards : Array<UIView>!
+    @IBOutlet var answersHeightConstraint: Array<NSLayoutConstraint>! {
+        didSet {
+            
+            let screenHeight = UIScreen.main.bounds.height
+            
+            // SE2
+            if screenHeight < 700 {
+                for answerHeight in answersHeightConstraint {
+                    answerHeight.constant = 45
+                }
+            }
+        }
+    }
     @IBOutlet var answers : Array<UIButton>!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var progressTitleNav: UINavigationItem!
@@ -31,12 +57,12 @@ class DptiSurveyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        //        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setNeedsStatusBarAppearanceUpdate()
         
         cardViewDesign()
@@ -73,7 +99,7 @@ class DptiSurveyViewController: UIViewController {
                 
             })
             .disposed(by: disposeBag)
- 
+        
         
         viewModel.questions
             .observeOn(MainScheduler.instance)
@@ -95,7 +121,7 @@ class DptiSurveyViewController: UIViewController {
         }
     }
     
-
+    
     // MARK: - UI
     
     // Default Animation Speed Variable
@@ -104,7 +130,7 @@ class DptiSurveyViewController: UIViewController {
     
     
     @objc func selectBtn(sender : UIButton) {
- 
+        
         // all answer border color & text color init
         for answer in answers {
             answer.layer.borderColor = UIColor.appColor(.gray170).cgColor
@@ -114,7 +140,7 @@ class DptiSurveyViewController: UIViewController {
         // select answer color change
         sender.layer.borderColor = themeColor.cgColor
         sender.setTitleColor(themeColor, for: .normal)
-
+        
         
         // 체크한 값을 배열에 입력
         viewModel.answerCheck(answerTag: sender.tag)
@@ -123,7 +149,7 @@ class DptiSurveyViewController: UIViewController {
         cardMove(isNextCard: true)
     }
     
-
+    
     // true일 경우 다음 카드, false일 경우 이전 카드
     func cardMove(isNextCard : Bool) {
         if (viewModel.currentNumber.value >= 20) {
@@ -140,13 +166,13 @@ class DptiSurveyViewController: UIViewController {
         
         // 피드백 카드가 나타나는 특정 넘버에서는 딜레이 존재
         if (self.viewModel.currentNumber.value == 6 || self.viewModel.currentNumber.value == 11 ||
-            self.viewModel.currentNumber.value == 16 || self.viewModel.currentNumber.value == 21) {
+                self.viewModel.currentNumber.value == 16 || self.viewModel.currentNumber.value == 21) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 UIView.animate(withDuration: self.animationSpeed) {
                     self.cardHorizontalScrollView.setContentOffset(CGPoint(x: destinationPositionX, y: 0), animated: false)
                 }
             })
-        // 특정 카드가 아닐 경우에는 딜레이 없이 바로바로 넘김
+            // 특정 카드가 아닐 경우에는 딜레이 없이 바로바로 넘김
         } else {
             UIView.animate(withDuration: animationSpeed) {
                 self.cardHorizontalScrollView.setContentOffset(CGPoint(x: destinationPositionX, y: 0), animated: false)
@@ -195,8 +221,8 @@ extension DptiSurveyViewController {
             
             // 아래의 문제의 경우에는 tag의 값을 반대로 책정
             if questionNumber == 3 || questionNumber == 5 || questionNumber == 6 || questionNumber == 8 ||
-               questionNumber == 10 || questionNumber == 12 || questionNumber == 15 || questionNumber == 17 ||
-               questionNumber == 19 || questionNumber == 20 {
+                questionNumber == 10 || questionNumber == 12 || questionNumber == 15 || questionNumber == 17 ||
+                questionNumber == 19 || questionNumber == 20 {
                 reverse = -1
             } else { reverse = 1 }
             
@@ -265,7 +291,7 @@ extension DptiSurveyViewController {
     func navigationBarDesign() {
         let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.appColor(.system)]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-//
+        //
         let navBar = self.navigationController?.navigationBar
         navBar?.backgroundColor = UIColor.appColor(.white255)
         navBar?.setBackgroundImage(UIImage(), for: .default)

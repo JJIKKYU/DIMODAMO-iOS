@@ -393,11 +393,12 @@ extension HomeVC : UIScrollViewDelegate {
 }
 
 
+
 //MARK: - DPTI Try Bottom Popup
 
 extension HomeVC {
     func popupViewSetting() {
-        if HomeViewModel.isPopupCount == 0 {
+        if viewModel.isAvailablePopup() == true {
             let storyboard = UIStoryboard(name: "DPTI", bundle: nil)
 
             let popupVC = storyboard.instantiateViewController(withIdentifier: "DptiBottomPopupVC") as! DptiBottomPopupVC

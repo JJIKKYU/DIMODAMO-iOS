@@ -71,7 +71,10 @@ class DptiBottomPopupVC: UIViewController {
     }
     
     @IBAction func pressedTryDptiBtn(_ sender: Any) {
-        
+        let storyboard = UIStoryboard(name: "DPTI", bundle: nil)
+        let dptiStartVC = storyboard.instantiateViewController(withIdentifier: "DptiStartVC")
+        dptiStartVC.modalPresentationStyle = .fullScreen
+        self.present(dptiStartVC, animated: true, completion: nil)
     }
     
     @IBAction func pressedCloseBtn(_ sender: Any) {
