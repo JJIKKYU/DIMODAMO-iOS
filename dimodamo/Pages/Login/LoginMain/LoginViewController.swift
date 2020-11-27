@@ -189,16 +189,26 @@ class LoginViewController: UIViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+        resetDefaults()
         print("로그아웃이 완료되었습니다")
+    }
+    
+    // UserDefaults 모두 비우기
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
     
     @IBAction func pressedRegisterBtn(_ sender: Any) {
         let registerStoryboard = UIStoryboard(name: "Register", bundle: nil)
         // 원본
-        let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterVC")
+//        let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterVC")
         
         // 테스트용으로 바로 학생증 인증 VC로
-//        let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterSchoolVC")
+        let registerVC = registerStoryboard.instantiateViewController(withIdentifier: "RegisterSchoolVC")
         
         //        let registerVC: UIViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginMain")
         //

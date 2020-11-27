@@ -25,13 +25,11 @@ class RegisterSchoolViewController: UIViewController {
     @IBOutlet weak var schoolCartBtnHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var schoolCardBtn: UIButton! {
         didSet {
-            let aspectHeight = (230 / 414) * UIScreen.main.bounds.width
+            let aspectHeight = (230 / (414-40)) * UIScreen.main.bounds.width
             schoolCartBtnHeightConstraint?.constant = aspectHeight
         }
     }
     
-    
-    @IBOutlet var schoolDropDownView: UIView!
     @IBOutlet weak var schoolTextField: McTextField!
     @IBOutlet weak var schoolLine: UIView!
     
@@ -49,25 +47,25 @@ class RegisterSchoolViewController: UIViewController {
         imagePickerController.delegate = self
         self.pickerSchoolTextfieldSetting()
         
-        schoolIdTextField.rx.text.orEmpty
-            .map { $0 as String }
-            .bind(to: self.viewModel!.schoolIdRelay)
-            .disposed(by: disposeBag)
-        
-        self.viewModel?.schoolIdRelay
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] id in
-                if id.count == 7 {
-                    UIView.animate(withDuration: 0.5) {
-                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.gray190)
-                    }
-                } else {
-                    UIView.animate(withDuration: 0.5) {
-                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.white235)
-                    }
-                }
-            })
-            .disposed(by: disposeBag)
+//        schoolIdTextField.rx.text.orEmpty
+//            .map { $0 as String }
+//            .bind(to: self.viewModel!.schoolIdRelay)
+//            .disposed(by: disposeBag)
+//
+//        self.viewModel?.schoolIdRelay
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] id in
+//                if id.count == 7 {
+//                    UIView.animate(withDuration: 0.5) {
+//                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.gray190)
+//                    }
+//                } else {
+//                    UIView.animate(withDuration: 0.5) {
+//                        self?.schoolIdLine.backgroundColor = UIColor.appColor(.white245)
+//                    }
+//                }
+//            })
+//            .disposed(by: disposeBag)
     }
     
     @IBAction func pressCloseBtn(_ sender: Any) {
@@ -101,7 +99,7 @@ class RegisterSchoolViewController: UIViewController {
         }
         
         performSegue(withIdentifier: "RegisterFinish", sender: sender)
-//        dismiss(animated: true, completion: nil)
+        //        dismiss(animated: true, completion: nil)
     }
     
     /*
@@ -114,25 +112,42 @@ class RegisterSchoolViewController: UIViewController {
      }
      */
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+         self.view.endEditing(true)
+    }
+    
 }
 
 extension RegisterSchoolViewController {
     func viewDesisgn() {
-//        self.nextTryBtn.layer.cornerRadius = 16
+        //        self.nextTryBtn.layer.cornerRadius = 16
         AppStyleGuide.systemBtnRadius16(btn: finishBtn, isActive: false)
+        
+        let aspectHeight = (230 / 414) * UIScreen.main.bounds.width
+        schoolCartBtnHeightConstraint.constant = aspectHeight
     }
     
     func pickerSchoolTextfieldSetting() {
-//        guard let schoolData = self.viewModel?.schoolArrData else {
-//            return
-//        }
+        //        guard let schoolData = self.viewModel?.schoolArrData else {
+        //            return
+        //        }
         
         // 임시데이터
         let schoolArrData: [[String]] = [["홍익대학교"]]
         let data: [[String]] = schoolArrData
         let mcInputView = McPicker(data: data)
-        mcInputView.backgroundColor = .gray
+        mcInputView.backgroundColor = UIColor.black
+        mcInputView.tintColor = UIColor.appColor(.gray210) // 딤처리
+        mcInputView.toolbarBarTintColor = UIColor.appColor(.white245)
+        mcInputView.toolbarButtonsColor = UIColor.appColor(.textSmall)
         mcInputView.backgroundColorAlpha = 0.25
+        mcInputView.pickerBackgroundColor = UIColor.appColor(.white255)
+        
+        let customLabel = UILabel()
+        customLabel.textAlignment = .center
+        customLabel.textColor = UIColor.appColor(.textSmall)
+        mcInputView.label = customLabel
+        
         schoolTextField.inputViewMcPicker = mcInputView
         
         schoolTextField.doneHandler = { [weak schoolTextField] (selections) in
@@ -150,7 +165,7 @@ extension RegisterSchoolViewController {
         schoolTextField.cancelHandler = { [weak schoolTextField] in
             schoolTextField?.text = "다니시는 학교를 선택해 주세요."
             UIView.animate(withDuration: 0.5) {
-                self.schoolLine.backgroundColor = UIColor.appColor(.white235)
+                self.schoolLine.backgroundColor = UIColor.appColor(.white245)
             }
         }
         schoolTextField.textFieldWillBeginEditingHandler = { [weak schoolTextField] (selections) in
@@ -158,7 +173,7 @@ extension RegisterSchoolViewController {
                 // Selections always default to the first value per component
                 schoolTextField?.text = selections[0]
                 UIView.animate(withDuration: 0.5) {
-                    self.schoolLine.backgroundColor = UIColor.appColor(.white235)
+                    self.schoolLine.backgroundColor = UIColor.appColor(.white245)
                 }
             }
         }
@@ -172,15 +187,31 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
     @IBAction func pressSchoolCardBtn(_ sender: Any) {
         self.imagePickerController.sourceType = .camera
         
-        self.present(self.imagePickerController, animated: true, completion: nil)
+        guard let schooldIdCount = viewModel?.schoolIdRelay.value.count else {
+            return
+        }
+        // 대학교정보와 학번정보 선택했을 경우에만
+        if schooldIdCount >= 7 && viewModel?.school?.count != 0 {
+            self.present(self.imagePickerController, animated: true, completion: nil)
+        } else {
+            let alert = AlertController(title: "학교와 학번을 먼저 작성해주세요", message: "", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
     
+    // 사진 선택이 끝났을 경우
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
+        
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
         guard let imageData = image.resize(withWidth: 400)?.jpeg(.lowest) else { return }
@@ -201,6 +232,6 @@ extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavi
         let cropped:UIImage = UIImage(cgImage:imageRef)
         return cropped
     }
-
+    
     
 }

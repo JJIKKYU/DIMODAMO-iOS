@@ -36,7 +36,9 @@ class SplashViewController: UIViewController {
         let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
         
         
+        // 테스트할 때는 일단 제외
         // UserDefaults에서 cert가 완료되었을 경우에는 db search 하지 않음
+        /*
         if UserDefaults.standard.string(forKey: "cert") != "approval" {
             if let userUID = Auth.auth().currentUser?.uid {
                 db.collection("users").document("\(userUID)")
@@ -98,9 +100,11 @@ class SplashViewController: UIViewController {
                             print("유저 정보를 읽는데 오류가 생겼습니다.")
                         }
                     }
+         
             }
             
         }
+         */
         
         
         // Splash Screen이 모두 끝난 뒤
