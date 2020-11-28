@@ -11,6 +11,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+import Lottie
+
+
 class DptiSurveyViewController: UIViewController {
     
     let viewModel = DptiSurveyViewModel()
@@ -29,6 +32,7 @@ class DptiSurveyViewController: UIViewController {
 
         }
     }
+    @IBOutlet weak var cardCardView: UIView!
     @IBOutlet weak var card: UIView!
     @IBOutlet var cards : Array<UIView>!
     @IBOutlet var answersHeightConstraint: Array<NSLayoutConstraint>! {
@@ -195,7 +199,9 @@ class DptiSurveyViewController: UIViewController {
     func finishSurvey() {
         _ = viewModel.checkType()
         print("설문 클리어!")
+        self.lottieSetting()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+            
             self.performSegue(withIdentifier: "DptiResult", sender: nil)
         })
         
@@ -296,5 +302,26 @@ extension DptiSurveyViewController {
         navBar?.backgroundColor = UIColor.appColor(.white255)
         navBar?.setBackgroundImage(UIImage(), for: .default)
         navBar?.shadowImage = UIImage()
+    }
+}
+
+//MARK: - Lottie
+
+extension DptiSurveyViewController {
+    func lottieSetting() {
+        let animationView = Lottie.AnimationView.init(name: "Extract_Mobile")
+//        animationView.contentMode = .scaleAspectFill
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        resultCardView.translatesAutoresizingMaskIntoConstraints = false
+        cardCardView.addSubview(animationView)
+        animationView.topAnchor.constraint(equalTo: cardCardView.topAnchor, constant: 0).isActive = true
+        animationView.leftAnchor.constraint(equalTo: cardCardView.leftAnchor, constant: 0).isActive = true
+        animationView.rightAnchor.constraint(equalTo: cardCardView.rightAnchor, constant: 0).isActive = true
+        animationView.bottomAnchor.constraint(equalTo: cardCardView.bottomAnchor, constant: 0).isActive = true
+        
+        animationView.play()
+        animationView.loopMode = .loop
     }
 }

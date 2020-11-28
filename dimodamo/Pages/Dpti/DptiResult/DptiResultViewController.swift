@@ -151,6 +151,15 @@ class DptiResultViewController: UIViewController {
         typeTitle.attributedText = attrString
     }
     
+    // 완료버튼을 눌렀을 경우 -> 메인화면으로
+    @IBAction func pressedClearBtn(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // 원본
+        let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+        mainVC.modalPresentationStyle = .fullScreen
+        present(mainVC, animated: true, completion: nil)
+    }
+    
     func resultCardViewInit() {
         
         // resultCard Background Change
@@ -185,6 +194,7 @@ class DptiResultViewController: UIViewController {
         animationView.leftAnchor.constraint(equalTo: resultCardView.leftAnchor, constant: 0).isActive = true
         animationView.rightAnchor.constraint(equalTo: resultCardView.rightAnchor, constant: 0).isActive = true
         animationView.bottomAnchor.constraint(equalTo: resultCardView.bottomAnchor, constant: 0).isActive = true
+        view.layoutIfNeeded()
         
         typeChar.image = nil
         typeChar.layer.cornerRadius = 24

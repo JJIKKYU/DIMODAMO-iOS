@@ -88,6 +88,11 @@ class DptiResultViewModel {
             .updateData(["dpti" : "\(self.type)"])
         
         print("유저의 dpti를 변경했습니다.")
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue("\(self.type)", forKey: "dpti")
+        
+        print("유저의 dpti, userDefaults도 변경했습니다.")
     }
     
     func getOnlyTypeWithoutGender(type: String) -> String {

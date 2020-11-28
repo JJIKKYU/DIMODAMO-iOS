@@ -40,12 +40,12 @@ class ProfileMainViewModel {
     }
     
     func getUserType() {
-        let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_TI"
+        let type = UserDefaults.standard.string(forKey: "dpti") ?? "DD"
         profileSetting.accept(type)
     }
     
     func myDptiType() -> String {
-        let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_TI"
+        let type = UserDefaults.standard.string(forKey: "dpti") ?? "DD"
         return type
     }
     

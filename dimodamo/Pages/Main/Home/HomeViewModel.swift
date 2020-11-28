@@ -25,7 +25,13 @@ class HomeViewModel {
     let userUID: String = Auth.auth().currentUser?.uid ?? ""
     
     func myDptiType() -> String {
-        let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_DD"
+        let type = UserDefaults.standard.string(forKey: "dpti") ?? "DD"
+        
+        // 타입이 없을 경우 한 번 더 체크합니다.
+        if type.count == 0 {
+            return "DD"
+        }
+        
         return type
     }
     

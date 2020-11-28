@@ -54,17 +54,16 @@ class RegisterNicknameViewController: UIViewController {
                     self?.viewModel?.isVaildDuplicateNickName.accept(.nothing)
                 }
 
+                print("\(self?.viewModel?.isValidNickname())")
                 // 이메일 정규식에 알맞는 경우에는 중복확인 버튼 활성화
-                if self?.viewModel?.isVailedNickName == true {
+                if self?.viewModel?.isValidNickname() == true {
                     self?.certBtn.isEnabled = true
                     UIView.animate(withDuration: 0.5) {
                         self?.certBtn.backgroundColor = UIColor.appColor(.system)
                         self?.nickNameTextFieldSub.alpha = 0
                     }
                 // 이메일 정규식에 맞지 않거나 그 외 조건에 맞지 않을 경우 중복확인 버튼 비활성화
-                } else if self?.viewModel?.isVailedNickName == false ||
-                            (self?.viewModel?.nickNameRelay.value.count)! < 4 ||
-                            (self?.viewModel?.nickNameRelay.value.count)! > 8 {
+                } else if self?.viewModel?.isValidNickname() == false {
                     self?.certBtn.isEnabled = false
                     UIView.animate(withDuration: 0.5) {
                         self?.nickNameTextFieldSub.alpha = 1
@@ -139,6 +138,7 @@ class RegisterNicknameViewController: UIViewController {
         self.nextBtn?.transform = .identity
     }
     @IBAction func pressedCertBtn(_ sender: Any) {
+        if self.viewModel?.isValidNickname() == false { return }
         viewModel?.duplicationCheckNickname()
     }
     

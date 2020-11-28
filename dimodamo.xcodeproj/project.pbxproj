@@ -152,6 +152,7 @@
 		98C6C34C25710BCA005B8F40 /* DptiBottomPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6C34B25710BCA005B8F40 /* DptiBottomPopupVC.swift */; };
 		98C6C35125710D35005B8F40 /* Test_alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C6C35025710D35005B8F40 /* Test_alert.json */; };
 		98C6C35525716DC9005B8F40 /* DptiStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6C35425716DC9005B8F40 /* DptiStartVC.swift */; };
+		98C6C35C25717FAE005B8F40 /* Extract_Mobile.json in Resources */ = {isa = PBXBuildFile; fileRef = 98C6C35B25717FAE005B8F40 /* Extract_Mobile.json */; };
 		98C735A5255C46FA00252BF2 /* ManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */; };
 		98C735AA255C53D600252BF2 /* FriendPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735A9255C53D600252BF2 /* FriendPageVC.swift */; };
 		98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735AD255C551400252BF2 /* MainManitoChatVC.swift */; };
@@ -384,6 +385,7 @@
 		98C6C34B25710BCA005B8F40 /* DptiBottomPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiBottomPopupVC.swift; sourceTree = "<group>"; };
 		98C6C35025710D35005B8F40 /* Test_alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Test_alert.json; path = dimodamo/lottie/DptiPopup/Test_alert.json; sourceTree = SOURCE_ROOT; };
 		98C6C35425716DC9005B8F40 /* DptiStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiStartVC.swift; sourceTree = "<group>"; };
+		98C6C35B25717FAE005B8F40 /* Extract_Mobile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Extract_Mobile.json; path = dimodamo/lottie/DptiCalc/Extract_Mobile.json; sourceTree = SOURCE_ROOT; };
 		98C735A4255C46FA00252BF2 /* ManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatVC.swift; sourceTree = "<group>"; };
 		98C735A9255C53D600252BF2 /* FriendPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageVC.swift; sourceTree = "<group>"; };
 		98C735AD255C551400252BF2 /* MainManitoChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoChatVC.swift; sourceTree = "<group>"; };
@@ -1251,6 +1253,7 @@
 		98C48B14250CD163004E24E5 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				98C6C35725717F8D005B8F40 /* DptiCalc */,
 				98C6C34F25710D2A005B8F40 /* DptiPopup */,
 				988377EE254563F900BFA746 /* Loading */,
 				98A8B8082536040B00351FD5 /* Splash */,
@@ -1291,6 +1294,14 @@
 				98C6C35425716DC9005B8F40 /* DptiStartVC.swift */,
 			);
 			path = DptiStart;
+			sourceTree = "<group>";
+		};
+		98C6C35725717F8D005B8F40 /* DptiCalc */ = {
+			isa = PBXGroup;
+			children = (
+				98C6C35B25717FAE005B8F40 /* Extract_Mobile.json */,
+			);
+			path = DptiCalc;
 			sourceTree = "<group>";
 		};
 		98C735A2255C46E200252BF2 /* Chat */ = {
@@ -1638,6 +1649,7 @@
 				98FA223C2556EE7300331755 /* M_FN.json in Resources */,
 				98C6C35125710D35005B8F40 /* Test_alert.json in Resources */,
 				98A8B8202536083200351FD5 /* Splash_1.5C_top.json in Resources */,
+				98C6C35C25717FAE005B8F40 /* Extract_Mobile.json in Resources */,
 				98A8B82625360AF100351FD5 /* LaunchScreen.storyboard in Resources */,
 				98A8B7BE25345BDC00351FD5 /* Onboarding_2_room.json in Resources */,
 				98FA22342556EE7300331755 /* M_PS.json in Resources */,

@@ -169,6 +169,13 @@ class RegisterViewModel {
         return predicate.evaluate(with: pw)
     }
     
+    // 닉네임 체크
+    func isValidNickname() -> Bool {
+        let nicknameRegEx = "^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\s]{4,8}$"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", nicknameRegEx)
+        return predicate.evaluate(with: self.nickNameRelay.value)
+    }
+    
     // 난수 생성기
     func generateRandomString(_ n: Int) -> String {
         let digits = "abcdefghijklmnopqrstuvwxyz1234567890"

@@ -106,6 +106,11 @@ class SplashViewController: UIViewController {
         }
          */
         
+        // 미리 유저 데이트 긁어오기
+        if user != nil {
+            self.getUserData()
+        }
+        
         
         // Splash Screen이 모두 끝난 뒤
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
@@ -115,7 +120,6 @@ class SplashViewController: UIViewController {
             if user != nil {
                 print("현재 로그인중입니다")
                 print("현재 로그인 되어 있는 UID : \(Auth.auth().currentUser?.uid ?? "로그인 UID가 없습니다.")")
-                self.getUserData()
                 
                 mainVC.modalPresentationStyle = .fullScreen
                 mainVC.modalTransitionStyle = .crossDissolve
