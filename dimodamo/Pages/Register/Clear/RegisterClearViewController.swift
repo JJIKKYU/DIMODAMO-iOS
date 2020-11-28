@@ -16,7 +16,6 @@ class RegisterClearViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewDesign()
 
         // Do any additional setup after loading the view.
     }
@@ -31,13 +30,11 @@ class RegisterClearViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
-
-
-extension RegisterClearViewController {
-    func viewDesign() {
-        startDptiBtn.layer.cornerRadius = 16
-        nextTryBtn.layer.cornerRadius = 16
+    @IBAction func pressedOkBtn(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+        mainVC.modalPresentationStyle = .fullScreen
+        present(mainVC, animated: true, completion: nil)
     }
+    
 }

@@ -113,7 +113,7 @@ class RegisterSchoolViewController: UIViewController {
     // 다음에 할래요
     @IBAction func pressNextTryBtn(_ sender: Any) {
         
-        let alert = UIAlertController(title: "주의사항", message: "학교 미인증 상태에서는 서비스 이용이 제한적입니다.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "주의사항", message: "학교 미인증 상태에서는 서비스를 이용할 수 없습니다", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
             self?.performSegue(withIdentifier: "RegisterFinish", sender: sender)
@@ -204,18 +204,21 @@ extension RegisterSchoolViewController {
         
         schoolTextField.doneHandler = { [weak schoolTextField] (selections) in
             schoolTextField?.text = selections[0]!
+            self.viewModel?.school.accept(selections[0]!)
             UIView.animate(withDuration: 0.5) {
                 self.schoolLine.backgroundColor = UIColor.appColor(.gray190)
             }
         }
         schoolTextField.selectionChangedHandler = { [weak schoolTextField] (selections, componentThatChanged) in
             schoolTextField?.text = selections[componentThatChanged]!
+            self.viewModel?.school.accept(selections[componentThatChanged]!)
             UIView.animate(withDuration: 0.5) {
                 self.schoolLine.backgroundColor = UIColor.appColor(.gray190)
             }
         }
         schoolTextField.cancelHandler = { [weak schoolTextField] in
             schoolTextField?.text = "다니시는 학교를 선택해 주세요."
+            self.viewModel?.school.accept("")
             UIView.animate(withDuration: 0.5) {
                 self.schoolLine.backgroundColor = UIColor.appColor(.white245)
             }
@@ -224,6 +227,7 @@ extension RegisterSchoolViewController {
             if schoolTextField?.text == "" {
                 // Selections always default to the first value per component
                 schoolTextField?.text = selections[0]
+                self.viewModel?.school.accept(selections[0]!)
                 UIView.animate(withDuration: 0.5) {
                     self.schoolLine.backgroundColor = UIColor.appColor(.white245)
                 }
@@ -238,6 +242,8 @@ extension RegisterSchoolViewController {
 extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBAction func pressSchoolCardBtn(_ sender: Any) {
         self.imagePickerController.sourceType = .camera
+        
+        print("SchoolIDRelay = \(viewModel?.schoolIdRelay.value), school = \(viewModel?.school.value)")
         
         guard let schooldIdCount = viewModel?.schoolIdRelay.value.count else {
             return

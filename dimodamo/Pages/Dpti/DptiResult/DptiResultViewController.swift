@@ -194,10 +194,8 @@ class DptiResultViewController: UIViewController {
         animationView.leftAnchor.constraint(equalTo: resultCardView.leftAnchor, constant: 0).isActive = true
         animationView.rightAnchor.constraint(equalTo: resultCardView.rightAnchor, constant: 0).isActive = true
         animationView.bottomAnchor.constraint(equalTo: resultCardView.bottomAnchor, constant: 0).isActive = true
-        view.layoutIfNeeded()
         
-        typeChar.image = nil
-        typeChar.layer.cornerRadius = 24
+        animationView.layer.cornerRadius = 24
         animationView.play()
         animationView.loopMode = .loop
     }
