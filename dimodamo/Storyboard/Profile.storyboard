@@ -124,7 +124,7 @@
                                                                         <constraint firstItem="fGm-GT-duA" firstAttribute="top" secondItem="TPk-nA-fi5" secondAttribute="top" id="x4t-7S-DlJ"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1G-NL-hK0" userLabel="rangkingContainer">
+                                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1G-NL-hK0" userLabel="rangkingContainer">
                                                                     <rect key="frame" x="32" y="0.0" width="40" height="32"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rangkingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="r8t-Al-8N8">
@@ -259,7 +259,7 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CR-MJ-R2E">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CR-MJ-R2E">
                                                 <rect key="frame" x="24" y="48" width="370" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Vyj-kC-jwS"/>
@@ -272,26 +272,13 @@
                                                     <action selector="pressedDimoPeopleBtn:" destination="TS6-ka-uAZ" eventType="touchUpInside" id="Ryd-H1-gP9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaQ-Zb-BXu">
-                                                <rect key="frame" x="342" y="52" width="52" height="17"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="17" id="Qw5-Ca-30g"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
-                                                <state key="normal" title="+ 더 보기">
-                                                    <color key="titleColor" name="GRAY - 170"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="pressedDimoPeopleBtn:" destination="TS6-ka-uAZ" eventType="touchUpInside" id="LfI-By-53g"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나와 색상, 도형, 관심사가 같은 디모인을 만나보세요!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9a-X1-Sil">
                                                 <rect key="frame" x="24" y="81" width="287.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pmd-5e-R6A">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pmd-5e-R6A">
                                                 <rect key="frame" x="24" y="359" width="370" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="IQM-b9-S71"/>
@@ -595,41 +582,24 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jho-Sj-fjt">
-                                                <rect key="frame" x="342" y="363" width="52" height="17"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="17" id="FTP-bp-YAE"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
-                                                <state key="normal" title="+ 더 보기">
-                                                    <color key="titleColor" name="GRAY - 170"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="pressedHotDimoPeople:" destination="TS6-ka-uAZ" eventType="touchUpInside" id="cct-Pp-N6u"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" name="WHITE"/>
                                         <constraints>
                                             <constraint firstItem="Pmd-5e-R6A" firstAttribute="top" secondItem="EtA-SI-QhW" secondAttribute="bottom" constant="16" id="2SZ-6r-Q5I"/>
                                             <constraint firstItem="gRY-7v-GNZ" firstAttribute="top" secondItem="444-i9-Ehk" secondAttribute="bottom" constant="24" id="5Ug-8X-zWo"/>
                                             <constraint firstAttribute="height" constant="1450" id="6jA-pz-qSu"/>
-                                            <constraint firstItem="PaQ-Zb-BXu" firstAttribute="centerY" secondItem="5CR-MJ-R2E" secondAttribute="centerY" id="7Li-xU-fpO"/>
                                             <constraint firstItem="5CR-MJ-R2E" firstAttribute="top" secondItem="lv2-r3-KoK" secondAttribute="top" constant="48" id="9V8-1e-x36"/>
                                             <constraint firstItem="EtA-SI-QhW" firstAttribute="leading" secondItem="lv2-r3-KoK" secondAttribute="leading" id="C2w-UN-DT0"/>
                                             <constraint firstAttribute="trailing" secondItem="gRY-7v-GNZ" secondAttribute="trailing" id="I7T-UM-lBQ"/>
                                             <constraint firstItem="g9a-X1-Sil" firstAttribute="leading" secondItem="5CR-MJ-R2E" secondAttribute="leading" id="IBX-re-TZk"/>
                                             <constraint firstItem="5CR-MJ-R2E" firstAttribute="leading" secondItem="lv2-r3-KoK" secondAttribute="leading" constant="24" id="Ifc-nU-bDk"/>
-                                            <constraint firstAttribute="trailing" secondItem="Jho-Sj-fjt" secondAttribute="trailing" constant="20" id="K7W-d1-lGV"/>
                                             <constraint firstItem="O0L-xh-3r9" firstAttribute="top" secondItem="gRY-7v-GNZ" secondAttribute="bottom" constant="24" id="Nbv-FH-03z"/>
                                             <constraint firstItem="O0L-xh-3r9" firstAttribute="leading" secondItem="lv2-r3-KoK" secondAttribute="leading" id="ZiB-yk-7bG"/>
                                             <constraint firstItem="g9a-X1-Sil" firstAttribute="top" secondItem="5CR-MJ-R2E" secondAttribute="bottom" constant="8" id="bf7-fH-Npd"/>
                                             <constraint firstAttribute="trailing" secondItem="Pmd-5e-R6A" secondAttribute="trailing" constant="20" id="bv1-EM-mRe"/>
-                                            <constraint firstAttribute="trailing" secondItem="PaQ-Zb-BXu" secondAttribute="trailing" constant="20" id="cUH-8J-pKP"/>
                                             <constraint firstAttribute="trailing" secondItem="5CR-MJ-R2E" secondAttribute="trailing" constant="20" id="fhf-Ig-SdK"/>
                                             <constraint firstItem="444-i9-Ehk" firstAttribute="top" secondItem="Pmd-5e-R6A" secondAttribute="bottom" constant="8" id="hG5-K1-W3D"/>
                                             <constraint firstItem="Pmd-5e-R6A" firstAttribute="leading" secondItem="5CR-MJ-R2E" secondAttribute="leading" id="hUK-mJ-qUm"/>
-                                            <constraint firstItem="Jho-Sj-fjt" firstAttribute="centerY" secondItem="Pmd-5e-R6A" secondAttribute="centerY" id="jSh-AG-DP5"/>
                                             <constraint firstItem="gRY-7v-GNZ" firstAttribute="leading" secondItem="lv2-r3-KoK" secondAttribute="leading" id="nfL-nz-z0t"/>
                                             <constraint firstAttribute="trailing" secondItem="EtA-SI-QhW" secondAttribute="trailing" id="oM7-Oj-hbE"/>
                                             <constraint firstItem="444-i9-Ehk" firstAttribute="leading" secondItem="Pmd-5e-R6A" secondAttribute="leading" id="p6Y-gu-sId"/>
@@ -660,29 +630,16 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="다모여" largeTitleDisplayMode="always" id="hUd-Ca-T5a">
                         <barButtonItem key="backBarButtonItem" title="이전" id="u4B-HT-Fnc"/>
-                        <rightBarButtonItems>
-                            <barButtonItem id="Cma-Ee-Nks">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="sef-7k-7h9">
-                                    <rect key="frame" x="370" y="10" width="24" height="24"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="24TestProfile"/>
-                                    <connections>
-                                        <action selector="pressedMyProfileBtn:" destination="TS6-ka-uAZ" eventType="touchUpInside" id="vgb-vN-YDU"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem style="plain" id="dzN-ng-dQe">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qdm-dd-UBK">
-                                    <rect key="frame" x="338" y="11" width="24" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="searchIcon"/>
-                                    <connections>
-                                        <action selector="pressedSearchBtn:" destination="iWu-zo-rwV" eventType="touchUpInside" id="nJd-9N-j3b"/>
-                                        <action selector="pressedSearchBtn:" destination="TS6-ka-uAZ" eventType="touchUpInside" id="xb7-aD-AmC"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" id="Cma-Ee-Nks">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="sef-7k-7h9">
+                                <rect key="frame" x="370" y="10" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="24TestProfile"/>
+                                <connections>
+                                    <action selector="pressedMyProfileBtn:" destination="TS6-ka-uAZ" eventType="touchUpInside" id="vgb-vN-YDU"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="damoTableView" destination="O0L-xh-3r9" id="QEF-MF-dsd"/>
@@ -695,7 +652,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnE-Jt-gWa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="iWu-zo-rwV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1258" y="-98"/>
         </scene>
@@ -2755,7 +2711,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVU-Cb-wG6" userLabel="쪽지 보내기">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVU-Cb-wG6" userLabel="쪽지 보내기">
                                 <rect key="frame" x="0.0" y="840" width="414" height="56"/>
                                 <color key="backgroundColor" name="SYSTEM"/>
                                 <constraints>
@@ -2952,7 +2908,7 @@
                                                                                 <color key="textColor" name="SYSTEM"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-3l-CWj">
+                                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-3l-CWj">
                                                                                 <rect key="frame" x="284" y="12" width="64" height="29"/>
                                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                                                                 <state key="normal" title="+ 모두 보기">
@@ -3000,7 +2956,7 @@
                                                                                 <color key="textColor" name="SYSTEM"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OyG-JH-Fj4">
+                                                                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OyG-JH-Fj4">
                                                                                 <rect key="frame" x="284" y="12" width="64" height="29"/>
                                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                                                                 <state key="normal" title="+ 모두 보기">
@@ -3047,7 +3003,7 @@
                                                                                 <color key="textColor" name="SYSTEM"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUH-Of-XYY">
+                                                                            <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUH-Of-XYY">
                                                                                 <rect key="frame" x="284" y="12" width="64" height="29"/>
                                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                                                                 <state key="normal" title="+ 모두 보기">
@@ -3173,36 +3129,22 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="xu7-Wk-ILn">
                         <barButtonItem key="backBarButtonItem" title="이전" id="EFn-yI-0xU"/>
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" id="k9c-4F-s2X">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PAt-xk-9ib">
-                                    <rect key="frame" x="374" y="0.0" width="20" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="dpti_navigation_icon"/>
-                                    <connections>
-                                        <action selector="pressedDptiBtn:" destination="sAM-ds-ZdE" eventType="touchUpInside" id="dwd-ge-5C6"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem style="plain" id="1bQ-OJ-hri">
-                                <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yd3-7D-LjW">
-                                    <rect key="frame" x="346" y="0.0" width="20" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="menu_icon"/>
-                                    <connections>
-                                        <action selector="pressedMenuBtn:" destination="sAM-ds-ZdE" eventType="touchUpInside" id="I7V-tc-djS"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="k9c-4F-s2X">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PAt-xk-9ib">
+                                <rect key="frame" x="374" y="0.0" width="20" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="dpti_navigation_icon"/>
+                                <connections>
+                                    <action selector="pressedDptiBtn:" destination="sAM-ds-ZdE" eventType="touchUpInside" id="dwd-ge-5C6"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundPattern" destination="Ft2-k1-AU2" id="7Jb-xt-0SD"/>
                         <outlet property="bubblePopup" destination="n3T-Gj-Vb1" id="Rzz-ed-lMW"/>
                         <outlet property="commentHeartCountLabel" destination="WJJ-EL-aeJ" id="jAr-v3-VdS"/>
                         <outlet property="manitoGoodCountLabel" destination="Ooc-8J-PcH" id="t95-xZ-kwd"/>
-                        <outlet property="menuBtn" destination="yd3-7D-LjW" id="hF2-gV-UQp"/>
                         <outlet property="messageBtn" destination="FVU-Cb-wG6" id="IEz-5D-d2y"/>
                         <outlet property="messageBtnHeightConstraint" destination="mPL-jG-RL1" id="fsY-Cb-h0T"/>
                         <outlet property="navItem" destination="xu7-Wk-ILn" id="Yku-8A-CjG"/>
@@ -3776,7 +3718,7 @@
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-Vx-gOt">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-Vx-gOt">
                                                 <rect key="frame" x="328" y="30" width="66" height="17"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                                 <state key="normal" title="  다시하기" image="retry_icon">
@@ -4955,7 +4897,6 @@
         <image name="information_icon" width="16" height="16"/>
         <image name="manito_good_icon" width="14" height="13"/>
         <image name="menu_bubble_icon" width="184" height="136"/>
-        <image name="menu_icon" width="4" height="16"/>
         <image name="pink_circle" width="16" height="16"/>
         <image name="profile" width="20" height="20"/>
         <image name="profileSelected" width="20" height="20"/>

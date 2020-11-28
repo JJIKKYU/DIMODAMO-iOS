@@ -315,30 +315,17 @@
                             <inset key="imageInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <color key="tintColor" name="SYSTEM"/>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" id="VqD-vp-ZMI">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tRw-01-RW7">
-                                    <rect key="frame" x="368" y="10" width="26" height="24"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <inset key="contentEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" image="24_Profile_F_FN"/>
-                                    <connections>
-                                        <action selector="pressedProfileBtn:" destination="U1X-jK-vjF" eventType="touchUpInside" id="UHx-Zu-h7O"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem style="plain" id="hdE-OA-4uY">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KRV-dL-zmB">
-                                    <rect key="frame" x="339" y="11" width="21" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="2" maxY="0.0"/>
-                                    <state key="normal" image="setting_icon"/>
-                                    <connections>
-                                        <action selector="pressedSettingBtn:" destination="U1X-jK-vjF" eventType="touchUpInside" id="Ef0-Bz-Kb7"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="VqD-vp-ZMI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tRw-01-RW7">
+                                <rect key="frame" x="368" y="10" width="26" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="24_Profile_F_FN"/>
+                                <connections>
+                                    <action selector="pressedProfileBtn:" destination="U1X-jK-vjF" eventType="touchUpInside" id="UHx-Zu-h7O"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="artboardCardView" destination="KCO-7g-Nd9" id="uJI-8O-c8V"/>
@@ -475,7 +462,6 @@
                     <connections>
                         <segue destination="dVU-98-3mA" kind="relationship" relationship="viewControllers" id="abQ-H6-mIm"/>
                         <segue destination="XIB-mF-kLE" kind="relationship" relationship="viewControllers" id="tcD-fx-gsr"/>
-                        <segue destination="XqL-PQ-a9k" kind="relationship" relationship="viewControllers" id="UbP-rR-xFz"/>
                         <segue destination="I0M-G3-KAm" kind="relationship" relationship="viewControllers" id="y1c-ki-BlT"/>
                     </connections>
                 </tabBarController>
@@ -492,16 +478,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PC7-j4-oXj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1870" y="725"/>
-        </scene>
-        <!--FriendsMain-->
-        <scene sceneID="gTA-L5-X7e">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Friends" referencedIdentifier="FriendsMain" id="XqL-PQ-a9k" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="LYK-cO-UyX"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZBY-GI-omp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1578" y="579"/>
         </scene>
         <!--ProfileMain-->
         <scene sceneID="f6V-kK-FsI">
@@ -556,7 +532,6 @@
         <image name="home_banner_test" width="374" height="88"/>
         <image name="main_article_image" width="374" height="224"/>
         <image name="scrapIconSmall" width="10" height="12"/>
-        <image name="setting_icon" width="19" height="20"/>
         <image name="testProfile" width="32" height="32"/>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

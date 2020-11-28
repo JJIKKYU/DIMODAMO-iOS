@@ -504,32 +504,6 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Bhb-7T-dYv">
                             <color key="tintColor" name="GRAY - 190"/>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" id="hvX-g1-EtM">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Vbr-Lg-XcG">
-                                    <rect key="frame" x="370" y="0.0" width="24" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="plusBtn">
-                                        <color key="titleColor" name="GRAY - 190"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="pressedCreatePostBtn:" destination="Vgi-od-Fnr" eventType="touchUpInside" id="LVQ-lS-osB"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem style="done" id="BPI-9Y-ii6">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DTF-lP-27W">
-                                    <rect key="frame" x="338" y="11" width="24" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="searchIcon">
-                                        <color key="titleColor" name="GRAY - 190"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="pressedSearchBtn:" destination="Vgi-od-Fnr" eventType="touchUpInside" id="3pm-yv-CZs"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="articleCollectionView" destination="UCe-Uz-ZKD" id="d5s-yG-rgm"/>
