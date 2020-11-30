@@ -160,6 +160,7 @@
 		98C735DC255C5F1100252BF2 /* YourChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C735DB255C5F1100252BF2 /* YourChatCell.swift */; };
 		98C73619255CD77400252BF2 /* MyChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C73618255CD77400252BF2 /* MyChatCell.swift */; };
 		98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */; };
+		98D265052575655A00BD51D5 /* TestCommunitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D265042575655A00BD51D5 /* TestCommunitySearchVC.swift */; };
 		98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */; };
 		98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */; };
 		98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */; };
@@ -394,6 +395,7 @@
 		98C735E4255CC66A00252BF2 /* dimodamoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dimodamoRelease.entitlements; sourceTree = "<group>"; };
 		98C73618255CD77400252BF2 /* MyChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatCell.swift; sourceTree = "<group>"; };
 		98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
+		98D265042575655A00BD51D5 /* TestCommunitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCommunitySearchVC.swift; sourceTree = "<group>"; };
 		98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewController.swift; sourceTree = "<group>"; };
 		98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewModel.swift; sourceTree = "<group>"; };
 		98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewModel.swift; sourceTree = "<group>"; };
@@ -1482,6 +1484,7 @@
 				98F8C835254C3CE900FDDEBF /* Cell */,
 				98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */,
 				98F8C83A254C912300FDDEBF /* SearchPageVC.swift */,
+				98D265042575655A00BD51D5 /* TestCommunitySearchVC.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1572,7 +1575,6 @@
 			buildConfigurationList = 986EDA1B2509C42800AD3CEE /* Build configuration list for PBXNativeTarget "dimodamo" */;
 			buildPhases = (
 				08B6D3268F438EA9F13221A7 /* [CP] Check Pods Manifest.lock */,
-				A71CB8CFF58411186A85B85D /* [CP] Prepare Artifacts */,
 				986EDA002509C42600AD3CEE /* Sources */,
 				986EDA012509C42600AD3CEE /* Frameworks */,
 				986EDA022509C42600AD3CEE /* Resources */,
@@ -1732,23 +1734,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A71CB8CFF58411186A85B85D /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dimodamo/Pods-dimodamo-artifacts-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dimodamo/Pods-dimodamo-artifacts-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dimodamo/Pods-dimodamo-artifacts.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B780BF2972B7BBB09E8C1331 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1833,6 +1818,7 @@
 				9821BB62255EDBEC00C47987 /* ChatSideMenuNavigation.swift in Sources */,
 				987252EB2566BFE700746591 /* CreatePostModel.swift in Sources */,
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
+				98D265052575655A00BD51D5 /* TestCommunitySearchVC.swift in Sources */,
 				98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */,
 				986322562517BB81003B0784 /* FriendMainVC.swift in Sources */,
 				9821BBD625611CAC00C47987 /* ImageColorChange.swift in Sources */,

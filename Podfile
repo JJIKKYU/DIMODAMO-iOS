@@ -62,4 +62,10 @@ target 'dimodamo' do
   pod 'YNDropDownMenu'
   pod 'McPicker', '~> 3.0.0'
   
+  # 검색
+  pod 'YNSearch'
+  
+  # 데이터베이스
+  pod 'RealmSwift'
+  
 end
