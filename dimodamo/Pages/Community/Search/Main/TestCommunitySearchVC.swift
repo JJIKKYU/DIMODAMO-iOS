@@ -10,7 +10,13 @@ import UIKit
 
 import RealmSwift
 
+import RxSwift
+import RxCocoa
+
 class TestCommunitySearchVC: UIViewController {
+    
+    let viewModel = CommunitySearchViewModel()
+    var disposebag = DisposeBag()
     
     // 네비게이션 상단에 들어가는 서치바
     let searchController = UISearchController(searchResultsController: nil)
@@ -23,6 +29,7 @@ class TestCommunitySearchVC: UIViewController {
         self.searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.searchBar.searchBarStyle = .minimal
         self.searchController.searchBar.placeholder = "검색어를 입력해 주세요"
+        self.searchController.searchBar.delegate = self
         
         // Include the search bar within the navigation bar.
         self.navigationItem.titleView = self.searchController.searchBar
@@ -43,6 +50,16 @@ class TestCommunitySearchVC: UIViewController {
         self.tableViewSetting()
         searchHistoryTableView.delegate = self
         searchHistoryTableView.dataSource = self
+        
+        /*
+         Search History TableView
+         */
+        viewModel.searchHistoryRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.searchHistoryTableView.reloadData()
+            })
+            .disposed(by: disposebag)
     }
     
     
@@ -56,6 +73,10 @@ class TestCommunitySearchVC: UIViewController {
      }
      */
     
+    @IBAction func pressedHistoryClearBtn(_ sender: Any) {
+        viewModel.allDeleteHistry()
+    }
+    
 }
 
 
@@ -67,12 +88,32 @@ extension TestCommunitySearchVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return viewModel.searchHistoryRelay.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommunitySearchHistoryCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommunitySearchHistoryCell", for: indexPath) as! SearchHistoryCell
+        
+        let index = indexPath.row
+        let model = viewModel.searchHistoryRelay.value[index]
+        
+        cell.searchLabel.text = "\(model.keyword)"
+        cell.dateLabel.text = "\(AppFormatGuide.unixtimestampConvert(unixTimestamp: model.searchTime))"
         
         return cell
+    }
+}
+
+// MARK: - Search History ADD & Search Start
+
+extension TestCommunitySearchVC: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        guard let searchText = searchBar.text else {
+            return
+        }
+        
+        // 검색하면 검색 히스토리 Realm에 추가
+        viewModel.createHistroy(searchText: searchText)
     }
 }

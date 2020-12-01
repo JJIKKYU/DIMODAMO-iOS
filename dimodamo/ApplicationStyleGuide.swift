@@ -386,6 +386,20 @@ class AppStyleGuide {
     }
 }
 
+//MARK: - App Format Guide
+class AppFormatGuide {
+    static func unixtimestampConvert(unixTimestamp: Double) -> String{
+        let date = Date(timeIntervalSince1970: unixTimestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+9")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "MM/dd HH:mm"
+        let strDate = dateFormatter.string(from: date)
+        
+        return strDate
+    }
+}
+
 
 //MARK: - UILABEL Kerning
 
@@ -484,3 +498,6 @@ extension UINavigationController {
 //    didSet{self.font=MyStyles.fontForStyle(style: style)}
 //  }
 //}
+
+
+

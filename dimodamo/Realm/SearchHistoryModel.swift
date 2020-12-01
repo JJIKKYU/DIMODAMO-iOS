@@ -9,7 +9,8 @@
 import Foundation
 import RealmSwift
 
-class SearchHistory: Object {
-    @objc dynamic var keyword = ""
-    @objc dynamic var timestamp = 0
+class SearchHistoryModel: Object {
+    @objc dynamic var isDeleted: Bool = false
+    @objc dynamic var keyword: String = ""
+    @objc dynamic var searchTime: Double = 0
 }

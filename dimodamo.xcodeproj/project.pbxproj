@@ -163,6 +163,7 @@
 		98D265052575655A00BD51D5 /* TestCommunitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D265042575655A00BD51D5 /* TestCommunitySearchVC.swift */; };
 		98D2656D25761BFD00BD51D5 /* SearchHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2656C25761BFD00BD51D5 /* SearchHistoryModel.swift */; };
 		98D2657225761C8000BD51D5 /* CommunitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2657125761C8000BD51D5 /* CommunitySearchViewModel.swift */; };
+		98D26576257624D800BD51D5 /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D26575257624D800BD51D5 /* SearchHistoryCell.swift */; };
 		98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */; };
 		98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */; };
 		98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */; };
@@ -400,6 +401,7 @@
 		98D265042575655A00BD51D5 /* TestCommunitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCommunitySearchVC.swift; sourceTree = "<group>"; };
 		98D2656C25761BFD00BD51D5 /* SearchHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryModel.swift; sourceTree = "<group>"; };
 		98D2657125761C8000BD51D5 /* CommunitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewModel.swift; sourceTree = "<group>"; };
+		98D26575257624D800BD51D5 /* SearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
 		98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewController.swift; sourceTree = "<group>"; };
 		98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewModel.swift; sourceTree = "<group>"; };
 		98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewModel.swift; sourceTree = "<group>"; };
@@ -1515,6 +1517,7 @@
 			isa = PBXGroup;
 			children = (
 				98F8C836254C3D0500FDDEBF /* RecommendCell.swift */,
+				98D26575257624D800BD51D5 /* SearchHistoryCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1914,6 +1917,7 @@
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
 				9830CF6F255D8EED009F448F /* MainManitoChatViewModel.swift in Sources */,
+				98D26576257624D800BD51D5 /* SearchHistoryCell.swift in Sources */,
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
 				9853DB1C255D3E7400E8EBD5 /* MedalInformationVC.swift in Sources */,
 				98FA225925571FA300331755 /* MyProfileModel.swift in Sources */,
