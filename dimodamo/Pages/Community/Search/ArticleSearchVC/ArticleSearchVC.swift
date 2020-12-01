@@ -74,11 +74,3 @@ extension ArticleSearchVC: UICollectionViewDelegate, UICollectionViewDataSource 
     
     
 }
-
-extension ArticleSearchVC: SendSearchTextDelegate {
-    func send(keyword: String) {
-        viewModel.searchKeyword.accept(keyword)
-    }
-    
-    
-}

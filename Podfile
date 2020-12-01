@@ -68,4 +68,7 @@ target 'dimodamo' do
   # 데이터베이스
   pod 'RealmSwift'
   
+  # 페이지뷰
+  pod 'Parchment'
+  
 end

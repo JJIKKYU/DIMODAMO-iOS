@@ -63,15 +63,14 @@ class TestCommunitySearchVC: UIViewController {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    
     
     @IBAction func pressedHistoryClearBtn(_ sender: Any) {
         viewModel.allDeleteHistry()
@@ -113,7 +112,11 @@ extension TestCommunitySearchVC: UISearchBarDelegate {
             return
         }
         
+        // 뷰모델에서 사용할 수 있으므로 저장
+        viewModel.searchText = searchText
+        
         // 검색하면 검색 히스토리 Realm에 추가
         viewModel.createHistroy(searchText: searchText)
+        performSegue(withIdentifier: "CommunitySearchResult", sender: searchText)
     }
 }

@@ -14,7 +14,6 @@ import RxCocoa
 class FriendPageVC: UIPageViewController {
     
     var disposeBag = DisposeBag()
-    var pageDelegate: CommunityPageIndexDelegate?
     
     var pageIndex = BehaviorRelay<Int>(value: 0)
     
@@ -37,8 +36,6 @@ class FriendPageVC: UIPageViewController {
         super.viewDidLoad()
 
 
-        self.delegate = self
-        self.dataSource = self
         
         
         
@@ -67,59 +64,4 @@ class FriendPageVC: UIPageViewController {
     }
     */
 
-}
-
-extension FriendPageVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource, SendCommunityPageIndexDelegate {
-    func SelectBtn(padgeIndex: Int) {
-        pageIndex.accept(padgeIndex)
-    }
-    
-    
-    // 애니메이션이 끝날 경우에 델리게이트를 통해서 현재 페이지를 Int로 전달
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if completed {
-            if let currentVC = pageViewController.viewControllers?.first,
-               let index = VCArray.firstIndex(of: currentVC) {
-                self.pageDelegate?.SelectMenuItem(pageIndex: index)
-            }
-        }
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
-        guard let viewControllerIndex = VCArray.firstIndex(of: viewController) else { return nil }
-        
-        let previousIndex = viewControllerIndex - 1
-        
-        guard previousIndex >= 0 else {
-            return nil
-        }
-        
-        guard VCArray.count > previousIndex else {
-            return nil
-        }
-        
-        return VCArray[previousIndex]
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        
-        guard let viewControllerIndex = VCArray.firstIndex(of: viewController) else {
-            return nil
-        }
-        
-        let nextIndex = viewControllerIndex + 1
-        
-        guard nextIndex < VCArray.count else {
-            return nil
-        }
-        
-        guard VCArray.count > nextIndex else {
-            return nil
-        }
-        
-        return VCArray[nextIndex]
-    }
-    
-    
 }
