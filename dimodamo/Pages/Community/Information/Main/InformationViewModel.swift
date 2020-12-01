@@ -19,6 +19,8 @@ class InformationViewModel {
     private let db = Firestore.firestore()
     
     var informationPosts: [Board] = []
+    let pageSize: Int = 3 // 한 번에 로딩할 페이지 개수
+    var cursor: DocumentSnapshot? // 마지막 도큐먼트 -> 여기서부터 읽을거야
     let informationLoading = BehaviorRelay<Bool>(value: false)
     
     init() {
@@ -28,6 +30,19 @@ class InformationViewModel {
             if let err = err {
                 print("인포메이션 포스트를 가져오는데 오류가 생겼습니다. \(err)")
             } else {
+                
+                // TODO : Pagination 작업할 것
+                
+                // pageSize보다 작으면 다 읽음
+                if querySnapshot!.count < pageSize {
+                    
+                }
+                // pageSize보다 크면 나눠서 읽음
+                else {
+                    
+                    self.cursor = querySnapshot?.documents.last
+                }
+                
                 for (index, document) in querySnapshot!.documents.enumerated() {
                     let boardId = (document.data()["board_id"] as? String) ?? ""
                     let boardTitle = (document.data()["board_title"] as? String) ?? ""

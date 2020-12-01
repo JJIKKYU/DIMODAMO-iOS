@@ -115,10 +115,6 @@ class CommunityMainViewController: UIViewController {
         performSegue(withIdentifier: "\(CommunitySegueName.information)", sender: sender)
     }
     
-    @IBAction func pressedCreatePostBtn(_ sender: Any) {
-        performSegue(withIdentifier: "CreatePostVC", sender: sender)
-    }
-    
     @IBAction func pressedSearchBtn(_ sender: Any) {
         performSegue(withIdentifier: "CommunitySearchVC", sender: sender)
     }

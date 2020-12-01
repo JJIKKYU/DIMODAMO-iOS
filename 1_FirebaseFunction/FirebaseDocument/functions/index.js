@@ -50,22 +50,25 @@ exports.documentCommentCounter_artboard = functions.firestore
             console.log("postUserID : " + postUserId);
             console.log("수정될 코멘트 카운트 : " + (data.comment_count + 1));
 
-            // 작성자의 FCM 토큰을 불러옴
-            const fcmIdDocRefSnapshot = await admin.firestore().collection('FcmId').doc(postUserId).get();
-            const fcmIdData = fcmIdDocRefSnapshot.data();
-            const fcmToken = fcmIdData.FCM;
-            console.log("fcmToken : " + fcmToken);
+            // 댓글 작성자와 게시글 작성자가 같지 않을 때만 알림 가도록
+            if (postUserId !== commentId) {
+                // 작성자의 FCM 토큰을 불러옴
+                const fcmIdDocRefSnapshot = await admin.firestore().collection('FcmId').doc(postUserId).get();
+                const fcmIdData = fcmIdDocRefSnapshot.data();
+                const fcmToken = fcmIdData.FCM;
+                console.log("fcmToken : " + fcmToken);
 
-            // 알림 내용
-            const payload = {
-                notification: {
-                title: '작성하신 글에 새 댓글이 달렸습니다!',
-                body: `${commentNickname} : ${commentDesc}`
-                }
-            };
+                // 알림 내용
+                const payload = {
+                    notification: {
+                    title: '작성하신 글에 새 댓글이 달렸습니다!',
+                    body: `${commentNickname} : ${commentDesc}`
+                    }
+                };
 
-            // 알림 발송
-            const response = await admin.messaging().sendToDevice(fcmToken, payload);
+                // 알림 발송
+                const response = await admin.messaging().sendToDevice(fcmToken, payload);
+            }
 
             // 게시글 코멘트 +1
             admin.firestore().collection('hongik/article/posts').doc(postId).update( {comment_count : data.comment_count + 1});
