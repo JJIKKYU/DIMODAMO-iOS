@@ -161,6 +161,8 @@
 		98C73619255CD77400252BF2 /* MyChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C73618255CD77400252BF2 /* MyChatCell.swift */; };
 		98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */; };
 		98D265052575655A00BD51D5 /* TestCommunitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D265042575655A00BD51D5 /* TestCommunitySearchVC.swift */; };
+		98D2656D25761BFD00BD51D5 /* SearchHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2656C25761BFD00BD51D5 /* SearchHistoryModel.swift */; };
+		98D2657225761C8000BD51D5 /* CommunitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2657125761C8000BD51D5 /* CommunitySearchViewModel.swift */; };
 		98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */; };
 		98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */; };
 		98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */; };
@@ -396,6 +398,8 @@
 		98C73618255CD77400252BF2 /* MyChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatCell.swift; sourceTree = "<group>"; };
 		98CB2DD32519CDD500CEE5FB /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
 		98D265042575655A00BD51D5 /* TestCommunitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCommunitySearchVC.swift; sourceTree = "<group>"; };
+		98D2656C25761BFD00BD51D5 /* SearchHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryModel.swift; sourceTree = "<group>"; };
+		98D2657125761C8000BD51D5 /* CommunitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewModel.swift; sourceTree = "<group>"; };
 		98D69F02252C5DD400F52E1F /* FindEmailPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewController.swift; sourceTree = "<group>"; };
 		98D69F4F252C6E2200F52E1F /* FindEmailPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWViewModel.swift; sourceTree = "<group>"; };
 		98D69F9D252CA85100F52E1F /* FindPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewModel.swift; sourceTree = "<group>"; };
@@ -934,6 +938,7 @@
 			children = (
 				9853DB18255D0A8300E8EBD5 /* dimodamo.entitlements */,
 				98C735E4255CC66A00252BF2 /* dimodamoRelease.entitlements */,
+				98D2656B25761BE900BD51D5 /* Realm */,
 				986908F62521AE7E00C844F1 /* Extension */,
 				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
 				98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */,
@@ -1352,6 +1357,23 @@
 			path = Name;
 			sourceTree = "<group>";
 		};
+		98D2656B25761BE900BD51D5 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				98D2656C25761BFD00BD51D5 /* SearchHistoryModel.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		98D2657025761C6E00BD51D5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				98D265042575655A00BD51D5 /* TestCommunitySearchVC.swift */,
+				98D2657125761C8000BD51D5 /* CommunitySearchViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		98D69F01252C5DBD00F52E1F /* FindEmailPW */ = {
 			isa = PBXGroup;
 			children = (
@@ -1477,6 +1499,7 @@
 		98F8C830254C2B6C00FDDEBF /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				98D2657025761C6E00BD51D5 /* Main */,
 				98F8C8A9254D865200FDDEBF /* History */,
 				98F8C856254D36E500FDDEBF /* SearchResult */,
 				98F8C84D254CA9A400FDDEBF /* InformationSearchVC */,
@@ -1484,7 +1507,6 @@
 				98F8C835254C3CE900FDDEBF /* Cell */,
 				98F8C831254C2B8800FDDEBF /* CommunitySearchVC.swift */,
 				98F8C83A254C912300FDDEBF /* SearchPageVC.swift */,
-				98D265042575655A00BD51D5 /* TestCommunitySearchVC.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1790,6 +1812,7 @@
 				98EAAC47256BCDB500B70CA8 /* HomeViewModel.swift in Sources */,
 				983485D4251C585500C4074B /* RegisterGenderViewController.swift in Sources */,
 				9860A251256CAB5B00806297 /* ProfileSearchViewModel.swift in Sources */,
+				98D2657225761C8000BD51D5 /* CommunitySearchViewModel.swift in Sources */,
 				98FA22562556FD9500331755 /* MyProfileViewModel.swift in Sources */,
 				98FA226225572AC700331755 /* AllDptiVC.swift in Sources */,
 				9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */,
@@ -1856,6 +1879,7 @@
 				9821BADF255EBC3200C47987 /* ManitoChatViewModel.swift in Sources */,
 				98FA226F25585B9E00331755 /* MessageVC.swift in Sources */,
 				98D988E72551CD48002A8AC5 /* Sort.swift in Sources */,
+				98D2656D25761BFD00BD51D5 /* SearchHistoryModel.swift in Sources */,
 				9821BBD32561037C00C47987 /* MultiTabDetector.swift in Sources */,
 				988377F62545B69800BFA746 /* CreatePostViewController.swift in Sources */,
 				98C42318251DFFA600B2B194 /* RegisterInterestViewController.swift in Sources */,
