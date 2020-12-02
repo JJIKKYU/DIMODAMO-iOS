@@ -71,4 +71,7 @@ target 'dimodamo' do
   # 페이지뷰
   pod 'Parchment'
   
+  # 댓글 스와이프
+  pod 'SwipeCellKit'
+  
 end

@@ -12,12 +12,14 @@ import RxSwift
 import RxRelay
 import RxCocoa
 
+import SwipeCellKit
+
 protocol CommentCellDelegate {
     func pressedCommentReply(type: String)
     func pressedHeartBtn(commentId: String, indexPathRow: Int)
 }
 
-class CommentCell: UITableViewCell {
+class CommentCell: SwipeTableViewCell {
     
     @IBOutlet weak var commentProfile: UIImageView!
     @IBOutlet weak var commentNickname: UILabel!
@@ -33,7 +35,7 @@ class CommentCell: UITableViewCell {
     var uid: String? = nil
     var dptiType: String?
     var viewModel: ArticleDetailViewModel?
-    var delegate: CommentCellDelegate?
+    var commentDelegate: CommentCellDelegate?
     
     var selectedHeart: Bool = false
     
@@ -54,7 +56,7 @@ class CommentCell: UITableViewCell {
         let selectedCommentBundleId = checkedViewModel.commentsRelay.value[index].bundleId
         
         if let type = self.dptiType {
-            delegate?.pressedCommentReply(type: type)
+            commentDelegate?.pressedCommentReply(type: type)
         }
         
         
@@ -67,7 +69,7 @@ class CommentCell: UITableViewCell {
         guard let checkedUid = uid else { return }
         guard let checkedIndexPathRow = indexpathRow else { return }
         
-        delegate?.pressedHeartBtn(commentId: checkedUid, indexPathRow: checkedIndexPathRow)
+        commentDelegate?.pressedHeartBtn(commentId: checkedUid, indexPathRow: checkedIndexPathRow)
         guard let commentHeartText = commentHeart.text,
               let commentHeartInt = Int(commentHeartText) else {
             return

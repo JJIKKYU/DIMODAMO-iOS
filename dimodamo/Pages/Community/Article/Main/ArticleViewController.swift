@@ -145,6 +145,7 @@ class ArticleViewController: UIViewController {
          구글 광고 로드
          */
         // In this case, we instantiate the banner with desired ad size.
+        // 테스트용 : ca-app-pub-3940256099942544/2934735716
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"

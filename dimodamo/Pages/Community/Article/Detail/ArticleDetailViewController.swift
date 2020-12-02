@@ -19,6 +19,8 @@ import AVKit
 
 import Lottie
 
+import SwipeCellKit
+
 class ArticleDetailViewController: UIViewController {
     // 로딩
     @IBOutlet weak var loadingContainerView: LottieLoadingView2! {
@@ -104,10 +106,10 @@ class ArticleDetailViewController: UIViewController {
     }
     @IBOutlet weak var commentTextFieldView: UIView! {
         didSet {
-//            commentTextFieldView.layer.cornerRadius = 24
-//            commentTextFieldView.clipsToBounds = true
-//            commentTextFieldView.layer.masksToBounds = false
-//            commentTextFieldView.appShadow(.s20)
+            //            commentTextFieldView.layer.cornerRadius = 24
+            //            commentTextFieldView.clipsToBounds = true
+            //            commentTextFieldView.layer.masksToBounds = false
+            //            commentTextFieldView.appShadow(.s20)
         }
     }
     @IBOutlet weak var commentTextField: UITextField!
@@ -141,7 +143,7 @@ class ArticleDetailViewController: UIViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if (keyPath == "contentSize"){
-//            if let newvalue = change?[.newKey] {
+            //            if let newvalue = change?[.newKey] {
             if (change?[.newKey]) != nil {
                 let contentHeight: CGFloat = commentTableView.contentSize.height
                 DispatchQueue.main.async {
@@ -399,17 +401,17 @@ class ArticleDetailViewController: UIViewController {
         Observable.combineLatest(
             viewModel.descriptionLoading,
             viewModel.imagesLoading
-            )
+        )
         .map { $0 && $1 }
         .subscribeOn(MainScheduler.instance)
         .subscribe(onNext: { [weak self] flag in
             if flag == true {
                 print("모든 로딩이 완료되었습니다.")
-//                self?.loadingContainerView.layer.zPosition = -1
+                //                self?.loadingContainerView.layer.zPosition = -1
                 self?.loadingContainerView.stopAnimation()
             } else {
                 print("모두 로딩이 되지 않습니다.")
-//                self?.loadingContainerView.layer.zPosition = 999
+                //                self?.loadingContainerView.layer.zPosition = 999
                 self?.loadingContainerView.playAnimation()
             }
         })
@@ -439,7 +441,7 @@ class ArticleDetailViewController: UIViewController {
         self.viewModel.commentDepth = 0 // 일반 댓글 뎁스로 초기화
         self.commentProfileIshidden(isHidden: true) // 대댓글 프로필 삭제
         self.view.endEditing(true) // 키보드 내리기
-//        commentTableView.reloadData() // 데이터 리로드
+        //        commentTableView.reloadData() // 데이터 리로드
     }
     
     @IBAction func pressedScrapBtn(_ sender: Any) {
@@ -668,8 +670,8 @@ extension ArticleDetailViewController {
                                         iconView.layer.zPosition = 2
                                         
                                         
-//                                        print(value.cacheType)
-//                                        print(value.source)
+                                        //                                        print(value.cacheType)
+                                        //                                        print(value.source)
                                         
                                         if index == (self!.viewModel.imagesRelay.value.count - 1) {
                                             print("\(index + 1)가지 이미지 로딩을 완료했습니다")
@@ -929,7 +931,28 @@ class LinkURLSenderTapGestureRecognizer: UITapGestureRecognizer {
 
 // MARK: - Comment
 
-extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource, CommentCellDelegate {
+extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource, CommentCellDelegate, SwipeTableViewCellDelegate {
+    
+    // Swipe 했을때 액션
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else {
+            return nil
+        }
+        
+        let cell = tableView.cellForRow(at: indexPath) as! CommentCell
+        print(cell.commentNickname.text)
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
+            // handle action by updating model with deletion
+            print("신고합니다, indexPath : \(indexPath.row)")
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete_icon")
+        
+        return [deleteAction]
+    }
+    
     func pressedHeartBtn(commentId: String, indexPathRow: Int) {
         viewModel.pressedCommentHeart(uid: commentId)
         
@@ -963,7 +986,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     func commentProfileIshidden(isHidden: Bool) {
         // 이미 예정되어 있던 애니메이션은 모두 처리
-//        self.view.layoutIfNeeded()
+        //        self.view.layoutIfNeeded()
         
         switch isHidden {
         case false:
@@ -986,9 +1009,9 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             break
         }
         
-//        UIView.animate(withDuration: 0.5) { [self] in
-//            self.view.layoutIfNeeded()
-//        }
+        //        UIView.animate(withDuration: 0.5) { [self] in
+        //            self.view.layoutIfNeeded()
+        //        }
         
         
         
@@ -1000,6 +1023,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
+        cell.delegate = self
+        cell.commentDelegate = self
         
         let cellIndex: Int = indexPath.row
         let model: Comment = viewModel.commentsRelay.value[cellIndex]
@@ -1059,10 +1084,13 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.uid = model.commentId
         cell.viewModel = self.viewModel
         
-        cell.delegate = self
+        
         
         return cell
     }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.viewWillLayoutSubviews()

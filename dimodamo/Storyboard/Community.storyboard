@@ -506,7 +506,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" id="BPI-9Y-ii6">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DTF-lP-27W">
-                                <rect key="frame" x="338" y="11" width="24" height="22"/>
+                                <rect key="frame" x="370" y="11" width="24" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="searchIcon">
                                     <color key="titleColor" name="GRAY - 190"/>
@@ -1457,16 +1457,25 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="HSy-h0-erT">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="VPg-ye-5Ls">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VLP-a0-dFC">
-                                <rect key="frame" x="374" y="0.0" width="20" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="scrapIconGray"/>
-                                <connections>
-                                    <action selector="pressedScrapBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="mqv-ky-d3i"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="hyy-P0-fAU">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Efg-Yv-Dp3">
+                                    <rect key="frame" x="374" y="0.0" width="20" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="menu_icon_gray"/>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="VPg-ye-5Ls">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VLP-a0-dFC">
+                                    <rect key="frame" x="346" y="0.0" width="20" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="scrapIconGray"/>
+                                    <connections>
+                                        <action selector="pressedScrapBtn:" destination="uzi-lB-7YW" eventType="touchUpInside" id="mqv-ky-d3i"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="articleCategory" destination="bmu-h0-QOv" id="Hwc-lR-Hx9"/>
@@ -3145,8 +3154,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BzL-x2-Mhd"/>
-        <segue reference="Ae2-2V-5qG"/>
+        <segue reference="a4Z-5V-8SM"/>
+        <segue reference="ROi-qZ-LzO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BC_Char_Yellow_M2_0" width="382" height="348"/>
@@ -3164,6 +3173,7 @@
         <image name="heartIcon" width="30" height="28"/>
         <image name="linkIcon" width="40" height="40"/>
         <image name="linkImage" width="120" height="74"/>
+        <image name="menu_icon_gray" width="4" height="16"/>
         <image name="pictureIcon" width="40" height="40"/>
         <image name="plusBtn" width="20" height="20"/>
         <image name="roundPlusIcon" width="40" height="40"/>
