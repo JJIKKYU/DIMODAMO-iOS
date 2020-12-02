@@ -16,7 +16,7 @@ import Lottie
 import GoogleMobileAds
 
 class InformationVC: UIViewController {
-
+    
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var loadingView: LottieLoadingView!
@@ -30,7 +30,7 @@ class InformationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         settingTableView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -49,7 +49,7 @@ class InformationVC: UIViewController {
                     self?.tableView.reloadData()
                     self?.loadingView.isHidden = true
                 } else {
-                    self?.loadingView.isHidden = false
+                    self?.loadingView.isHidden = true
                 }
             })
             .disposed(by: disposeBag)
@@ -70,10 +70,10 @@ class InformationVC: UIViewController {
         performSegue(withIdentifier: "CreatePostVC", sender: nil)
     }
     
-
+    
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         
@@ -110,8 +110,8 @@ class InformationVC: UIViewController {
             break
         }
     }
-
-
+    
+    
 }
 
 //MARK: - TableView
@@ -169,12 +169,26 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yPostion = scrollView.contentOffset.y
-        print(yPostion)
+        
         
         if yPostion < 70 {
             navItem.title = ""
         } else {
             navItem.title = "디모 레이어"
+        }
+        
+        // Reload
+        
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        //print("offsetY: \(offsetY) | contHeight-scrollViewHeight: \(contentHeight-scrollView.frame.height)")
+        print("offsetY \(offsetY) , value : \(contentHeight - scrollView.frame.height - 50)")
+        if offsetY > contentHeight - scrollView.frame.height - 50 {
+            // Bottom of the screen is reached
+            if !viewModel.fetchingMore {
+                viewModel.paginateData()
+                viewModel.informationLoading.accept(false)
+            }
         }
     }
 }

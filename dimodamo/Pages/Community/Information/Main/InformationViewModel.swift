@@ -21,27 +21,32 @@ class InformationViewModel {
     var informationPosts: [Board] = []
     let pageSize: Int = 3 // 한 번에 로딩할 페이지 개수
     var cursor: DocumentSnapshot? // 마지막 도큐먼트 -> 여기서부터 읽을거야
+    var fetchingMore: Bool = false
     let informationLoading = BehaviorRelay<Bool>(value: false)
     
     init() {
-        db.collection("hongik/information/posts")
-            .order(by: "bundle_id", descending: true)
-            .getDocuments() { [self] (querySnapshot, err) in
+        self.paginateData()
+    }
+    
+    func paginateData() {
+        fetchingMore = true
+        
+        var query: Query!
+        
+        if self.informationPosts.isEmpty {
+            query = db.collection("hongik/information/posts").order(by: "bundle_id", descending: true).limit(to: pageSize)
+        } else {
+            query = db.collection("hongik/information/posts").order(by: "bundle_id", descending: true).start(afterDocument: cursor!).limit(to: pageSize)
+        }
+        
+        query.getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("인포메이션 포스트를 가져오는데 오류가 생겼습니다. \(err)")
+            } else if querySnapshot!.isEmpty {
+                self.fetchingMore = false
+                informationLoading.accept(true)
+                return
             } else {
-                
-                // TODO : Pagination 작업할 것
-                
-                // pageSize보다 작으면 다 읽음
-                if querySnapshot!.count < pageSize {
-                    
-                }
-                // pageSize보다 크면 나눠서 읽음
-                else {
-                    
-                    self.cursor = querySnapshot?.documents.last
-                }
                 
                 for (index, document) in querySnapshot!.documents.enumerated() {
                     let boardId = (document.data()["board_id"] as? String) ?? ""
@@ -72,13 +77,17 @@ class InformationViewModel {
                     self.informationPosts.append(informationPost)
                     print(informationPost)
                     
+                    self.cursor = querySnapshot?.documents.last
+                    
                     // 로딩 유무 확인
                     if querySnapshot?.documents.count == (index + 1) {
                         informationLoading.accept(true)
+                        fetchingMore = false
                     }
                 }
             }
             
         }
+        
     }
 }
