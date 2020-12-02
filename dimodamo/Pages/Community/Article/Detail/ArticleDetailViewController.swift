@@ -131,7 +131,6 @@ class ArticleDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.rightBarButtonItem = scrapNavbarItem
         self.navigationController?.hideTransparentNavigationBar()
         
     }
@@ -500,13 +499,11 @@ extension ArticleDetailViewController: UIScrollViewDelegate {
             if scrollOffset > 210 {
                 self.navigationController?.presentTransparentNavigationBar()
                 self.navItem.title = "\(viewModel.titleRelay.value)"
-                self.navigationItem.rightBarButtonItem = scrapNavbarItem
                 
             } else {
                 self.navigationController?.hideTransparentNavigationBar()
                 self.navItem.title = ""
-                
-                self.navigationItem.rightBarButtonItem = scrapNavbarItem
+
                 
                 
             }
@@ -514,14 +511,12 @@ extension ArticleDetailViewController: UIScrollViewDelegate {
             if scrollOffset > 130 {
                 self.navigationController?.presentTransparentNavigationBar()
                 self.navItem.title = "\(viewModel.titleRelay.value)"
-                self.navigationItem.rightBarButtonItem = scrapNavbarItem
                 
                 // 밑으로 내렸을 때는 true로
                 self.navigationController?.navigationBar.isUserInteractionEnabled = true
             } else {
                 self.navigationController?.hideTransparentNavigationBar()
                 self.navItem.title = ""
-                self.navigationItem.rightBarButtonItem = scrapNavbarItem
             }
         }
     }
@@ -980,6 +975,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         // Row Height를 무시하고, 각 Row 안의 내용에 따라 Row 높이가 유동적으로 결정 되도록
         commentTableView.rowHeight = UITableView.automaticDimension
         commentTableView.estimatedRowHeight = 100
+        commentTableView.separatorStyle = .none
+        
         //        commentTableView.invalidateIntrinsicContentSize()
         //        commentTableView.layoutIfNeeded()
     }
