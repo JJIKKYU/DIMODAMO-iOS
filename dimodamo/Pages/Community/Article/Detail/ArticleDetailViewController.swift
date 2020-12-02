@@ -434,6 +434,7 @@ class ArticleDetailViewController: UIViewController {
         }
     }
     
+    // 댓글 작성 버튼 누를 경우에
     @IBAction func pressedSendCommentBtn(_ sender: Any) {
         viewModel.commentInput()
         commentTextField.text = "" // 텍스트 초기화
@@ -443,6 +444,7 @@ class ArticleDetailViewController: UIViewController {
         //        commentTableView.reloadData() // 데이터 리로드
     }
     
+    // 스크랩 버튼 누를 경우
     @IBAction func pressedScrapBtn(_ sender: Any) {
         
         // 스크랩된 게시물이 아닐 경우에는, 스크랩 되었다고 얼ㄹ럿을 띄우고 스크랩
@@ -459,6 +461,27 @@ class ArticleDetailViewController: UIViewController {
         else {
             self.viewModel.pressedScrapBtn()
         }
+    }
+    
+    // 메뉴 버튼을 눌렀을 때 하단에 뜨는 actionSheet
+    @IBAction func pressedMenuBtn(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // 신고하기
+        let reportAction = UIAlertAction(title: "신고", style: .destructive) { (action) in
+            // observe it in the buttons block, what button has been pressed
+            print("didPress report abuse")
+        }
+        
+        actionSheet.addAction(reportAction)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { (action) in
+            print("didPress cancel")
+        }
+        actionSheet.addAction(cancelAction)
+        
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     @IBAction func pressedScrapBtnInView(_ sender: Any) {
@@ -935,17 +958,30 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         }
         
         let cell = tableView.cellForRow(at: indexPath) as! CommentCell
-        print(cell.commentNickname.text)
-        
-        let deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
-            // handle action by updating model with deletion
-            print("신고합니다, indexPath : \(indexPath.row)")
+        guard let commentCellUserUId = cell.userId else {
+            return nil
         }
         
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "delete_icon")
+        var deleteAction: SwipeAction?
+        // 내가 작성한 댓글일 경우에는 Delete셀만
+        if commentCellUserUId == viewModel.myUID {
+            deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
+                // handle action by updating model with deletion
+                print("댓글을 삭제합니다. : \(indexPath.row)")
+                
+            }
+            deleteAction?.image = UIImage(named: "delete_icon")
+        } else {
+            deleteAction = SwipeAction(style: .destructive, title: "report") { action, indexPath in
+                // handle action by updating model with deletion
+                print("댓글을 신고합니다. : \(indexPath.row)")
+                self.reportDetailAlert()
+            }
+            deleteAction?.image = UIImage(named: "report_icon")
+        }
         
-        return [deleteAction]
+        
+        return [deleteAction!]
     }
     
     func pressedHeartBtn(commentId: String, indexPathRow: Int) {
@@ -1079,9 +1115,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         }
         cell.indexpathRow = cellIndex
         cell.uid = model.commentId
+        cell.userId = model.userId
         cell.viewModel = self.viewModel
-        
-        
         
         return cell
     }
@@ -1094,14 +1129,6 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
-        
-        //        guard let indexPath = tableView.indexPathForSelectedRow else {
-        //            return
-        //        }
-        //        let currentCell = tableView.cellForRow(at: indexPath) as! CommentCell
-        
-        //        self.view.endEditing(true)
         print("\(indexPath.row)")
     }
     
@@ -1138,3 +1165,66 @@ extension ArticleDetailViewController: UITextFieldDelegate {
     }
 }
 
+
+
+// MARK: - Report
+
+extension ArticleDetailViewController {
+    // 게시물 신고 및 댓글 신고를 누를 경우 뜨는 기본 ActionSheet
+    func reportAlert() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // 신고하기
+        let reportAction = UIAlertAction(title: "신고", style: .destructive) { (action) in
+            // observe it in the buttons block, what button has been pressed
+            print("didPress report abuse")
+            self.reportDetailAlert()
+        }
+        
+        actionSheet.addAction(reportAction)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { (action) in
+            print("didPress cancel")
+        }
+        actionSheet.addAction(cancelAction)
+        
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    // Report Bottom Action Sheet 에서 신고를 눌렀을 경우에 뜨는 디테일 ActionSheet
+    func reportDetailAlert() {
+        // 메뉴 버튼을 눌렀을 때 하단에 뜨는 actionSheet
+        let actionSheet = UIAlertController(title: "신고 사유 선택", message: nil, preferredStyle: .actionSheet)
+        
+        // 신고하기
+        let reason_1 = UIAlertAction(title: "부적절한 게시물", style: .default) { (action) in
+            print("부적절한 게시물을 선택했습니다.")
+        }
+        
+        let reason_2 = UIAlertAction(title: "음란물", style: .default) { (action) in
+            print("음란물을 선택했습니다.")
+        }
+        
+        let reason_3 = UIAlertAction(title: "욕설 및 비하", style: .default) { (action) in
+            print("욕설 및 비하를 선택했습니다.")
+        }
+        
+        let reason_4 = UIAlertAction(title: "낚시/도배", style: .default) { (action) in
+            print("낚시 및 도배를 선택했습니다.")
+        }
+        
+        actionSheet.addAction(reason_1)
+        actionSheet.addAction(reason_2)
+        actionSheet.addAction(reason_3)
+        actionSheet.addAction(reason_4)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { (action) in
+            print("didPress cancel")
+        }
+        actionSheet.addAction(cancelAction)
+        
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+}

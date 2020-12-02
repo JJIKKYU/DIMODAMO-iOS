@@ -32,6 +32,7 @@ class CommentCell: SwipeTableViewCell {
     @IBOutlet weak var commentProfileLeadingConstraint: NSLayoutConstraint!
     
     var indexpathRow: Int? = nil
+    var userId: String? = nil
     var uid: String? = nil
     var dptiType: String?
     var viewModel: ArticleDetailViewModel?
