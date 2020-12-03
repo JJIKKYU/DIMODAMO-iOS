@@ -27,8 +27,15 @@ class CommunityMainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var topSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var topSpinnerTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var navBar: UINavigationItem!
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.delegate = self
+        }
+    }
     
     // Paging Variable (articleCollectionView)
     var currentIndex: CGFloat = 0
@@ -92,9 +99,9 @@ class CommunityMainViewController: UIViewController {
                 self?.tableView.reloadData()
                 self?.tableView.layoutIfNeeded()
                 print("리로드")
-                self?.spinner.stopAnimating()
+//                self?.spinner.stopAnimating()
             } else {
-                self?.spinner.startAnimating()
+//                self?.spinner.startAnimating()
             }
         })
         .disposed(by: disposeBag)
@@ -381,7 +388,7 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
 
 
 
-// MARK: - Article Paging
+// MARK: - Article Paging * Reloading
 
 extension CommunityMainViewController : UIScrollViewDelegate {
     
@@ -421,5 +428,24 @@ extension CommunityMainViewController : UIScrollViewDelegate {
         // 위 코드를 통해 페이징 될 좌표값을 targetContentOffset에 대입하면 된다.
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
+    }
+    
+    // 상단으로 드래그 했을 경우에 리로드 되도록
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+        
+        if scrollView.contentOffset.y < 0 {
+            topSpinner.startAnimating()
+            topSpinnerTopConstraint.constant = (-scrollView.contentOffset.y + 20)
+        } else {
+            topSpinner.stopAnimating()
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y < -50 {
+            self.viewModel.loadArticlePost()
+            self.viewModel.loadInformationPost()
+        }
     }
 }

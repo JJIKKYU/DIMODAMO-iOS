@@ -38,11 +38,8 @@ class LinkWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegat
         let request = URLRequest(url: url)
         
         webView.load(request)
-        guard let title = webView.title else {
-            return
-        }
-        
-        self.webViewHeaderTitle.text = "\(title)"
+
+        self.webViewHeaderTitle.text = "\(url.absoluteString)"
         
         webView.uiDelegate = self
         webView.navigationDelegate = self

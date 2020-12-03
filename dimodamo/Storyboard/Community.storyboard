@@ -485,6 +485,10 @@
                                     <constraint firstItem="kV6-pn-hOH" firstAttribute="leading" secondItem="3T3-oi-p96" secondAttribute="leading" id="uMz-lL-68J"/>
                                 </constraints>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="0vf-HY-Npd">
+                                <rect key="frame" x="197" y="50" width="20" height="20"/>
+                                <color key="color" name="SYSTEM"/>
+                            </activityIndicatorView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="4GL-KB-Fdi">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -494,8 +498,10 @@
                         <viewLayoutGuide key="safeArea" id="FWP-GR-upi"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
+                            <constraint firstItem="0vf-HY-Npd" firstAttribute="centerX" secondItem="FWP-GR-upi" secondAttribute="centerX" id="79Q-8a-S35"/>
                             <constraint firstItem="3T3-oi-p96" firstAttribute="bottom" secondItem="FWP-GR-upi" secondAttribute="bottom" id="MNo-yf-wIF"/>
                             <constraint firstItem="FWP-GR-upi" firstAttribute="trailing" secondItem="3T3-oi-p96" secondAttribute="trailing" id="URb-XM-US8"/>
+                            <constraint firstItem="0vf-HY-Npd" firstAttribute="top" secondItem="8Lf-HX-XWQ" secondAttribute="top" constant="50" id="WFx-6c-GGh"/>
                             <constraint firstItem="FWP-GR-upi" firstAttribute="top" secondItem="3T3-oi-p96" secondAttribute="top" id="amV-wf-Bdb"/>
                             <constraint firstItem="3T3-oi-p96" firstAttribute="leading" secondItem="FWP-GR-upi" secondAttribute="leading" id="jo3-VF-RR2"/>
                         </constraints>
@@ -521,8 +527,11 @@
                         <outlet property="articleCollectionView" destination="UCe-Uz-ZKD" id="d5s-yG-rgm"/>
                         <outlet property="articleCollectionViewHeightConstraint" destination="WLs-hM-qii" id="6Uy-1n-oDw"/>
                         <outlet property="navBar" destination="Koh-Kf-EED" id="U2X-ol-wfb"/>
+                        <outlet property="scrollView" destination="3T3-oi-p96" id="1OA-rK-d8o"/>
                         <outlet property="spinner" destination="4GL-KB-Fdi" id="Ded-2Q-eTM"/>
                         <outlet property="tableView" destination="gvX-HO-fK5" id="zYV-zB-w9o"/>
+                        <outlet property="topSpinner" destination="0vf-HY-Npd" id="uVD-JE-VKS"/>
+                        <outlet property="topSpinnerTopConstraint" destination="WFx-6c-GGh" id="dgP-E7-0PF"/>
                         <segue destination="iXc-eR-qQb" kind="show" identifier="ArticleVC" id="a1k-XL-XIf"/>
                         <segue destination="uzi-lB-7YW" kind="show" identifier="DetailArticleVC_Main" id="Ae2-2V-5qG"/>
                         <segue destination="YIk-yL-5NE" kind="presentation" identifier="CreatePostVC" id="BzL-x2-Mhd"/>
@@ -1700,7 +1709,8 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9Ux-za-ZQ1"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
+                        <color key="tintColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="Qxs-2x-PjI" firstAttribute="top" secondItem="Q3N-UT-57X" secondAttribute="bottom" id="Kem-QJ-wpT"/>
                             <constraint firstItem="Qxs-2x-PjI" firstAttribute="leading" secondItem="9Ux-za-ZQ1" secondAttribute="leading" id="O7p-2s-u9z"/>
