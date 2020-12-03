@@ -53,6 +53,14 @@ class CreatePostViewModel {
         return "\(descriptionRelay.value.count)/1000"
     }
     var descriptionIsValid: Bool { return descriptionRelay.value.count > 0 }
+    let descriptionPlaceholderText = """
+    여기에서 글을 작성해 주세요!
+
+    * 커뮤니티 이용 규칙을 준수해 주세요!
+    이용 규칙을 위반할 경우 게시물 삭제 및 서비스 이용 제한 등의 제재가 가해질 수 있습니다.
+
+    자세한 커뮤니티 이용 규칙은 홈 우측 상단의 [설정] > [커뮤니티 이용규칙]을 참고해 주세요.
+    """
     
     
     /*

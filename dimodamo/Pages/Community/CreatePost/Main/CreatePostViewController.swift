@@ -97,7 +97,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBOutlet weak var descriptionTextView: UITextView! {
         didSet {
-            descriptionTextView.text = "내용을 입력해 주세요"
+            descriptionTextView.text = viewModel.descriptionPlaceholderText
             descriptionTextView.textColor = UIColor.appColor(.gray210)
         }
     }
@@ -404,7 +404,7 @@ extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "내용을 입력해 주세요"
+            textView.text = viewModel.descriptionPlaceholderText
             textView.textColor = UIColor.appColor(.gray210)
         }
     }
