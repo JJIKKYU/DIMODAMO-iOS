@@ -21,6 +21,8 @@ import Lottie
 
 import SwipeCellKit
 
+import Toast_Swift
+
 class ArticleDetailViewController: UIViewController {
     // 로딩
     @IBOutlet weak var loadingContainerView: LottieLoadingView2! {
@@ -1185,6 +1187,7 @@ extension ArticleDetailViewController {
         // 신고하기
         let reason_1 = UIAlertAction(title: "부적절한 게시물", style: .default) { (action) in
             print("부적절한 게시물을 선택했습니다.")
+            self.view.makeToast("신고가 완료되었습니다")
         }
         
         let reason_2 = UIAlertAction(title: "음란물", style: .default) { (action) in

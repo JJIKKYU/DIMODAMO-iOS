@@ -77,4 +77,7 @@ target 'dimodamo' do
   # 이미지 뷰어
   pod 'ImageViewer'
   
+  # 토스트 알림
+  pod 'Toast-Swift', '~> 5.0.1'
+  
 end
