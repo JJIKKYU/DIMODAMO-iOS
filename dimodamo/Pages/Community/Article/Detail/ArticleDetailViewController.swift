@@ -465,23 +465,8 @@ class ArticleDetailViewController: UIViewController {
     
     // 메뉴 버튼을 눌렀을 때 하단에 뜨는 actionSheet
     @IBAction func pressedMenuBtn(_ sender: Any) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        // 신고하기
-        let reportAction = UIAlertAction(title: "신고", style: .destructive) { (action) in
-            // observe it in the buttons block, what button has been pressed
-            print("didPress report abuse")
-        }
-        
-        actionSheet.addAction(reportAction)
-        
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { (action) in
-            print("didPress cancel")
-        }
-        actionSheet.addAction(cancelAction)
-        
-        
-        self.present(actionSheet, animated: true, completion: nil)
+        // 기본 ActionSheet Alert
+        self.reportAlert()
     }
     
     @IBAction func pressedScrapBtnInView(_ sender: Any) {

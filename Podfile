@@ -74,4 +74,7 @@ target 'dimodamo' do
   # 댓글 스와이프
   pod 'SwipeCellKit'
   
+  # 이미지 뷰어
+  pod 'ImageViewer'
+  
 end
