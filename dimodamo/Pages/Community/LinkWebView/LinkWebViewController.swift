@@ -17,6 +17,7 @@ import RxCocoa
 class LinkWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var webViewHeaderTitle: UILabel!
     var url = BehaviorRelay<URL?>(value: URL(string: ""))
     var disposeBag = DisposeBag()
     
@@ -37,12 +38,20 @@ class LinkWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegat
         let request = URLRequest(url: url)
         
         webView.load(request)
+        guard let title = webView.title else {
+            return
+        }
+        
+        self.webViewHeaderTitle.text = "\(title)"
         
         webView.uiDelegate = self
         webView.navigationDelegate = self
     }
     
-
+    @IBAction func pressedClostBtn(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
