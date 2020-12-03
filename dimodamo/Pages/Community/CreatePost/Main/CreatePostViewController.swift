@@ -247,14 +247,14 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     }
     
     func tagging(_ tagging: Tagging, didChangedTagableList tagableList: [String]) {
-        matchedList = tagableList
-        if matchedList.count > 0 {
-            tagsTableView.reloadData()
-            tagsTableView.isHidden = false
-        } else if matchedList.count == 0 {
-            tagsTableView.reloadData()
-            tagsTableView.isHidden = true
-        }
+//        matchedList = tagableList
+//        if matchedList.count > 0 {
+//            tagsTableView.reloadData()
+//            tagsTableView.isHidden = false
+//        } else if matchedList.count == 0 {
+//            tagsTableView.reloadData()
+//            tagsTableView.isHidden = true
+//        }
         
         print(matchedList.count)
     }

@@ -44,7 +44,9 @@ class HomeVC: UIViewController {
         didSet {
             magazineLabel.layer.borderColor = UIColor.appColor(.system).cgColor
             magazineLabel.layer.borderWidth = 2
-            magazineLabel.layer.cornerRadius = magazineLabel.layer.frame.height / 2
+            
+            // PaddingLabel 이므로 상 하단 마진 더한 뒤에 2를 나눠서
+            magazineLabel.layer.cornerRadius = (magazineLabel.frame.height + 4 + 9) / 2
             magazineLabel.layer.masksToBounds = true
         }
     }
@@ -268,7 +270,7 @@ class HomeVC: UIViewController {
             for tag in tags {
                 newTag += "#\(tag)"
             }
-//            articleDetailVC.viewModel.tagsRelay
+            articleDetailVC.viewModel.tagsRelay.accept(tags)
         }
 
         self.navigationController?.pushViewController(articleDetailVC, animated: true)

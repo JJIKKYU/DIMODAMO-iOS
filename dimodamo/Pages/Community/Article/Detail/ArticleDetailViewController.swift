@@ -63,15 +63,8 @@ class ArticleDetailViewController: UIViewController {
     
     @IBOutlet weak var titleImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet var tags: [UILabel]! {
-        didSet {
-            for tag in tags {
-                tag.text = ""
-                tag.isHidden = true
-            }
-        }
-    }
     @IBOutlet weak var articleCategory: UILabel!
+    @IBOutlet weak var articleTag: UILabel!
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewTopConstraint: NSLayoutConstraint!
@@ -247,15 +240,17 @@ class ArticleDetailViewController: UIViewController {
                 if tags.count <= 0 {
                     
                 } else {
+                    var tagString: String = ""
                     for (index, tag) in tags.enumerated() {
                         if self?.viewModel.postKindRelay.value == PostKinds.article.rawValue {
-                            self?.tags[index].text = "#\(tag)"
-                            self?.tags[index].isHidden = false
+                            tagString += "#\(tag) "
                         } else if self?.viewModel.postKindRelay.value == PostKinds.information.rawValue {
                             self?.informationTags[index].text = "#\(tag)"
                             self?.informationTags[index].isHidden = false
                         }
                     }
+                    
+                    self?.articleTag.text = "\(tagString)"
                 }
                 
                 
