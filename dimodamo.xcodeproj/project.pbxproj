@@ -38,6 +38,7 @@
 		9821BBCF255FEF0A00C47987 /* ManitoApplyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BBCE255FEF0A00C47987 /* ManitoApplyBtn.swift */; };
 		9821BBD32561037C00C47987 /* MultiTabDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BBD22561037C00C47987 /* MultiTabDetector.swift */; };
 		9821BBD625611CAC00C47987 /* ImageColorChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BBD525611CAC00C47987 /* ImageColorChange.swift */; };
+		9821D7F9257917F900A3B82F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821D7F8257917F900A3B82F /* Report.swift */; };
 		9830CF6F255D8EED009F448F /* MainManitoChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830CF6E255D8EED009F448F /* MainManitoChatViewModel.swift */; };
 		9830CF76255D8F4E009F448F /* MainManitoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830CF75255D8F4E009F448F /* MainManitoModel.swift */; };
 		983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983216A6252B8CDD003E6B64 /* AddShadow.swift */; };
@@ -266,6 +267,7 @@
 		9821BBCE255FEF0A00C47987 /* ManitoApplyBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoApplyBtn.swift; sourceTree = "<group>"; };
 		9821BBD22561037C00C47987 /* MultiTabDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTabDetector.swift; sourceTree = "<group>"; };
 		9821BBD525611CAC00C47987 /* ImageColorChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageColorChange.swift; sourceTree = "<group>"; };
+		9821D7F8257917F900A3B82F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		9830CF6E255D8EED009F448F /* MainManitoChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoChatViewModel.swift; sourceTree = "<group>"; };
 		9830CF75255D8F4E009F448F /* MainManitoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManitoModel.swift; sourceTree = "<group>"; };
 		983216A6252B8CDD003E6B64 /* AddShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShadow.swift; sourceTree = "<group>"; };
@@ -675,6 +677,14 @@
 			path = ManitoApplyBtn;
 			sourceTree = "<group>";
 		};
+		9821D7F7257917DF00A3B82F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9821D7F8257917F900A3B82F /* Report.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9830CF73255D8F29009F448F /* ManitoChatList */ = {
 			isa = PBXGroup;
 			children = (
@@ -939,6 +949,7 @@
 				98C48B14250CD163004E24E5 /* Lottie */,
 				98067133250F1F8200C3EB72 /* Domain */,
 				988377952541F4DB00BFA746 /* Component */,
+				9821D7F7257917DF00A3B82F /* Model */,
 				987F5A95250B13F300E1B856 /* Pages */,
 				986322352517852F003B0784 /* Storyboard */,
 				986EDA072509C42600AD3CEE /* AppDelegate.swift */,
@@ -1883,6 +1894,7 @@
 				9830CF6F255D8EED009F448F /* MainManitoChatViewModel.swift in Sources */,
 				98D26576257624D800BD51D5 /* SearchHistoryCell.swift in Sources */,
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
+				9821D7F9257917F900A3B82F /* Report.swift in Sources */,
 				9853DB1C255D3E7400E8EBD5 /* MedalInformationVC.swift in Sources */,
 				98FA225925571FA300331755 /* MyProfileModel.swift in Sources */,
 				987D6D822563BBC7000FCA16 /* RoomDetailVC.swift in Sources */,

@@ -134,6 +134,7 @@ class ArticleDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.hideTransparentNavigationBar()
+        navigationController?.navigationBar.tintColor = UIColor.appColor(.gray210)
         
     }
     
@@ -468,7 +469,15 @@ class ArticleDetailViewController: UIViewController {
     // 메뉴 버튼을 눌렀을 때 하단에 뜨는 actionSheet
     @IBAction func pressedMenuBtn(_ sender: Any) {
         // 기본 ActionSheet Alert
-        self.reportAlert()
+        
+        // 포스트의 UID
+        let postUid = self.viewModel.postUidRelay.value
+        
+        // 포스트 작성자 UID
+        guard let postUserUid = self.viewModel.userUID else {
+            return
+        }
+        self.reportAlert(reportType: .board, userUid: postUserUid, contentUid: postUid)
     }
     
     @IBAction func pressedScrapBtnInView(_ sender: Any) {
@@ -962,7 +971,18 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             deleteAction = SwipeAction(style: .destructive, title: "report") { action, indexPath in
                 // handle action by updating model with deletion
                 print("댓글을 신고합니다. : \(indexPath.row)")
-                self.reportDetailAlert()
+                
+                // 댓글 작성자 UID
+                guard let commentUserUid: String = cell.userId else {
+                    return
+                }
+                
+                // 코멘트 Doc Uid
+                guard let commentUid: String = cell.uid else {
+                    return
+                }
+                
+                self.reportDetailAlert(reportType: .comment, userUid: commentUserUid, contentUid: commentUid)
             }
             deleteAction?.image = UIImage(named: "report_icon")
         }
@@ -1158,14 +1178,16 @@ extension ArticleDetailViewController: UITextFieldDelegate {
 
 extension ArticleDetailViewController {
     // 게시물 신고 및 댓글 신고를 누를 경우 뜨는 기본 ActionSheet
-    func reportAlert() {
+    func reportAlert(reportType: ReportType, userUid: String, contentUid: String) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         // 신고하기
         let reportAction = UIAlertAction(title: "신고", style: .destructive) { (action) in
             // observe it in the buttons block, what button has been pressed
             print("didPress report abuse")
-            self.reportDetailAlert()
+            
+            // ReportAlert에서 받은 신고 종류를 기대로 넘겨줌
+            self.reportDetailAlert(reportType: reportType, userUid: userUid, contentUid: contentUid)
         }
         
         actionSheet.addAction(reportAction)
@@ -1180,26 +1202,51 @@ extension ArticleDetailViewController {
     }
     
     // Report Bottom Action Sheet 에서 신고를 눌렀을 경우에 뜨는 디테일 ActionSheet
-    func reportDetailAlert() {
+    func reportDetailAlert(reportType: ReportType, userUid: String, contentUid: String) {
         // 메뉴 버튼을 눌렀을 때 하단에 뜨는 actionSheet
         let actionSheet = UIAlertController(title: "신고 사유 선택", message: nil, preferredStyle: .actionSheet)
+        
+        var reportKind: ReportKinds?
         
         // 신고하기
         let reason_1 = UIAlertAction(title: "부적절한 게시물", style: .default) { (action) in
             print("부적절한 게시물을 선택했습니다.")
             self.view.makeToast("신고가 완료되었습니다")
+            reportKind = .improper
+            self.viewModel.pressedReportBtn(reportTargetUid: contentUid,
+                                            reportTargetType: reportType,
+                                            reportTargetUserId: userUid,
+                                            reportKind: reportKind ?? .improper)
         }
         
         let reason_2 = UIAlertAction(title: "음란물", style: .default) { (action) in
             print("음란물을 선택했습니다.")
+            self.view.makeToast("신고가 완료되었습니다")
+            reportKind = .porno
+            self.viewModel.pressedReportBtn(reportTargetUid: contentUid,
+                                            reportTargetType: reportType,
+                                            reportTargetUserId: userUid,
+                                            reportKind: reportKind ?? .improper)
         }
         
         let reason_3 = UIAlertAction(title: "욕설 및 비하", style: .default) { (action) in
             print("욕설 및 비하를 선택했습니다.")
+            self.view.makeToast("신고가 완료되었습니다")
+            reportKind = .blame
+            self.viewModel.pressedReportBtn(reportTargetUid: contentUid,
+                                            reportTargetType: reportType,
+                                            reportTargetUserId: userUid,
+                                            reportKind: reportKind ?? .improper)
         }
         
         let reason_4 = UIAlertAction(title: "낚시/도배", style: .default) { (action) in
             print("낚시 및 도배를 선택했습니다.")
+            self.view.makeToast("신고가 완료되었습니다")
+            reportKind = .fishing
+            self.viewModel.pressedReportBtn(reportTargetUid: contentUid,
+                                            reportTargetType: reportType,
+                                            reportTargetUserId: userUid,
+                                            reportKind: reportKind ?? .improper)
         }
         
         actionSheet.addAction(reason_1)

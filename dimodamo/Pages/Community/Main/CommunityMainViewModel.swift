@@ -25,7 +25,8 @@ class CommunityMainViewModel {
     let informationLoading = BehaviorRelay<Bool>(value: false)
     
     init() {
-        // viewWillAppear에서 호출하므로 따로 init하지 않음
+        self.loadArticlePost()
+        self.loadInformationPost()
     }
     
     

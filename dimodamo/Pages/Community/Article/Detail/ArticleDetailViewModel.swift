@@ -475,6 +475,55 @@ class ArticleDetailViewModel {
  */
     }
     
+    /*
+     게시글 및 댓글 신고하기
+     */
+    func pressedReportBtn(reportTargetUid: String, reportTargetType: ReportType, reportTargetUserId: String, reportKind: ReportKinds) {
+        let report = Report()
+        
+        guard let userUid: String = self.myUID else {
+            return
+        }
+        
+        // DocumentID를 미리 불러오기 위해
+        let document = db.collection("report/").document()
+        let id: String = document.documentID
+        
+        // 신고한 날짜 및 시간
+        let unixTimestamp = NSDate().timeIntervalSince1970
+        
+        report.reportId = "\(id)"
+        report.targetType = reportTargetType.rawValue
+        report.targetId = "\(reportTargetUid)" // 신고 당한 게시글
+        report.targetUserId = "\(reportTargetUserId)" // 신고 당하는 사람의 UID
+        report.userId = "\(userUid)" // 신고한 사람 (본인)
+        report.timestamp = unixTimestamp
+        report.reportKind = reportKind.rawValue
+        
+        print("신고가 완료되었습니다 : \(report.reportId)")
+        print("\(report.targetType)")
+        print("\(report.targetId)")
+        print("\(report.targetUserId)")
+        print("\(report.userId)")
+        print("\(report.timestamp)")
+        
+        
+        /*
+         신고 프로세스 시작
+         */
+    
+        print(id)
+        
+        document.setData(report.dictionary) {
+            err in
+            if let err = err {
+                print("error adding document: \(err.localizedDescription)")
+            } else {
+                print("신고가 완료되었습니다 : \(id)")
+            }
+        }
+    }
+    
     init() {
         
         

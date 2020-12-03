@@ -67,9 +67,6 @@ class CommunityMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewModel.loadArticlePost()
-        self.viewModel.loadInformationPost()
-        
         // UI 및 delegate 세팅
         tableView.delegate = self
         tableView.dataSource = self
