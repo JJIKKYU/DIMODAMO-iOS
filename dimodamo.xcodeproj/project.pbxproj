@@ -113,6 +113,8 @@
 		989384E92518DB7900DE2C35 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 989384E82518DB7900DE2C35 /* Register.storyboard */; };
 		989384EC251900E900DE2C35 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 989384EB251900E600DE2C35 /* SF-Pro-Display-Heavy.otf */; };
 		9896E720257A9F1600F838F0 /* DptiPopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9896E71F257A9F1600F838F0 /* DptiPopupManager.swift */; };
+		9896E726257AB61D00F838F0 /* EmptyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9896E724257AB61D00F838F0 /* EmptyCollectionCell.swift */; };
+		9896E727257AB61D00F838F0 /* EmptyCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9896E725257AB61D00F838F0 /* EmptyCollectionCell.xib */; };
 		98A661E7252F2C0000698BA0 /* FindEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A661E6252F2C0000698BA0 /* FindEmailViewController.swift */; };
 		98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A661E9252F2C1000698BA0 /* FindPWViewController.swift */; };
 		98A661ED252F2F2B00698BA0 /* FindEmailPWPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A661EC252F2F2B00698BA0 /* FindEmailPWPageViewController.swift */; };
@@ -346,6 +348,8 @@
 		989384E82518DB7900DE2C35 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		989384EB251900E600DE2C35 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
 		9896E71F257A9F1600F838F0 /* DptiPopupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiPopupManager.swift; sourceTree = "<group>"; };
+		9896E724257AB61D00F838F0 /* EmptyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionCell.swift; sourceTree = "<group>"; };
+		9896E725257AB61D00F838F0 /* EmptyCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCollectionCell.xib; sourceTree = "<group>"; };
 		98A661E6252F2C0000698BA0 /* FindEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailViewController.swift; sourceTree = "<group>"; };
 		98A661E9252F2C1000698BA0 /* FindPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewController.swift; sourceTree = "<group>"; };
 		98A661EC252F2F2B00698BA0 /* FindEmailPWPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWPageViewController.swift; sourceTree = "<group>"; };
@@ -948,6 +952,7 @@
 				986EDA1F2509D7C800AD3CEE /* ApplicationViewModel.swift */,
 				98C4226525143F7400B1E1A1 /* ApplicationStyleGuide.swift */,
 				98FA225B2557244A00331755 /* ApplicationDataAPI.swift */,
+				9896E722257AB5D600F838F0 /* Xib */,
 				98C48B1B250CF959004E24E5 /* Json */,
 				98C48B14250CD163004E24E5 /* Lottie */,
 				98067133250F1F8200C3EB72 /* Domain */,
@@ -1173,6 +1178,15 @@
 				989384CC251866A900DE2C35 /* RegisterViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		9896E722257AB5D600F838F0 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				9896E724257AB61D00F838F0 /* EmptyCollectionCell.swift */,
+				9896E725257AB61D00F838F0 /* EmptyCollectionCell.xib */,
+			);
+			path = Xib;
 			sourceTree = "<group>";
 		};
 		98A662382530AB6C00698BA0 /* FindEmail */ = {
@@ -1638,6 +1652,7 @@
 				98FA22522556EE7300331755 /* M_TS.json in Resources */,
 				98E2416B250F9F47003BE1A3 /* Results.json in Resources */,
 				98FA22472556EE7300331755 /* F_JI.json in Resources */,
+				9896E727257AB61D00F838F0 /* EmptyCollectionCell.xib in Resources */,
 				9821BBCB255FEEAB00C47987 /* ManitoApplyBtn.xib in Resources */,
 				98FA224E2556EE7300331755 /* M_JS.json in Resources */,
 				988377F22545640B00BFA746 /* Loading2.json in Resources */,
@@ -1835,6 +1850,7 @@
 				98C6C2BD256E97BD005B8F40 /* RoundedTabBar.swift in Sources */,
 				9821BBC2255F0CC900C47987 /* ExitAlertView.swift in Sources */,
 				98F8C8AB254D866900FDDEBF /* HistoryVC.swift in Sources */,
+				9896E726257AB61D00F838F0 /* EmptyCollectionCell.swift in Sources */,
 				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,
 				98D988D2254E8932002A8AC5 /* ImageUploadCell.swift in Sources */,
 				98EAAC79256C386300B70CA8 /* NoticeVC.swift in Sources */,

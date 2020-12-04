@@ -157,4 +157,17 @@ class ProfileMainViewModel {
             }
         
     }
+    
+    // DPTI를 진행했는지에 따라서 서비스 이용이 가능한지
+    func interactionIsAbailable() -> Bool {
+        let type = self.myDptiType()
+        
+        if type == "DD" {
+            print("DPTI를 진행하지 않았으므로 이용이 제한됩니다.")
+            return false
+        } else {
+            print("DPTI를 진행했으므로 서비스 이용이 가능합니다.")
+            return true
+        }
+    }
 }

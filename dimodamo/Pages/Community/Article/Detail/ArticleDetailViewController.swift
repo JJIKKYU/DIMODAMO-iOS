@@ -24,10 +24,11 @@ import SwipeCellKit
 import Toast_Swift
 
 class ArticleDetailViewController: UIViewController {
+    
     // 로딩
     @IBOutlet weak var loadingContainerView: LottieLoadingView2! {
         didSet {
-            loadingContainerView.playAnimation()
+            loadingContainerView.stopAnimation()
         }
     }
     
@@ -409,11 +410,11 @@ class ArticleDetailViewController: UIViewController {
             if flag == true {
                 print("모든 로딩이 완료되었습니다.")
                 //                self?.loadingContainerView.layer.zPosition = -1
-                self?.loadingContainerView.stopAnimation()
+//                self?.loadingContainerView.stopAnimation()
             } else {
                 print("모두 로딩이 되지 않습니다.")
                 //                self?.loadingContainerView.layer.zPosition = 999
-                self?.loadingContainerView.playAnimation()
+//                self?.loadingContainerView.playAnimation()
             }
         })
         .disposed(by: disposeBag)

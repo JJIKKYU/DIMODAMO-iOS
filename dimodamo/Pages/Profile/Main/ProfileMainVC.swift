@@ -236,35 +236,62 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // DPTI를 진행하지 않았을 경우
+        if viewModel.interactionIsAbailable() == false {
+            return 1
+        }
+        
         return viewModel.dimoPeopleArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DimoPeopleCell", for: indexPath) as! DimoPeopleCell
+  
+        // DPTI를 진행하지 않았을 경우
+        if viewModel.interactionIsAbailable() == false {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath)
+            return cell
+        }
         
+        // DPTI를 진행했을 경우
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DimoPeopleCell", for: indexPath) as! DimoPeopleCell
         let index = indexPath.row
         let dimoArr = viewModel.dimoPeopleArr
-        
+
         cell.nickname.text = dimoArr[index].nickname
         cell.profile.image = dimoArr[index].getProfileImage()
         cell.topContainer.backgroundColor = dimoArr[index].getBackgroundColor()
         cell.typeImage.image = dimoArr[index].getTypeImage()
         cell.backgroundPattern.image = dimoArr[index].getBackgroundPattern()
-        
+
         for (tagIndex, tag) in cell.tags.enumerated() {
             tag.text = Interest.getWordFromString(from: dimoArr[index].interests[tagIndex])
         }
-        
+
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let index = indexPath.row
+        // DPTI를 진행하지 않았을 경우
+        if viewModel.interactionIsAbailable() == false {
+            DptiPopupManager.dptiPopup(popupScreen: .profile, vc: self)
+            return
+        }
         
+        let index = indexPath.row
         performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.dimo.rawValue, index])
     }
     
     func dimoCollectionViewSetting() {
+        // Empty Xib 설정, DPTI를 안했을 경우에만
+        if viewModel.interactionIsAbailable() == false {
+            let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
+            dimoCollectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
+            return
+        }
+        
+        
+        
+        
         // width, height 설정
         let cellWidth: CGFloat = UIScreen.main.bounds.width - 48
         let cellHeight: CGFloat = 172

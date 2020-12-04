@@ -42,10 +42,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1450"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EtA-SI-QhW">
-                                                <rect key="frame" x="0.0" y="103" width="414" height="240"/>
+                                                <rect key="frame" x="0.0" y="103" width="414" height="224"/>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="240" id="TMa-Jc-o8z"/>
+                                                    <constraint firstAttribute="height" constant="224" id="TMa-Jc-o8z"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="20O-Uf-K4h">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -55,14 +55,14 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DimoPeopleCell" id="HhB-aU-W3F" customClass="DimoPeopleCell" customModule="dimodamo" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="34" width="374" height="172"/>
+                                                        <rect key="frame" x="0.0" y="34" width="374" height="156"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W9k-EX-2re">
-                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="172"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="156"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPk-nA-fi5">
-                                                                    <rect key="frame" x="0.0" y="16" width="374" height="156"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="156"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGm-GT-duA" userLabel="TopConatiner">
                                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="96"/>
@@ -124,7 +124,7 @@
                                                                         <constraint firstItem="fGm-GT-duA" firstAttribute="top" secondItem="TPk-nA-fi5" secondAttribute="top" id="x4t-7S-DlJ"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1G-NL-hK0" userLabel="rangkingContainer">
+                                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1G-NL-hK0" userLabel="rangkingContainer">
                                                                     <rect key="frame" x="32" y="0.0" width="40" height="32"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rangkingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="r8t-Al-8N8">
@@ -168,13 +168,13 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관심사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOG-NW-hQ8">
-                                                                    <rect key="frame" x="35" y="136" width="34" height="16"/>
+                                                                    <rect key="frame" x="35" y="120" width="34" height="16"/>
                                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="13"/>
                                                                     <color key="textColor" name="GRAY - 170"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UXUI" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X78-qE-XAe" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                                    <rect key="frame" x="96" y="132" width="29" height="24"/>
+                                                                    <rect key="frame" x="96" y="116" width="29" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="hTx-nQ-kFu"/>
                                                                     </constraints>
@@ -191,7 +191,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편집" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9x-cm-81R" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                                    <rect key="frame" x="133" y="132" width="22.5" height="24"/>
+                                                                    <rect key="frame" x="133" y="116" width="22.5" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="kfi-Na-0Wy"/>
                                                                     </constraints>
@@ -208,7 +208,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="건축" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHq-Ha-OVC" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                                    <rect key="frame" x="163.5" y="132" width="22.5" height="24"/>
+                                                                    <rect key="frame" x="163.5" y="116" width="22.5" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="DH4-LH-HXh"/>
                                                                     </constraints>
@@ -238,11 +238,11 @@
                                                                 <constraint firstItem="l9x-cm-81R" firstAttribute="leading" secondItem="X78-qE-XAe" secondAttribute="trailing" constant="8" id="iac-ru-JC8"/>
                                                                 <constraint firstAttribute="trailing" secondItem="TPk-nA-fi5" secondAttribute="trailing" id="qgk-i6-LGU"/>
                                                                 <constraint firstAttribute="bottom" secondItem="TPk-nA-fi5" secondAttribute="bottom" id="s87-eo-CRS"/>
-                                                                <constraint firstItem="TPk-nA-fi5" firstAttribute="top" secondItem="W9k-EX-2re" secondAttribute="top" constant="16" id="wVz-ny-kDZ"/>
+                                                                <constraint firstItem="TPk-nA-fi5" firstAttribute="top" secondItem="W9k-EX-2re" secondAttribute="top" id="wVz-ny-kDZ"/>
                                                                 <constraint firstItem="X78-qE-XAe" firstAttribute="leading" secondItem="pOG-NW-hQ8" secondAttribute="trailing" constant="27" id="wx1-At-V3f"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
-                                                        <size key="customSize" width="374" height="172"/>
+                                                        <size key="customSize" width="374" height="156"/>
                                                         <connections>
                                                             <outlet property="backgroundPattern" destination="PBG-Ym-p1e" id="KN9-Hn-VWj"/>
                                                             <outlet property="cellContentView" destination="W9k-EX-2re" id="WbA-ko-l4W"/>
@@ -292,7 +292,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pmd-5e-R6A">
-                                                <rect key="frame" x="24" y="359" width="370" height="25"/>
+                                                <rect key="frame" x="24" y="343" width="370" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="IQM-b9-S71"/>
                                                 </constraints>
@@ -305,20 +305,20 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여러 곳에서 활약 중인 가장 핫한 디모인을 만나보세요!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="444-i9-Ehk">
-                                                <rect key="frame" x="24" y="392" width="296.5" height="17"/>
+                                                <rect key="frame" x="24" y="376" width="296.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRY-7v-GNZ">
-                                                <rect key="frame" x="0.0" y="433" width="414" height="2"/>
+                                                <rect key="frame" x="0.0" y="417" width="414" height="2"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="Wic-2W-RXX"/>
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O0L-xh-3r9">
-                                                <rect key="frame" x="0.0" y="459" width="414" height="1300"/>
+                                                <rect key="frame" x="0.0" y="443" width="414" height="1300"/>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1300" id="5dO-Gn-M6O"/>
@@ -596,7 +596,7 @@
                                                 </prototypes>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jho-Sj-fjt">
-                                                <rect key="frame" x="342" y="363" width="52" height="17"/>
+                                                <rect key="frame" x="342" y="347" width="52" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="FTP-bp-YAE"/>
                                                 </constraints>
@@ -4991,11 +4991,17 @@
         <namedColor name="SYSTEM">
             <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="SYSTEM">
+            <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SYSTEM - ACTIVE">
             <color red="1" green="0.52899998426437378" blue="0.21600000560283661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT - BIG">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TEXT - SMALL">
+            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT - SMALL">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

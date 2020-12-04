@@ -70,13 +70,15 @@ class CommentCell: SwipeTableViewCell {
     }
     
     @IBAction func pressedHeartBtn(_ sender: Any) {
-        // DPTI를 진행하지 않았으면 바로 return
-        if isUserInteractionEnabled == false { return }
         
         guard let checkedUid = uid else { return }
         guard let checkedIndexPathRow = indexpathRow else { return }
         
         commentDelegate?.pressedHeartBtn(commentId: checkedUid, indexPathRow: checkedIndexPathRow)
+        
+        // DPTI를 진행하지 않았으면 호출만 하고 return
+        if isInteractionEnabledDPTI == false { return }
+        
         guard let commentHeartText = commentHeart.text,
               let commentHeartInt = Int(commentHeartText) else {
             return
