@@ -21,6 +21,9 @@ protocol CommentCellDelegate {
 
 class CommentCell: SwipeTableViewCell {
     
+    // 유저가 DPTI를 진행했냐 안했냐에 따라서
+    var isInteractionEnabledDPTI: Bool = false
+    
     @IBOutlet weak var commentProfile: UIImageView!
     @IBOutlet weak var commentNickname: UILabel!
     @IBOutlet weak var commentDescription: UITextView!
@@ -67,6 +70,9 @@ class CommentCell: SwipeTableViewCell {
     }
     
     @IBAction func pressedHeartBtn(_ sender: Any) {
+        // DPTI를 진행하지 않았으면 바로 return
+        if isUserInteractionEnabled == false { return }
+        
         guard let checkedUid = uid else { return }
         guard let checkedIndexPathRow = indexpathRow else { return }
         

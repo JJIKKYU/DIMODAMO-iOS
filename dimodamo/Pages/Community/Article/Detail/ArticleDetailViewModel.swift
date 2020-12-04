@@ -524,6 +524,24 @@ class ArticleDetailViewModel {
         }
     }
     
+    /*
+     댓글 작성 및 스크랩, 하트 누르기 가능한지 체크
+     */
+    func isAvailableInteraction() -> Bool {
+        let type = UserDefaults.standard.string(forKey: "dpti") ?? "DD"
+        
+        // DPTI를 진행하지 않았을 경우
+        if type == "DD" {
+            print("DPTI를 진행하지 않았기 때문에 인터랙션이 제한됩니다.")
+            return false
+        }
+        // DPTI를 진행했을 경우
+        else {
+            print("DPTI를 진행했기 때문에 인터랙션이 가능합니다.")
+            return true
+        }
+    }
+    
     init() {
         
         

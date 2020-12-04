@@ -107,7 +107,11 @@ class ArticleDetailViewController: UIViewController {
             //            commentTextFieldView.appShadow(.s20)
         }
     }
-    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var commentTextField: UITextField! {
+        didSet {
+            commentTextField.delegate = self
+        }
+    }
     @IBOutlet weak var commentProfile: UIImageView!
     @IBOutlet var commentProfileWidthConstraint: NSLayoutConstraint!
     @IBOutlet var commentProfileLeadingConstraint: NSLayoutConstraint!
@@ -444,6 +448,12 @@ class ArticleDetailViewController: UIViewController {
     
     // 스크랩 버튼 누를 경우
     @IBAction func pressedScrapBtn(_ sender: Any) {
+        // DPTI를 진행하지 않았을 경우
+        if viewModel.isAvailableInteraction() == false {
+            view.endEditing(true)
+            DptiPopupManager.dptiPopup(popupScreen: .document, vc: self)
+            return
+        }
         
         // 스크랩된 게시물이 아닐 경우에는, 스크랩 되었다고 얼ㄹ럿을 띄우고 스크랩
         if self.viewModel.isScrapPost.value == false {
@@ -987,6 +997,12 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func pressedHeartBtn(commentId: String, indexPathRow: Int) {
+        // DPTI를 진행하지 않았을 경우
+        if viewModel.isAvailableInteraction() == false {
+            DptiPopupManager.dptiPopup(popupScreen: .document, vc: self)
+            return
+        }
+        
         viewModel.pressedCommentHeart(uid: commentId)
         
         //        let indexPath = IndexPath(item: indexPathRow, section: 0)
@@ -1120,6 +1136,9 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.userId = model.userId
         cell.viewModel = self.viewModel
         
+        // 유저 DPTI 진행 유무에 따라서 하트 버튼 등이 안눌리게 하기 위해서
+        cell.isInteractionEnabledDPTI = viewModel.isAvailableInteraction()
+        
         return cell
     }
     
@@ -1164,6 +1183,16 @@ extension ArticleDetailViewController: UITextFieldDelegate {
         self.commentTextFieldView?.transform = .identity
         //        self.scrollView?.transform = .identity
         self.commentTableViewBottom.constant = 0
+    }
+    
+    // 텍스트필드 수정이 시작될때
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // DPTI를 진행하지 않았을 경우
+        if viewModel.isAvailableInteraction() == false {
+            view.endEditing(true)
+            DptiPopupManager.dptiPopup(popupScreen: .document, vc: self)
+            return
+        }
     }
 }
 
