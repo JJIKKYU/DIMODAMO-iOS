@@ -255,7 +255,8 @@ class MyProfileVC: UIViewController {
      */
     @IBAction func pressedDptiBtn(_ sender: Any) {
         if viewModel.myDptiTypeIsDefault() == true && viewModel.isMyProfile() == true {
-            print("DPTI하는 페이지로 넘겨")
+            print("DPTI를 진행하지 않았으므로 DPTI 팝업을 띄웁니다")
+            DptiPopupManager.dptiPopup(popupScreen: .profile, vc: self)
         } else if viewModel.myDptiTypeIsDefault() == true && viewModel.isMyProfile() == false {
             performSegue(withIdentifier: "MyDptiVC", sender: sender)
         } else {

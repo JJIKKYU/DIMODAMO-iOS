@@ -248,7 +248,8 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
   
         // DPTI를 진행하지 않았을 경우
         if viewModel.interactionIsAbailable() == false {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath) as! EmptyCollectionCell
+            cell.textLabel.text = "디자인성향검사를 진행해 주세요"
             return cell
         }
         
@@ -286,7 +287,6 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         if viewModel.interactionIsAbailable() == false {
             let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
             dimoCollectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
-            return
         }
         
         
