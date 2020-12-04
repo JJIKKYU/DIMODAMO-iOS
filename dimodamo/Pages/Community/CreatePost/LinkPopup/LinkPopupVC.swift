@@ -33,6 +33,12 @@ class LinkPopupVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var linkCheckBtn: UIButton! {
+        didSet {
+            linkCheckBtn.layer.cornerRadius = 4
+            linkCheckBtn.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var thumbImageView: UIImageView! {
         didSet {
             thumbImageView.layer.cornerRadius = 4
@@ -134,12 +140,31 @@ class LinkPopupVC: UIViewController {
                 self?.addressLabel.text = "\(url)"
             })
             .disposed(by: disposeBag)
+        
+        /*
+         링크를 업로드 했을 때만 활성화
+         */
+        viewModel.isUploadDataLink
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] flag in
+                // 주소 확인이 정상적으로 되었을 경우
+                if flag == true {
+                    self?.insertBtn.backgroundColor = UIColor.appColor(.systemActive)
+                    self?.insertBtn.isUserInteractionEnabled = true
+                }
+                // 주소 확인이 안되었을 경우
+                else {
+                    self?.insertBtn.backgroundColor = UIColor.appColor(.gray210)
+                    self?.insertBtn.isUserInteractionEnabled = false
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func dataReset() {
         print("데이터를 초기화합니다.")
         titleLabel.text = "내용이 없습니다"
-        addressLabel.text = "empty"
+        addressLabel.text = "주소가 없습니다"
         thumbImageView.image = UIImage(named: "linkImage")
         textField.text = nil
     }

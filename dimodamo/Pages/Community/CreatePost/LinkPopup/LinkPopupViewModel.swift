@@ -25,6 +25,9 @@ class LinkPopupViewModel {
     let uploadLinksDataRelay = BehaviorRelay<[PreviewResponse]>(value: []) // 링크에 있는 데이터를 해체해 가지고 있음
     let slp = SwiftLinkPreview(cache: InMemoryCache())
     
+    // 링크를 업로드 했는지 안했는지 체크
+    let isUploadDataLink = BehaviorRelay<Bool>(value: false)
+    
     
     init() {
         
@@ -70,9 +73,11 @@ class LinkPopupViewModel {
                             
                             uploadLinkDataRelay.accept(linkData) // 이미지 그리기 위한 용도 구조체
                             uploadLink = linkData.url.absoluteString // 게시글 업로드용
+                            isUploadDataLink.accept(true)
                             
                         }, onError: { error in
                             print("\(error)")
+                            self.isUploadDataLink.accept(false)
                         })
     }
     
