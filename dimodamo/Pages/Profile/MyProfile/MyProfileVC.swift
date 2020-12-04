@@ -26,8 +26,8 @@ class MyProfileVC: UIViewController {
     @IBOutlet weak var topContainer: UIView!
     @IBOutlet weak var bottomContainer: UIView! {
         didSet {
-            bottomContainer.layer.cornerRadius = 24
-            bottomContainer.layer.masksToBounds = true
+//            bottomContainer.layer.cornerRadius = 24
+//            bottomContainer.layer.masksToBounds = true
         }
     }
     @IBOutlet weak var topStretchBG: UIView!
