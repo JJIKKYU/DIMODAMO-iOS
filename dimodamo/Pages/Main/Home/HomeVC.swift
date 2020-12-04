@@ -401,13 +401,7 @@ extension HomeVC : UIScrollViewDelegate {
 extension HomeVC {
     func popupViewSetting() {
         if viewModel.isAvailablePopup() == true {
-            let storyboard = UIStoryboard(name: "DPTI", bundle: nil)
-
-            let popupVC = storyboard.instantiateViewController(withIdentifier: "DptiBottomPopupVC") as! DptiBottomPopupVC
-            
-            let popupController = STPopupController(rootViewController: popupVC)
-            popupController.style = .bottomSheet
-            popupController.present(in: self)
+            DptiPopupManager.dptiPopup(popupScreen: .home, vc: self)
             HomeViewModel.isPopupCount += 1
         } else  {
             print("팝업 카운드 : \(HomeViewModel.isPopupCount)")

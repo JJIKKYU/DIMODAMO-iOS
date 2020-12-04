@@ -112,6 +112,7 @@
 		989384E62518D76700DE2C35 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 989384E52518D76700DE2C35 /* Friends.storyboard */; };
 		989384E92518DB7900DE2C35 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 989384E82518DB7900DE2C35 /* Register.storyboard */; };
 		989384EC251900E900DE2C35 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 989384EB251900E600DE2C35 /* SF-Pro-Display-Heavy.otf */; };
+		9896E720257A9F1600F838F0 /* DptiPopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9896E71F257A9F1600F838F0 /* DptiPopupManager.swift */; };
 		98A661E7252F2C0000698BA0 /* FindEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A661E6252F2C0000698BA0 /* FindEmailViewController.swift */; };
 		98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A661E9252F2C1000698BA0 /* FindPWViewController.swift */; };
 		98A661ED252F2F2B00698BA0 /* FindEmailPWPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A661EC252F2F2B00698BA0 /* FindEmailPWPageViewController.swift */; };
@@ -344,6 +345,7 @@
 		989384E52518D76700DE2C35 /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		989384E82518DB7900DE2C35 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		989384EB251900E600DE2C35 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		9896E71F257A9F1600F838F0 /* DptiPopupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiPopupManager.swift; sourceTree = "<group>"; };
 		98A661E6252F2C0000698BA0 /* FindEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailViewController.swift; sourceTree = "<group>"; };
 		98A661E9252F2C1000698BA0 /* FindPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewController.swift; sourceTree = "<group>"; };
 		98A661EC252F2F2B00698BA0 /* FindEmailPWPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailPWPageViewController.swift; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 				987D6D6F2562CE77000FCA16 /* UITableView.swift */,
 				986BD67B25693F7F007F49ED /* Hide_ShowNavigationController.swift */,
 				98C6C2BC256E97BD005B8F40 /* RoundedTabBar.swift */,
+				9896E71F257A9F1600F838F0 /* DptiPopupManager.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1786,6 +1789,7 @@
 				9800A1482533739A0090C058 /* IntroViewModel.swift in Sources */,
 				98A8B8042534D10B00351FD5 /* IntroMainViewController.swift in Sources */,
 				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
+				9896E720257A9F1600F838F0 /* DptiPopupManager.swift in Sources */,
 				98AFDAD6253AA5D700B0D88F /* ArticleViewController.swift in Sources */,
 				986BD68125696CDD007F49ED /* RoundedTabBarController.swift in Sources */,
 				988160D8251F664E00556AEC /* RegisterPWViewController.swift in Sources */,

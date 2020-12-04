@@ -19,7 +19,7 @@ class InformationViewModel {
     private let db = Firestore.firestore()
     
     var informationPosts: [Board] = []
-    let pageSize: Int = 3 // 한 번에 로딩할 페이지 개수
+    let pageSize: Int = 10 // 한 번에 로딩할 페이지 개수
     var cursor: DocumentSnapshot? // 마지막 도큐먼트 -> 여기서부터 읽을거야
     var fetchingMore: Bool = false
     let informationLoading = BehaviorRelay<Bool>(value: false)
@@ -28,6 +28,9 @@ class InformationViewModel {
         self.paginateData()
     }
     
+    /*
+     페이지네이션한 게시글 모거록
+     */
     func paginateData() {
         fetchingMore = true
         
@@ -89,5 +92,22 @@ class InformationViewModel {
             
         }
         
+    }
+    
+    /*
+     글쓰기가 가능한지 체크
+     */
+    func createPostisAvailable() -> Bool {
+        let myType = UserDefaults.standard.string(forKey: "dpti") ?? "DD"
+        
+        // 아직 DPTI를 진행하지 않았을 경우
+        if myType == "DD" {
+            print("DPTI가 '\(myType)' 이므로 글쓰기가 제한됩니다.")
+            return false
+        }
+        // DPTI를 진행했을 경우
+        else {
+            return true
+        }
     }
 }

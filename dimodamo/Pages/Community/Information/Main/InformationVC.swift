@@ -15,6 +15,9 @@ import Lottie
 
 import GoogleMobileAds
 
+// DPTI 팝업
+import STPopup
+
 class InformationVC: UIViewController {
     
     @IBOutlet var mainView: UIView!
@@ -67,8 +70,21 @@ class InformationVC: UIViewController {
         
         
     }
+    
+    /*
+     글쓰기 버튼을 누를 경우에
+     */
     @IBAction func pressedPlusBtn(_ sender: Any) {
-        performSegue(withIdentifier: "CreatePostVC", sender: nil)
+        
+        // 만약 DPTI를 진행해서 글쓰기가 가능하다면
+        if viewModel.createPostisAvailable() {
+            performSegue(withIdentifier: "CreatePostVC", sender: nil)
+        }
+        // DPTI를 진행하지 않아 글쓰기가 불가능하다면 팝업창을 띄워준다.
+        else {
+            DptiPopupManager.dptiPopup(popupScreen: .document, vc: self)
+        }
+        
     }
     
     
