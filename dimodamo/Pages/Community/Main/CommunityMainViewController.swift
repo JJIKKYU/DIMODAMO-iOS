@@ -33,7 +33,7 @@ class CommunityMainViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
-            scrollView.delegate = self
+             scrollView.delegate = self
         }
     }
     
@@ -394,6 +394,8 @@ extension CommunityMainViewController : UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
     {
+        if scrollView == self.scrollView { return }
+        
         // item의 사이즈와 item 간의 간격 사이즈를 구해서 하나의 item 크기로 설정.
         let layout = self.articleCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
@@ -433,15 +435,16 @@ extension CommunityMainViewController : UIScrollViewDelegate {
     // 상단으로 드래그 했을 경우에 리로드 되도록
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
-        
+
         if scrollView.contentOffset.y < 0 {
             topSpinner.startAnimating()
             topSpinnerTopConstraint.constant = (-scrollView.contentOffset.y + 20)
         } else {
             topSpinner.stopAnimating()
+            topSpinnerTopConstraint.constant = -20
         }
     }
-    
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if scrollView.contentOffset.y < -50 {
             self.viewModel.loadArticlePost()

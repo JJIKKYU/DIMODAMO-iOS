@@ -132,18 +132,40 @@ class DptiSurveyViewController: UIViewController {
     let animationSpeed: Double = 0.5
     var themeColor: UIColor = UIColor.appColor(.yellow)
     
+   
+    
     
     @objc func selectBtn(sender : UIButton) {
         
         // all answer border color & text color init
+        // 선택한 최근 5개만 초기화 하도록 합시다
         for answer in answers {
+            guard let answerTitle = answer.titleLabel?.text else {
+                continue
+            }
+            let defaultBtnAttribute = NSAttributedString(string: "\(answerTitle)",
+                                                         attributes: [NSAttributedString.Key.foregroundColor : UIColor.appColor(.gray170),
+                                                                       NSAttributedString.Key.font : UIFont(name: "Apple SD Gothic Neo SemiBold", size: 17) as Any
+                                                          ])
             answer.layer.borderColor = UIColor.appColor(.gray170).cgColor
-            answer.setTitleColor(UIColor.appColor(.gray170), for: .normal)
+            answer.setAttributedTitle(defaultBtnAttribute, for: .normal)
+            answer.isSelected = false // 이전 버튼을 다시 누를 수 있또록 초기화
         }
         
-        // select answer color change
+        // 선택한 답변 변경
         sender.layer.borderColor = themeColor.cgColor
         sender.setTitleColor(themeColor, for: .normal)
+        
+        guard let senderTtitle = sender.titleLabel?.text else {
+            return
+        }
+        // 선택한 답변의 텍스트 컬러 및 굵기 수정
+        let selectedBtnAttribute = NSAttributedString(string: "\(senderTtitle)",
+                                                      attributes: [NSAttributedString.Key.foregroundColor : themeColor,
+                                                                   NSAttributedString.Key.font : UIFont(name: "Apple SD Gothic Neo Bold", size: 17) as Any
+                                                      ])
+        
+        sender.setAttributedTitle(selectedBtnAttribute, for: .normal)
         
         
         // 체크한 값을 배열에 입력
@@ -171,6 +193,7 @@ class DptiSurveyViewController: UIViewController {
         // 피드백 카드가 나타나는 특정 넘버에서는 딜레이 존재
         if (self.viewModel.currentNumber.value == 6 || self.viewModel.currentNumber.value == 11 ||
                 self.viewModel.currentNumber.value == 16 || self.viewModel.currentNumber.value == 21) {
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 UIView.animate(withDuration: self.animationSpeed) {
                     self.cardHorizontalScrollView.setContentOffset(CGPoint(x: destinationPositionX, y: 0), animated: false)
@@ -219,7 +242,7 @@ extension DptiSurveyViewController {
         // answer Color & Border & Border Color Init
         answers.enumerated().forEach { (index, answer) in
             answer.layer.cornerRadius = 16
-            answer.layer.borderWidth = 2
+            answer.layer.borderWidth = 1.5
             answer.layer.borderColor = UIColor(named: "GRAY - 190")?.cgColor
             
             let questionNumber = (index / 5) + 1
@@ -235,6 +258,7 @@ extension DptiSurveyViewController {
             answer.tag = (cardValue - (index % 5)) * reverse
             answer.addTarget(self, action: #selector(selectBtn), for: .touchDown)
             answer.isExclusiveTouch = true
+
         }
         
         let margin: CGFloat = 40 // left margin + Right margin
@@ -258,20 +282,20 @@ extension DptiSurveyViewController {
         
         switch currentNumber {
         case 5:
-            self.themeColor = UIColor.appColor(.yellow)
+            self.themeColor = UIColor.appColor(.yellowDark)
             self.progress.progressTintColor = self.themeColor
             break
         case 6:
-            animateFeeedbackCard(index: 0, prevColor: UIColor.appColor(.yellow), changeAppColor: UIColor.appColor(.purple))
+            animateFeeedbackCard(index: 0, prevColor: UIColor.appColor(.yellow), changeAppColor: UIColor.appColor(.purpleDark))
             break
         case 11:
-            animateFeeedbackCard(index: 1, prevColor: UIColor.appColor(.purple), changeAppColor: UIColor.appColor(.blue))
+            animateFeeedbackCard(index: 1, prevColor: UIColor.appColor(.purple), changeAppColor: UIColor.appColor(.blueDark))
             break
         case 16:
-            animateFeeedbackCard(index: 2, prevColor: UIColor.appColor(.blue), changeAppColor: UIColor.appColor(.pink))
+            animateFeeedbackCard(index: 2, prevColor: UIColor.appColor(.blue), changeAppColor: UIColor.appColor(.pinkDark))
             break
         case 21:
-            animateFeeedbackCard(index: 3, prevColor: UIColor.appColor(.pink), changeAppColor: UIColor.appColor(.pink))
+            animateFeeedbackCard(index: 3, prevColor: UIColor.appColor(.pink), changeAppColor: UIColor.appColor(.pinkDark))
             break
         default:
             break
