@@ -3087,6 +3087,13 @@
                                                             <constraint firstAttribute="trailing" secondItem="Cm8-Qk-uZT" secondAttribute="trailing" id="sqI-vQ-3Iz"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dD-Z5-8ur">
+                                                        <rect key="frame" x="0.0" y="692" width="414" height="30"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="qR5-U4-oio"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <constraints>
@@ -3096,6 +3103,8 @@
                                                     <constraint firstItem="x6q-7r-CpL" firstAttribute="firstBaseline" secondItem="1tR-dJ-Moy" secondAttribute="firstBaseline" id="B5b-Yp-kaH"/>
                                                     <constraint firstItem="x6q-7r-CpL" firstAttribute="leading" secondItem="1tR-dJ-Moy" secondAttribute="trailing" constant="12" id="DBg-Q7-abB"/>
                                                     <constraint firstItem="sn2-yW-pjQ" firstAttribute="leading" secondItem="lDf-Ma-ykU" secondAttribute="leading" id="KuZ-4a-VWA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="5dD-Z5-8ur" secondAttribute="bottom" id="Mv5-az-rIa"/>
+                                                    <constraint firstItem="5dD-Z5-8ur" firstAttribute="leading" secondItem="wJ2-S5-zk7" secondAttribute="leading" id="Nbk-Um-p7x"/>
                                                     <constraint firstItem="1tR-dJ-Moy" firstAttribute="leading" secondItem="sn2-yW-pjQ" secondAttribute="trailing" constant="12" id="NgM-ay-zqx"/>
                                                     <constraint firstItem="lDf-Ma-ykU" firstAttribute="top" secondItem="hV9-SN-HpB" secondAttribute="bottom" constant="40" id="NlN-JL-dyY"/>
                                                     <constraint firstItem="1tR-dJ-Moy" firstAttribute="centerY" secondItem="sn2-yW-pjQ" secondAttribute="centerY" id="U9O-ZI-ZKL"/>
@@ -3108,6 +3117,7 @@
                                                     <constraint firstItem="w5x-2L-0Tj" firstAttribute="top" secondItem="wJ2-S5-zk7" secondAttribute="top" constant="16" id="k06-B0-eyL"/>
                                                     <constraint firstItem="lDf-Ma-ykU" firstAttribute="leading" secondItem="wJ2-S5-zk7" secondAttribute="leading" constant="32" id="pMr-G6-R1x"/>
                                                     <constraint firstItem="cnG-mX-V4X" firstAttribute="leading" secondItem="wJ2-S5-zk7" secondAttribute="leading" constant="20" id="sWS-a2-9r8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5dD-Z5-8ur" secondAttribute="trailing" id="u05-SZ-WKA"/>
                                                     <constraint firstAttribute="trailing" secondItem="BEA-ax-RyM" secondAttribute="trailing" constant="20" id="xGp-RY-n6L"/>
                                                     <constraint firstItem="BEA-ax-RyM" firstAttribute="top" secondItem="cnG-mX-V4X" secondAttribute="bottom" constant="40" id="xN0-d7-TGA"/>
                                                     <constraint firstAttribute="trailing" secondItem="w5x-2L-0Tj" secondAttribute="trailing" constant="20" id="yyn-lC-Udp"/>
@@ -3199,6 +3209,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundPattern" destination="Ft2-k1-AU2" id="7Jb-xt-0SD"/>
+                        <outlet property="bottomContainer" destination="wJ2-S5-zk7" id="tqZ-54-veT"/>
                         <outlet property="bubblePopup" destination="n3T-Gj-Vb1" id="Rzz-ed-lMW"/>
                         <outlet property="commentHeartCountLabel" destination="WJJ-EL-aeJ" id="jAr-v3-VdS"/>
                         <outlet property="manitoGoodCountLabel" destination="Ooc-8J-PcH" id="t95-xZ-kwd"/>

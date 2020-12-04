@@ -99,7 +99,7 @@ class CreatePostViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT+9")
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "MM/dd HH:mm"
+        dateFormatter.dateFormat = "yyyy.MM.dd"
         let strDate = dateFormatter.string(from: date)
         
         // 유저 디폹트에서 닉네임을 불러옴

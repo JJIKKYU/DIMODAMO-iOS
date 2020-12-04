@@ -119,6 +119,15 @@ class RegisterViewModel {
     
     // 모든 정보들을 구조체 내에 넣는 작업
     func makeStructUserProfile() {
+        // 가입날짜 세팅
+        let unixTimestamp = NSDate().timeIntervalSince1970
+        let date = Date(timeIntervalSince1970: unixTimestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+9")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "MM/dd HH:mm"
+        let strDate = dateFormatter.string(from: date)
+        
         self.userProfile.marketing = markettingBtnRelay.value  // 마케팅 유무
         self.userProfile.id = userEmailRelay.value        // 유저 아이디
         self.userProfile.Gender = gender!
@@ -127,6 +136,7 @@ class RegisterViewModel {
         self.userProfile.school = self.school.value
         self.userProfile.schoolCertState = self.schoolCertificationState
         self.userProfile.schoolId = schoolIdRelay.value
+        self.userProfile.createdAt = strDate
     }
     
     func canUploadSchoolCard() -> Bool{

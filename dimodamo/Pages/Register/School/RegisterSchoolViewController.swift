@@ -14,12 +14,9 @@ import RxCocoa
 import FirebaseStorage
 import FirebaseAuth
 
-import McPicker
-
 class RegisterSchoolViewController: UIViewController {
     
     @IBOutlet weak var finishBtn: UIButton!
-    @IBOutlet weak var nextTryBtn: UIButton!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -31,7 +28,7 @@ class RegisterSchoolViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var schoolTextField: McTextField!
+    @IBOutlet weak var schoolTextField: UITextField!
     @IBOutlet weak var schoolLine: UIView!
     
     @IBOutlet weak var schoolIdTextField: UITextField!
@@ -42,12 +39,37 @@ class RegisterSchoolViewController: UIViewController {
     var disposeBag = DisposeBag()
     let imagePickerController = UIImagePickerController()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 화면이 로드될 경우에 키보드 올라오도록
+        schoolIdTextField.becomeFirstResponder()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesisgn()
         imagePickerController.delegate = self
-        self.pickerSchoolTextfieldSetting()
         
+        schoolTextField.rx.text.orEmpty
+            .map { $0 as String }
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel?.school.accept(value)
+                // '기타'를 고려해서 2글자 이상 작성한 경우
+                if value.count >= 2 {
+                    print("value의 카운트가 2가 넘었습니다.")
+                    AppStyleGuide.systemBtnRadius16(btn: self!.finishBtn, isActive: true)
+                    self?.progress.setProgress(1, animated: true)
+                } else {
+                    print("value의 카운트가 2가 안됩니다.")
+                    AppStyleGuide.systemBtnRadius16(btn: self!.finishBtn, isActive: false)
+                    self?.progress.setProgress(0.84, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        /*
         schoolIdTextField.delegate = self
         
         schoolIdTextField.rx.text.orEmpty
@@ -90,7 +112,7 @@ class RegisterSchoolViewController: UIViewController {
             }
         })
         .disposed(by: disposeBag)
-            
+            */
         
         
         // 터치하면 키보드 내려가도록
@@ -110,38 +132,27 @@ class RegisterSchoolViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    // 다음에 할래요
-    @IBAction func pressNextTryBtn(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "주의사항", message: "학교 미인증 상태에서는 서비스를 이용할 수 없습니다", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
-            self?.performSegue(withIdentifier: "RegisterFinish", sender: sender)
-            self?.viewModel?.schoolCertificationState = .none
-            self?.viewModel?.makeStructUserProfile()
-            self?.viewModel?.signUp()
-        }))
-        present(alert, animated: true, completion: nil)
-        
-        
-    }
-    
     // 다음으로
     @IBAction func pressFinishBtn(_ sender: Any) {
-        // 학생증 업로드를 안했을 경우에 넘어갈 수 없음
-        if viewModel?.canUploadSchoolCard() == false {
-            let alert = UIAlertController(title: "학생증을 촬영해 주세요", message: "", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-            present(alert, animated: true, completion: nil)
+        guard let textCount: Int = schoolTextField.text?.count else {
             return
         }
         
-        viewModel?.makeStructUserProfile()
-        viewModel?.signUp()
-       
-        
-        performSegue(withIdentifier: "RegisterFinish", sender: sender)
-        //        dismiss(animated: true, completion: nil)
+        if textCount < 2 {
+            let alert = AlertController(title: "학교를 입력해 주세요!", message: "다니시는 학교가 없다면 '기타'로 작성해 주세요!", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            viewModel?.makeStructUserProfile()
+            viewModel?.signUp()
+            
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+            mainVC.modalPresentationStyle = .fullScreen
+            present(mainVC, animated: true, completion: nil)
+        }
     }
     
     /*
@@ -177,63 +188,6 @@ extension RegisterSchoolViewController {
         
         let aspectHeight = (230 / 414) * UIScreen.main.bounds.width
         schoolCartBtnHeightConstraint.constant = aspectHeight
-    }
-    
-    func pickerSchoolTextfieldSetting() {
-        //        guard let schoolData = self.viewModel?.schoolArrData else {
-        //            return
-        //        }
-        
-        // 임시데이터
-        let schoolArrData: [[String]] = [["홍익대학교"]]
-        let data: [[String]] = schoolArrData
-        let mcInputView = McPicker(data: data)
-        mcInputView.backgroundColor = UIColor.black
-        mcInputView.tintColor = UIColor.appColor(.gray210) // 딤처리
-        mcInputView.toolbarBarTintColor = UIColor.appColor(.white245)
-        mcInputView.toolbarButtonsColor = UIColor.appColor(.textSmall)
-        mcInputView.backgroundColorAlpha = 0.25
-        mcInputView.pickerBackgroundColor = UIColor.appColor(.white255)
-        
-        let customLabel = UILabel()
-        customLabel.textAlignment = .center
-        customLabel.textColor = UIColor.appColor(.textSmall)
-        mcInputView.label = customLabel
-        
-        schoolTextField.inputViewMcPicker = mcInputView
-        
-        schoolTextField.doneHandler = { [weak schoolTextField] (selections) in
-            schoolTextField?.text = selections[0]!
-            self.viewModel?.school.accept(selections[0]!)
-            UIView.animate(withDuration: 0.5) {
-                self.schoolLine.backgroundColor = UIColor.appColor(.gray190)
-            }
-        }
-        schoolTextField.selectionChangedHandler = { [weak schoolTextField] (selections, componentThatChanged) in
-            schoolTextField?.text = selections[componentThatChanged]!
-            self.viewModel?.school.accept(selections[componentThatChanged]!)
-            UIView.animate(withDuration: 0.5) {
-                self.schoolLine.backgroundColor = UIColor.appColor(.gray190)
-            }
-        }
-        schoolTextField.cancelHandler = { [weak schoolTextField] in
-            schoolTextField?.text = "다니시는 학교를 선택해 주세요."
-            self.viewModel?.school.accept("")
-            UIView.animate(withDuration: 0.5) {
-                self.schoolLine.backgroundColor = UIColor.appColor(.white245)
-            }
-        }
-        schoolTextField.textFieldWillBeginEditingHandler = { [weak schoolTextField] (selections) in
-            if schoolTextField?.text == "" {
-                // Selections always default to the first value per component
-                schoolTextField?.text = selections[0]
-                self.viewModel?.school.accept(selections[0]!)
-                UIView.animate(withDuration: 0.5) {
-                    self.schoolLine.backgroundColor = UIColor.appColor(.white245)
-                }
-            }
-        }
-        
     }
 }
 

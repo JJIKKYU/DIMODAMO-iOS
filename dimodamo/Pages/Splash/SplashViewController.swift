@@ -188,11 +188,11 @@ class SplashViewController: UIViewController {
                     userDefaultsUserNickname = userDefaults.string(forKey: "nickname") ?? ""
                 }
                 
-                var userDefaultsUserDpti = userDefaults.string(forKey: "dpti") ?? ""
+                var userDefaultsUserDpti = userDefaults.string(forKey: "dpti") ?? "DD"
                 
                 if userDpti != userDefaultsUserDpti {
                     userDefaults.setValue("\(userDpti)", forKey: "dpti")
-                    userDefaultsUserDpti = userDefaults.string(forKey: "dpti") ?? ""
+                    userDefaultsUserDpti = userDefaults.string(forKey: "dpti") ?? "DD"
                 }
                 print("유저의 닉네임은 \(userDefaultsUserNickname)이며, 유저의 타입은 \(userDefaultsUserDpti) 입니다.")
                 

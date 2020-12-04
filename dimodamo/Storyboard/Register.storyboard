@@ -1573,21 +1573,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haF-BN-R1g">
-                                <rect key="frame" x="0.0" y="44" width="375" height="499"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="567"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkK-vm-O1y" userLabel="ContentView">
-                                        <rect key="frame" x="20" y="0.0" width="335" height="600"/>
+                                        <rect key="frame" x="20" y="0.0" width="335" height="250"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.83999999999999997" translatesAutoresizingMaskIntoConstraints="NO" id="DzP-US-hCU">
                                                 <rect key="frame" x="0.0" y="24" width="335" height="4"/>
                                             </progressView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교를 인증해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2j-hd-Es8">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교를 알려주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2j-hd-Es8">
                                                 <rect key="frame" x="0.0" y="53" width="335" height="29"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
                                                 <color key="textColor" name="TEXT - BIG"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="다니시는 학교를 선택해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6t-8z-c45" customClass="McTextField" customModule="McPicker">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="다니시는 학교를 작성해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6t-8z-c45">
                                                 <rect key="frame" x="4" y="162" width="327" height="22"/>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
@@ -1606,7 +1606,7 @@
                                                     <constraint firstAttribute="height" constant="2" id="BP8-of-7Ok"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ple-nB-Rk0" userLabel="DivideLine">
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ple-nB-Rk0" userLabel="DivideLine">
                                                 <rect key="frame" x="4" y="263" width="327" height="2"/>
                                                 <color key="backgroundColor" name="WHITE - 245"/>
                                                 <color key="tintColor" name="WHITE - 245"/>
@@ -1614,7 +1614,7 @@
                                                     <constraint firstAttribute="height" constant="2" id="2T4-6P-EiJ"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학번을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sbq-8f-R0a">
+                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학번을 입력해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sbq-8f-R0a">
                                                 <rect key="frame" x="4" y="229" width="327" height="22"/>
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
@@ -1625,21 +1625,13 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학생증을 촬영해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElX-lo-bD1">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학생증을 촬영해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElX-lo-bD1">
                                                 <rect key="frame" x="4" y="313" width="327" height="21"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <color key="textColor" name="GRAY - 210"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="z7m-td-hbE">
-                                                <rect key="frame" x="319" y="169.5" width="12" height="7.5"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="12" id="5Zz-Aj-LAc"/>
-                                                    <constraint firstAttribute="height" constant="7.5" id="IhY-mu-yVY"/>
-                                                </constraints>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nl7-xj-pmv">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nl7-xj-pmv">
                                                 <rect key="frame" x="0.0" y="346" width="335" height="230"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="230" id="G5k-LX-ApP"/>
@@ -1649,11 +1641,18 @@
                                                     <action selector="pressSchoolCardBtn:" destination="RVb-Vv-BpH" eventType="touchUpInside" id="gKT-1M-Zcy"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다니시는 학교가 없다면 '기타'로 작성해 주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOf-E7-asY">
+                                                <rect key="frame" x="4" y="206.5" width="240" height="16"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
+                                                <color key="textColor" name="RED"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="SYSTEM"/>
                                         <constraints>
                                             <constraint firstItem="rrw-Oj-nFf" firstAttribute="top" secondItem="t6t-8z-c45" secondAttribute="bottom" constant="12" id="03n-R9-Xuh"/>
+                                            <constraint firstItem="hOf-E7-asY" firstAttribute="top" secondItem="rrw-Oj-nFf" secondAttribute="bottom" constant="8.5" id="0p0-ZW-3Fs"/>
                                             <constraint firstAttribute="trailing" secondItem="DzP-US-hCU" secondAttribute="trailing" id="5HK-Xw-xE9"/>
                                             <constraint firstAttribute="trailing" secondItem="t6t-8z-c45" secondAttribute="trailing" constant="4" id="9yz-eD-zkH"/>
                                             <constraint firstItem="Nl7-xj-pmv" firstAttribute="top" secondItem="ElX-lo-bD1" secondAttribute="bottom" constant="12" id="BvY-Og-yj9"/>
@@ -1663,7 +1662,7 @@
                                             <constraint firstItem="Ple-nB-Rk0" firstAttribute="top" secondItem="Sbq-8f-R0a" secondAttribute="bottom" constant="12" id="MYM-Vx-3XX"/>
                                             <constraint firstItem="Ple-nB-Rk0" firstAttribute="leading" secondItem="Sbq-8f-R0a" secondAttribute="leading" id="OMp-4c-9Lf"/>
                                             <constraint firstItem="ElX-lo-bD1" firstAttribute="trailing" secondItem="Sbq-8f-R0a" secondAttribute="trailing" id="PLz-JW-rmB"/>
-                                            <constraint firstAttribute="height" constant="600" id="Paq-eq-mHe"/>
+                                            <constraint firstAttribute="height" constant="250" id="Paq-eq-mHe"/>
                                             <constraint firstItem="t6t-8z-c45" firstAttribute="top" secondItem="y2j-hd-Es8" secondAttribute="bottom" constant="80" id="Qg2-m5-cm1"/>
                                             <constraint firstItem="Sbq-8f-R0a" firstAttribute="top" secondItem="rrw-Oj-nFf" secondAttribute="bottom" constant="31" id="SdT-c7-zkJ"/>
                                             <constraint firstItem="ElX-lo-bD1" firstAttribute="top" secondItem="Ple-nB-Rk0" secondAttribute="bottom" constant="48" id="Wch-lI-xO6"/>
@@ -1671,43 +1670,36 @@
                                             <constraint firstItem="rrw-Oj-nFf" firstAttribute="trailing" secondItem="t6t-8z-c45" secondAttribute="trailing" id="bKO-ow-a9e"/>
                                             <constraint firstItem="t6t-8z-c45" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" constant="4" id="dAn-F1-Tol"/>
                                             <constraint firstItem="ElX-lo-bD1" firstAttribute="leading" secondItem="Sbq-8f-R0a" secondAttribute="leading" id="f5h-zf-i2j"/>
-                                            <constraint firstItem="rrw-Oj-nFf" firstAttribute="top" secondItem="z7m-td-hbE" secondAttribute="bottom" constant="19" id="fyT-dB-RGc"/>
                                             <constraint firstItem="Nl7-xj-pmv" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="g2B-ck-qFz"/>
+                                            <constraint firstItem="hOf-E7-asY" firstAttribute="leading" secondItem="rrw-Oj-nFf" secondAttribute="leading" id="iPz-J4-Ac5"/>
                                             <constraint firstItem="Ple-nB-Rk0" firstAttribute="trailing" secondItem="Sbq-8f-R0a" secondAttribute="trailing" id="kd3-RH-rBQ"/>
                                             <constraint firstItem="DzP-US-hCU" firstAttribute="top" secondItem="XkK-vm-O1y" secondAttribute="top" constant="24" id="r8W-A3-sDh"/>
-                                            <constraint firstItem="z7m-td-hbE" firstAttribute="trailing" secondItem="rrw-Oj-nFf" secondAttribute="trailing" id="sNZ-d9-vro"/>
                                             <constraint firstItem="y2j-hd-Es8" firstAttribute="top" secondItem="DzP-US-hCU" secondAttribute="bottom" constant="25" id="tZR-nu-sEc"/>
                                             <constraint firstItem="Sbq-8f-R0a" firstAttribute="trailing" secondItem="t6t-8z-c45" secondAttribute="trailing" id="uA6-vF-r40"/>
                                             <constraint firstItem="Sbq-8f-R0a" firstAttribute="leading" secondItem="rrw-Oj-nFf" secondAttribute="leading" id="ul8-Kb-GCA"/>
                                             <constraint firstItem="DzP-US-hCU" firstAttribute="leading" secondItem="XkK-vm-O1y" secondAttribute="leading" id="utD-bs-9dr"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디모다모에서는 학교 맞춤 서비스를 제공합니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgl-fx-8Lm">
+                                        <rect key="frame" x="20" y="90" width="276" height="18"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
+                                        <color key="textColor" name="GRAY - 210"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
                                     <constraint firstItem="XkK-vm-O1y" firstAttribute="top" secondItem="haF-BN-R1g" secondAttribute="top" id="Dpk-p6-te1"/>
                                     <constraint firstAttribute="trailing" secondItem="XkK-vm-O1y" secondAttribute="trailing" constant="20" id="EbY-t4-Hjf"/>
+                                    <constraint firstItem="Qgl-fx-8Lm" firstAttribute="top" secondItem="y2j-hd-Es8" secondAttribute="bottom" constant="8" id="GoI-Mk-lvw"/>
                                     <constraint firstItem="XkK-vm-O1y" firstAttribute="centerX" secondItem="haF-BN-R1g" secondAttribute="centerX" id="gSE-N3-bfS"/>
+                                    <constraint firstItem="Qgl-fx-8Lm" firstAttribute="leading" secondItem="y2j-hd-Es8" secondAttribute="leading" id="tUj-fc-V8y"/>
                                     <constraint firstAttribute="bottom" secondItem="XkK-vm-O1y" secondAttribute="bottom" id="xvc-Mf-stk"/>
                                     <constraint firstItem="XkK-vm-O1y" firstAttribute="leading" secondItem="haF-BN-R1g" secondAttribute="leading" constant="20" id="yUG-c8-FcJ"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugl-ao-Oe1">
-                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
-                                <color key="backgroundColor" name="GRAY - 170"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="i02-d2-xlQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
-                                <state key="normal" title="나중에 하기">
-                                    <color key="titleColor" name="WHITE"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressNextTryBtn:" destination="RVb-Vv-BpH" eventType="touchUpInside" id="20U-fl-mxH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="io9-Bb-WrD">
-                                <rect key="frame" x="0.0" y="543" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
                                 <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="guS-ba-Hgo"/>
@@ -1724,15 +1716,12 @@
                         <viewLayoutGuide key="safeArea" id="xoy-B3-tq7"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
-                            <constraint firstItem="ugl-ao-Oe1" firstAttribute="top" secondItem="io9-Bb-WrD" secondAttribute="bottom" constant="12" id="9Ho-Zi-ZFb"/>
                             <constraint firstItem="xoy-B3-tq7" firstAttribute="trailing" secondItem="haF-BN-R1g" secondAttribute="trailing" id="DbL-45-9Zu"/>
-                            <constraint firstItem="xoy-B3-tq7" firstAttribute="trailing" secondItem="ugl-ao-Oe1" secondAttribute="trailing" id="JW7-da-BoW"/>
-                            <constraint firstItem="ugl-ao-Oe1" firstAttribute="leading" secondItem="xoy-B3-tq7" secondAttribute="leading" id="NCA-wn-Uej"/>
-                            <constraint firstAttribute="bottom" secondItem="ugl-ao-Oe1" secondAttribute="bottom" id="Sk7-c2-FhZ"/>
+                            <constraint firstAttribute="bottom" secondItem="io9-Bb-WrD" secondAttribute="bottom" id="EJ2-m9-w2M"/>
+                            <constraint firstItem="io9-Bb-WrD" firstAttribute="leading" secondItem="xoy-B3-tq7" secondAttribute="leading" id="R8N-fp-f5Y"/>
                             <constraint firstItem="haF-BN-R1g" firstAttribute="leading" secondItem="xoy-B3-tq7" secondAttribute="leading" id="Th1-pM-Wk7"/>
-                            <constraint firstItem="io9-Bb-WrD" firstAttribute="leading" secondItem="ugl-ao-Oe1" secondAttribute="leading" id="XB7-wT-2bk"/>
+                            <constraint firstItem="xoy-B3-tq7" firstAttribute="trailing" secondItem="io9-Bb-WrD" secondAttribute="trailing" id="k4k-LQ-MG8"/>
                             <constraint firstItem="xoy-B3-tq7" firstAttribute="top" secondItem="haF-BN-R1g" secondAttribute="top" id="oi9-Ph-33Q"/>
-                            <constraint firstItem="io9-Bb-WrD" firstAttribute="trailing" secondItem="ugl-ao-Oe1" secondAttribute="trailing" id="v5K-aW-4Yl"/>
                             <constraint firstItem="io9-Bb-WrD" firstAttribute="top" secondItem="haF-BN-R1g" secondAttribute="bottom" id="wpx-ra-2yQ"/>
                         </constraints>
                     </view>
@@ -1747,7 +1736,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="finishBtn" destination="io9-Bb-WrD" id="jhR-wr-QlT"/>
-                        <outlet property="nextTryBtn" destination="ugl-ao-Oe1" id="6zU-Cp-02I"/>
                         <outlet property="progress" destination="DzP-US-hCU" id="WJI-3N-big"/>
                         <outlet property="schoolCardBtn" destination="Nl7-xj-pmv" id="uDI-0e-mj1"/>
                         <outlet property="schoolCartBtnHeightConstraint" destination="G5k-LX-ApP" id="Yuo-3M-a3M"/>
@@ -1958,7 +1946,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wg5-hP-aL2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="Wg5-hP-aL2" firstAttribute="leading" secondItem="h2e-kb-moJ" secondAttribute="leading" id="e36-WK-Qkf"/>
                             <constraint firstItem="Wg5-hP-aL2" firstAttribute="top" secondItem="h2e-kb-moJ" secondAttribute="top" id="g4H-3i-U6N"/>
@@ -1995,29 +1983,18 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="임시로 서비스 이용을  즉시 승인했습니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMp-Aq-Rmc">
-                                                <rect key="frame" x="0.0" y="121" width="335" height="43.5"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
-                                                <color key="textColor" name="TEXT - SMALL"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_char_clear" translatesAutoresizingMaskIntoConstraints="NO" id="RHh-Ao-9VV">
-                                                <rect key="frame" x="67" y="214.5" width="201" height="343"/>
+                                                <rect key="frame" x="67" y="194" width="201" height="343"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" name="WHITE"/>
                                         <constraints>
-                                            <constraint firstItem="TMp-Aq-Rmc" firstAttribute="top" secondItem="PWJ-v7-1CE" secondAttribute="bottom" constant="30" id="02p-TD-e0S"/>
-                                            <constraint firstItem="TMp-Aq-Rmc" firstAttribute="leading" secondItem="trT-gv-2pt" secondAttribute="leading" id="0L2-Oq-zEg"/>
                                             <constraint firstAttribute="trailing" secondItem="PWJ-v7-1CE" secondAttribute="trailing" id="1HU-PZ-X9x"/>
                                             <constraint firstItem="PWJ-v7-1CE" firstAttribute="leading" secondItem="trT-gv-2pt" secondAttribute="leading" constant="12" id="7Aw-cx-kkI"/>
                                             <constraint firstAttribute="trailing" secondItem="RHh-Ao-9VV" secondAttribute="trailing" constant="67" id="A4r-C1-l1s"/>
-                                            <constraint firstItem="TMp-Aq-Rmc" firstAttribute="centerX" secondItem="trT-gv-2pt" secondAttribute="centerX" id="J1f-IG-Tgc"/>
                                             <constraint firstItem="RHh-Ao-9VV" firstAttribute="leading" secondItem="trT-gv-2pt" secondAttribute="leading" constant="67" id="TMv-0i-Xcx"/>
                                             <constraint firstItem="PWJ-v7-1CE" firstAttribute="top" secondItem="trT-gv-2pt" secondAttribute="top" constant="30" id="n6c-EV-dju"/>
-                                            <constraint firstAttribute="trailing" secondItem="TMp-Aq-Rmc" secondAttribute="trailing" id="ovG-rD-5Ab"/>
                                             <constraint firstAttribute="height" constant="600" id="rVC-S9-zvQ"/>
-                                            <constraint firstItem="RHh-Ao-9VV" firstAttribute="top" secondItem="TMp-Aq-Rmc" secondAttribute="bottom" constant="50" id="u0r-7U-zXs"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2056,6 +2033,7 @@
                             <constraint firstItem="rtq-5r-pfI" firstAttribute="trailing" secondItem="bmW-ce-6n8" secondAttribute="trailing" id="VXk-LQ-1xA"/>
                             <constraint firstItem="rtq-5r-pfI" firstAttribute="top" secondItem="gD4-5C-Nad" secondAttribute="top" id="dZY-2A-nda"/>
                             <constraint firstItem="gD4-5C-Nad" firstAttribute="bottom" secondItem="rtq-5r-pfI" secondAttribute="bottom" id="kCQ-mQ-5zc"/>
+                            <constraint firstItem="bmW-ce-6n8" firstAttribute="top" secondItem="RHh-Ao-9VV" secondAttribute="bottom" constant="30" id="piD-jR-EGV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2073,7 +2051,6 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circle" catalog="system" width="128" height="121"/>
-        <image name="down_arrow" width="12" height="8"/>
         <image name="register_char_clear" width="160" height="343"/>
         <image name="schoolCard" width="374" height="230"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
