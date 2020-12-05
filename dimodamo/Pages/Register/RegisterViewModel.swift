@@ -107,9 +107,10 @@ class RegisterViewModel {
                                         print("Error adding document: \(err)")
                                     } else {
                                         print("Document added")
-                                        if self.canUploadSchoolCard() == true {
-                                            self.uploadSchoolCard(userUID: userUID)
-                                        }
+                                        // 학생증 업로드가 필요 없으므로
+//                                        if self.canUploadSchoolCard() == true {
+//                                            self.uploadSchoolCard(userUID: userUID)
+//                                        }
                                     }
                                 }
                                 
@@ -128,10 +129,16 @@ class RegisterViewModel {
         dateFormatter.dateFormat = "MM/dd HH:mm"
         let strDate = dateFormatter.string(from: date)
         
+        let userDefaults = UserDefaults.standard
+        
         self.userProfile.marketing = markettingBtnRelay.value  // 마케팅 유무
         self.userProfile.id = userEmailRelay.value        // 유저 아이디
         self.userProfile.Gender = gender!
+        // UserDefaults에 바로 저장
+        userDefaults.set(interestList.value, forKey: "interest")
         self.userProfile.Interest = interestList.value
+        // UserDefaults에 바로 저장
+        userDefaults.setValue("\(nickNameRelay.value)", forKey: "nickname")
         self.userProfile.nickName = nickNameRelay.value
         self.userProfile.school = self.school.value
         self.userProfile.schoolCertState = self.schoolCertificationState

@@ -54,14 +54,22 @@ class ProfileMainViewModel {
         return nickname
     }
     
+    /*
+     추천 디모인 로딩
+     */
     func loadDimoPeople() {
         // 리로드 할 수도 있으니 비움
         self.dimoPeopleArr = []
         self.dimoPeopleArrIsLoading.accept(false)
         
+        let userDefaults = UserDefaults.standard
+        let userInterestArray: [String] = userDefaults.array(forKey: "interest") as! [String]
+        let userInterest: String = userInterestArray[0]
+        print("유저의 관심사는 \(userInterest) 입니다.")
+        
         db.collection("users")
-            .whereField("school", isEqualTo: "홍익대학교")
             .whereField("dpti", isNotEqualTo: "DD")
+            .whereField("interest", arrayContains: "\(userInterest)")
             .limit(to: 4)
             .getDocuments{ [weak self] (querySnapshot, err) in
                 if let err = err {
@@ -105,10 +113,9 @@ class ProfileMainViewModel {
         self.hotDimoPeopleArrIsLoading.accept(false)
         
         db.collection("users")
-            .order(by: "dpti")
-            .whereField("dpti", isNotEqualTo: "DD")
             .order(by: "get_profile_score", descending: true)
-            .whereField("school", isEqualTo: "홍익대학교")
+//            .order(by: "dpti")
+//            .whereField("dpti", isNotEqualTo: "DD")
             .limit(to: 4)
             .getDocuments{ [weak self] (querySnapshot, err) in
                 if let err = err {

@@ -259,7 +259,7 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CR-MJ-R2E">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CR-MJ-R2E">
                                                 <rect key="frame" x="24" y="48" width="370" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Vyj-kC-jwS"/>
@@ -272,7 +272,7 @@
                                                     <action selector="pressedDimoPeopleBtn:" destination="TS6-ka-uAZ" eventType="touchUpInside" id="Ryd-H1-gP9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaQ-Zb-BXu">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaQ-Zb-BXu">
                                                 <rect key="frame" x="342" y="52" width="52" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="Qw5-Ca-30g"/>
@@ -291,7 +291,7 @@
                                                 <color key="textColor" name="GRAY - 170"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pmd-5e-R6A">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pmd-5e-R6A">
                                                 <rect key="frame" x="24" y="343" width="370" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="IQM-b9-S71"/>
@@ -595,7 +595,7 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jho-Sj-fjt">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jho-Sj-fjt">
                                                 <rect key="frame" x="342" y="347" width="52" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="FTP-bp-YAE"/>
@@ -672,7 +672,7 @@
                                 </button>
                             </barButtonItem>
                             <barButtonItem style="plain" id="dzN-ng-dQe">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qdm-dd-UBK">
+                                <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qdm-dd-UBK">
                                     <rect key="frame" x="338" y="11" width="24" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="searchIcon"/>
@@ -2755,7 +2755,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVU-Cb-wG6" userLabel="쪽지 보내기">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVU-Cb-wG6" userLabel="쪽지 보내기">
                                 <rect key="frame" x="0.0" y="840" width="414" height="56"/>
                                 <color key="backgroundColor" name="SYSTEM"/>
                                 <constraints>

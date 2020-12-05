@@ -176,6 +176,10 @@ class SplashViewController: UIViewController {
                     return
                 }
                 
+                guard let userInterest: [String] = data!["interest"] as? [String] else {
+                    return
+                }
+                
                 let userDefaults = UserDefaults.standard
                 
                 /*
@@ -188,13 +192,25 @@ class SplashViewController: UIViewController {
                     userDefaultsUserNickname = userDefaults.string(forKey: "nickname") ?? ""
                 }
                 
+                /*
+                 유저 DPTI 설정
+                 */
                 var userDefaultsUserDpti = userDefaults.string(forKey: "dpti") ?? "DD"
                 
                 if userDpti != userDefaultsUserDpti {
                     userDefaults.setValue("\(userDpti)", forKey: "dpti")
                     userDefaultsUserDpti = userDefaults.string(forKey: "dpti") ?? "DD"
                 }
-                print("유저의 닉네임은 \(userDefaultsUserNickname)이며, 유저의 타입은 \(userDefaultsUserDpti) 입니다.")
+                
+                var userDefaultsUserInterest = userDefaults.array(forKey: "interest") ?? []
+                
+                // 개수가 안 맞다는 뜻은 아예 입력이 안되어 있다는 뜻이니까, 일단 이렇게 해서 작동 되도록
+                if userInterest.count != userDefaultsUserInterest.count {
+                    userDefaults.set(userInterest, forKey: "interest")
+                    userDefaultsUserInterest = userDefaults.array(forKey: "interest") ?? []
+                }
+                
+                print("유저의 닉네임은 \(userDefaultsUserNickname)이며, 유저의 타입은 \(userDefaultsUserDpti), 관심사는 \(userDefaultsUserInterest) 입니다.")
                 
             } else {
                 print("유저 데이터에 있는 타입과 닉네임이 유저디폴트로 입력되지 못했습니다.")
