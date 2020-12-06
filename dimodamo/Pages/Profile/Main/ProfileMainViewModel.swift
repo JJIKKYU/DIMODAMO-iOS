@@ -63,7 +63,9 @@ class ProfileMainViewModel {
         self.dimoPeopleArrIsLoading.accept(false)
         
         let userDefaults = UserDefaults.standard
-        let userInterestArray: [String] = userDefaults.array(forKey: "interest") as! [String]
+        guard let userInterestArray: [String] = userDefaults.array(forKey: "interest") as? [String] else {
+            return
+        }
         let userInterest: String = userInterestArray[0]
         print("유저의 관심사는 \(userInterest) 입니다.")
         

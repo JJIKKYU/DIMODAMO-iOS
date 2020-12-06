@@ -43,6 +43,7 @@ class RegisterViewModel {
     // RegisterInterest
     // 관심사
     var interestList: BehaviorRelay<[Interest]> = BehaviorRelay(value: [])
+    lazy var interestListStringArr = interestList.value.map {$0.description}
     var isValidInterest: Bool { interestList.value.count == 3 }
     
     // RegisterNickname
@@ -135,7 +136,8 @@ class RegisterViewModel {
         self.userProfile.id = userEmailRelay.value        // 유저 아이디
         self.userProfile.Gender = gender!
         // UserDefaults에 바로 저장
-        userDefaults.set(interestList.value, forKey: "interest")
+        print("########### \(interestListStringArr)")
+        userDefaults.set(interestListStringArr, forKey: "interest")
         self.userProfile.Interest = interestList.value
         // UserDefaults에 바로 저장
         userDefaults.setValue("\(nickNameRelay.value)", forKey: "nickname")

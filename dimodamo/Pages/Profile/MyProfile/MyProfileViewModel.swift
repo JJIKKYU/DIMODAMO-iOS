@@ -27,7 +27,7 @@ class MyProfileViewModel {
     var disposeBag = DisposeBag()
     
     func myDptiType() -> String {
-        let type = UserDefaults.standard.string(forKey: "dpti") ?? "M_DD"
+        let type = UserDefaults.standard.string(forKey: "dpti") ?? "DD"
         return type
     }
     

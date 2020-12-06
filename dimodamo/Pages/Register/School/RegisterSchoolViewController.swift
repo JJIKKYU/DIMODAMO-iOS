@@ -43,7 +43,7 @@ class RegisterSchoolViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // 화면이 로드될 경우에 키보드 올라오도록
-        schoolIdTextField.becomeFirstResponder()
+        schoolTextField.becomeFirstResponder()
     }
     
     
@@ -121,6 +121,9 @@ class RegisterSchoolViewController: UIViewController {
         singleTapGestureRecognizer.isEnabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func singleTap(sender: UITapGestureRecognizer) {
@@ -167,6 +170,16 @@ class RegisterSchoolViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
          self.view.endEditing(true)
+    }
+    
+    @objc func moveUpTextView(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.finishBtn?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+        }
+    }
+    
+    @objc func moveDownTextView() {
+        self.finishBtn?.transform = .identity
     }
     
 }

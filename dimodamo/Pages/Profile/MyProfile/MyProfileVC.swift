@@ -265,8 +265,10 @@ class MyProfileVC: UIViewController {
             DptiPopupManager.dptiPopup(popupScreen: .profile, vc: self)
         } else if viewModel.myDptiTypeIsDefault() == true && viewModel.isMyProfile() == false {
             performSegue(withIdentifier: "MyDptiVC", sender: sender)
+            print("DPTI는 진행하지 않았지만, 내 프로필이 아니므로 결과를 봅니다.")
         } else {
             performSegue(withIdentifier: "MyDptiVC", sender: sender)
+            print("DPTI도 진행했고, 내 프로필이므로 DPTI 결과를 봅니다.")
         }
     }
     
