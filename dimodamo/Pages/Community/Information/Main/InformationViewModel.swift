@@ -24,6 +24,23 @@ class InformationViewModel {
     var fetchingMore: Bool = false
     let informationLoading = BehaviorRelay<Bool>(value: false)
     
+    /*
+     Sorting
+     */
+    let sortingOrder = BehaviorRelay<Sort>(value: .date) // 기본은 Date 순으로
+    var sortingOrderFieldString: String {
+        switch sortingOrder.value {
+        case .date:
+            return "bundle_id"
+            
+        case .scrap:
+            return "scrap_count"
+            
+        case .comment:
+            return "comment_count"
+        }
+    }
+    
     init() {
         self.paginateData()
     }
@@ -37,9 +54,14 @@ class InformationViewModel {
         var query: Query!
         
         if self.informationPosts.isEmpty {
-            query = db.collection("hongik/information/posts").order(by: "bundle_id", descending: true).limit(to: pageSize)
+            query = db.collection("hongik/information/posts")
+                .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? false : true)
+                .limit(to: pageSize)
         } else {
-            query = db.collection("hongik/information/posts").order(by: "bundle_id", descending: true).start(afterDocument: cursor!).limit(to: pageSize)
+            query = db.collection("hongik/information/posts")
+                .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? false : true)
+                .start(afterDocument: cursor!)
+                .limit(to: pageSize)
         }
         
         query.getDocuments() { [self] (querySnapshot, err) in
