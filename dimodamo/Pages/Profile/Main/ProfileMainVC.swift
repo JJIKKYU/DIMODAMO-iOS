@@ -39,6 +39,11 @@ class ProfileMainVC: UIViewController {
         navigationController?.view.backgroundColor = UIColor.white
         navigationController?.presentTransparentNavigationBar()
         
+        // 뷰를 킬때 초기화
+        self.viewModel.getUserType()
+        self.viewModel.loadDimoPeople()
+        self.viewModel.loadHotDimoPeople()
+        
         // 네비게이션바 하단 밑줄 제거
         // 네비게이션바 하단 그림자 추가
         DispatchQueue.main.async {

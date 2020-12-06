@@ -36,9 +36,6 @@ class ProfileMainViewModel {
     let hotDimoPeopleArrIsLoading = BehaviorRelay<Bool>(value: false)
     
     init() {
-        self.getUserType()
-        self.loadDimoPeople()
-        self.loadHotDimoPeople()
     }
     
     func getUserType() {

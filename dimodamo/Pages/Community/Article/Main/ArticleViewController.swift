@@ -103,6 +103,7 @@ class ArticleViewController: UIViewController {
         self.viewModel.postDataSetting()
     }
     
+//MARK: - View Loading
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -146,9 +147,10 @@ class ArticleViewController: UIViewController {
          */
         // In this case, we instantiate the banner with desired ad size.
         // 테스트용 : ca-app-pub-3940256099942544/2934735716
+        // 서비스용 : ca-app-pub-1168603177352985/3339402643
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-1168603177352985/3339402643"
         bannerView.rootViewController = self
         bannerView.load(GADRequest()) // 광고 로드
     }

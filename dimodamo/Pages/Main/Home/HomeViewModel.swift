@@ -24,7 +24,7 @@ class HomeViewModel {
     
     let userUID: String = Auth.auth().currentUser?.uid ?? ""
     
-    func myDptiType() -> String {
+    var myDptiType: String {
         let type = UserDefaults.standard.string(forKey: "dpti") ?? "DD"
         
         // 타입이 없을 경우 한 번 더 체크합니다.
@@ -60,7 +60,7 @@ class HomeViewModel {
      */
     static var isPopupCount: Int = 0
     func isAvailablePopup() -> Bool {
-        if myDptiType() == "DD" && HomeViewModel.isPopupCount == 0 {
+        if myDptiType == "DD" && HomeViewModel.isPopupCount == 0 {
             print("기본 DPTI이고 카운트가 0이므로 팝업을 올립니다.")
             return true
         }

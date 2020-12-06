@@ -31,12 +31,90 @@ class InformationVC: UIViewController {
     let viewModel = InformationViewModel()
     var disposeBag = DisposeBag()
     
+    // MARK: - Sorting Popup
+    
+    // 최신글, 스크랩순, 댓글순을 보여주는 라벨
+    @IBOutlet weak var sortingLabel: UILabel!
+    var dimView: UIView! {
+        didSet {
+            self.view.addSubview(dimView)
+            dimView.frame = UIScreen.main.bounds
+            dimView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+            dimView.isHidden = true
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.clickedDimView(_:)))
+            dimView.addGestureRecognizer(gesture)
+        }
+    }
+    
+    @objc func clickedDimView(_ sender:UITapGestureRecognizer){
+        print("Dimview를 클릭했습니다.")
+        
+        self.hideSortingPopupView()
+    }
+    
+    
+    @IBOutlet var sortingPopupView: SortingPopupView! {
+        didSet {
+            self.view.addSubview(sortingPopupView)
+            sortingPopupView.translatesAutoresizingMaskIntoConstraints = false
+            sortingPopupView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+            sortingPopupView.heightAnchor.constraint(equalToConstant: 178).isActive = true
+            sortingPopupView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+            sortingPopupView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
+            self.view.layoutIfNeeded()
+            sortingPopupView.isHidden = true
+        }
+    }
+    
+    @IBAction func pressedSortingBtn(_ sender: Any) {
+        
+        self.showSortingPopupView()
+        print("클릭했습니다.")
+    }
+    
+    func hideSortingPopupView() {
+        dimView?.isHidden = true
+        sortingPopupView.isHidden = true
+    }
+    
+    func showSortingPopupView() {
+        self.view.bringSubviewToFront(dimView)
+        self.view.bringSubviewToFront(sortingPopupView)
+        dimView?.isHidden = false
+        sortingPopupView.isHidden = false
+    }
+    
+    @IBAction func pressedSortingDate(_ sender: Any) {
+        print("최신순으로 정렬합니다.")
+        viewModel.sortingOrder.accept(.date)
+        hideSortingPopupView()
+        self.viewModel.sortingChange()
+    }
+    
+    @IBAction func pressedSortingScrap(_ sender: Any) {
+        print("스크랩 순으로 정렬합니다.")
+        viewModel.sortingOrder.accept(.scrap)
+        hideSortingPopupView()
+        self.viewModel.sortingChange()
+    }
+    
+    @IBAction func pressedSortingComment(_ sender: Any) {
+        print("댓글 순으로 정렬합니다.")
+        viewModel.sortingOrder.accept(.comment)
+        hideSortingPopupView()
+        self.viewModel.sortingChange()
+    }
+    
+//MARK: - View Loading
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         settingTableView()
         tableView.delegate = self
         tableView.dataSource = self
+        dimView = UIView()
         
         self.view.layoutIfNeeded()
         mainView.addSubview(loadingView)
@@ -62,9 +140,10 @@ class InformationVC: UIViewController {
          */
         // In this case, we instantiate the banner with desired ad size.
         // 테스트용 : ca-app-pub-3940256099942544/2934735716
+        // 서비스용 : ca-app-pub-1168603177352985/3339402643
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-1168603177352985/3339402643"
         bannerView.rootViewController = self
         bannerView.load(GADRequest()) // 광고 로드
         
@@ -170,9 +249,9 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         if let tags = model.tags {
-            for (index, tag) in tags.enumerated() {
-                cell.tags[index].text = "#\(tag)"
-                cell.tags[index].isHidden = false
+            for (index, tag) in cell.tags.enumerated() {
+                tag.text = "#\(tags[index])"
+                tag.isHidden = false
             }
         }
         

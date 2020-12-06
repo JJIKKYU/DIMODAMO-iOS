@@ -122,4 +122,25 @@ class MyProfileViewModel {
             return false
         }
     }
+    
+    // MARK: - 해당 기능은 임시 기능으로, 나중에 설정 페이지로 빠질 예정
+    
+    // 로그아웃
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            self.resetDefaults()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
+    // UserDefaults 모두 비우기
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+    }
 }

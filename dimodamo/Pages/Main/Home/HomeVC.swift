@@ -21,12 +21,7 @@ class HomeVC: UIViewController {
     /*
      Navigation Profile
      */
-    @IBOutlet weak var profileNavBtn: UIButton! {
-        didSet {
-            profileNavBtn.setImage(UIImage(named: "24_Profile_\(viewModel.myDptiType())"), for: .normal)
-            self.view.layoutIfNeeded()
-        }
-    }
+    @IBOutlet weak var profileNavBtn: UIButton!
     
     /*
      ServiceBanner Variables
@@ -117,6 +112,10 @@ class HomeVC: UIViewController {
             self.navigationController?.hideBottomTabbarLine()
             self.popupViewSetting()
         }
+        
+        // 상단 프로필 (유저 데이터가 변경되었을 경우 반영되도록)
+        profileNavBtn.setImage(UIImage(named: "24_Profile_\(viewModel.myDptiType)"), for: .normal)
+        
         view.layoutIfNeeded()
     }
     
@@ -237,7 +236,7 @@ class HomeVC: UIViewController {
         // 디모 아트보드로 이동
         let myProfileVC: MyProfileVC = storyboard.instantiateViewController(identifier: "MyProfileVC")
         let UID = viewModel.userUID
-        myProfileVC.viewModel.profileSetting.accept(viewModel.myDptiType())
+        myProfileVC.viewModel.profileSetting.accept(viewModel.myDptiType)
         myProfileVC.viewModel.userNickname = viewModel.myNickname()
         myProfileVC.viewModel.profileUID.accept(UID)
         

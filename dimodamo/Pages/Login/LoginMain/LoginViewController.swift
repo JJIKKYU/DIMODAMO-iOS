@@ -179,6 +179,7 @@ class LoginViewController: UIViewController {
                                 }
                             } else {
                                 print("loginSucess")
+                                self.viewModel.userDataSave()
                                 self.presentMainScreen()
                             }
                            })

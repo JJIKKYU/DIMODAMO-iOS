@@ -25,13 +25,6 @@ import Toast_Swift
 
 class ArticleDetailViewController: UIViewController {
     
-    // 로딩
-    @IBOutlet weak var loadingContainerView: LottieLoadingView2! {
-        didSet {
-            loadingContainerView.stopAnimation()
-        }
-    }
-    
     @IBOutlet var informationTopContainer: UIView!
     @IBOutlet weak var informationTitle: UILabel!
     @IBOutlet var informationTags: [UILabel]! {
@@ -585,10 +578,10 @@ extension ArticleDetailViewController {
     func informationTagDesign(){
         
         // 태그 내부 글자 수에 맞춰서 width, height 재설정
-        for  tag in self.informationTags {
-            let textCount: Int = Int(tag.text!.count)
+        for tag in self.informationTags {
+            let widthWithLabel: CGFloat = tag.intrinsicContentSize.width + 10
             
-            let width: Int = (textCount * 10) + 20
+            let width: CGFloat = widthWithLabel
             let height: Int = 20
             
             // 위에서 #을 포함해서 자동으로 할당하므로 1
@@ -600,7 +593,7 @@ extension ArticleDetailViewController {
             }
             
             tag.translatesAutoresizingMaskIntoConstraints = false
-            tag.widthAnchor.constraint(equalToConstant: CGFloat(width)).isActive = true
+            tag.widthAnchor.constraint(equalToConstant: width).isActive = true
             tag.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
             
             tag.layer.masksToBounds = true
@@ -967,6 +960,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         var deleteAction: SwipeAction?
         // 내가 작성한 댓글일 경우에는 Delete셀만
         if commentCellUserUId == viewModel.myUID {
+            return nil
             deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
                 // handle action by updating model with deletion
                 print("댓글을 삭제합니다. : \(indexPath.row)")

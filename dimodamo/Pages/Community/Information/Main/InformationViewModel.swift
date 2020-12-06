@@ -55,11 +55,11 @@ class InformationViewModel {
         
         if self.informationPosts.isEmpty {
             query = db.collection("hongik/information/posts")
-                .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? false : true)
+                .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? true : false)
                 .limit(to: pageSize)
         } else {
             query = db.collection("hongik/information/posts")
-                .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? false : true)
+                .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? true : false)
                 .start(afterDocument: cursor!)
                 .limit(to: pageSize)
         }
@@ -113,7 +113,16 @@ class InformationViewModel {
             }
             
         }
-        
+    }
+    
+    /*
+     정렬 기준을 바꾸면 다시 로딩 해야하므로
+     */
+    func sortingChange() {
+        // 먼저 기존에 로딩된 InformationPosts를 모두 비움
+        self.informationPosts = []
+        // 다시 data 세팅
+        self.paginateData()
     }
     
     /*
