@@ -186,8 +186,8 @@ class DptiResultViewController: UIViewController {
     
     func lottieChar(type: String) {
         let animationView = Lottie.AnimationView.init(name: "\(type)")
-        animationView.contentMode = .scaleAspectFill
         animationView.backgroundBehavior = .pauseAndRestore
+        animationView.translatesAutoresizingMaskIntoConstraints = false
         
         resultCardView.addSubview(animationView)
         animationView.topAnchor.constraint(equalTo: resultCardView.topAnchor, constant: 0).isActive = true
@@ -199,7 +199,6 @@ class DptiResultViewController: UIViewController {
         animationView.play()
         animationView.loopMode = .loop
     }
-
     /*
     // MARK: - Navigation
 

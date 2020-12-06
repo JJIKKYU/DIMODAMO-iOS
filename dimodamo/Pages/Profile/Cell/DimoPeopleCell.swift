@@ -61,13 +61,16 @@ class DimoPeopleCell: UICollectionViewCell {
         super.awakeFromNib()
         print("OK")
         
-        layer.cornerRadius = 24
-        
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 4)
-        layer.shadowOpacity = 0.08
-        layer.shadowRadius = 16
-        layer.masksToBounds = false
-        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+//        layer.cornerRadius = 24
+//        
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOffset = CGSize(width: 0, height: 4)
+//        layer.shadowOpacity = 0.08
+//        layer.shadowRadius = 16
+//        layer.masksToBounds = false
+//        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+//        
+        layer.cornerRadius = 16
+        appShadow(.s12)
     }
 }

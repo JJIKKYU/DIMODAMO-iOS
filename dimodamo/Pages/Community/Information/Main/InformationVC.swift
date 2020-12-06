@@ -249,9 +249,13 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         if let tags = model.tags {
-            for (index, tag) in cell.tags.enumerated() {
-                tag.text = "#\(tags[index])"
-                tag.isHidden = false
+            print(tags)
+            for (index, tag) in tags.enumerated() {
+                // 최대 2개까지 이므로 3개 이상 넘어가면 미반영
+                if index >= 2 { continue }
+                
+                cell.tags[index].text = "#\(tag)"
+                cell.tags[index].isHidden = false
             }
         }
         

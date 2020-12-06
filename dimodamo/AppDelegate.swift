@@ -154,6 +154,7 @@ extension AppDelegate: MessagingDelegate {
         let user = Auth.auth().currentUser
         if let userUID = user?.uid {
             let userFcmIdDB = db.collection("FcmId").document("\(userUID)")
+            print("## FCMIDDB : \(userFcmIdDB)")
             userFcmIdDB.setData(["FCM" : "\(fcmToken)"])
         }
     }
