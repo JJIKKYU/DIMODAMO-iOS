@@ -55,19 +55,24 @@ exports.documentCommentCounter_artboard = functions.firestore
                 // 작성자의 FCM 토큰을 불러옴
                 const fcmIdDocRefSnapshot = await admin.firestore().collection('FcmId').doc(postUserId).get();
                 const fcmIdData = fcmIdDocRefSnapshot.data();
-                const fcmToken = fcmIdData.FCM;
-                console.log("fcmToken : " + fcmToken);
-
-                // 알림 내용
-                const payload = {
-                    notification: {
-                    title: '작성하신 글에 새 댓글이 달렸습니다!',
-                    body: `${commentNickname} : ${commentDesc}`
-                    }
-                };
-
-                // 알림 발송
-                const response = await admin.messaging().sendToDevice(fcmToken, payload);
+                console.log("fcmIdData : " + fcmIdData);
+                // 정상적으로 FCM 토큰을 가지고 왔을 때만 알림을 보내도록 설정
+                if (fcmIdData) {
+                    
+                    const fcmToken = fcmIdData.FCM;
+                    console.log("fcmToken : " + fcmToken);
+    
+                    // 알림 내용
+                    const payload = {
+                        notification: {
+                        title: '작성하신 글에 새 댓글이 달렸습니다!',
+                        body: `${commentNickname} : ${commentDesc}`
+                        }
+                    };
+    
+                    // 알림 발송
+                    const response = await admin.messaging().sendToDevice(fcmToken, payload);
+                }
             }
 
             // 게시글 코멘트 +1

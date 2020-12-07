@@ -29,6 +29,7 @@
 		980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F197A253E01B7007B33B8 /* UploadImageCell.swift */; };
 		980F19ED25407578007B33B8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F19EC25407577007B33B8 /* CommentCell.swift */; };
 		98138FD5256ADBEF0063F8BD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98138FD4256ADBEF0063F8BD /* HomeVC.swift */; };
+		9819297B257E621900DACF15 /* Service2DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819297A257E621900DACF15 /* Service2DetailViewController.swift */; };
 		9821BADF255EBC3200C47987 /* ManitoChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */; };
 		9821BB62255EDBEC00C47987 /* ChatSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */; };
 		9821BB66255EDE1900C47987 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB65255EDE1900C47987 /* SideMenuVC.swift */; };
@@ -261,6 +262,7 @@
 		980F197A253E01B7007B33B8 /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
 		980F19EC25407577007B33B8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		98138FD4256ADBEF0063F8BD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		9819297A257E621900DACF15 /* Service2DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service2DetailViewController.swift; sourceTree = "<group>"; };
 		9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatViewModel.swift; sourceTree = "<group>"; };
 		9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSideMenuNavigation.swift; sourceTree = "<group>"; };
 		9821BB65255EDE1900C47987 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
@@ -789,6 +791,7 @@
 			children = (
 				98BA3FE725198E2D00788486 /* ClauseViewController.swift */,
 				98C1663A252729C50080DD87 /* Service1DetailViewController.swift */,
+				9819297A257E621900DACF15 /* Service2DetailViewController.swift */,
 			);
 			path = Clause;
 			sourceTree = "<group>";
@@ -1850,6 +1853,7 @@
 				98C6C2BD256E97BD005B8F40 /* RoundedTabBar.swift in Sources */,
 				9821BBC2255F0CC900C47987 /* ExitAlertView.swift in Sources */,
 				98F8C8AB254D866900FDDEBF /* HistoryVC.swift in Sources */,
+				9819297B257E621900DACF15 /* Service2DetailViewController.swift in Sources */,
 				9896E726257AB61D00F838F0 /* EmptyCollectionCell.swift in Sources */,
 				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,
 				98D988D2254E8932002A8AC5 /* ImageUploadCell.swift in Sources */,
@@ -2068,7 +2072,7 @@
 				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2092,7 +2096,7 @@
 				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamoRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

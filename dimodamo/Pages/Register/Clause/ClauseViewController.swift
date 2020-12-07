@@ -139,6 +139,10 @@ class ClauseViewController: UIViewController {
         performSegue(withIdentifier: "ViewService1Clause", sender: sender)
     }
     
+    @IBAction func pressedService1Detai2Btn(_ sender: Any) {
+        performSegue(withIdentifier: "ViewService2Clause", sender: sender)
+    }
+    
     func animateProgress(value: Float) {
         UIView.animate(withDuration: 0.5) {
             self.progress.setProgress(value, animated: true)
