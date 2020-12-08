@@ -10,11 +10,12 @@ import Foundation
 
 class Report {
     var reportId: String = "" // 신고 Doc의 UID
-    var targetType: Int = ReportType.post.rawValue // board = 0, comment = 1
+    var targetType: Int = ReportType.post.rawValue // post = 0, comment = 1, user = 2
     var targetId: String = "" // 신고한 게시글 및 댓글의 UID
     var targetUserId: String = "" // 신고 당한 사람
     var userId: String = "" // 신고한 사람
-    var reportKind: Int = ReportKinds.blame.rawValue
+    var reportKind: String = "" // 신고 종류
+    var reportDesc: String = "" // 신고 내용
     var timestamp: Double = 0.0
     
     var dictionary: [String: Any] {
@@ -25,6 +26,7 @@ class Report {
             "target_user_id": targetUserId,
             "user_id": userId,
             "report_kind": reportKind,
+            "report_desc": reportDesc,
             "timestamp": timestamp
         ]
     }

@@ -476,7 +476,7 @@ class ArticleDetailViewController: UIViewController {
         guard let postUserUid = self.viewModel.userUID else {
             return
         }
-//        self.reportAlert(reportType: .board, userUid: postUserUid, contentUid: postUid)
+        self.reportAlert(reportType: .post, userUid: postUserUid, contentUid: postUid)
     }
     
     @IBAction func pressedScrapBtnInView(_ sender: Any) {
@@ -1007,7 +1007,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                                                createAt: commentCreatedAt,
                                                userUid: commentUserUid,
                                                contentUid: commentUid)
-//                self.reportDetailAlert(reportType: .comment, userUid: commentUserUid, contentUid: commentUid)
+
             }
             deleteAction?.image = UIImage(named: "report_icon")
         }
@@ -1227,12 +1227,24 @@ extension ArticleDetailViewController {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         // 신고하기
-        let reportAction = UIAlertAction(title: "신고", style: .destructive) { (action) in
+        let reportAction = UIAlertAction(title: "신고하기", style: .destructive) { (action) in
             // observe it in the buttons block, what button has been pressed
             print("didPress report abuse")
             
-            // ReportAlert에서 받은 신고 종류를 기대로 넘겨줌
+            guard let profileImage: UIImage = self.userProfileImageView.image,
+                  let nickname: String = self.userProfileTitleBtn.titleLabel?.text,
+                  let title: String = self.titleLabel.text else {
+                return
+            }
             
+            ReportManager.gotoReportScreen(reportType: .post,
+                                           vc: self,
+                                           profileImage: profileImage,
+                                           nickname: nickname,
+                                           text: title,
+                                           createAt: "",
+                                           userUid: userUid,
+                                           contentUid: contentUid)
         }
         
         actionSheet.addAction(reportAction)

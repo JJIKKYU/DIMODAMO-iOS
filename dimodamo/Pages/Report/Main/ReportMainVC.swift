@@ -42,9 +42,54 @@ class ReportMainVC: UIViewController {
             reportDescriptionContainerView.layer.borderColor = UIColor.appColor(.white245).cgColor
         }
     }
+    @IBOutlet weak var reportDescriptionTextField: UITextView! {
+        didSet {
+            reportDescriptionTextField.delegate = self
+            reportDescriptionTextField.text = "내용을 입력해 주세요"
+            reportDescriptionTextField.textColor = UIColor.appColor(.gray210)
+        }
+    }
     
     
     @IBOutlet weak var tableView: UITableView!
+    
+    /*
+     상단바 컬러
+     */
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+        setColors()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        animate()
+        
+    }
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+        }, completion: nil)
+    }
+    
+    private func setColors() {
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.barTintColor = UIColor.appColor(.white255)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setColors()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +99,28 @@ class ReportMainVC: UIViewController {
         
         self.view.addSubview(reportDescriptionView)
         self.tableView.tableFooterView = reportDescriptionView
+        
+        viewModel.reportState
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                if value == .complete {
+                    let alert = AlertController(title: "신고가 완료되었습니다", message: "빠른 시일 내에 처리하겠습니다", preferredStyle: .alert)
+                    alert.setTitleImage(UIImage(named: "alertComplete"))
+                    let action = UIAlertAction(title: "확인", style: .default) { action in
+                        self?.navigationController?.popViewController(animated: true)
+                    }
+                    action.setValue(UIColor.appColor(.green2), forKey: "titleTextColor")
+                    alert.addAction(action)
+                    self?.present(alert, animated: true, completion: nil)
+                }
+                else if value == .fail {
+                    
+                }
+                else {
+                    
+                }
+            })
+            .disposed(by: disposeBag)
         
         /*
          Keyboard
@@ -113,7 +180,7 @@ class ReportMainVC: UIViewController {
             
             // 신고 당하는 유저 UID
             viewModel.targetUserUID = userUid
-            
+
             viewModel.currentReportType = .user
             
             break
@@ -141,7 +208,42 @@ class ReportMainVC: UIViewController {
     
     // 신고 내용 작성을 끝내고, 완료 버튼을 누를 경우
     @IBAction func pressedApplyBtn(_ sender: Any) {
-        // 신고 로직 호출
+        // 신고 버튼을 누를 때만 텍스트 동기화
+        viewModel.reportText = self.reportDescriptionTextField.text
+        print(viewModel.reportText?.count)
+        
+        // 신고 사유를 선택하지 않았을 경우
+        if !viewModel.isSelectedReportValue {
+            let alert = AlertController(title: "사유를 선택해 주세요", message: "", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        // 신고 내용을 미작성 했을 경우
+        if !viewModel.isWriteReportText {
+            let alert = AlertController(title: "내용을 입력해 주세요", message: "", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
+        // 신고 내용을 작성했을 경우
+        else {
+            let alert = AlertController(title: "정말 신고하시겠어요?", message: "", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive) { action in
+                print("신고 로직을 진행합니다.")
+                self.viewModel.report()
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+            alert.addAction(action)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     
@@ -165,9 +267,9 @@ extension ReportMainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("선택했습니다. \(indexPath.row)")
+        print("선택했습니다. \(indexPath.row), 신고 타입 : \(viewModel.reportArr[indexPath.row])")
         
-        // 선택할 때 마다 
+        // 선택할 때 마다, 나머지 버튼들 비활성화
         for cell in tableView.visibleCells {
             let reportCell = cell as! ReportCell
             reportCell.unselectedBtn()
@@ -175,6 +277,7 @@ extension ReportMainVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.cellForRow(at: indexPath) as! ReportCell
         cell.selectBtn()
+        viewModel.selectedReportValue = viewModel.reportArr[indexPath.row]
     }
     
 }

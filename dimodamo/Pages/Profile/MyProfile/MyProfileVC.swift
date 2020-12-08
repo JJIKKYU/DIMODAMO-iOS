@@ -250,8 +250,25 @@ class MyProfileVC: UIViewController {
         // 상대방 프로필일때
         case false:
             
+            // 신고하기 버튼을 누를 경우 프로필로 이동
             let reportAction = UIAlertAction(title: "신고하기", style: .destructive) { (action) in
                 print("didPress block")
+                
+                guard let profileImage: UIImage = self.profile.image,
+                      let nickname: String = self.nicknameLabel.text else {
+                    return
+                }
+                
+                let profileUID: String = self.viewModel.profileUID.value
+                
+                ReportManager.gotoReportScreen(reportType: .user,
+                                               vc: self,
+                                               profileImage: profileImage,
+                                               nickname: nickname,
+                                               text: "",
+                                               createAt: "",
+                                               userUid: profileUID,
+                                               contentUid: "")
             }
             
             actionSheet.addAction(reportAction)
