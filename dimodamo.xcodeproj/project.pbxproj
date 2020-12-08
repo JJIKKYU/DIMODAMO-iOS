@@ -32,6 +32,9 @@
 		9819297B257E621900DACF15 /* Service2DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819297A257E621900DACF15 /* Service2DetailViewController.swift */; };
 		9819297E257F327100DACF15 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9819297D257F327100DACF15 /* Report.storyboard */; };
 		98192983257F4AD200DACF15 /* ReportMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192982257F4AD200DACF15 /* ReportMainVC.swift */; };
+		9819298A257FC5F400DACF15 /* ReportMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192989257FC5F400DACF15 /* ReportMainViewModel.swift */; };
+		9819298E257FC73E00DACF15 /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819298D257FC73E00DACF15 /* ReportCell.swift */; };
+		98192992257FD03200DACF15 /* ReportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192991257FD03200DACF15 /* ReportExtension.swift */; };
 		9821BADF255EBC3200C47987 /* ManitoChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */; };
 		9821BB62255EDBEC00C47987 /* ChatSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */; };
 		9821BB66255EDE1900C47987 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB65255EDE1900C47987 /* SideMenuVC.swift */; };
@@ -267,6 +270,9 @@
 		9819297A257E621900DACF15 /* Service2DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service2DetailViewController.swift; sourceTree = "<group>"; };
 		9819297D257F327100DACF15 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		98192982257F4AD200DACF15 /* ReportMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMainVC.swift; sourceTree = "<group>"; };
+		98192989257FC5F400DACF15 /* ReportMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMainViewModel.swift; sourceTree = "<group>"; };
+		9819298D257FC73E00DACF15 /* ReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
+		98192991257FD03200DACF15 /* ReportExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExtension.swift; sourceTree = "<group>"; };
 		9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatViewModel.swift; sourceTree = "<group>"; };
 		9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSideMenuNavigation.swift; sourceTree = "<group>"; };
 		9821BB65255EDE1900C47987 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
@@ -672,8 +678,10 @@
 		98192981257F4ABF00DACF15 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				9819298C257FC72900DACF15 /* Cell */,
 				98192986257F4B7C00DACF15 /* TopViews */,
 				98192982257F4AD200DACF15 /* ReportMainVC.swift */,
+				98192989257FC5F400DACF15 /* ReportMainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -683,6 +691,14 @@
 			children = (
 			);
 			path = TopViews;
+			sourceTree = "<group>";
+		};
+		9819298C257FC72900DACF15 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9819298D257FC73E00DACF15 /* ReportCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		9821BB60255EDBBF00C47987 /* SideMenu */ = {
@@ -944,6 +960,7 @@
 				986BD67B25693F7F007F49ED /* Hide_ShowNavigationController.swift */,
 				98C6C2BC256E97BD005B8F40 /* RoundedTabBar.swift */,
 				9896E71F257A9F1600F838F0 /* DptiPopupManager.swift */,
+				98192991257FD03200DACF15 /* ReportExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1871,6 +1888,7 @@
 				986BD61B25684581007F49ED /* LinkPopupVC.swift in Sources */,
 				980F19ED25407578007B33B8 /* CommentCell.swift in Sources */,
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,
+				98192992257FD03200DACF15 /* ReportExtension.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
 				9821BB62255EDBEC00C47987 /* ChatSideMenuNavigation.swift in Sources */,
 				987252EB2566BFE700746591 /* CreatePostModel.swift in Sources */,
@@ -1904,6 +1922,7 @@
 				987D6D702562CE77000FCA16 /* UITableView.swift in Sources */,
 				9800A152253378EF0090C058 /* SecondIntroViewController.swift in Sources */,
 				98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */,
+				9819298E257FC73E00DACF15 /* ReportCell.swift in Sources */,
 				98FA221225569CFB00331755 /* ProfileDptiResultViewModel.swift in Sources */,
 				98C735DC255C5F1100252BF2 /* YourChatCell.swift in Sources */,
 				986BD62025684980007F49ED /* LinkPopupViewModel.swift in Sources */,
@@ -1945,6 +1964,7 @@
 				987D6D742562DF2E000FCA16 /* ClassRoomMainVC.swift in Sources */,
 				986EDA222509D7E000AD3CEE /* ClassRoomViewController.swift in Sources */,
 				98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */,
+				9819298A257FC5F400DACF15 /* ReportMainViewModel.swift in Sources */,
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
 				9830CF6F255D8EED009F448F /* MainManitoChatViewModel.swift in Sources */,

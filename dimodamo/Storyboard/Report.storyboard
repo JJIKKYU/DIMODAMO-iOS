@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,7 +19,7 @@
         <!--신고하기-->
         <scene sceneID="un3-uo-5tP">
             <objects>
-                <viewController id="l0V-Rg-RuC" customClass="ReportMainVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportMain" id="l0V-Rg-RuC" customClass="ReportMainVC" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D7r-7G-1uu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReportCell" rowHeight="54" id="TwV-dv-zYG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReportCell" rowHeight="54" id="TwV-dv-zYG" customClass="ReportCell" customModule="dimodamo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TwV-dv-zYG" id="Ka8-3T-yD9">
@@ -56,12 +55,17 @@
                                                 <constraint firstAttribute="trailing" secondItem="YfG-m5-Umv" secondAttribute="trailing" constant="20" id="vH1-4B-z9N"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="WHITE"/>
+                                        <connections>
+                                            <outlet property="checkBtn" destination="YfG-m5-Umv" id="ng5-w4-Z4S"/>
+                                            <outlet property="titleLabel" destination="yDJ-tk-pFv" id="RhN-bH-O0w"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mgs-4L-Xh3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="XYx-qa-bPb" firstAttribute="leading" secondItem="Mgs-4L-Xh3" secondAttribute="leading" id="5GU-qv-H4H"/>
                             <constraint firstItem="Mgs-4L-Xh3" firstAttribute="trailing" secondItem="XYx-qa-bPb" secondAttribute="trailing" id="6DI-jk-w2q"/>
@@ -95,7 +99,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="commentCreateAt" destination="RTQ-Gj-5Ur" id="c3O-OG-vZa"/>
+                        <outlet property="commentNickname" destination="Kef-Od-5UH" id="ZjK-Ol-PBK"/>
+                        <outlet property="commentProfile" destination="KtF-1H-J47" id="QkE-63-8JZ"/>
+                        <outlet property="commentTitle" destination="Tt3-Xb-nCS" id="7Xo-Bu-AeG"/>
+                        <outlet property="postNickname" destination="3Tv-e9-Caw" id="Kci-vv-iXf"/>
+                        <outlet property="postProfile" destination="bEC-Qn-nx2" id="CU0-sP-zS7"/>
+                        <outlet property="postTitle" destination="76i-UN-kPw" id="qSt-hA-Fxq"/>
                         <outlet property="tableView" destination="XYx-qa-bPb" id="yAO-1Y-yPy"/>
+                        <outlet property="topView_comment" destination="Kmd-Aa-Bg9" id="8mF-sF-8UI"/>
+                        <outlet property="topView_post" destination="FXO-0t-4Qw" id="nUx-Ch-8p8"/>
+                        <outlet property="topView_user" destination="qeX-yJ-Tkr" id="4aj-yy-CWl"/>
+                        <outlet property="userNickname" destination="KUy-CA-re5" id="XVK-nL-j7X"/>
+                        <outlet property="userProfile" destination="brh-OG-Qkt" id="cPz-8X-JAC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RvF-j8-z8b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -117,7 +133,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그디스크말고yo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUy-CA-re5">
-                            <rect key="frame" x="108" y="41" width="100.5" height="19"/>
+                            <rect key="frame" x="108" y="39.5" width="100.5" height="22"/>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="16"/>
                             <color key="textColor" name="TEXT - SMALL"/>
                             <nil key="highlightedColor"/>
@@ -186,7 +202,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그디스크말고yo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Tv-e9-Caw">
-                            <rect key="frame" x="108" y="41" width="100.5" height="19"/>
+                            <rect key="frame" x="108" y="39.5" width="100.5" height="22"/>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="16"/>
                             <color key="textColor" name="TEXT - SMALL"/>
                             <nil key="highlightedColor"/>
@@ -269,7 +285,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그디스크말고yo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kef-Od-5UH">
-                            <rect key="frame" x="108" y="41" width="100.5" height="19"/>
+                            <rect key="frame" x="108" y="39.5" width="100.5" height="22"/>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="16"/>
                             <color key="textColor" name="TEXT - SMALL"/>
                             <nil key="highlightedColor"/>
@@ -362,7 +378,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cli-9k-2bN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31.884057971014496" y="152.67857142857142"/>
+            <point key="canvasLocation" x="800" y="153"/>
         </scene>
     </scenes>
     <resources>
@@ -384,8 +400,5 @@
         <namedColor name="WHITE - 245">
             <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

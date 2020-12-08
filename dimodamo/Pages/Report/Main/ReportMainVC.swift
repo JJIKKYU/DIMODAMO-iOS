@@ -8,8 +8,28 @@
 
 import UIKit
 
-class ReportMainVC: UIViewController {
+import RxSwift
+import RxCocoa
 
+class ReportMainVC: UIViewController {
+    
+    let viewModel = ReportMainViewModel()
+    var disposeBag = DisposeBag()
+
+    @IBOutlet var topView_user: UIView!
+    @IBOutlet weak var userProfile: UIImageView!
+    @IBOutlet weak var userNickname: UILabel!
+    @IBOutlet var topView_post: UIView!
+    @IBOutlet weak var postProfile: UIImageView!
+    @IBOutlet weak var postNickname: UILabel!
+    @IBOutlet weak var postTitle: UILabel!
+    @IBOutlet var topView_comment: UIView!
+    @IBOutlet weak var commentProfile: UIImageView!
+    @IBOutlet weak var commentNickname: UILabel!
+    @IBOutlet weak var commentTitle: UITextView!
+    @IBOutlet weak var commentCreateAt: UILabel!
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -17,6 +37,44 @@ class ReportMainVC: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    
+    /*
+     Table Header View를 신고 유형에 맞추어서 세팅
+     */
+    func topViewSetting(reportType: ReportType, profileImage: UIImage, nickname: String, text: String, createAt: String) {
+        switch reportType {
+        case .post:
+            self.view.addSubview(topView_post)
+            self.tableView.tableHeaderView = topView_post
+            
+            postProfile.image = profileImage
+            postNickname.text = nickname
+            postTitle.text = text
+            
+            
+            break
+            
+        case .comment:
+            self.view.addSubview(topView_comment)
+            self.tableView.tableHeaderView = topView_comment
+            
+            commentProfile.image = profileImage
+            commentNickname.text = nickname
+            commentTitle.text = text
+            commentCreateAt.text = createAt
+            
+            break
+            
+        case .user:
+            self.view.addSubview(topView_user)
+            self.tableView.tableHeaderView = topView_user
+            
+            userProfile.image = profileImage
+            
+            break
+        }
     }
     
 
@@ -32,7 +90,8 @@ class ReportMainVC: UIViewController {
     
     // 종료 버튼을 눌렀을 경우
     @IBAction func pressedCloseBtn(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // 신고 내용 작성을 끝내고, 완료 버튼을 누를 경우
@@ -47,11 +106,15 @@ class ReportMainVC: UIViewController {
 
 extension ReportMainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.reportArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReportCell", for: indexPath)
+        
+        let index = indexPath.row
+        
+        cell.textLabel?.text = viewModel.reportArr[index]
         
         return cell
     }
