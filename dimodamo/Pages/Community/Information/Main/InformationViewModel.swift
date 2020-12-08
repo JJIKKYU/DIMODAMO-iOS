@@ -55,11 +55,11 @@ class InformationViewModel {
         
         if self.informationPosts.isEmpty {
             query = db.collection("hongik/information/posts")
-                .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? true : false)
+                .order(by: "\(sortingOrderFieldString)", descending: true)
                 .limit(to: pageSize)
         } else {
             query = db.collection("hongik/information/posts")
-                .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? true : false)
+                .order(by: "\(sortingOrderFieldString)", descending: true)
                 .start(afterDocument: cursor!)
                 .limit(to: pageSize)
         }

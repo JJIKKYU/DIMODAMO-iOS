@@ -60,7 +60,7 @@ class ArticleViewModel {
         
         db.collection("\(postDB)")
 //            .order(by: "\(sortingOrderFieldString)")
-            .order(by: "\(sortingOrderFieldString)", descending: sortingOrderFieldString == "bundle_id" ? true : false)
+            .order(by: "\(sortingOrderFieldString)", descending: true)
             .getDocuments() { [self] (querySnapshot, err) in
                 if let err = err {
                     print("아티클 포스트를 가져오는데 오류가 발생했습니다 \(err.localizedDescription)")
