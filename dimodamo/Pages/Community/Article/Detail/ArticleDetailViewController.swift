@@ -1004,7 +1004,9 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                                                profileImage: userProfile,
                                                nickname: userNickname,
                                                text: commentText,
-                                               createAt: commentCreatedAt)
+                                               createAt: commentCreatedAt,
+                                               userUid: commentUserUid,
+                                               contentUid: commentUid)
 //                self.reportDetailAlert(reportType: .comment, userUid: commentUserUid, contentUid: commentUid)
             }
             deleteAction?.image = UIImage(named: "report_icon")
@@ -1188,21 +1190,22 @@ extension ArticleDetailViewController: UITextFieldDelegate {
         guard let bottomSafeArea = window?.safeAreaInsets.bottom else {
             return
         }
-        
+
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            // 한번 초기화를 하고 나서
+            self.commentTextFieldView?.transform = .identity
+            self.commentTableViewBottom.constant = 0
             
             self.commentTextFieldView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea)
             self.commentTableViewBottom.constant = self.commentTableViewBottom.constant + keyboardSize.height - bottomSafeArea
-            //            self.scrollView?.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea!)
         }
     }
-    
+
     @objc func moveDownTextView() {
         self.commentTextFieldView?.transform = .identity
-        //        self.scrollView?.transform = .identity
         self.commentTableViewBottom.constant = 0
     }
-    
+
     // 텍스트필드 수정이 시작될때
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // DPTI를 진행하지 않았을 경우

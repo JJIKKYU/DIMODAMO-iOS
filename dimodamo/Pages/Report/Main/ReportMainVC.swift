@@ -29,6 +29,20 @@ class ReportMainVC: UIViewController {
     @IBOutlet weak var commentTitle: UITextView!
     @IBOutlet weak var commentCreateAt: UILabel!
     
+    /*
+     신고 내용
+     */
+    @IBOutlet var reportDescriptionView: UIView!
+    @IBOutlet weak var reportDescriptionContainerView: UIView! {
+        didSet {
+            reportDescriptionContainerView.layer.cornerRadius = 9
+            reportDescriptionContainerView.layer.masksToBounds = true
+            
+            reportDescriptionContainerView.layer.borderWidth = 1.5
+            reportDescriptionContainerView.layer.borderColor = UIColor.appColor(.white245).cgColor
+        }
+    }
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,13 +51,24 @@ class ReportMainVC: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        self.view.addSubview(reportDescriptionView)
+        self.tableView.tableFooterView = reportDescriptionView
+        
+        /*
+         Keyboard
+         */
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
     
     /*
      Table Header View를 신고 유형에 맞추어서 세팅
      */
-    func topViewSetting(reportType: ReportType, profileImage: UIImage, nickname: String, text: String, createAt: String) {
+    func topViewSetting(reportType: ReportType, profileImage: UIImage, nickname: String, text: String, createAt: String,                        userUid: String, contentUid: String) {
+        print("전달 받은 유저 UID: \(userUid), 콘텐츠 UID: \(contentUid)")
+        
         switch reportType {
         case .post:
             self.view.addSubview(topView_post)
@@ -53,6 +78,12 @@ class ReportMainVC: UIViewController {
             postNickname.text = nickname
             postTitle.text = text
             
+            // 신고 당하는 콘텐츠 (댓글) UID
+            viewModel.contentUID = contentUid
+            // 신고 당하는 유저 UID
+            viewModel.targetUserUID = userUid
+            
+            viewModel.currentReportType = .post
             
             break
             
@@ -65,6 +96,13 @@ class ReportMainVC: UIViewController {
             commentTitle.text = text
             commentCreateAt.text = createAt
             
+            // 신고 당하는 콘텐츠 (댓글) UID
+            viewModel.contentUID = contentUid
+            // 신고 당하는 유저 UID
+            viewModel.targetUserUID = userUid
+            
+            viewModel.currentReportType = .comment
+            
             break
             
         case .user:
@@ -73,8 +111,15 @@ class ReportMainVC: UIViewController {
             
             userProfile.image = profileImage
             
+            // 신고 당하는 유저 UID
+            viewModel.targetUserUID = userUid
+            
+            viewModel.currentReportType = .user
+            
             break
         }
+        
+        self.tableView.reloadData()
     }
     
 
@@ -110,14 +155,65 @@ extension ReportMainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReportCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReportCell", for: indexPath) as! ReportCell
         
         let index = indexPath.row
         
-        cell.textLabel?.text = viewModel.reportArr[index]
+        cell.titleLabel.text = viewModel.reportArr[index]
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("선택했습니다. \(indexPath.row)")
+        
+        // 선택할 때 마다 
+        for cell in tableView.visibleCells {
+            let reportCell = cell as! ReportCell
+            reportCell.unselectedBtn()
+        }
+        
+        let cell = tableView.cellForRow(at: indexPath) as! ReportCell
+        cell.selectBtn()
+    }
     
+}
+
+// MARK: - TextField & Keyboard
+
+extension ReportMainVC: UITextFieldDelegate, UITextViewDelegate {
+    // 내용 본문에 Height에 맞게 조절하기 위해
+    func adjustUITextViewHeight(arg : UITextView)
+    {
+        arg.translatesAutoresizingMaskIntoConstraints = true
+        arg.sizeToFit()
+        arg.isScrollEnabled = false
+    }
+    
+    // 키보드 업, 다운 관련
+    @objc func moveUpTextView(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.tableView.contentInset.bottom = keyboardSize.height
+        }
+    }
+    
+    @objc func moveDownTextView() {
+        self.tableView.contentInset.bottom = 0
+    }
+    
+    
+    // TextView (메인) placehorder logic
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.appColor(.gray210) {
+            textView.text = nil
+            textView.textColor = UIColor.appColor(.gray170)
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "내용을 입력해 주세요"
+            textView.textColor = UIColor.appColor(.gray210)
+        }
+    }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+import Firebase
 
 class ReportMainViewModel {
     
@@ -26,6 +26,19 @@ class ReportMainViewModel {
         "기타"
     ]
     
+    // 현재 스크린에서 진행 중인 신고 타입
+    var currentReportType: ReportType?
+    
+    // 신고하는 유저 UID
+    var myUID: String {
+        return Auth.auth().currentUser!.uid
+    }
+    
+    // 신고할 콘텐츠 UID
+    var contentUID: String?
+    
+    // 신고 당하는 유저
+    var targetUserUID: String?
     
     init() {
         

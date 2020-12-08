@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReportCell" rowHeight="54" id="TwV-dv-zYG" customClass="ReportCell" customModule="dimodamo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReportCell" rowHeight="54" id="TwV-dv-zYG" customClass="ReportCell" customModule="dimodamo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TwV-dv-zYG" id="Ka8-3T-yD9">
@@ -41,7 +41,7 @@
                                                     <color key="textColor" name="TEXT - SMALL"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfG-m5-Umv">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfG-m5-Umv">
                                                     <rect key="frame" x="370" y="16" width="24" height="24"/>
                                                     <state key="normal" image="report_empty_cirle"/>
                                                     <state key="selected" image="report_check_circle"/>
@@ -106,6 +106,8 @@
                         <outlet property="postNickname" destination="3Tv-e9-Caw" id="Kci-vv-iXf"/>
                         <outlet property="postProfile" destination="bEC-Qn-nx2" id="CU0-sP-zS7"/>
                         <outlet property="postTitle" destination="76i-UN-kPw" id="qSt-hA-Fxq"/>
+                        <outlet property="reportDescriptionContainerView" destination="E0j-a0-4tn" id="0KI-hL-VcD"/>
+                        <outlet property="reportDescriptionView" destination="x5W-iN-f3h" id="8DG-tb-vlA"/>
                         <outlet property="tableView" destination="XYx-qa-bPb" id="yAO-1Y-yPy"/>
                         <outlet property="topView_comment" destination="Kmd-Aa-Bg9" id="8mF-sF-8UI"/>
                         <outlet property="topView_post" destination="FXO-0t-4Qw" id="nUx-Ch-8p8"/>
@@ -352,6 +354,76 @@
                         <constraint firstItem="9ix-y2-vwX" firstAttribute="bottom" secondItem="vmC-w9-Atl" secondAttribute="bottom" id="woo-Wq-El5"/>
                         <constraint firstItem="9ix-y2-vwX" firstAttribute="trailing" secondItem="Tt3-Xb-nCS" secondAttribute="trailing" constant="20" id="xA8-Nw-42C"/>
                         <constraint firstItem="vmC-w9-Atl" firstAttribute="leading" secondItem="9ix-y2-vwX" secondAttribute="leading" constant="20" id="z8p-gl-m2G"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="x5W-iN-f3h">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="342"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신고 내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7E-aX-an2">
+                            <rect key="frame" x="24" y="48" width="370" height="22"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="16"/>
+                            <color key="textColor" name="TEXT - SMALL"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0j-a0-4tn">
+                            <rect key="frame" x="24" y="78" width="370" height="168"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hVY-k0-FkS">
+                                    <rect key="frame" x="12" y="12" width="338" height="144"/>
+                                    <color key="backgroundColor" name="WHITE"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="내용을 입력해 주세요">
+                                            <attributes>
+                                                <color key="NSColor" name="TEXT - SMALL"/>
+                                                <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                            <color key="value" name="GRAY - 210"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </textView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="168" id="A7O-mA-OP3"/>
+                                <constraint firstItem="hVY-k0-FkS" firstAttribute="leading" secondItem="E0j-a0-4tn" secondAttribute="leading" constant="12" id="GVP-Iz-oJ8"/>
+                                <constraint firstItem="hVY-k0-FkS" firstAttribute="top" secondItem="E0j-a0-4tn" secondAttribute="top" constant="12" id="dSZ-HR-VlM"/>
+                                <constraint firstAttribute="bottom" secondItem="hVY-k0-FkS" secondAttribute="bottom" constant="12" id="dfx-Mk-fdw"/>
+                                <constraint firstAttribute="trailing" secondItem="hVY-k0-FkS" secondAttribute="trailing" constant="20" id="hSf-BW-9rr"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mL3-MO-jil">
+                            <rect key="frame" x="24" y="265" width="370" height="35.5"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">신고는 반대의견을 나타내는 기능이 아닙니다.
+신고 사유에 맞지 않는 신고를 했을 경우, 해당 신고는 처리되지 않습니다.</string>
+                                    <attributes>
+                                        <color key="NSColor" name="GRAY - 190"/>
+                                        <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="WHITE"/>
+                    <constraints>
+                        <constraint firstItem="e7E-aX-an2" firstAttribute="leading" secondItem="x5W-iN-f3h" secondAttribute="leading" constant="24" id="6iP-OS-Zhn"/>
+                        <constraint firstItem="E0j-a0-4tn" firstAttribute="leading" secondItem="e7E-aX-an2" secondAttribute="leading" id="YWP-YT-qiW"/>
+                        <constraint firstItem="E0j-a0-4tn" firstAttribute="top" secondItem="e7E-aX-an2" secondAttribute="bottom" constant="8" id="dA4-KZ-Aax"/>
+                        <constraint firstItem="mL3-MO-jil" firstAttribute="trailing" secondItem="E0j-a0-4tn" secondAttribute="trailing" id="e57-bO-RG1"/>
+                        <constraint firstItem="mL3-MO-jil" firstAttribute="top" secondItem="E0j-a0-4tn" secondAttribute="bottom" constant="19" id="jYc-Kd-AYV"/>
+                        <constraint firstItem="mL3-MO-jil" firstAttribute="leading" secondItem="E0j-a0-4tn" secondAttribute="leading" id="l3o-Kv-tBj"/>
+                        <constraint firstItem="E0j-a0-4tn" firstAttribute="trailing" secondItem="e7E-aX-an2" secondAttribute="trailing" id="lzM-Ua-7dh"/>
+                        <constraint firstAttribute="trailing" secondItem="e7E-aX-an2" secondAttribute="trailing" constant="20" id="uqL-4T-2Bv"/>
+                        <constraint firstItem="e7E-aX-an2" firstAttribute="top" secondItem="x5W-iN-f3h" secondAttribute="top" constant="48" id="vGR-lM-0SU"/>
                     </constraints>
                 </view>
             </objects>

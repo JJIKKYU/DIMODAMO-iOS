@@ -23,5 +23,17 @@ class ReportCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func selectBtn() {
+        if checkBtn.isSelected {
+            self.checkBtn.isSelected = false
+        } else {
+            self.checkBtn.isSelected = true
+        }
+    }
+    
+    func unselectedBtn() {
+        self.checkBtn.isSelected = false
+    }
 
 }
