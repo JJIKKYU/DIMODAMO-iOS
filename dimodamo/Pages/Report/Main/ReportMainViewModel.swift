@@ -70,6 +70,39 @@ class ReportMainViewModel {
         case fail
     }
     
+    // 이미 신고를 진행했는지 미리 변수로 가지고 있음
+    var alreadyPrevReport: Bool = false
+    
+    // 이미 신고를 진행했는지 체크
+    func prevReportCheck() {
+        let userUid: String = Auth.auth().currentUser!.uid
+        
+        db.collection("users").document("\(userUid)")
+            .getDocument { [weak self] (document, error) in
+                if let document = document, document.exists {
+                    let data = document.data()
+                    
+                    if let reportList: [String: Bool] = data!["report_list"] as? [String: Bool] {
+                        print("\(reportList)")
+                        
+                        guard let contentUID: String = self?.contentUID else {
+                            return
+                        }
+                    
+                        guard let reportData: Bool = reportList["\(contentUID)"] else {
+                            return
+                        }
+                        
+                        self?.alreadyPrevReport = reportData
+                    }
+                    
+                } else {
+                    print("Documnet does not exist")
+                }
+            }
+    }
+    
+    // 신고 로직
     func report() {
         let report = Report()
         
@@ -108,13 +141,26 @@ class ReportMainViewModel {
                 self.reportState.accept(.fail)
             } else {
                 print("신고가 완료되었습니다 : \(id)")
+                self.addUserReportList(contentUID: contentUID)
                 self.reportState.accept(.complete)
             }
         }
     }
     
+    // 신고할 때, 신고한 UID 입력
+    func addUserReportList(contentUID: String) {
+//        db.collection("users").document("\(self.myUID)")
+//            .updateData(["report_list" : ["\(contentUID)" : true]])
+//        
+        db.collection("users").document("\(self.myUID)")
+            .setData(
+                ["report_list" : ["\(contentUID)" : true]],
+                merge: true
+            )
+    }
+    
     init() {
-        
+        self.prevReportCheck()
     }
     
     

@@ -32,7 +32,7 @@ class UserData {
         
         self.db.collection("users")
             .document("\(userUid)")
-            .getDocument { [weak self] (document, err) in
+            .getDocument { (document, err) in
                 if let document = document, document.exists {
                     let data = document.data()
                     

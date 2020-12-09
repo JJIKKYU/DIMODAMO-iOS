@@ -216,6 +216,26 @@ class ReportMainVC: UIViewController {
     
     // 신고 내용 작성을 끝내고, 완료 버튼을 누를 경우
     @IBAction func pressedApplyBtn(_ sender: Any) {
+        /*
+         신고가 이미 진행한 건지 체크
+         */
+        if viewModel.alreadyPrevReport {
+            let alert = AlertController(title: "이미 신고를 진행했어요", message: "신고는 한 번만 가능합니다", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive) { action in
+                // 바깥으로
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        /*
+         아래부터 신고 로직 진행
+         */
+        
         // 신고 버튼을 누를 때만 텍스트 동기화
         viewModel.reportText = self.reportDescriptionTextField.text
 //        print(viewModel.reportText?.count)
