@@ -193,14 +193,14 @@ class ProfileMainVC: UIViewController {
             
             switch senderData[0] {
             case DimoKinds.myProfile.rawValue:
-                print(viewModel.userUID)
-                selectedUserUID = viewModel.userUID
+                print(viewModel.getUserUID())
+                selectedUserUID = viewModel.getUserUID()
                 destination.viewModel.profileSetting.accept(viewModel.myDptiType())
                 destination.viewModel.userNickname = viewModel.myNickname()
                 break
                 
             case DimoKinds.dimo.rawValue:
-                print(viewModel.userUID)
+                print(viewModel.getUserUID())
                 selectedUserUID = viewModel.dimoPeopleArr[arrIndex].uid
                 destination.viewModel.profileSetting.accept(viewModel.dimoPeopleArr[arrIndex].dpti)
                 destination.viewModel.userNickname = viewModel.dimoPeopleArr[arrIndex].nickname

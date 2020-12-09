@@ -19,8 +19,8 @@ class ProfileMainViewModel {
     private let db = Firestore.firestore()
     
     let profileSetting = BehaviorRelay<String>(value: "")
-    var userUID: String {
-        Auth.auth().currentUser?.uid ?? ""
+    func getUserUID() -> String {
+        return Auth.auth().currentUser?.uid ?? ""
     }
     
     /*

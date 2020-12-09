@@ -22,7 +22,10 @@ class HomeViewModel {
     private let storage = Storage.storage().reference()
     private let db = Firestore.firestore()
     
-    let userUID: String = Auth.auth().currentUser?.uid ?? ""
+//    let userUID: String = Auth.auth().currentUser?.uid ?? ""
+    func getUserUID() -> String {
+        return Auth.auth().currentUser?.uid ?? ""
+    }
     
     var myDptiType: String {
         let type = UserDefaults.standard.string(forKey: "dpti") ?? "DD"

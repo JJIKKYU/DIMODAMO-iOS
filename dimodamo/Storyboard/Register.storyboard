@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -445,7 +444,7 @@
                         <outlet property="serviceBtn2" destination="is8-46-Qym" id="1ON-7Y-J2p"/>
                         <outlet property="serviceBtn3" destination="OHA-vd-BJl" id="Pde-H6-cbO"/>
                         <segue destination="74q-dC-tIa" kind="show" identifier="InputID" id="pXr-A7-ttY"/>
-                        <segue destination="omG-VY-UtP" kind="modal" identifier="ViewService1Clause" id="Qj3-Yc-TNa"/>
+                        <segue destination="omG-VY-UtP" kind="presentation" identifier="ViewService1Clause" id="Qj3-Yc-TNa"/>
                         <segue destination="6I6-H4-lOO" kind="presentation" identifier="ViewService2Clause" id="GLD-dP-h8M"/>
                         <segue destination="x3E-kz-9yc" kind="presentation" identifier="ViewService3Clause" id="5xR-uO-Qmw"/>
                     </connections>
@@ -472,98 +471,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yra-K0-6yk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1491" y="420"/>
-        </scene>
-        <!--DptiResult-->
-        <scene sceneID="bad-f1-sfq">
-            <objects>
-                <viewController id="XQ1-HA-IjV" userLabel="DptiResult" customClass="DptiResultViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Yxm-9s-Pug">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2G-zO-SnD">
-                                <rect key="frame" x="0.0" y="-44" width="414" height="940"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktY-fa-MdN" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="2200" id="3cR-9h-soQ"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" name="WHITE"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ktY-fa-MdN" secondAttribute="bottom" id="ER6-pd-vsf"/>
-                                    <constraint firstItem="ktY-fa-MdN" firstAttribute="leading" secondItem="U2G-zO-SnD" secondAttribute="leading" id="GdI-57-BPw"/>
-                                    <constraint firstAttribute="trailing" secondItem="ktY-fa-MdN" secondAttribute="trailing" id="U1F-fa-1MH"/>
-                                    <constraint firstItem="ktY-fa-MdN" firstAttribute="top" secondItem="U2G-zO-SnD" secondAttribute="top" id="eeq-eV-sk5"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="a9h-rf-yGP"/>
-                        <color key="backgroundColor" name="WHITE"/>
-                        <constraints>
-                            <constraint firstItem="U2G-zO-SnD" firstAttribute="trailing" secondItem="a9h-rf-yGP" secondAttribute="trailing" id="8gj-gC-xpr"/>
-                            <constraint firstItem="ktY-fa-MdN" firstAttribute="width" secondItem="Yxm-9s-Pug" secondAttribute="width" id="J8a-vM-LdK"/>
-                            <constraint firstItem="U2G-zO-SnD" firstAttribute="leading" secondItem="a9h-rf-yGP" secondAttribute="leading" id="WWy-iA-SzE"/>
-                            <constraint firstItem="U2G-zO-SnD" firstAttribute="top" secondItem="a9h-rf-yGP" secondAttribute="top" constant="-88" id="gsh-sD-VbM"/>
-                            <constraint firstAttribute="bottom" secondItem="U2G-zO-SnD" secondAttribute="bottom" id="hbv-pv-x3j"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="사용자님의 결과" id="FKa-s4-frD">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="xmark" catalog="system" id="zUy-Dr-Xv2">
-                            <color key="tintColor" name="SYSTEM"/>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="StQ-A4-fHp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5879.1999999999998" y="-274.81259370314842"/>
-        </scene>
-        <!--Register View Controller-->
-        <scene sceneID="gg3-V2-9cJ">
-            <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="sRO-OR-he8" customClass="RegisterViewController" customModule="dimodamo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WYX-gf-Zdz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1o-gn-QSj">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyu-Hl-7nD" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="2000" id="xu6-tP-kLg"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" name="WHITE"/>
-                                <constraints>
-                                    <constraint firstItem="Uyu-Hl-7nD" firstAttribute="leading" secondItem="J1o-gn-QSj" secondAttribute="leading" id="CPN-p5-BHL"/>
-                                    <constraint firstAttribute="trailing" secondItem="Uyu-Hl-7nD" secondAttribute="trailing" id="agN-Us-ja8"/>
-                                    <constraint firstAttribute="bottom" secondItem="Uyu-Hl-7nD" secondAttribute="bottom" id="kg1-Mn-t0J"/>
-                                    <constraint firstItem="Uyu-Hl-7nD" firstAttribute="centerX" secondItem="J1o-gn-QSj" secondAttribute="centerX" id="pMA-lx-yYt"/>
-                                    <constraint firstItem="Uyu-Hl-7nD" firstAttribute="top" secondItem="J1o-gn-QSj" secondAttribute="top" id="phT-qg-iV1"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="VbC-38-oXS"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="VbC-38-oXS" firstAttribute="top" secondItem="J1o-gn-QSj" secondAttribute="top" id="LgD-Ps-Zuk"/>
-                            <constraint firstItem="J1o-gn-QSj" firstAttribute="leading" secondItem="VbC-38-oXS" secondAttribute="leading" id="dNh-Xw-ahr"/>
-                            <constraint firstItem="VbC-38-oXS" firstAttribute="trailing" secondItem="J1o-gn-QSj" secondAttribute="trailing" id="h4A-e6-WF2"/>
-                            <constraint firstItem="J1o-gn-QSj" firstAttribute="bottom" secondItem="VbC-38-oXS" secondAttribute="bottom" id="iGS-zg-sHe"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="BO8-5e-Yrw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yqj-y8-8BD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3012" y="-161"/>
         </scene>
         <!--RegisterID View Controller-->
         <scene sceneID="Ex0-8Q-vI8">
@@ -1922,7 +1829,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="서비스 이용약관" id="R2h-vO-Zdv">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="5vn-QI-6nF">
+                        <barButtonItem key="rightBarButtonItem" id="5vn-QI-6nF">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uFe-1F-bS9">
                                 <rect key="frame" x="325" y="17" width="69" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2186,7 +2093,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="개인정보 처리방침" id="JCp-OE-3IQ">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="oO2-EK-XJX">
+                        <barButtonItem key="rightBarButtonItem" id="oO2-EK-XJX">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7hi-bT-M7O">
                                 <rect key="frame" x="325" y="17" width="69" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2337,7 +2244,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="커뮤니티 이용규칙" id="snl-lA-ro9">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="KHp-N3-Ozn">
+                        <barButtonItem key="rightBarButtonItem" id="KHp-N3-Ozn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ugb-7Z-Bx1">
                                 <rect key="frame" x="325" y="17" width="69" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2418,8 +2325,5 @@
         <namedColor name="WHITE - 245">
             <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

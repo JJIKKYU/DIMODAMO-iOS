@@ -210,7 +210,7 @@ class ReportMainVC: UIViewController {
     @IBAction func pressedApplyBtn(_ sender: Any) {
         // 신고 버튼을 누를 때만 텍스트 동기화
         viewModel.reportText = self.reportDescriptionTextField.text
-        print(viewModel.reportText?.count)
+//        print(viewModel.reportText?.count)
         
         // 신고 사유를 선택하지 않았을 경우
         if !viewModel.isSelectedReportValue {

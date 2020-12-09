@@ -235,7 +235,7 @@ class HomeVC: UIViewController {
         
         // 디모 아트보드로 이동
         let myProfileVC: MyProfileVC = storyboard.instantiateViewController(identifier: "MyProfileVC")
-        let UID = viewModel.userUID
+        let UID = viewModel.getUserUID()
         myProfileVC.viewModel.profileSetting.accept(viewModel.myDptiType)
         myProfileVC.viewModel.userNickname = viewModel.myNickname()
         myProfileVC.viewModel.profileUID.accept(UID)
