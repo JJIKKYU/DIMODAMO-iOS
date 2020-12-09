@@ -54,7 +54,7 @@ class RegisterNicknameViewController: UIViewController {
                     self?.viewModel?.isVaildDuplicateNickName.accept(.nothing)
                 }
 
-                print("\(self?.viewModel?.isValidNickname())")
+//                print("\(self?.viewModel?.isValidNickname())")
                 // 이메일 정규식에 알맞는 경우에는 중복확인 버튼 활성화
                 if self?.viewModel?.isValidNickname() == true {
                     self?.certBtn.isEnabled = true

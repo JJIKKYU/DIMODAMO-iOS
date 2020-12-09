@@ -58,9 +58,8 @@ class RegisterViewModel {
     // 학교 인증
     var schoolCardImageData = BehaviorRelay<Data?>(value: nil)
     var schoolCertificationState: CertificationState = .none
-    var school = BehaviorRelay<String>(value: "")
-    let schoolArrData: [[String]] = [["홍익대학교"]] // 학교 목록
-    var schoolIdRelay = BehaviorRelay<String>(value: "")
+    var schoolRelay = BehaviorRelay<String>(value: "")
+    var school: String = "" // 유저가 선택한 학교
     
     
     // 최종 유저 프로필
@@ -143,9 +142,8 @@ class RegisterViewModel {
         // UserDefaults에 바로 저장
         userDefaults.setValue("\(nickNameRelay.value)", forKey: "nickname")
         self.userProfile.nickName = nickNameRelay.value
-        self.userProfile.school = self.school.value
+        self.userProfile.school = self.school
         self.userProfile.schoolCertState = self.schoolCertificationState
-        self.userProfile.schoolId = schoolIdRelay.value
         self.userProfile.createdAt = strDate
     }
     
