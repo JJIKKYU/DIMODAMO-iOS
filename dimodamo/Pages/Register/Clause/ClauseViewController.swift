@@ -30,6 +30,12 @@ class ClauseViewController: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var progress: UIProgressView!
     
+    @IBOutlet var detailLabel: [UILabel]! {
+        didSet {
+            
+        }
+    }
+    
     var disposeBag = DisposeBag()
     let viewModel = RegisterViewModel()
     
@@ -154,19 +160,24 @@ class ClauseViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    // 필수 항목 모두 동의
+    // 서비스 이용약관
     @IBAction func pressedService1DetailBtn(_ sender: Any) {
         performSegue(withIdentifier: "ViewService1Clause", sender: sender)
     }
     
-    // 본인확인 서비스 이용약관
+    // 커뮤니티 이용약관
     @IBAction func pressedService1Detai2Btn(_ sender: Any) {
+        performSegue(withIdentifier: "ViewService3Clause", sender: sender)
+    }
+    
+    // 개인정보처리방침
+    @IBAction func pressedService3Detail3Btn(_ sender: Any) {
         performSegue(withIdentifier: "ViewService2Clause", sender: sender)
     }
     
-    // 커뮤니티 서비스 이용약관
-    @IBAction func pressedService3Detail3Btn(_ sender: Any) {
-        performSegue(withIdentifier: "ViewService3Clause", sender: sender)
+    // 마케팅 정보 수신 동의
+    @IBAction func pressedService4Detail4Btn(_ sender: Any) {
+        performSegue(withIdentifier: "ViewService4Clause", sender: sender)
     }
     
     func animateProgress(value: Float) {
@@ -196,7 +207,7 @@ extension ClauseViewController {
         btn.isSelected = isSelected
         
         if isSelected == true {
-            btn.tintColor = UIColor.appColor(.green3)
+            btn.tintColor = UIColor.appColor(.system)
         } else {
             btn.tintColor = UIColor.appColor(.gray170)
         }
@@ -206,7 +217,7 @@ extension ClauseViewController {
         btn.isSelected = isSelected
         
         if isSelected == true {
-            btn.tintColor = UIColor.appColor(.green1)
+            btn.tintColor = UIColor.appColor(.system)
         } else {
             btn.tintColor = UIColor.appColor(.gray170)
         }
