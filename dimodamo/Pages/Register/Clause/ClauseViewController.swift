@@ -16,10 +16,16 @@ class ClauseViewController: UIViewController {
     @IBOutlet weak var closeBtn: UIBarButtonItem!
     
     @IBOutlet weak var allBtn: UIButton!
+    
+    // 필수 항목
     @IBOutlet weak var serviceBtn: UIButton!
     
-    
+    // 본인확인 서비스 이용약관
     @IBOutlet weak var serviceBtn2: UIButton!
+    
+    // 커뮤니티 이용 약관
+    @IBOutlet weak var serviceBtn3: UIButton!
+    
     @IBOutlet weak var markettingBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var progress: UIProgressView!
@@ -135,12 +141,19 @@ class ClauseViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // 필수 항목 모두 동의
     @IBAction func pressedService1DetailBtn(_ sender: Any) {
         performSegue(withIdentifier: "ViewService1Clause", sender: sender)
     }
     
+    // 본인확인 서비스 이용약관
     @IBAction func pressedService1Detai2Btn(_ sender: Any) {
         performSegue(withIdentifier: "ViewService2Clause", sender: sender)
+    }
+    
+    // 커뮤니티 서비스 이용약관
+    @IBAction func pressedService3Detail3Btn(_ sender: Any) {
+        performSegue(withIdentifier: "ViewService3Clause", sender: sender)
     }
     
     func animateProgress(value: Float) {
