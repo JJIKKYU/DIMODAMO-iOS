@@ -957,6 +957,14 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             return nil
         }
         
+        // 신고가 10회 이상 누적되었으면 스와이프 불가능
+        guard let reportCount = viewModel.commentsRelay.value[indexPath.row].report else {
+            return nil
+        }
+        if reportCount >= 10 {
+            return nil
+        }
+        
         var deleteAction: SwipeAction?
         // 내가 작성한 댓글일 경우에는 Delete셀만
         // TODO : Delete 로직 제작할 것
@@ -1163,6 +1171,12 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         
         // 유저 DPTI 진행 유무에 따라서 하트 버튼 등이 안눌리게 하기 위해서
         cell.isInteractionEnabledDPTI = viewModel.isAvailableInteraction()
+        
+        // 신고 누적 횟수 10회 이상일 경우 하트 버튼 숨김
+        guard let reportCount = model.report else { return cell }
+        if reportCount >= 10 {
+            cell.hideHeartBtn()
+        }
         
         return cell
     }

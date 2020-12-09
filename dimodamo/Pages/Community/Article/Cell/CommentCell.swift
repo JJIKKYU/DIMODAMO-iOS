@@ -31,6 +31,7 @@ class CommentCell: SwipeTableViewCell {
     @IBOutlet weak var commentHeart: UILabel!
     @IBOutlet weak var commentHeartBtn: UIButton!
     @IBOutlet weak var commentAuthor: UIButton!
+    @IBOutlet weak var commentReplyBtn: UIButton!
     
     @IBOutlet weak var commentProfileLeadingConstraint: NSLayoutConstraint!
     
@@ -123,5 +124,15 @@ extension CommentCell {
         arg.translatesAutoresizingMaskIntoConstraints = false
         arg.sizeToFit()
         arg.isScrollEnabled = false
+    }
+    
+    
+    // 신고가 누적되었을 경우 하트버튼 안보이도록
+    func hideHeartBtn() {
+        self.commentHeartBtn.isHidden = true
+        self.commentHeartBtn.isEnabled = false
+        self.commentHeart.isHidden = true
+        self.commentReplyBtn.isHidden = true
+        self.commentReplyBtn.isEnabled = false
     }
 }

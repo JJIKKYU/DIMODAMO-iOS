@@ -237,8 +237,12 @@ class ArticleDetailViewModel {
                     
                     let data = document.data()
                     
+                    
                     let comment: Comment = Comment()
                     comment.settingDataFromDocumentData(data: data)
+                    
+                    
+                    self?.reportCommentSetting(comment: comment)
                     comments.append(comment)
                     
                     print("setting완료 : \(String(describing: comment.comment))")
@@ -246,6 +250,22 @@ class ArticleDetailViewModel {
                 
                 self?.commentsRelay.accept(comments)
             })
+    }
+    
+    // 신고당한 댓글은 프론트에서 반영
+    func reportCommentSetting(comment: Comment) {
+        // 신고 누적상태 댓글 확인
+        guard let reportCount: Int = comment.report else {
+            return
+        }
+        
+        if reportCount >= 10 {
+            print("reportCount가 \(reportCount)입니다.")
+            comment.comment = "신고가 누적되어 삭제되었습니다"
+            comment.nickname = "익명"
+            comment.userDpti = "DD"
+            comment.userId = ""
+        }
     }
     
     func userDataSetting() {
@@ -326,6 +346,7 @@ class ArticleDetailViewModel {
                         heart_count: 0,
                         is_deleted: false,
                         nickname: "\(userNickname)",
+                        report: 0,
                         post_id: self.postUidRelay.value,
                         user_id: Auth.auth().currentUser!.uid,
                         user_dpti: "\(userDpti)")
@@ -504,8 +525,7 @@ class ArticleDetailViewModel {
     }
     
     init() {
-        
-        
+
     }
     
     

@@ -18,6 +18,7 @@ class Comment : Codable {
     var heartCount: Int?
     var isDeleted: Bool?
     var nickname: String?
+    var report: Int?
     var postId: String?
     var userId: String?
     var userDpti: String?
@@ -49,6 +50,7 @@ class Comment : Codable {
             "heart_count": heartCount ?? 0,
             "is_deleted": isDeleted ?? false,
             "nickname": nickname ?? "",
+            "report" : report ?? 0,
             "post_id": postId ?? "",
             "user_id": userId ?? "",
             "user_dpti": userDpti ?? ""
@@ -71,7 +73,7 @@ class Comment : Codable {
     //    }
     
     func setData(bundle_id: Double, bundle_order: Double, comment: String, comment_id: String, created_at: String,
-                 depth: Int, heart_count: Int, is_deleted: Bool, nickname: String, post_id: String, user_id: String, user_dpti: String) {
+                 depth: Int, heart_count: Int, is_deleted: Bool, nickname: String, report: Int, post_id: String, user_id: String, user_dpti: String) {
         self.bundleId = bundle_id
         self.bundleOrder = bundle_order
         self.comment = comment
@@ -84,6 +86,7 @@ class Comment : Codable {
         self.postId = post_id
         self.userId = user_id
         self.userDpti = user_dpti
+        self.report = report
     }
     
     func settingDataFromDocumentData(data: [String: Any]) {
@@ -133,6 +136,10 @@ class Comment : Codable {
         
         if let user_dpti: String = data["user_dpti"] as? String {
             self.userDpti = user_dpti
+        }
+        
+        if let report: Int = data["report"] as? Int {
+            self.report = report
         }
     }
 }

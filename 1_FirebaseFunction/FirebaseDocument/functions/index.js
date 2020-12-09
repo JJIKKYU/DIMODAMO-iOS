@@ -146,7 +146,7 @@ exports.documentCommentCounter_layer = functions.firestore
 
 
 // 신고당할때 카운트 증가
-exports.documentCommentCounter_layer = functions.firestore
+exports.reportCounter = functions.firestore
 .document('report/{report_id}')
 .onCreate(async (snap, context) => {
     try {
@@ -172,7 +172,36 @@ exports.documentCommentCounter_layer = functions.firestore
             const data = postDocRefSnapshot.data();
             const reportCount = Number(data.report + 1)
             console.log("레포트 전 : " + (data.report) + "레포트 후 : " + Number(data.report + 1));
-            admin.firestore().collection('hongik/' + targetBoard + '/posts').doc(targetId).update( {report : reportCount});
+
+            // 신고가 10회 이상 누적되었을 경우 삭제
+            if (reportCount >= 10) {
+                admin.firestore().collection('hongik/' + targetBoard + '/posts').doc(targetId).update( {is_deleted : true});
+            }
+            // 그게 아닐 경우에는 단순히 카운트만 증가
+            else {
+                admin.firestore().collection('hongik/' + targetBoard + '/posts').doc(targetId).update( {report : reportCount});
+            }
+
+            
+        }
+        // 신고 타입이 comment일 경우
+        else if (targetType === "comment") {
+            const postDocRefSnapshot = await admin.firestore().collection('hongik/'+ targetBoard +'/comments').doc(targetId).get();
+            const data = postDocRefSnapshot.data();
+            const reportCount = Number(data.report + 1)
+
+            console.log("레포트 전 : " + (data.report) + "레포트 후 : " + Number(data.report + 1));
+            admin.firestore().collection('hongik/' + targetBoard + '/comments').doc(targetId).update( {report : reportCount});
+            // 코멘트같은 경우에는 대댓글 등 원댓글이 사라지면, 로직이 꼬이는 경향이 있어 프론트에서 댓글 필터링
+        }
+        // 신고 타입이 user인 경우
+        else if (targetType === "user") {
+            const postDocRefSnapshot = await admin.firestore().collection('users').doc(targetUserId).get();
+            const data = postDocRefSnapshot.data();
+            const reportCount = Number(data.report + 1)
+
+            console.log("레포트 전 : " + (data.report) + "레포트 후 : " + Number(data.report + 1));
+            admin.firestore().collection('users').doc(targetUserId).update( {report : reportCount});
         }
 
     } catch (error) {
