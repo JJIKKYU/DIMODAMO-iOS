@@ -29,6 +29,7 @@ struct Register {
     var nickName: String = ""
     
     var report: Int = 0
+    var reportList: [String : Bool] = [:]
     
     var school: String = ""
     var schoolCertState: CertificationState = .none
@@ -64,6 +65,7 @@ struct Register {
             "marketing": self.marketing == true ? "true" : "false",
             "nickName": self.nickName,
             "report": self.report,
+            "report_list": self.reportList,
             "school" : self.school,
             "schoolId" : self.schoolId,
             "schoolCert" : self.schoolCertState.description,

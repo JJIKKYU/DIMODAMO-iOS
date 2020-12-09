@@ -85,15 +85,26 @@ class ReportMainViewModel {
                     if let reportList: [String: Bool] = data!["report_list"] as? [String: Bool] {
                         print("\(reportList)")
                         
-                        guard let contentUID: String = self?.contentUID else {
-                            return
-                        }
+                        let contentUID: String = self?.contentUID ?? ""
+                        let targetUserUID: String = self?.targetUserUID ?? ""
+                        let reportType: ReportType = self?.currentReportType ?? .comment
+                        print("reportType \(reportType), targetuserUID: \(targetUserUID)")
                     
-                        guard let reportData: Bool = reportList["\(contentUID)"] else {
-                            return
+                        let reportData: Bool = reportList["\(contentUID)"] ?? false
+                        let reportUserData: Bool = reportList["\(targetUserUID)"] ?? false
+                        
+                        // 신고 타입이 댓글이거나, 게시글일 경우에는 콘텐츠UID로 중복검사
+                        if reportType == .comment || reportType == .post {
+                            self?.alreadyPrevReport = reportData
+                            print("중복검사 진행")
+                        }
+                        // 신고 타입이 유저일 경우, 유저 UID로 중복검사
+                        else if reportType == .user {
+                            self?.alreadyPrevReport = reportUserData
+                            print("중복검사 진행")
                         }
                         
-                        self?.alreadyPrevReport = reportData
+                        
                     }
                     
                 } else {
@@ -141,20 +152,34 @@ class ReportMainViewModel {
                 self.reportState.accept(.fail)
             } else {
                 print("신고가 완료되었습니다 : \(id)")
-                self.addUserReportList(contentUID: contentUID)
+                self.addUserReportList(contentUID: contentUID, reportType: reportType, targetUserUID: targetUserUID)
                 self.reportState.accept(.complete)
             }
         }
     }
     
     // 신고할 때, 신고한 UID 입력
-    func addUserReportList(contentUID: String) {
-//        db.collection("users").document("\(self.myUID)")
-//            .updateData(["report_list" : ["\(contentUID)" : true]])
-//        
+    func addUserReportList(contentUID: String, reportType: ReportType, targetUserUID: String) {
+        
+        var reportTargetUID: String?
+        
+        // 포스트와 코멘트는 신고할 때 신고 게시글 및 코멘트 (contentUID)를 신고 목록에 추가
+        if reportType == .comment || reportType == .post {
+            reportTargetUID = contentUID
+        }
+        // 신고 대상이 유저일 경우에는 유저 UID를 추가
+        else {
+            reportTargetUID = targetUserUID
+        }
+        
+        guard let reportUID: String = reportTargetUID else {
+            return
+        }
+        
+        // 신고할 때 신고 리스트에 추가
         db.collection("users").document("\(self.myUID)")
             .setData(
-                ["report_list" : ["\(contentUID)" : true]],
+                ["report_list" : ["\(reportUID)" : true]],
                 merge: true
             )
     }
