@@ -41,11 +41,12 @@ class ClauseViewController: UIViewController {
         
         Observable.combineLatest(
             viewModel.serviceBtnRelay.map { $0 == true },
-            viewModel.serviceBtn2Relay.map { $0 == true }
+            viewModel.serviceBtn2Relay.map { $0 == true },
+            viewModel.serviceBtn3Relay.map { $0 == true }
         )
         .observeOn(MainScheduler.instance)
-        .subscribe { [weak self] service1, service2 in
-            if (service1 == true && service2) {
+        .subscribe { [weak self] service1, service2, service3 in
+            if (service1 == true && service2 && service3) {
                 self?.nextBtnIsEnabled = true
                 UIView.animate(withDuration: 0.5) {
                     self?.nextBtn.backgroundColor = UIColor.appColor(.systemActive)
@@ -64,9 +65,10 @@ class ClauseViewController: UIViewController {
         Observable.combineLatest(
             viewModel.serviceBtnRelay.map { $0 == true },
             viewModel.serviceBtn2Relay.map { $0 == true },
+            viewModel.serviceBtn3Relay.map { $0 == true },
             viewModel.markettingBtnRelay.map { $0 == true }
         )
-        .subscribe(onNext: { [weak self] btn1, btn2, btn3 in
+        .subscribe(onNext: { [weak self] btn1, btn2, btn3, marketingBtn in
             if btn1 && btn2 && btn3 {
                 self?.changeBtnColorAllBtn(btn: self!.allBtn, isSelected: true)
             } else {
@@ -93,6 +95,15 @@ class ClauseViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        serviceBtn3.rx.tap
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext : { [weak self] in
+                let flag: Bool = !((self?.serviceBtn3.isSelected)!)
+                self?.viewModel.serviceBtn3Relay.accept(flag)
+                self?.changeBtnColor(btn: self!.serviceBtn3, isSelected: flag)
+            })
+            .disposed(by: disposeBag)
+        
         markettingBtn.rx.tap
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
@@ -111,10 +122,12 @@ class ClauseViewController: UIViewController {
                 
                 self?.changeBtnColor(btn: self!.serviceBtn, isSelected: allBtnIsSelected)
                 self?.changeBtnColor(btn: self!.serviceBtn2, isSelected: allBtnIsSelected)
+                self?.changeBtnColor(btn: self!.serviceBtn3, isSelected: allBtnIsSelected)
                 self?.changeBtnColor(btn: self!.markettingBtn, isSelected: allBtnIsSelected)
                 
                 self?.viewModel.serviceBtnRelay.accept(allBtnIsSelected)
                 self?.viewModel.serviceBtn2Relay.accept(allBtnIsSelected)
+                self?.viewModel.serviceBtn3Relay.accept(allBtnIsSelected)
                 self?.viewModel.markettingBtnRelay.accept(allBtnIsSelected)
             })
             .disposed(by: disposeBag)

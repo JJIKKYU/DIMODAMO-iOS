@@ -22,6 +22,7 @@ class RegisterViewModel {
     // 약관 동의
     var serviceBtnRelay = BehaviorRelay(value: false) // true일 경우 동의
     var serviceBtn2Relay = BehaviorRelay(value: false) // true일 경우 동의
+    var serviceBtn3Relay = BehaviorRelay(value: false) // true일 경우 동의
     var markettingBtnRelay = BehaviorRelay(value: false) // true일 경우 동의
     
     // RegisterID
