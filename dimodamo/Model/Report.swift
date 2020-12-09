@@ -10,9 +10,10 @@ import Foundation
 
 class Report {
     var reportId: String = "" // 신고 Doc의 UID
-    var targetType: Int = ReportType.post.rawValue // post = 0, comment = 1, user = 2
+    var targetType: String = ReportType.post.rawValue // post = 0, comment = 1, user = 2
     var targetId: String = "" // 신고한 게시글 및 댓글의 UID
     var targetUserId: String = "" // 신고 당한 사람
+    var targetBoard: String = TargetBoard.article.rawValue
     var userId: String = "" // 신고한 사람
     var reportKind: String = "" // 신고 종류
     var reportDesc: String = "" // 신고 내용
@@ -24,6 +25,7 @@ class Report {
             "target_type" : targetType,
             "target_id": targetId,
             "target_user_id": targetUserId,
+            "target_board": targetBoard,
             "user_id": userId,
             "report_kind": reportKind,
             "report_desc": reportDesc,
@@ -33,16 +35,17 @@ class Report {
 }
 
 // 게시글인지 코멘트인지 선택
-enum ReportType: Int {
-    case post = 0
-    case comment = 1
-    case user = 2
+enum ReportType: String {
+    case post = "post"
+    case comment = "comment"
+    case user = "user"
 }
 
 // 아티클인지 인포메이션 게시판인지 선택
-enum TargetBoard: Int {
-    case article = 0
-    case information = 1
+enum TargetBoard: String {
+    case article = "article"
+    case information = "information"
+    case profile = "profile"
 }
 
 // 게시글 신고 종류

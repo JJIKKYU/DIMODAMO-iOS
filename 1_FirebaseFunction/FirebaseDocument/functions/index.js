@@ -143,3 +143,39 @@ exports.documentCommentCounter_layer = functions.firestore
             console.log("Error : ", error);
         }
     });
+
+
+// 신고당할때 카운트 증가
+exports.documentCommentCounter_layer = functions.firestore
+.document('report/{report_id}')
+.onCreate(async (snap, context) => {
+    try {
+        const newValue = snap.data();
+
+        // 레포트 doc id
+        const reportId = context.params.report_id;
+        // 신고 대상 게시판
+        const targetBoard = newValue.target_board;
+        // 신고 대상 UID
+        const targetId = newValue.target_id;
+        // 신고한 대상이 게시글(post)인지 코멘트(comment)인지 유저(user)인지
+        const targetType = newValue.target_type
+        // 신고 대상 유저 UID
+        const targetUserId = newValue.target_user_id;
+
+        console.log(targetBoard + ": targetBoard입니다.");
+        console.log(targetType + " : targetType입니다.");
+
+        // 신고 타입이 post일 경우
+        if (targetType === "post") {
+            const postDocRefSnapshot = await admin.firestore().collection('hongik/'+ targetBoard +'/posts').doc(targetId).get();
+            const data = postDocRefSnapshot.data();
+            const reportCount = Number(data.report + 1)
+            console.log("레포트 전 : " + (data.report) + "레포트 후 : " + Number(data.report + 1));
+            admin.firestore().collection('hongik/' + targetBoard + '/posts').doc(targetId).update( {report : reportCount});
+        }
+
+    } catch (error) {
+        console.log("Error : ", error);
+    }
+});

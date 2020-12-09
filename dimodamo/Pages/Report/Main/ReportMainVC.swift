@@ -47,6 +47,8 @@ class ReportMainVC: UIViewController {
             reportDescriptionTextField.delegate = self
             reportDescriptionTextField.text = "내용을 입력해 주세요"
             reportDescriptionTextField.textColor = UIColor.appColor(.gray210)
+            reportDescriptionTextField.textContainerInset = .zero
+            reportDescriptionTextField.textContainer.lineFragmentPadding = 0
         }
     }
     
@@ -133,7 +135,7 @@ class ReportMainVC: UIViewController {
     /*
      Table Header View를 신고 유형에 맞추어서 세팅
      */
-    func topViewSetting(reportType: ReportType, profileImage: UIImage, nickname: String, text: String, createAt: String,                        userUid: String, contentUid: String) {
+    func topViewSetting(reportType: ReportType, profileImage: UIImage, nickname: String, text: String, createAt: String,                        userUid: String, contentUid: String, targetBoard: TargetBoard) {
         print("전달 받은 유저 UID: \(userUid), 콘텐츠 UID: \(contentUid)")
         
         switch reportType {
@@ -149,6 +151,8 @@ class ReportMainVC: UIViewController {
             viewModel.contentUID = contentUid
             // 신고 당하는 유저 UID
             viewModel.targetUserUID = userUid
+            // 신고 보드 네임
+            viewModel.currentReportBoard = targetBoard
             
             viewModel.currentReportType = .post
             
@@ -167,6 +171,8 @@ class ReportMainVC: UIViewController {
             viewModel.contentUID = contentUid
             // 신고 당하는 유저 UID
             viewModel.targetUserUID = userUid
+            // 신고 보드 네임
+            viewModel.currentReportBoard = targetBoard
             
             viewModel.currentReportType = .comment
             
@@ -180,6 +186,8 @@ class ReportMainVC: UIViewController {
             
             // 신고 당하는 유저 UID
             viewModel.targetUserUID = userUid
+            // 신고 보드 네임
+            viewModel.currentReportBoard = targetBoard
 
             viewModel.currentReportType = .user
             

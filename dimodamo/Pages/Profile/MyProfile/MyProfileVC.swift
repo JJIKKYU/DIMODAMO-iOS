@@ -268,7 +268,8 @@ class MyProfileVC: UIViewController {
                                                text: "",
                                                createAt: "",
                                                userUid: profileUID,
-                                               contentUid: "")
+                                               contentUid: "",
+                                               targetBoard: .profile)
             }
             
             actionSheet.addAction(reportAction)

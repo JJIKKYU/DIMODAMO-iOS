@@ -19,11 +19,13 @@ struct Board {
     var images: [String]?
     var links: [String]?
     var nickname: String?
+    var report: Int?
     var scrapCount: Int?
     var tags: [String]?
     var userDpti: String?
     var userId: String?
     var videos: [URL?]
+    
     
     
     var dictionary: [String: Any] {
@@ -37,6 +39,7 @@ struct Board {
             "description": description ?? "",
             "images": images ?? [],
             "links": links ?? [],
+            "report" : report ?? 0,
             "nickname": nickname ?? "",
             "scrap_count": scrapCount ?? 0,
             "tags": tags ?? [],
@@ -46,6 +49,7 @@ struct Board {
             
         ]
     }
+    
 }
 
 // 아티클 카테고리

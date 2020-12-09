@@ -978,6 +978,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     return
                 }
                 
+                var targetBoard: TargetBoard = self.viewModel.targetBoard
+                
                 // 코멘트 Doc Uid
                 guard let commentUid: String = cell.uid else {
                     return
@@ -999,6 +1001,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     return
                 }
                 
+                
+                
                 ReportManager.gotoReportScreen(reportType: .comment,
                                                vc: self,
                                                profileImage: userProfile,
@@ -1006,7 +1010,8 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                                                text: commentText,
                                                createAt: commentCreatedAt,
                                                userUid: commentUserUid,
-                                               contentUid: commentUid)
+                                               contentUid: commentUid,
+                                               targetBoard: targetBoard)
 
             }
             deleteAction?.image = UIImage(named: "report_icon")
@@ -1237,6 +1242,8 @@ extension ArticleDetailViewController {
                 return
             }
             
+            let targetBoard: TargetBoard = self.viewModel.targetBoard
+            
             ReportManager.gotoReportScreen(reportType: .post,
                                            vc: self,
                                            profileImage: profileImage,
@@ -1244,7 +1251,8 @@ extension ArticleDetailViewController {
                                            text: title,
                                            createAt: "",
                                            userUid: userUid,
-                                           contentUid: contentUid)
+                                           contentUid: contentUid,
+                                           targetBoard: targetBoard)
         }
         
         actionSheet.addAction(reportAction)

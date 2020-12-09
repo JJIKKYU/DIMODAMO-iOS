@@ -38,6 +38,8 @@ class ReportMainViewModel {
         return true
     }
     
+    var currentReportBoard: TargetBoard?
+    
     // 현재 스크린에서 진행 중인 신고 타입
     // 게시글, 댓글, 유저
     var currentReportType: ReportType?
@@ -83,7 +85,8 @@ class ReportMainViewModel {
         guard let targetUserUID: String = targetUserUID,
               let reportType: ReportType = currentReportType,
               let reportText: String = reportText,
-              let selectedReportValue: String = selectedReportValue else {
+              let selectedReportValue: String = selectedReportValue,
+              let targetBoard: TargetBoard = currentReportBoard else {
             return
         }
         
@@ -95,6 +98,7 @@ class ReportMainViewModel {
         report.reportDesc = "\(reportText)"
         report.timestamp = unixTimestamp
         report.reportKind = "\(selectedReportValue)"
+        report.targetBoard = "\(targetBoard.rawValue)"
         
         print(report.dictionary)
         

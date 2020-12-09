@@ -37,6 +37,16 @@ class ArticleDetailViewModel {
         }
         return ""
     }
+    var targetBoard: TargetBoard {
+        if postKindRelay.value == PostKinds.article.rawValue {
+            print("신고 게시글의 타입은 article입니다.")
+            return .article
+        } else if postKindRelay.value == PostKinds.information.rawValue {
+            print("신고 게시글의 타입은 information입니다.")
+            return .information
+        }
+        return .article
+    }
     
     var categoryRelay = BehaviorRelay<String>(value: "")
     var titleRelay = BehaviorRelay<String>(value: "")

@@ -14,7 +14,7 @@ import UIKit
 class ReportManager {
     
     static func gotoReportScreen(reportType: ReportType, vc: UIViewController, profileImage: UIImage, nickname: String,
-                                 text: String, createAt: String, userUid: String, contentUid: String) {
+                                 text: String, createAt: String, userUid: String, contentUid: String, targetBoard: TargetBoard) {
         let storyboard = UIStoryboard(name: "Report", bundle: nil)
 
         let reportVC = storyboard.instantiateViewController(withIdentifier: "ReportMain") as! ReportMainVC
@@ -26,7 +26,8 @@ class ReportManager {
                                 text: text,
                                 createAt: createAt,
                                 userUid: userUid,
-                                contentUid: contentUid)
+                                contentUid: contentUid,
+                                targetBoard: targetBoard)
         vc.navigationController?.pushViewController(reportVC, animated: true)
 
     }
