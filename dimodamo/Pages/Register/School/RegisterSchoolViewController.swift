@@ -14,25 +14,16 @@ import RxCocoa
 import FirebaseStorage
 import FirebaseAuth
 
+import SearchTextField
+
 class RegisterSchoolViewController: UIViewController {
     
     @IBOutlet weak var finishBtn: UIButton!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var schoolCartBtnHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var schoolCardBtn: UIButton! {
-        didSet {
-            let aspectHeight = (230 / (414-40)) * UIScreen.main.bounds.width
-            schoolCartBtnHeightConstraint?.constant = aspectHeight
-        }
-    }
-    
-    @IBOutlet weak var schoolTextField: UITextField!
+    @IBOutlet weak var schoolTextField: SearchTextField!
     @IBOutlet weak var schoolLine: UIView!
-    
-    @IBOutlet weak var schoolIdTextField: UITextField!
-    @IBOutlet weak var schoolIdLine: UIView!
     
     
     var viewModel: RegisterViewModel?
@@ -44,13 +35,15 @@ class RegisterSchoolViewController: UIViewController {
         
         // 화면이 로드될 경우에 키보드 올라오도록
         schoolTextField.becomeFirstResponder()
+        
+        schoolTextField.inlineMode = true
+        schoolTextField.filterStrings(["홍익대학교","건국대학교","국민대학교"])
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesisgn()
-        imagePickerController.delegate = self
         
         schoolTextField.rx.text.orEmpty
             .map { $0 as String }
@@ -158,16 +151,6 @@ class RegisterSchoolViewController: UIViewController {
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
          self.view.endEditing(true)
     }
@@ -196,63 +179,59 @@ extension RegisterSchoolViewController : UITextFieldDelegate {
 //MARK: - ViewDesign
 extension RegisterSchoolViewController {
     func viewDesisgn() {
-        //        self.nextTryBtn.layer.cornerRadius = 16
         AppStyleGuide.systemBtnRadius16(btn: finishBtn, isActive: false)
-        
-        let aspectHeight = (230 / 414) * UIScreen.main.bounds.width
-        schoolCartBtnHeightConstraint.constant = aspectHeight
     }
 }
 
 //MARK: - 학생증 인증
 
-extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @IBAction func pressSchoolCardBtn(_ sender: Any) {
-        self.imagePickerController.sourceType = .camera
-        
-        print("SchoolIDRelay = \(viewModel?.schoolIdRelay.value), school = \(viewModel?.school.value)")
-        
-        guard let schooldIdCount = viewModel?.schoolIdRelay.value.count else {
-            return
-        }
-        // 대학교정보와 학번정보 선택했을 경우에만
-        if schooldIdCount >= 7 && viewModel?.school.value.count != 0 {
-            self.present(self.imagePickerController, animated: true, completion: nil)
-        } else {
-            let alert = AlertController(title: "학교와 학번을 먼저 작성해주세요", message: "", preferredStyle: .alert)
-            alert.setTitleImage(UIImage(named: "alertError"))
-            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    // 사진 선택이 끝났을 경우
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        
-        guard let imageData = image.resize(withWidth: 400)?.jpeg(.lowest) else { return }
-        viewModel?.schoolCardImageData.accept(imageData)
-        
-        // 이미지 저장이 끝났으면 스쿨 이미지 변경 및 버튼 변경
-        schoolCardBtn.setImage(UIImage(named: "schoolCardActive"), for: .normal)
-        viewModel?.schoolCertificationState = .submit
-    }
-    
-    func cropImage(imageToCrop:UIImage, toRect rect:CGRect) -> UIImage{
-        
-        let imageRef:CGImage = imageToCrop.cgImage!.cropping(to: rect)!
-        let cropped:UIImage = UIImage(cgImage:imageRef)
-        return cropped
-    }
-    
-    
-}
+//extension RegisterSchoolViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//    @IBAction func pressSchoolCardBtn(_ sender: Any) {
+//        self.imagePickerController.sourceType = .camera
+//
+//        print("SchoolIDRelay = \(viewModel?.schoolIdRelay.value), school = \(viewModel?.school.value)")
+//
+//        guard let schooldIdCount = viewModel?.schoolIdRelay.value.count else {
+//            return
+//        }
+//        // 대학교정보와 학번정보 선택했을 경우에만
+//        if schooldIdCount >= 7 && viewModel?.school.value.count != 0 {
+//            self.present(self.imagePickerController, animated: true, completion: nil)
+//        } else {
+//            let alert = AlertController(title: "학교와 학번을 먼저 작성해주세요", message: "", preferredStyle: .alert)
+//            alert.setTitleImage(UIImage(named: "alertError"))
+//            let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+//            alert.addAction(action)
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//
+//
+//    }
+//
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        picker.dismiss(animated: true, completion: nil)
+//    }
+//
+//    // 사진 선택이 끝났을 경우
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        picker.dismiss(animated: true, completion: nil)
+//
+//        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+//
+//        guard let imageData = image.resize(withWidth: 400)?.jpeg(.lowest) else { return }
+//        viewModel?.schoolCardImageData.accept(imageData)
+//
+//        // 이미지 저장이 끝났으면 스쿨 이미지 변경 및 버튼 변경
+//        schoolCardBtn.setImage(UIImage(named: "schoolCardActive"), for: .normal)
+//        viewModel?.schoolCertificationState = .submit
+//    }
+//
+//    func cropImage(imageToCrop:UIImage, toRect rect:CGRect) -> UIImage{
+//
+//        let imageRef:CGImage = imageToCrop.cgImage!.cropping(to: rect)!
+//        let cropped:UIImage = UIImage(cgImage:imageRef)
+//        return cropped
+//    }
+//
+//
+//}

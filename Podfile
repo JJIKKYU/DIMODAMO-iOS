@@ -80,4 +80,7 @@ target 'dimodamo' do
   # 토스트 알림
   pod 'Toast-Swift', '~> 5.0.1'
   
+  # 검색필드
+  pod "SearchTextField"
+  
 end

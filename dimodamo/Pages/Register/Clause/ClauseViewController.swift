@@ -69,7 +69,7 @@ class ClauseViewController: UIViewController {
             viewModel.markettingBtnRelay.map { $0 == true }
         )
         .subscribe(onNext: { [weak self] btn1, btn2, btn3, marketingBtn in
-            if btn1 && btn2 && btn3 {
+            if btn1 && btn2 && btn3 && marketingBtn {
                 self?.changeBtnColorAllBtn(btn: self!.allBtn, isSelected: true)
             } else {
                 self?.changeBtnColorAllBtn(btn: self!.allBtn, isSelected: false)
