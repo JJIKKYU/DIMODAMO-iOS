@@ -38,6 +38,7 @@ struct Register {
     var scrapPosts: [String] = []
     
     var heartComments: [String] = []
+    var heartCommentList: [String : Bool] = [:]
     
     func getDict() -> [String:Any] {
         var dptiTypeString: String = ""
@@ -71,7 +72,8 @@ struct Register {
             "schoolCert" : self.schoolCertState.description,
             "rejectionReason" : "",
             "scrapPosts": self.scrapPosts,
-            "heartComments": self.heartComments
+            "heartComments": self.heartComments,
+            "heartCommentList": self.heartCommentList
         ]
         
         return dict
