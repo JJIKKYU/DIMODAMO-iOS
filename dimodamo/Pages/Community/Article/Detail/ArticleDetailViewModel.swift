@@ -363,6 +363,9 @@ class ArticleDetailViewModel {
         
     }
     
+    /*
+     하트 버튼을 누를 경우에
+     */
     func pressedCommentHeart(uid: String) {
         print("전달받았습니다 : \(uid)")
         
@@ -372,34 +375,39 @@ class ArticleDetailViewModel {
         }
         let userData = db.collection("users").document("\(userUID)")
 
-        var currentHeartCount: Int?
         db.collection("\(commentDB)")
             .document("\(uid)")
             .getDocument { (document, error) in
             if let document = document, document.exists {
                 let data = document.data()
                 	
-                if let heartCount: Int = data!["heart_count"] as? Int {
-                    currentHeartCount = heartCount
-                }
-                
-                guard let heartCount = currentHeartCount else  {
+                guard let targetUserUID: String = data!["user_id"] as? String else  {
                     return
                 }
+                
                 
                 var removedCommentUID: Bool = false
                 for (index, heartCommentUid) in self.commentUserHeartUidArr.enumerated() {
                     if uid == heartCommentUid {
                         print("이미 좋아요를 눌렀으므로 사실상 제거헤야할 것 같습니다.")
-                        commentCellDocument.updateData(["heart_count" : heartCount - 1])
+                        
+                        // 하트 누른 댓글의 작성자에게 총점수와 하트 점수 추가
+                        self.addCommentHeartCount(targetUserUID: "\(targetUserUID)", countFlag: -1)
+                        
+                        commentCellDocument.updateData(["heart_count" : FieldValue.increment(Int64(-1))])
                         self.commentUserHeartUidArr.remove(at: index)
                         removedCommentUID = true
                     }
                 }
                 
                 if removedCommentUID == false {
+                    
                     // 좋아요를 누른게 없으면 푸쉬
-                    commentCellDocument.updateData(["heart_count" : heartCount + 1])
+                    commentCellDocument.updateData(["heart_count" : FieldValue.increment(Int64(1))])
+                    
+                    // 하트 누른 댓글의 작성자에게 총점수와 하트 점수 추가
+                    self.addCommentHeartCount(targetUserUID: "\(targetUserUID)", countFlag: 1)
+                    
                     self.commentUserHeartUidArr.append(uid)
                 }
                 
@@ -417,6 +425,17 @@ class ArticleDetailViewModel {
         }
     }
     
+    // 하트 버튼을 누를 경우, 그 하트 버튼에 해당하는 유저에게 하트 점수와 총 점수 추가
+    func addCommentHeartCount(targetUserUID: String, countFlag: Int) {
+        print("하트를 받은 코멘트를 작성한 사람의 UID : \(targetUserUID)")
+        
+        let targetUserDocument = db.collection("users").document("\(targetUserUID)")
+        targetUserDocument.updateData([
+            "get_comment_heart_count": FieldValue.increment(Int64(countFlag)),
+            "get_profile_score": FieldValue.increment(Int64(countFlag)),
+        ])
+    }
+    
     func scrapStateSetting() {
         for (index, postUid) in self.scrapUserPostsUidArr.enumerated() {
             print("postUID : \(postUid)")
@@ -430,6 +449,7 @@ class ArticleDetailViewModel {
         }
     }
     
+    // 스크랩 할 경우
     func pressedScrapBtn() {
 //        print("전달받았습니다. : \(uid)")
         guard let userUID: String = self.myUID else {
@@ -452,7 +472,11 @@ class ArticleDetailViewModel {
         // 포스트를 스크랩 하지 않은 상태로, 스크랩을 시도할 경우
         case false:
             let updateScrapCount = self.scrapCountRelay.value + 1
-            documentData.updateData(["scrap_count" : updateScrapCount])
+            documentData.updateData([
+                "scrap_count": FieldValue.increment(Int64(1))
+            ])
+            self.addScrapCount(countFlag: 1)
+            
             self.scrapUserPostsUidArr.append("\(self.postUidRelay.value)")
             userData.updateData(["scrapPosts" : self.scrapUserPostsUidArr])
             self.isScrapPost.accept(true)
@@ -463,7 +487,10 @@ class ArticleDetailViewModel {
         // 포스트를 이미 스크랩한 상태로, 스크랩을 취소할 경우
         case true:
             let updateScrapCount = self.scrapCountRelay.value - 1
-            documentData.updateData(["scrap_count" : updateScrapCount])
+            documentData.updateData([
+                "scrap_count": FieldValue.increment(Int64(-1))
+            ])
+            self.addScrapCount(countFlag: -1)
             
             if let arrIndex = arrIndex {
                 self.scrapUserPostsUidArr.remove(at: arrIndex)
@@ -474,36 +501,20 @@ class ArticleDetailViewModel {
             
             break
         }
+    }
+    
+    // 스크랩 버튼을 누를 경우, 그 하트 버튼에 해당하는 유저에게 스크랩 점수와 총 점수 추가
+    func addScrapCount(countFlag: Int) {
+        guard let targetUserUID: String = userUID else {
+            return
+        }
+        print("하트를 받은 코멘트를 작성한 사람의 UID : \(targetUserUID)")
         
-        /*
-        db.collection("\(postDB)")
-            .document("\(self.postUidRelay.value)")
-            .getDocument { (document, error) in
-                if let document = document, document.exists {
-                    let data = document.data()
-                    
-                    // 포스트를 스크랩 하지 않은 상태로, 스크랩을 시도할 경우
-                    if self.isScrapPost.value == false {
-                        let updateScrapCount = self.scrapCountRelay.value + 1
-                        self.scrapUserPostsUidArr.append("\(self.postUidRelay.value)")
-                        
-                    }
-                    // 포스트를 이미 스크랩한 상태로, 스크랩을 취소할 경우
-                    else {
-                        if let scrapIndex = self.scrapUserPostsIndex {
-                            self.scrapUserPostsUidArr.remove(at: scrapIndex)
-                            userData.updateData(["scrapPosts" : self.scrapUserPostsUidArr])
-                        }
-                    }
-                    
-                    
-                    
-                    
-                } else {
-                    print("document does not exist")
-                }
-            }
- */
+        let targetUserDocument = db.collection("users").document("\(targetUserUID)")
+        targetUserDocument.updateData([
+            "get_scrap_count": FieldValue.increment(Int64(countFlag)),
+            "get_profile_score": FieldValue.increment(Int64(countFlag)),
+        ])
     }
     
     /*

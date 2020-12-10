@@ -139,14 +139,12 @@ class InformationVC: UIViewController {
          구글 광고 로드
          */
         // In this case, we instantiate the banner with desired ad size.
-        // 테스트용 : ca-app-pub-3940256099942544/2934735716
-        // 서비스용 : ca-app-pub-1168603177352985/3339402643
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-1168603177352985/3339402643"
+        bannerView.adUnitID = API.admobKey
         bannerView.rootViewController = self
         bannerView.load(GADRequest()) // 광고 로드
-        
+        bannerView.delegate = self
         
     }
     
@@ -295,7 +293,7 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - Googld Ads
 
-extension InformationVC {
+extension InformationVC: GADBannerViewDelegate {
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.backgroundColor = UIColor.appColor(.white255)
@@ -316,5 +314,10 @@ extension InformationVC {
                                 multiplier: 1,
                                 constant: 0)
             ])
+    }
+    
+    
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("@@@@@@ 광고 에러 발생 : \(error.localizedDescription)")
     }
 }

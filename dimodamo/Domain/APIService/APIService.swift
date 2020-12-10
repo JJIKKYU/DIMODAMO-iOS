@@ -78,3 +78,14 @@ class APIService {
 //    }
 
 }
+
+
+// MARK: - API
+
+class API {
+    // 심사 제출할 때는 바꿀 것
+    static let admobKey = "ca-app-pub-3940256099942544/2934735716"
+    
+    static let admobKey_banner = "ca-app-pub-4047423944487267/8561703495"
+    static let admobKey_test = "ca-app-pub-3940256099942544/2934735716"
+}

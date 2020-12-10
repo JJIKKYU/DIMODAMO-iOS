@@ -53,7 +53,7 @@ struct Register {
             "dpti" : "\(dptiTypeString)",
             "gender": self.Gender.description,
             "id": self.id,
-            "get_comment_heart_comment" : getCommentHeartCounnt,
+            "get_comment_heart_count" : getCommentHeartCounnt,
             "get_manito_good_count" : getManitoGoodCount,
             "get_profile_score" : getProfileScore,
             "get_scrap_count": getScrapCount,
