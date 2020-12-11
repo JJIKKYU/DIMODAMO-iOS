@@ -523,19 +523,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8J8-Xo-99H">
                                 <rect key="frame" x="20" y="445" width="374" height="48"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cx4-P0-uZj">
-                                        <rect key="frame" x="0.0" y="0.0" width="183.5" height="48"/>
-                                        <color key="backgroundColor" name="SYSTEM"/>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        <state key="normal" title="이미 했어요!">
-                                            <color key="titleColor" name="WHITE"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="pressedAlreadyDptiBtn:" destination="BHm-R3-SiF" eventType="touchUpInside" id="Q68-UN-8S5"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2d-yw-0FS">
-                                        <rect key="frame" x="199.5" y="0.0" width="174.5" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="48"/>
                                         <color key="backgroundColor" name="SYSTEM - ACTIVE"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                         <state key="normal" title="네 좋아요!">
@@ -596,7 +585,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="alreadyDptiBtn" destination="cx4-P0-uZj" id="Nvc-zq-qjN"/>
                         <outlet property="descriptionLabel" destination="g9v-Hp-ijk" id="MSK-2D-mg9"/>
                         <outlet property="lottieContainerView" destination="9mG-jo-FSn" id="UvH-mt-0SW"/>
                         <outlet property="titleLabel" destination="U0B-3I-Icl" id="G9k-mD-Mfi"/>
@@ -3838,9 +3826,6 @@
         </namedColor>
         <namedColor name="TEXT - BIG">
             <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="TEXT - SMALL">
-            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT - SMALL">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

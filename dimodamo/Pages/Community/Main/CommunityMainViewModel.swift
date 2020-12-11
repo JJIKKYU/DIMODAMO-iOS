@@ -38,8 +38,8 @@ class CommunityMainViewModel {
         print("### articleLoading : \(articleLoading.value)")
         
         db.collection("hongik/article/posts")
-            .order(by: "report")
-            .whereField("report", isLessThan: 10)
+            .order(by: "is_deleted")
+            .whereField("is_deleted", isNotEqualTo: true)
             .order(by: "bundle_id", descending: true)
             .getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
@@ -73,6 +73,7 @@ class CommunityMainViewModel {
                                                        description: "",
                                                        images: images,
                                                        links: [],
+                                                       isDeleted: false,
                                                        nickname: nickname,
                                                        scrapCount: scrapCount,
                                                        tags: tags,
@@ -105,8 +106,8 @@ class CommunityMainViewModel {
         print("### informationLoading : \(informationLoading.value)")
         
         db.collection("hongik/information/posts")
-            .order(by: "report")
-            .whereField("report", isLessThan: 10)
+            .order(by: "is_deleted")
+            .whereField("is_deleted", isNotEqualTo: true)
             .order(by: "bundle_id", descending: true)
             .getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
@@ -131,6 +132,7 @@ class CommunityMainViewModel {
                                                        description: "",
                                                        images: [],
                                                        links: [],
+                                                       isDeleted: false,
                                                        nickname: nickname,
                                                        scrapCount: scrapCount,
                                                        tags: tags,
