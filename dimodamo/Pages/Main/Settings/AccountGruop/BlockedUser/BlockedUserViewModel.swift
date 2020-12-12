@@ -22,6 +22,7 @@ class BlockedUserViewModel {
     }
     
     let blockedUserMapRelay = BehaviorRelay<[BlockedUserList]>(value: [])
+    let currentStateRelay = BehaviorRelay<BlockProcessState>(value: .none)
     
     init() {
         self.getBlockedUserList()
@@ -64,9 +65,28 @@ class BlockedUserViewModel {
                 } else {
                     print("프로필에서 유저 데이터를 초기화하지 못했습니다.")
                 }
-                
-                
+
             }
+    }
+    
+    func cancleBlockUser(userUID: String) {
+        guard let myUserUID = self.myUID else {
+            return
+        }
+        
+        // 신고할 때 신고 리스트에 추가
+        db.collection("users").document("\(myUserUID)")
+            .updateData(
+                ["block_user_list.\(userUID)" : FieldValue.delete()]
+            )
+        
+        // 블럭 스태틱 변수 초기화 및 다시 입력
+        let blockUserManager = BlockUserManager()
+        blockUserManager.blockUserDataReset()
+        blockUserManager.blockUserCheck { value in
+            print("차단 목록을 최신화합니다. \(value)")
+            self.currentStateRelay.accept(.complete)
+        }
     }
 }
 
@@ -76,4 +96,10 @@ class BlockedUserList {
     var uid: String?
     var nickname: String?
     var type: String?
+}
+
+enum BlockProcessState {
+    case none
+    case complete
+    case fail
 }

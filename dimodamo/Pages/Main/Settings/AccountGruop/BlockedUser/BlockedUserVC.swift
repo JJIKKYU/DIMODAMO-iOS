@@ -31,6 +31,34 @@ class BlockedUserVC: UIViewController {
                 self?.tableView.reloadData()
             })
             .disposed(by: disposeBag)
+        
+        self.viewModel.currentStateRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                switch value {
+                case .none:
+                    break
+                    
+                case .complete:
+                    
+                    let alert = AlertController(title: "차단이 해제되었습니다", message: "", preferredStyle: .alert)
+                    alert.setTitleImage(UIImage(named: "alertComplete"))
+                    let action = UIAlertAction(title: "확인", style: .default) { action in
+                        print("차단 완료 했으므로 테이블뷰 초기화")
+                        self?.viewModel.getBlockedUserList()
+                        self?.viewModel.currentStateRelay.accept(.none)
+                    }
+                    action.setValue(UIColor.appColor(.green2), forKey: "titleTextColor")
+                    alert.addAction(action)
+                    self?.present(alert, animated: true, completion: nil)
+                    
+                    break
+                    
+                case .fail:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
 
@@ -64,6 +92,13 @@ extension BlockedUserVC: UITableViewDelegate, UITableViewDataSource {
         let index = indexPath.row
         let model = self.viewModel.blockedUserMapRelay.value
         
+        cell.index = index
+        cell.delegate = self
+        
+        if let Uid = model[index].uid {
+            cell.Uid = Uid
+        }
+        
         if let nickname = model[index].nickname {
             cell.blockedUserNickname.text = "\(nickname)"
         }
@@ -77,4 +112,22 @@ extension BlockedUserVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension BlockedUserVC: BlockCellPressedCancelBtnDelegate {
+    func pressedCancleBtnInCell(index: Int, userUid: String) {
+        
+        let alert = AlertController(title: "차단을 해제하시겠습니까?", message: "", preferredStyle: .alert)
+        alert.setTitleImage(UIImage(named: "alertError"))
+        let action = UIAlertAction(title: "확인", style: .destructive) { action in
+            print("차단 진짜할거잉")
+            self.viewModel.cancleBlockUser(userUID: userUid)
+        }
+        let cancleAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        alert.addAction(action)
+        alert.addAction(cancleAction)
+        present(alert, animated: true, completion: nil)
+        
+        print("전달 받았습니다 Index: \(index), userUID: \(userUid)")
+    }
 }

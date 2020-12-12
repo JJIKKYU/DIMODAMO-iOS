@@ -8,9 +8,26 @@
 
 import UIKit
 
+protocol BlockCellPressedCancelBtnDelegate {
+    func pressedCancleBtnInCell(index: Int, userUid: String)
+}
+
 class BlockedUserCell: UITableViewCell {
+    
+    var delegate: BlockCellPressedCancelBtnDelegate?
+    
+    var index: Int?
+    var Uid: String?
+    
     @IBOutlet weak var blockedUserProfileImageView: UIImageView!
     @IBOutlet weak var blockedUserNickname: UILabel!
+    @IBOutlet weak var blockedCancleBtn: UIButton! {
+        didSet {
+            blockedCancleBtn.layer.cornerRadius = blockedCancleBtn.layer.frame.height / 2
+            blockedCancleBtn.layer.borderWidth = 1
+            blockedCancleBtn.layer.borderColor = UIColor.appColor(.gray170).cgColor
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +41,11 @@ class BlockedUserCell: UITableViewCell {
     }
 
     @IBAction func pressedBlockCancelBtn(_ sender: Any) {
+        if let index: Int = self.index,
+           let Uid: String = self.Uid {
+                delegate?.pressedCancleBtnInCell(index: index, userUid: Uid)
+            }
+        
+        print("눌립니까")
     }
 }
