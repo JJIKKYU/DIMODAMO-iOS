@@ -13,8 +13,13 @@ import Firebase
 class BlockUserManager {
     
     private let db = Firestore.firestore()
+
+    static var blockedUserMap: [String: Bool] = [:]
     
     
+    func blockUserDataReset() {
+        BlockUserManager.blockedUserMap = [:]
+    }
     /*
      user의 report 횟수를 가져오는 비동기 함수
      
@@ -25,6 +30,10 @@ class BlockUserManager {
      }
      */
     func blockUserCheck(completed: @escaping ([String:Bool]) -> Void) {
+        if BlockUserManager.blockedUserMap.count != 0 {
+            return completed(BlockUserManager.blockedUserMap)
+        }
+        
         let dispatch = DispatchGroup()
         dispatch.enter()
         guard let userUid: String = Auth.auth().currentUser?.uid else {
@@ -53,6 +62,7 @@ class BlockUserManager {
         
         dispatch.notify(queue: .main, execute: {
             print("!!!! 차단 유저 정보 Return: \(blockedUserMap)")
+            BlockUserManager.blockedUserMap = blockedUserMap
             completed(blockedUserMap)
         })
     }

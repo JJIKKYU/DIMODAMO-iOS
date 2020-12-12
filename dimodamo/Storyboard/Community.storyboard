@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3T3-oi-p96">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kV6-pn-hOH" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1350"/>
@@ -453,7 +453,6 @@
                                             <constraint firstItem="itv-Yo-X7M" firstAttribute="leading" secondItem="mm5-Te-8bh" secondAttribute="leading" id="1hq-a7-xa9"/>
                                             <constraint firstItem="cBB-t8-LMI" firstAttribute="top" secondItem="itv-Yo-X7M" secondAttribute="bottom" constant="24" id="3QO-Ud-e3W"/>
                                             <constraint firstAttribute="trailing" secondItem="LnF-SY-gBk" secondAttribute="trailing" constant="20" id="AmK-jS-sMz"/>
-                                            <constraint firstAttribute="height" constant="1350" id="BFg-he-aS3"/>
                                             <constraint firstItem="cBB-t8-LMI" firstAttribute="leading" secondItem="kV6-pn-hOH" secondAttribute="leading" id="CK8-vM-U8I"/>
                                             <constraint firstItem="mm5-Te-8bh" firstAttribute="top" secondItem="UCe-Uz-ZKD" secondAttribute="bottom" constant="40" id="GJH-2M-21J"/>
                                             <constraint firstItem="Gol-Sa-DWM" firstAttribute="leading" secondItem="kV6-pn-hOH" secondAttribute="leading" constant="24" id="MQq-bk-53z"/>
@@ -464,6 +463,7 @@
                                             <constraint firstItem="Dwk-1a-bXo" firstAttribute="top" secondItem="Gol-Sa-DWM" secondAttribute="bottom" constant="8" id="a6v-Py-15i"/>
                                             <constraint firstItem="LnF-SY-gBk" firstAttribute="centerY" secondItem="Gol-Sa-DWM" secondAttribute="centerY" id="arQ-Sh-6QO"/>
                                             <constraint firstItem="Gol-Sa-DWM" firstAttribute="top" secondItem="kV6-pn-hOH" secondAttribute="top" constant="48" id="auk-h4-MbC"/>
+                                            <constraint firstAttribute="bottom" secondItem="gvX-HO-fK5" secondAttribute="bottom" constant="46" id="h14-07-Uzv"/>
                                             <constraint firstItem="Dwk-1a-bXo" firstAttribute="leading" secondItem="Gol-Sa-DWM" secondAttribute="leading" id="hOV-tm-aGL"/>
                                             <constraint firstAttribute="trailing" secondItem="itv-Yo-X7M" secondAttribute="trailing" constant="20" id="heg-Qe-lhj"/>
                                             <constraint firstItem="mm5-Te-8bh" firstAttribute="leading" secondItem="Gol-Sa-DWM" secondAttribute="leading" id="hfH-6V-jBp"/>
@@ -530,6 +530,7 @@
                         <outlet property="scrollView" destination="3T3-oi-p96" id="1OA-rK-d8o"/>
                         <outlet property="spinner" destination="4GL-KB-Fdi" id="Ded-2Q-eTM"/>
                         <outlet property="tableView" destination="gvX-HO-fK5" id="zYV-zB-w9o"/>
+                        <outlet property="tableViewHeightConstraint" destination="tzU-if-sUV" id="tzi-eD-9QO"/>
                         <outlet property="topSpinner" destination="0vf-HY-Npd" id="uVD-JE-VKS"/>
                         <outlet property="topSpinnerTopConstraint" destination="WFx-6c-GGh" id="dgP-E7-0PF"/>
                         <segue destination="iXc-eR-qQb" kind="show" identifier="ArticleVC" id="a1k-XL-XIf"/>
@@ -759,7 +760,7 @@
                                                         <constraint firstAttribute="height" constant="2" id="LTT-sQ-oSy"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRI-m8-f42">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신글" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRI-m8-f42">
                                                     <rect key="frame" x="24" y="121" width="37" height="17"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                                     <color key="textColor" name="GRAY - 170"/>
@@ -3264,8 +3265,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="a4Z-5V-8SM"/>
-        <segue reference="ROi-qZ-LzO"/>
+        <segue reference="BzL-x2-Mhd"/>
+        <segue reference="Ae2-2V-5qG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BC_Char_Yellow_M2_0" width="382" height="348"/>

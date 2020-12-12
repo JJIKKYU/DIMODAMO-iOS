@@ -41,8 +41,16 @@ class InformationViewModel {
         }
     }
     
+    /*
+     블럭 유저 데이터
+     */
+    var blockedUserMap: [String:Bool] = [:]
+    
     init() {
-        self.paginateData()
+        let blockManager = BlockUserManager()
+        blockManager.blockUserCheck { value in
+            self.blockedUserMap = value
+        }
     }
     
     /*
@@ -74,6 +82,20 @@ class InformationViewModel {
             } else {
                 
                 for (index, document) in querySnapshot!.documents.enumerated() {
+                    
+                    /*
+                     차단 체크
+                     */
+                    guard let userId: String = document.data()["user_id"] as? String else {
+                        return
+                    }
+                    let isUserBlocked = self.blockedUserMap[userId]
+                    if isUserBlocked == true {
+                        print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
+                        continue
+                    }
+                    
+                    
                     let boardId = (document.data()["board_id"] as? String) ?? ""
                     let boardTitle = (document.data()["board_title"] as? String) ?? ""
                     let bundleId = (document.data()["bundle_id"] as? Double) ?? 0

@@ -30,6 +30,11 @@ class ArticleViewModel {
     }
     
     /*
+     블럭 유저 데이터
+     */
+    var blockedUserMap: [String:Bool] = [:]
+    
+    /*
      Sorting
      */
     let sortingOrder = BehaviorRelay<Sort>(value: .date) // 기본은 Date 순으로
@@ -66,6 +71,17 @@ class ArticleViewModel {
                     print("아티클 포스트를 가져오는데 오류가 발생했습니다 \(err.localizedDescription)")
                 } else {
                     for (index, document) in querySnapshot!.documents.enumerated() {
+                        
+                        guard let userId: String = document.data()["user_id"] as? String else {
+                            return
+                        }
+                        
+                        // 차단한 유저 체크
+                        let isUserBlocked = self.blockedUserMap[userId]
+                        if isUserBlocked == true {
+                            print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
+                            continue
+                        }
                         
                         let boardId = (document.data()["board_id"] as? String) ?? ""
                         let boardTitle = (document.data()["board_title"] as? String) ?? ""
@@ -115,6 +131,10 @@ class ArticleViewModel {
     }
     
     init() {
-        postDataSetting()
+        
+        let blockManager = BlockUserManager()
+        blockManager.blockUserCheck { value in
+            self.blockedUserMap = value
+        }
     }
 }

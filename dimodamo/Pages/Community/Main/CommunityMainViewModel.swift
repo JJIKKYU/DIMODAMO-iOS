@@ -61,8 +61,9 @@ class CommunityMainViewModel {
                     guard let userId: String = document.data()["user_id"] as? String else {
                         return
                     }
-                    if self.blockedUserMap[userId] ?? false{
-                        print("차단한 유저의 게시글입니다")
+                    let isUserBlocked = self.blockedUserMap[userId]
+                    if isUserBlocked == true {
+                        print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
                         continue
                     }
 
@@ -134,6 +135,16 @@ class CommunityMainViewModel {
                 print("인포메이션 포스트를 가져오는데 오류가 생겼습니다. \(err)")
             } else {
                 for (index, document) in querySnapshot!.documents.enumerated() {
+                    
+                    guard let userId: String = document.data()["user_id"] as? String else {
+                        return
+                    }
+                    let isUserBlocked = self.blockedUserMap[userId]
+                    if isUserBlocked == true {
+                        print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
+                        continue
+                    }
+                    
                     let boardId = (document.data()["board_id"] as? String) ?? ""
                     let boardTitle = (document.data()["board_title"] as? String) ?? ""
                     let bundleId = (document.data()["bundle_id"] as? Double) ?? 0

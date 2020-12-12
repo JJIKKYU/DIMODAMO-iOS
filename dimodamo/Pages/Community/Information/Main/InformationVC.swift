@@ -108,6 +108,12 @@ class InformationVC: UIViewController {
     
 //MARK: - View Loading
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.viewModel.paginateData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -212,14 +218,35 @@ class InformationVC: UIViewController {
 
 extension InformationVC: UITableViewDelegate, UITableViewDataSource {
     func settingTableView() {
+        // Empty Xib 설정, DPTI를 안했을 경우, 그리고 결과값이 없을 경우에 해당
+        if viewModel.informationPosts.count == 0 {
+            let nibName = UINib(nibName: "EmptyTableViewCell", bundle: nil)
+            tableView.register(nibName, forCellReuseIdentifier: "EmptyTableViewCell")
+        }
+        
         tableView.rowHeight = 145
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.informationPosts.count
+        // 콘텐츠 준비 중이라는 셀을 띄울 것
+        if viewModel.informationPosts.count == 0 {
+            return 1
+        }
+        
+        if viewModel.informationPosts.count > 4 {
+            return 4
+        } else {
+            return viewModel.informationPosts.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 콘텐츠가 아직 없음!
+        if viewModel.informationPosts.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath)
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
         
         let model = viewModel.informationPosts[indexPath.row]
@@ -261,6 +288,10 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 게시글이 없이 엠프티 페이지만 떠있을 경우에는 터치 반응 X
+        if viewModel.informationPosts.count == 0 {
+            return
+        }
         
         performSegue(withIdentifier: "DetailArticleVC", sender: indexPath.row)
     }

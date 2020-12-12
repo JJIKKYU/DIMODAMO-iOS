@@ -155,6 +155,9 @@ class ArticleDetailViewController: UIViewController {
         
         scrollView.delegate = self
         
+        
+
+        
         // 스크롤 크기 조절
         commentTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         

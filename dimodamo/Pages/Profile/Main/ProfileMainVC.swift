@@ -23,6 +23,7 @@ class ProfileMainVC: UIViewController {
     var isOneStepPaging = true
     
     @IBOutlet weak var damoTableView: UITableView!
+    @IBOutlet weak var damoTableViewHeightConstraint: NSLayoutConstraint!
     
     override func loadView() {
         super.loadView()
@@ -91,6 +92,18 @@ class ProfileMainVC: UIViewController {
         view.layoutIfNeeded()
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (keyPath == "contentSize"){
+            //            if let newvalue = change?[.newKey] {
+            if (change?[.newKey]) != nil {
+                let contentHeight: CGFloat = damoTableView.contentSize.height
+                DispatchQueue.main.async {
+                    self.damoTableViewHeightConstraint.constant = contentHeight
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,6 +112,7 @@ class ProfileMainVC: UIViewController {
         
         damoTableView.delegate = self
         damoTableView.dataSource = self
+        damoTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         dimoCollectionViewSetting()
         settingTableView()

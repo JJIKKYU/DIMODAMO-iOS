@@ -123,6 +123,9 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.viewModel.loadArticlePost()
+        self.viewModel.loadServiceBanner()
+        
         // 상단 노치 컬러
         navigationController?.view.backgroundColor = UIColor.white
         navigationController?.presentTransparentNavigationBar()
@@ -153,6 +156,7 @@ class HomeVC: UIViewController {
                         return
                     }
                     
+                    print("로딩은 완료 했을걸요?")
                     // 이미지 깨졌을때 대비 할 것
                     if let image: String = model.images?[0] {
                         self?.artboardImage.kf.setImage(with: URL(string: image))
@@ -245,6 +249,11 @@ class HomeVC: UIViewController {
     
     // 아티클에 숨겨진 버튼(?)을 클릭했을 경우
     @IBAction func pressedArtboardArticle(_ sender: Any) {
+        // 게시글이 없이 엠프티 페이지만 떠있을 경우에는 터치 반응 X
+        if viewModel.articlePost == nil {
+            return
+        }
+        
         let storyboard: UIStoryboard = UIStoryboard(name: "Community", bundle: .main)
         
         // 디모 아트보드로 이동

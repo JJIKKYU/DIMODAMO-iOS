@@ -25,6 +25,7 @@ class CommunityMainViewController: UIViewController {
         }
     }
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var topSpinner: UIActivityIndicatorView!
@@ -74,6 +75,18 @@ class CommunityMainViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (keyPath == "contentSize"){
+            //            if let newvalue = change?[.newKey] {
+            if (change?[.newKey]) != nil {
+                let contentHeight: CGFloat = tableView.contentSize.height
+                DispatchQueue.main.async {
+                    self.tableViewHeightConstraint.constant = contentHeight
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -83,6 +96,8 @@ class CommunityMainViewController: UIViewController {
         
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
+        
+        tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         settingTableView()
         articleCollectionViewSetting()
@@ -298,6 +313,11 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 게시글이 없이 엠프티 페이지만 떠있을 경우에는 터치 반응 X
+        if viewModel.informationPosts.count == 0 {
+            return
+        }
+        
         print(indexPath.row)
         
         performSegue(withIdentifier: "DetailArticleVC_Main", sender: [PostKinds.information.rawValue, indexPath.row])
@@ -396,6 +416,10 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     
     // 선택한 아이템
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 게시글이 없이 엠프티 페이지만 떠있을 경우에는 터치 반응 X
+        if viewModel.articlePosts.count == 0 {
+            return
+        }
         //        let selectedCell: ArticleCell = collectionView.cellForItem(at: indexPath) as! ArticleCell
         //        print(selectedCell)
         

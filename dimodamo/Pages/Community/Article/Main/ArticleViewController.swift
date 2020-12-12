@@ -31,7 +31,7 @@ class ArticleViewController: UIViewController {
     // MARK: - Sorting Popup
     
     // 최신글, 스크랩순, 댓글순을 보여주는 라벨
-    @IBOutlet weak var sortingLabel: UILabel!
+    @IBOutlet weak var articleSortingLabel: UILabel!
     var dimView: UIView! {
         didSet {
             self.view.addSubview(dimView)
@@ -104,6 +104,8 @@ class ArticleViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.viewModel.postDataSetting()
         //        navigationController?.hideTransparentNavigationBar()
     }
     
@@ -137,15 +139,15 @@ class ArticleViewController: UIViewController {
                 self?.viewModel.postDataSetting()
                 switch value {
                 case .comment:
-                    self?.sortingLabel.text = "댓글순"
+//                    self?.articleSortingLabel.text = "댓글순"
                     break
                     
                 case .date:
-                    self?.sortingLabel.text = "최신순"
+//                    self?.articleSortingLabel.text = "최신순"
                     break
                     
                 case .scrap:
-                    self?.sortingLabel.text = "스크랩순"
+//                    self?.articleSortingLabel.text = "스크랩순"
                     break
                 }
             })
@@ -314,6 +316,11 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 콘텐츠가 아직 없음!
+        if viewModel.articlePosts.count == 0 {
+            return
+        }
+        
         //        print("\(viewModel.articlePosts[indexPath.row].boardId)")
         performSegue(withIdentifier: "DetailArticleVC", sender: [PostKinds.article.rawValue, indexPath.row])
     }
