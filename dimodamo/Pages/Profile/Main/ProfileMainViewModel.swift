@@ -64,6 +64,9 @@ class ProfileMainViewModel {
         return nickname
     }
     
+    /*
+     차단한 유저가 있는지 체크
+     */
     func blockUserCheck() {
         db.collection("users")
             .document("\(self.getUserUID())")
@@ -108,13 +111,20 @@ class ProfileMainViewModel {
                     
                     var newDimoPeopleArr: [DimoPeople] = []
                     
-                    for (index, document) in querySnapshot!.documents.enumerated() {
+                    for document in querySnapshot!.documents {
                         let data = document.data()
                         let dimoPeopleData = DimoPeople()
                         
+                        // 차단한 유저 체크
                         let isUserBlocked = self!.blockedUserMap[document.documentID]
                         if isUserBlocked == true {
-                            print("#######차단한 유저는 패스합니다 : \(isUserBlocked)")
+                            print("#######차단한 유저는 패스합니다 : \(String(describing: isUserBlocked))")
+                            continue
+                        }
+                        
+                        // 내 프로필은 추천 디모인에 뜨지 않도록
+                        if document.documentID == self!.getUserUID() {
+                            print("내 프로필은 해당되지 않습니다")
                             continue
                         }
                         
@@ -135,7 +145,6 @@ class ProfileMainViewModel {
                         }
                         
                         newDimoPeopleArr.append(dimoPeopleData)
-                        print("newDimoPeopleArr = \(newDimoPeopleArr[index].nickname)")
                     }
                     
                     self?.dimoPeopleArr = newDimoPeopleArr

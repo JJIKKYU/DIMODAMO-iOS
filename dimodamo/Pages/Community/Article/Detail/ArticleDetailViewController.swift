@@ -965,6 +965,12 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             return nil
         }
         
+        // 코멘트의 유저 ID가 세팅되지 않았으면 스와이프 작동하지 않음
+        // ex) 차단 및 신고당한 유저
+        if commentCellUserUId == "" {
+            return nil
+        }
+        
         var deleteAction: SwipeAction?
         // 내가 작성한 댓글일 경우에는 Delete셀만
         // TODO : Delete 로직 제작할 것

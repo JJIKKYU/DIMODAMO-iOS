@@ -125,6 +125,13 @@ class ArticleDetailViewModel {
     var scrapUserPostsIndex: Int?
     let isScrapPost = BehaviorRelay<Bool>(value: false)
     
+    /*
+     차단한 유저
+     */
+    var blockedUserMap: [String: Bool] = [:]
+
+    
+    
     func linkViewSetting() {
         var linksData: [PreviewResponse] = []
         
@@ -165,7 +172,6 @@ class ArticleDetailViewModel {
             .document("\(self.postUidRelay.value)")
             .getDocument { [weak self] (document, error) in
                 if let document = document, document.exists {
-                    _ = document.data().map(String.init(describing:)) ?? "nil"
                     
                     let data = document.data()
                     
@@ -237,11 +243,13 @@ class ArticleDetailViewModel {
                     
                     let data = document.data()
                     
-                    
                     let comment: Comment = Comment()
                     comment.settingDataFromDocumentData(data: data)
                     
+                    // 차단한 유저 체크
+                    self?.blockCommentSetting(comment: comment)
                     
+                    // 신고 누적 체크
                     self?.reportCommentSetting(comment: comment)
                     comments.append(comment)
                     
@@ -262,6 +270,21 @@ class ArticleDetailViewModel {
         if reportCount >= 10 {
             print("reportCount가 \(reportCount)입니다.")
             comment.comment = "신고가 누적되어 삭제되었습니다"
+            comment.nickname = "익명"
+            comment.userDpti = "DD"
+            comment.userId = ""
+        }
+    }
+    
+    // 차단한 유저의 댓글은 필터링해서 보여줌
+    func blockCommentSetting(comment: Comment) {
+        // 글 작성자 확인
+        guard let commentUserID: String = comment.userId else {
+            return
+        }
+        
+        if self.blockedUserMap[commentUserID] == true {
+            comment.comment = "차단한 유저입니다"
             comment.nickname = "익명"
             comment.userDpti = "DD"
             comment.userId = ""
@@ -535,8 +558,35 @@ class ArticleDetailViewModel {
         }
     }
     
+    // MARK: - 차단 유저 체크
+    
+    /*
+     차단한 유저가 있는지 체크
+     */
+    func blockUserCheck() {
+        guard let myUID: String = self.myUID else {
+            return
+        }
+        
+        db.collection("users")
+            .document("\(myUID)")
+            .getDocument { [weak self] (document, err) in
+                if let document = document, document.exists {
+                    let data = document.data()
+                    
+                    if let blockedUserData: [String:Bool] = data!["block_user_list"] as? [String:Bool] {
+                        print("##### 차단한 유저가 있습니다 \(blockedUserData)")
+                        self?.blockedUserMap = blockedUserData
+                    }
+                    
+                } else {
+                    print("게시글에서 유저 정보를 불러오는데 오류가 발생했습니다.")
+                }
+            }
+    }
+    
     init() {
-
+        self.blockUserCheck()
     }
     
     
