@@ -55,7 +55,7 @@ class EmptyTableViewCell: UITableViewCell {
             
         case .layer:
             
-            tableViewEmptyImageViewHeightConstraint.constant = 97
+            tableViewEmptyImageViewHeightConstraint.constant = 236
             self.tableViewEmptyImageView.image = UIImage(named: "empty_icon_4")
             
             /*

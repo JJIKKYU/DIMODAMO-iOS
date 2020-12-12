@@ -54,6 +54,7 @@ class HomeVC: UIViewController {
     }
     @IBOutlet weak var artboardCardView: UIView! {
         didSet {
+            artboardCardView.isHidden = true
             artboardCardView.layer.cornerRadius = 24
             artboardCardView.layer.masksToBounds = true
         }
@@ -171,6 +172,7 @@ class HomeVC: UIViewController {
                     }
                     
                     print("로딩은 완료 했을걸요?")
+                    self?.artboardCardView.isHidden = false
                     // 이미지 깨졌을때 대비 할 것
                     if let image: String = model.images?[0] {
                         self?.artboardImage.kf.setImage(with: URL(string: image))

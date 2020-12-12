@@ -248,6 +248,7 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
         if viewModel.informationPosts.count == 0 && viewModel.informationLoading.value == true {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
             cell.settingImageSizeLabel(cellKinds: .layer, text: "아직 컨텐츠가 없어요ㅠㅜ")
+            tableView.rowHeight = 375
             return cell
         }
         
@@ -256,6 +257,8 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         
+        // 컨텐츠가 있을 경우
+        tableView.rowHeight = 145
         let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
         
         let model = viewModel.informationPosts[indexPath.row]

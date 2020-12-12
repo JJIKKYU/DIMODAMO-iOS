@@ -271,6 +271,7 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
         // 콘텐츠가 아직 없음!
         if viewModel.informationPosts.count == 0 && viewModel.informationLoading.value == true {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            tableView.rowHeight = 374
             cell.settingImageSizeLabel(cellKinds: .layer, text: "아직 컨텐츠가 없어요ㅠㅜ")
             return cell
         }
@@ -282,6 +283,7 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
         
         
         // 콘텐츠가 정상적으로 있다면
+        tableView.rowHeight = 145
         let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
         
         let model = viewModel.informationPosts[indexPath.row]
@@ -523,17 +525,17 @@ extension CommunityMainViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
 
-        if scrollView.contentOffset.y < 0 {
-            topSpinner.startAnimating()
-            topSpinnerTopConstraint.constant = (-scrollView.contentOffset.y + 20)
-        } else {
-            topSpinner.stopAnimating()
-            topSpinnerTopConstraint.constant = -20
-        }
+//        if scrollView.contentOffset.y < 0 {
+//            topSpinner.startAnimating()
+//            topSpinnerTopConstraint.constant = (-scrollView.contentOffset.y + 20)
+//        } else {
+//            topSpinner.stopAnimating()
+//            topSpinnerTopConstraint.constant = -20
+//        }
     }
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView.contentOffset.y < -50 {
+        if scrollView.contentOffset.y < -100 {
             self.viewModel.loadArticlePost()
             self.viewModel.loadInformationPost()
         }
