@@ -95,7 +95,7 @@ class MyProfileVC: UIViewController {
         super.viewWillAppear(true)
         navigationController?.navigationBar.prefersLargeTitles = true
         animate()
-        
+
     }
     
     private func animate() {
@@ -176,6 +176,25 @@ class MyProfileVC: UIViewController {
                     self?.messageBtnHeightConstraint.constant = 0
                 } else {
 //                    self?.messageBtn.isHidden = false
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        /*
+         차단이 완료되면 Alert을 띄우는 용도
+         */
+        viewModel.isBlockedUser
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                if value == .blockComplete {
+                    let alert = AlertController(title: "차단이 완료되었습니다", message: "", preferredStyle: .alert)
+                    alert.setTitleImage(UIImage(named: "alertComplete"))
+                    let action = UIAlertAction(title: "확인", style: .default) { (action) in
+                        self?.navigationController?.popViewController(animated: true)
+                    }
+                    action.setValue(UIColor.appColor(.green2), forKey: "titleTextColor")
+                    alert.addAction(action)
+                    self?.present(alert, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)
@@ -276,14 +295,9 @@ class MyProfileVC: UIViewController {
             let blockAction = UIAlertAction(title: "차단하기", style: .destructive) { (action) in
                 print("차단하기 버튼을 클릭하셨습니다")
                 
-                guard let profileImage: UIImage = self.profile.image,
-                      let nickname: String = self.nicknameLabel.text else {
-                    return
-                }
-                
                 let profileUID: String = self.viewModel.profileUID.value
                 
-                self.blockUser()
+                self.blockUser(targetUserUID: profileUID)
             }
             
             
@@ -367,11 +381,12 @@ class MyProfileVC: UIViewController {
 //MARK: - 차단하기
 
 extension MyProfileVC {
-    func blockUser() {
+    func blockUser(targetUserUID: String) {
         let alert = AlertController(title: "정말 차단하시겠어요?", message: "해당 사용자와 관련된 모든 컨텐츠를 볼 수 없습니다", preferredStyle: .alert)
         alert.setTitleImage(UIImage(named: "alertError"))
         let action = UIAlertAction(title: "확인", style: .destructive) { (action) in
             print("신고를 진행합니다.")
+            self.viewModel.blockUser(targetUserUID: targetUserUID)
         }
         let cancle = UIAlertAction(title: "취소", style: .destructive, handler: nil)
         alert.addAction(action)

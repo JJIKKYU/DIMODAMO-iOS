@@ -24,6 +24,11 @@ class ProfileMainViewModel {
     }
     
     /*
+     데이터 로딩 개수
+     */
+    let dataLoadCount: Int = 4
+    
+    /*
      디모인
      */
     var dimoPeopleArr: [DimoPeople] = []
@@ -35,7 +40,13 @@ class ProfileMainViewModel {
     var hotDimoPeopleArr: [DimoPeople] = []
     let hotDimoPeopleArrIsLoading = BehaviorRelay<Bool>(value: false)
     
+    /*
+     차단한 유저
+     */
+    var blockedUserMap: [String: Bool] = [:]
+    
     init() {
+        self.blockUserCheck()
     }
     
     func getUserType() {
@@ -51,6 +62,24 @@ class ProfileMainViewModel {
     func myNickname() -> String {
         let nickname = UserDefaults.standard.string(forKey: "nickname") ?? "익명"
         return nickname
+    }
+    
+    func blockUserCheck() {
+        db.collection("users")
+            .document("\(self.getUserUID())")
+            .getDocument { [weak self] (document, err) in
+                if let document = document, document.exists {
+                    let data = document.data()
+                    
+                    if let blockedUserData: [String:Bool] = data!["block_user_list"] as? [String:Bool] {
+                        print("##### 차단한 유저가 있습니다 \(blockedUserData)")
+                        self?.blockedUserMap = blockedUserData
+                    }
+                    
+                } else {
+                    print("게시글에서 유저 정보를 불러오는데 오류가 발생했습니다.")
+                }
+            }
     }
     
     /*
@@ -71,7 +100,7 @@ class ProfileMainViewModel {
         db.collection("users")
             .whereField("dpti", isNotEqualTo: "DD")
             .whereField("interest", arrayContains: "\(userInterest)")
-            .limit(to: 4)
+            .limit(to: 10)
             .getDocuments{ [weak self] (querySnapshot, err) in
                 if let err = err {
                     print("디모피플을 가져오는데 오류가 발생했습니다. \(err.localizedDescription)")
@@ -82,6 +111,14 @@ class ProfileMainViewModel {
                     for (index, document) in querySnapshot!.documents.enumerated() {
                         let data = document.data()
                         let dimoPeopleData = DimoPeople()
+                        
+                        let isUserBlocked = self!.blockedUserMap[document.documentID]
+                        if isUserBlocked == true {
+                            print("#######차단한 유저는 패스합니다 : \(isUserBlocked)")
+                            continue
+                        }
+                        
+                        
                         
                         dimoPeopleData.uid = document.documentID
                         
@@ -117,7 +154,7 @@ class ProfileMainViewModel {
             .order(by: "get_profile_score", descending: true)
 //            .order(by: "dpti")
 //            .whereField("dpti", isNotEqualTo: "DD")
-            .limit(to: 4)
+            .limit(to: 10)
             .getDocuments{ [weak self] (querySnapshot, err) in
                 if let err = err {
                     print("디모피플을 가져오는데 오류가 발생했습니다. \(err.localizedDescription)")
@@ -128,6 +165,12 @@ class ProfileMainViewModel {
                     for document in querySnapshot!.documents {
                         let data = document.data()
                         let dimoPeopleData = DimoPeople()
+                        
+                        let isUserBlocked = self!.blockedUserMap[document.documentID]
+                        if isUserBlocked == true {
+                            print("#######차단한 유저는 패스합니다 : \(isUserBlocked)")
+                            continue
+                        }
                         
                         dimoPeopleData.uid = document.documentID
                         
