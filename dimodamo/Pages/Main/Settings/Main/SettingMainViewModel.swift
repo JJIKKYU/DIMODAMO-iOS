@@ -20,6 +20,9 @@ class SettingMainViewModel {
     var myUID: String? {
         return Auth.auth().currentUser?.uid
     }
+    var myEmail: String? {
+        return Auth.auth().currentUser?.email
+    }
     
     let mySettingProfile = BehaviorRelay<SettingUserInformation>(value: SettingUserInformation())
     
@@ -64,4 +67,28 @@ class SettingMainViewModel {
                 
             }
     }
+    
+    /*
+     logout
+     */
+    func logout() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            // UserDefaults로 작동하는 것들이 있기 때문에 비워주고 로그아웃
+            self.resetDefaults()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
+    // UserDefaults 모두 비우기
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+    }
+    
 }

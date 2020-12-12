@@ -13,6 +13,7 @@ enum EmptyCellKinds {
     case dimoPeople
     case dpti
     case layer
+    case blockUser
     case hotdimo
 }
 
@@ -92,9 +93,7 @@ class EmptyCollectionCell: UICollectionViewCell {
             break
             
         // CollectionView로 이루어진 collecitonview는 없음
-        case .layer:
-            break
-        case .hotdimo:
+        default:
             break
         }
     }

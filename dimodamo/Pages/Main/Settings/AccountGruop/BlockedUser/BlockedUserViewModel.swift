@@ -22,6 +22,7 @@ class BlockedUserViewModel {
     }
     
     let blockedUserMapRelay = BehaviorRelay<[BlockedUserList]>(value: [])
+    let loadingRelay = BehaviorRelay<Bool>(value: false)
     let currentStateRelay = BehaviorRelay<BlockProcessState>(value: .none)
     
     init() {
@@ -32,6 +33,8 @@ class BlockedUserViewModel {
         guard let userUID = self.myUID else {
             return
         }
+        self.loadingRelay.accept(false)
+        self.blockedUserMapRelay.accept([])
         
         db.collection("users")
             .document("\(userUID)")
@@ -60,6 +63,7 @@ class BlockedUserViewModel {
                         }
                         
                         self?.blockedUserMapRelay.accept(newBlockUserList)
+                        self?.loadingRelay.accept(true)
                     }
                     
                 } else {

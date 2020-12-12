@@ -248,21 +248,9 @@ class MyProfileVC: UIViewController {
                 print("didPress block")
             }
             
-            let logoutAction = UIAlertAction(title: "로그아웃", style: .destructive) { (action) in
-                self.viewModel.logout()
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: .main)
-                let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginMain")
-                
-                mainVC.modalPresentationStyle = .fullScreen
-                mainVC.modalTransitionStyle = .crossDissolve
-                self.present(mainVC, animated: true, completion: nil)
-                
-                
-            }
-            
 //            actionSheet.addAction(nicknameChangeAction)
 //            actionSheet.addAction(interestChangeAction)
-            actionSheet.addAction(logoutAction)
+//            actionSheet.addAction(logoutAction)
             
             break
             

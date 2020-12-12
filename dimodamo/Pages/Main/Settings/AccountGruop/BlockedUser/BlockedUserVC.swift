@@ -80,13 +80,39 @@ class BlockedUserVC: UIViewController {
 extension BlockedUserVC: UITableViewDelegate, UITableViewDataSource {
     func tableViewSetting() {
         tableView.rowHeight = 74
+        
+        // Empty Xib 설정, DPTI를 안했을 경우, 그리고 결과값이 없을 경우에 해당
+        let nibName = UINib(nibName: "EmptyTableViewCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "EmptyTableViewCell")
+        
+        let loadingNibName = UINib(nibName: "LoadingTableViewCell", bundle: nil)
+        tableView.register(loadingNibName, forCellReuseIdentifier: "LoadingTableViewCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // 콘텐츠 준비 중이라는 셀을 띄울 것
+        if self.viewModel.blockedUserMapRelay.value.count == 0 {
+            return 1
+        }
+        
         return self.viewModel.blockedUserMapRelay.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if viewModel.blockedUserMapRelay.value.count == 0 && viewModel.loadingRelay.value == true {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            cell.settingImageSizeLabel(cellKinds: .blockUser, text: "차단한 유저가 없어요")
+            tableView.rowHeight = 375
+            return cell
+        }
+        
+        if viewModel.blockedUserMapRelay.value.count == 0 && viewModel.loadingRelay.value == false {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath)
+            return cell
+        }
+        
+        // 차단한 유저가 있을 경우
+        tableView.rowHeight = 74
         let cell = tableView.dequeueReusableCell(withIdentifier: "BlockedUserCell", for: indexPath) as! BlockedUserCell
         
         let index = indexPath.row
