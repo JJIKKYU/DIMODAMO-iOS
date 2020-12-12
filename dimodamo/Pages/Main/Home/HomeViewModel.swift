@@ -137,9 +137,15 @@ class HomeViewModel {
                         guard let userId: String = document.data()["user_id"] as? String else {
                             return
                         }
-                        let isUserBlocked = self.blockedUserMap[userId]
+                        let isUserBlocked = BlockUserManager.blockedUserMap[userId]
                         if isUserBlocked == true {
                             print("차단한 유저의 게시글입니다!!!!!!!!!!!!![메인]")
+                            
+                            // 로딩 유무 확인
+                            if querySnapshot?.documents.count == (index + 1) {
+                                articleLoading.accept(true)
+                                print("### articleLoading : \(articleLoading.value)")
+                            }
                             continue
                         }
                         

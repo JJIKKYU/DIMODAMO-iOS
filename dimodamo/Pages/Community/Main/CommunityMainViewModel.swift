@@ -61,7 +61,7 @@ class CommunityMainViewModel {
                     guard let userId: String = document.data()["user_id"] as? String else {
                         return
                     }
-                    let isUserBlocked = self.blockedUserMap[userId]
+                    let isUserBlocked = BlockUserManager.blockedUserMap[userId]
                     if isUserBlocked == true {
                         print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
                         
@@ -145,7 +145,7 @@ class CommunityMainViewModel {
                     guard let userId: String = document.data()["user_id"] as? String else {
                         return
                     }
-                    let isUserBlocked = self.blockedUserMap[userId]
+                    let isUserBlocked = BlockUserManager.blockedUserMap[userId]
                     if isUserBlocked == true {
                         print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
                         

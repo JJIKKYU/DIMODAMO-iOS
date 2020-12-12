@@ -19,11 +19,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErE-hz-57t">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-Iz-Jpo">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-Iz-Jpo">
                                 <rect key="frame" x="177" y="5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" name="YELLOW"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="zOZ-Iz-Jpo" firstAttribute="centerY" secondItem="ErE-hz-57t" secondAttribute="centerY" id="71q-YS-Iis"/>
                             <constraint firstItem="zOZ-Iz-Jpo" firstAttribute="centerX" secondItem="ErE-hz-57t" secondAttribute="centerX" id="7Qn-Ct-a5V"/>
@@ -44,9 +44,6 @@
     <resources>
         <namedColor name="WHITE">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="YELLOW">
-            <color red="1" green="0.82400000095367432" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

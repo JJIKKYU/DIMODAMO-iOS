@@ -140,6 +140,12 @@ class MyProfileViewModel {
                 merge: true
             )
         self.isBlockedUser.accept(.blockComplete)
+        
+        let blockManager = BlockUserManager()
+        blockManager.blockUserDataReset()
+        blockManager.blockUserCheck { value in
+            print("차단 계정을 추가하고 다시 체크합니다 \(value)")
+        }
     }
     
     // MARK: - 해당 기능은 임시 기능으로, 나중에 설정 페이지로 빠질 예정

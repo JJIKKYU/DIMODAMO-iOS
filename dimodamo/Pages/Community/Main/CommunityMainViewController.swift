@@ -60,6 +60,7 @@ class CommunityMainViewController: UIViewController {
         navigationController?.hideBottomTabbarLine()
         view.layoutIfNeeded()
         
+        print("로딩합니다 viewwillappear")
         self.viewModel.loadArticlePost()
         self.viewModel.loadInformationPost()
     }
@@ -109,17 +110,14 @@ class CommunityMainViewController: UIViewController {
         )
         .subscribeOn(MainScheduler.instance)
         .subscribe(onNext: { [weak self] articleLoading, informationLoading in
-            let isLoaded: Bool = articleLoading && informationLoading
-            
-            if isLoaded {
+            if articleLoading == true {
                 self?.articleCollectionView.reloadData()
                 self?.articleCollectionView.layoutIfNeeded()
+            }
+            
+            if informationLoading == true {
                 self?.tableView.reloadData()
                 self?.tableView.layoutIfNeeded()
-                print("리로드")
-//                self?.spinner.stopAnimating()
-            } else {
-//                self?.spinner.startAnimating()
             }
         })
         .disposed(by: disposeBag)
@@ -364,8 +362,13 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // 콘텐츠가 아직 없음!
-        if viewModel.informationPosts.count == 0 {
+        if viewModel.articlePosts.count == 0 && viewModel.articleLoading.value == true {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath)
+            return cell
+        }
+        
+        if viewModel.articlePosts.count == 0 && viewModel.articleLoading.value == false {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoadingCollectionViewCell", for: indexPath)
             return cell
         }
         
@@ -438,10 +441,12 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     
     func articleCollectionViewSetting() {
         // Empty Xib 설정, 아티클 포스트가 없을 경우 띄움
-        if viewModel.articlePosts.count == 0 {
-            let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
-            articleCollectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
-        }
+        
+        let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
+        articleCollectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
+            
+        let loadingNibName = UINib(nibName: "LoadingCollectionViewCell", bundle: nil)
+        articleCollectionView.register(loadingNibName, forCellWithReuseIdentifier: "LoadingCollectionViewCell")
         
         
         let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width

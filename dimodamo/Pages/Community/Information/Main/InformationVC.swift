@@ -237,7 +237,7 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         if viewModel.informationPosts.count > 4 {
-            return 4
+            return viewModel.informationPosts.count
         } else {
             return viewModel.informationPosts.count
         }

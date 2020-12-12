@@ -151,7 +151,12 @@ class HomeVC: UIViewController {
         viewModel.articleLoading
             .subscribeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] flag in
+                
                 if flag == true {
+                    if self!.viewModel.articlePost == nil {
+                        self?.artboardTitle.text = "로딩 반영은 되었으나, 아직 작업안함"
+                    }
+                    
                     guard let model = self?.viewModel.articlePost else {
                         return
                     }

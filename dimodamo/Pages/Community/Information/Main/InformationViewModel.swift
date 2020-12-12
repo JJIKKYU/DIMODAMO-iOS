@@ -19,7 +19,7 @@ class InformationViewModel {
     private let db = Firestore.firestore()
     
     var informationPosts: [Board] = []
-    let pageSize: Int = 10 // 한 번에 로딩할 페이지 개수
+    let pageSize: Int = 20 // 한 번에 로딩할 페이지 개수
     var cursor: DocumentSnapshot? // 마지막 도큐먼트 -> 여기서부터 읽을거야
     var fetchingMore: Bool = false
     let informationLoading = BehaviorRelay<Bool>(value: false)
@@ -89,7 +89,7 @@ class InformationViewModel {
                     guard let userId: String = document.data()["user_id"] as? String else {
                         return
                     }
-                    let isUserBlocked = self.blockedUserMap[userId]
+                    let isUserBlocked = BlockUserManager.blockedUserMap[userId]
                     if isUserBlocked == true {
                         print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
                         

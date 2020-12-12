@@ -77,7 +77,7 @@ class ArticleViewModel {
                         }
                         
                         // 차단한 유저 체크
-                        let isUserBlocked = self.blockedUserMap[userId]
+                        let isUserBlocked = BlockUserManager.blockedUserMap[userId]
                         if isUserBlocked == true {
                             print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
                             

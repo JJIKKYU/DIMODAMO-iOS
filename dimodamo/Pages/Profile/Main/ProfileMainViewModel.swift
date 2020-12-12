@@ -46,7 +46,10 @@ class ProfileMainViewModel {
     var blockedUserMap: [String: Bool] = [:]
     
     init() {
-        self.blockUserCheck()
+        let blockManager = BlockUserManager()
+        blockManager.blockUserCheck { value in
+            self.blockedUserMap = value
+        }
     }
     
     func getUserType() {
@@ -62,27 +65,6 @@ class ProfileMainViewModel {
     func myNickname() -> String {
         let nickname = UserDefaults.standard.string(forKey: "nickname") ?? "익명"
         return nickname
-    }
-    
-    /*
-     차단한 유저가 있는지 체크
-     */
-    func blockUserCheck() {
-        db.collection("users")
-            .document("\(self.getUserUID())")
-            .getDocument { [weak self] (document, err) in
-                if let document = document, document.exists {
-                    let data = document.data()
-                    
-                    if let blockedUserData: [String:Bool] = data!["block_user_list"] as? [String:Bool] {
-                        print("##### 차단한 유저가 있습니다 \(blockedUserData)")
-                        self?.blockedUserMap = blockedUserData
-                    }
-                    
-                } else {
-                    print("게시글에서 유저 정보를 불러오는데 오류가 발생했습니다.")
-                }
-            }
     }
     
     /*
@@ -116,7 +98,7 @@ class ProfileMainViewModel {
                         let dimoPeopleData = DimoPeople()
                         
                         // 차단한 유저 체크
-                        let isUserBlocked = self!.blockedUserMap[document.documentID]
+                        let isUserBlocked = BlockUserManager.blockedUserMap[document.documentID]
                         if isUserBlocked == true {
                             print("#######차단한 유저는 패스합니다 : \(String(describing: isUserBlocked))")
                             continue
@@ -175,7 +157,7 @@ class ProfileMainViewModel {
                         let data = document.data()
                         let dimoPeopleData = DimoPeople()
                         
-                        let isUserBlocked = self!.blockedUserMap[document.documentID]
+                        let isUserBlocked = BlockUserManager.blockedUserMap[document.documentID]
                         if isUserBlocked == true {
                             print("#######차단한 유저는 패스합니다 : \(isUserBlocked)")
                             continue

@@ -241,7 +241,7 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
         let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
         collectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
         
-        let loadingNibName = UINib(nibName: "LoadingCell", bundle: nil)
+        let loadingNibName = UINib(nibName: "LoadingCollectionViewCell", bundle: nil)
         collectionView.register(loadingNibName, forCellWithReuseIdentifier: "LoadingCollectionViewCell")
         
         
