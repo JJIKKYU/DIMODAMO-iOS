@@ -25,6 +25,8 @@
 		98067139250F206300C3EB72 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98067138250F206300C3EB72 /* APIService.swift */; };
 		9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713A250F20BE00C3EB72 /* DptiResult.swift */; };
 		9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713C250F214300C3EB72 /* DptiResultViewModel.swift */; };
+		980934DC2585151F00AC7E20 /* ArticleHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934DB2585151F00AC7E20 /* ArticleHeaderReusableView.swift */; };
+		980934E12585176100AC7E20 /* SettingMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934E02585176100AC7E20 /* SettingMainVC.swift */; };
 		980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */; };
 		980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F197A253E01B7007B33B8 /* UploadImageCell.swift */; };
 		980F19ED25407578007B33B8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F19EC25407577007B33B8 /* CommentCell.swift */; };
@@ -271,6 +273,8 @@
 		98067138250F206300C3EB72 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9806713A250F20BE00C3EB72 /* DptiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResult.swift; sourceTree = "<group>"; };
 		9806713C250F214300C3EB72 /* DptiResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewModel.swift; sourceTree = "<group>"; };
+		980934DB2585151F00AC7E20 /* ArticleHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderReusableView.swift; sourceTree = "<group>"; };
+		980934E02585176100AC7E20 /* SettingMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainVC.swift; sourceTree = "<group>"; };
 		980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		980F197A253E01B7007B33B8 /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
 		980F19EC25407577007B33B8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -664,6 +668,22 @@
 			path = APIService;
 			sourceTree = "<group>";
 		};
+		980934DE2585174100AC7E20 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				980934DF2585174800AC7E20 /* Main */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		980934DF2585174800AC7E20 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				980934E02585176100AC7E20 /* SettingMainVC.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		980F1979253E0198007B33B8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,6 +813,7 @@
 			children = (
 				98AFDAD5253AA5D700B0D88F /* ArticleViewController.swift */,
 				98C0D57B25490A6700BE382D /* ArticleViewModel.swift */,
+				980934DB2585151F00AC7E20 /* ArticleHeaderReusableView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -946,6 +967,7 @@
 		9863224325178767003B0784 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				980934DE2585174100AC7E20 /* Settings */,
 				98EAAC77256C384A00B70CA8 /* Notice */,
 				98EAAC3C256B544B00B70CA8 /* Cell */,
 				98138FD3256ADBD70063F8BD /* Home */,
@@ -1915,9 +1937,11 @@
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				98D988F0255248FA002A8AC5 /* ProfileMainViewModel.swift in Sources */,
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
+				980934E12585176100AC7E20 /* SettingMainVC.swift in Sources */,
 				98C735D8255C5B8100252BF2 /* MainChatCell.swift in Sources */,
 				98D988E3255071AE002A8AC5 /* LottieLoadingView2.swift in Sources */,
 				984FA9092555B1CD00D4F506 /* ProfileDptiResultVC.swift in Sources */,
+				980934DC2585151F00AC7E20 /* ArticleHeaderReusableView.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
 				98FA225C2557244A00331755 /* ApplicationDataAPI.swift in Sources */,
 				98A8B816253605CE00351FD5 /* SplashViewController.swift in Sources */,

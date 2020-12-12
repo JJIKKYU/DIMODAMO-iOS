@@ -110,7 +110,7 @@ class InformationVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navigationController?.presentTransparentNavigationBar()
         self.viewModel.paginateData()
     }
     
@@ -138,6 +138,13 @@ class InformationVC: UIViewController {
                 } else {
                     self?.loadingView.isHidden = true
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.sortingOrder
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.sortingLabel.text = Sort.getTextLabel(sort: value)
             })
             .disposed(by: disposeBag)
         

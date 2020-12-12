@@ -108,7 +108,7 @@ class ArticleViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.viewModel.postDataSetting()
-        //        navigationController?.hideTransparentNavigationBar()
+        navigationController?.presentTransparentNavigationBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -136,26 +136,7 @@ class ArticleViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // 소팅 오더가 변경 된다면, 데이터를 다시 리로드 하도록 함수 호출
-        viewModel.sortingOrder
-            .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { value in
-                switch value {
-                case .comment:
-//                    self?.articleSortingLabel.text = "댓글순"
-                    break
-                    
-                case .date:
-//                    self?.articleSortingLabel.text = "최신순"
-                    break
-                    
-                case .scrap:
-//                    self?.articleSortingLabel.text = "스크랩순"
-                    break
-                }
-            })
-            .disposed(by: disposeBag)
-        
+
         /*
          구글 광고 로드
          */
@@ -346,7 +327,10 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ArticleHeader", for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ArticleHeader", for: indexPath) as! ArticleHeaderReusableView
+        
+        let label: String = Sort.getTextLabel(sort: self.viewModel.sortingOrder.value)
+        header.sortingLabel.text = "\(label)"
         
         return header
     }
