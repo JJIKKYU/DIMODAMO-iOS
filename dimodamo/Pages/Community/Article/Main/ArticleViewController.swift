@@ -86,21 +86,18 @@ class ArticleViewController: UIViewController {
         print("최신순으로 정렬합니다.")
         viewModel.sortingOrder.accept(.date)
         hideSortingPopupView()
-        self.viewModel.postDataSetting()
     }
     
     @IBAction func pressedSortingScrap(_ sender: Any) {
         print("스크랩 순으로 정렬합니다.")
         viewModel.sortingOrder.accept(.scrap)
         hideSortingPopupView()
-        self.viewModel.postDataSetting()
     }
     
     @IBAction func pressedSortingComment(_ sender: Any) {
         print("댓글 순으로 정렬합니다.")
         viewModel.sortingOrder.accept(.comment)
         hideSortingPopupView()
-        self.viewModel.postDataSetting()
     }
     
 //MARK: - View Loading
@@ -136,9 +133,21 @@ class ArticleViewController: UIViewController {
         // 소팅 오더가 변경 된다면, 데이터를 다시 리로드 하도록 함수 호출
         viewModel.sortingOrder
             .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { _ in
-                print("호출")
-                
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel.postDataSetting()
+                switch value {
+                case .comment:
+                    self?.sortingLabel.text = "댓글순"
+                    break
+                    
+                case .date:
+                    self?.sortingLabel.text = "최신순"
+                    break
+                    
+                case .scrap:
+                    self?.sortingLabel.text = "스크랩순"
+                    break
+                }
             })
             .disposed(by: disposeBag)
         
@@ -223,6 +232,12 @@ extension ArticleViewController {
 
 extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func articleCollectionViewSetting() {
+        // Empty Xib 설정, 아티클 포스트가 없을 경우 띄움
+        if viewModel.articlePosts.count == 0 {
+            let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
+            collectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
+        }
+        
         let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width
         
         // width, height 설정
@@ -237,10 +252,27 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.articlePosts.count
+        let count = viewModel.articlePosts.count
+        
+        // 콘텐츠 준비 중이라는 셀을 띄울 것
+        if count == 0 {
+            return 1
+        }
+        
+        if count > 4 {
+            return 4
+        } else {
+            return count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // 콘텐츠가 아직 없음!
+        if viewModel.articlePosts.count == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath)
+            return cell
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
         
         let model = viewModel.articlePosts[indexPath.row]

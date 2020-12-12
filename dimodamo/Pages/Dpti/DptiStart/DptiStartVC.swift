@@ -16,27 +16,28 @@ class DptiStartVC: UIViewController {
     let viewModel = DptiStartViewModel()
     var disposeBag = DisposeBag()
 
-    let widthAspect = (150 / 414) * UIScreen.main.bounds.width
-    let heightAspect = (151 / 414) * UIScreen.main.bounds.width
-    
     @IBOutlet weak var maleBtnWidthConstraint: NSLayoutConstraint! {
         didSet {
+            let widthAspect = (150 / 414) * UIScreen.main.bounds.width
             maleBtnWidthConstraint.constant = widthAspect
         }
     }
     @IBOutlet weak var femaleBtnWidthConstraint: NSLayoutConstraint! {
         didSet {
+            let widthAspect = (145 / 414) * UIScreen.main.bounds.width
             femaleBtnWidthConstraint.constant = widthAspect
         }
     }
     
     @IBOutlet weak var maleBtnHeightConstraint: NSLayoutConstraint! {
         didSet {
+            let heightAspect = (151 / 414) * UIScreen.main.bounds.width
             maleBtnHeightConstraint.constant = heightAspect
         }
     }
     @IBOutlet weak var femaleBtnHeightConstraint: NSLayoutConstraint! {
         didSet {
+            let heightAspect = (152 / 414) * UIScreen.main.bounds.width
             femaleBtnHeightConstraint.constant = heightAspect
         }
     }
