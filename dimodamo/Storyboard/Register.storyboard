@@ -818,6 +818,7 @@
                         <outlet property="secondPWTextField" destination="fx4-qj-S08" id="KPL-l9-38g"/>
                         <outlet property="secondPWTextFieldSubTitle" destination="0jT-1W-C7O" id="sR5-cw-0qr"/>
                         <segue destination="iLn-PB-Yre" kind="show" identifier="InputGender" id="axY-rf-O8s"/>
+                        <segue destination="zbw-qQ-ZYg" kind="show" identifier="InputInterest" id="KlG-BD-i01"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5s-Lj-qG9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -960,7 +961,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4s-rK-PNF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832" y="420"/>
+            <point key="canvasLocation" x="1804" y="-379"/>
         </scene>
         <!--Register Interest View Controller-->
         <scene sceneID="vt3-WA-uh8">
@@ -1751,6 +1752,7 @@
                             <constraint firstItem="bmW-ce-6n8" firstAttribute="top" secondItem="RHh-Ao-9VV" secondAttribute="bottom" constant="30" id="piD-jR-EGV"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="7FZ-pc-EGv"/>
                     <connections>
                         <outlet property="nextTryBtn" destination="bmW-ce-6n8" id="rGL-rd-Kxu"/>
                     </connections>
@@ -1785,13 +1787,13 @@
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <mutableString key="content">디모다모에서 제공하는 이벤트/혜택 등 다양한 정보를 이메일로 받아보실 수 있습니다. 일부 서비스의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다. 해당 광고성 정보는 다양한 제휴서비스 및 디자인 전공생을 위한 다양한 프로모션이 포함됩니다.
+                                                        <string key="content">디모다모에서 제공하는 이벤트/혜택 등 다양한 정보를 이메일로 받아보실 수 있습니다. 일부 서비스의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다. 해당 광고성 정보는 다양한 제휴서비스 및 디자인 전공생을 위한 다양한 프로모션이 포함됩니다.
 
 마케팅 수신 동의는 거부하실 수 있으며 동의 이후에라도 고객의 의사에 따라 동의를 철회할 수 있습니다. 동의를 거부하시더라도 디모다모가 제공하는 서비스의 이용에 제한이 되지 않습니다. 단, 다양한 마케팅 정보 안내 서비스가 제한됩니다.
 
 1. 항목 : 마케팅 수신 종의
 2. 목적 : 서비스 및 이벤트 정보 안내
-3. 기간 : 탈퇴 후 최대 1년</mutableString>
+3. 기간 : 탈퇴 후 최대 1년</string>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -1909,7 +1911,7 @@
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <mutableString key="content">1. **제 1조 (목적)**'디모다모 커뮤니티 서비스 이용 약관(이하 '약관')'은 디모다모 회원(이하 '회원')이 디모다모㈜(이하 '회사')가 자사 앱서비스를 통해 제공하는 커뮤니티 서비스를 이용함에 있어 회사와 회원 간의 권리와 의무, 서비스 이용조건 및 절차 등 기본적인 사항을 명시하고 규정함을 목적으로 합니다.
+                                                        <string key="content">1. **제 1조 (목적)**'디모다모 커뮤니티 서비스 이용 약관(이하 '약관')'은 디모다모 회원(이하 '회원')이 디모다모㈜(이하 '회사')가 자사 앱서비스를 통해 제공하는 커뮤니티 서비스를 이용함에 있어 회사와 회원 간의 권리와 의무, 서비스 이용조건 및 절차 등 기본적인 사항을 명시하고 규정함을 목적으로 합니다.
 
 2. *제 2조 (용어의 정의)**
 
@@ -1999,7 +2001,7 @@
 1) 회사와 회원 사이에 서비스와 관련하여 분쟁이 발생하는 경우 대한민국 민사소송법상 관할 법원에 소송을 제기할 수 있습니다.
 2) 전항의 경우 준거법은 대한민국법을 적용합니다.
 
-    3) 해당 약관에서 정하지 아니한 사항과 약관의 해석에 관해서는 관련법 또는 관례에 따릅니다.</mutableString>
+    3) 해당 약관에서 정하지 아니한 사항과 약관의 해석에 관해서는 관련법 또는 관례에 따릅니다.</string>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -2117,11 +2119,11 @@
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <mutableString key="content">1. 개인정보의 처리 목적 (‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적 이외의 용도로는 이용하지 않습니다.
+                                                        <string key="content">1. 개인정보의 처리 목적 (‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적 이외의 용도로는 이용하지 않습니다.
 - 고객 가입의사 확인, 고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격 유지.관리, 물품 또는 서비스 공급에 따른 금액 결제, 물품 또는 서비스의 공급.배송 등
 1. 개인정보의 처리 및 보유 기간
 
-① (‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO’) 은(는) 정보주체로부터 개인정보를 수집할 때 동의 받은 개인정보 보유</mutableString>
+① (‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO’) 은(는) 정보주체로부터 개인정보를 수집할 때 동의 받은 개인정보 보유</string>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -2216,7 +2218,7 @@
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <mutableString key="content">청약철회, 대금결제, 재화 등 공급기록 : 5년
+                                                        <string key="content">청약철회, 대금결제, 재화 등 공급기록 : 5년
 1. 개인정보의 제3자 제공에 관한 사항
 
 ① ('[http://dimodamo.com](http://dimodamo.com/)'이하 'DIMODAMO')은(는) 정보주체의 동의, 법률의 특별한 규정 등 개인정보 보호법 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
@@ -2235,7 +2237,7 @@
 위탁받는 자 (수탁자) : Google Firebase
 위탁하는 업무의 내용 : 회원정보 저장 및 관리
 위탁기간 :
-② ('[http://dimodamo.com](http://dimodamo.com/)'이하 'DIMODAMO')은(는) 위탁계약 체결시 개인정보 보호법 제25조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적</mutableString>
+② ('[http://dimodamo.com](http://dimodamo.com/)'이하 'DIMODAMO')은(는) 위탁계약 체결시 개인정보 보호법 제25조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적</string>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -2264,7 +2266,7 @@
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <mutableString key="content">감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.
+                                                        <string key="content">감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.
 
 ③ 위탁업무의 내용이나 수탁자가 변경될 경우에는 지체없이 본 개인정보 처리방침을 통하여 공개하도록 하겠습니다.
 
@@ -2320,7 +2322,7 @@
 3. 개인정보의 암호화
 이용자의 개인정보는 비밀번호는 암호화 되어 저장 및 관리되고 있어, 본인만이 알 수 있으며 중요한 데이터는 파일 및 전송 데이터를 암호화 하거나 파일 잠금 기능을 사용하는 등의 별도 보안기능을 사용하고 있습니다.
 4. 개인정보에 대한 접근 제한
-개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.</mutableString>
+개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.</string>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -2438,7 +2440,7 @@
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <mutableString key="content">### 커뮤니티 이용규칙
+                                                        <string key="content">### 커뮤니티 이용규칙
 
 1. 디모다모의 커뮤니티는 사용자가 직접 만들어가는 공간입니다.
 
@@ -2498,7 +2500,7 @@
 - 쪽지는 개인간의 사적인 대화이므로 반말과 욕설 등에 대한 삭제 또는 차단을 관리자가 관여하지 않습니다. 쪽지의 경우 사용자가 직접 차단 기능을 이용하여 더 이상 쪽지를 받지 않을 수 있습니다.
 - 사용자간의 차단, 삭제는 관리자가 관여하지 않지만 욕설, 혐오표현, 외설, 관리자 사칭 등 부적절한 내용의 경우 신고가 가능하며, 신고 내용에 따라 이용제한 등의 제제가 가해질 수 있습니다.
 - 신고 시 신고 내용 확인을 위해 쪽지 내용이 전송되어 검토됩니다. 신고로 전송된 쪽지 이외의 다른 사용자와의 쪽지를 열람할 수 없으니, 깨끗한 커뮤니티를 위해 꼭 신고해 주시기 바랍니다.
-- 다수의 사용자에게 피해를 끼치는 쪽지를 반복적으로 발송할 경우 쪽지 이용에 제재가 가해질 수 있습니다.</mutableString>
+- 다수의 사용자에게 피해를 끼치는 쪽지를 반복적으로 발송할 경우 쪽지 이용에 제재가 가해질 수 있습니다.</string>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -2591,6 +2593,9 @@
             <point key="canvasLocation" x="-63" y="-545"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="eYB-Kl-Wnh"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" name="SYSTEM"/>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>

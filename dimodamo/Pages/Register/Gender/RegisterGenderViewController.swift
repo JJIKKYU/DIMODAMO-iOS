@@ -6,13 +6,15 @@
 //  Copyright © 2020 JJIKKYU. All rights reserved.
 //
 
+
+
 import UIKit
 
 import RxSwift
 import RxCocoa
 
 class RegisterGenderViewController: UIViewController {
-    
+    /*
     @IBOutlet weak var maleBtn: UIButton!
     @IBOutlet weak var femaleBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
@@ -108,4 +110,5 @@ extension RegisterGenderViewController {
         maleBtn?.layer.borderColor = UIColor.appColor(.white235).cgColor
         maleBtn?.layer.cornerRadius = 16
     }
+ */
 }

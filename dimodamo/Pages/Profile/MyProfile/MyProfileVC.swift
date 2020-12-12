@@ -272,7 +272,23 @@ class MyProfileVC: UIViewController {
                                                targetBoard: .profile)
             }
             
+            // 신고하기 버튼을 누를 경우 프로필로 이동
+            let blockAction = UIAlertAction(title: "차단하기", style: .destructive) { (action) in
+                print("차단하기 버튼을 클릭하셨습니다")
+                
+                guard let profileImage: UIImage = self.profile.image,
+                      let nickname: String = self.nicknameLabel.text else {
+                    return
+                }
+                
+                let profileUID: String = self.viewModel.profileUID.value
+                
+                self.blockUser()
+            }
+            
+            
             actionSheet.addAction(reportAction)
+            actionSheet.addAction(blockAction)
             
             break
             
@@ -344,5 +360,22 @@ class MyProfileVC: UIViewController {
         default:
             break
         }
+    }
+}
+
+
+//MARK: - 차단하기
+
+extension MyProfileVC {
+    func blockUser() {
+        let alert = AlertController(title: "정말 차단하시겠어요?", message: "해당 사용자와 관련된 모든 컨텐츠를 볼 수 없습니다", preferredStyle: .alert)
+        alert.setTitleImage(UIImage(named: "alertError"))
+        let action = UIAlertAction(title: "확인", style: .destructive) { (action) in
+            print("신고를 진행합니다.")
+        }
+        let cancle = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        alert.addAction(action)
+        alert.addAction(cancle)
+        present(alert, animated: true, completion: nil)
     }
 }

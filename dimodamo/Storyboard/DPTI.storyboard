@@ -3536,9 +3536,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="dpti_left_right" translatesAutoresizingMaskIntoConstraints="NO" id="Ncm-Zz-D28">
-                                <rect key="frame" x="20" y="320" width="335" height="363"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2d-bB-AId">
                                 <rect key="frame" x="20" y="20" width="335" height="320"/>
                                 <subviews>
@@ -3728,13 +3725,13 @@
                                     <constraint firstAttribute="height" constant="320" id="yPl-B2-UGg"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbG-K4-jcn">
-                                <rect key="frame" x="0.0" y="567" width="375" height="56"/>
-                                <color key="backgroundColor" name="SYSTEM"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbG-K4-jcn">
+                                <rect key="frame" x="20" y="533" width="335" height="56"/>
+                                <color key="backgroundColor" name="GRAY - 210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="NyF-Xv-aHu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <state key="normal" title="시작해요">
                                     <color key="titleColor" name="WHITE"/>
                                 </state>
@@ -3742,19 +3739,83 @@
                                     <action selector="pressedStartBtn:" destination="5H8-kR-BTe" eventType="touchUpInside" id="IAe-fG-Xtg"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="h6C-VH-aRA">
+                                <rect key="frame" x="20" y="473" width="335" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aD3-pE-LP2">
+                                        <rect key="frame" x="0.0" y="0.0" width="149" height="48"/>
+                                        <color key="backgroundColor" name="WHITE"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <state key="normal" title="남자예요!">
+                                            <color key="titleColor" name="GRAY - 170"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" name="SYSTEM"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressedMaleBtn:" destination="5H8-kR-BTe" eventType="touchUpInside" id="ciL-0t-37q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8y7-2P-eqz">
+                                        <rect key="frame" x="165" y="0.0" width="170" height="48"/>
+                                        <color key="backgroundColor" name="WHITE"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <state key="normal" title="여자예요!">
+                                            <color key="titleColor" name="GRAY - 170"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" name="SYSTEM"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressedFemalBtn:" destination="5H8-kR-BTe" eventType="touchUpInside" id="gjB-Bs-3QP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="YzU-go-WRQ"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZA6-ts-DZd">
+                                <rect key="frame" x="36" y="321" width="150" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="6ls-KG-CPR"/>
+                                    <constraint firstAttribute="height" constant="152" id="lpm-c2-I1F"/>
+                                </constraints>
+                                <state key="normal" image="male_icon_default"/>
+                                <state key="selected" image="male_icon_selected"/>
+                                <connections>
+                                    <action selector="pressedMaleBtn:" destination="5H8-kR-BTe" eventType="touchUpInside" id="Fa3-1Y-b8h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWo-pC-PQk">
+                                <rect key="frame" x="194" y="321" width="145" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="152" id="HtN-aw-mhd"/>
+                                    <constraint firstAttribute="width" constant="145" id="qxZ-CI-YKN"/>
+                                </constraints>
+                                <state key="normal" image="female_icon_default"/>
+                                <state key="selected" image="female_icon_selected"/>
+                                <connections>
+                                    <action selector="pressedFemalBtn:" destination="5H8-kR-BTe" eventType="touchUpInside" id="zCV-6k-3Ex"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="v1t-Gl-aEf"/>
                         <color key="backgroundColor" name="WHITE"/>
                         <constraints>
-                            <constraint firstItem="Ncm-Zz-D28" firstAttribute="trailing" secondItem="v1t-Gl-aEf" secondAttribute="trailing" constant="-20" id="5vr-VW-7aH"/>
+                            <constraint firstItem="8y7-2P-eqz" firstAttribute="top" secondItem="qWo-pC-PQk" secondAttribute="bottom" id="48v-mK-vmA"/>
                             <constraint firstItem="O2d-bB-AId" firstAttribute="top" secondItem="v1t-Gl-aEf" secondAttribute="top" constant="20" id="6Yh-Zt-Oe3"/>
-                            <constraint firstAttribute="bottom" secondItem="rbG-K4-jcn" secondAttribute="bottom" id="F1r-zH-18H"/>
-                            <constraint firstItem="rbG-K4-jcn" firstAttribute="leading" secondItem="v1t-Gl-aEf" secondAttribute="leading" id="KVO-si-0RZ"/>
+                            <constraint firstItem="h6C-VH-aRA" firstAttribute="trailing" secondItem="rbG-K4-jcn" secondAttribute="trailing" id="7Qj-1G-sWT"/>
+                            <constraint firstItem="aD3-pE-LP2" firstAttribute="top" secondItem="ZA6-ts-DZd" secondAttribute="bottom" id="Dmc-8l-IxZ"/>
+                            <constraint firstAttribute="bottom" secondItem="rbG-K4-jcn" secondAttribute="bottom" constant="34" id="F1r-zH-18H"/>
+                            <constraint firstItem="rbG-K4-jcn" firstAttribute="leading" secondItem="v1t-Gl-aEf" secondAttribute="leading" constant="20" id="KVO-si-0RZ"/>
                             <constraint firstItem="O2d-bB-AId" firstAttribute="leading" secondItem="v1t-Gl-aEf" secondAttribute="leading" constant="20" id="Njn-us-9hY"/>
                             <constraint firstItem="v1t-Gl-aEf" firstAttribute="trailing" secondItem="O2d-bB-AId" secondAttribute="trailing" constant="20" id="QSq-27-rAr"/>
-                            <constraint firstItem="Ncm-Zz-D28" firstAttribute="leading" secondItem="v1t-Gl-aEf" secondAttribute="leading" constant="20" id="rre-9a-hac"/>
-                            <constraint firstItem="v1t-Gl-aEf" firstAttribute="trailing" secondItem="rbG-K4-jcn" secondAttribute="trailing" id="svL-qp-5uP"/>
-                            <constraint firstItem="Ncm-Zz-D28" firstAttribute="bottom" secondItem="v1t-Gl-aEf" secondAttribute="bottom" constant="60" id="yNv-ie-KL2"/>
+                            <constraint firstItem="rbG-K4-jcn" firstAttribute="top" secondItem="h6C-VH-aRA" secondAttribute="bottom" constant="12" id="mdk-gY-eer"/>
+                            <constraint firstItem="qWo-pC-PQk" firstAttribute="trailing" secondItem="8y7-2P-eqz" secondAttribute="trailing" constant="-16" id="qdG-wG-jXE"/>
+                            <constraint firstItem="h6C-VH-aRA" firstAttribute="leading" secondItem="rbG-K4-jcn" secondAttribute="leading" id="s5z-rl-sF4"/>
+                            <constraint firstItem="v1t-Gl-aEf" firstAttribute="trailing" secondItem="rbG-K4-jcn" secondAttribute="trailing" constant="20" id="svL-qp-5uP"/>
+                            <constraint firstItem="ZA6-ts-DZd" firstAttribute="leading" secondItem="aD3-pE-LP2" secondAttribute="leading" constant="16" id="w8t-YG-K7C"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Kiu-ha-r5h">
@@ -3765,6 +3826,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="femaleBtn" destination="8y7-2P-eqz" id="H6X-Ej-6z3"/>
+                        <outlet property="femaleBtnHeightConstraint" destination="qxZ-CI-YKN" id="Mif-Sz-gaq"/>
+                        <outlet property="femaleBtnWidthConstraint" destination="qxZ-CI-YKN" id="vUG-WS-Kt2"/>
+                        <outlet property="femaleIconBtn" destination="qWo-pC-PQk" id="JfI-WC-qz2"/>
+                        <outlet property="maleBtn" destination="aD3-pE-LP2" id="Ib7-hU-5dh"/>
+                        <outlet property="maleBtnHeightConstraint" destination="lpm-c2-I1F" id="hfz-12-mFu"/>
+                        <outlet property="maleBtnWidthConstraint" destination="6ls-KG-CPR" id="Ps8-41-8qe"/>
+                        <outlet property="maleIconBtn" destination="ZA6-ts-DZd" id="DHa-C4-Thm"/>
+                        <outlet property="startBtn" destination="rbG-K4-jcn" id="3LV-3a-ixO"/>
                         <outlet property="textViewContainer" destination="O2d-bB-AId" id="HTp-0T-wJb"/>
                         <segue destination="eVq-LI-GH7" kind="show" identifier="DptiSurveyVC" id="aVi-db-lPk"/>
                     </connections>
@@ -3802,7 +3872,6 @@
         <image name="Tool_Name_Indesign" width="64" height="64"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="closeBtnSystemColor" width="16" height="16"/>
-        <image name="dpti_left_right" width="385" height="363"/>
         <image name="feedbackCardBGBlue" width="355" height="263"/>
         <image name="feedbackCardBGPink" width="355" height="263"/>
         <image name="feedbackCardBGPurple" width="355" height="263"/>
@@ -3811,9 +3880,16 @@
         <image name="feedbackCardCharPink" width="374" height="387"/>
         <image name="feedbackCardCharPurple" width="374" height="387"/>
         <image name="feedbackCardCharYellow" width="374" height="387"/>
+        <image name="female_icon_default" width="145" height="152"/>
+        <image name="female_icon_selected" width="145" height="152"/>
+        <image name="male_icon_default" width="150" height="152"/>
+        <image name="male_icon_selected" width="150" height="152"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GRAY - 210">
+            <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

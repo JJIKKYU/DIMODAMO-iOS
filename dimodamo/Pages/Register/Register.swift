@@ -13,7 +13,6 @@ import Foundation
 struct Register {
     var createdAt: String = ""
     var dpti: String = "DD"
-    var Gender: Gender = .male
     
     
     var id: String = ""
@@ -41,18 +40,10 @@ struct Register {
     var heartCommentList: [String : Bool] = [:]
     
     func getDict() -> [String:Any] {
-        var dptiTypeString: String = ""
-        if dpti == "DD" {
-            dptiTypeString = "DD"
-        } else {
-            dptiTypeString = "\(self.Gender.description)_\(self.dpti)"
-        }
-        
         
         let dict: [String:Any] = [
             "created_at" : self.createdAt,
-            "dpti" : "\(dptiTypeString)",
-            "gender": self.Gender.description,
+            "dpti" : "DD",
             "id": self.id,
             "get_comment_heart_count" : getCommentHeartCounnt,
             "get_manito_good_count" : getManitoGoodCount,
@@ -102,6 +93,7 @@ enum NicknameCheck {
 enum Gender {
     case female
     case male
+    case none
     
     var description: String {
         switch self {
@@ -109,6 +101,8 @@ enum Gender {
             return "F"
         case .male:
             return "M"
+        case .none:
+            return ""
         }
     }
 }

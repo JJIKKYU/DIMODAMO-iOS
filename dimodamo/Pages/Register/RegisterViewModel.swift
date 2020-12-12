@@ -39,7 +39,7 @@ class RegisterViewModel {
     
     // RegisterGender
     // 성별
-    var gender: Gender? = nil
+//    var gender: Gender? = nil
     
     // RegisterInterest
     // 관심사
@@ -134,7 +134,6 @@ class RegisterViewModel {
         
         self.userProfile.marketing = markettingBtnRelay.value  // 마케팅 유무
         self.userProfile.id = userEmailRelay.value        // 유저 아이디
-        self.userProfile.Gender = gender!
         // UserDefaults에 바로 저장
         print("########### \(interestListStringArr)")
         userDefaults.set(interestListStringArr, forKey: "interest")
