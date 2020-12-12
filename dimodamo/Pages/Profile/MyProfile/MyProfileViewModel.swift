@@ -26,6 +26,11 @@ class MyProfileViewModel {
     
     var disposeBag = DisposeBag()
     
+    /*
+     차단 관련
+     */
+    let isBlockedUser = BehaviorRelay<UserBlockState>(value: .none)
+    
     func myDptiType() -> String {
         let type = UserDefaults.standard.string(forKey: "dpti") ?? "DD"
         return type
@@ -120,6 +125,26 @@ class MyProfileViewModel {
         } else {
             print("내 프로필이 아닙니다.")
             return false
+        }
+    }
+    
+    // MARK: - 유저 차단 기능
+    func blockUser(targetUserUID: String) {
+        // 내 프로필이면 애초에 신고가 불가능하므로
+        if isMyProfile() == true { return }
+        let myUID = Auth.auth().currentUser!.uid
+        // 신고할 때 신고 리스트에 추가
+        db.collection("users").document("\(myUID)")
+            .setData(
+                ["block_user_list" : ["\(targetUserUID)" : true]],
+                merge: true
+            )
+        self.isBlockedUser.accept(.blockComplete)
+        
+        let blockManager = BlockUserManager()
+        blockManager.blockUserDataReset()
+        blockManager.blockUserCheck { value in
+            print("차단 계정을 추가하고 다시 체크합니다 \(value)")
         }
     }
     

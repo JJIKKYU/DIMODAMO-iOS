@@ -18,6 +18,7 @@ struct Board {
     var description: String?
     var images: [String]?
     var links: [String]?
+    var isDeleted: Bool?
     var nickname: String?
     var report: Int?
     var scrapCount: Int?
@@ -39,6 +40,7 @@ struct Board {
             "description": description ?? "",
             "images": images ?? [],
             "links": links ?? [],
+            "is_deleted": isDeleted ?? false,
             "report" : report ?? 0,
             "nickname": nickname ?? "",
             "scrap_count": scrapCount ?? 0,

@@ -19,7 +19,7 @@ class InformationViewModel {
     private let db = Firestore.firestore()
     
     var informationPosts: [Board] = []
-    let pageSize: Int = 10 // 한 번에 로딩할 페이지 개수
+    let pageSize: Int = 20 // 한 번에 로딩할 페이지 개수
     var cursor: DocumentSnapshot? // 마지막 도큐먼트 -> 여기서부터 읽을거야
     var fetchingMore: Bool = false
     let informationLoading = BehaviorRelay<Bool>(value: false)
@@ -41,8 +41,16 @@ class InformationViewModel {
         }
     }
     
+    /*
+     블럭 유저 데이터
+     */
+    var blockedUserMap: [String:Bool] = [:]
+    
     init() {
-        self.paginateData()
+        let blockManager = BlockUserManager()
+        blockManager.blockUserCheck { value in
+            self.blockedUserMap = value
+        }
     }
     
     /*
@@ -74,6 +82,26 @@ class InformationViewModel {
             } else {
                 
                 for (index, document) in querySnapshot!.documents.enumerated() {
+                    
+                    /*
+                     차단 체크
+                     */
+                    guard let userId: String = document.data()["user_id"] as? String else {
+                        return
+                    }
+                    let isUserBlocked = BlockUserManager.blockedUserMap[userId]
+                    if isUserBlocked == true {
+                        print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
+                        
+                        // 로딩 유무 확인
+                        if querySnapshot?.documents.count == (index + 1) {
+                            informationLoading.accept(true)
+                            fetchingMore = false
+                        }
+                        continue
+                    }
+                    
+                    
                     let boardId = (document.data()["board_id"] as? String) ?? ""
                     let boardTitle = (document.data()["board_title"] as? String) ?? ""
                     let bundleId = (document.data()["bundle_id"] as? Double) ?? 0

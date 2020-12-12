@@ -25,6 +25,7 @@ class CommunityMainViewController: UIViewController {
         }
     }
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var topSpinner: UIActivityIndicatorView!
@@ -58,6 +59,10 @@ class CommunityMainViewController: UIViewController {
         }
         navigationController?.hideBottomTabbarLine()
         view.layoutIfNeeded()
+        
+        print("로딩합니다 viewwillappear")
+        self.viewModel.loadArticlePost()
+        self.viewModel.loadInformationPost()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,6 +76,18 @@ class CommunityMainViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (keyPath == "contentSize"){
+            //            if let newvalue = change?[.newKey] {
+            if (change?[.newKey]) != nil {
+                let contentHeight: CGFloat = tableView.contentSize.height
+                DispatchQueue.main.async {
+                    self.tableViewHeightConstraint.constant = contentHeight
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,6 +97,8 @@ class CommunityMainViewController: UIViewController {
         
         articleCollectionView.delegate = self
         articleCollectionView.dataSource = self
+        
+        tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         settingTableView()
         articleCollectionViewSetting()
@@ -91,17 +110,14 @@ class CommunityMainViewController: UIViewController {
         )
         .subscribeOn(MainScheduler.instance)
         .subscribe(onNext: { [weak self] articleLoading, informationLoading in
-            let isLoaded: Bool = articleLoading && informationLoading
-            
-            if isLoaded {
+            if articleLoading == true {
                 self?.articleCollectionView.reloadData()
                 self?.articleCollectionView.layoutIfNeeded()
+            }
+            
+            if informationLoading == true {
                 self?.tableView.reloadData()
                 self?.tableView.layoutIfNeeded()
-                print("리로드")
-//                self?.spinner.stopAnimating()
-            } else {
-//                self?.spinner.startAnimating()
             }
         })
         .disposed(by: disposeBag)
@@ -227,14 +243,47 @@ class CommunityMainViewController: UIViewController {
 
 extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegate {
     func settingTableView() {
+        // Empty Xib 설정, DPTI를 안했을 경우, 그리고 결과값이 없을 경우에 해당
+        let nibName = UINib(nibName: "EmptyTableViewCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "EmptyTableViewCell")
+        
+        let loadingNibName = UINib(nibName: "LoadingTableViewCell", bundle: nil)
+        tableView.register(loadingNibName, forCellReuseIdentifier: "LoadingTableViewCell")
+        
+        
         tableView.rowHeight = 145
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.informationPosts.count
+        // 콘텐츠 준비 중이라는 셀을 띄울 것
+        if viewModel.informationPosts.count == 0 {
+            return 1
+        }
+        
+        if viewModel.informationPosts.count > 4 {
+            return 4
+        } else {
+            return viewModel.informationPosts.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 콘텐츠가 아직 없음!
+        if viewModel.informationPosts.count == 0 && viewModel.informationLoading.value == true {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            tableView.rowHeight = 374
+            cell.settingImageSizeLabel(cellKinds: .layer, text: "아직 컨텐츠가 없어요ㅠㅜ")
+            return cell
+        }
+        
+        if viewModel.informationPosts.count == 0 && viewModel.informationLoading.value == false {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath)
+            return cell
+        }
+        
+        
+        // 콘텐츠가 정상적으로 있다면
+        tableView.rowHeight = 145
         let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
         
         let model = viewModel.informationPosts[indexPath.row]
@@ -272,6 +321,11 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 게시글이 없이 엠프티 페이지만 떠있을 경우에는 터치 반응 X
+        if viewModel.informationPosts.count == 0 {
+            return
+        }
+        
         print(indexPath.row)
         
         performSegue(withIdentifier: "DetailArticleVC_Main", sender: [PostKinds.information.rawValue, indexPath.row])
@@ -293,11 +347,33 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // firestore에 있는 article의 카운트만큼 가져옴
-        return viewModel.articlePosts.count
+        let count = viewModel.articlePosts.count
+        
+        // 콘텐츠 준비 중이라는 셀을 띄울 것
+        if count == 0 {
+            return 1
+        }
+        
+        if count > 4 {
+            return 4
+        } else {
+            return count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // 콘텐츠가 아직 없음!
+        if viewModel.articlePosts.count == 0 && viewModel.articleLoading.value == true {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath) as! EmptyCollectionCell
+            cell.settingImageSizeLabel(cellKinds: .artboard, text: "곧 컨텐츠가 만들어질 예정이예요")
+            return cell
+        }
+        
+        if viewModel.articlePosts.count == 0 && viewModel.articleLoading.value == false {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoadingCollectionViewCell", for: indexPath)
+            return cell
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
         
         let model = viewModel.articlePosts[indexPath.row]
@@ -354,6 +430,10 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     
     // 선택한 아이템
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 게시글이 없이 엠프티 페이지만 떠있을 경우에는 터치 반응 X
+        if viewModel.articlePosts.count == 0 {
+            return
+        }
         //        let selectedCell: ArticleCell = collectionView.cellForItem(at: indexPath) as! ArticleCell
         //        print(selectedCell)
         
@@ -362,6 +442,15 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func articleCollectionViewSetting() {
+        // Empty Xib 설정, 아티클 포스트가 없을 경우 띄움
+        
+        let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
+        articleCollectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
+            
+        let loadingNibName = UINib(nibName: "LoadingCollectionViewCell", bundle: nil)
+        articleCollectionView.register(loadingNibName, forCellWithReuseIdentifier: "LoadingCollectionViewCell")
+        
+        
         let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width
         
         // width, height 설정
@@ -436,17 +525,17 @@ extension CommunityMainViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
 
-        if scrollView.contentOffset.y < 0 {
-            topSpinner.startAnimating()
-            topSpinnerTopConstraint.constant = (-scrollView.contentOffset.y + 20)
-        } else {
-            topSpinner.stopAnimating()
-            topSpinnerTopConstraint.constant = -20
-        }
+//        if scrollView.contentOffset.y < 0 {
+//            topSpinner.startAnimating()
+//            topSpinnerTopConstraint.constant = (-scrollView.contentOffset.y + 20)
+//        } else {
+//            topSpinner.stopAnimating()
+//            topSpinnerTopConstraint.constant = -20
+//        }
     }
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView.contentOffset.y < -50 {
+        if scrollView.contentOffset.y < -100 {
             self.viewModel.loadArticlePost()
             self.viewModel.loadInformationPost()
         }

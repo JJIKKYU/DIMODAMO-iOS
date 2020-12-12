@@ -94,8 +94,8 @@ class RegisterPWViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "InputGender" {
-            let destinationVC = segue.destination as? RegisterGenderViewController
+        if segue.identifier == "InputInterest" {
+            let destinationVC = segue.destination as? RegisterInterestViewController
             destinationVC?.viewModel = self.viewModel
         }
     }
@@ -132,7 +132,7 @@ class RegisterPWViewController: UIViewController, UITextFieldDelegate {
             
         // 패스워드 사용이 가능한 경우
         case .possible:
-            performSegue(withIdentifier: "InputGender", sender: sender)
+            performSegue(withIdentifier: "InputInterest", sender: sender)
             break
             
         case .none:

@@ -25,10 +25,19 @@
 		98067139250F206300C3EB72 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98067138250F206300C3EB72 /* APIService.swift */; };
 		9806713B250F20BE00C3EB72 /* DptiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713A250F20BE00C3EB72 /* DptiResult.swift */; };
 		9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713C250F214300C3EB72 /* DptiResultViewModel.swift */; };
+		980934DC2585151F00AC7E20 /* ArticleHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934DB2585151F00AC7E20 /* ArticleHeaderReusableView.swift */; };
+		980934E12585176100AC7E20 /* SettingMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934E02585176100AC7E20 /* SettingMainVC.swift */; };
 		980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */; };
 		980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F197A253E01B7007B33B8 /* UploadImageCell.swift */; };
 		980F19ED25407578007B33B8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F19EC25407577007B33B8 /* CommentCell.swift */; };
 		98138FD5256ADBEF0063F8BD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98138FD4256ADBEF0063F8BD /* HomeVC.swift */; };
+		9815369525843F060063E509 /* DptiStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9815369425843F060063E509 /* DptiStartViewModel.swift */; };
+		9815369825844DE00063E509 /* Block_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9815369725844DE00063E509 /* Block_Realm.swift */; };
+		9815369B25845E930063E509 /* BlockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9815369A25845E930063E509 /* BlockUser.swift */; };
+		9815369E258462330063E509 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9815369D258462330063E509 /* EmptyTableViewCell.xib */; };
+		981536A2258483D30063E509 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981536A1258483D30063E509 /* LoadingCollectionViewCell.xib */; };
+		981536A6258485CD0063E509 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981536A5258485CD0063E509 /* LoadingTableViewCell.xib */; };
+		981536A92584FFC60063E509 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981536A82584FFC50063E509 /* EmptyTableViewCell.swift */; };
 		9819297B257E621900DACF15 /* Service2DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819297A257E621900DACF15 /* Service2DetailViewController.swift */; };
 		9819297E257F327100DACF15 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9819297D257F327100DACF15 /* Report.storyboard */; };
 		98192983257F4AD200DACF15 /* ReportMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192982257F4AD200DACF15 /* ReportMainVC.swift */; };
@@ -264,10 +273,19 @@
 		98067138250F206300C3EB72 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9806713A250F20BE00C3EB72 /* DptiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResult.swift; sourceTree = "<group>"; };
 		9806713C250F214300C3EB72 /* DptiResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewModel.swift; sourceTree = "<group>"; };
+		980934DB2585151F00AC7E20 /* ArticleHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderReusableView.swift; sourceTree = "<group>"; };
+		980934E02585176100AC7E20 /* SettingMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainVC.swift; sourceTree = "<group>"; };
 		980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		980F197A253E01B7007B33B8 /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
 		980F19EC25407577007B33B8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		98138FD4256ADBEF0063F8BD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		9815369425843F060063E509 /* DptiStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiStartViewModel.swift; sourceTree = "<group>"; };
+		9815369725844DE00063E509 /* Block_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block_Realm.swift; sourceTree = "<group>"; };
+		9815369A25845E930063E509 /* BlockUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUser.swift; sourceTree = "<group>"; };
+		9815369D258462330063E509 /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
+		981536A1258483D30063E509 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
+		981536A5258485CD0063E509 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
+		981536A82584FFC50063E509 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		9819297A257E621900DACF15 /* Service2DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service2DetailViewController.swift; sourceTree = "<group>"; };
 		9819297D257F327100DACF15 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		98192982257F4AD200DACF15 /* ReportMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMainVC.swift; sourceTree = "<group>"; };
@@ -650,6 +668,22 @@
 			path = APIService;
 			sourceTree = "<group>";
 		};
+		980934DE2585174100AC7E20 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				980934DF2585174800AC7E20 /* Main */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		980934DF2585174800AC7E20 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				980934E02585176100AC7E20 /* SettingMainVC.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		980F1979253E0198007B33B8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +701,15 @@
 				98EAAC46256BCDB500B70CA8 /* HomeViewModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		981536A0258483BD0063E509 /* LoadingCell */ = {
+			isa = PBXGroup;
+			children = (
+				981536A1258483D30063E509 /* LoadingCollectionViewCell.xib */,
+				981536A5258485CD0063E509 /* LoadingTableViewCell.xib */,
+			);
+			path = LoadingCell;
 			sourceTree = "<group>";
 		};
 		98192980257F4AB800DACF15 /* Report */ = {
@@ -735,6 +778,7 @@
 			isa = PBXGroup;
 			children = (
 				9821D7F8257917F900A3B82F /* Report.swift */,
+				9815369725844DE00063E509 /* Block_Realm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -769,6 +813,7 @@
 			children = (
 				98AFDAD5253AA5D700B0D88F /* ArticleViewController.swift */,
 				98C0D57B25490A6700BE382D /* ArticleViewModel.swift */,
+				980934DB2585151F00AC7E20 /* ArticleHeaderReusableView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -922,6 +967,7 @@
 		9863224325178767003B0784 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				980934DE2585174100AC7E20 /* Settings */,
 				98EAAC77256C384A00B70CA8 /* Notice */,
 				98EAAC3C256B544B00B70CA8 /* Cell */,
 				98138FD3256ADBD70063F8BD /* Home */,
@@ -964,6 +1010,7 @@
 				9896E71F257A9F1600F838F0 /* DptiPopupManager.swift */,
 				98192991257FD03200DACF15 /* ReportExtension.swift */,
 				98192995257FE49700DACF15 /* KeyboardExtension.swift */,
+				9815369A25845E930063E509 /* BlockUser.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1236,8 +1283,11 @@
 		9896E722257AB5D600F838F0 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				981536A0258483BD0063E509 /* LoadingCell */,
 				9896E724257AB61D00F838F0 /* EmptyCollectionCell.swift */,
 				9896E725257AB61D00F838F0 /* EmptyCollectionCell.xib */,
+				9815369D258462330063E509 /* EmptyTableViewCell.xib */,
+				981536A82584FFC50063E509 /* EmptyTableViewCell.swift */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1372,6 +1422,7 @@
 			isa = PBXGroup;
 			children = (
 				98C6C35425716DC9005B8F40 /* DptiStartVC.swift */,
+				9815369425843F060063E509 /* DptiStartViewModel.swift */,
 			);
 			path = DptiStart;
 			sourceTree = "<group>";
@@ -1705,12 +1756,15 @@
 				98FA22522556EE7300331755 /* M_TS.json in Resources */,
 				98E2416B250F9F47003BE1A3 /* Results.json in Resources */,
 				98FA22472556EE7300331755 /* F_JI.json in Resources */,
+				9815369E258462330063E509 /* EmptyTableViewCell.xib in Resources */,
 				9896E727257AB61D00F838F0 /* EmptyCollectionCell.xib in Resources */,
 				9821BBCB255FEEAB00C47987 /* ManitoApplyBtn.xib in Resources */,
+				981536A6258485CD0063E509 /* LoadingTableViewCell.xib in Resources */,
 				98FA224E2556EE7300331755 /* M_JS.json in Resources */,
 				988377F22545640B00BFA746 /* Loading2.json in Resources */,
 				980196E2252B620100F829F6 /* SF-Pro-Display-Medium.otf in Resources */,
 				9884700C2511406700943861 /* Nunito-ExtraLight.ttf in Resources */,
+				981536A2258483D30063E509 /* LoadingCollectionViewCell.xib in Resources */,
 				98FA223F2556EE7300331755 /* F_PE.json in Resources */,
 				980196DE252B620100F829F6 /* SF-Pro-Display-Bold.otf in Resources */,
 				988160A5251F1E8E00556AEC /* GoogleService-Info.plist in Resources */,
@@ -1849,6 +1903,7 @@
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
 				98F8C847254C9CE400FDDEBF /* InformationViewModel.swift in Sources */,
+				9815369B25845E930063E509 /* BlockUser.swift in Sources */,
 				988377982541F4F500BFA746 /* CommentInputView.swift in Sources */,
 				986BD67C25693F7F007F49ED /* Hide_ShowNavigationController.swift in Sources */,
 				98EAAC3E256B546900B70CA8 /* ServiceBannerCell.swift in Sources */,
@@ -1856,6 +1911,7 @@
 				98D988EC255248CE002A8AC5 /* ProfileMainVC.swift in Sources */,
 				98AFDA532539CF2400B0D88F /* CommunityMain.swift in Sources */,
 				9800A1482533739A0090C058 /* IntroViewModel.swift in Sources */,
+				9815369825844DE00063E509 /* Block_Realm.swift in Sources */,
 				98A8B8042534D10B00351FD5 /* IntroMainViewController.swift in Sources */,
 				9881609C251EFA9700556AEC /* RegisterNicknameViewController.swift in Sources */,
 				9896E720257A9F1600F838F0 /* DptiPopupManager.swift in Sources */,
@@ -1881,9 +1937,11 @@
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				98D988F0255248FA002A8AC5 /* ProfileMainViewModel.swift in Sources */,
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
+				980934E12585176100AC7E20 /* SettingMainVC.swift in Sources */,
 				98C735D8255C5B8100252BF2 /* MainChatCell.swift in Sources */,
 				98D988E3255071AE002A8AC5 /* LottieLoadingView2.swift in Sources */,
 				984FA9092555B1CD00D4F506 /* ProfileDptiResultVC.swift in Sources */,
+				980934DC2585151F00AC7E20 /* ArticleHeaderReusableView.swift in Sources */,
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
 				98FA225C2557244A00331755 /* ApplicationDataAPI.swift in Sources */,
 				98A8B816253605CE00351FD5 /* SplashViewController.swift in Sources */,
@@ -1894,6 +1952,7 @@
 				98192992257FD03200DACF15 /* ReportExtension.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
 				9821BB62255EDBEC00C47987 /* ChatSideMenuNavigation.swift in Sources */,
+				9815369525843F060063E509 /* DptiStartViewModel.swift in Sources */,
 				987252EB2566BFE700746591 /* CreatePostModel.swift in Sources */,
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
 				98D265052575655A00BD51D5 /* TestCommunitySearchVC.swift in Sources */,
@@ -1909,6 +1968,7 @@
 				9896E726257AB61D00F838F0 /* EmptyCollectionCell.swift in Sources */,
 				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,
 				98D988D2254E8932002A8AC5 /* ImageUploadCell.swift in Sources */,
+				981536A92584FFC60063E509 /* EmptyTableViewCell.swift in Sources */,
 				98EAAC79256C386300B70CA8 /* NoticeVC.swift in Sources */,
 				9821BBCF255FEF0A00C47987 /* ManitoApplyBtn.swift in Sources */,
 				980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */,
@@ -2128,7 +2188,7 @@
 				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2152,7 +2212,7 @@
 				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamoRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

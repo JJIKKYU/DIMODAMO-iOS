@@ -17,3 +17,10 @@ class UserProfileData {
     var scrapCount: Int = 0
     var interests: [String] = ["","",""]
 }
+
+
+enum UserBlockState {
+    case none
+    case blockComplete
+    case blockError
+}

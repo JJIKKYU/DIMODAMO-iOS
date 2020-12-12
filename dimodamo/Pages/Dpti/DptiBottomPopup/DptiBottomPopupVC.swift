@@ -52,12 +52,12 @@ class DptiBottomPopupVC: UIViewController {
     }
     
     @IBOutlet weak var lottieContainerView: UIView!
-    @IBOutlet weak var alreadyDptiBtn: UIButton! {
-        didSet {
-            alreadyDptiBtn.layer.cornerRadius = 12
-            alreadyDptiBtn.layer.masksToBounds = true
-        }
-    }
+//    @IBOutlet weak var alreadyDptiBtn: UIButton! {
+//        didSet {
+//            alreadyDptiBtn.layer.cornerRadius = 12
+//            alreadyDptiBtn.layer.masksToBounds = true
+//        }
+//    }
     @IBOutlet weak var tryDptiBtn: UIButton! {
         didSet {
             tryDptiBtn.layer.cornerRadius = 12

@@ -108,6 +108,12 @@ class InformationVC: UIViewController {
     
 //MARK: - View Loading
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.presentTransparentNavigationBar()
+        self.viewModel.paginateData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -135,18 +141,23 @@ class InformationVC: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.sortingOrder
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.sortingLabel.text = Sort.getTextLabel(sort: value)
+            })
+            .disposed(by: disposeBag)
+        
         /*
          구글 광고 로드
          */
         // In this case, we instantiate the banner with desired ad size.
-        // 테스트용 : ca-app-pub-3940256099942544/2934735716
-        // 서비스용 : ca-app-pub-1168603177352985/3339402643
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-1168603177352985/3339402643"
+        bannerView.adUnitID = API.admobKey
         bannerView.rootViewController = self
         bannerView.load(GADRequest()) // 광고 로드
-        
+        bannerView.delegate = self
         
     }
     
@@ -214,14 +225,47 @@ class InformationVC: UIViewController {
 
 extension InformationVC: UITableViewDelegate, UITableViewDataSource {
     func settingTableView() {
+        // Empty Xib 설정, DPTI를 안했을 경우, 그리고 결과값이 없을 경우에 해당
+        if viewModel.informationPosts.count == 0 {
+            let nibName = UINib(nibName: "EmptyTableViewCell", bundle: nil)
+            tableView.register(nibName, forCellReuseIdentifier: "EmptyTableViewCell")
+        }
+        
+        let loadingNibName = UINib(nibName: "LoadingTableViewCell", bundle: nil)
+        tableView.register(loadingNibName, forCellReuseIdentifier: "LoadingTableViewCell")
+        
         tableView.rowHeight = 145
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.informationPosts.count
+        // 콘텐츠 준비 중이라는 셀을 띄울 것
+        if viewModel.informationPosts.count == 0 {
+            return 1
+        }
+        
+        if viewModel.informationPosts.count > 4 {
+            return viewModel.informationPosts.count
+        } else {
+            return viewModel.informationPosts.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 콘텐츠가 아직 없음!
+        if viewModel.informationPosts.count == 0 && viewModel.informationLoading.value == true {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            cell.settingImageSizeLabel(cellKinds: .layer, text: "아직 컨텐츠가 없어요ㅠㅜ")
+            tableView.rowHeight = 375
+            return cell
+        }
+        
+        if viewModel.informationPosts.count == 0 && viewModel.informationLoading.value == false {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath)
+            return cell
+        }
+        
+        // 컨텐츠가 있을 경우
+        tableView.rowHeight = 145
         let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
         
         let model = viewModel.informationPosts[indexPath.row]
@@ -263,6 +307,10 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 게시글이 없이 엠프티 페이지만 떠있을 경우에는 터치 반응 X
+        if viewModel.informationPosts.count == 0 {
+            return
+        }
         
         performSegue(withIdentifier: "DetailArticleVC", sender: indexPath.row)
     }
@@ -295,7 +343,7 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - Googld Ads
 
-extension InformationVC {
+extension InformationVC: GADBannerViewDelegate {
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.backgroundColor = UIColor.appColor(.white255)
@@ -316,5 +364,10 @@ extension InformationVC {
                                 multiplier: 1,
                                 constant: 0)
             ])
+    }
+    
+    
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("@@@@@@ 광고 에러 발생 : \(error.localizedDescription)")
     }
 }

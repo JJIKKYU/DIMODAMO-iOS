@@ -155,6 +155,9 @@ class ArticleDetailViewController: UIViewController {
         
         scrollView.delegate = self
         
+        
+
+        
         // 스크롤 크기 조절
         commentTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
@@ -965,6 +968,12 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
             return nil
         }
         
+        // 코멘트의 유저 ID가 세팅되지 않았으면 스와이프 작동하지 않음
+        // ex) 차단 및 신고당한 유저
+        if commentCellUserUId == "" {
+            return nil
+        }
+        
         var deleteAction: SwipeAction?
         // 내가 작성한 댓글일 경우에는 Delete셀만
         // TODO : Delete 로직 제작할 것
@@ -1173,8 +1182,9 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.isInteractionEnabledDPTI = viewModel.isAvailableInteraction()
         
         // 신고 누적 횟수 10회 이상일 경우 하트 버튼 숨김
+        // 셀에 유저 UID가 세팅되지 않았을 경우 숨김 -> 신고 또는 차단
         guard let reportCount = model.report else { return cell }
-        if reportCount >= 10 {
+        if reportCount >= 10 || cell.userId == "" {
             cell.hideHeartBtn()
         }
         

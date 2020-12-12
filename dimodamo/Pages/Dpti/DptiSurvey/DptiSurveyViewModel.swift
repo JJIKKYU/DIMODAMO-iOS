@@ -46,6 +46,8 @@ class DptiSurveyViewModel {
         
         
         // 파이어베이스에서 성별체크
+        // -> 할 필요가 없어졌음 -> 앞단계에서 성별 체크 진행
+        /*
         let user: String = Auth.auth().currentUser?.uid ?? ""
         let docRef = Firestore.firestore().collection("users").document(user)
         
@@ -59,10 +61,13 @@ class DptiSurveyViewModel {
                 print("documnet does not exist")
             }
         }
+        */
     }
     
     func nextCard(isNextCard : Bool) {
         if (currentNumber.value == 0) { return }
+        
+        print("성별을 받았었습니다 : \(self.gender)")
         
         let flag : Int = isNextCard == true ? 1 : -1
         

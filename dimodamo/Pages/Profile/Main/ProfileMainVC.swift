@@ -23,6 +23,7 @@ class ProfileMainVC: UIViewController {
     var isOneStepPaging = true
     
     @IBOutlet weak var damoTableView: UITableView!
+    @IBOutlet weak var damoTableViewHeightConstraint: NSLayoutConstraint!
     
     override func loadView() {
         super.loadView()
@@ -91,6 +92,18 @@ class ProfileMainVC: UIViewController {
         view.layoutIfNeeded()
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (keyPath == "contentSize"){
+            //            if let newvalue = change?[.newKey] {
+            if (change?[.newKey]) != nil {
+                let contentHeight: CGFloat = damoTableView.contentSize.height
+                DispatchQueue.main.async {
+                    self.damoTableViewHeightConstraint.constant = contentHeight
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,6 +112,7 @@ class ProfileMainVC: UIViewController {
         
         damoTableView.delegate = self
         damoTableView.dataSource = self
+        damoTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         dimoCollectionViewSetting()
         settingTableView()
@@ -246,7 +260,20 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
             return 1
         }
         
-        return viewModel.dimoPeopleArr.count
+        // 결과값이 없을 경우에는 1개만 리턴해서, 알림창 띄움
+        if viewModel.dimoPeopleArr.count == 0 {
+            return 1
+        }
+        
+        /*
+         4개보다 많다면 최대값 4개만큼,
+         4개보다 적다면 어레이의 개수만큼
+         */
+        if viewModel.dimoPeopleArr.count > 4 {
+            return 4
+        } else {
+            return viewModel.dimoPeopleArr.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -254,7 +281,14 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         // DPTI를 진행하지 않았을 경우
         if viewModel.interactionIsAbailable() == false {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath) as! EmptyCollectionCell
-            cell.textLabel.text = "디자인성향검사를 진행해 주세요"
+            cell.settingImageSizeLabel(cellKinds: .dpti, text: "디자인성향검사를 진행해 주세요")
+            return cell
+        }
+        
+        // 결과값이 없는 경우
+        if viewModel.dimoPeopleArr.count == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath) as! EmptyCollectionCell
+            cell.settingImageSizeLabel(cellKinds: .dimoPeople, text: "추천 디모인이 나타날 떄까지 조금 기다려주세요!")
             return cell
         }
         
@@ -283,13 +317,18 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
             return
         }
         
+        // 추천 디모인이 없을 경우
+        if viewModel.dimoPeopleArr.count == 0 {
+            return
+        }
+        
         let index = indexPath.row
         performSegue(withIdentifier: "MyProfileVC", sender: [DimoKinds.dimo.rawValue, index])
     }
     
     func dimoCollectionViewSetting() {
-        // Empty Xib 설정, DPTI를 안했을 경우에만
-        if viewModel.interactionIsAbailable() == false {
+        // Empty Xib 설정, DPTI를 안했을 경우, 그리고 결과값이 없을 경우에 해당
+        if viewModel.interactionIsAbailable() == false || viewModel.dimoPeopleArr.count == 0 {
             let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
             dimoCollectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
         }

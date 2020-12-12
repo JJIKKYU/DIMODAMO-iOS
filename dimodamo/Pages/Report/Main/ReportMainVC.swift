@@ -182,6 +182,7 @@ class ReportMainVC: UIViewController {
             self.view.addSubview(topView_user)
             self.tableView.tableHeaderView = topView_user
             
+            userNickname.text = nickname
             userProfile.image = profileImage
             
             // 신고 당하는 유저 UID

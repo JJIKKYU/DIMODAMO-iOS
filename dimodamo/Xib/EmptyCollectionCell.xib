@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uON-oM-cfa">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="156"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_icon_1" translatesAutoresizingMaskIntoConstraints="NO" id="PGF-jN-9qn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_icon_3" translatesAutoresizingMaskIntoConstraints="NO" id="PGF-jN-9qn">
                                 <rect key="frame" x="0.0" y="20" width="374" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="iza-UK-GDz"/>
@@ -28,7 +28,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="텍스트를 입력해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJW-oj-drx">
                                 <rect key="frame" x="0.0" y="118" width="374" height="16"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="13"/>
                                 <color key="textColor" name="GRAY - 210"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -37,10 +37,11 @@
                         <constraints>
                             <constraint firstItem="FJW-oj-drx" firstAttribute="trailing" secondItem="PGF-jN-9qn" secondAttribute="trailing" id="Q8d-j8-wj7"/>
                             <constraint firstAttribute="trailing" secondItem="PGF-jN-9qn" secondAttribute="trailing" id="UXX-Ry-8Kk"/>
+                            <constraint firstItem="PGF-jN-9qn" firstAttribute="centerX" secondItem="uON-oM-cfa" secondAttribute="centerX" id="XrD-ef-sas"/>
                             <constraint firstItem="FJW-oj-drx" firstAttribute="leading" secondItem="PGF-jN-9qn" secondAttribute="leading" id="d5g-EC-Ue6"/>
                             <constraint firstItem="PGF-jN-9qn" firstAttribute="leading" secondItem="uON-oM-cfa" secondAttribute="leading" id="df0-cK-QTY"/>
                             <constraint firstItem="FJW-oj-drx" firstAttribute="top" secondItem="PGF-jN-9qn" secondAttribute="bottom" constant="2" id="he8-xf-gPx"/>
-                            <constraint firstItem="PGF-jN-9qn" firstAttribute="top" secondItem="uON-oM-cfa" secondAttribute="top" constant="20" id="pAq-cr-qVp"/>
+                            <constraint firstItem="PGF-jN-9qn" firstAttribute="centerY" secondItem="uON-oM-cfa" secondAttribute="centerY" constant="-10" id="qza-jX-z7F"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -54,6 +55,7 @@
             </constraints>
             <connections>
                 <outlet property="emptyIconImageView" destination="PGF-jN-9qn" id="UJZ-BF-m6b"/>
+                <outlet property="emptyIconImageViewHeightConstraint" destination="iza-UK-GDz" id="WUl-rm-XqM"/>
                 <outlet property="mainView" destination="uON-oM-cfa" id="dme-EV-jD6"/>
                 <outlet property="textLabel" destination="FJW-oj-drx" id="T9r-IB-A9d"/>
             </connections>
@@ -61,7 +63,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="empty_icon_1" width="200" height="98"/>
+        <image name="empty_icon_3" width="324" height="159"/>
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

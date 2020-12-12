@@ -31,7 +31,7 @@ class ArticleViewController: UIViewController {
     // MARK: - Sorting Popup
     
     // 최신글, 스크랩순, 댓글순을 보여주는 라벨
-    @IBOutlet weak var sortingLabel: UILabel!
+    @IBOutlet weak var articleSortingLabel: UILabel!
     var dimView: UIView! {
         didSet {
             self.view.addSubview(dimView)
@@ -59,7 +59,6 @@ class ArticleViewController: UIViewController {
             sortingPopupView.heightAnchor.constraint(equalToConstant: 178).isActive = true
             sortingPopupView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
             sortingPopupView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
-            self.view.layoutIfNeeded()
             sortingPopupView.isHidden = true
         }
     }
@@ -86,28 +85,30 @@ class ArticleViewController: UIViewController {
         print("최신순으로 정렬합니다.")
         viewModel.sortingOrder.accept(.date)
         hideSortingPopupView()
-        self.viewModel.postDataSetting()
+        viewModel.postDataSetting()
     }
     
     @IBAction func pressedSortingScrap(_ sender: Any) {
         print("스크랩 순으로 정렬합니다.")
         viewModel.sortingOrder.accept(.scrap)
         hideSortingPopupView()
-        self.viewModel.postDataSetting()
+        viewModel.postDataSetting()
     }
     
     @IBAction func pressedSortingComment(_ sender: Any) {
         print("댓글 순으로 정렬합니다.")
         viewModel.sortingOrder.accept(.comment)
         hideSortingPopupView()
-        self.viewModel.postDataSetting()
+        viewModel.postDataSetting()
     }
     
 //MARK: - View Loading
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        navigationController?.hideTransparentNavigationBar()
+        
+        self.viewModel.postDataSetting()
+        navigationController?.presentTransparentNavigationBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -127,30 +128,25 @@ class ArticleViewController: UIViewController {
         viewModel.postsLoading
             .observeOn(MainScheduler.instance)
             .map { $0 == true }
-            .subscribe(onNext: { [weak self] _ in
-                self?.collectionView.reloadData()
-                self?.collectionView.layoutIfNeeded()
+            .subscribe(onNext: { [weak self] value in
+                if value == true {
+                    self?.collectionView.reloadData()
+                    self?.collectionView.layoutIfNeeded()
+                }
             })
             .disposed(by: disposeBag)
         
-        // 소팅 오더가 변경 된다면, 데이터를 다시 리로드 하도록 함수 호출
-        viewModel.sortingOrder
-            .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { _ in
-                print("호출")
-                
-            })
-            .disposed(by: disposeBag)
-        
+
         /*
          구글 광고 로드
          */
         // In this case, we instantiate the banner with desired ad size.
         // 테스트용 : ca-app-pub-3940256099942544/2934735716
         // 서비스용 : ca-app-pub-1168603177352985/3339402643
+        
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-1168603177352985/3339402643"
+        bannerView.adUnitID = API.admobKey
         bannerView.rootViewController = self
         bannerView.load(GADRequest()) // 광고 로드
     }
@@ -222,6 +218,15 @@ extension ArticleViewController {
 
 extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func articleCollectionViewSetting() {
+        // Empty Xib 설정, 아티클 포스트가 없을 경우 띄움
+        let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
+        collectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
+        
+        let loadingNibName = UINib(nibName: "LoadingCollectionViewCell", bundle: nil)
+        collectionView.register(loadingNibName, forCellWithReuseIdentifier: "LoadingCollectionViewCell")
+        
+        
+        
         let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width
         
         // width, height 설정
@@ -236,10 +241,35 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.articlePosts.count
+        let count = viewModel.articlePosts.count
+        
+        // 콘텐츠 준비 중이라는 셀을 띄울 것
+        if count == 0 {
+            return 1
+        }
+        
+        if count > 4 {
+            return 4
+        } else {
+            return count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if viewModel.postsLoading.value == false { return UICollectionViewCell() }
+        // 콘텐츠가 아직 없음!
+        if viewModel.articlePosts.count == 0 && viewModel.postsLoading.value == true {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath) as! EmptyCollectionCell
+            
+            cell.settingImageSizeLabel(cellKinds: .artboard, text: "곧 컨텐츠가 만들어질 예정이예요")
+            return cell
+        }
+        
+        if viewModel.articlePosts.count == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoadingCollectionViewCell", for: indexPath)
+            return cell
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
         
         let model = viewModel.articlePosts[indexPath.row]
@@ -281,6 +311,11 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 콘텐츠가 아직 없음!
+        if viewModel.articlePosts.count == 0 {
+            return
+        }
+        
         //        print("\(viewModel.articlePosts[indexPath.row].boardId)")
         performSegue(withIdentifier: "DetailArticleVC", sender: [PostKinds.article.rawValue, indexPath.row])
     }
@@ -292,7 +327,10 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ArticleHeader", for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ArticleHeader", for: indexPath) as! ArticleHeaderReusableView
+        
+        let label: String = Sort.getTextLabel(sort: self.viewModel.sortingOrder.value)
+        header.sortingLabel.text = "\(label)"
         
         return header
     }
