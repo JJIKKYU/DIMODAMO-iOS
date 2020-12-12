@@ -133,10 +133,15 @@ class MyProfileViewModel {
         // 내 프로필이면 애초에 신고가 불가능하므로
         if isMyProfile() == true { return }
         let myUID = Auth.auth().currentUser!.uid
+        
+        // 신고할때 당시에 닉네임과 타입을 저장
+        let type: String = userProfileData.value.dpti
+        let nickname: String = userProfileData.value.nickname
         // 신고할 때 신고 리스트에 추가
         db.collection("users").document("\(myUID)")
             .setData(
-                ["block_user_list" : ["\(targetUserUID)" : true]],
+                ["block_user_list" : ["\(targetUserUID)" : ["nickname" : "\(nickname)",
+                                                            "type" : "\(type)"]]],
                 merge: true
             )
         self.isBlockedUser.accept(.blockComplete)

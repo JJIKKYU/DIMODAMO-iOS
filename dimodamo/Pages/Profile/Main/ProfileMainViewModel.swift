@@ -43,7 +43,7 @@ class ProfileMainViewModel {
     /*
      차단한 유저
      */
-    var blockedUserMap: [String: Bool] = [:]
+    var blockedUserMap: [String: [String: String]] = [:]
     
     init() {
         let blockManager = BlockUserManager()
@@ -99,7 +99,7 @@ class ProfileMainViewModel {
                         
                         // 차단한 유저 체크
                         let isUserBlocked = BlockUserManager.blockedUserMap[document.documentID]
-                        if isUserBlocked == true {
+                        if (isUserBlocked != nil) == true {
                             print("#######차단한 유저는 패스합니다 : \(String(describing: isUserBlocked))")
                             continue
                         }
@@ -158,7 +158,7 @@ class ProfileMainViewModel {
                         let dimoPeopleData = DimoPeople()
                         
                         let isUserBlocked = BlockUserManager.blockedUserMap[document.documentID]
-                        if isUserBlocked == true {
+                        if (isUserBlocked != nil) == true {
                             print("#######차단한 유저는 패스합니다 : \(isUserBlocked)")
                             continue
                         }

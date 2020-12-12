@@ -14,7 +14,7 @@ class BlockUserManager {
     
     private let db = Firestore.firestore()
 
-    static var blockedUserMap: [String: Bool] = [:]
+    static var blockedUserMap: [String: [String: String]] = [:]
     
     
     func blockUserDataReset() {
@@ -29,7 +29,7 @@ class BlockUserManager {
          print("!!!! 받았습니다 \(value)")
      }
      */
-    func blockUserCheck(completed: @escaping ([String:Bool]) -> Void) {
+    func blockUserCheck(completed: @escaping ([String: [String: String]]) -> Void) {
         if BlockUserManager.blockedUserMap.count != 0 {
             return completed(BlockUserManager.blockedUserMap)
         }
@@ -39,7 +39,7 @@ class BlockUserManager {
         guard let userUid: String = Auth.auth().currentUser?.uid else {
             return
         }
-        var blockedUserMap: [String:Bool] = [:]
+        var blockedUserMap: [String: [String: String]] = [:]
         
         self.db.collection("users")
             .document("\(userUid)")
@@ -47,7 +47,7 @@ class BlockUserManager {
                 if let document = document, document.exists {
                     let data = document.data()
                     
-                    if let blockedUserData: [String:Bool] = data!["block_user_list"] as? [String:Bool] {
+                    if let blockedUserData: [String: [String: String]] = data!["block_user_list"] as? [String: [String: String]] {
                         print("##### 차단한 유저가 있습니다 \(blockedUserData)")
                         blockedUserMap = blockedUserData
                     }

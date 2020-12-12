@@ -32,7 +32,7 @@ class ArticleViewModel {
     /*
      블럭 유저 데이터
      */
-    var blockedUserMap: [String:Bool] = [:]
+    var blockedUserMap: [String: [String: String]] = [:]
     
     /*
      Sorting
@@ -78,7 +78,7 @@ class ArticleViewModel {
                         
                         // 차단한 유저 체크
                         let isUserBlocked = BlockUserManager.blockedUserMap[userId]
-                        if isUserBlocked == true {
+                        if (isUserBlocked != nil) == true {
                             print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
                             
                             // 로딩 유무 확인
