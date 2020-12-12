@@ -278,7 +278,9 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
 //        if viewModel.postsLoading.value == false { return UICollectionViewCell() }
         // 콘텐츠가 아직 없음!
         if viewModel.articlePosts.count == 0 && viewModel.postsLoading.value == true {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath) as! EmptyCollectionCell
+            
+            cell.settingImageSizeLabel(cellKinds: .artboard, text: "곧 컨텐츠가 만들어질 예정이예요")
             return cell
         }
         

@@ -281,14 +281,14 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         // DPTI를 진행하지 않았을 경우
         if viewModel.interactionIsAbailable() == false {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath) as! EmptyCollectionCell
-            cell.textLabel.text = "디자인성향검사를 진행해 주세요"
+            cell.settingImageSizeLabel(cellKinds: .dpti, text: "디자인성향검사를 진행해 주세요")
             return cell
         }
         
         // 결과값이 없는 경우
         if viewModel.dimoPeopleArr.count == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath) as! EmptyCollectionCell
-            cell.textLabel.text = "추천 디모인이 나타날 떄까지 조금 기다려주세요!"
+            cell.settingImageSizeLabel(cellKinds: .dimoPeople, text: "추천 디모인이 나타날 떄까지 조금 기다려주세요!")
             return cell
         }
         
@@ -314,6 +314,11 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         // DPTI를 진행하지 않았을 경우
         if viewModel.interactionIsAbailable() == false {
             DptiPopupManager.dptiPopup(popupScreen: .profile, vc: self)
+            return
+        }
+        
+        // 추천 디모인이 없을 경우
+        if viewModel.dimoPeopleArr.count == 0 {
             return
         }
         

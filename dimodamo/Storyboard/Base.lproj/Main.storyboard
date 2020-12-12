@@ -243,6 +243,29 @@
                                                             <action selector="pressedArtboardArticle:" destination="U1X-jK-vjF" eventType="touchUpInside" id="RRY-nS-WYt"/>
                                                         </connections>
                                                     </button>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nkq-lV-SrU" userLabel="EmptyCardView">
+                                                        <rect key="frame" x="20" y="106" width="374" height="437"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_icon_3" translatesAutoresizingMaskIntoConstraints="NO" id="31T-NO-T3T">
+                                                                <rect key="frame" x="25" y="119" width="324" height="159"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="곧 컨텐츠가 만들어질 예정이에요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdC-fw-cjH">
+                                                                <rect key="frame" x="25" y="306" width="324" height="20.5"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                <color key="textColor" name="GRAY - 210"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" name="WHITE"/>
+                                                        <constraints>
+                                                            <constraint firstItem="31T-NO-T3T" firstAttribute="top" secondItem="Nkq-lV-SrU" secondAttribute="top" constant="119" id="1bp-dC-32S"/>
+                                                            <constraint firstAttribute="trailing" secondItem="31T-NO-T3T" secondAttribute="trailing" constant="25" id="84Y-vh-rJt"/>
+                                                            <constraint firstItem="31T-NO-T3T" firstAttribute="leading" secondItem="Nkq-lV-SrU" secondAttribute="leading" constant="25" id="H8q-3F-dyX"/>
+                                                            <constraint firstItem="AdC-fw-cjH" firstAttribute="top" secondItem="31T-NO-T3T" secondAttribute="bottom" constant="28" id="NTm-r0-ziZ"/>
+                                                            <constraint firstItem="AdC-fw-cjH" firstAttribute="leading" secondItem="31T-NO-T3T" secondAttribute="leading" id="Xxt-Dz-29U"/>
+                                                            <constraint firstItem="AdC-fw-cjH" firstAttribute="trailing" secondItem="31T-NO-T3T" secondAttribute="trailing" id="vDr-bg-RL9"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <constraints>
@@ -250,6 +273,8 @@
                                                     <constraint firstItem="dAq-2C-hNZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ig7-Sa-q3r" secondAttribute="trailing" constant="20" id="2y8-ME-VQ0"/>
                                                     <constraint firstItem="jN6-Hb-sr2" firstAttribute="bottom" secondItem="KCO-7g-Nd9" secondAttribute="bottom" id="5iY-L1-cH1"/>
                                                     <constraint firstItem="KCO-7g-Nd9" firstAttribute="leading" secondItem="bWM-vu-ua4" secondAttribute="leading" constant="20" id="7PP-Ox-MfU"/>
+                                                    <constraint firstItem="Nkq-lV-SrU" firstAttribute="trailing" secondItem="KCO-7g-Nd9" secondAttribute="trailing" id="8Tm-kn-2aW"/>
+                                                    <constraint firstItem="Nkq-lV-SrU" firstAttribute="leading" secondItem="KCO-7g-Nd9" secondAttribute="leading" id="D23-53-RMN"/>
                                                     <constraint firstAttribute="trailing" secondItem="KCO-7g-Nd9" secondAttribute="trailing" constant="20" id="DZU-Gz-qlb"/>
                                                     <constraint firstItem="ig7-Sa-q3r" firstAttribute="top" secondItem="bWM-vu-ua4" secondAttribute="top" constant="32" id="Fqr-ro-zfd"/>
                                                     <constraint firstItem="SjU-4F-1r2" firstAttribute="top" secondItem="KCO-7g-Nd9" secondAttribute="top" id="Ixl-dB-s3E"/>
@@ -258,8 +283,10 @@
                                                     <constraint firstAttribute="trailing" secondItem="dAq-2C-hNZ" secondAttribute="trailing" constant="20" id="Kga-Pq-453"/>
                                                     <constraint firstItem="jN6-Hb-sr2" firstAttribute="trailing" secondItem="KCO-7g-Nd9" secondAttribute="trailing" id="VTY-yl-Kho"/>
                                                     <constraint firstItem="ig7-Sa-q3r" firstAttribute="leading" secondItem="bWM-vu-ua4" secondAttribute="leading" constant="24" id="cdt-Vu-hL1"/>
+                                                    <constraint firstItem="Nkq-lV-SrU" firstAttribute="bottom" secondItem="KCO-7g-Nd9" secondAttribute="bottom" id="dXj-AJ-hCz"/>
                                                     <constraint firstItem="SjU-4F-1r2" firstAttribute="leading" secondItem="KCO-7g-Nd9" secondAttribute="leading" id="mrS-dS-wDb"/>
                                                     <constraint firstItem="bzM-hx-Qfi" firstAttribute="leading" secondItem="ig7-Sa-q3r" secondAttribute="leading" id="nsO-k2-fzT"/>
+                                                    <constraint firstItem="Nkq-lV-SrU" firstAttribute="top" secondItem="KCO-7g-Nd9" secondAttribute="top" id="oX8-n3-RFm"/>
                                                     <constraint firstAttribute="height" constant="580" id="ty2-Ud-TuF"/>
                                                     <constraint firstItem="KCO-7g-Nd9" firstAttribute="top" secondItem="bzM-hx-Qfi" secondAttribute="bottom" constant="24" id="uMJ-qs-uDw"/>
                                                     <constraint firstItem="dAq-2C-hNZ" firstAttribute="top" secondItem="bWM-vu-ua4" secondAttribute="top" constant="36" id="urd-Pb-sX4"/>
@@ -345,6 +372,7 @@
                         <outlet property="artboardCardView" destination="KCO-7g-Nd9" id="uJI-8O-c8V"/>
                         <outlet property="artboardCardViewShadow" destination="SjU-4F-1r2" id="ngw-Ry-WJs"/>
                         <outlet property="artboardCommentCount" destination="pFl-4w-LNf" id="erZ-iH-txC"/>
+                        <outlet property="artboardEmptyCardView" destination="Nkq-lV-SrU" id="WAw-4e-Nx6"/>
                         <outlet property="artboardImage" destination="0YN-Ys-I4X" id="0cH-sr-hbR"/>
                         <outlet property="artboardNickname" destination="Cdt-Ig-ZlI" id="dpn-7E-1we"/>
                         <outlet property="artboardProfile" destination="krY-ot-DEU" id="9mE-Gb-2xz"/>
@@ -536,6 +564,7 @@
         <image name="community" width="20" height="20"/>
         <image name="communitySelected" width="20" height="20"/>
         <image name="dimodamoOrange" width="122" height="16"/>
+        <image name="empty_icon_3" width="324" height="159"/>
         <image name="home" width="20" height="20"/>
         <image name="homeSelected" width="20" height="20"/>
         <image name="home_banner_test" width="374" height="88"/>

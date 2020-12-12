@@ -244,10 +244,8 @@ class CommunityMainViewController: UIViewController {
 extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegate {
     func settingTableView() {
         // Empty Xib 설정, DPTI를 안했을 경우, 그리고 결과값이 없을 경우에 해당
-        if viewModel.informationPosts.count == 0 {
-            let nibName = UINib(nibName: "EmptyTableViewCell", bundle: nil)
-            tableView.register(nibName, forCellReuseIdentifier: "EmptyTableViewCell")
-        }
+        let nibName = UINib(nibName: "EmptyTableViewCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "EmptyTableViewCell")
         
         let loadingNibName = UINib(nibName: "LoadingTableViewCell", bundle: nil)
         tableView.register(loadingNibName, forCellReuseIdentifier: "LoadingTableViewCell")
@@ -272,7 +270,8 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 콘텐츠가 아직 없음!
         if viewModel.informationPosts.count == 0 && viewModel.informationLoading.value == true {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            cell.settingImageSizeLabel(cellKinds: .layer, text: "아직 컨텐츠가 없어요ㅠㅜ")
             return cell
         }
         
@@ -363,7 +362,8 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // 콘텐츠가 아직 없음!
         if viewModel.articlePosts.count == 0 && viewModel.articleLoading.value == true {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath) as! EmptyCollectionCell
+            cell.settingImageSizeLabel(cellKinds: .artboard, text: "곧 컨텐츠가 만들어질 예정이예요")
             return cell
         }
         

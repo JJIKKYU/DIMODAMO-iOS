@@ -84,8 +84,8 @@ class APIService {
 
 class API {
     // 심사 제출할 때는 바꿀 것
-    static let admobKey = "ca-app-pub-3280524479196355/7003233339"
+    static let admobKey = API.admobKey_test
     
-    static let admobKey_banner = "ca-app-pub-3280524479196355/7003233339"
+    static let admobKey_banner = "ca-app-pub-7521278168972722/4086329917"
     static let admobKey_test = "ca-app-pub-3940256099942544/2934735716"
 }

@@ -65,7 +65,14 @@ class HomeVC: UIViewController {
     @IBOutlet weak var artboardNickname: UILabel!
     @IBOutlet weak var artboardScrapCount: UILabel!
     @IBOutlet weak var artboardCommentCount: UILabel!
-
+    @IBOutlet weak var artboardEmptyCardView: UIView! {
+        didSet {
+            artboardEmptyCardView.layer.cornerRadius = 24
+            artboardEmptyCardView.layer.masksToBounds = true
+            artboardEmptyCardView.isHidden = true
+        }
+    }
+    
     
     
     
@@ -154,7 +161,9 @@ class HomeVC: UIViewController {
                 
                 if flag == true {
                     if self!.viewModel.articlePost == nil {
-                        self?.artboardTitle.text = "로딩 반영은 되었으나, 아직 작업안함"
+                        self?.artboardEmptyCardView.isHidden = false
+                    } else {
+                        self?.artboardEmptyCardView.isHidden = true
                     }
                     
                     guard let model = self?.viewModel.articlePost else {

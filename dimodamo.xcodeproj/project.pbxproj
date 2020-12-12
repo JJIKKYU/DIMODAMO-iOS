@@ -35,6 +35,7 @@
 		9815369E258462330063E509 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9815369D258462330063E509 /* EmptyTableViewCell.xib */; };
 		981536A2258483D30063E509 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981536A1258483D30063E509 /* LoadingCollectionViewCell.xib */; };
 		981536A6258485CD0063E509 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981536A5258485CD0063E509 /* LoadingTableViewCell.xib */; };
+		981536A92584FFC60063E509 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981536A82584FFC50063E509 /* EmptyTableViewCell.swift */; };
 		9819297B257E621900DACF15 /* Service2DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819297A257E621900DACF15 /* Service2DetailViewController.swift */; };
 		9819297E257F327100DACF15 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9819297D257F327100DACF15 /* Report.storyboard */; };
 		98192983257F4AD200DACF15 /* ReportMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192982257F4AD200DACF15 /* ReportMainVC.swift */; };
@@ -280,6 +281,7 @@
 		9815369D258462330063E509 /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		981536A1258483D30063E509 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
 		981536A5258485CD0063E509 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
+		981536A82584FFC50063E509 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		9819297A257E621900DACF15 /* Service2DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service2DetailViewController.swift; sourceTree = "<group>"; };
 		9819297D257F327100DACF15 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		98192982257F4AD200DACF15 /* ReportMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMainVC.swift; sourceTree = "<group>"; };
@@ -1263,6 +1265,7 @@
 				9896E724257AB61D00F838F0 /* EmptyCollectionCell.swift */,
 				9896E725257AB61D00F838F0 /* EmptyCollectionCell.xib */,
 				9815369D258462330063E509 /* EmptyTableViewCell.xib */,
+				981536A82584FFC50063E509 /* EmptyTableViewCell.swift */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1941,6 +1944,7 @@
 				9896E726257AB61D00F838F0 /* EmptyCollectionCell.swift in Sources */,
 				983C7E99253C3F390099B07F /* BoardModel.swift in Sources */,
 				98D988D2254E8932002A8AC5 /* ImageUploadCell.swift in Sources */,
+				981536A92584FFC60063E509 /* EmptyTableViewCell.swift in Sources */,
 				98EAAC79256C386300B70CA8 /* NoticeVC.swift in Sources */,
 				9821BBCF255FEF0A00C47987 /* ManitoApplyBtn.swift in Sources */,
 				980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */,
