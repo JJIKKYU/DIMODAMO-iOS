@@ -1179,8 +1179,9 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.isInteractionEnabledDPTI = viewModel.isAvailableInteraction()
         
         // 신고 누적 횟수 10회 이상일 경우 하트 버튼 숨김
+        // 셀에 유저 UID가 세팅되지 않았을 경우 숨김 -> 신고 또는 차단
         guard let reportCount = model.report else { return cell }
-        if reportCount >= 10 {
+        if reportCount >= 10 || cell.userId == "" {
             cell.hideHeartBtn()
         }
         

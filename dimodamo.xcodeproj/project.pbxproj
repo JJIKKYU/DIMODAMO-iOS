@@ -31,6 +31,8 @@
 		98138FD5256ADBEF0063F8BD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98138FD4256ADBEF0063F8BD /* HomeVC.swift */; };
 		9815369525843F060063E509 /* DptiStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9815369425843F060063E509 /* DptiStartViewModel.swift */; };
 		9815369825844DE00063E509 /* Block_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9815369725844DE00063E509 /* Block_Realm.swift */; };
+		9815369B25845E930063E509 /* BlockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9815369A25845E930063E509 /* BlockUser.swift */; };
+		9815369E258462330063E509 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9815369D258462330063E509 /* EmptyTableViewCell.xib */; };
 		9819297B257E621900DACF15 /* Service2DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819297A257E621900DACF15 /* Service2DetailViewController.swift */; };
 		9819297E257F327100DACF15 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9819297D257F327100DACF15 /* Report.storyboard */; };
 		98192983257F4AD200DACF15 /* ReportMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192982257F4AD200DACF15 /* ReportMainVC.swift */; };
@@ -272,6 +274,8 @@
 		98138FD4256ADBEF0063F8BD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		9815369425843F060063E509 /* DptiStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiStartViewModel.swift; sourceTree = "<group>"; };
 		9815369725844DE00063E509 /* Block_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block_Realm.swift; sourceTree = "<group>"; };
+		9815369A25845E930063E509 /* BlockUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUser.swift; sourceTree = "<group>"; };
+		9815369D258462330063E509 /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		9819297A257E621900DACF15 /* Service2DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service2DetailViewController.swift; sourceTree = "<group>"; };
 		9819297D257F327100DACF15 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		98192982257F4AD200DACF15 /* ReportMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMainVC.swift; sourceTree = "<group>"; };
@@ -969,6 +973,7 @@
 				9896E71F257A9F1600F838F0 /* DptiPopupManager.swift */,
 				98192991257FD03200DACF15 /* ReportExtension.swift */,
 				98192995257FE49700DACF15 /* KeyboardExtension.swift */,
+				9815369A25845E930063E509 /* BlockUser.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1243,6 +1248,7 @@
 			children = (
 				9896E724257AB61D00F838F0 /* EmptyCollectionCell.swift */,
 				9896E725257AB61D00F838F0 /* EmptyCollectionCell.xib */,
+				9815369D258462330063E509 /* EmptyTableViewCell.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -1711,6 +1717,7 @@
 				98FA22522556EE7300331755 /* M_TS.json in Resources */,
 				98E2416B250F9F47003BE1A3 /* Results.json in Resources */,
 				98FA22472556EE7300331755 /* F_JI.json in Resources */,
+				9815369E258462330063E509 /* EmptyTableViewCell.xib in Resources */,
 				9896E727257AB61D00F838F0 /* EmptyCollectionCell.xib in Resources */,
 				9821BBCB255FEEAB00C47987 /* ManitoApplyBtn.xib in Resources */,
 				98FA224E2556EE7300331755 /* M_JS.json in Resources */,
@@ -1855,6 +1862,7 @@
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,
 				9881612F251F8CA000556AEC /* LoginViewModel.swift in Sources */,
 				98F8C847254C9CE400FDDEBF /* InformationViewModel.swift in Sources */,
+				9815369B25845E930063E509 /* BlockUser.swift in Sources */,
 				988377982541F4F500BFA746 /* CommentInputView.swift in Sources */,
 				986BD67C25693F7F007F49ED /* Hide_ShowNavigationController.swift in Sources */,
 				98EAAC3E256B546900B70CA8 /* ServiceBannerCell.swift in Sources */,

@@ -18,6 +18,16 @@ class CommunityMainViewModel {
     private let storage = Storage.storage().reference()
     private let db = Firestore.firestore()
     
+    /*
+     로딩할 아티클, 인포메이션 포스트 개수
+     */
+    let loadMaxCount: Int = 4
+    
+    /*
+     블럭 유저 데이터
+     */
+    var blockedUserMap: [String:Bool] = [:]
+    
     var articlePosts: [Board] = []
     var informationPosts: [Board] = []
     
@@ -25,10 +35,11 @@ class CommunityMainViewModel {
     let informationLoading = BehaviorRelay<Bool>(value: false)
     
     init() {
-        self.loadArticlePost()
-        self.loadInformationPost()
+        let blockManager = BlockUserManager()
+        blockManager.blockUserCheck { value in
+            self.blockedUserMap = value
+        }
     }
-    
     
     func loadArticlePost() {
         // 리로드 할 수도 있으니 비움
@@ -41,11 +52,19 @@ class CommunityMainViewModel {
             .order(by: "is_deleted")
             .whereField("is_deleted", isNotEqualTo: true)
             .order(by: "bundle_id", descending: true)
+            .limit(to: 6)
             .getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("아티클 포스트를 가져오는데 오류가 생겼습니다. \(err)")
             } else {
                 for (index, document) in querySnapshot!.documents.enumerated() {
+                    guard let userId: String = document.data()["user_id"] as? String else {
+                        return
+                    }
+                    if self.blockedUserMap[userId] ?? false{
+                        print("차단한 유저의 게시글입니다")
+                        continue
+                    }
 
                     let boardId = (document.data()["board_id"] as? String) ?? ""
                     let boardTitle = (document.data()["board_title"] as? String) ?? ""
@@ -109,6 +128,7 @@ class CommunityMainViewModel {
             .order(by: "is_deleted")
             .whereField("is_deleted", isNotEqualTo: true)
             .order(by: "bundle_id", descending: true)
+            .limit(to: 6)
             .getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("인포메이션 포스트를 가져오는데 오류가 생겼습니다. \(err)")

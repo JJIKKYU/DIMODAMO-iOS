@@ -58,6 +58,9 @@ class CommunityMainViewController: UIViewController {
         }
         navigationController?.hideBottomTabbarLine()
         view.layoutIfNeeded()
+        
+        self.viewModel.loadArticlePost()
+        self.viewModel.loadInformationPost()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -227,14 +230,37 @@ class CommunityMainViewController: UIViewController {
 
 extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegate {
     func settingTableView() {
+        // Empty Xib 설정, DPTI를 안했을 경우, 그리고 결과값이 없을 경우에 해당
+        if viewModel.informationPosts.count == 0 {
+            let nibName = UINib(nibName: "EmptyTableViewCell", bundle: nil)
+            tableView.register(nibName, forCellReuseIdentifier: "EmptyTableViewCell")
+        }
+        
         tableView.rowHeight = 145
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.informationPosts.count
+        // 콘텐츠 준비 중이라는 셀을 띄울 것
+        if viewModel.informationPosts.count == 0 {
+            return 1
+        }
+        
+        if viewModel.informationPosts.count > 4 {
+            return 4
+        } else {
+            return viewModel.informationPosts.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 콘텐츠가 아직 없음!
+        if viewModel.informationPosts.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath)
+            return cell
+        }
+        
+        
+        // 콘텐츠가 정상적으로 있다면
         let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
         
         let model = viewModel.informationPosts[indexPath.row]
@@ -293,11 +319,27 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // firestore에 있는 article의 카운트만큼 가져옴
-        return viewModel.articlePosts.count
+        let count = viewModel.articlePosts.count
+        
+        // 콘텐츠 준비 중이라는 셀을 띄울 것
+        if count == 0 {
+            return 1
+        }
+        
+        if count > 4 {
+            return 4
+        } else {
+            return count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // 콘텐츠가 아직 없음!
+        if viewModel.informationPosts.count == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath)
+            return cell
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Article", for: indexPath) as! ArticleCell
         
         let model = viewModel.articlePosts[indexPath.row]
@@ -362,6 +404,13 @@ extension CommunityMainViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func articleCollectionViewSetting() {
+        // Empty Xib 설정, 아티클 포스트가 없을 경우 띄움
+        if viewModel.articlePosts.count == 0 {
+            let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
+            articleCollectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
+        }
+        
+        
         let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width
         
         // width, height 설정
