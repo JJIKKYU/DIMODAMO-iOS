@@ -33,6 +33,8 @@
 		9815369825844DE00063E509 /* Block_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9815369725844DE00063E509 /* Block_Realm.swift */; };
 		9815369B25845E930063E509 /* BlockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9815369A25845E930063E509 /* BlockUser.swift */; };
 		9815369E258462330063E509 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9815369D258462330063E509 /* EmptyTableViewCell.xib */; };
+		981536A2258483D30063E509 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981536A1258483D30063E509 /* LoadingCollectionViewCell.xib */; };
+		981536A6258485CD0063E509 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981536A5258485CD0063E509 /* LoadingTableViewCell.xib */; };
 		9819297B257E621900DACF15 /* Service2DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819297A257E621900DACF15 /* Service2DetailViewController.swift */; };
 		9819297E257F327100DACF15 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9819297D257F327100DACF15 /* Report.storyboard */; };
 		98192983257F4AD200DACF15 /* ReportMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192982257F4AD200DACF15 /* ReportMainVC.swift */; };
@@ -276,6 +278,8 @@
 		9815369725844DE00063E509 /* Block_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block_Realm.swift; sourceTree = "<group>"; };
 		9815369A25845E930063E509 /* BlockUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUser.swift; sourceTree = "<group>"; };
 		9815369D258462330063E509 /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
+		981536A1258483D30063E509 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
+		981536A5258485CD0063E509 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		9819297A257E621900DACF15 /* Service2DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service2DetailViewController.swift; sourceTree = "<group>"; };
 		9819297D257F327100DACF15 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		98192982257F4AD200DACF15 /* ReportMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMainVC.swift; sourceTree = "<group>"; };
@@ -675,6 +679,15 @@
 				98EAAC46256BCDB500B70CA8 /* HomeViewModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		981536A0258483BD0063E509 /* LoadingCell */ = {
+			isa = PBXGroup;
+			children = (
+				981536A1258483D30063E509 /* LoadingCollectionViewCell.xib */,
+				981536A5258485CD0063E509 /* LoadingTableViewCell.xib */,
+			);
+			path = LoadingCell;
 			sourceTree = "<group>";
 		};
 		98192980257F4AB800DACF15 /* Report */ = {
@@ -1246,6 +1259,7 @@
 		9896E722257AB5D600F838F0 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				981536A0258483BD0063E509 /* LoadingCell */,
 				9896E724257AB61D00F838F0 /* EmptyCollectionCell.swift */,
 				9896E725257AB61D00F838F0 /* EmptyCollectionCell.xib */,
 				9815369D258462330063E509 /* EmptyTableViewCell.xib */,
@@ -1720,10 +1734,12 @@
 				9815369E258462330063E509 /* EmptyTableViewCell.xib in Resources */,
 				9896E727257AB61D00F838F0 /* EmptyCollectionCell.xib in Resources */,
 				9821BBCB255FEEAB00C47987 /* ManitoApplyBtn.xib in Resources */,
+				981536A6258485CD0063E509 /* LoadingTableViewCell.xib in Resources */,
 				98FA224E2556EE7300331755 /* M_JS.json in Resources */,
 				988377F22545640B00BFA746 /* Loading2.json in Resources */,
 				980196E2252B620100F829F6 /* SF-Pro-Display-Medium.otf in Resources */,
 				9884700C2511406700943861 /* Nunito-ExtraLight.ttf in Resources */,
+				981536A2258483D30063E509 /* LoadingCollectionViewCell.xib in Resources */,
 				98FA223F2556EE7300331755 /* F_PE.json in Resources */,
 				980196DE252B620100F829F6 /* SF-Pro-Display-Bold.otf in Resources */,
 				988160A5251F1E8E00556AEC /* GoogleService-Info.plist in Resources */,

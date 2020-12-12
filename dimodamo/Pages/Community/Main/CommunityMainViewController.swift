@@ -251,6 +251,10 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
             tableView.register(nibName, forCellReuseIdentifier: "EmptyTableViewCell")
         }
         
+        let loadingNibName = UINib(nibName: "LoadingTableViewCell", bundle: nil)
+        tableView.register(loadingNibName, forCellReuseIdentifier: "LoadingTableViewCell")
+        
+        
         tableView.rowHeight = 145
     }
     
@@ -269,8 +273,13 @@ extension CommunityMainViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 콘텐츠가 아직 없음!
-        if viewModel.informationPosts.count == 0 {
+        if viewModel.informationPosts.count == 0 && viewModel.informationLoading.value == true {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath)
+            return cell
+        }
+        
+        if viewModel.informationPosts.count == 0 && viewModel.informationLoading.value == false {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath)
             return cell
         }
         

@@ -80,6 +80,12 @@ class ArticleViewModel {
                         let isUserBlocked = self.blockedUserMap[userId]
                         if isUserBlocked == true {
                             print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
+                            
+                            // 로딩 유무 확인
+                            if querySnapshot?.documents.count == (index + 1) {
+                                postsLoading.accept(true)
+                            }
+                            
                             continue
                         }
                         

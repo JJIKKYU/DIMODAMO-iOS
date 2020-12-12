@@ -59,7 +59,6 @@ class ArticleViewController: UIViewController {
             sortingPopupView.heightAnchor.constraint(equalToConstant: 178).isActive = true
             sortingPopupView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
             sortingPopupView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
-            self.view.layoutIfNeeded()
             sortingPopupView.isHidden = true
         }
     }
@@ -86,18 +85,21 @@ class ArticleViewController: UIViewController {
         print("최신순으로 정렬합니다.")
         viewModel.sortingOrder.accept(.date)
         hideSortingPopupView()
+        viewModel.postDataSetting()
     }
     
     @IBAction func pressedSortingScrap(_ sender: Any) {
         print("스크랩 순으로 정렬합니다.")
         viewModel.sortingOrder.accept(.scrap)
         hideSortingPopupView()
+        viewModel.postDataSetting()
     }
     
     @IBAction func pressedSortingComment(_ sender: Any) {
         print("댓글 순으로 정렬합니다.")
         viewModel.sortingOrder.accept(.comment)
         hideSortingPopupView()
+        viewModel.postDataSetting()
     }
     
 //MARK: - View Loading
@@ -126,17 +128,18 @@ class ArticleViewController: UIViewController {
         viewModel.postsLoading
             .observeOn(MainScheduler.instance)
             .map { $0 == true }
-            .subscribe(onNext: { [weak self] _ in
-                self?.collectionView.reloadData()
-                self?.collectionView.layoutIfNeeded()
+            .subscribe(onNext: { [weak self] value in
+                if value == true {
+                    self?.collectionView.reloadData()
+                    self?.collectionView.layoutIfNeeded()
+                }
             })
             .disposed(by: disposeBag)
         
         // 소팅 오더가 변경 된다면, 데이터를 다시 리로드 하도록 함수 호출
         viewModel.sortingOrder
             .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] value in
-                self?.viewModel.postDataSetting()
+            .subscribe(onNext: { value in
                 switch value {
                 case .comment:
 //                    self?.articleSortingLabel.text = "댓글순"
@@ -235,10 +238,13 @@ extension ArticleViewController {
 extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func articleCollectionViewSetting() {
         // Empty Xib 설정, 아티클 포스트가 없을 경우 띄움
-        if viewModel.articlePosts.count == 0 {
-            let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
-            collectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
-        }
+        let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
+        collectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
+        
+        let loadingNibName = UINib(nibName: "LoadingCell", bundle: nil)
+        collectionView.register(loadingNibName, forCellWithReuseIdentifier: "LoadingCollectionViewCell")
+        
+        
         
         let cellAspectHeight: CGFloat = (437 / 414) * UIScreen.main.bounds.width
         
@@ -269,9 +275,15 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if viewModel.postsLoading.value == false { return UICollectionViewCell() }
         // 콘텐츠가 아직 없음!
-        if viewModel.articlePosts.count == 0 {
+        if viewModel.articlePosts.count == 0 && viewModel.postsLoading.value == true {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionCell", for: indexPath)
+            return cell
+        }
+        
+        if viewModel.articlePosts.count == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoadingCollectionViewCell", for: indexPath)
             return cell
         }
         
