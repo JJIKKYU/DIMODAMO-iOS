@@ -73,7 +73,7 @@ class EmptyTableViewCell: UITableViewCell {
             
         case .blockUser:
             
-            tableViewEmptyImageViewHeightConstraint.constant = 236
+            tableViewEmptyImageViewHeightConstraint.constant = 161
             self.tableViewEmptyImageView.image = UIImage(named: "empty_icon_1")
             
             /*

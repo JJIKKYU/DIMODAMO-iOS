@@ -87,6 +87,7 @@ class SettingMainVC: UIViewController {
                 self.present(mainVC, animated: true, completion: nil)
                 
             }
+            action.setValue(UIColor.appColor(.green2), forKey: "titleTextColor")
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
         }

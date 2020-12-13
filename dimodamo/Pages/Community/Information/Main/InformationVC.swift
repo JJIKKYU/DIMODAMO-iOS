@@ -26,7 +26,7 @@ class InformationVC: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     
     // 구글 광고
-    var bannerView: GADBannerView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     let viewModel = InformationViewModel()
     var disposeBag = DisposeBag()
@@ -114,6 +114,20 @@ class InformationVC: UIViewController {
         self.viewModel.paginateData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.loadBannerAd()// 광고 로드
+    }
+    
+    override func viewWillTransition(to size: CGSize,
+                                     with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to:size, with:coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.loadBannerAd()
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -152,11 +166,8 @@ class InformationVC: UIViewController {
          구글 광고 로드
          */
         // In this case, we instantiate the banner with desired ad size.
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        addBannerViewToView(bannerView)
         bannerView.adUnitID = API.admobKey
         bannerView.rootViewController = self
-        bannerView.load(GADRequest()) // 광고 로드
         bannerView.delegate = self
         
     }
@@ -365,6 +376,29 @@ extension InformationVC: GADBannerViewDelegate {
                                 constant: 0)
             ])
     }
+    
+    func loadBannerAd() {
+            // Step 2 - Determine the view width to use for the ad width.
+            let frame = { () -> CGRect in
+              // Here safe area is taken into account, hence the view frame is used
+              // after the view has been laid out.
+              if #available(iOS 11.0, *) {
+                return view.frame.inset(by: view.safeAreaInsets)
+              } else {
+                return view.frame
+              }
+            }()
+            let viewWidth = frame.size.width
+
+            // Step 3 - Get Adaptive GADAdSize and set the ad view.
+            // Here the current interface orientation is used. If the ad is being preloaded
+            // for a future orientation change or different orientation, the function for the
+            // relevant orientation should be used.
+            bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+
+            // Step 4 - Create an ad request and load the adaptive banner ad.
+            bannerView.load(GADRequest())
+          }
     
     
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {

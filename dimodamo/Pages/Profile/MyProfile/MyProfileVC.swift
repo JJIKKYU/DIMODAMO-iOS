@@ -172,6 +172,7 @@ class MyProfileVC: UIViewController {
                 
                 // 내 프로필일 경우에 쪽지 보내기 비활성화
                 if self?.viewModel.isMyProfile() == true {
+                    self?.menuBtn.isHidden = true
 //                    self?.messageBtn.isHidden = true
                     self?.messageBtnHeightConstraint.constant = 0
                 } else {

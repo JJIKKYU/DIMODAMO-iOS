@@ -56,7 +56,7 @@ class ClauseViewController: UIViewController {
                 self?.nextBtnIsEnabled = true
                 UIView.animate(withDuration: 0.5) {
                     self?.nextBtn.backgroundColor = UIColor.appColor(.systemActive)
-                    self?.animateProgress(value: 0.14)
+                    self?.animateProgress(value: 0.16)
                 }
             } else {
                 self?.nextBtnIsEnabled = false

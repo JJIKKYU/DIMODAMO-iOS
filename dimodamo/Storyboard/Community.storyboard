@@ -796,7 +796,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Lax-X9-6LN" secondAttribute="trailing" id="NRs-k2-lkP"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Af-Dc-adb" userLabel="AdmobBackground">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Af-Dc-adb" userLabel="AdmobBackground" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -823,6 +823,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bannerView" destination="8Af-Dc-adb" id="yt9-Yh-zn6"/>
                         <outlet property="collectionView" destination="Lax-X9-6LN" id="jxu-4A-V7K"/>
                         <outlet property="navItem" destination="FJX-Ua-INJ" id="8eo-zA-5WC"/>
                         <outlet property="sortingPopupView" destination="aTc-Ns-mdX" id="bwH-kb-usm"/>
@@ -2795,7 +2796,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZf-13-HBU" userLabel="AdmobBackground">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZf-13-HBU" userLabel="AdmobBackground" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2833,6 +2834,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bannerView" destination="rZf-13-HBU" id="xgq-ye-tmX"/>
                         <outlet property="loadingView" destination="7y0-vZ-Av1" id="CV2-JG-iK5"/>
                         <outlet property="mainView" destination="KjL-zS-AOV" id="Zep-eX-whd"/>
                         <outlet property="navItem" destination="Phx-4B-Vyv" id="iuM-By-qaV"/>

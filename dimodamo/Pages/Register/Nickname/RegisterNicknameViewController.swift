@@ -89,7 +89,7 @@ class RegisterNicknameViewController: UIViewController {
                             self?.certBtn.isEnabled = false
                             self?.certBtn.alpha = 0
                             self?.divide.backgroundColor = UIColor.appColor(.green3)
-                            self?.progress.setProgress(0.84, animated: true)
+                            self?.progress.setProgress(0.8, animated: true)
                         }
                     }
                     alert.addAction(action)
@@ -116,7 +116,7 @@ class RegisterNicknameViewController: UIViewController {
                         self?.certBtn.alpha = 1
                         self?.checkIcon.alpha = 0
                         self?.nextBtn.backgroundColor = UIColor.appColor(.gray210)
-                        self?.progress.setProgress(0.7, animated: true)
+                        self?.progress.setProgress(0.64, animated: true)
                     }
                     break
                 }

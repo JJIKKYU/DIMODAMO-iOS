@@ -74,12 +74,12 @@ class RegisterInterestViewController: UIViewController {
                 self?.countLabel.text = "\(String((self?.viewModel?.interestList.value.count)!))/3"
                 if (self?.viewModel?.interestList.value.count)! == 3 {
                     UIView.animate(withDuration: 0.5) {
-                        self?.progress.setProgress(0.7, animated: true)
+                        self?.progress.setProgress(0.64, animated: true)
                         AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: true)
                     }
                 } else {
                     UIView.animate(withDuration: 0.5) {
-                        self?.progress.setProgress(0.56, animated: true)
+                        self?.progress.setProgress(0.48, animated: true)
                         AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: false)
                     }
                 }

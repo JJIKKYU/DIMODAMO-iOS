@@ -283,7 +283,7 @@ class ArticleDetailViewModel {
             return
         }
         
-        if self.blockedUserMap[commentUserID] == true {
+        if (BlockUserManager.blockedUserMap[commentUserID] != nil) == true {
             comment.comment = "차단한 유저입니다"
             comment.nickname = "익명"
             comment.userDpti = "DD"
