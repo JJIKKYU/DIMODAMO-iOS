@@ -44,7 +44,7 @@ class InformationViewModel {
     /*
      블럭 유저 데이터
      */
-    var blockedUserMap: [String:Bool] = [:]
+    var blockedUserMap: [String: [String: String]] = [:]
     
     init() {
         let blockManager = BlockUserManager()
@@ -90,7 +90,7 @@ class InformationViewModel {
                         return
                     }
                     let isUserBlocked = BlockUserManager.blockedUserMap[userId]
-                    if isUserBlocked == true {
+                    if (isUserBlocked != nil) == true {
                         print("차단한 유저의 게시글입니다!!!!!!!!!!!!!")
                         
                         // 로딩 유무 확인

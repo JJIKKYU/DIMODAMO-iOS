@@ -133,10 +133,15 @@ class MyProfileViewModel {
         // 내 프로필이면 애초에 신고가 불가능하므로
         if isMyProfile() == true { return }
         let myUID = Auth.auth().currentUser!.uid
+        
+        // 신고할때 당시에 닉네임과 타입을 저장
+        let type: String = userProfileData.value.dpti
+        let nickname: String = userProfileData.value.nickname
         // 신고할 때 신고 리스트에 추가
         db.collection("users").document("\(myUID)")
             .setData(
-                ["block_user_list" : ["\(targetUserUID)" : true]],
+                ["block_user_list" : ["\(targetUserUID)" : ["nickname" : "\(nickname)",
+                                                            "type" : "\(type)"]]],
                 merge: true
             )
         self.isBlockedUser.accept(.blockComplete)
@@ -145,27 +150,6 @@ class MyProfileViewModel {
         blockManager.blockUserDataReset()
         blockManager.blockUserCheck { value in
             print("차단 계정을 추가하고 다시 체크합니다 \(value)")
-        }
-    }
-    
-    // MARK: - 해당 기능은 임시 기능으로, 나중에 설정 페이지로 빠질 예정
-    
-    // 로그아웃
-    func logout() {
-        do {
-            try Auth.auth().signOut()
-            self.resetDefaults()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
-    // UserDefaults 모두 비우기
-    func resetDefaults() {
-        let defaults = UserDefaults.standard
-        let dictionary = defaults.dictionaryRepresentation()
-        dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
         }
     }
 }

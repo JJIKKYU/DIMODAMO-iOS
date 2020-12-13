@@ -97,7 +97,7 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
                             self?.emailCertBtn1.alpha = 0
                             self?.emailCertBtn1.isEnabled = false
                             self?.divideLine.backgroundColor = UIColor.appColor(.green3)
-                            self?.progress.setProgress(0.28, animated: true)
+                            self?.progress.setProgress(0.32, animated: true)
                         }
                     }
                     alert.addAction(action)
@@ -118,7 +118,7 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
                         self?.checkMark.alpha = 0
                         self?.divideLine.backgroundColor = UIColor.appColor(.white235)
                         self?.emailCertBtn1.alpha = 1
-                        self?.progress.setProgress(0.14, animated: true)
+                        self?.progress.setProgress(0.16, animated: true)
                     }
                     break
                 }

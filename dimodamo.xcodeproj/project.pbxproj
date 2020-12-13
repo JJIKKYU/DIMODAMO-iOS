@@ -27,6 +27,11 @@
 		9806713D250F214300C3EB72 /* DptiResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806713C250F214300C3EB72 /* DptiResultViewModel.swift */; };
 		980934DC2585151F00AC7E20 /* ArticleHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934DB2585151F00AC7E20 /* ArticleHeaderReusableView.swift */; };
 		980934E12585176100AC7E20 /* SettingMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934E02585176100AC7E20 /* SettingMainVC.swift */; };
+		980934E52585202700AC7E20 /* SettingMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934E42585202700AC7E20 /* SettingMainViewModel.swift */; };
+		980934E82585231000AC7E20 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934E72585231000AC7E20 /* SettingModel.swift */; };
+		980934EE258526BF00AC7E20 /* BlockedUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934ED258526BF00AC7E20 /* BlockedUserVC.swift */; };
+		980934F22585292500AC7E20 /* BlockedUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934F12585292500AC7E20 /* BlockedUserViewModel.swift */; };
+		980934F62585295100AC7E20 /* BlockedUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980934F52585295100AC7E20 /* BlockedUserCell.swift */; };
 		980F1952253DD81B007B33B8 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */; };
 		980F197B253E01B8007B33B8 /* UploadImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F197A253E01B7007B33B8 /* UploadImageCell.swift */; };
 		980F19ED25407578007B33B8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F19EC25407577007B33B8 /* CommentCell.swift */; };
@@ -275,6 +280,11 @@
 		9806713C250F214300C3EB72 /* DptiResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DptiResultViewModel.swift; sourceTree = "<group>"; };
 		980934DB2585151F00AC7E20 /* ArticleHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderReusableView.swift; sourceTree = "<group>"; };
 		980934E02585176100AC7E20 /* SettingMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainVC.swift; sourceTree = "<group>"; };
+		980934E42585202700AC7E20 /* SettingMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainViewModel.swift; sourceTree = "<group>"; };
+		980934E72585231000AC7E20 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		980934ED258526BF00AC7E20 /* BlockedUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserVC.swift; sourceTree = "<group>"; };
+		980934F12585292500AC7E20 /* BlockedUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserViewModel.swift; sourceTree = "<group>"; };
+		980934F52585295100AC7E20 /* BlockedUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserCell.swift; sourceTree = "<group>"; };
 		980F1951253DD81B007B33B8 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		980F197A253E01B7007B33B8 /* UploadImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageCell.swift; sourceTree = "<group>"; };
 		980F19EC25407577007B33B8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -671,6 +681,7 @@
 		980934DE2585174100AC7E20 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				980934EA2585268E00AC7E20 /* AccountGruop */,
 				980934DF2585174800AC7E20 /* Main */,
 			);
 			path = Settings;
@@ -680,8 +691,44 @@
 			isa = PBXGroup;
 			children = (
 				980934E02585176100AC7E20 /* SettingMainVC.swift */,
+				980934E42585202700AC7E20 /* SettingMainViewModel.swift */,
+				980934E72585231000AC7E20 /* SettingModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		980934EA2585268E00AC7E20 /* AccountGruop */ = {
+			isa = PBXGroup;
+			children = (
+				980934EC258526AC00AC7E20 /* BlockedUser */,
+				980934EB258526A500AC7E20 /* Logout */,
+			);
+			path = AccountGruop;
+			sourceTree = "<group>";
+		};
+		980934EB258526A500AC7E20 /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
+		980934EC258526AC00AC7E20 /* BlockedUser */ = {
+			isa = PBXGroup;
+			children = (
+				980934F42585294200AC7E20 /* Cell */,
+				980934ED258526BF00AC7E20 /* BlockedUserVC.swift */,
+				980934F12585292500AC7E20 /* BlockedUserViewModel.swift */,
+			);
+			path = BlockedUser;
+			sourceTree = "<group>";
+		};
+		980934F42585294200AC7E20 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				980934F52585295100AC7E20 /* BlockedUserCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		980F1979253E0198007B33B8 /* Cell */ = {
@@ -1896,6 +1943,7 @@
 				98A8B82F25377D9200351FD5 /* InformationTableViewCell.swift in Sources */,
 				98A860C62559C15000F921AA /* UILabelPadding.swift in Sources */,
 				9800A1582533792C0090C058 /* FourthIntroViewController.swift in Sources */,
+				980934EE258526BF00AC7E20 /* BlockedUserVC.swift in Sources */,
 				98C6C34C25710BCA005B8F40 /* DptiBottomPopupVC.swift in Sources */,
 				98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */,
 				98138FD5256ADBEF0063F8BD /* HomeVC.swift in Sources */,
@@ -1945,9 +1993,11 @@
 				988470002511148400943861 /* DptiSurvey.swift in Sources */,
 				98FA225C2557244A00331755 /* ApplicationDataAPI.swift in Sources */,
 				98A8B816253605CE00351FD5 /* SplashViewController.swift in Sources */,
+				980934E52585202700AC7E20 /* SettingMainViewModel.swift in Sources */,
 				98C6C35525716DC9005B8F40 /* DptiStartVC.swift in Sources */,
 				986BD61B25684581007F49ED /* LinkPopupVC.swift in Sources */,
 				980F19ED25407578007B33B8 /* CommentCell.swift in Sources */,
+				980934E82585231000AC7E20 /* SettingModel.swift in Sources */,
 				98D69F03252C5DD400F52E1F /* FindEmailPWViewController.swift in Sources */,
 				98192992257FD03200DACF15 /* ReportExtension.swift in Sources */,
 				98C48B1A250CDB94004E24E5 /* DptiSurveyViewController.swift in Sources */,
@@ -2011,6 +2061,7 @@
 				98FA22672557FBDA00331755 /* AllDptiCell.swift in Sources */,
 				98D988D7254E9296002A8AC5 /* LinkUploadCell.swift in Sources */,
 				98AFDA7A2539DC8400B0D88F /* ArticleCell.swift in Sources */,
+				980934F62585295100AC7E20 /* BlockedUserCell.swift in Sources */,
 				98D69F9E252CA85100F52E1F /* FindPWViewModel.swift in Sources */,
 				98F8C84B254CA0F300FDDEBF /* LottieLoadingView.swift in Sources */,
 				98D265AD257681B400BD51D5 /* CommunitySearchResultVC.swift in Sources */,
@@ -2036,6 +2087,7 @@
 				9863223F251785AE003B0784 /* CommunityMainViewController.swift in Sources */,
 				9821D7F9257917F900A3B82F /* Report.swift in Sources */,
 				9853DB1C255D3E7400E8EBD5 /* MedalInformationVC.swift in Sources */,
+				980934F22585292500AC7E20 /* BlockedUserViewModel.swift in Sources */,
 				98FA225925571FA300331755 /* MyProfileModel.swift in Sources */,
 				987D6D822563BBC7000FCA16 /* RoomDetailVC.swift in Sources */,
 				988377F92545C41F00BFA746 /* CreatePostViewModel.swift in Sources */,
@@ -2188,14 +2240,14 @@
 				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.03;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jjikkyu.dimodamo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2212,14 +2264,14 @@
 				CODE_SIGN_ENTITLEMENTS = dimodamo/dimodamoRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V237TD2AXA;
 				INFOPLIST_FILE = dimodamo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.03;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jjikkyu.dimodamo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -71,6 +71,24 @@ class EmptyTableViewCell: UITableViewCell {
             
             break
             
+        case .blockUser:
+            
+            tableViewEmptyImageViewHeightConstraint.constant = 161
+            self.tableViewEmptyImageView.image = UIImage(named: "empty_icon_1")
+            
+            /*
+             텍스트 세팅
+             */
+            let titleAttributes: [NSAttributedString.Key: Any] = [
+                .font : UIFont(name: "Apple SD Gothic Neo Bold", size: 17) as Any,
+                .foregroundColor : UIColor.appColor(.gray210),
+            ]
+            
+            let attributedString = NSAttributedString(string: text, attributes: titleAttributes)
+            tableViewEmptyLabel.attributedText = attributedString
+            
+            break
+            
         case .hotdimo:
             break
             

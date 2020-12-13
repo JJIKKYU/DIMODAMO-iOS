@@ -112,7 +112,7 @@ class RegisterSchoolViewController: UIViewController {
                 } else {
                     AppStyleGuide.systemBtnRadius16(btn: self!.finishBtn, isActive: false)
                     UIView.animate(withDuration: 0.5) {
-                        self?.progress.setProgress(0.84, animated: true)
+                        self?.progress.setProgress(0.8, animated: true)
                     }
                 }
             })

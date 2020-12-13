@@ -82,7 +82,7 @@ class RegisterPWViewController: UIViewController, UITextFieldDelegate {
                     self?.secondPWTextFieldSubTitle.alpha = isValied == true ? 0 : 1
                     
                     AppStyleGuide.systemBtnRadius16(btn: self!.nextBtn, isActive: isValied)
-                    self?.progress.setProgress(isValied == true ? 0.42 : 0.28, animated: true)
+                    self?.progress.setProgress(isValied == true ? 0.48 : 0.32, animated: true)
                 }
 
             })

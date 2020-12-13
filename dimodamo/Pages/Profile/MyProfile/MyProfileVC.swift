@@ -172,6 +172,7 @@ class MyProfileVC: UIViewController {
                 
                 // 내 프로필일 경우에 쪽지 보내기 비활성화
                 if self?.viewModel.isMyProfile() == true {
+                    self?.menuBtn.isHidden = true
 //                    self?.messageBtn.isHidden = true
                     self?.messageBtnHeightConstraint.constant = 0
                 } else {
@@ -248,21 +249,9 @@ class MyProfileVC: UIViewController {
                 print("didPress block")
             }
             
-            let logoutAction = UIAlertAction(title: "로그아웃", style: .destructive) { (action) in
-                self.viewModel.logout()
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: .main)
-                let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginMain")
-                
-                mainVC.modalPresentationStyle = .fullScreen
-                mainVC.modalTransitionStyle = .crossDissolve
-                self.present(mainVC, animated: true, completion: nil)
-                
-                
-            }
-            
 //            actionSheet.addAction(nicknameChangeAction)
 //            actionSheet.addAction(interestChangeAction)
-            actionSheet.addAction(logoutAction)
+//            actionSheet.addAction(logoutAction)
             
             break
             
