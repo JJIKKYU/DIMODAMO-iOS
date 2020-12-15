@@ -17,7 +17,7 @@ import Kingfisher
 
 import STPopup
 
-class CreatePostViewController: UIViewController, TaggingDataSource {
+class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var descriptionContainer: UIView!
     
@@ -103,31 +103,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     }
     @IBOutlet weak var descriptionLimit: UILabel!
     
-    @IBOutlet weak var tagging: Tagging! {
-        didSet {
-            tagging.accessibilityIdentifier = "Tagging"
-            tagging.textView.accessibilityIdentifier = "TaggingTextView"
-            tagging.defaultAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.gray170),
-                                         NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any]
-            tagging.taggedAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.gray170),
-                                        NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any]
-            tagging.textView.textContainer.maximumNumberOfLines = 2
-            //            tagging.textView.text = nil
-            
-            let text: String = "태그를 입력해 주세요"
-            let titleAttributes: [NSAttributedString.Key: Any] = [
-                .font : UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any,
-                .foregroundColor : UIColor.appColor(.gray210),
-            ]
-            
-            let attributedString = NSAttributedString(string: text, attributes: titleAttributes)
-            tagging.textView.attributedText = attributedString
-            
-            tagging.symbol = "#"
-            tagging.tagableList = ["DOOMFIST", "GENJI", "MCCREE", "PHARAH", "REAPER", "SOLDIER:76", "SOMBRA", "TRACER", "BASTION", "HANZO", "JUNKRAT", "MEI", "TORBJORN", "WIDOWMAKER", "D.VA", "ORISA", "REINHARDT", "ROADHOG", "WINSTON", "ZARYA", "ANA", "BRIGITTE", "LUCIO", "MERCY", "MOIRA", "SYMMETRA", "ZENYATTA", "디자이너", "한글", "디질래", "디지몬"]
-        }
-    }
-    
     var disposeBag = DisposeBag()
     let viewModel = CreatePostViewModel()
     
@@ -143,8 +118,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
-        //        tagging.textView.delegate = self
-        tagging.dataSource = self
         
         tagsTableView.dataSource = self
         tagsTableView.delegate = self
@@ -166,23 +139,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
                 self?.viewModel.titleRelay.accept(value)
                 self?.titleLimit.text = self?.viewModel.titleLimit
                 self?.checkMaxLength(textField: self!.titleTextField, maxLength: 20)
-            })
-            .disposed(by: disposeBag)
-        
-        /*
-         태그
-         */
-        tagging.textView.rx.text.orEmpty
-            .map { $0 as String }
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] value in
-                if self?.viewModel.tagsLimitCount == 3 {
-                    print("더이상 글을 쓸 수 없도록")
-                }
-                self?.viewModel.tagsRelay.accept(value)
-                self?.tagsLimit.text = self?.viewModel.tagsLimit
-                
-                
             })
             .disposed(by: disposeBag)
         
@@ -521,26 +477,6 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, 
         }
      
         return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        switch tableView.tag {
-        case 0:
-            
-            tagging.updateTaggedList(allText: tagging.textView.text, tagText: matchedList[indexPath.row])
-            tableView.isHidden = true
-            tableView.deselectRow(at: indexPath, animated: true)
-            
-            break
-            
-        case 1:
-            break
-        
-        default:
-            break
-        }
-        
     }
 }
 

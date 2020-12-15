@@ -102,7 +102,7 @@ class CreatePostViewModel {
         // 유저 디폹트에서 닉네임을 불러옴
         let userDefaults = UserDefaults.standard
         let userNickname: String = userDefaults.string(forKey: "nickname") ?? "익명"
-        let userDpti: String = userDefaults.string(forKey: "dpti") ?? "M_TI"
+        let userDpti: String = userDefaults.string(forKey: "dpti") ?? "DD"
         
         // DocumentID를 미리 불러오기 위해
         

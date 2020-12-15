@@ -50,6 +50,8 @@
 		9819298E257FC73E00DACF15 /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819298D257FC73E00DACF15 /* ReportCell.swift */; };
 		98192992257FD03200DACF15 /* ReportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192991257FD03200DACF15 /* ReportExtension.swift */; };
 		98192996257FE49700DACF15 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192995257FE49700DACF15 /* KeyboardExtension.swift */; };
+		981A74B92588B6800034AFE1 /* CreateTagsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A74B82588B6800034AFE1 /* CreateTagsVC.swift */; };
+		981A74BE2588B6920034AFE1 /* CreateTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A74BD2588B6920034AFE1 /* CreateTagsViewModel.swift */; };
 		9821BADF255EBC3200C47987 /* ManitoChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */; };
 		9821BB62255EDBEC00C47987 /* ChatSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */; };
 		9821BB66255EDE1900C47987 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB65255EDE1900C47987 /* SideMenuVC.swift */; };
@@ -303,6 +305,8 @@
 		9819298D257FC73E00DACF15 /* ReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
 		98192991257FD03200DACF15 /* ReportExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExtension.swift; sourceTree = "<group>"; };
 		98192995257FE49700DACF15 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
+		981A74B82588B6800034AFE1 /* CreateTagsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagsVC.swift; sourceTree = "<group>"; };
+		981A74BD2588B6920034AFE1 /* CreateTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagsViewModel.swift; sourceTree = "<group>"; };
 		9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatViewModel.swift; sourceTree = "<group>"; };
 		9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSideMenuNavigation.swift; sourceTree = "<group>"; };
 		9821BB65255EDE1900C47987 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
@@ -791,6 +795,15 @@
 				9819298D257FC73E00DACF15 /* ReportCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		981A74B72588B66A0034AFE1 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				981A74B82588B6800034AFE1 /* CreateTagsVC.swift */,
+				981A74BD2588B6920034AFE1 /* CreateTagsViewModel.swift */,
+			);
+			path = Tags;
 			sourceTree = "<group>";
 		};
 		9821BB60255EDBBF00C47987 /* SideMenu */ = {
@@ -1295,6 +1308,7 @@
 				98D988D4254E8C0E002A8AC5 /* Main */,
 				98D988CB254E8879002A8AC5 /* UploadCell */,
 				987E1C68254DF56100F5077D /* LinkPopup */,
+				981A74B72588B66A0034AFE1 /* Tags */,
 				988378252545EFF200BFA746 /* TagCell.swift */,
 			);
 			path = CreatePost;
@@ -1973,6 +1987,7 @@
 				98D2657225761C8000BD51D5 /* CommunitySearchViewModel.swift in Sources */,
 				98FA22562556FD9500331755 /* MyProfileViewModel.swift in Sources */,
 				98FA226225572AC700331755 /* AllDptiVC.swift in Sources */,
+				981A74B92588B6800034AFE1 /* CreateTagsVC.swift in Sources */,
 				9883779C2541F56D00BFA746 /* TextFieldRound.swift in Sources */,
 				987E1C6A254DF57100F5077D /* LinkPopupView.swift in Sources */,
 				9863224525178773003B0784 /* TestViewController.swift in Sources */,
@@ -1985,6 +2000,7 @@
 				986EDA202509D7C800AD3CEE /* ApplicationViewModel.swift in Sources */,
 				98D988F0255248FA002A8AC5 /* ProfileMainViewModel.swift in Sources */,
 				9863224A2517B814003B0784 /* TabBarViewController.swift in Sources */,
+				981A74BE2588B6920034AFE1 /* CreateTagsViewModel.swift in Sources */,
 				980934E12585176100AC7E20 /* SettingMainVC.swift in Sources */,
 				98C735D8255C5B8100252BF2 /* MainChatCell.swift in Sources */,
 				98D988E3255071AE002A8AC5 /* LottieLoadingView2.swift in Sources */,

@@ -188,7 +188,7 @@ class RegisterViewModel {
     
     // 닉네임 체크
     func isValidNickname() -> Bool {
-        let nicknameRegEx = "^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\s]{4,8}$"
+        let nicknameRegEx = "^[a-zA-Z0-9가-힣\\s]{4,8}$"
         let predicate = NSPredicate(format:"SELF MATCHES %@", nicknameRegEx)
         return predicate.evaluate(with: self.nickNameRelay.value)
     }
