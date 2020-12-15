@@ -2177,7 +2177,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gm4-Wk-DHO">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CreatePostTagCompleteCell" id="gm4-Wk-DHO">
                                         <rect key="frame" x="0.0" y="0.0" width="84" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YKY-3d-lLp">
@@ -2248,7 +2248,7 @@
                                 <rect key="frame" x="0.0" y="169" width="414" height="617"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="e6z-7L-eH6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreatePostTagCell" rowHeight="50" id="e6z-7L-eH6">
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e6z-7L-eH6" id="h4C-Ev-2Re">
@@ -2292,12 +2292,15 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uzs-km-5mU">
-                                <rect key="frame" x="332" y="109" width="16" height="16"/>
+                                <rect key="frame" x="332" y="111" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="HkP-rG-u3a"/>
                                     <constraint firstAttribute="height" constant="16" id="rlW-uB-daG"/>
                                 </constraints>
                                 <state key="normal" image="closeBtn_gray_circle"/>
+                                <connections>
+                                    <action selector="pressedTextfieldDeleteBtn:" destination="POu-VK-sdf" eventType="touchUpInside" id="4jm-PX-fej"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aU-NC-STI">
                                 <rect key="frame" x="366" y="109" width="30" height="20"/>
@@ -2306,8 +2309,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <state key="normal" title="추가">
-                                    <color key="titleColor" name="SYSTEM - ACTIVE"/>
+                                    <color key="titleColor" name="GRAY - 190"/>
                                 </state>
+                                <connections>
+                                    <action selector="tagAddBtn:" destination="POu-VK-sdf" eventType="touchUpInside" id="Nyi-50-2kE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ttE-Ol-71l"/>
@@ -2319,7 +2325,7 @@
                             <constraint firstItem="UVk-I9-Dk1" firstAttribute="trailing" secondItem="Xw4-nT-Ejc" secondAttribute="trailing" id="3OM-KH-mSH"/>
                             <constraint firstItem="2aU-NC-STI" firstAttribute="top" secondItem="ttE-Ol-71l" secondAttribute="top" constant="53" id="3gp-Kg-S6q"/>
                             <constraint firstItem="0oP-Rd-bUN" firstAttribute="leading" secondItem="ttE-Ol-71l" secondAttribute="leading" constant="20" id="AJI-RZ-pzP"/>
-                            <constraint firstItem="Tew-8N-hsD" firstAttribute="top" secondItem="Uzs-km-5mU" secondAttribute="bottom" constant="6" id="AgC-0p-l9Q"/>
+                            <constraint firstItem="Tew-8N-hsD" firstAttribute="top" secondItem="Uzs-km-5mU" secondAttribute="bottom" constant="4" id="AgC-0p-l9Q"/>
                             <constraint firstItem="ttE-Ol-71l" firstAttribute="trailing" secondItem="W0m-zb-b8i" secondAttribute="trailing" constant="24" id="Aw2-Zs-Jfl"/>
                             <constraint firstItem="ttE-Ol-71l" firstAttribute="trailing" secondItem="0oP-Rd-bUN" secondAttribute="trailing" id="BCh-4R-F3p"/>
                             <constraint firstItem="Uzs-km-5mU" firstAttribute="trailing" secondItem="Tew-8N-hsD" secondAttribute="trailing" id="Bh0-J1-HOU"/>
@@ -2345,6 +2351,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="태그" largeTitleDisplayMode="never" id="9xN-62-cDx"/>
                     <connections>
+                        <outlet property="divideLineTopConstraint" destination="LwB-RC-JAP" id="AjW-sp-GLh"/>
+                        <outlet property="tableView" destination="UVk-I9-Dk1" id="OSb-8b-tm5"/>
+                        <outlet property="tagBtn" destination="2aU-NC-STI" id="tpg-AB-8Fz"/>
+                        <outlet property="tagListCollectionView" destination="0oP-Rd-bUN" id="MAL-qn-DMi"/>
                         <outlet property="tagTextField" destination="GgO-aL-yqT" id="pce-tj-mgl"/>
                     </connections>
                 </viewController>
