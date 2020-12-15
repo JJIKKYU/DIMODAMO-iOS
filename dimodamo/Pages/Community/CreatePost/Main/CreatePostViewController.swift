@@ -228,6 +228,14 @@ class CreatePostViewController: UIViewController {
     }
     
     /*
+     태그 작성
+     */
+    @IBAction func pressedTagsCreate(_ sender: Any) {
+        performSegue(withIdentifier: "CreateTagsVC", sender: nil)
+    }
+    
+    
+    /*
      글 작성 완료
      */
     @IBAction func pressedCompleteBtn(_ sender: Any) {

@@ -26,6 +26,7 @@ class RegisterInterestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
+        self.view.layoutIfNeeded()
         viewModel?.interestList.accept([])
         
         interestBtnList.enumerated().forEach { index, interestBtn in

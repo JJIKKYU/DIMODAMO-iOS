@@ -995,7 +995,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     return
                 }
                 
-                var targetBoard: TargetBoard = self.viewModel.targetBoard
+                let targetBoard: TargetBoard = self.viewModel.targetBoard
                 
                 // 코멘트 Doc Uid
                 guard let commentUid: String = cell.uid else {

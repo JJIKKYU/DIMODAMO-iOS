@@ -79,7 +79,7 @@ class RegisterSchoolViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesisgn()
-        
+        self.view.layoutIfNeeded()
         
         schoolTextField.rx.text.orEmpty
             .map { $0 as String }

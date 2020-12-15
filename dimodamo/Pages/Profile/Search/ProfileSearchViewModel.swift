@@ -43,7 +43,7 @@ class ProfileSearchViewModel {
                 
 //                print("hitResult = \(hitsResult[0].nickName)")
                 self.searchResultsRelay.accept(hitsResult)
-                print("Response: \(hits)")
+                print("Response: \(String(describing: hits))")
             }
         }
     }

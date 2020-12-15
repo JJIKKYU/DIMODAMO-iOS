@@ -159,7 +159,7 @@ class ProfileMainViewModel {
                         
                         let isUserBlocked = BlockUserManager.blockedUserMap[document.documentID]
                         if (isUserBlocked != nil) == true {
-                            print("#######차단한 유저는 패스합니다 : \(isUserBlocked)")
+                            print("#######차단한 유저는 패스합니다 : \(String(describing: isUserBlocked))")
                             continue
                         }
                         

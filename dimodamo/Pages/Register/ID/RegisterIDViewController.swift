@@ -44,6 +44,7 @@ class RegisterIDViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
+        self.view.layoutIfNeeded()
         
         textField.rx.text.orEmpty
             .map { $0 as String }

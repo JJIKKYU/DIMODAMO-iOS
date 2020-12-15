@@ -34,6 +34,7 @@ class RegisterNicknameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
+        self.view.layoutIfNeeded()
         viewModel?.isVaildDuplicateNickName.accept(.nothing)
         
 

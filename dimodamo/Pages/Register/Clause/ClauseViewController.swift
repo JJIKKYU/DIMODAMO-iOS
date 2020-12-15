@@ -44,6 +44,7 @@ class ClauseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
+        self.view.layoutIfNeeded()
         
         Observable.combineLatest(
             viewModel.serviceBtnRelay.map { $0 == true },

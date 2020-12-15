@@ -46,7 +46,7 @@ class HotDimoPeopleViewModel {
                 return
             }
             
-            let next = self?.db.collection("users")
+            _ = self?.db.collection("users")
                 .order(by: "get_profile_score", descending: true)
                 .start(afterDocument: lastSnapshot)
         }
