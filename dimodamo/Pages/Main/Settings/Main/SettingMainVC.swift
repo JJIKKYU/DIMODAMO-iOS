@@ -57,10 +57,23 @@ class SettingMainVC: UIViewController {
     /*
      계정
      */
+    
+    // 내가 작성한 글
+    @IBAction func pressedMyPost(_ sender: Any) {
+        performSegue(withIdentifier: "MyPostVC", sender: sender)
+    }
+    
+    // 스크랩한 글
+    @IBAction func pressedMyScrapPost(_ sender: Any) {
+        performSegue(withIdentifier: "MyScrapPostVC", sender: sender)
+    }
+    
+    // 차단한 유저
     @IBAction func pressedBlockedUser(_ sender: Any) {
         performSegue(withIdentifier: "BlockedUserVC", sender: sender)
     }
     
+    // 로그아웃
     @IBAction func pressedLogout(_ sender: Any) {
         guard let email: String = viewModel.myEmail else {
             return
@@ -95,5 +108,18 @@ class SettingMainVC: UIViewController {
         alert.addAction(action)
         alert.addAction(cancleAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    /*
+     앱 설정
+     */
+    
+    // 알림 설정
+    @IBAction func pressedAlarm(_ sender: Any) {
+        performSegue(withIdentifier: "MyAlarmVC", sender: nil)
+    }
+    
+    // 캐시 삭제
+    @IBAction func pressedCache(_ sender: Any) {
     }
 }

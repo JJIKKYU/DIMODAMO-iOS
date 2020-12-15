@@ -86,14 +86,6 @@ class CreatePostViewController: UIViewController {
             bottomIconContainerRoundView.appShadow(.s20)
         }
     }
-    @IBOutlet weak var tagsTableView: UITableView! {
-        didSet {
-            tagsTableView.layer.borderWidth = 2
-            tagsTableView.layer.borderColor = UIColor.appColor(.white235).cgColor
-            tagsTableView.appShadow(.s4)
-            tagsTableView.rowHeight = 50
-        }
-    }
     
     @IBOutlet weak var descriptionTextView: UITextView! {
         didSet {
@@ -118,10 +110,7 @@ class CreatePostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
-        
-        tagsTableView.dataSource = self
-        tagsTableView.delegate = self
-        
+    
         mainTableView.dataSource = self
         mainTableView.delegate = self
         
@@ -202,27 +191,6 @@ class CreatePostViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func tagging(_ tagging: Tagging, didChangedTagableList tagableList: [String]) {
-//        matchedList = tagableList
-//        if matchedList.count > 0 {
-//            tagsTableView.reloadData()
-//            tagsTableView.isHidden = false
-//        } else if matchedList.count == 0 {
-//            tagsTableView.reloadData()
-//            tagsTableView.isHidden = true
-//        }
-        
-        print(matchedList.count)
-    }
-    
-    func tagging(_ tagging: Tagging, didChangedTaggedList taggedList: [TaggingModel]) {
-        print("태그완료된 리스트 :  \(taggedList)")
-    }
-    
-    /*
-     IBAction & TouchAction
-     */
-    
     @IBAction func pressedCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -256,7 +224,6 @@ class CreatePostViewController: UIViewController {
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
-        //        self.tagsTableView.isHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -316,8 +283,6 @@ extension CreatePostViewController {
         self.descriptionContainer.layer.borderColor = UIColor.appColor(.white245).cgColor
         self.descriptionContainer.layer.cornerRadius = 9
         self.descriptionContainer.layer.masksToBounds = true
-        
-        tagsTableView.isHidden = true
     }
 }
 
@@ -374,7 +339,7 @@ extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
     }
 }
 
-// MARK: - TagsTableView
+// MARK: - TableView
 
 extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, DeleteUploadCellDelegate {
     
@@ -403,87 +368,59 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, 
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        switch tableView.tag {
-        case 0:
-            return matchedList.count
-            
-        case 1:
-            return viewModel.uploadImagesRelay.value.count + viewModel.uploadLinksDataRelay.value.count
-            
-        default:
-            break
-        }
-        
-        return 0
+        return viewModel.uploadImagesRelay.value.count + viewModel.uploadLinksDataRelay.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch tableView.tag {
-        case 0:
+        let imageArr = viewModel.uploadImagesRelay.value
+        let linkArr = viewModel.uploadLinksDataRelay.value
+        
+        
+        if (indexPath.row + 1) <= (imageArr.count) {
+            print("imageArr.Count == indexpath.row")
+            let index = indexPath.row
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath) as! TagCell
-            cell.tagLabel.text = matchedList[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
+            
+            cell.uploadImageView.image = imageArr[index].resize(withWidth: UIScreen.main.bounds.width)
+            
+            // 이미지 삭제 버튼을 눌렀을 경우 삭제할 수 있도록 델리게이트 설정
+            cell.deleteUploadImageDelegate = self
+            cell.tagIndex = index
+            
+            guard let cellImage = cell.uploadImageView.image else {
+                return UITableViewCell()
+            }
+        
+            let scaledHeight = ((UIScreen.main.bounds.width - 40) * cellImage.size.height) / cellImage.size.width
+            cell.heightConstraint.constant = scaledHeight
+            
+            print(scaledHeight)
+            
             return cell
-            
-        case 1:
-            
-            let imageArr = viewModel.uploadImagesRelay.value
-            let linkArr = viewModel.uploadLinksDataRelay.value
-            
-            
-            if (indexPath.row + 1) <= (imageArr.count) {
-                print("imageArr.Count == indexpath.row")
-                let index = indexPath.row
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
-                
-                cell.uploadImageView.image = imageArr[index].resize(withWidth: UIScreen.main.bounds.width)
-                
-                // 이미지 삭제 버튼을 눌렀을 경우 삭제할 수 있도록 델리게이트 설정
-                cell.deleteUploadImageDelegate = self
-                cell.tagIndex = index
-                
-                guard let cellImage = cell.uploadImageView.image else {
-                    return UITableViewCell()
-                }
-            
-                let scaledHeight = ((UIScreen.main.bounds.width - 40) * cellImage.size.height) / cellImage.size.width
-                cell.heightConstraint.constant = scaledHeight
-                
-                print(scaledHeight)
-                
-                return cell
-            }
-            else if (indexPath.row + 1) <= imageArr.count + linkArr.count {
-                let index = indexPath.row - imageArr.count
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "UploadLink", for: indexPath) as! LinkUploadCell
-                
-                
-                if let imageUrl: URL = URL(string: linkArr[index].image) {
-                    cell.thumbImageView.kf.setImage(with: imageUrl)
-                } else {
-                    cell.thumbImageView.image = UIImage(named: "linkImage")
-                }
-                
-                cell.deleteCellDelegate = self
-                cell.tagIndex = index
-                
-                cell.titleLabel.text = "\(linkArr[index].title)"
-                
-                cell.urlLabel.text = "\(linkArr[index].url)"
-                
-                return cell
-            }
-            
-            
-            
-
-        default:
-            break
         }
-     
+        else if (indexPath.row + 1) <= imageArr.count + linkArr.count {
+            let index = indexPath.row - imageArr.count
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UploadLink", for: indexPath) as! LinkUploadCell
+            
+            
+            if let imageUrl: URL = URL(string: linkArr[index].image) {
+                cell.thumbImageView.kf.setImage(with: imageUrl)
+            } else {
+                cell.thumbImageView.image = UIImage(named: "linkImage")
+            }
+            
+            cell.deleteCellDelegate = self
+            cell.tagIndex = index
+            
+            cell.titleLabel.text = "\(linkArr[index].title)"
+            
+            cell.urlLabel.text = "\(linkArr[index].url)"
+            
+            return cell
+        }
+        
         return UITableViewCell()
     }
 }

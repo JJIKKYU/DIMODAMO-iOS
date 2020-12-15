@@ -61,10 +61,9 @@ class BlockedUserViewModel {
                             
                             newBlockUserList.append(newBlockUser)
                         }
-                        
-                        self?.blockedUserMapRelay.accept(newBlockUserList)
-                        self?.loadingRelay.accept(true)
                     }
+                    self?.blockedUserMapRelay.accept(newBlockUserList)
+                    self?.loadingRelay.accept(true)
                     
                 } else {
                     print("프로필에서 유저 데이터를 초기화하지 못했습니다.")
