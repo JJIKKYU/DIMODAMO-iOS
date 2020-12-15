@@ -16,6 +16,8 @@ import FirebaseStorage
 import FirebaseFirestore
 import Firebase
 
+import RealmSwift
+
 class RegisterViewModel {
     
     // RegisterClause
@@ -39,7 +41,7 @@ class RegisterViewModel {
     
     // RegisterGender
     // 성별
-//    var gender: Gender? = nil
+    //    var gender: Gender? = nil
     
     // RegisterInterest
     // 관심사
@@ -51,7 +53,7 @@ class RegisterViewModel {
     // 닉네임 입력
     var nickName: String = ""
     var nickNameRelay = BehaviorRelay(value: "")
-    var isVailedNickName: Bool { nickNameRelay.value.count >= 4 && nickNameRelay.value.count <= 8 }
+    var isVailedNickName: Bool { nickNameRelay.value.count >= 2 && nickNameRelay.value.count <= 8 }
     var isVaildDuplicateNickName = BehaviorRelay<NicknameCheck>(value: .nothing)
     
     // RegisterSchool
@@ -97,6 +99,7 @@ class RegisterViewModel {
                                 
                                 print("회원가입 성공")
                                 userUID = user.user.uid
+                                self.fcmIdSetting(uid: userUID)
                                 self.ref = Database.database().reference()
                                 
                                 print((self.userProfile.getDict()))
@@ -109,13 +112,26 @@ class RegisterViewModel {
                                     } else {
                                         print("Document added")
                                         // 학생증 업로드가 필요 없으므로
-//                                        if self.canUploadSchoolCard() == true {
-//                                            self.uploadSchoolCard(userUID: userUID)
-//                                        }
+                                        //                                        if self.canUploadSchoolCard() == true {
+                                        //                                            self.uploadSchoolCard(userUID: userUID)
+                                        //                                        }
                                     }
                                 }
                                 
                                })
+        
+    }
+    
+    func fcmIdSetting(uid: String) {
+        let userFcmDocument = db.collection("FcmId").document("\(uid)")
+        userFcmDocument.setData([
+                                    "notice" : true,
+                                    "hotContents" : true,
+                                    "comment" : true,
+                                    "ofComment": true,
+                                    "document" : true],
+                                merge: true)
+        
         
     }
     
@@ -221,20 +237,20 @@ class RegisterViewModel {
     func duplicationCheckNickname() {
         let usersRef = db.collection("users")
         let query = usersRef.whereField("nickName", isEqualTo: "\(nickName)")
-
+        
         query.getDocuments { (snapshot, err) in
-                if let err = err {
-                    print("Error getting documents : \(err.localizedDescription)")
-                } else {
-                    // 이미 데이터베이스에서 1개 이상의 닉네임이 있으므로 사용 불가능
-                    if snapshot!.documents.count > 0 {
-                        self.isVaildDuplicateNickName.accept(.impossible)
+            if let err = err {
+                print("Error getting documents : \(err.localizedDescription)")
+            } else {
+                // 이미 데이터베이스에서 1개 이상의 닉네임이 있으므로 사용 불가능
+                if snapshot!.documents.count > 0 {
+                    self.isVaildDuplicateNickName.accept(.impossible)
                     // 데이터 베이스에서 0개 이하의 닉네임이 있으므로 사용 가능
-                    } else {
-                        self.isVaildDuplicateNickName.accept(.possible)
-                    }
-                    print("count = \(snapshot!.documents.count)")
+                } else {
+                    self.isVaildDuplicateNickName.accept(.possible)
                 }
+                print("count = \(snapshot!.documents.count)")
             }
+        }
     }
 }

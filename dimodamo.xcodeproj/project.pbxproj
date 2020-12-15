@@ -52,6 +52,9 @@
 		98192996257FE49700DACF15 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98192995257FE49700DACF15 /* KeyboardExtension.swift */; };
 		981A74B92588B6800034AFE1 /* CreateTagsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A74B82588B6800034AFE1 /* CreateTagsVC.swift */; };
 		981A74BE2588B6920034AFE1 /* CreateTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A74BD2588B6920034AFE1 /* CreateTagsViewModel.swift */; };
+		981A75322589243B0034AFE1 /* MyAlarmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A75312589243B0034AFE1 /* MyAlarmVC.swift */; };
+		981A7536258925C10034AFE1 /* MyAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A7535258925C10034AFE1 /* MyAlarmViewModel.swift */; };
+		981A75392589324B0034AFE1 /* UserFCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981A75382589324B0034AFE1 /* UserFCM.swift */; };
 		9821BADF255EBC3200C47987 /* ManitoChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */; };
 		9821BB62255EDBEC00C47987 /* ChatSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */; };
 		9821BB66255EDE1900C47987 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9821BB65255EDE1900C47987 /* SideMenuVC.swift */; };
@@ -307,6 +310,9 @@
 		98192995257FE49700DACF15 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		981A74B82588B6800034AFE1 /* CreateTagsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagsVC.swift; sourceTree = "<group>"; };
 		981A74BD2588B6920034AFE1 /* CreateTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagsViewModel.swift; sourceTree = "<group>"; };
+		981A75312589243B0034AFE1 /* MyAlarmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlarmVC.swift; sourceTree = "<group>"; };
+		981A7535258925C10034AFE1 /* MyAlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlarmViewModel.swift; sourceTree = "<group>"; };
+		981A75382589324B0034AFE1 /* UserFCM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFCM.swift; sourceTree = "<group>"; };
 		9821BADE255EBC3200C47987 /* ManitoChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManitoChatViewModel.swift; sourceTree = "<group>"; };
 		9821BB61255EDBEC00C47987 /* ChatSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSideMenuNavigation.swift; sourceTree = "<group>"; };
 		9821BB65255EDE1900C47987 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
@@ -686,6 +692,7 @@
 			isa = PBXGroup;
 			children = (
 				980934EA2585268E00AC7E20 /* AccountGruop */,
+				981A7530258924260034AFE1 /* AppGruop */,
 				980934DF2585174800AC7E20 /* Main */,
 			);
 			path = Settings;
@@ -822,6 +829,23 @@
 			path = MyScrapPost;
 			sourceTree = "<group>";
 		};
+		981A752F2589241F0034AFE1 /* MyAlarm */ = {
+			isa = PBXGroup;
+			children = (
+				981A75312589243B0034AFE1 /* MyAlarmVC.swift */,
+				981A7535258925C10034AFE1 /* MyAlarmViewModel.swift */,
+			);
+			path = MyAlarm;
+			sourceTree = "<group>";
+		};
+		981A7530258924260034AFE1 /* AppGruop */ = {
+			isa = PBXGroup;
+			children = (
+				981A752F2589241F0034AFE1 /* MyAlarm */,
+			);
+			path = AppGruop;
+			sourceTree = "<group>";
+		};
 		9821BB60255EDBBF00C47987 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -855,6 +879,7 @@
 			children = (
 				9821D7F8257917F900A3B82F /* Report.swift */,
 				9815369725844DE00063E509 /* Block_Realm.swift */,
+				981A75382589324B0034AFE1 /* UserFCM.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2038,6 +2063,7 @@
 				987252EB2566BFE700746591 /* CreatePostModel.swift in Sources */,
 				98CB2DD42519CDD500CEE5FB /* RegisterNameViewController.swift in Sources */,
 				98D265052575655A00BD51D5 /* TestCommunitySearchVC.swift in Sources */,
+				981A75322589243B0034AFE1 /* MyAlarmVC.swift in Sources */,
 				98C735AE255C551400252BF2 /* MainManitoChatVC.swift in Sources */,
 				986322562517BB81003B0784 /* FriendMainVC.swift in Sources */,
 				9821BBD625611CAC00C47987 /* ImageColorChange.swift in Sources */,
@@ -2068,6 +2094,7 @@
 				9800A152253378EF0090C058 /* SecondIntroViewController.swift in Sources */,
 				98A661EA252F2C1000698BA0 /* FindPWViewController.swift in Sources */,
 				9819298E257FC73E00DACF15 /* ReportCell.swift in Sources */,
+				981A7536258925C10034AFE1 /* MyAlarmViewModel.swift in Sources */,
 				98FA221225569CFB00331755 /* ProfileDptiResultViewModel.swift in Sources */,
 				98C735DC255C5F1100252BF2 /* YourChatCell.swift in Sources */,
 				986BD62025684980007F49ED /* LinkPopupViewModel.swift in Sources */,
@@ -2113,6 +2140,7 @@
 				98C1663B252729C60080DD87 /* Service1DetailViewController.swift in Sources */,
 				9819298A257FC5F400DACF15 /* ReportMainViewModel.swift in Sources */,
 				983216A7252B8CDD003E6B64 /* AddShadow.swift in Sources */,
+				981A75392589324B0034AFE1 /* UserFCM.swift in Sources */,
 				986EDA122509C42600AD3CEE /* dimodamo.xcdatamodeld in Sources */,
 				9830CF6F255D8EED009F448F /* MainManitoChatViewModel.swift in Sources */,
 				98D26576257624D800BD51D5 /* SearchHistoryCell.swift in Sources */,

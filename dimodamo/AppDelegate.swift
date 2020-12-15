@@ -17,6 +17,8 @@ import IQKeyboardManagerSwift
 
 import GoogleMobileAds
 
+import RealmSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -155,7 +157,7 @@ extension AppDelegate: MessagingDelegate {
         if let userUID = user?.uid {
             let userFcmIdDB = db.collection("FcmId").document("\(userUID)")
             print("## FCMIDDB : \(userFcmIdDB)")
-            userFcmIdDB.setData(["FCM" : "\(fcmToken)"])
+            userFcmIdDB.setData(["FCM" : "\(fcmToken)"], merge: true)
         }
     }
 }

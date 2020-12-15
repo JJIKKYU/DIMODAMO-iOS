@@ -13,8 +13,7 @@ import RxCocoa
 
 class CreateTagsVC: UIViewController {
 
-    @IBOutlet weak var tagTextField_1: UITextField!
-    @IBOutlet weak var tagTextField_2: UITextField!
+    @IBOutlet weak var tagTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
