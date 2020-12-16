@@ -24,13 +24,18 @@ class MyScrapPostViewModel {
     /*
      스크랩한 게시글 어레이
      */
-    let scrapPickListRelay = BehaviorRelay<[ScrapPostModel]>(value: [])
+    let scrapArticleListRelay = BehaviorRelay<[ScrapPostModel]>(value: [])
     let scrapInformationListRelay = BehaviorRelay<[ScrapPostModel]>(value: [])
     
     /*
      로딩
      */
     let isLoadingRelay = BehaviorRelay<Bool>(value: false)
+    
+    /*
+     현재 보여지고 있는 스크랩 종류
+     */
+    let scrapKinds = BehaviorRelay<PostKinds>(value: .article)
     
     /*
      스크랩한 게시글 타이틀
@@ -60,15 +65,17 @@ class MyScrapPostViewModel {
                         
                         
                         
-                        // 디모 픽(아티클, 디모 아트보드)일 경우
+                        // (아티클, 디모 아트보드)일 경우
                         print("type = \(scrapList.keys)")
                         
-                        var pickPostList: [ScrapPostModel] = []
+                        var articlePostList: [ScrapPostModel] = []
                         var informationPostList: [ScrapPostModel] = []
                         
                         for key in scrapList.keys {
                             let scrapPost = ScrapPostModel()
                             let model = scrapList[key]
+                            
+                            scrapPost.uid = key
                             
                             if let author =  model?["author"] as? String {
                                 scrapPost.author = author
@@ -100,7 +107,7 @@ class MyScrapPostViewModel {
                             
                             // 디모아트보드, Article, 디모픽일 경우
                             if scrapPost.type == PostKinds.article.rawValue {
-                                pickPostList.append(scrapPost)
+                                articlePostList.append(scrapPost)
                             }
                             // 인포메이션 (기본게시판형태)일 경우
                             else if scrapPost.type == PostKinds.information.rawValue {
@@ -108,7 +115,8 @@ class MyScrapPostViewModel {
                             }
                         }
                         
-                        self?.scrapPickListRelay.accept(pickPostList)
+                        articlePostList = articlePostList.sorted(by: { $0.createdAt! < $1.createdAt!})
+                        self?.scrapArticleListRelay.accept(articlePostList)
                         self?.scrapInformationListRelay.accept(informationPostList)
                         self?.isLoadingRelay.accept(true)
                     }
@@ -125,6 +133,7 @@ class MyScrapPostViewModel {
 // MARK: - Model
 
 class ScrapPostModel {
+    var uid: String?
     var author: String?
     var author_type: String?
     var thumb_image: String?

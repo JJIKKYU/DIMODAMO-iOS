@@ -328,7 +328,7 @@ class ArticleDetailViewModel {
                     }
                     
                     // 이미 해당 글을 스크랩했는지 map을 먼저 가져옴
-                    if let scrapList = data!["scrap_list"] as? [String: [String: String]] {
+                    if let scrapList = data!["scrap_list"] as? [String: [String: Any]] {
                         
                         // 그 스크랩 포스트 UID로 가져올 경우 값이 있으면
                         if scrapList["\(postUID)"] != nil {
@@ -511,6 +511,9 @@ class ArticleDetailViewModel {
             // 썸네일이미지를 URL에서 String으로
             let thumbImage: String = thumbnailImageRelay.value?.absoluteString ?? ""
             
+            // 스크랩한 시간 기준으로 정렬
+            let unixTimestamp = NSDate().timeIntervalSince1970
+            
             // 스크랩한 포스트 추가
             userData.setData(
                 ["scrap_list" : ["\(postUidRelay.value)" : ["tags" : tagsRelay.value,
@@ -519,7 +522,7 @@ class ArticleDetailViewModel {
                                                             "title" : "\(titleRelay.value)",
                                                             "author" : "\(self.userNicknameRelay.value)",
                                                             "author_type" : "\(self.userDptiRelay.value)",
-                                                            "created_at" : "\(self.bundleId)"]]],
+                                                            "created_at" : unixTimestamp]]],
                     merge: true
                 )
             

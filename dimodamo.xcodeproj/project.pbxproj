@@ -77,6 +77,8 @@
 		9845ED1A258A616E002728E3 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9845ED19258A616E002728E3 /* ArticleTableViewCell.swift */; };
 		9845ED1D258A622E002728E3 /* MyScrapPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9845ED1C258A622E002728E3 /* MyScrapPostVC.swift */; };
 		9845ED20258A6239002728E3 /* MyScrapPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9845ED1F258A6239002728E3 /* MyScrapPostViewModel.swift */; };
+		9845ED23258A7768002728E3 /* Scrap_InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9845ED22258A7768002728E3 /* Scrap_InformationTableViewCell.swift */; };
+		9845ED26258A7777002728E3 /* Scrap_InformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9845ED25258A7777002728E3 /* Scrap_InformationTableViewCell.xib */; };
 		984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C142A252733AE0085008C /* RegisterClearViewController.swift */; };
 		984C142F252736830085008C /* DPTI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984C142E252736830085008C /* DPTI.storyboard */; };
 		984FA8FF2555902500D4F506 /* DimoPeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984FA8FE2555902500D4F506 /* DimoPeopleVC.swift */; };
@@ -340,6 +342,8 @@
 		9845ED19258A616E002728E3 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		9845ED1C258A622E002728E3 /* MyScrapPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrapPostVC.swift; sourceTree = "<group>"; };
 		9845ED1F258A6239002728E3 /* MyScrapPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrapPostViewModel.swift; sourceTree = "<group>"; };
+		9845ED22258A7768002728E3 /* Scrap_InformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrap_InformationTableViewCell.swift; sourceTree = "<group>"; };
+		9845ED25258A7777002728E3 /* Scrap_InformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Scrap_InformationTableViewCell.xib; sourceTree = "<group>"; };
 		984C142A252733AE0085008C /* RegisterClearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClearViewController.swift; sourceTree = "<group>"; };
 		984C142E252736830085008C /* DPTI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DPTI.storyboard; sourceTree = "<group>"; };
 		984FA8FE2555902500D4F506 /* DimoPeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoPeopleVC.swift; sourceTree = "<group>"; };
@@ -953,6 +957,8 @@
 			children = (
 				9845ED16258A5F33002728E3 /* ArticleTableViewCell.xib */,
 				9845ED19258A616E002728E3 /* ArticleTableViewCell.swift */,
+				9845ED22258A7768002728E3 /* Scrap_InformationTableViewCell.swift */,
+				9845ED25258A7777002728E3 /* Scrap_InformationTableViewCell.xib */,
 			);
 			path = Article_Information_TableViewCell;
 			sourceTree = "<group>";
@@ -1948,6 +1954,7 @@
 				98FA22502556EE7300331755 /* F_PI.json in Resources */,
 				98FA22482556EE7300331755 /* F_TI.json in Resources */,
 				98FA22492556EE7300331755 /* M_PE.json in Resources */,
+				9845ED26258A7777002728E3 /* Scrap_InformationTableViewCell.xib in Resources */,
 				989384E92518DB7900DE2C35 /* Register.storyboard in Resources */,
 				980196E0252B620100F829F6 /* SF-Pro-Display-Light.otf in Resources */,
 				98FA22362556EE7300331755 /* M_PI.json in Resources */,
@@ -2026,6 +2033,7 @@
 				98C6C34C25710BCA005B8F40 /* DptiBottomPopupVC.swift in Sources */,
 				98D69F50252C6E2200F52E1F /* FindEmailPWViewModel.swift in Sources */,
 				9845ED1A258A616E002728E3 /* ArticleTableViewCell.swift in Sources */,
+				9845ED23258A7768002728E3 /* Scrap_InformationTableViewCell.swift in Sources */,
 				98138FD5256ADBEF0063F8BD /* HomeVC.swift in Sources */,
 				98D988F825524B78002A8AC5 /* DamoPeopleCell.swift in Sources */,
 				987F5A9B250B152000E1B856 /* DptiResultViewController.swift in Sources */,

@@ -10,6 +10,11 @@ import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
     
+    var topInset: CGFloat = 0
+    var leftInset: CGFloat = 0
+    var bottomInset: CGFloat = 0
+    var rightInset: CGFloat = 0
+    
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var title: UILabel!
@@ -20,22 +25,22 @@ class ArticleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
 
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        self.layoutIfNeeded()
+
         container.layer.masksToBounds = true
         container.layer.cornerRadius = 24
+        container.clipsToBounds = true
+        container.appShadow(.s12)
+        
+        titleImage?.roundCorners(corners: [.topLeft, .topRight], radius: 24)
+
         layer.cornerRadius = 24
+        layer.masksToBounds = true
         
-//        layer.shadowColor = UIColor.black.cgColor
-//        layer.shadowOffset = CGSize(width: 0, height: 4)
-//        layer.shadowOpacity = 0.12
-//        layer.shadowRadius = 16
-//        layer.masksToBounds = false
-//        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
-        
-        self.appShadow(.s12)
         articleCategory.articleCategoryDesign()
         setAspectImageHeight()
         self.layoutIfNeeded()
@@ -45,6 +50,11 @@ class ArticleTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func layoutMarginsDidChange() {
+        super.layoutMarginsDidChange()
+        self.layoutMargins = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
     }
     
     /*

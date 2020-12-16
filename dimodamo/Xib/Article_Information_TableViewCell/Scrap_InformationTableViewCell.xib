@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Scrap_InformationTableViewCell" rowHeight="145" id="2Rb-nC-jzd" customClass="Scrap_InformationTableViewCell" customModule="dimodamo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Rb-nC-jzd" id="9pf-vs-LGG">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로 모션러가 조립컴을 맞추는 방법" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a68-fT-mPC">
+                        <rect key="frame" x="24" y="24" width="252.5" height="22"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                        <color key="textColor" name="TEXT - SMALL"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jh-Ok-Gmc" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
+                        <rect key="frame" x="24" y="54" width="97" height="17.5"/>
+                        <color key="backgroundColor" name="WHITE - 245"/>
+                        <attributedString key="attributedText">
+                            <fragment content="#로딩하고있습니다">
+                                <attributes>
+                                    <color key="NSColor" name="GRAY - 170"/>
+                                    <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1000000000000001" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                <real key="value" value="9"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                <real key="value" value="9"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDA-yg-oFk" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
+                        <rect key="frame" x="129" y="54" width="97" height="17.5"/>
+                        <color key="backgroundColor" name="WHITE - 245"/>
+                        <attributedString key="attributedText">
+                            <fragment content="#로딩중이예모다모">
+                                <attributes>
+                                    <color key="NSColor" name="GRAY - 170"/>
+                                    <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1000000000000001" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                <real key="value" value="9"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                <real key="value" value="9"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testProfile" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-QU-Y1F">
+                        <rect key="frame" x="24" y="95.5" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="spr-f5-HEH"/>
+                            <constraint firstAttribute="width" constant="32" id="vYG-Ni-OwR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사는게쉽지않네" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eb7-Cn-b9n">
+                        <rect key="frame" x="64" y="103.5" width="79" height="16"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="13"/>
+                        <color key="textColor" name="YELLOW - DARK"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpJ-eb-uFG">
+                        <rect key="frame" x="0.0" y="0.0" width="394" height="1"/>
+                        <color key="backgroundColor" name="WHITE - 245"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Dpa-bq-ItJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="WHITE"/>
+                <constraints>
+                    <constraint firstItem="3eu-QU-Y1F" firstAttribute="leading" secondItem="a68-fT-mPC" secondAttribute="leading" id="0yw-Du-NyB"/>
+                    <constraint firstItem="rpJ-eb-uFG" firstAttribute="top" secondItem="9pf-vs-LGG" secondAttribute="top" id="3eS-Z2-aOP"/>
+                    <constraint firstItem="8Jh-Ok-Gmc" firstAttribute="leading" secondItem="a68-fT-mPC" secondAttribute="leading" id="4ua-lx-Ae7"/>
+                    <constraint firstItem="a68-fT-mPC" firstAttribute="top" secondItem="9pf-vs-LGG" secondAttribute="top" constant="24" id="6GS-c8-6EU"/>
+                    <constraint firstItem="rpJ-eb-uFG" firstAttribute="leading" secondItem="9pf-vs-LGG" secondAttribute="leading" id="AC5-T5-Qs9"/>
+                    <constraint firstItem="Eb7-Cn-b9n" firstAttribute="leading" secondItem="3eu-QU-Y1F" secondAttribute="trailing" constant="8" id="AJo-F5-mK1"/>
+                    <constraint firstItem="sDA-yg-oFk" firstAttribute="centerY" secondItem="8Jh-Ok-Gmc" secondAttribute="centerY" id="HZ1-Fw-ADk"/>
+                    <constraint firstItem="8Jh-Ok-Gmc" firstAttribute="top" secondItem="a68-fT-mPC" secondAttribute="bottom" constant="8" id="LVA-kd-joi"/>
+                    <constraint firstItem="a68-fT-mPC" firstAttribute="leading" secondItem="9pf-vs-LGG" secondAttribute="leading" constant="24" id="RWG-od-syT"/>
+                    <constraint firstItem="Eb7-Cn-b9n" firstAttribute="centerY" secondItem="3eu-QU-Y1F" secondAttribute="centerY" id="U7u-pp-z6c"/>
+                    <constraint firstAttribute="trailing" secondItem="rpJ-eb-uFG" secondAttribute="trailing" constant="20" id="XuQ-fw-WFS"/>
+                    <constraint firstItem="3eu-QU-Y1F" firstAttribute="top" secondItem="8Jh-Ok-Gmc" secondAttribute="bottom" constant="24" id="cqz-L9-VPV"/>
+                    <constraint firstItem="sDA-yg-oFk" firstAttribute="leading" secondItem="8Jh-Ok-Gmc" secondAttribute="trailing" constant="8" id="gKb-dE-cPW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="WHITE"/>
+            <connections>
+                <outlet property="nickName" destination="Eb7-Cn-b9n" id="STi-95-cfV"/>
+                <outlet property="profile" destination="3eu-QU-Y1F" id="T6S-q0-IBX"/>
+                <outlet property="title" destination="a68-fT-mPC" id="Ldg-oX-CLo"/>
+                <outletCollection property="tags" destination="8Jh-Ok-Gmc" collectionClass="NSMutableArray" id="IJY-Yw-Y07"/>
+                <outletCollection property="tags" destination="sDA-yg-oFk" collectionClass="NSMutableArray" id="PEB-rS-8k7"/>
+            </connections>
+            <point key="canvasLocation" x="-83" y="-256"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="testProfile" width="32" height="32"/>
+        <namedColor name="GRAY - 170">
+            <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TEXT - SMALL">
+            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WHITE">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WHITE - 245">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="YELLOW - DARK">
+            <color red="0.98000001907348633" green="0.74500000476837158" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
