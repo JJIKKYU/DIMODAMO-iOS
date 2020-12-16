@@ -363,17 +363,6 @@ class ArticleDetailViewController: UIViewController {
             .bind(to: self.viewModel.commentInputRelay)
             .disposed(by: disposeBag)
         
-        
-        /*
-         스크랩
-         */
-        viewModel.scrapCountRelay
-            .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] count in
-                self?.scrapCountLabel.text = "\(count)"
-            })
-            .disposed(by: disposeBag)
-        
         viewModel.isScrapPost
             .subscribeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] flag in

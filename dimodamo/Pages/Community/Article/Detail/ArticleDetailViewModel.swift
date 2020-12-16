@@ -120,10 +120,14 @@ class ArticleDetailViewModel {
     /*
      스크랩
      */
-    let scrapCountRelay = BehaviorRelay<Int>(value: 0)
     var scrapUserPostsUidArr: [String] = []
     var scrapUserPostsIndex: Int?
     let isScrapPost = BehaviorRelay<Bool>(value: false)
+    
+    /*
+     스크랩할 때 쓰이는 BundleId
+     */
+    var bundleId: Double = 0.0
     
     /*
      차단한 유저
@@ -206,9 +210,9 @@ class ArticleDetailViewModel {
                     if let commentCount: Int = data!["comment_count"] as? Int {
                         self?.commentCount = commentCount
                     }
-                
-                    if let scrapCount: Int = data!["scrap_count"] as? Int {
-                        self?.scrapCountRelay.accept(scrapCount)
+                    
+                    if let bundleId: Double = data!["bundle_id"] as? Double {
+                        self?.bundleId = bundleId
                     }
                     
                     self?.descriptionRelay.accept(data!["description"] as! String)
@@ -308,17 +312,39 @@ class ArticleDetailViewModel {
                         print("하트 누른 댓글의 UID : \(self!.commentUserHeartUidArr)")
                     }
                     
-                    // 이미 해당 글을 스크랩했는지 UID를 가져옴
-                    if let scrapUidArr = data!["scrapPosts"] as? [String] {
-                        self?.scrapUserPostsUidArr = scrapUidArr
-                        self?.scrapStateSetting()
-                    }
-                    
                 } else {
                     print("게시글에서 유저 정보를 불러오는데 오류가 발생했습니다.")
                 }
             }
     
+        db.collection("users_scrap_posts")
+            .document("\(userUID)")
+            .getDocument { [weak self] (document, err) in
+                if let document = document, document.exists {
+                    let data = document.data()
+                    
+                    guard let postUID: String = self?.postUidRelay.value else {
+                        return
+                    }
+                    
+                    // 이미 해당 글을 스크랩했는지 map을 먼저 가져옴
+                    if let scrapList = data!["scrap_list"] as? [String: [String: String]] {
+                        
+                        // 그 스크랩 포스트 UID로 가져올 경우 값이 있으면
+                        if scrapList["\(postUID)"] != nil {
+                            self?.isScrapPost.accept(true)
+                            print("스크랩하 게시글입니다")
+                        } else{
+                            self?.isScrapPost.accept(false)
+                            print("스크랩하지 않은 게시글입니다")
+                        }
+                    }
+                    
+                }
+                else {
+                    print("스크랩 DB를 가져오는데 오류가 발생했습니다.")
+                }
+            }
     }
     
     func commentInput() {
@@ -459,68 +485,56 @@ class ArticleDetailViewModel {
         ])
     }
     
-    func scrapStateSetting() {
-        for (index, postUid) in self.scrapUserPostsUidArr.enumerated() {
-            print("postUID : \(postUid)")
-            print("postUIDRelay : \(postUidRelay.value)")
-            if postUid == self.postUidRelay.value {
-                print("스크랩한 게시물입니다.")
-                isScrapPost.accept(true)
-                scrapUserPostsIndex = index
-                return
-            }
-        }
-    }
-    
     // 스크랩 할 경우
     func pressedScrapBtn() {
 //        print("전달받았습니다. : \(uid)")
         guard let userUID: String = self.myUID else {
             return
         }
-        
-        let userData = db.collection("users").document("\(userUID)")
+//        users_scrap_posts
+        let userData = db.collection("users_scrap_posts").document("\(userUID)")
         let documentData = db.collection("\(postDB)").document("\(self.postUidRelay.value)")
-        
-        var arrIndex: Int?
-        
-        for (index, uid) in self.scrapUserPostsUidArr.enumerated() {
-            if uid == self.postUidRelay.value {
-                arrIndex = index
-            }
-        }
         
         switch self.isScrapPost.value {
         
         // 포스트를 스크랩 하지 않은 상태로, 스크랩을 시도할 경우
         case false:
-            let updateScrapCount = self.scrapCountRelay.value + 1
+            
+            // 스크랩 카운트 증가
             documentData.updateData([
                 "scrap_count": FieldValue.increment(Int64(1))
             ])
             self.addScrapCount(countFlag: 1)
             
-            self.scrapUserPostsUidArr.append("\(self.postUidRelay.value)")
-            userData.updateData(["scrapPosts" : self.scrapUserPostsUidArr])
+            
+            // 스크랩한 포스트 추가
+            userData.setData(
+                ["scrap_list" : ["\(postUidRelay.value)" : ["type" : "\(postKindRelay.value)",
+                                                            "title" : "\(titleRelay.value)",
+                                                            "author" : "\(self.userNicknameRelay.value)",
+                                                            "author_type" : "\(self.userDptiRelay.value)",
+                                                            "created_at" : "\(self.bundleId)"]]],
+                    merge: true
+                )
+            
             self.isScrapPost.accept(true)
-            self.scrapCountRelay.accept(updateScrapCount)
             
             break
         
         // 포스트를 이미 스크랩한 상태로, 스크랩을 취소할 경우
         case true:
-            let updateScrapCount = self.scrapCountRelay.value - 1
+            // 스크랩을 취소할 경우 스크랩 카운트 해제
             documentData.updateData([
                 "scrap_count": FieldValue.increment(Int64(-1))
             ])
             self.addScrapCount(countFlag: -1)
             
-            if let arrIndex = arrIndex {
-                self.scrapUserPostsUidArr.remove(at: arrIndex)
-            }
-            userData.updateData(["scrapPosts" : self.scrapUserPostsUidArr])
+            userData
+                .updateData(
+                    ["scrap_list.\(postUidRelay.value)" : FieldValue.delete()]
+                )
+            
             self.isScrapPost.accept(false)
-            self.scrapCountRelay.accept(updateScrapCount)
             
             break
         }
