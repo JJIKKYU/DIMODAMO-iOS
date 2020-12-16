@@ -72,6 +72,7 @@
 		983C7E99253C3F390099B07F /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C7E98253C3F390099B07F /* BoardModel.swift */; };
 		9845E1852554DDAD0020574C /* ProfileArchiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9845E1842554DDAD0020574C /* ProfileArchiveVC.swift */; };
 		9845E1892554EC960020574C /* MyDptiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9845E1882554EC960020574C /* MyDptiVC.swift */; };
+		9845ED12258A2B55002728E3 /* CreatePostTagCompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9845ED11258A2B55002728E3 /* CreatePostTagCompleteCell.swift */; };
 		984C142B252733AE0085008C /* RegisterClearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C142A252733AE0085008C /* RegisterClearViewController.swift */; };
 		984C142F252736830085008C /* DPTI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984C142E252736830085008C /* DPTI.storyboard */; };
 		984FA8FF2555902500D4F506 /* DimoPeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984FA8FE2555902500D4F506 /* DimoPeopleVC.swift */; };
@@ -330,6 +331,7 @@
 		983C7E98253C3F390099B07F /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
 		9845E1842554DDAD0020574C /* ProfileArchiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileArchiveVC.swift; sourceTree = "<group>"; };
 		9845E1882554EC960020574C /* MyDptiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDptiVC.swift; sourceTree = "<group>"; };
+		9845ED11258A2B55002728E3 /* CreatePostTagCompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostTagCompleteCell.swift; sourceTree = "<group>"; };
 		984C142A252733AE0085008C /* RegisterClearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClearViewController.swift; sourceTree = "<group>"; };
 		984C142E252736830085008C /* DPTI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DPTI.storyboard; sourceTree = "<group>"; };
 		984FA8FE2555902500D4F506 /* DimoPeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoPeopleVC.swift; sourceTree = "<group>"; };
@@ -811,6 +813,7 @@
 			children = (
 				981A74B82588B6800034AFE1 /* CreateTagsVC.swift */,
 				981A74BD2588B6920034AFE1 /* CreateTagsViewModel.swift */,
+				9845ED11258A2B55002728E3 /* CreatePostTagCompleteCell.swift */,
 			);
 			path = Tags;
 			sourceTree = "<group>";
@@ -1346,11 +1349,11 @@
 		988377F42545B66100BFA746 /* CreatePost */ = {
 			isa = PBXGroup;
 			children = (
+				988378252545EFF200BFA746 /* TagCell.swift */,
 				98D988D4254E8C0E002A8AC5 /* Main */,
 				98D988CB254E8879002A8AC5 /* UploadCell */,
 				987E1C68254DF56100F5077D /* LinkPopup */,
 				981A74B72588B66A0034AFE1 /* Tags */,
-				988378252545EFF200BFA746 /* TagCell.swift */,
 			);
 			path = CreatePost;
 			sourceTree = "<group>";
@@ -2129,6 +2132,7 @@
 				9860A308256D7EC900806297 /* FriendModel.swift in Sources */,
 				98EAAC43256B5BB900B70CA8 /* ArtboardCardView.swift in Sources */,
 				98C0D57C25490A6700BE382D /* ArticleViewModel.swift in Sources */,
+				9845ED12258A2B55002728E3 /* CreatePostTagCompleteCell.swift in Sources */,
 				988160A1251F0D3C00556AEC /* RegisterSchoolViewController.swift in Sources */,
 				98C34381255B0D0600E77463 /* HotDimoPeopleViewModel.swift in Sources */,
 				98846FFE251113B600943861 /* DptiSurveyViewModel.swift in Sources */,

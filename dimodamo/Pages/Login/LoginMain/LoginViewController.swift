@@ -148,7 +148,7 @@ class LoginViewController: UIViewController {
                                     
                                 case .wrongPassword:
                                     print("wrongPassword")
-                                    let alert = AlertController(title: "비밀번호가 일치하지 않습니다", message: "비밀번호 찾기를 이용해 주세요", preferredStyle: .alert)
+                                    let alert = AlertController(title: "비밀번호가 일치하지 않습니다", message: "", preferredStyle: .alert)
                                     alert.setTitleImage(UIImage(named: "alertError"))
                                     let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
                                     alert.addAction(action)
@@ -157,6 +157,11 @@ class LoginViewController: UIViewController {
                                     
                                 case .invalidEmail:
                                     print("invalidEmail")
+                                    let alert = AlertController(title: "이메일을 다시 확인해 주세요", message: "", preferredStyle: .alert)
+                                    alert.setTitleImage(UIImage(named: "alertError"))
+                                    let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
+                                    alert.addAction(action)
+                                    self.present(alert, animated: true, completion: nil)
                                     break
                                     
                                 case .missingEmail:
@@ -165,7 +170,8 @@ class LoginViewController: UIViewController {
                                     
                                 case .userNotFound:
                                     print("userNotFound")
-                                    let alert = AlertController(title: "가입되어 있지 않은 메일입니다", message: "회원가입이나 이메일 찾기를 이용해 주세요", preferredStyle: .alert)
+//                                    let alert = AlertController(title: "가입되어 있지 않은 메일입니다", message: "회원가입이나 이메일 찾기를 이용해 주세요", preferredStyle: .alert)
+                                    let alert = AlertController(title: "가입되어 있지 않은 메일입니다", message: "회원가입을 이용해 주세요", preferredStyle: .alert)
                                     alert.setTitleImage(UIImage(named: "alertError"))
                                     let action = UIAlertAction(title: "확인", style: .destructive, handler: nil)
                                     alert.addAction(action)
