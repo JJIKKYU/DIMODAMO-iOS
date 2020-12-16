@@ -58,7 +58,7 @@ class CreatePostViewController: UIViewController {
         didSet {
             mainTableView.rowHeight = UITableView.automaticDimension
             mainTableView.estimatedRowHeight = 100
-//            mainTableView.keyboardDismissMode = .onDrag
+            //            mainTableView.keyboardDismissMode = .onDrag
         }
     }
     
@@ -110,7 +110,7 @@ class CreatePostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
-    
+        
         mainTableView.dataSource = self
         mainTableView.delegate = self
         
@@ -131,6 +131,15 @@ class CreatePostViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        self.viewModel.tagsRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { value in
+                if value.count > 0 {
+                    self.tagsTextField.text = "\(value)"
+                }
+            })
+            .disposed(by: disposeBag)
+        
         /*
          내용
          */
@@ -142,7 +151,7 @@ class CreatePostViewController: UIViewController {
                 self?.descriptionLimit.text = self?.viewModel.descriptionLimit
             })
             .disposed(by: disposeBag)
-
+        
         /*
          기본 Empty이미지 삭제 및 데이터가 들어올 때마다 테이블 리로드
          */
@@ -191,6 +200,21 @@ class CreatePostViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "CreateTagsVC":
+            let destination = segue.destination as! CreateTagsVC
+            destination.tagTextDelegate = self
+        
+        break
+        default:
+            break
+        }
+    }
+    
+    
     @IBAction func pressedCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -201,6 +225,8 @@ class CreatePostViewController: UIViewController {
     @IBAction func pressedTagsCreate(_ sender: Any) {
         performSegue(withIdentifier: "CreateTagsVC", sender: nil)
     }
+    
+    
     
     
     /*
@@ -258,7 +284,7 @@ class CreatePostViewController: UIViewController {
     
     @IBAction func pressedLinkBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Community", bundle: nil)
-
+        
         let popupVC = storyboard.instantiateViewController(withIdentifier: "LinkPopupVC") as! LinkPopupVC
         popupVC.sendLinkDataDelegate = self
         
@@ -311,7 +337,7 @@ extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
         }
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-           
+            
             self.bottomIconContainerView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea)
             self.mainTableView.contentInset.bottom = keyboardSize.height
         }
@@ -391,7 +417,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, 
             guard let cellImage = cell.uploadImageView.image else {
                 return UITableViewCell()
             }
-        
+            
             let scaledHeight = ((UIScreen.main.bounds.width - 40) * cellImage.size.height) / cellImage.size.width
             cell.heightConstraint.constant = scaledHeight
             
@@ -440,4 +466,24 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
         }
         dismiss(animated: true, completion: nil)
     }
+}
+
+
+// MARK: - TagsDelegate
+
+extension CreatePostViewController: CreatePostTagTextFieldUpdate {
+    func updateTags(tags: [String]) {
+        self.viewModel.tags = tags
+        
+        var tagString: String = ""
+        for tag in tags {
+            tagString += "#\(tag) "
+        }
+        self.viewModel.tagsRelay.accept(tagString)
+        self.tagsTextField.text = "\(tagString)"
+        
+        print("전달받았습니다. \(tagString)")
+    }
+    
+    
 }

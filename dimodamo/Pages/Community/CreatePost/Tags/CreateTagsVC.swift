@@ -10,11 +10,17 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+ 
+ protocol CreatePostTagTextFieldUpdate {
+     func updateTags(tags: [String])
+ }
 
 class CreateTagsVC: UIViewController {
     
     let viewModel = CreateTagsViewModel()
     var disposbag = DisposeBag()
+    
+    var tagTextDelegate : CreatePostTagTextFieldUpdate? = nil
     
     @IBOutlet weak var tagTextField: UITextField!
     
@@ -24,7 +30,13 @@ class CreateTagsVC: UIViewController {
     // 분리선 콘스트레인트
     @IBOutlet weak var divideLineTopConstraint: NSLayoutConstraint! {
         didSet {
-            divideLineTopConstraint.constant = 100
+            // 테스트용
+//            divideLineTopConstraint.constant = 100
+        }
+    }
+    @IBOutlet weak var addBtn: UIButton! {
+        didSet {
+            addBtn.isEnabled = false
         }
     }
     
@@ -37,6 +49,19 @@ class CreateTagsVC: UIViewController {
     
     // 태그 추가 버튼
     @IBOutlet weak var tagBtn: UIButton!
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        tagTextDelegate?.updateTags(tags: self.viewModel.inputTagsRelay.value)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 화면이 로드될 경우에 키보드 올라오도록
+        tagTextField.becomeFirstResponder()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,35 +84,57 @@ class CreateTagsVC: UIViewController {
         viewModel.tagTextRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
-                // 컬러 변경
+                // '추가' 컬러 변경
                 if value.count >= 2 {
                     self?.tagBtn.setTitleColor(UIColor.appColor(.system), for: .normal)
+                    
                 } else {
                     self?.tagBtn.setTitleColor(UIColor.appColor(.gray190), for: .normal)
+                }
+                
+                if value.count >= 10 {
+                    
                 }
             })
             .disposed(by: disposbag)
         
+        // 태그가 2개 모두 작성 되었을 경우 버튼 활성화
+        viewModel.inputTagsRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                if value.count >= 2 {
+                    self?.addBtn.backgroundColor = UIColor.appColor(.system)
+                    self?.addBtn.isEnabled = true
+                } else {
+                    self?.addBtn.backgroundColor = UIColor.appColor(.gray210)
+                    self?.addBtn.isEnabled = false
+                }
+            })
+            .disposed(by: disposbag)
+        
+        /*
+         Keyboard
+         */
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpTextView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     // 텍스트필드 비우기
     @IBAction func pressedTextfieldDeleteBtn(_ sender: Any) {
+        self.tagTextField.text = nil
     }
     
     // 태그 추가 버튼
     @IBAction func tagAddBtn(_ sender: Any) {
         self.addTag()
         self.tagListCollectionView.reloadData()
+    }
+    
+    // 삽입하기 버튼
+    @IBAction func tagAddCompleteBtn(_ sender: Any) {
+        tagTextDelegate?.updateTags(tags: self.viewModel.inputTagsRelay.value)
+        print("태그를 전달합니다. \(self.viewModel.inputTagsRelay.value)")
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -139,8 +186,6 @@ extension CreateTagsVC: UITableViewDelegate, UITableViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreatePostTagCompleteCell", for: indexPath) as! CreatePostTagCompleteCell
-        
         self.tagListCollectionView.reloadData()
         let index = indexPath.row
         print("sizeforat : \(index)")
@@ -151,22 +196,9 @@ extension CreateTagsVC: UITableViewDelegate, UITableViewDataSource {
             let fontAttributes = [NSAttributedString.Key.font: font]
             let myText = "#\(self.viewModel.inputTagsRelay.value[index])"
             size = ((myText as NSString).size(withAttributes: fontAttributes).width) + 14 + 14 + 4 + 16
-            //  14 + 14 + 4 + 16
-            print("사이즈입니다 : \(size)")
         }
         // 28은 양 옆 마진
-        print("라벨 내용 \(String(describing: cell.tagTextLabel.text))")
-
-        if let count: Int = cell.tagTextLabel.text?.count {
-            if count == 1 {
-                return CGSize(width: 200, height: 26)
-            }
-        }
-        let width = cell.tagTextLabel.intrinsicContentSize.width + 4 + 16
-        print("얼마냐 : \(width)")
-        
         return CGSize(width: size ?? 200, height: 26)
-        
     }
     
     
@@ -196,6 +228,16 @@ extension CreateTagsVC: UITableViewDelegate, UITableViewDataSource {
 extension CreateTagsVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        // 10글자 제한
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        
+        
         // Get your textFields text
         let str = (textField.text! as NSString).replacingCharacters(in: range, with: string)
 
@@ -214,7 +256,18 @@ extension CreateTagsVC: UITextFieldDelegate {
             print(str.last!)
         }
 
-        return true
+        return count <= 10
+    }
+    
+    // 키보드 업, 다운 관련
+    @objc func moveUpTextView(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.addBtn.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+        }
+    }
+
+    @objc func moveDownTextView() {
+        self.addBtn.transform = .identity
     }
 }
 
@@ -261,3 +314,5 @@ extension CreateTagsVC: UITextFieldDelegate {
         self.tagListCollectionView.setCollectionViewLayout(layout, animated: true)
     }
  }
+
+ 
