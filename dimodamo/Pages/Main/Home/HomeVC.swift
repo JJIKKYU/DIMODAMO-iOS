@@ -150,7 +150,6 @@ class HomeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         serviceBannerCollectionView.delegate = self
         serviceBannerCollectionView.dataSource = self

@@ -2156,6 +2156,71 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0oP-Rd-bUN" userLabel="tagsList">
+                                <rect key="frame" x="20" y="149" width="394" height="30"/>
+                                <color key="backgroundColor" name="WHITE"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ou5-TY-man"/>
+                                </constraints>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="12" maxY="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="12" id="TZQ-Gn-Dcv">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="12" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CreatePostTagCompleteCell" id="gm4-Wk-DHO" customClass="CreatePostTagCompleteCell" customModule="dimodamo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="2" width="84" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YKY-3d-lLp">
+                                            <rect key="frame" x="0.0" y="0.0" width="84" height="26"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7we-9D-Ihj" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="4.5" width="4" height="17"/>
+                                                    <color key="backgroundColor" name="WHITE - 245"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
+                                                    <color key="textColor" name="GRAY - 170"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2s-F3-diB">
+                                                    <rect key="frame" x="8" y="2" width="16" height="22"/>
+                                                    <state key="normal" image="closeBtn_gray_circle"/>
+                                                    <connections>
+                                                        <action selector="pressedTagDeleteBtn:" destination="gm4-Wk-DHO" eventType="touchUpInside" id="mig-co-04I"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" name="WHITE"/>
+                                            <constraints>
+                                                <constraint firstItem="T2s-F3-diB" firstAttribute="centerY" secondItem="7we-9D-Ihj" secondAttribute="centerY" id="FlO-TB-HWs"/>
+                                                <constraint firstItem="7we-9D-Ihj" firstAttribute="centerY" secondItem="YKY-3d-lLp" secondAttribute="centerY" id="r0p-3g-Q7f"/>
+                                                <constraint firstItem="T2s-F3-diB" firstAttribute="leading" secondItem="7we-9D-Ihj" secondAttribute="trailing" constant="4" id="s1j-os-EFc"/>
+                                                <constraint firstItem="7we-9D-Ihj" firstAttribute="leading" secondItem="YKY-3d-lLp" secondAttribute="leading" id="sd8-fr-HMp"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="84" height="26"/>
+                                        <connections>
+                                            <outlet property="tagTextLabel" destination="7we-9D-Ihj" id="6uj-mY-nh9"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qds-oo-mb8">
                                 <rect key="frame" x="24" y="108" width="9" height="19"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="16"/>
@@ -2251,64 +2316,6 @@
                                     <action selector="pressedTextfieldDeleteBtn:" destination="POu-VK-sdf" eventType="touchUpInside" id="4jm-PX-fej"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0oP-Rd-bUN" userLabel="tagsList">
-                                <rect key="frame" x="20" y="149" width="394" height="60"/>
-                                <color key="backgroundColor" name="TEXT - SMALL"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="ou5-TY-man"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TZQ-Gn-Dcv">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CreatePostTagCompleteCell" id="gm4-Wk-DHO">
-                                        <rect key="frame" x="0.0" y="17" width="84" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YKY-3d-lLp">
-                                            <rect key="frame" x="0.0" y="0.0" width="84" height="26"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#시나리오" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7we-9D-Ihj" customClass="PaddingLabel" customModule="dimodamo" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="4.5" width="56" height="17"/>
-                                                    <color key="backgroundColor" name="WHITE - 245"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
-                                                    <color key="textColor" name="GRAY - 170"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
-                                                            <real key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
-                                                            <real key="value" value="4"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                            <real key="value" value="14"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                            <real key="value" value="14"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2s-F3-diB">
-                                                    <rect key="frame" x="60" y="2" width="16" height="22"/>
-                                                    <state key="normal" image="closeBtn_gray_circle"/>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" name="WHITE"/>
-                                            <constraints>
-                                                <constraint firstItem="T2s-F3-diB" firstAttribute="centerY" secondItem="7we-9D-Ihj" secondAttribute="centerY" id="FlO-TB-HWs"/>
-                                                <constraint firstItem="7we-9D-Ihj" firstAttribute="centerY" secondItem="YKY-3d-lLp" secondAttribute="centerY" id="r0p-3g-Q7f"/>
-                                                <constraint firstItem="T2s-F3-diB" firstAttribute="leading" secondItem="7we-9D-Ihj" secondAttribute="trailing" constant="4" id="s1j-os-EFc"/>
-                                                <constraint firstItem="7we-9D-Ihj" firstAttribute="leading" secondItem="YKY-3d-lLp" secondAttribute="leading" id="sd8-fr-HMp"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="84" height="26"/>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aU-NC-STI">
                                 <rect key="frame" x="366" y="109" width="30" height="20"/>
                                 <constraints>

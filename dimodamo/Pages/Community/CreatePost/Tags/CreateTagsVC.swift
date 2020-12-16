@@ -1,4 +1,4 @@
-//
+ //
 //  CreateTagsVC.swift
 //  dimodamo
 //
@@ -58,13 +58,17 @@ class CreateTagsVC: UIViewController {
         
         viewModel.tagTextRelay
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { value in
-                
+            .subscribe(onNext: { [weak self] value in
+                // 컬러 변경
+                if value.count >= 2 {
+                    self?.tagBtn.setTitleColor(UIColor.appColor(.system), for: .normal)
+                } else {
+                    self?.tagBtn.setTitleColor(UIColor.appColor(.gray190), for: .normal)
+                }
             })
             .disposed(by: disposbag)
         
     }
-    
     
     /*
      // MARK: - Navigation
@@ -82,6 +86,8 @@ class CreateTagsVC: UIViewController {
     
     // 태그 추가 버튼
     @IBAction func tagAddBtn(_ sender: Any) {
+        self.addTag()
+        self.tagListCollectionView.reloadData()
     }
 }
 
@@ -102,25 +108,79 @@ extension CreateTagsVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - Collection View (태그 목록)
-extension CreateTagsVC: UICollectionViewDelegate, UICollectionViewDataSource {
+ extension CreateTagsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, TagDeleteBtn {
+    
+    func pressedDeleteBtn(index: Int) {
+        var tags = self.viewModel.inputTagsRelay.value
+        tags.remove(at: index)
+        self.viewModel.inputTagsRelay.accept(tags)
+        tagListCollectionView.reloadData()
+        
+        // 태그의 개수가 0개일 경우
+        if self.viewModel.inputTagsCount == 0 {
+            // 태그 자리 다시 없애기
+            self.divideLineTopConstraint.constant = 24
+        }
+    }
+    
     func collectionViewSetting() {
         // width, height 설정
-        let cellWidth: CGFloat = 84
-        let cellHeight: CGFloat = 26
+//        let cellWidth: CGFloat = 84
+//        let cellHeight: CGFloat = 26
         
-        let layout = tagListCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-        layout.scrollDirection = .horizontal
+//        let layout = tagListCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+//        layout.scrollDirection = .horizontal
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.inputTagsCount
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreatePostTagCompleteCell", for: indexPath) as! CreatePostTagCompleteCell
+        
+        self.tagListCollectionView.reloadData()
+        let index = indexPath.row
+        print("sizeforat : \(index)")
+        print("업데이트 하는 셀 \(self.viewModel.inputTagsRelay.value[index])")
+        
+        var size: CGFloat?
+        if let font = UIFont(name: "Apple SD Gothic Neo SemiBold", size: 14) {
+            let fontAttributes = [NSAttributedString.Key.font: font]
+            let myText = "#\(self.viewModel.inputTagsRelay.value[index])"
+            size = ((myText as NSString).size(withAttributes: fontAttributes).width) + 14 + 14 + 4 + 16
+            //  14 + 14 + 4 + 16
+            print("사이즈입니다 : \(size)")
+        }
+        // 28은 양 옆 마진
+        print("라벨 내용 \(String(describing: cell.tagTextLabel.text))")
+
+        if let count: Int = cell.tagTextLabel.text?.count {
+            if count == 1 {
+                return CGSize(width: 200, height: 26)
+            }
+        }
+        let width = cell.tagTextLabel.intrinsicContentSize.width + 4 + 16
+        print("얼마냐 : \(width)")
+        
+        return CGSize(width: size ?? 200, height: 26)
+        
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreatePostTagCompleteCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreatePostTagCompleteCell", for: indexPath) as! CreatePostTagCompleteCell
+        
+        let index = indexPath.row
+        let model = self.viewModel.inputTagsRelay.value
+        
+        cell.tagTextLabel.text = "#\(model[index])"
+        cell.tagTextLabel.layer.cornerRadius = (cell.tagTextLabel.frame.height + 4 + 5)  / 2
+        cell.tagTextLabel.layer.masksToBounds = true
+        cell.tagIndex = index
+        cell.delegate = self
         
         return cell
     }
@@ -129,11 +189,8 @@ extension CreateTagsVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 84, height: 26)
-    }
 }
+
 
 // MARK: - Tag TextField
 extension CreateTagsVC: UITextFieldDelegate {
@@ -150,20 +207,8 @@ extension CreateTagsVC: UITextFieldDelegate {
         
         if str.last! == " "{
             print("SPACE!")
-            
-            let tag: String = self.tagTextField.text!
-            self.tagTextField.text = ""
-            var tags: [String] = self.viewModel.inputTagsRelay.value
-            tags.append(tag)
-            print("태그목록 : \(tags)")
-            self.viewModel.inputTagsRelay.accept(tags)
-            self.divideLineTopConstraint.constant = 66
-            
-            print("태그 카운트 : \(self.viewModel.inputTagsRelay.value.count)")
-            
-            self.tagListCollectionView.reloadData()
-            self.view.layoutIfNeeded()
-            
+            self.addTag()
+            self.tagTextField.text = nil
         }
         else{
             print(str.last!)
@@ -172,3 +217,47 @@ extension CreateTagsVC: UITextFieldDelegate {
         return true
     }
 }
+
+ 
+ extension CreateTagsVC {
+    func addTag() {
+        let tag: String = self.tagTextField.text!
+        let trimmedString = tag.trimmingCharacters(in: .whitespaces)
+        
+        // 태그를 입력하지 않았을 경우 리턴
+        if trimmedString.count == 0 {
+            self.tagTextField.text = nil
+            print("태그를 입력해 주세요")
+            return
+        }
+        
+        var tags: [String] = self.viewModel.inputTagsRelay.value
+        
+        // 태그가 이미 2개 이상인 경우 리턴
+        if tags.count >= 2 {
+            let alert = AlertController(title: "태그는 2개까지 추가 할 수 있습니다", message: "", preferredStyle: .alert)
+            alert.setTitleImage(UIImage(named: "alertError"))
+            let action = UIAlertAction(title: "확인", style: .destructive) { action in
+                return
+            }
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        print("tag : \(trimmedString)")
+        
+        tags.append(trimmedString)
+        print("태그목록 : \(tags)")
+        self.viewModel.inputTagsRelay.accept(tags)
+        self.divideLineTopConstraint.constant = 66
+        
+        print("태그 카운트 : \(self.viewModel.inputTagsRelay.value.count)")
+        
+        self.tagTextField.text = nil
+        self.tagListCollectionView.collectionViewLayout.invalidateLayout()
+        self.tagListCollectionView.reloadData()
+        let layout = tagListCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        self.tagListCollectionView.setCollectionViewLayout(layout, animated: true)
+    }
+ }
