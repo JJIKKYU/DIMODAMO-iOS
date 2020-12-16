@@ -333,7 +333,7 @@ extension InformationVC: UITableViewDelegate, UITableViewDataSource {
         if yPostion < 70 {
             navItem.title = ""
         } else {
-            navItem.title = "디모 레이어"
+            navItem.title = "디모 게시판"
         }
         
         // Reload

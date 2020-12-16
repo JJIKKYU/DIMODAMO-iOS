@@ -20,6 +20,19 @@ class MyScrapPostVC: UIViewController {
     
     @IBOutlet weak var articleBtn: UIButton!
     @IBOutlet weak var informationBtn: UIButton!
+    @IBOutlet weak var articleUnderBar: UIView! {
+        didSet {
+            articleUnderBar.layer.cornerRadius = 2
+            articleUnderBar.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var informationUnderBar: UIView! {
+        didSet {
+            informationUnderBar.layer.cornerRadius = 2
+            informationUnderBar.layer.masksToBounds = true
+            informationUnderBar.isHidden = true
+        }
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,6 +57,10 @@ class MyScrapPostVC: UIViewController {
     
     @IBAction func pressedArticleBtn(_ sender: Any) {
         self.viewModel.scrapKinds.accept(.article)
+        
+        self.articleUnderBar.isHidden = false
+        self.informationUnderBar.isHidden = true
+        
         self.articleBtn.isSelected = true
         self.informationBtn.isSelected = false
         self.tableView.reloadData()
@@ -51,6 +68,10 @@ class MyScrapPostVC: UIViewController {
     
     @IBAction func pressedInformationBtn(_ sender: Any) {
         self.viewModel.scrapKinds.accept(.information)
+        
+        self.articleUnderBar.isHidden = true
+        self.informationUnderBar.isHidden = false
+        
         self.articleBtn.isSelected = false
         self.informationBtn.isSelected = true
         self.tableView.reloadData()

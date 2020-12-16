@@ -51,7 +51,7 @@ class MyScrapPostViewModel {
             return
         }
         
-        db.collection("users_scrap_posts")
+        db.collection("users_interaction_list")
             .document("\(uid)")
             .getDocument { [weak self] (document, err) in
                 if let document = document, document.exists {

@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3T3-oi-p96">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kV6-pn-hOH" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1350"/>
@@ -64,8 +64,9 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="437"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exImg" translatesAutoresizingMaskIntoConstraints="NO" id="asu-Ay-Ngx">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="asu-Ay-Ngx">
                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="224"/>
+                                                                    <color key="backgroundColor" name="WHITE"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="224" id="qGM-97-k8p"/>
                                                                     </constraints>
@@ -196,7 +197,7 @@
                                                     <constraint firstAttribute="height" constant="25" id="kJM-tS-lNY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="21"/>
-                                                <state key="normal" title="디모 아트보드">
+                                                <state key="normal" title="디모 아카이브">
                                                     <color key="titleColor" name="TEXT - SMALL"/>
                                                 </state>
                                                 <connections>
@@ -216,7 +217,7 @@
                                                     <action selector="pressedArticleTitle:" destination="Vgi-od-Fnr" eventType="touchUpInside" id="a9S-tp-Srh"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다모 레이어에서 선별된 양질의 글을 확인해 보세요! " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwk-1a-bXo">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다모 게시판에서 선별된 인기글을 확인해 보세요! " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwk-1a-bXo">
                                                 <rect key="frame" x="24" y="81" width="370" height="17"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                                 <color key="textColor" name="GRAY - 170"/>
@@ -228,7 +229,7 @@
                                                     <constraint firstAttribute="height" constant="25" id="qYD-1v-SLg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeoEB00" family="AppleSDGothicNeoEB00" pointSize="21"/>
-                                                <state key="normal" title="다모 레이어">
+                                                <state key="normal" title="디모 게시판">
                                                     <color key="titleColor" name="TEXT - SMALL"/>
                                                 </state>
                                                 <connections>
@@ -248,7 +249,7 @@
                                                     <action selector="pressedInformationTitle:" destination="Vgi-od-Fnr" eventType="touchUpInside" id="I5S-sI-mBT"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="혼자 알기 아까운 다양한 꿀팁을 함께 공유해요!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itv-Yo-X7M">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다른 디자이너들과 왁자지껄 떠들어보세요!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itv-Yo-X7M">
                                                 <rect key="frame" x="24" y="672" width="370" height="17"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                                 <color key="textColor" name="GRAY - 170"/>
@@ -734,7 +735,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디모 아트보드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhL-u3-ciT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디모 아카이브" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhL-u3-ciT">
                                                     <rect key="frame" x="24" y="40" width="131" height="29"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
                                                     <color key="textColor" name="TEXT - BIG"/>
@@ -2764,7 +2765,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="152"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디모 레이어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iO-Py-7MD">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="디모 게시판" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iO-Py-7MD">
                                             <rect key="frame" x="24" y="40" width="111" height="29"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="24"/>
                                             <color key="textColor" name="TEXT - BIG"/>
@@ -3437,7 +3438,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="a4Z-5V-8SM"/>
-        <segue reference="ROi-qZ-LzO"/>
+        <segue reference="RQh-cD-CdY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="24_Profile_DD" width="24" height="24"/>

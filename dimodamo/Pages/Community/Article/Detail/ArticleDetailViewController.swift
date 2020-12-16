@@ -506,7 +506,7 @@ extension ArticleDetailViewController: UIScrollViewDelegate {
         let scrollOffset = scrollView.contentOffset.y
         
         if viewModel.postKindRelay.value == PostKinds.article.rawValue {
-            if scrollOffset > 210 {
+            if scrollOffset > 155 {
                 self.navigationController?.presentTransparentNavigationBar()
                 self.navItem.title = "\(viewModel.titleRelay.value)"
                 
@@ -518,7 +518,7 @@ extension ArticleDetailViewController: UIScrollViewDelegate {
                 
             }
         } else if viewModel.postKindRelay.value == PostKinds.information.rawValue {
-            if scrollOffset > 130 {
+            if scrollOffset > 80 {
                 self.navigationController?.presentTransparentNavigationBar()
                 self.navItem.title = "\(viewModel.titleRelay.value)"
                 
@@ -1134,7 +1134,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         
         
         // 이미 유저가 하트를 누른 경우 이미지 변경
-        for uid in viewModel.commentUserHeartUidArr {
+        for uid in viewModel.commentUserHeartMap.keys {
             // 내가 적은 댓글일 경우에는 하트 추가
             if model.commentId == uid {
                 //                print("UID가 같으므로 하트이미지를 변경합니다.")

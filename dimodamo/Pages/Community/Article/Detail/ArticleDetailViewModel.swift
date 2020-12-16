@@ -114,7 +114,7 @@ class ArticleDetailViewModel {
         }
         return ""
     }
-    var commentUserHeartUidArr: [String] = []
+    var commentUserHeartMap: [String : [String : Any]] = [:]
     var commentCount: Int = 0 // 해당 글의 코멘트 카운드를 가지고 있음
     
     /*
@@ -133,7 +133,7 @@ class ArticleDetailViewModel {
      차단한 유저
      */
     var blockedUserMap: [String: Bool] = [:]
-
+    
     
     
     func linkViewSetting() {
@@ -300,24 +300,7 @@ class ArticleDetailViewModel {
             return
         }
         
-        db.collection("users")
-            .document("\(userUID)")
-            .getDocument { [weak self] (document, err) in
-                if let document = document, document.exists {
-                    let data = document.data()
-                    
-                    // 이미 하트 버튼을 누른 댓글 UID를 가져옴
-                    if let heartComments = data!["heartComments"] as? [String] {
-                        self?.commentUserHeartUidArr = heartComments
-                        print("하트 누른 댓글의 UID : \(self!.commentUserHeartUidArr)")
-                    }
-                    
-                } else {
-                    print("게시글에서 유저 정보를 불러오는데 오류가 발생했습니다.")
-                }
-            }
-    
-        db.collection("users_scrap_posts")
+        db.collection("users_interaction_list")
             .document("\(userUID)")
             .getDocument { [weak self] (document, err) in
                 if let document = document, document.exists {
@@ -338,6 +321,13 @@ class ArticleDetailViewModel {
                             self?.isScrapPost.accept(false)
                             print("스크랩하지 않은 게시글입니다")
                         }
+                    }
+                    
+                    if let heartList = data!["heart_comment_list"] as? [String: [String: Any]] {
+                        
+                        print("heartCommentMap : \(heartList)")
+                        
+                        self?.commentUserHeartMap = heartList
                     }
                     
                 }
@@ -422,56 +412,58 @@ class ArticleDetailViewModel {
         guard let userUID: String = self.myUID else {
             return
         }
-        let userData = db.collection("users").document("\(userUID)")
-
+        let userData = db.collection("users_interaction_list").document("\(userUID)")
+        
         db.collection("\(commentDB)")
             .document("\(uid)")
             .getDocument { (document, error) in
-            if let document = document, document.exists {
-                let data = document.data()
-                	
-                guard let targetUserUID: String = data!["user_id"] as? String else  {
-                    return
-                }
-                
-                
-                var removedCommentUID: Bool = false
-                for (index, heartCommentUid) in self.commentUserHeartUidArr.enumerated() {
-                    if uid == heartCommentUid {
-                        print("이미 좋아요를 눌렀으므로 사실상 제거헤야할 것 같습니다.")
+                if let document = document, document.exists {
+                    let data = document.data()
+                    
+                    guard let targetUserUID: String = data!["user_id"] as? String else  {
+                        return
+                    }
+                    
+                    // 그 스크랩 포스트 UID로 가져올 경우 값이 있으면
+                    if self.commentUserHeartMap["\(uid)"] != nil {
+                        print("하트를 누른 댓글입니다")
+                        
+                        userData
+                            .updateData(
+                                ["heart_comment_list.\(uid)" : FieldValue.delete()]
+                            )
+                        
+                        self.commentUserHeartMap.removeValue(forKey: uid)
                         
                         // 하트 누른 댓글의 작성자에게 총점수와 하트 점수 추가
                         self.addCommentHeartCount(targetUserUID: "\(targetUserUID)", countFlag: -1)
                         
                         commentCellDocument.updateData(["heart_count" : FieldValue.increment(Int64(-1))])
-                        self.commentUserHeartUidArr.remove(at: index)
-                        removedCommentUID = true
+                        
+                    } else {
+                        print("하트를 누르지 않은 댓글입니다")
+                        
+                        // 스크랩한 포스트 추가
+                        userData.setData(
+                            ["heart_comment_list" : ["\(uid)" : ["heart" : true]]],
+                            merge: true
+                        )
+                        
+                        // 좋아요를 누른게 없으면 푸쉬
+                        commentCellDocument.updateData(["heart_count" : FieldValue.increment(Int64(1))])
+                        
+                        // 내부 변수에도 추가해서 다시 누르면 취소되도록
+                        self.commentUserHeartMap.updateValue(["heart" : true], forKey: "\(uid)")
+                        
+                        // 하트 누른 댓글의 작성자에게 총점수와 하트 점수 추가
+                        self.addCommentHeartCount(targetUserUID: "\(targetUserUID)", countFlag: 1)
+                        
                     }
+                    
+                } else {
+                    print("Documnet does not exist")
                 }
-                
-                if removedCommentUID == false {
-                    
-                    // 좋아요를 누른게 없으면 푸쉬
-                    commentCellDocument.updateData(["heart_count" : FieldValue.increment(Int64(1))])
-                    
-                    // 하트 누른 댓글의 작성자에게 총점수와 하트 점수 추가
-                    self.addCommentHeartCount(targetUserUID: "\(targetUserUID)", countFlag: 1)
-                    
-                    self.commentUserHeartUidArr.append(uid)
-                }
-                
-                
-                
-                // 제거하는데 업데이트데이터는 안될듯
-//                print(self.commentUserHeartUidArr)
-                userData.updateData(["heartComments" : self.commentUserHeartUidArr])
-
-                
-                
-            } else {
-                print("Documnet does not exist")
             }
-        }
     }
     
     // 하트 버튼을 누를 경우, 그 하트 버튼에 해당하는 유저에게 하트 점수와 총 점수 추가
@@ -487,12 +479,12 @@ class ArticleDetailViewModel {
     
     // 스크랩 할 경우
     func pressedScrapBtn() {
-//        print("전달받았습니다. : \(uid)")
+        //        print("전달받았습니다. : \(uid)")
         guard let userUID: String = self.myUID else {
             return
         }
-//        users_scrap_posts
-        let userData = db.collection("users_scrap_posts").document("\(userUID)")
+        //        users_scrap_posts
+        let userData = db.collection("users_interaction_list").document("\(userUID)")
         let documentData = db.collection("\(postDB)").document("\(self.postUidRelay.value)")
         
         switch self.isScrapPost.value {
@@ -523,13 +515,13 @@ class ArticleDetailViewModel {
                                                             "author" : "\(self.userNicknameRelay.value)",
                                                             "author_type" : "\(self.userDptiRelay.value)",
                                                             "created_at" : unixTimestamp]]],
-                    merge: true
-                )
+                merge: true
+            )
             
             self.isScrapPost.accept(true)
             
             break
-        
+            
         // 포스트를 이미 스크랩한 상태로, 스크랩을 취소할 경우
         case true:
             // 스크랩을 취소할 경우 스크랩 카운트 해제
