@@ -153,6 +153,11 @@ class InformationViewModel {
         self.paginateData()
     }
     
+    func reloadWhenViewWillApear() {
+        self.informationPosts = []
+        self.cursor = nil
+    }
+    
     /*
      글쓰기가 가능한지 체크
      */
