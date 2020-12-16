@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,10 +15,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleTableViewCell" id="hfm-cn-mM6" customClass="ArticleTableViewCell" customModule="dimodamo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="437"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="457"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hfm-cn-mM6" id="iUH-Qq-AL7">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="437"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="457"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhg-ro-bky">
@@ -77,7 +76,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <color key="backgroundColor" name="WHITE"/>
                         <constraints>
                             <constraint firstItem="brS-HL-lhd" firstAttribute="top" secondItem="Ai0-kX-MSk" secondAttribute="bottom" constant="40" id="3Bj-2O-BLm"/>
                             <constraint firstItem="VNJ-Wz-vgb" firstAttribute="top" secondItem="syf-uu-Ujf" secondAttribute="top" id="4Zs-Tq-XtH"/>
@@ -103,7 +102,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="jhg-ro-bky" firstAttribute="top" secondItem="iUH-Qq-AL7" secondAttribute="top" id="Gpy-dt-Z4K"/>
-                    <constraint firstAttribute="bottom" secondItem="jhg-ro-bky" secondAttribute="bottom" id="O4N-eP-NIQ"/>
+                    <constraint firstAttribute="bottom" secondItem="jhg-ro-bky" secondAttribute="bottom" constant="20" id="O4N-eP-NIQ"/>
                     <constraint firstItem="jhg-ro-bky" firstAttribute="leading" secondItem="iUH-Qq-AL7" secondAttribute="leading" constant="20" id="ecw-HJ-ubN"/>
                     <constraint firstAttribute="trailing" secondItem="jhg-ro-bky" secondAttribute="trailing" constant="20" id="ovA-ef-V2c"/>
                 </constraints>
@@ -136,11 +135,11 @@
         <namedColor name="TEXT - SMALL">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="WHITE">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="WHITE - 245">
             <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

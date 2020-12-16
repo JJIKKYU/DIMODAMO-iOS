@@ -507,9 +507,15 @@ class ArticleDetailViewModel {
             self.addScrapCount(countFlag: 1)
             
             
+            
+            // 썸네일이미지를 URL에서 String으로
+            let thumbImage: String = thumbnailImageRelay.value?.absoluteString ?? ""
+            
             // 스크랩한 포스트 추가
             userData.setData(
-                ["scrap_list" : ["\(postUidRelay.value)" : ["type" : "\(postKindRelay.value)",
+                ["scrap_list" : ["\(postUidRelay.value)" : ["tags" : tagsRelay.value,
+                                                            "thumb_image" : thumbImage,
+                                                            "type" : postKindRelay.value,
                                                             "title" : "\(titleRelay.value)",
                                                             "author" : "\(self.userNicknameRelay.value)",
                                                             "author_type" : "\(self.userDptiRelay.value)",
