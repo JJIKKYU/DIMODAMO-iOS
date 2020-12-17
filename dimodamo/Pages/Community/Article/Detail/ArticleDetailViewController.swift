@@ -72,6 +72,7 @@ class ArticleDetailViewController: UIViewController {
     var avController = AVPlayerViewController()
     
     @IBOutlet weak var urlStackView: UIStackView!
+    @IBOutlet weak var urlStackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var urlStackViewHeight: NSLayoutConstraint!
     @IBOutlet weak var urlStackLoadingView: UIView!
     
@@ -310,9 +311,11 @@ class ArticleDetailViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] links in
                 if links.count == 0 {
-                    
+                    self?.urlStackViewHeight.constant = 0
+                    self?.urlStackViewTopConstraint.constant = 0
                 } else {
-                    self?.urlStackViewHeight.isActive = false
+                    self?.urlStackViewHeight.isActive = true
+                    self?.urlStackViewTopConstraint.constant = 16
                     self?.urlViewSetting()
                 }
             })
@@ -371,11 +374,11 @@ class ArticleDetailViewController: UIViewController {
                 
                 // 댓글창에 댓글이 적히면
                 if value.count > 0 {
-                    commentPushBtn.isEnabled = true
+                    self?.commentPushBtn.isEnabled = true
                 }
                 // 적히지 않았을 경우
                 else {
-                    commentPushBtn.isEnabled = false
+                    self?.commentPushBtn.isEnabled = false
                 }
             })
             .disposed(by: disposeBag)

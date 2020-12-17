@@ -27,6 +27,12 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var tagsTextField: UITextField!
     @IBOutlet weak var tagsLimit: UILabel!
     
+    @IBOutlet weak var completeBtn: UIButton! {
+        didSet {
+            completeBtn.isEnabled = false
+        }
+    }
+    
     @IBOutlet var postLoadingView: LottieLoadingView2! {
         didSet {
             postLoadingView.isHidden = true
@@ -131,11 +137,15 @@ class CreatePostViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        /*
+         태그
+         */
         self.viewModel.tagsRelay
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { value in
                 if value.count > 0 {
                     self.tagsTextField.text = "\(value)"
+                    self.tagsLimit.text = self.viewModel.tagsLimit
                 }
             })
             .disposed(by: disposeBag)
@@ -149,6 +159,29 @@ class CreatePostViewController: UIViewController {
             .subscribe(onNext: { [weak self] value in
                 self?.viewModel.descriptionRelay.accept(value)
                 self?.descriptionLimit.text = self?.viewModel.descriptionLimit
+            })
+            .disposed(by: disposeBag)
+        
+        /*
+         완료 버튼 활성화
+         */
+        Observable.combineLatest(
+            self.viewModel.descriptionRelay,
+            self.viewModel.titleRelay)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] description, title in
+                
+                // 모든 텍스트 필드를 적절하게 작성했을 경우
+                if description.count > 0 &&
+                    description != self?.viewModel.descriptionPlaceholderText &&
+                    title.count > 0 &&
+                    self?.viewModel.tags.count ?? 0 >= 2 {
+                    self?.completeBtn.isEnabled = true
+                }
+                // 그렇지 않은 경우
+                else {
+                    self?.completeBtn.isEnabled = false
+                }
             })
             .disposed(by: disposeBag)
         

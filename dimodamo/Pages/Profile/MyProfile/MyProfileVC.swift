@@ -144,7 +144,7 @@ class MyProfileVC: UIViewController {
                 if typeString != "" {
                     self?.nicknameLabel.text = "\(userNickname)"
                     self?.profile.image = UIImage(named: "Profile_\(typeString)")
-                    self?.type.image = UIImage.dptiProfileTypeIcon(typeString, isFiiled: true)
+                    self?.type.image = UIImage.dptiProfileTypeIcon(typeString, isFiiled: false)
                     self?.topContainer.backgroundColor = UIColor.dptiDarkColor(typeString)
                     self?.topStretchBG.backgroundColor = UIColor.dptiDarkColor(typeString)
                     self?.backgroundPattern.image = UIImage.shapeBackgroundPattern(typeString)
