@@ -227,6 +227,7 @@ class ArticleDetailViewModel {
             }
     }
     
+    // 댓글 세팅
     func commentSetting() {
         db.collection("\(self.commentDB)")
             .whereField("post_id", isEqualTo: postUidRelay.value)
@@ -250,6 +251,20 @@ class ArticleDetailViewModel {
                     let comment: Comment = Comment()
                     comment.settingDataFromDocumentData(data: data)
                     
+                    // 대댓글 체크 기능 추가 할 것
+                    /*
+                    // 대댓글인데 삭제한 경우에는 보존
+                    if comment.depth == 1 && comment.isDeleted == true {
+                        print("대댓글입니다.")
+                        if comment.isDeleted == true {
+                            comment.comment = "대댓글인데 삭제됨"
+                        }
+                    } else if comment.isDeleted == true {
+                        print("삭제된 댓글입니다.")
+                        comment.comment = "삭제된 댓글"
+                        
+                    }*/
+                    
                     // 차단한 유저 체크
                     self?.blockCommentSetting(comment: comment)
                     
@@ -262,6 +277,24 @@ class ArticleDetailViewModel {
                 
                 self?.commentsRelay.accept(comments)
             })
+    }
+    
+    // 댓글 삭제
+    func deleteComment(commentUID: String) {
+        print("댓글을 삭제합니다")
+        
+        // 댓글의 is_deleted 를 true로 만들어서 삭제처리
+        db.collection("\(self.commentDB)").document("\(commentUID)")
+            .updateData(
+                ["is_deleted" : true]
+            )
+        
+        // 댓글 수 갱신
+        let documentData = db.collection("\(postDB)").document("\(self.postUidRelay.value)")
+        
+        documentData.updateData(
+            ["comment_count" : FieldValue.increment(Int64(-1))]
+            )
     }
     
     // 신고당한 댓글은 프론트에서 반영
@@ -491,6 +524,7 @@ class ArticleDetailViewModel {
         
         // 포스트를 스크랩 하지 않은 상태로, 스크랩을 시도할 경우
         case false:
+            
             
             // 스크랩 카운트 증가
             documentData.updateData([

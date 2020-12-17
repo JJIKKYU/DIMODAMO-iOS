@@ -992,6 +992,12 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 // handle action by updating model with deletion
                 print("댓글을 삭제합니다. : \(indexPath.row)")
                 
+                guard let commentUid: String = cell.uid else {
+                    return
+                }
+                
+                self.viewModel.deleteComment(commentUID: commentUid)
+                
             }
             deleteAction?.image = UIImage(named: "delete_icon")
         } else {
