@@ -1132,12 +1132,10 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.selectedHeart = false
         cell.commentHeartBtn.setImage(UIImage(named: "heartIcon"), for: .normal)
         
-        
         // 이미 유저가 하트를 누른 경우 이미지 변경
-        for uid in viewModel.commentUserHeartMap.keys {
-            // 내가 적은 댓글일 경우에는 하트 추가
-            if model.commentId == uid {
-                //                print("UID가 같으므로 하트이미지를 변경합니다.")
+        if let commentId: String = model.commentId {
+            // 맵에서 UID로 된 키값이 nil이 아닐 경우에
+            if self.viewModel.commentUserHeartMap["\(commentId)"] != nil {
                 cell.selectedHeart = true
                 cell.commentHeartBtn.setImage(UIImage(named: "heartIconPressed"), for: .normal)
             }
