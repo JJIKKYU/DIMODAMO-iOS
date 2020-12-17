@@ -32,6 +32,8 @@ class RegisterSchoolViewController: UIViewController {
             schoolTextField.theme.fontColor = UIColor.appColor(.gray170)
             schoolTextField.theme.separatorColor = UIColor.appColor(.white235)
             schoolTextField.theme.cellHeight = 50
+            schoolTextField.theme.bgColor = UIColor.appColor(.white255)
+
             schoolTextField.maxNumberOfResults = 4
             
             schoolTextField.userStoppedTypingHandler = {

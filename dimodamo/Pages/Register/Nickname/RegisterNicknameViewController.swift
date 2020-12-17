@@ -47,6 +47,7 @@ class RegisterNicknameViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext : { [weak self] newValue in
                 print("newValue : \(newValue)")
+                if newValue.count == 0 { return }
                 
                 // 글이 수정될 때마다 새로 인증을 받아야 하므로, 이메일 중복 확인 해제
                 if self?.viewModel?.nickName != newValue {

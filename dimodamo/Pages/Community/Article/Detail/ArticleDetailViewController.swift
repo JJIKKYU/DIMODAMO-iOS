@@ -84,6 +84,11 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var commentTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var commentTableViewBottom: NSLayoutConstraint!
     
+    @IBOutlet weak var commentPushBtn: UIButton! {
+        didSet {
+            commentPushBtn.isEnabled = false
+        }
+    }
     @IBOutlet weak var commentTextFieldRoundView: TextFieldRound!
     @IBOutlet weak var commentTextFieldTopRoundView: UIView! {
         didSet {
@@ -360,7 +365,19 @@ class ArticleDetailViewController: UIViewController {
          */
         commentTextField.rx.text.orEmpty
             .map { $0 as String }
-            .bind(to: self.viewModel.commentInputRelay)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel.commentInputRelay.accept(value)
+                
+                // 댓글창에 댓글이 적히면
+                if value.count > 0 {
+                    commentPushBtn.isEnabled = true
+                }
+                // 적히지 않았을 경우
+                else {
+                    commentPushBtn.isEnabled = false
+                }
+            })
             .disposed(by: disposeBag)
         
         viewModel.isScrapPost
