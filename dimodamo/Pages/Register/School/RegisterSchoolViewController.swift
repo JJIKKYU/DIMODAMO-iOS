@@ -32,6 +32,8 @@ class RegisterSchoolViewController: UIViewController {
             schoolTextField.theme.fontColor = UIColor.appColor(.gray170)
             schoolTextField.theme.separatorColor = UIColor.appColor(.white235)
             schoolTextField.theme.cellHeight = 50
+            schoolTextField.theme.bgColor = UIColor.appColor(.white255)
+
             schoolTextField.maxNumberOfResults = 4
             
             schoolTextField.userStoppedTypingHandler = {
@@ -79,7 +81,7 @@ class RegisterSchoolViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesisgn()
-        
+        self.view.layoutIfNeeded()
         
         schoolTextField.rx.text.orEmpty
             .map { $0 as String }

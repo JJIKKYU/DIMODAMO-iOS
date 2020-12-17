@@ -17,12 +17,15 @@ import IQKeyboardManagerSwift
 
 import GoogleMobileAds
 
+import RealmSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     lazy var db = Firestore.firestore()
+    let realm = try! Realm()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -152,10 +155,36 @@ extension AppDelegate: MessagingDelegate {
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         
         let user = Auth.auth().currentUser
+        
+    
+        
+        // UserUID가 있을 경우
         if let userUID = user?.uid {
-            let userFcmIdDB = db.collection("FcmId").document("\(userUID)")
-            print("## FCMIDDB : \(userFcmIdDB)")
-            userFcmIdDB.setData(["FCM" : "\(fcmToken)"])
+            
+            let fcmValue = realm.object(ofType: UserFCM.self, forPrimaryKey: userUID)
+            print("fcm 어쩌노. \(String(describing: fcmValue))")
+            
+            // 알림 저장한 적이 없다면
+            if fcmValue == nil {
+                try! realm.write {
+                    let fcmData = UserFCM()
+                    fcmData.uid = userUID
+                    fcmData.fcm = fcmToken
+                    realm.add(fcmData)
+                    print(Realm.Configuration.defaultConfiguration.fileURL!)
+                }
+                
+                let userFcmIdDB = db.collection("FcmId").document("\(userUID)")
+                print("## FCMIDDB : \(userFcmIdDB)")
+                userFcmIdDB.setData(["FCM" : "\(fcmToken)"], merge: true)
+            }
+            // 알림 데이터를 이미 저장 했으므로 저장 하지 않습니다.
+            else {
+                print("알림 데이터를 이미 저장 했으므로 저장 하지 않습니다.")
+            }
+            
+            
+
         }
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p2c-z9-4ly">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -74,9 +74,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="신고하기" id="cH1-Ao-eBt">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="J9a-ql-kD5">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6SP-uY-qFO">
-                                <rect key="frame" x="20" y="11" width="16" height="22"/>
+                        <barButtonItem key="leftBarButtonItem" id="J9a-ql-kD5">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6SP-uY-qFO">
+                                <rect key="frame" x="20" y="11" width="75" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="closeBtn"/>
                                 <connections>
@@ -84,13 +84,16 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="6kt-CH-eNZ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qnu-rZ-ZWy">
+                        <barButtonItem key="rightBarButtonItem" id="6kt-CH-eNZ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qnu-rZ-ZWy">
                                 <rect key="frame" x="302" y="5.5" width="92" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <state key="normal" title="완료">
-                                    <color key="titleColor" name="GRAY - 190"/>
+                                    <color key="titleColor" name="SYSTEM"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" name="GRAY - 170"/>
                                 </state>
                                 <connections>
                                     <action selector="pressedApplyBtn:" destination="l0V-Rg-RuC" eventType="touchUpInside" id="TxZ-V0-Tpt"/>
@@ -103,6 +106,7 @@
                         <outlet property="commentNickname" destination="Kef-Od-5UH" id="ZjK-Ol-PBK"/>
                         <outlet property="commentProfile" destination="KtF-1H-J47" id="QkE-63-8JZ"/>
                         <outlet property="commentTitle" destination="Tt3-Xb-nCS" id="7Xo-Bu-AeG"/>
+                        <outlet property="completeBtn" destination="qnu-rZ-ZWy" id="VSa-f6-rVz"/>
                         <outlet property="postNickname" destination="3Tv-e9-Caw" id="Kci-vv-iXf"/>
                         <outlet property="postProfile" destination="bEC-Qn-nx2" id="CU0-sP-zS7"/>
                         <outlet property="postTitle" destination="76i-UN-kPw" id="qSt-hA-Fxq"/>
@@ -451,15 +455,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cli-9k-2bN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800" y="153"/>
+            <point key="canvasLocation" x="788" y="153"/>
         </scene>
     </scenes>
     <resources>
         <image name="closeBtn" width="16" height="16"/>
         <image name="report_check_circle" width="24" height="24"/>
         <image name="report_empty_cirle" width="24" height="24"/>
-        <namedColor name="GRAY - 190">
-            <color red="0.74500000476837158" green="0.74500000476837158" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="GRAY - 170">
+            <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="GRAY - 190">
             <color red="0.74500000476837158" green="0.74500000476837158" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -467,8 +471,8 @@
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="TEXT - SMALL">
-            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="SYSTEM">
+            <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT - SMALL">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

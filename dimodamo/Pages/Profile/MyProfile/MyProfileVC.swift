@@ -52,8 +52,11 @@ class MyProfileVC: UIViewController {
     @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var type: UIImageView!
     @IBOutlet weak var registerDate: UILabel!
+    @IBOutlet weak var commentHeartIcon: UIImageView!
     @IBOutlet weak var commentHeartCountLabel: UILabel!
+    @IBOutlet weak var scrapIcon: UIImageView!
     @IBOutlet weak var scrapCountLabel: UILabel!
+    @IBOutlet weak var manitoIcon: UIImageView!
     @IBOutlet weak var manitoGoodCountLabel: UILabel!
     
     @IBOutlet weak var messageBtnHeightConstraint: NSLayoutConstraint!
@@ -141,7 +144,7 @@ class MyProfileVC: UIViewController {
                 if typeString != "" {
                     self?.nicknameLabel.text = "\(userNickname)"
                     self?.profile.image = UIImage(named: "Profile_\(typeString)")
-                    self?.type.image = UIImage.dptiProfileTypeIcon(typeString, isFiiled: true)
+                    self?.type.image = UIImage.dptiProfileTypeIcon(typeString, isFiiled: false)
                     self?.topContainer.backgroundColor = UIColor.dptiDarkColor(typeString)
                     self?.topStretchBG.backgroundColor = UIColor.dptiDarkColor(typeString)
                     self?.backgroundPattern.image = UIImage.shapeBackgroundPattern(typeString)
@@ -160,8 +163,13 @@ class MyProfileVC: UIViewController {
             .subscribe(onNext: { [weak self] data in
                 
                 
+                self?.commentHeartIcon.image = MedalKinds.getMedal(kind: .comment, commentHeartCount: data.commentHeartCount, manitoGoodCount: data.manitoGoodCount, documnetScrapCount: data.scrapCount)
                 self?.commentHeartCountLabel.text = "+\(data.commentHeartCount)"
+                
+                self?.scrapIcon.image = MedalKinds.getMedal(kind: .scrap, commentHeartCount: data.commentHeartCount, manitoGoodCount: data.manitoGoodCount, documnetScrapCount: data.scrapCount)
                 self?.scrapCountLabel.text = "+\(data.scrapCount)"
+                
+                self?.manitoIcon.image = MedalKinds.getMedal(kind: .manito, commentHeartCount: data.commentHeartCount, manitoGoodCount: data.manitoGoodCount, documnetScrapCount: data.scrapCount)
                 self?.manitoGoodCountLabel.text = "+\(data.manitoGoodCount)"
                 self?.registerDate.text = "\(data.createdAt)"
                 
@@ -240,14 +248,15 @@ class MyProfileVC: UIViewController {
         // 내 프로필일때
         case true:
             // Create your actions - take a look at different style attributes
-            let nicknameChangeAction = UIAlertAction(title: "닉네임 수정하기", style: .default) { (action) in
-                // observe it in the buttons block, what button has been pressed
-                print("didPress report abuse")
-            }
             
-            let interestChangeAction = UIAlertAction(title: "관심사 수정하기", style: .default) { (action) in
-                print("didPress block")
-            }
+//            let nicknameChangeAction = UIAlertAction(title: "닉네임 수정하기", style: .default) { (action) in
+//                // observe it in the buttons block, what button has been pressed
+//                print("didPress report abuse")
+//            }
+            
+//            let interestChangeAction = UIAlertAction(title: "관심사 수정하기", style: .default) { (action) in
+//                print("didPress block")
+//            }
             
 //            actionSheet.addAction(nicknameChangeAction)
 //            actionSheet.addAction(interestChangeAction)

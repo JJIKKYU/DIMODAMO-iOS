@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Vp-RL-p2D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Vp-RL-p2D">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1401,7 +1401,7 @@
                                                 <color key="textColor" name="TEXT - BIG"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4~8글자 사이로 입력 (한글, 영문, 숫자만 가능)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uS6-AZ-EW2">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2~8글자 사이로 입력 (한글, 영문, 숫자만 가능)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uS6-AZ-EW2">
                                                 <rect key="frame" x="2" y="90" width="276" height="18"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <color key="textColor" name="GRAY - 210"/>
@@ -1775,25 +1775,18 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XaD-jG-Lb7" userLabel="ContentView">
                                         <rect key="frame" x="20" y="0.0" width="374" height="450"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xv8-Am-Vi2">
-                                                <rect key="frame" x="0.0" y="65" width="374" height="2"/>
-                                                <color key="backgroundColor" name="WHITE - 245"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="2" id="HkO-iM-AxL"/>
-                                                </constraints>
-                                            </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7q-cP-wAq">
                                                 <rect key="frame" x="4" y="88" width="366" height="362"/>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <string key="content">디모다모에서 제공하는 이벤트/혜택 등 다양한 정보를 이메일로 받아보실 수 있습니다. 일부 서비스의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다. 해당 광고성 정보는 다양한 제휴서비스 및 디자인 전공생을 위한 다양한 프로모션이 포함됩니다.
+                                                        <mutableString key="content">디모다모에서 제공하는 이벤트/혜택 등 다양한 정보를 이메일로 받아보실 수 있습니다. 일부 서비스의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다. 해당 광고성 정보는 다양한 제휴서비스 및 디자인 전공생을 위한 다양한 프로모션이 포함됩니다.
 
 마케팅 수신 동의는 거부하실 수 있으며 동의 이후에라도 고객의 의사에 따라 동의를 철회할 수 있습니다. 동의를 거부하시더라도 디모다모가 제공하는 서비스의 이용에 제한이 되지 않습니다. 단, 다양한 마케팅 정보 안내 서비스가 제한됩니다.
 
 1. 항목 : 마케팅 수신 종의
 2. 목적 : 서비스 및 이벤트 정보 안내
-3. 기간 : 탈퇴 후 최대 1년</string>
+3. 기간 : 탈퇴 후 최대 1년</mutableString>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -1808,12 +1801,9 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="f7q-cP-wAq" secondAttribute="trailing" constant="4" id="CUG-1S-Xfx"/>
                                             <constraint firstItem="f7q-cP-wAq" firstAttribute="top" secondItem="XaD-jG-Lb7" secondAttribute="top" constant="88" id="FWB-tk-8kN"/>
-                                            <constraint firstItem="xv8-Am-Vi2" firstAttribute="top" secondItem="XaD-jG-Lb7" secondAttribute="top" constant="65" id="Hfu-R9-3ce"/>
-                                            <constraint firstItem="xv8-Am-Vi2" firstAttribute="leading" secondItem="XaD-jG-Lb7" secondAttribute="leading" id="L37-UK-2sc"/>
                                             <constraint firstAttribute="bottom" secondItem="f7q-cP-wAq" secondAttribute="bottom" id="Sqd-YJ-eGT"/>
                                             <constraint firstItem="f7q-cP-wAq" firstAttribute="leading" secondItem="XaD-jG-Lb7" secondAttribute="leading" constant="4" id="UcM-aM-qyx"/>
                                             <constraint firstAttribute="height" constant="450" id="eNV-Gg-Sxo"/>
-                                            <constraint firstAttribute="trailing" secondItem="xv8-Am-Vi2" secondAttribute="trailing" id="wFt-gZ-I49"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1829,6 +1819,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pce-3Y-vFV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dva-8M-966">
+                                        <rect key="frame" x="20" y="63" width="374" height="2"/>
+                                        <color key="backgroundColor" name="WHITE - 245"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="gaU-mA-Bqx"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마케팅 정보 수신 동의" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQO-R1-2nC">
                                         <rect key="frame" x="20" y="26" width="200" height="21"/>
                                         <constraints>
@@ -1850,9 +1847,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="2EL-u5-zXV"/>
                                     <constraint firstAttribute="trailing" secondItem="jcD-me-Xqq" secondAttribute="trailing" constant="20" id="EiH-vC-bMG"/>
+                                    <constraint firstAttribute="trailing" secondItem="dva-8M-966" secondAttribute="trailing" constant="20" symbolic="YES" id="HEn-AM-oqp"/>
                                     <constraint firstItem="YQO-R1-2nC" firstAttribute="top" secondItem="Pce-3Y-vFV" secondAttribute="top" constant="26" id="J0G-yt-rE5"/>
                                     <constraint firstItem="jcD-me-Xqq" firstAttribute="top" secondItem="Pce-3Y-vFV" secondAttribute="top" constant="26" id="SYj-Fj-SPJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="dva-8M-966" secondAttribute="bottom" id="Whe-8G-1XV"/>
                                     <constraint firstItem="YQO-R1-2nC" firstAttribute="leading" secondItem="Pce-3Y-vFV" secondAttribute="leading" constant="20" id="b5o-sH-x16"/>
+                                    <constraint firstItem="dva-8M-966" firstAttribute="leading" secondItem="Pce-3Y-vFV" secondAttribute="leading" constant="20" symbolic="YES" id="xVe-o2-mAk"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1899,19 +1899,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RxW-Jz-7y6" userLabel="ContentView">
                                         <rect key="frame" x="20" y="0.0" width="374" height="4600"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOn-dV-1tJ">
-                                                <rect key="frame" x="0.0" y="65" width="374" height="2"/>
-                                                <color key="backgroundColor" name="WHITE - 245"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="2" id="Kar-qR-X0J"/>
-                                                </constraints>
-                                            </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gf-gn-dAM">
                                                 <rect key="frame" x="4" y="88" width="366" height="4512"/>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <string key="content">1. **제 1조 (목적)**'디모다모 커뮤니티 서비스 이용 약관(이하 '약관')'은 디모다모 회원(이하 '회원')이 디모다모㈜(이하 '회사')가 자사 앱서비스를 통해 제공하는 커뮤니티 서비스를 이용함에 있어 회사와 회원 간의 권리와 의무, 서비스 이용조건 및 절차 등 기본적인 사항을 명시하고 규정함을 목적으로 합니다.
+                                                        <mutableString key="content">1. **제 1조 (목적)**'디모다모 커뮤니티 서비스 이용 약관(이하 '약관')'은 디모다모 회원(이하 '회원')이 디모다모㈜(이하 '회사')가 자사 앱서비스를 통해 제공하는 커뮤니티 서비스를 이용함에 있어 회사와 회원 간의 권리와 의무, 서비스 이용조건 및 절차 등 기본적인 사항을 명시하고 규정함을 목적으로 합니다.
 
 2. *제 2조 (용어의 정의)**
 
@@ -1962,7 +1955,7 @@
 
 7. *제 9조 (게시물의 관리)**
 1) 모든 게시물에 대한 책임은 게시한 자에게 있으며 게시물이 전달하는 정보의 신뢰도, 정확성 등에 대해서 회사는 책임지지 않습니다.
-2) 회원이 직접 삭제한 게시물은 시스템 상에서 완전히 삭제되며 회사는 이를 별도로 보관하거나 복구할 책임을 지지 않습니다.
+2) 회원이 직접 삭제한 게시물에 대해서 회사는 이를 별도로 보관하거나 복구할 책임을 지지 않습니다.
 4) 게시물이 아래 각 호에 해당할 경우 회사는 이를 삭제, 이동하거나 등록을 거부할 수 있고 서비스 내 표시 및 공람을 허용하지 않을 수 있습니다.공공질서와 미풍양속을 저해하는 내용폭력적이거나 저속하고 음란한 내용불법 복제, 해킹, 기타 현행법을 위반하거나 저촉할 우려가 있는 내용특정 개인이나 단체를 모욕하거나 명예를 훼손하고 피해를 줄 의도를 담고 있는 내용타인의 지적 재산권, 초상권 등 권리를 침해하는 내용광고, 홍보, 판촉 등 영리를 목적으로 한 상업적 내용사적인 정치적 판단이나 종교적 견해로 이용자간 위화감을 조장하는 내용서비스 각 영역이 규정하고 있는 운영 원칙에 어긋나거나 부합하지 않는 내용이해 당사자의 삭제 요청이 있거나 회사가 피소, 고발될 수 있는 근거를 제공하는 경우동일한 내용을 반복 게시하는 등 다른 이용자의 서비스 이용에 지장을 초래하는 경우회사의 원활한 서비스 제공을 방해하는 경우범죄와 결부된다고 객관적으로 인정되는 경우기타 관계법령에 위배된다고 판단되는 내용
 
 8. *제 10조 (서비스 이용 권한과 책임)**
@@ -1974,7 +1967,7 @@
 
 10. *제 12조 (자료의 보관)**
 1) 회원이 서비스를 이용하며 축적한 데이터에 대한 보관 책임은 회원에게 있으며, 무료 서비스의 장애, 제공 중단, 자료 멸실, 삭제, 변조 등으로 인한 손해에 대해서 회사는 원상 복구에 최선을 다할 의무만을 지닙니다.
-2) 회원이 서비스 이용 계약을 해지하였을 경우 회원의 게시물은 모두 삭제되며 삭제된 자료는 복구할 수 없습니다. 단, 스크랩 기능 등을 통해 복제, 전송된 컨텐츠는 삭제 대상에 포함되지 않습니다.
+2) 회원이 서비스 이용 계약을 해지하였을 경우, 관련하여 삭제된 자료는 복구할 수 없습니다. 단, 스크랩 기능 등을 통해 복제, 전송된 컨텐츠는 삭제 대상에 포함되지 않습니다. 이는 서비스 이용 계약 해지 이전 회원이 직접 삭제한 게시물에도 적용됩니다.
 3) 회사가 본 약관 제 8조, 및 9조에 의거하여 게시물을 삭제하는 경우 삭제된 자료에 대해서 복구할 책임을 지지 않습니다.
 
 11. *제 13조 (정보의 제공 및 통지)**
@@ -2001,7 +1994,7 @@
 1) 회사와 회원 사이에 서비스와 관련하여 분쟁이 발생하는 경우 대한민국 민사소송법상 관할 법원에 소송을 제기할 수 있습니다.
 2) 전항의 경우 준거법은 대한민국법을 적용합니다.
 
-    3) 해당 약관에서 정하지 아니한 사항과 약관의 해석에 관해서는 관련법 또는 관례에 따릅니다.</string>
+    3) 해당 약관에서 정하지 아니한 사항과 약관의 해석에 관해서는 관련법 또는 관례에 따릅니다.</mutableString>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -2015,11 +2008,8 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="8Gf-gn-dAM" secondAttribute="trailing" constant="4" id="0kd-LL-1N1"/>
-                                            <constraint firstAttribute="trailing" secondItem="hOn-dV-1tJ" secondAttribute="trailing" id="3SK-rq-dUj"/>
                                             <constraint firstAttribute="height" constant="4600" id="5si-vP-rzD"/>
                                             <constraint firstItem="8Gf-gn-dAM" firstAttribute="top" secondItem="RxW-Jz-7y6" secondAttribute="top" constant="88" id="CT4-QG-r4a"/>
-                                            <constraint firstItem="hOn-dV-1tJ" firstAttribute="leading" secondItem="RxW-Jz-7y6" secondAttribute="leading" id="d8a-Hk-snK"/>
-                                            <constraint firstItem="hOn-dV-1tJ" firstAttribute="top" secondItem="RxW-Jz-7y6" secondAttribute="top" constant="65" id="e88-ZF-dJt"/>
                                             <constraint firstItem="8Gf-gn-dAM" firstAttribute="leading" secondItem="RxW-Jz-7y6" secondAttribute="leading" constant="4" id="sy8-eU-b3l"/>
                                             <constraint firstAttribute="bottom" secondItem="8Gf-gn-dAM" secondAttribute="bottom" id="z8P-9Q-REA"/>
                                         </constraints>
@@ -2053,9 +2043,19 @@
                                             <action selector="pressedCloseBtn:" destination="2t4-MG-YWH" eventType="touchUpInside" id="vzp-ke-Bqy"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qc1-6L-JXa">
+                                        <rect key="frame" x="20" y="63" width="374" height="2"/>
+                                        <color key="backgroundColor" name="WHITE - 245"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="B4O-W4-Ukx"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qc1-6L-JXa" secondAttribute="trailing" constant="20" symbolic="YES" id="3Ma-Mg-gQz"/>
+                                    <constraint firstItem="qc1-6L-JXa" firstAttribute="leading" secondItem="a2d-rc-wsT" secondAttribute="leading" constant="20" symbolic="YES" id="3xT-aq-xZr"/>
+                                    <constraint firstAttribute="bottom" secondItem="qc1-6L-JXa" secondAttribute="bottom" id="8Wm-zY-0ec"/>
                                     <constraint firstItem="rBD-ru-wuW" firstAttribute="leading" secondItem="a2d-rc-wsT" secondAttribute="leading" constant="20" id="Aoo-bl-dln"/>
                                     <constraint firstAttribute="trailing" secondItem="ECA-wt-aLv" secondAttribute="trailing" constant="20" id="DGh-vN-KFO"/>
                                     <constraint firstAttribute="height" constant="65" id="gqk-fh-qtc"/>
@@ -2105,64 +2105,53 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rA0-21-Ycq" userLabel="ContentView">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="3600"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="3000"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcP-Di-n84">
-                                                <rect key="frame" x="0.0" y="65" width="374" height="2"/>
-                                                <color key="backgroundColor" name="WHITE - 245"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="2" id="Orr-Sj-gdG"/>
-                                                </constraints>
-                                            </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTl-zP-TBW">
-                                                <rect key="frame" x="4" y="88" width="366" height="3512"/>
+                                                <rect key="frame" x="4" y="88" width="366" height="2912"/>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <string key="content">1. 개인정보의 처리 목적 (‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적 이외의 용도로는 이용하지 않습니다.
-- 고객 가입의사 확인, 고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격 유지.관리, 물품 또는 서비스 공급에 따른 금액 결제, 물품 또는 서비스의 공급.배송 등
-1. 개인정보의 처리 및 보유 기간
+                                                        <mutableString key="content">1. 개인정보의 처리 목적
+ ‘DIMODAMO’ (이하 '디모다모') 는 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적 이외의 용도로는 이용하지 않습니다.
+- 고객 가입의사 확인, 고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격 유지.관리, 물품 또는 서비스 공급에 따른 금액 결제, 물품 또는 서비스의 공급. 배송 등
 
-① (‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO’) 은(는) 정보주체로부터 개인정보를 수집할 때 동의 받은 개인정보 보유</string>
+2. 개인정보의 처리 및 보유 기간
+
+① 디모다모는 정보주체로부터 개인정보를 수집할 때 동의 받은 개인정보 보유</mutableString>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="․">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="Helvetica"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="이용기간 또는 법령에 따른 개인정보 보유">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="․">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="Helvetica"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="이용기간 내에서 개인정보를 처리">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="․">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="Helvetica"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
@@ -2170,34 +2159,28 @@
 
 ② 구체적인 개인정보 처리 및 보유 기간은 다음과 같습니다.
 
-☞ 아래 예시를 참고하여 개인정보 처리업무와 개인정보 처리업무에 대한 보유기간 및 관련 법령, 근거 등을 기재합니다.
-
-(예시)- 고객 가입 및 관리 : 서비스 이용계약 또는 회원가입 해지시까지, 다만 채권</string>
+고객 가입 및 관리 : 서비스 이용계약 또는 회원가입 해지시까지, 다만 채권</string>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="․">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="Helvetica"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="채무관계 잔존시에는 해당 채권">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="․">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="Helvetica"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
@@ -2207,97 +2190,97 @@
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="․">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="Helvetica"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content">청약철회, 대금결제, 재화 등 공급기록 : 5년
-1. 개인정보의 제3자 제공에 관한 사항
+                                                        <mutableString key="content">청약철회, 대금결제, 재화 등 공급기록 : 5년
 
-① ('[http://dimodamo.com](http://dimodamo.com/)'이하 'DIMODAMO')은(는) 정보주체의 동의, 법률의 특별한 규정 등 개인정보 보호법 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
+3. 개인정보의 제3자 제공에 관한 사항
 
-② ('[http://dimodamo.com](http://dimodamo.com/)')은(는) 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.
+① 디모다모는 정보주체의 동의, 법률의 특별한 규정 등 개인정보 보호법 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
 
-1. &lt;&gt;
-개인정보를 제공받는 자 :
-제공받는 자의 개인정보 이용목적 :
-제공받는 자의 보유.이용기간: 
-2. 개인정보처리 위탁
+② 디모다모는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.
 
-① ('DIMODAMO')은(는) 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.
+1. &lt;개인정보 제 3자 제공&gt;
+개인정보를 제공받는 자 : Google ads, Google Firebase
+제공받는 자의 개인정보 이용목적 : 맞춤형 광고 제공 및 회원정보 저장 및 관리
 
-1. &lt;&gt;
+4. 개인정보처리 위탁
+
+① 디모다모는 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.
+
+1. &lt;개인정보처리 위탁&gt;
 위탁받는 자 (수탁자) : Google Firebase
 위탁하는 업무의 내용 : 회원정보 저장 및 관리
-위탁기간 :
-② ('[http://dimodamo.com](http://dimodamo.com/)'이하 'DIMODAMO')은(는) 위탁계약 체결시 개인정보 보호법 제25조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적</string>
+② 디모다모는 위탁계약 체결시 개인정보 보호법 제25조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적</mutableString>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="․">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="Helvetica"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="․">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="Helvetica"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content">감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.
+                                                        <mutableString key="content">감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.
 
 ③ 위탁업무의 내용이나 수탁자가 변경될 경우에는 지체없이 본 개인정보 처리방침을 통하여 공개하도록 하겠습니다.
 
-1. 정보주체와 법정대리인의 권리·의무 및 그 행사방법 이용자는 개인정보주체로써 다음과 같은 권리를 행사할 수 있습니다.
+5. 정보주체와 법정대리인의 권리·의무 및 그 행사방법 
+이용자는 개인정보주체로써 다음과 같은 권리를 행사할 수 있습니다.
 
-① 정보주체는 SJS(‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO) 에 대해 언제든지 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.
+① 정보주체는 디모다모에 대해 언제든지 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.
 
 1. 개인정보 열람요구
 2. 오류 등이 있을 경우 정정 요구
 3. 삭제요구
 4. 처리정지 요구
-5. 처리하는 개인정보의 항목 작성
 
-① ('[http://dimodamo.com](http://dimodamo.com/)'이하 'DIMODAMO')은(는) 다음의 개인정보 항목을 처리하고 있습니다.
+6. 처리하는 개인정보의 항목 작성
+
+① 디모다모는 다음의 개인정보 항목을 처리하고 있습니다.
 
 1&lt;서비스 이용&gt;
 필수항목 : 이메일, 성별, 생년월일, 이름, 학력, 서비스 이용 기록, 접속 로그
 
-- 선택항목 :
-1. 개인정보의 파기('DIMODAMO')은(는) 원칙적으로 개인정보 처리목적이 달성된 경우에는 지체없이 해당 개인정보를 파기합니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.
+선택항목 : - 
+
+7. 개인정보의 파기
+디모다모는 원칙적으로 개인정보 처리목적이 달성된 경우에는 지체없이 해당 개인정보를 파기합니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.
+
 - 파기절차
 이용자가 입력한 정보는 목적 달성 후 별도의 DB에 옮겨져(종이의 경우 별도의 서류) 내부 방침 및 기타 관련 법령에 따라 일정기간 저장된 후 혹은 즉시 파기됩니다. 이 때, DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 다른 목적으로 이용되지 않습니다.
 - 파기기한
 이용자의 개인정보는 개인정보의 보유기간이 경과된 경우에는 보유기간의 종료일로부터 5일 이내에, 개인정보의 처리 목적 달성, 해당 서비스의 폐지, 사업의 종료 등 그 개인정보가 불필요하게 되었을 때에는 개인정보의 처리가 불필요한 것으로 인정되는 날로부터 5일 이내에 그 개인정보를 파기합니다.
-1. 개인정보 자동 수집 장치의 설치•운영 및 거부에 관한 사항
 
-① SJS 은 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 ‘쿠기(cookie)’를 사용합니다. ② 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다. 가. 쿠키의 사용 목적 : 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 인기 검색어, 보안접속 여부, 등을 파악하여 이용자에게 최적화된 정보 제공을 위해 사용됩니다. 나. 쿠키의 설치•운영 및 거부 : 웹브라우저 상단의 도구&gt;인터넷 옵션&gt;개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부 할 수 있습니다. 다. 쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.
+8. 개인정보 자동 수집 장치의 설치•운영 및 거부에 관한 사항
 
-1. 개인정보 보호책임자 작성
+① 디모다모는 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 ‘쿠기(cookie)’를 사용합니다. ② 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다. 가. 쿠키의 사용 목적 : 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 인기 검색어, 보안접속 여부, 등을 파악하여 이용자에게 최적화된 정보 제공을 위해 사용됩니다. 나. 쿠키의 설치•운영 및 거부 : 웹브라우저 상단의 도구&gt;인터넷 옵션&gt;개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부 할 수 있습니다. 다. 쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.
 
-① SJS(‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO) 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
+9. 개인정보 보호책임자 작성
+
+① 디모다모는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
 
 ▶ 개인정보 보호책임자
 성명 :정진균
@@ -2307,22 +2290,29 @@
 ※ 개인정보 보호 담당부서로 연결됩니다.
 
 ▶ 개인정보 보호 담당부서
-부서명 : 회원관리부
 담당자 : 정진균
 연락처 : dimodamo.corp@gmail.com
-② 정보주체께서는 SJS(‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO) 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. SJS(‘[http://dimodamo.com](http://dimodamo.com/)’이하 ‘DIMODAMO) 은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.
+② 정보주체께서는 디모다모의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. 디모다모는 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.
 
-1. 개인정보 처리방침 변경
+10. 개인정보 처리방침 변경
 
 ①이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.
 
-1. 개인정보의 안전성 확보 조치 ('DIMODAMO')은(는) 개인정보보호법 제29조에 따라 다음과 같이 안전성 확보에 필요한 기술적/관리적 및 물리적 조치를 하고 있습니다.
-2. 정기적인 자체 감사 실시
+11. 개인정보의 안전성 확보 조치 
+디모다모는 개인정보보호법 제29조에 따라 다음과 같이 안전성 확보에 필요한 기술적/관리적 및 물리적 조치를 하고 있습니다.
+
+1. 정기적인 자체 감사 실시
 개인정보 취급 관련 안정성 확보를 위해 정기적(분기 1회)으로 자체 감사를 실시하고 있습니다.
-3. 개인정보의 암호화
+2. 개인정보의 암호화
 이용자의 개인정보는 비밀번호는 암호화 되어 저장 및 관리되고 있어, 본인만이 알 수 있으며 중요한 데이터는 파일 및 전송 데이터를 암호화 하거나 파일 잠금 기능을 사용하는 등의 별도 보안기능을 사용하고 있습니다.
-4. 개인정보에 대한 접근 제한
-개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.</string>
+3. 개인정보에 대한 접근 제한
+</mutableString>
+                                                        <attributes>
+                                                            <color key="NSColor" name="GRAY - 170"/>
+                                                            <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.">
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -2336,11 +2326,8 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="KTl-zP-TBW" firstAttribute="leading" secondItem="rA0-21-Ycq" secondAttribute="leading" constant="4" id="4PJ-Yg-zCA"/>
-                                            <constraint firstAttribute="height" constant="3600" id="H5M-mU-QWh"/>
+                                            <constraint firstAttribute="height" constant="3000" id="H5M-mU-QWh"/>
                                             <constraint firstAttribute="trailing" secondItem="KTl-zP-TBW" secondAttribute="trailing" constant="4" id="LzK-Kw-1Jt"/>
-                                            <constraint firstItem="kcP-Di-n84" firstAttribute="leading" secondItem="rA0-21-Ycq" secondAttribute="leading" id="V15-6Q-1nn"/>
-                                            <constraint firstAttribute="trailing" secondItem="kcP-Di-n84" secondAttribute="trailing" id="cfS-dH-Qgh"/>
-                                            <constraint firstItem="kcP-Di-n84" firstAttribute="top" secondItem="rA0-21-Ycq" secondAttribute="top" constant="65" id="i2M-CX-R36"/>
                                             <constraint firstAttribute="bottom" secondItem="KTl-zP-TBW" secondAttribute="bottom" id="owV-UL-i8d"/>
                                             <constraint firstItem="KTl-zP-TBW" firstAttribute="top" secondItem="rA0-21-Ycq" secondAttribute="top" constant="88" id="w3c-MY-FUZ"/>
                                         </constraints>
@@ -2358,6 +2345,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20S-gS-AG9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8U-3o-mFY">
+                                        <rect key="frame" x="20" y="63" width="374" height="2"/>
+                                        <color key="backgroundColor" name="WHITE - 245"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="l2c-zW-pfF"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보처리방침 동의" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPe-Kg-fN1">
                                         <rect key="frame" x="20" y="26" width="200" height="21"/>
                                         <constraints>
@@ -2377,8 +2371,11 @@
                                 </subviews>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="v8U-3o-mFY" secondAttribute="trailing" constant="20" symbolic="YES" id="C5X-dN-6Sf"/>
                                     <constraint firstItem="DPe-Kg-fN1" firstAttribute="leading" secondItem="20S-gS-AG9" secondAttribute="leading" constant="20" id="IaR-sg-rZR"/>
+                                    <constraint firstItem="v8U-3o-mFY" firstAttribute="leading" secondItem="20S-gS-AG9" secondAttribute="leading" constant="20" symbolic="YES" id="OGR-9o-QzL"/>
                                     <constraint firstItem="LdA-Fs-Lem" firstAttribute="top" secondItem="20S-gS-AG9" secondAttribute="top" constant="26" id="cVc-o3-4B8"/>
+                                    <constraint firstAttribute="bottom" secondItem="v8U-3o-mFY" secondAttribute="bottom" id="p0U-JY-pnb"/>
                                     <constraint firstItem="DPe-Kg-fN1" firstAttribute="top" secondItem="20S-gS-AG9" secondAttribute="top" constant="26" id="rer-fe-dMH"/>
                                     <constraint firstAttribute="height" constant="65" id="sEv-pE-Ilm"/>
                                     <constraint firstAttribute="trailing" secondItem="LdA-Fs-Lem" secondAttribute="trailing" constant="20" id="zy8-aF-9up"/>
@@ -2428,19 +2425,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqs-vA-gOb" userLabel="ContentView">
                                         <rect key="frame" x="20" y="0.0" width="374" height="2600"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XuC-Vg-oNI">
-                                                <rect key="frame" x="0.0" y="65" width="374" height="2"/>
-                                                <color key="backgroundColor" name="WHITE - 245"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="2" id="0QZ-Eg-utd"/>
-                                                </constraints>
-                                            </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qw-EQ-fG2">
                                                 <rect key="frame" x="4" y="88" width="366" height="2512"/>
                                                 <color key="backgroundColor" name="WHITE"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <string key="content">### 커뮤니티 이용규칙
+                                                        <mutableString key="content">### 커뮤니티 이용규칙
 
 1. 디모다모의 커뮤니티는 사용자가 직접 만들어가는 공간입니다.
 
@@ -2500,7 +2490,7 @@
 - 쪽지는 개인간의 사적인 대화이므로 반말과 욕설 등에 대한 삭제 또는 차단을 관리자가 관여하지 않습니다. 쪽지의 경우 사용자가 직접 차단 기능을 이용하여 더 이상 쪽지를 받지 않을 수 있습니다.
 - 사용자간의 차단, 삭제는 관리자가 관여하지 않지만 욕설, 혐오표현, 외설, 관리자 사칭 등 부적절한 내용의 경우 신고가 가능하며, 신고 내용에 따라 이용제한 등의 제제가 가해질 수 있습니다.
 - 신고 시 신고 내용 확인을 위해 쪽지 내용이 전송되어 검토됩니다. 신고로 전송된 쪽지 이외의 다른 사용자와의 쪽지를 열람할 수 없으니, 깨끗한 커뮤니티를 위해 꼭 신고해 주시기 바랍니다.
-- 다수의 사용자에게 피해를 끼치는 쪽지를 반복적으로 발송할 경우 쪽지 이용에 제재가 가해질 수 있습니다.</string>
+- 다수의 사용자에게 피해를 끼치는 쪽지를 반복적으로 발송할 경우 쪽지 이용에 제재가 가해질 수 있습니다.</mutableString>
                                                         <attributes>
                                                             <color key="NSColor" name="GRAY - 170"/>
                                                             <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
@@ -2513,14 +2503,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="XuC-Vg-oNI" firstAttribute="top" secondItem="vqs-vA-gOb" secondAttribute="top" constant="65" id="Cc4-g2-jkn"/>
                                             <constraint firstItem="5qw-EQ-fG2" firstAttribute="leading" secondItem="vqs-vA-gOb" secondAttribute="leading" constant="4" id="Tpo-8c-erG"/>
                                             <constraint firstAttribute="bottom" secondItem="5qw-EQ-fG2" secondAttribute="bottom" id="Z8K-49-1Dx"/>
                                             <constraint firstAttribute="trailing" secondItem="5qw-EQ-fG2" secondAttribute="trailing" constant="4" id="eFP-Lw-IKs"/>
                                             <constraint firstItem="5qw-EQ-fG2" firstAttribute="top" secondItem="vqs-vA-gOb" secondAttribute="top" constant="88" id="eTz-QC-3du"/>
                                             <constraint firstAttribute="height" constant="2600" id="kw2-dD-dm7"/>
-                                            <constraint firstAttribute="trailing" secondItem="XuC-Vg-oNI" secondAttribute="trailing" id="sR4-ze-etr"/>
-                                            <constraint firstItem="XuC-Vg-oNI" firstAttribute="leading" secondItem="vqs-vA-gOb" secondAttribute="leading" id="t5M-FR-9lX"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2552,11 +2539,21 @@
                                             <action selector="pressedCloseBtn:" destination="psG-k2-oHz" eventType="touchUpInside" id="ogZ-FY-Rn7"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N1J-5d-cFe">
+                                        <rect key="frame" x="20" y="63" width="374" height="2"/>
+                                        <color key="backgroundColor" name="WHITE - 245"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="5wa-UV-DqA"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" name="WHITE"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="N1J-5d-cFe" secondAttribute="trailing" constant="20" symbolic="YES" id="1YM-03-rbu"/>
                                     <constraint firstItem="Yf2-Ge-fS8" firstAttribute="top" secondItem="k4b-1E-Qc5" secondAttribute="top" constant="26" id="22f-cA-9rs"/>
+                                    <constraint firstAttribute="bottom" secondItem="N1J-5d-cFe" secondAttribute="bottom" id="7AN-Xk-mwe"/>
                                     <constraint firstAttribute="height" constant="65" id="RIO-uF-NcG"/>
+                                    <constraint firstItem="N1J-5d-cFe" firstAttribute="leading" secondItem="k4b-1E-Qc5" secondAttribute="leading" constant="20" symbolic="YES" id="Y0y-05-o2j"/>
                                     <constraint firstAttribute="trailing" secondItem="Yf2-Ge-fS8" secondAttribute="trailing" constant="20" id="Zcz-S6-yyB"/>
                                     <constraint firstItem="NBR-Qp-Awo" firstAttribute="leading" secondItem="k4b-1E-Qc5" secondAttribute="leading" constant="20" id="pdz-f1-S1v"/>
                                     <constraint firstItem="NBR-Qp-Awo" firstAttribute="top" secondItem="k4b-1E-Qc5" secondAttribute="top" constant="26" id="vfp-6q-wQe"/>
@@ -2607,9 +2604,6 @@
         <namedColor name="GRAY - 170">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="GRAY - 170">
-            <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="GRAY - 210">
             <color red="0.82400000095367432" green="0.82400000095367432" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -2618,9 +2612,6 @@
         </namedColor>
         <namedColor name="RED">
             <color red="0.96100002527236938" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SYSTEM">
-            <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SYSTEM">
             <color red="1" green="0.5690000057220459" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

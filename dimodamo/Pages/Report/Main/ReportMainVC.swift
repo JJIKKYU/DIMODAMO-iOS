@@ -28,6 +28,11 @@ class ReportMainVC: UIViewController {
     @IBOutlet weak var commentNickname: UILabel!
     @IBOutlet weak var commentTitle: UITextView!
     @IBOutlet weak var commentCreateAt: UILabel!
+    @IBOutlet weak var completeBtn: UIButton! {
+        didSet {
+            completeBtn.isEnabled = false
+        }
+    }
     
     /*
      신고 내용
@@ -102,6 +107,28 @@ class ReportMainVC: UIViewController {
         self.view.addSubview(reportDescriptionView)
         self.tableView.tableFooterView = reportDescriptionView
         
+        /*
+         내용
+         */
+        reportDescriptionTextField.rx.text.orEmpty
+            .map { $0 as String }
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                // 내용을 입력했을 경우
+                if value.count > 0 &&
+                    value != "내용을 입력해 주세요" {
+                    self?.completeBtn.isEnabled = true
+                }
+                // 내용을 입력하지 않았을 경우
+                else {
+                    self?.completeBtn.isEnabled = false
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        /*
+         처리 결과를 받았을 때
+         */
         viewModel.reportState
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in

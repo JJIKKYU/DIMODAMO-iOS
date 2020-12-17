@@ -17,7 +17,7 @@ import Kingfisher
 
 import STPopup
 
-class CreatePostViewController: UIViewController, TaggingDataSource {
+class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var descriptionContainer: UIView!
     
@@ -26,6 +26,12 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBOutlet weak var tagsTextField: UITextField!
     @IBOutlet weak var tagsLimit: UILabel!
+    
+    @IBOutlet weak var completeBtn: UIButton! {
+        didSet {
+            completeBtn.isEnabled = false
+        }
+    }
     
     @IBOutlet var postLoadingView: LottieLoadingView2! {
         didSet {
@@ -58,7 +64,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         didSet {
             mainTableView.rowHeight = UITableView.automaticDimension
             mainTableView.estimatedRowHeight = 100
-//            mainTableView.keyboardDismissMode = .onDrag
+            //            mainTableView.keyboardDismissMode = .onDrag
         }
     }
     
@@ -86,14 +92,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
             bottomIconContainerRoundView.appShadow(.s20)
         }
     }
-    @IBOutlet weak var tagsTableView: UITableView! {
-        didSet {
-            tagsTableView.layer.borderWidth = 2
-            tagsTableView.layer.borderColor = UIColor.appColor(.white235).cgColor
-            tagsTableView.appShadow(.s4)
-            tagsTableView.rowHeight = 50
-        }
-    }
     
     @IBOutlet weak var descriptionTextView: UITextView! {
         didSet {
@@ -102,31 +100,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         }
     }
     @IBOutlet weak var descriptionLimit: UILabel!
-    
-    @IBOutlet weak var tagging: Tagging! {
-        didSet {
-            tagging.accessibilityIdentifier = "Tagging"
-            tagging.textView.accessibilityIdentifier = "TaggingTextView"
-            tagging.defaultAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.gray170),
-                                         NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any]
-            tagging.taggedAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appColor(.gray170),
-                                        NSAttributedString.Key.font:  UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any]
-            tagging.textView.textContainer.maximumNumberOfLines = 2
-            //            tagging.textView.text = nil
-            
-            let text: String = "태그를 입력해 주세요"
-            let titleAttributes: [NSAttributedString.Key: Any] = [
-                .font : UIFont(name: "Apple SD Gothic Neo Medium", size: 16) as Any,
-                .foregroundColor : UIColor.appColor(.gray210),
-            ]
-            
-            let attributedString = NSAttributedString(string: text, attributes: titleAttributes)
-            tagging.textView.attributedText = attributedString
-            
-            tagging.symbol = "#"
-            tagging.tagableList = ["DOOMFIST", "GENJI", "MCCREE", "PHARAH", "REAPER", "SOLDIER:76", "SOMBRA", "TRACER", "BASTION", "HANZO", "JUNKRAT", "MEI", "TORBJORN", "WIDOWMAKER", "D.VA", "ORISA", "REINHARDT", "ROADHOG", "WINSTON", "ZARYA", "ANA", "BRIGITTE", "LUCIO", "MERCY", "MOIRA", "SYMMETRA", "ZENYATTA", "디자이너", "한글", "디질래", "디지몬"]
-        }
-    }
     
     var disposeBag = DisposeBag()
     let viewModel = CreatePostViewModel()
@@ -143,11 +116,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
-        //        tagging.textView.delegate = self
-        tagging.dataSource = self
-        
-        tagsTableView.dataSource = self
-        tagsTableView.delegate = self
         
         mainTableView.dataSource = self
         mainTableView.delegate = self
@@ -172,17 +140,13 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         /*
          태그
          */
-        tagging.textView.rx.text.orEmpty
-            .map { $0 as String }
+        self.viewModel.tagsRelay
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] value in
-                if self?.viewModel.tagsLimitCount == 3 {
-                    print("더이상 글을 쓸 수 없도록")
+            .subscribe(onNext: { value in
+                if value.count > 0 {
+                    self.tagsTextField.text = "\(value)"
+                    self.tagsLimit.text = self.viewModel.tagsLimit
                 }
-                self?.viewModel.tagsRelay.accept(value)
-                self?.tagsLimit.text = self?.viewModel.tagsLimit
-                
-                
             })
             .disposed(by: disposeBag)
         
@@ -197,7 +161,30 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
                 self?.descriptionLimit.text = self?.viewModel.descriptionLimit
             })
             .disposed(by: disposeBag)
-
+        
+        /*
+         완료 버튼 활성화
+         */
+        Observable.combineLatest(
+            self.viewModel.descriptionRelay,
+            self.viewModel.titleRelay)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] description, title in
+                
+                // 모든 텍스트 필드를 적절하게 작성했을 경우
+                if description.count > 0 &&
+                    description != self?.viewModel.descriptionPlaceholderText &&
+                    title.count > 0 &&
+                    self?.viewModel.tags.count ?? 0 >= 2 {
+                    self?.completeBtn.isEnabled = true
+                }
+                // 그렇지 않은 경우
+                else {
+                    self?.completeBtn.isEnabled = false
+                }
+            })
+            .disposed(by: disposeBag)
+        
         /*
          기본 Empty이미지 삭제 및 데이터가 들어올 때마다 테이블 리로드
          */
@@ -246,30 +233,34 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownTextView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func tagging(_ tagging: Tagging, didChangedTagableList tagableList: [String]) {
-//        matchedList = tagableList
-//        if matchedList.count > 0 {
-//            tagsTableView.reloadData()
-//            tagsTableView.isHidden = false
-//        } else if matchedList.count == 0 {
-//            tagsTableView.reloadData()
-//            tagsTableView.isHidden = true
-//        }
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "CreateTagsVC":
+            let destination = segue.destination as! CreateTagsVC
+            destination.tagTextDelegate = self
         
-        print(matchedList.count)
+        break
+        default:
+            break
+        }
     }
     
-    func tagging(_ tagging: Tagging, didChangedTaggedList taggedList: [TaggingModel]) {
-        print("태그완료된 리스트 :  \(taggedList)")
-    }
-    
-    /*
-     IBAction & TouchAction
-     */
     
     @IBAction func pressedCloseBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    /*
+     태그 작성
+     */
+    @IBAction func pressedTagsCreate(_ sender: Any) {
+        performSegue(withIdentifier: "CreateTagsVC", sender: nil)
+    }
+    
+    
+    
     
     /*
      글 작성 완료
@@ -292,7 +283,6 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
-        //        self.tagsTableView.isHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -327,7 +317,7 @@ class CreatePostViewController: UIViewController, TaggingDataSource {
     
     @IBAction func pressedLinkBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Community", bundle: nil)
-
+        
         let popupVC = storyboard.instantiateViewController(withIdentifier: "LinkPopupVC") as! LinkPopupVC
         popupVC.sendLinkDataDelegate = self
         
@@ -352,8 +342,6 @@ extension CreatePostViewController {
         self.descriptionContainer.layer.borderColor = UIColor.appColor(.white245).cgColor
         self.descriptionContainer.layer.cornerRadius = 9
         self.descriptionContainer.layer.masksToBounds = true
-        
-        tagsTableView.isHidden = true
     }
 }
 
@@ -382,7 +370,7 @@ extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
         }
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-           
+            
             self.bottomIconContainerView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomSafeArea)
             self.mainTableView.contentInset.bottom = keyboardSize.height
         }
@@ -410,7 +398,7 @@ extension CreatePostViewController: UITextFieldDelegate, UITextViewDelegate {
     }
 }
 
-// MARK: - TagsTableView
+// MARK: - TableView
 
 extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, DeleteUploadCellDelegate {
     
@@ -439,108 +427,60 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource, 
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        switch tableView.tag {
-        case 0:
-            return matchedList.count
-            
-        case 1:
-            return viewModel.uploadImagesRelay.value.count + viewModel.uploadLinksDataRelay.value.count
-            
-        default:
-            break
-        }
-        
-        return 0
+        return viewModel.uploadImagesRelay.value.count + viewModel.uploadLinksDataRelay.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch tableView.tag {
-        case 0:
+        let imageArr = viewModel.uploadImagesRelay.value
+        let linkArr = viewModel.uploadLinksDataRelay.value
+        
+        
+        if (indexPath.row + 1) <= (imageArr.count) {
+            print("imageArr.Count == indexpath.row")
+            let index = indexPath.row
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath) as! TagCell
-            cell.tagLabel.text = matchedList[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
+            
+            cell.uploadImageView.image = imageArr[index].resize(withWidth: UIScreen.main.bounds.width)
+            
+            // 이미지 삭제 버튼을 눌렀을 경우 삭제할 수 있도록 델리게이트 설정
+            cell.deleteUploadImageDelegate = self
+            cell.tagIndex = index
+            
+            guard let cellImage = cell.uploadImageView.image else {
+                return UITableViewCell()
+            }
+            
+            let scaledHeight = ((UIScreen.main.bounds.width - 40) * cellImage.size.height) / cellImage.size.width
+            cell.heightConstraint.constant = scaledHeight
+            
+            print(scaledHeight)
+            
             return cell
-            
-        case 1:
-            
-            let imageArr = viewModel.uploadImagesRelay.value
-            let linkArr = viewModel.uploadLinksDataRelay.value
-            
-            
-            if (indexPath.row + 1) <= (imageArr.count) {
-                print("imageArr.Count == indexpath.row")
-                let index = indexPath.row
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "UploadImage", for: indexPath) as! ImageUploadCell
-                
-                cell.uploadImageView.image = imageArr[index].resize(withWidth: UIScreen.main.bounds.width)
-                
-                // 이미지 삭제 버튼을 눌렀을 경우 삭제할 수 있도록 델리게이트 설정
-                cell.deleteUploadImageDelegate = self
-                cell.tagIndex = index
-                
-                guard let cellImage = cell.uploadImageView.image else {
-                    return UITableViewCell()
-                }
-            
-                let scaledHeight = ((UIScreen.main.bounds.width - 40) * cellImage.size.height) / cellImage.size.width
-                cell.heightConstraint.constant = scaledHeight
-                
-                print(scaledHeight)
-                
-                return cell
-            }
-            else if (indexPath.row + 1) <= imageArr.count + linkArr.count {
-                let index = indexPath.row - imageArr.count
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "UploadLink", for: indexPath) as! LinkUploadCell
-                
-                
-                if let imageUrl: URL = URL(string: linkArr[index].image) {
-                    cell.thumbImageView.kf.setImage(with: imageUrl)
-                } else {
-                    cell.thumbImageView.image = UIImage(named: "linkImage")
-                }
-                
-                cell.deleteCellDelegate = self
-                cell.tagIndex = index
-                
-                cell.titleLabel.text = "\(linkArr[index].title)"
-                
-                cell.urlLabel.text = "\(linkArr[index].url)"
-                
-                return cell
-            }
-            
-            
-            
-
-        default:
-            break
         }
-     
+        else if (indexPath.row + 1) <= imageArr.count + linkArr.count {
+            let index = indexPath.row - imageArr.count
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UploadLink", for: indexPath) as! LinkUploadCell
+            
+            
+            if let imageUrl: URL = URL(string: linkArr[index].image) {
+                cell.thumbImageView.kf.setImage(with: imageUrl)
+            } else {
+                cell.thumbImageView.image = UIImage(named: "linkImage")
+            }
+            
+            cell.deleteCellDelegate = self
+            cell.tagIndex = index
+            
+            cell.titleLabel.text = "\(linkArr[index].title)"
+            
+            cell.urlLabel.text = "\(linkArr[index].url)"
+            
+            return cell
+        }
+        
         return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        switch tableView.tag {
-        case 0:
-            
-            tagging.updateTaggedList(allText: tagging.textView.text, tagText: matchedList[indexPath.row])
-            tableView.isHidden = true
-            tableView.deselectRow(at: indexPath, animated: true)
-            
-            break
-            
-        case 1:
-            break
-        
-        default:
-            break
-        }
-        
     }
 }
 
@@ -559,4 +499,24 @@ extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigatio
         }
         dismiss(animated: true, completion: nil)
     }
+}
+
+
+// MARK: - TagsDelegate
+
+extension CreatePostViewController: CreatePostTagTextFieldUpdate {
+    func updateTags(tags: [String]) {
+        self.viewModel.tags = tags
+        
+        var tagString: String = ""
+        for tag in tags {
+            tagString += "#\(tag) "
+        }
+        self.viewModel.tagsRelay.accept(tagString)
+        self.tagsTextField.text = "\(tagString)"
+        
+        print("전달받았습니다. \(tagString)")
+    }
+    
+    
 }

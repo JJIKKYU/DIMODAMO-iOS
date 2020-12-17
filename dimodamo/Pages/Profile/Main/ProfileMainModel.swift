@@ -13,6 +13,45 @@ enum MedalKinds: Int {
     case comment = 0
     case scrap = 1
     case manito = 2
+    
+    static func getMedal(kind: MedalKinds, commentHeartCount: Int, manitoGoodCount:Int, documnetScrapCount: Int) -> UIImage {
+        switch kind {
+        case .comment:
+            if commentHeartCount < 100 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Default_Heart") ?? UIImage()
+            } else if commentHeartCount < 200 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Bronze_Heart") ?? UIImage()
+            } else if commentHeartCount < 300 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Silver_Heart") ?? UIImage()
+            } else if commentHeartCount >= 300 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Gold_Heart") ?? UIImage()
+            }
+            
+        case .manito:
+            if manitoGoodCount < 100 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Default_Like") ?? UIImage()
+            } else if manitoGoodCount < 200 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Bronze_Like") ?? UIImage()
+            } else if manitoGoodCount < 300 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Silver_Like") ?? UIImage()
+            } else if manitoGoodCount >= 300 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Gold_Like") ?? UIImage()
+            }
+            
+        case .scrap:
+            if documnetScrapCount < 100 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Default_Scrap") ?? UIImage()
+            } else if documnetScrapCount < 200 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Bronze_Scrap") ?? UIImage()
+            } else if documnetScrapCount < 300 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Silver_Scrap") ?? UIImage()
+            } else if documnetScrapCount >= 300 {
+                return UIImage(named: "Profile_Medal_Icon_Big_Gold_Scrap") ?? UIImage()
+            }
+        }
+        
+        return UIImage()
+    }
 }
 
 enum DimoKinds: Int {

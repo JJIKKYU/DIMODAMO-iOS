@@ -113,6 +113,9 @@ class CommunityMainViewController: UIViewController {
             if articleLoading == true {
                 self?.articleCollectionView.reloadData()
                 self?.articleCollectionView.layoutIfNeeded()
+                self?.articleCollectionView.isHidden = false
+            } else {
+                self?.articleCollectionView.isHidden = true
             }
             
             if informationLoading == true {

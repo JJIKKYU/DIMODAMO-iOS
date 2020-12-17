@@ -292,6 +292,9 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
             return cell
         }
         
+        
+        // ---------- 로딩이 모두 완료되었을 경우 로딩
+        
         // DPTI를 진행했을 경우
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DimoPeopleCell", for: indexPath) as! DimoPeopleCell
         let index = indexPath.row
@@ -328,10 +331,11 @@ extension ProfileMainVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func dimoCollectionViewSetting() {
         // Empty Xib 설정, DPTI를 안했을 경우, 그리고 결과값이 없을 경우에 해당
-        if viewModel.interactionIsAbailable() == false || viewModel.dimoPeopleArr.count == 0 {
-            let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
-            dimoCollectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
-        }
+        let nibName = UINib(nibName: "EmptyCollectionCell", bundle: nil)
+        dimoCollectionView.register(nibName, forCellWithReuseIdentifier: "EmptyCollectionCell")
+        
+        let loadingNibName = UINib(nibName: "LoadingTableViewCell", bundle: nil)
+        dimoCollectionView.register(loadingNibName, forCellWithReuseIdentifier: "LoadingTableViewCell")
         
         
         

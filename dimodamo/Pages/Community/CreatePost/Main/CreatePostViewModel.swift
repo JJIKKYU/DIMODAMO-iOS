@@ -29,7 +29,7 @@ class CreatePostViewModel {
     
     // 태그
     let tagsRelay = BehaviorRelay<String>(value: "")
-    var tags: [String] = ["", "", ""]
+    var tags: [String] = []
     var tagsLimit: String {
         // # 태그가 있는 단어들을 찾아서 태그 때고  다 소문자로 해주기
         let sliceArray = tagsRelay.value.getArrayAfterRegex(regex:"#[^ ]+").map { (slice) in
@@ -37,7 +37,7 @@ class CreatePostViewModel {
         }
         tags = sliceArray
         print(tags)
-        return "\(sliceArray.count)/3"
+        return "\(sliceArray.count)/2"
     }
     var tagsLimitCount: Int {
         let sliceArray = tagsRelay.value.getArrayAfterRegex(regex:"#[^ ]+").map { (slice) in
@@ -50,7 +50,7 @@ class CreatePostViewModel {
     // 내용
     let descriptionRelay = BehaviorRelay<String>(value: "")
     var descriptionLimit: String {
-        return "\(descriptionRelay.value.count)/1000"
+        return "\(descriptionRelay.value.count)/5000"
     }
     var descriptionIsValid: Bool { return descriptionRelay.value.count > 0 }
     let descriptionPlaceholderText = """
@@ -102,7 +102,7 @@ class CreatePostViewModel {
         // 유저 디폹트에서 닉네임을 불러옴
         let userDefaults = UserDefaults.standard
         let userNickname: String = userDefaults.string(forKey: "nickname") ?? "익명"
-        let userDpti: String = userDefaults.string(forKey: "dpti") ?? "M_TI"
+        let userDpti: String = userDefaults.string(forKey: "dpti") ?? "DD"
         
         // DocumentID를 미리 불러오기 위해
         

@@ -143,8 +143,6 @@ class ProfileMainViewModel {
         
         db.collection("users")
             .order(by: "get_profile_score", descending: true)
-//            .order(by: "dpti")
-//            .whereField("dpti", isNotEqualTo: "DD")
             .limit(to: 10)
             .getDocuments{ [weak self] (querySnapshot, err) in
                 if let err = err {
@@ -159,8 +157,15 @@ class ProfileMainViewModel {
                         
                         let isUserBlocked = BlockUserManager.blockedUserMap[document.documentID]
                         if (isUserBlocked != nil) == true {
-                            print("#######차단한 유저는 패스합니다 : \(isUserBlocked)")
+                            print("#######차단한 유저는 패스합니다 : \(String(describing: isUserBlocked))")
                             continue
+                        }
+                        
+                        // 클라이언트단에서 운영진 체크
+                        if let id: String = data["id"] as? String {
+                            if id == "shc9500@gmail.com" || id == "jjikkyu@naver.com" || id == "appstore@dimodamo.com" || id == "test@dimodamo.com" || id == "admin@dimodamo.com" {
+                                continue
+                            }
                         }
                         
                         dimoPeopleData.uid = document.documentID

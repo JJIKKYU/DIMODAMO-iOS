@@ -58,10 +58,6 @@ target 'dimodamo' do
   # 검색
   pod 'AlgoliaSearchClient', '~> 8.2'
   
-  # 드롭다운 메뉴
-  pod 'YNDropDownMenu'
-  pod 'McPicker', '~> 3.0.0'
-  
   # 검색
   pod 'YNSearch'
   

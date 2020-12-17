@@ -17,6 +17,7 @@ import SwipeCellKit
 protocol CommentCellDelegate {
     func pressedCommentReply(type: String)
     func pressedHeartBtn(commentId: String, indexPathRow: Int)
+    func pressedProfile(userUid: String, type: String)
 }
 
 class CommentCell: SwipeTableViewCell {
@@ -69,6 +70,17 @@ class CommentCell: SwipeTableViewCell {
         checkedViewModel.commentDepth = depth
         checkedViewModel.commentBundleId = selectedCommentBundleId!
     }
+    
+    // 프로필을 클릭했을 경우
+    @IBAction func pressedProfile(_ sender: Any) {
+        guard let userUID: String = userId,
+              let dptiType: String = dptiType else {
+            return
+        }
+        
+        commentDelegate?.pressedProfile(userUid: userUID, type: dptiType)
+    }
+    
     
     @IBAction func pressedHeartBtn(_ sender: Any) {
         

@@ -72,6 +72,7 @@ class ArticleDetailViewController: UIViewController {
     var avController = AVPlayerViewController()
     
     @IBOutlet weak var urlStackView: UIStackView!
+    @IBOutlet weak var urlStackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var urlStackViewHeight: NSLayoutConstraint!
     @IBOutlet weak var urlStackLoadingView: UIView!
     
@@ -84,6 +85,11 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var commentTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var commentTableViewBottom: NSLayoutConstraint!
     
+    @IBOutlet weak var commentPushBtn: UIButton! {
+        didSet {
+            commentPushBtn.isEnabled = false
+        }
+    }
     @IBOutlet weak var commentTextFieldRoundView: TextFieldRound!
     @IBOutlet weak var commentTextFieldTopRoundView: UIView! {
         didSet {
@@ -305,9 +311,11 @@ class ArticleDetailViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] links in
                 if links.count == 0 {
-                    
+                    self?.urlStackViewHeight.constant = 0
+                    self?.urlStackViewTopConstraint.constant = 0
                 } else {
-                    self?.urlStackViewHeight.isActive = false
+                    self?.urlStackViewHeight.isActive = true
+                    self?.urlStackViewTopConstraint.constant = 16
                     self?.urlViewSetting()
                 }
             })
@@ -360,17 +368,18 @@ class ArticleDetailViewController: UIViewController {
          */
         commentTextField.rx.text.orEmpty
             .map { $0 as String }
-            .bind(to: self.viewModel.commentInputRelay)
-            .disposed(by: disposeBag)
-        
-        
-        /*
-         스크랩
-         */
-        viewModel.scrapCountRelay
-            .subscribeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] count in
-                self?.scrapCountLabel.text = "\(count)"
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel.commentInputRelay.accept(value)
+                
+                // 댓글창에 댓글이 적히면
+                if value.count > 0 {
+                    self?.commentPushBtn.isEnabled = true
+                }
+                // 적히지 않았을 경우
+                else {
+                    self?.commentPushBtn.isEnabled = false
+                }
             })
             .disposed(by: disposeBag)
         
@@ -517,7 +526,7 @@ extension ArticleDetailViewController: UIScrollViewDelegate {
         let scrollOffset = scrollView.contentOffset.y
         
         if viewModel.postKindRelay.value == PostKinds.article.rawValue {
-            if scrollOffset > 210 {
+            if scrollOffset > 155 {
                 self.navigationController?.presentTransparentNavigationBar()
                 self.navItem.title = "\(viewModel.titleRelay.value)"
                 
@@ -529,7 +538,7 @@ extension ArticleDetailViewController: UIScrollViewDelegate {
                 
             }
         } else if viewModel.postKindRelay.value == PostKinds.information.rawValue {
-            if scrollOffset > 130 {
+            if scrollOffset > 80 {
                 self.navigationController?.presentTransparentNavigationBar()
                 self.navItem.title = "\(viewModel.titleRelay.value)"
                 
@@ -621,7 +630,7 @@ extension ArticleDetailViewController {
     }
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
-        print("touchSCrollview")
+        print("터치해서 endEditing을 호출합니다")
         self.view.endEditing(true)
         
         self.commentProfileIshidden(isHidden: true)
@@ -948,7 +957,7 @@ class LinkURLSenderTapGestureRecognizer: UITapGestureRecognizer {
 // MARK: - Comment
 
 extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource, CommentCellDelegate, SwipeTableViewCellDelegate {
-    
+
     // Swipe 했을때 액션
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else {
@@ -983,6 +992,12 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 // handle action by updating model with deletion
                 print("댓글을 삭제합니다. : \(indexPath.row)")
                 
+                guard let commentUid: String = cell.uid else {
+                    return
+                }
+                
+                self.viewModel.deleteComment(commentUID: commentUid)
+                
             }
             deleteAction?.image = UIImage(named: "delete_icon")
         } else {
@@ -995,7 +1010,7 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
                     return
                 }
                 
-                var targetBoard: TargetBoard = self.viewModel.targetBoard
+                let targetBoard: TargetBoard = self.viewModel.targetBoard
                 
                 // 코멘트 Doc Uid
                 guard let commentUid: String = cell.uid else {
@@ -1051,15 +1066,24 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         //        commentTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
+    // 코멘트의 프로필을 클릭할 경우
+    func pressedProfile(userUid: String, type: String) {
+        print("댓글 작성자의 프로필로 이동합니다.")
+        
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "MyProfileVC") as! MyProfileVC
+        
+        profileVC.viewModel.profileSetting.accept(type)
+        profileVC.viewModel.profileUID.accept(userUid)
+        
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
     // CommentCellDelegate
     func pressedCommentReply(type: String) {
+        print("reply!")
         commentProfileIshidden(isHidden: false)
         commentProfile.image = UIImage(named: "Profile_\(type)")
-        
-        if commentTextField.canBecomeFirstResponder {
-            commentTextField.becomeFirstResponder()
-        }
-        
     }
     
     var textFieldReadingAnchor: NSLayoutConstraint {
@@ -1143,12 +1167,10 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.selectedHeart = false
         cell.commentHeartBtn.setImage(UIImage(named: "heartIcon"), for: .normal)
         
-        
         // 이미 유저가 하트를 누른 경우 이미지 변경
-        for uid in viewModel.commentUserHeartUidArr {
-            // 내가 적은 댓글일 경우에는 하트 추가
-            if model.commentId == uid {
-                //                print("UID가 같으므로 하트이미지를 변경합니다.")
+        if let commentId: String = model.commentId {
+            // 맵에서 UID로 된 키값이 nil이 아닐 경우에
+            if self.viewModel.commentUserHeartMap["\(commentId)"] != nil {
                 cell.selectedHeart = true
                 cell.commentHeartBtn.setImage(UIImage(named: "heartIconPressed"), for: .normal)
             }

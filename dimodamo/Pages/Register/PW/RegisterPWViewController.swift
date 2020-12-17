@@ -41,6 +41,7 @@ class RegisterPWViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDesign()
+        self.view.layoutIfNeeded()
 
         firstPWTextField.rx.controlEvent(.editingChanged)
             .asObservable()

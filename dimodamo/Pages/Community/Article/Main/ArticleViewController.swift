@@ -363,7 +363,7 @@ extension ArticleViewController: UICollectionViewDelegate, UICollectionViewDataS
         if yPostion < 70 {
             navItem.title = ""
         } else {
-            navItem.title = "디모 아트보드"
+            navItem.title = "디모 아카이브"
         }
     }
 }
