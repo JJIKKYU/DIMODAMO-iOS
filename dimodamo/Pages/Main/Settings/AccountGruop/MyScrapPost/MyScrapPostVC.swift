@@ -98,22 +98,46 @@ extension MyScrapPostVC: UITableViewDelegate, UITableViewDataSource {
         
         let nibName_information = UINib(nibName: "Scrap_InformationTableViewCell", bundle: nil)
         tableView.register(nibName_information, forCellReuseIdentifier: "Scrap_InformationTableViewCell")
+        
+        // Empty Xib 설정, DPTI를 안했을 경우, 그리고 결과값이 없을 경우에 해당
+        let EmptyNibname = UINib(nibName: "EmptyTableViewCell", bundle: nil)
+        tableView.register(EmptyNibname, forCellReuseIdentifier: "EmptyTableViewCell")
+        
+        let loadingNibName = UINib(nibName: "LoadingTableViewCell", bundle: nil)
+        tableView.register(loadingNibName, forCellReuseIdentifier: "LoadingTableViewCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.viewModel.scrapKinds.value == .article {
-            return self.viewModel.scrapArticleListRelay.value.count
+            let count = self.viewModel.scrapArticleListRelay.value.count
+            return count == 0 ? 1 : count
         }
         else if self.viewModel.scrapKinds.value == .information {
-            return self.viewModel.scrapInformationListRelay.value.count
+            let count = self.viewModel.scrapInformationListRelay.value.count
+            return count == 0 ? 1 : count
         }
         
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         // 아티클 경우에 테이블 세팅
         if self.viewModel.scrapKinds.value == .article {
+            
+            // 스크랩한 글이 없을 경우
+            if self.viewModel.scrapArticleListRelay.value.count == 0 && self.viewModel.isLoadingRelay.value == true {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+                cell.settingImageSizeLabel(cellKinds: .scrap, text: "아직 스크랩한 글이 없어요")
+                tableView.rowHeight = 375
+                return cell
+            }
+            
+            // 아직 0개의 리스트를 가지고있지만, 로딩 중일때는 로딩바
+            if viewModel.scrapArticleListRelay.value.count == 0 && self.viewModel.isLoadingRelay.value == false {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath)
+                return cell
+            }
             // 높이 세팅
             tableView.rowHeight = 487
             
@@ -153,6 +177,21 @@ extension MyScrapPostVC: UITableViewDelegate, UITableViewDataSource {
         
         // 인포메이션 경우 테이블 세팅
         else if self.viewModel.scrapKinds.value == .information {
+            
+            // 스크랩한 글이 없을 경우
+            if self.viewModel.scrapInformationListRelay.value.count == 0 && self.viewModel.isLoadingRelay.value == true {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+                cell.settingImageSizeLabel(cellKinds: .scrap, text: "아직 스크랩한 글이 없어요")
+                tableView.rowHeight = 375
+                return cell
+            }
+            
+            // 아직 0개의 리스트를 가지고있지만, 로딩 중일때는 로딩바
+            if viewModel.scrapInformationListRelay.value.count == 0 && self.viewModel.isLoadingRelay.value == false {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath)
+                return cell
+            }
+            
             // 높이 세팅
             tableView.rowHeight = 150
             

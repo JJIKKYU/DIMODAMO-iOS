@@ -14,6 +14,7 @@ enum EmptyCellKinds {
     case dpti
     case layer
     case blockUser
+    case scrap
     case hotdimo
 }
 

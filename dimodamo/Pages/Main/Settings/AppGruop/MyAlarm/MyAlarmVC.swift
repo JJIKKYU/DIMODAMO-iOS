@@ -43,14 +43,12 @@ class MyAlarmVC: UIViewController {
         super.viewDidLoad()
         
         // 전체 알림 받기 따라서 모두 변경
-        allAlarmSwitch.rx.isOn.changed
+        allAlarmSwitch.rx.isOn
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] flag in
                 print("전체 설정 버튼 : \(flag)")
-                self?.viewModel.setAllAlarmChange(all: flag)
-//                for btn in self!.switchArr {
-//                    btn.setOn(flag, animated: true)
-//                }
+                
+                
             })
             .disposed(by: disposeBag)
         
@@ -63,17 +61,18 @@ class MyAlarmVC: UIViewController {
             viewModel.documentRelay)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] notice, hotCont, comment, ofComment, document in
-                if notice == true && hotCont && comment && ofComment && document {
-                    self?.allAlarmSwitch.setOn(true, animated: true)
-                } else {
-                    self?.allAlarmSwitch.setOn(false, animated: true)
-                }
+//                if notice == true && hotCont && comment && ofComment && document {
+//                    self?.allAlarmSwitch.setOn(true, animated: true)
+//                } else {
+//                    self?.allAlarmSwitch.setOn(false, animated: true)
+//                }
                 
                 self?.noticeSwitch.setOn(notice, animated: true)
                 self?.hotContentsSwitch.setOn(hotCont, animated: true)
                 self?.commentSwitch.setOn(comment, animated: true)
                 self?.commentOfCommentSwitch.setOn(ofComment, animated: true)
                 self?.documentSwitch.setOn(document, animated: true)
+                
             })
             .disposed(by: disposeBag)
         
@@ -93,6 +92,8 @@ class MyAlarmVC: UIViewController {
                                                    comment: comment,
                                                    ofComment: ofComment,
                                                    document: document)
+                    
+                    
                 }
                 
             })

@@ -679,7 +679,7 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLV-ef-uEI" userLabel="AppTitle">
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLV-ef-uEI" userLabel="AppTitle">
                                                 <rect key="frame" x="0.0" y="420" width="414" height="63"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRx-3i-gR2">
@@ -717,7 +717,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="CRx-3i-gR2" secondAttribute="trailing" id="zp3-ky-aA4"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oUD-7v-vSf" userLabel="AccountStackView">
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oUD-7v-vSf" userLabel="AccountStackView">
                                                 <rect key="frame" x="0.0" y="483" width="414" height="53"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4C-w8-FrU" userLabel="Alarm">

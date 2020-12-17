@@ -24,20 +24,20 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var articleCategory: UILabel!
     
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
-
-
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.layoutIfNeeded()
-
+        
         container.layer.masksToBounds = true
         container.layer.cornerRadius = 24
         container.clipsToBounds = true
         container.appShadow(.s12)
         
-        titleImage?.roundCorners(corners: [.topLeft, .topRight], radius: 24)
-
+        
+        
         layer.cornerRadius = 24
         layer.masksToBounds = true
         
@@ -45,10 +45,19 @@ class ArticleTableViewCell: UITableViewCell {
         setAspectImageHeight()
         self.layoutIfNeeded()
     }
-
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+//        titleImage?.roundCorners(corners: [.topLeft, .topRight], radius: 24)
+        titleImage.clipsToBounds = true
+        titleImage.layer.cornerRadius = 24
+        titleImage.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -65,5 +74,5 @@ class ArticleTableViewCell: UITableViewCell {
         
         self.imageHeightConstraint.constant = aspectHeight
     }
-
+    
 }

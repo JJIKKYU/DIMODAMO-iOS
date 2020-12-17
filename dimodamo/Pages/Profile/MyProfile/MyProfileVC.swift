@@ -52,8 +52,11 @@ class MyProfileVC: UIViewController {
     @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var type: UIImageView!
     @IBOutlet weak var registerDate: UILabel!
+    @IBOutlet weak var commentHeartIcon: UIImageView!
     @IBOutlet weak var commentHeartCountLabel: UILabel!
+    @IBOutlet weak var scrapIcon: UIImageView!
     @IBOutlet weak var scrapCountLabel: UILabel!
+    @IBOutlet weak var manitoIcon: UIImageView!
     @IBOutlet weak var manitoGoodCountLabel: UILabel!
     
     @IBOutlet weak var messageBtnHeightConstraint: NSLayoutConstraint!
@@ -160,8 +163,13 @@ class MyProfileVC: UIViewController {
             .subscribe(onNext: { [weak self] data in
                 
                 
+                self?.commentHeartIcon.image = MedalKinds.getMedal(kind: .comment, commentHeartCount: data.commentHeartCount, manitoGoodCount: data.manitoGoodCount, documnetScrapCount: data.scrapCount)
                 self?.commentHeartCountLabel.text = "+\(data.commentHeartCount)"
+                
+                self?.scrapIcon.image = MedalKinds.getMedal(kind: .scrap, commentHeartCount: data.commentHeartCount, manitoGoodCount: data.manitoGoodCount, documnetScrapCount: data.scrapCount)
                 self?.scrapCountLabel.text = "+\(data.scrapCount)"
+                
+                self?.manitoIcon.image = MedalKinds.getMedal(kind: .manito, commentHeartCount: data.commentHeartCount, manitoGoodCount: data.manitoGoodCount, documnetScrapCount: data.scrapCount)
                 self?.manitoGoodCountLabel.text = "+\(data.manitoGoodCount)"
                 self?.registerDate.text = "\(data.createdAt)"
                 

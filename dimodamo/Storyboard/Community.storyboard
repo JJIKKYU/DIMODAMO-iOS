@@ -3059,7 +3059,7 @@
                                         <action selector="pressedSortingScrap:" destination="S4P-HR-oVS" eventType="touchUpInside" id="UrX-8T-jLl"/>
                                     </connections>
                                 </button>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qet-rQ-Q7x" userLabel="line">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qet-rQ-Q7x" userLabel="line">
                                     <rect key="frame" x="0.0" y="118" width="200" height="0.5"/>
                                     <color key="backgroundColor" name="GRAY - 210"/>
                                     <constraints>
@@ -3090,6 +3090,7 @@
                                 <constraint firstItem="hhb-Xa-K45" firstAttribute="leading" secondItem="C5D-IU-C0e" secondAttribute="leading" id="2GN-AD-tCw"/>
                                 <constraint firstItem="Alq-jU-s96" firstAttribute="leading" secondItem="3dY-vn-fGL" secondAttribute="leading" id="4Pm-rE-mZN"/>
                                 <constraint firstItem="kjQ-At-qhl" firstAttribute="top" secondItem="3dY-vn-fGL" secondAttribute="bottom" constant="18" id="5ad-FM-5ks"/>
+                                <constraint firstItem="Qet-rQ-Q7x" firstAttribute="leading" secondItem="kjQ-At-qhl" secondAttribute="leading" id="6O9-xy-VSK"/>
                                 <constraint firstAttribute="trailing" secondItem="D2y-Cp-m7s" secondAttribute="trailing" id="75v-E9-883"/>
                                 <constraint firstItem="9vR-rO-xr1" firstAttribute="leading" secondItem="C5D-IU-C0e" secondAttribute="leading" id="7If-6X-JwN"/>
                                 <constraint firstItem="hhb-Xa-K45" firstAttribute="bottom" secondItem="Qet-rQ-Q7x" secondAttribute="bottom" id="8n5-sD-hTi"/>
@@ -3097,6 +3098,7 @@
                                 <constraint firstItem="3dY-vn-fGL" firstAttribute="top" secondItem="C5D-IU-C0e" secondAttribute="top" constant="21" id="Dba-q5-V0i"/>
                                 <constraint firstItem="eKQ-Bq-k4A" firstAttribute="top" secondItem="C5D-IU-C0e" secondAttribute="top" constant="23" id="Eak-pY-jnE"/>
                                 <constraint firstItem="D2y-Cp-m7s" firstAttribute="top" secondItem="C5D-IU-C0e" secondAttribute="top" id="HkT-2O-z7Z"/>
+                                <constraint firstItem="Qet-rQ-Q7x" firstAttribute="trailing" secondItem="kjQ-At-qhl" secondAttribute="trailing" id="ILd-AC-DXO"/>
                                 <constraint firstItem="a5R-9M-Q9f" firstAttribute="top" secondItem="kjQ-At-qhl" secondAttribute="bottom" constant="22.5" id="Klq-KQ-DmJ"/>
                                 <constraint firstAttribute="trailing" secondItem="kjQ-At-qhl" secondAttribute="trailing" id="OGO-7S-WUw"/>
                                 <constraint firstItem="K6l-95-Agg" firstAttribute="top" secondItem="Qet-rQ-Q7x" secondAttribute="bottom" constant="22.5" id="P99-0c-eRY"/>
@@ -3438,7 +3440,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="a4Z-5V-8SM"/>
-        <segue reference="RQh-cD-CdY"/>
+        <segue reference="ROi-qZ-LzO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="24_Profile_DD" width="24" height="24"/>
