@@ -2,25 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 
 admin.initializeApp(functions.config().firebase);
-
-// exports.documentCommentCounter = functions.firestore
-//     .document('hongik/article/comment/{commentId}')
-//     .onCreate(event => {
-//         const commentId = event.params.commentId;
-//         const postId = event.params.post_id;
-//         const userId = event.params.user_id;
-
-//         const docRef = admin.firestore().collection('hongik/article/posts').doc(postId);
-
-//         return docRef.get().then(snap => {
-
-//             const commentCount = snap.data().comment_count + 1;
-
-//             const data = { commentCount }
-
-//             return docRef.update(data)
-//         })
-//     });
+// 이게 진짜 디모다모꺼야
 
 // Article (디모아 아트보드) 에 댓글달 경우에 카운트 증가
 exports.documentCommentCounter_artboard = functions.firestore
@@ -57,11 +39,12 @@ exports.documentCommentCounter_artboard = functions.firestore
             if (postUserId !== commentId) {
                 // 작성자의 FCM 토큰을 불러옴
                 const fcmIdDocRefSnapshot = await admin.firestore().collection('FcmId').doc(postUserId).get();
-                const fcmIdData = fcmIdDocRefSnapshot.data();
-                console.log("fcmIdData : " + fcmIdData);
+
                 // 정상적으로 FCM 토큰을 가지고 왔을 때만 알림을 보내도록 설정
-                if (fcmIdData) {
-                    
+                if (fcmIdDocRefSnapshot) {
+                    const fcmIdData = fcmIdDocRefSnapshot.data();
+                    console.log("fcmIdData : " + fcmIdData);
+
                     const fcmToken = fcmIdData.FCM;
                     console.log("fcmToken : " + fcmToken);
     
@@ -113,14 +96,20 @@ exports.documentCommentCounter_layer = functions.firestore
             console.log("postUserID : " + postUserId);
             console.log("수정될 코멘트 카운트 : " + (data.comment_count + 1));
 
+            // 게시글 코멘트 +1
+            admin.firestore().collection('hongik/information/posts').doc(postId).update( {comment_count : data.comment_count + 1});
+
             // 댓글 작성자와 게시글 작성자가 같지 않을 때만 알림 가도록
             if (postUserId !== commentId) {
                 // 작성자의 FCM 토큰을 불러옴
                 const fcmIdDocRefSnapshot = await admin.firestore().collection('FcmId').doc(postUserId).get();
-                const fcmIdData = fcmIdDocRefSnapshot.data();
-                console.log("fcmIdData : " + fcmIdData);
+
                 // 정상적으로 FCM 토큰을 가지고 왔을 때만 알림을 보내도록 설정
-                if (fcmIdData) {
+                if (fcmIdDocRefSnapshot) {
+                    const fcmIdData = fcmIdDocRefSnapshot.data();
+                    console.log("fcmIdData : " + fcmIdData);
+                    
+                
                     
                     const fcmToken = fcmIdData.FCM;
                     console.log("fcmToken : " + fcmToken);
@@ -138,8 +127,7 @@ exports.documentCommentCounter_layer = functions.firestore
                 }
             }
 
-            // 게시글 코멘트 +1
-            admin.firestore().collection('hongik/information/posts').doc(postId).update( {comment_count : data.comment_count + 1});
+            
 
         } catch (error) {
             console.log("Error : ", error);
